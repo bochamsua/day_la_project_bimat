@@ -24,7 +24,7 @@ class BS_Misc_Helper_Dept extends BS_Misc_Helper_Data
         if($only){
             $depts->addFieldToFilter('entity_id', ['in' => [1,2,3,4,6,10,15]]);
         }
-
+        //test
         if($grid){
             return $depts->toOptionHash();
         }
