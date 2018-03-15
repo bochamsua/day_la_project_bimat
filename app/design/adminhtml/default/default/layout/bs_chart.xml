@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<layout>
+   <default>
+    <reference name="head">
+        <action method="addItem"><type>skin_js</type><name>bs_chart/js/fusioncharts.js</name><params/></action>
+        <action method="addItem"><type>skin_js</type><name>bs_chart/js/themes/fusioncharts.theme.ocean.js</name><params/></action>
+    </reference>
+  </default>
+</layout>

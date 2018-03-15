@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * BS_Kpi extension
+ * 
+ * @category       BS
+ * @package        BS_Kpi
+ * @copyright      Copyright (c) 2017
+ */
+-->
+<config>
+    <acl>
+        <resources>
+            <admin>
+                <children>
+                    <system>
+                        <children>
+                            <config>
+                                <children>
+                                    <bs_kpi translate="title" module="bs_kpi">
+                                        <title>Kpi</title>
+                                    </bs_kpi>
+                                </children>
+                            </config>
+                        </children>
+                    </system>
+                    <bs_data>
+                        <children>
+                            <kpi translate="title" module="bs_kpi">
+                                <title>KPI Data</title>
+                                <sort_order>75</sort_order>
+                                <children>
+                                    <new translate="title"><title>New</title></new>
+                                    <edit translate="title"><title>Edit</title></edit>
+                                    <delete translate="title"><title>Delete</title></delete>
+                                </children>
+                            </kpi>
+                        </children>
+                    </bs_data>
+
+                </children>
+            </admin>
+        </resources>
+    </acl>
+    <menu>
+        <bs_data>
+            <children>
+                <kpi translate="title" module="bs_kpi">
+                    <title>KPI Data</title>
+                    <action>adminhtml/kpi_kpi</action>
+                    <sort_order>75</sort_order>
+                </kpi>
+            </children>
+        </bs_data>
+
+    </menu>
+</config>

@@ -1,0 +1,98 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * BS_Ncr extension
+ * 
+ * @category       BS
+ * @package        BS_Ncr
+ * @copyright      Copyright (c) 2016
+ */
+-->
+<config>
+    <modules>
+        <BS_Ncr>
+            <version>1.0.2</version>
+        </BS_Ncr>
+    </modules>
+    <global>
+        <resources>
+            <bs_ncr_setup>
+                <setup>
+                    <module>BS_Ncr</module>
+                    <class>BS_Ncr_Model_Resource_Setup</class>
+                </setup>
+            </bs_ncr_setup>
+        </resources>
+        <blocks>
+            <bs_ncr>
+                <class>BS_Ncr_Block</class>
+            </bs_ncr>
+        </blocks>
+        <helpers>
+            <bs_ncr>
+                <class>BS_Ncr_Helper</class>
+            </bs_ncr>
+        </helpers>
+        <models>
+            <bs_ncr>
+                <class>BS_Ncr_Model</class>
+                <resourceModel>bs_ncr_resource</resourceModel>
+            </bs_ncr>
+            <bs_ncr_resource>
+                <class>BS_Ncr_Model_Resource</class>
+                <entities>
+                    <ncr>
+                        <table>bs_ncr_ncr</table>
+                    </ncr>
+                </entities>
+            </bs_ncr_resource>
+        </models>
+    </global>
+    <adminhtml>
+        <layout>
+            <updates>
+                <bs_ncr>
+                    <file>bs_ncr.xml</file>
+                </bs_ncr>
+            </updates>
+        </layout>
+        <translate>
+            <modules>
+                <BS_Ncr>
+                    <files>
+                        <default>BS_Ncr.csv</default>
+                    </files>
+                </BS_Ncr>
+            </modules>
+        </translate>
+        <global_search>
+            <ncr>
+                <class>bs_ncr/adminhtml_search_ncr</class>
+                <acl>bs_ncr</acl>
+            </ncr>
+        </global_search>
+    </adminhtml>
+    <admin>
+        <routers>
+            <adminhtml>
+                <args>
+                    <modules>
+                        <BS_Ncr before="Mage_Adminhtml">BS_Ncr_Adminhtml</BS_Ncr>
+                    </modules>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin>
+    <!--<crontab>
+        <jobs>
+            <updateoverdue>
+                <schedule>
+                    <cron_expr>*/5 * * * *</cron_expr>
+                </schedule>
+                <run>
+                    <model>bs_ncr/observer::updateOverdue</model>
+                </run>
+            </updateoverdue>
+        </jobs>
+    </crontab>-->
+</config>

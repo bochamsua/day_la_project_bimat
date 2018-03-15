@@ -1,0 +1,87 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * BS_HR extension
+ * 
+ * @category       BS
+ * @package        BS_HR
+ * @copyright      Copyright (c) 2016
+ */
+-->
+<config>
+    <acl>
+        <resources>
+            <admin>
+                <children>
+                    <system>
+                        <children>
+                            <config>
+                                <children>
+                                    <bs_hr translate="title" module="bs_hr">
+                                        <title>HR</title>
+                                    </bs_hr>
+                                </children>
+                            </config>
+                        </children>
+                    </system>
+                    <bs_hr translate="title" module="bs_hr">
+                        <title>HR</title>
+                        <children>
+                            <staff translate="title" module="bs_hr">
+                                <title>Staff</title>
+                                <sort_order>0</sort_order>
+                                <children>
+                                    <new translate="title"><title>New</title></new>
+                                    <edit translate="title"><title>Edit</title></edit>
+                                    <delete translate="title"><title>Delete</title></delete>
+                                </children>
+                            </staff>
+                            <certificate translate="title" module="bs_hr">
+                                <title>Certificate</title>
+                                <sort_order>10</sort_order>
+                                <children>
+                                    <new translate="title"><title>New</title></new>
+                                    <edit translate="title"><title>Edit</title></edit>
+                                    <delete translate="title"><title>Delete</title></delete>
+                                </children>
+                            </certificate>
+                            <training translate="title" module="bs_hr">
+                                <title>Training</title>
+                                <sort_order>20</sort_order>
+                                <children>
+                                    <new translate="title"><title>New</title></new>
+                                    <edit translate="title"><title>Edit</title></edit>
+                                    <delete translate="title"><title>Delete</title></delete>
+                                </children>
+                            </training>
+                        </children>
+                    </bs_hr>
+                </children>
+            </admin>
+        </resources>
+    </acl>
+    <menu>
+        <bs_hr translate="title" module="bs_hr">
+            <title>HR</title>
+            <sort_order>75</sort_order>
+            <children>
+                <staff translate="title" module="bs_hr">
+                    <title>Staff</title>
+                    <action>adminhtml/hr_staff</action>
+                    <sort_order>0</sort_order>
+                </staff>
+
+                <certificate translate="title" module="bs_hr">
+                    <title>Certificate</title>
+                    <action>adminhtml/hr_certificate</action>
+                    <sort_order>10</sort_order>
+                </certificate>
+                <training translate="title" module="bs_hr">
+                    <title>Training</title>
+                    <action>adminhtml/hr_training</action>
+                    <sort_order>20</sort_order>
+                </training>
+            </children>
+        </bs_hr>
+    </menu>
+</config>

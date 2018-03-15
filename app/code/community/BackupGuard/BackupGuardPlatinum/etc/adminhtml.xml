@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+<config>
+    <menu>
+        <backupguardplatinum module="backupguardplatinum">
+            <title>Backup Guard Platinum</title>
+            <action>adminhtml/backupguardplatinum/backups</action>
+            <sort_order>99</sort_order>
+            <children>
+                <backups module="backupguardplatinum">
+                    <title>Backups</title>
+                    <action>adminhtml/backupguardplatinum/backups</action>
+                    <sort_order>0</sort_order>
+                </backups>
+                <cloud module="backupguardplatinum">
+                    <title>Cloud</title>
+                    <action>adminhtml/backupguardplatinum/cloud</action>
+                    <sort_order>1</sort_order>
+                </cloud>
+                <schedule module="backupguardplatinum">
+                    <title>Schedule</title>
+                    <action>adminhtml/backupguardplatinum/schedule</action>
+                    <sort_order>2</sort_order>
+                </schedule>
+                <settings module="backupguardplatinum">
+                    <title>Settings</title>
+                    <action>adminhtml/backupguardplatinum/settings</action>
+                    <sort_order>3</sort_order>
+                </settings>
+                <!--<support module="backupguardplatinum">
+                    <title>Support</title>
+                    <action>adminhtml/backupguardplatinum/support</action>
+                    <sort_order>4</sort_order>
+                </support>-->
+            </children>
+        </backupguardplatinum>
+    </menu>
+    <!--<acl>
+        <resources>
+            <all>
+                <title>Allow Everything</title>
+            </all>
+            <admin>
+                <children>
+                    <backupguardplatinum>
+                        <title>Backup Guard Platinum</title>
+                    </backupguardplatinum>
+                    <system>
+                        <children>
+                            <config>
+                                <children>
+                                    <backupguard>
+                                        <title>Backup Guard Platinum</title>
+                                        <sort_order>50</sort_order>
+                                    </backupguard>
+                                </children>
+                            </config>
+                        </children>
+                    </system>
+                </children>
+            </admin>
+        </resources>
+    </acl>-->
+</config>

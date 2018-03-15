@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * BS_Evaluation extension
+ * 
+ * @category       BS
+ * @package        BS_Evaluation
+ * @copyright      Copyright (c) 2017
+ */
+-->
+<config>
+    <modules>
+        <BS_Evaluation>
+            <active>true</active>
+            <codePool>local</codePool>
+        </BS_Evaluation>
+    </modules>
+</config>

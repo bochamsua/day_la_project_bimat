@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * BS_Report extension
+ * 
+ * @category       BS
+ * @package        BS_Report
+ * @copyright      Copyright (c) 2017
+ */
+-->
+<config>
+    <modules>
+        <BS_Report>
+            <active>true</active>
+            <codePool>local</codePool>
+            <depends>
+                <Mage_Core />
+             </depends>
+        </BS_Report>
+    </modules>
+</config>

@@ -1,0 +1,133 @@
+@media(max-width: 767px){
+    .col-xs-9 {
+        width: 50%;
+    }
+    div.side-col {
+        display: none;
+    }
+    .entry-edit {
+        clear: both;
+    }
+    .breadcrumb {
+        display: none;
+    }
+    .content-header h3 {
+        font-size: 16px;
+    }
+    .content-header .form-buttons  {
+        width: 50%;
+    }
+    .content-header .form-buttons button {
+        margin-top: 0px;
+        margin-bottom: 5px;
+    }
+    .content-header {
+        height: auto;
+        margin-bottom: 10px;
+    }
+    .not-order-page .form-buttons button span{
+        font-size: 0;
+    }
+    .not-order-page .form-buttons button > span:before{
+        font-family: 'themify';
+        font-style: normal;
+        font-weight: normal;
+        font-variant: normal;
+        text-transform: none;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        font-size: 14px;
+        text-align: center;
+        line-height: 20px;
+    }
+    .not-order-page .form-buttons button[title="Reset"] > span:before{
+        content: "\e619";
+    }
+    .not-order-page .form-buttons button[title="Back"] > span:before{
+        content: "\e629";
+    }
+    .not-order-page .form-buttons button[title="Delete"] > span:before{
+        content: "\e605";
+    }
+    .not-order-page .form-buttons button[title="Accept"] > span:before{
+        content: "\e670";
+    }
+    .not-order-page .form-buttons button[title="Reject"] > span:before{
+        content: "\e671";
+    }
+    .not-order-page .form-buttons button[title="Print"] > span:before{
+        content: "\e681";
+    }
+    .form-list td.label label {
+        min-width: 20%;
+    }
+    .form-list td.value select {
+        width: auto;
+    }
+    .form-list td.value input.input-text, .form-list td.value textarea, .form-list td.value select {
+        max-width: 100%;
+        width: 100%;
+    }
+    .massaction a {
+        font-size: 10px;
+    }
+
+    .card {
+        width: 96%;
+    }
+    #nbclick {
+        right: 0;
+    }
+    .header-right.col-xlg-6 {
+        padding-right: 68px;
+    }
+
+    .pager .view-per-page {
+        display: none;
+    }
+    .filter-actions {
+       display: none;
+    }
+    .grid-top > .actions {
+        margin-bottom: 0;
+    }
+    .filter-actions .export {
+        display: none;
+    }
+    .masaction-w {
+        display: none;
+    }
+    .table-responsive table {
+        border: none;
+    }
+    .table-responsive thead {
+        display: none;
+    }
+    .table-responsive colgroup {
+        display: none;
+    }
+    .table-responsive table td {
+        float: left;
+        padding: 8px 5px;
+        border: none;
+    }
+    .table-responsive tbody td.a-center:first-child {
+        display: none;
+    }
+    .table-responsive table td.last {
+        display: none;
+    }
+}
+
+@media(max-width: 575px){
+    .dashboard-header {
+        height: auto;
+    }
+    .dashboard-w .buttons {
+        float: none;
+        width: 100%;
+    }
+    .columns .form-list td.value {
+        float: right;
+    }
+}

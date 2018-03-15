@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * BS_KPIReport extension
+ * 
+ * @category       BS
+ * @package        BS_KPIReport
+ * @copyright      Copyright (c) 2017
+ */
+-->
+<config>
+    <acl>
+        <resources>
+            <admin>
+                <children>
+                    <system>
+                        <children>
+                            <config>
+                                <children>
+                                    <bs_kpireport translate="title" module="bs_kpireport">
+                                        <title>KPIReport</title>
+                                    </bs_kpireport>
+                                </children>
+                            </config>
+                        </children>
+                    </system>
+                    <bs_report>
+                        <children>
+                            <kpireport translate="title" module="bs_kpireport">
+                                <title>KPI Report</title>
+                                <sort_order>10</sort_order>
+                                <children>
+                                    <update translate="title"><title>Update</title></update>
+                                </children>
+                            </kpireport>
+                        </children>
+                    </bs_report>
+
+                </children>
+            </admin>
+        </resources>
+    </acl>
+    <menu>
+        <bs_report>
+            <children>
+                <kpireport translate="title" module="bs_kpireport">
+                    <title>KPI Report</title>
+                    <action>adminhtml/kpireport_kpireport</action>
+                    <sort_order>10</sort_order>
+                </kpireport>
+            </children>
+        </bs_report>
+
+    </menu>
+</config>

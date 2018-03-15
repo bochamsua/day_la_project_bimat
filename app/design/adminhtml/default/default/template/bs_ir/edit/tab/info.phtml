@@ -1,0 +1,36 @@
+<?php
+$ir = $this->getIr();
+$refId = $ir->getRefId();
+$refType = $ir->getRefType();
+
+$name = '';
+$link = '';
+if($relates = Mage::helper('bs_misc')->getRelatedItem($refType, $refId)){
+    $name = $relates['name'];
+    $link = $relates['link'];
+}
+
+?>
+<div class="entry-edit product-general-info">
+    <div class="entry-edit-head">
+        <h4 class="icon-head head-edit-form fieldset-legend"><?php echo Mage::helper('adminhtml')->__('Source Information') ?></h4>
+    </div>
+    <fieldset>
+
+        <legend><?php echo Mage::helper('adminhtml')->__('Source Information') ?></legend>
+        <table cellspacing="0" class="form-list" id="table_general">
+            <?php /* ?>
+            <tr>
+                <td class="label"><label><?php echo Mage::helper('adminhtml')->__('Related Type') ?></label></td>
+                <td class="value"><?php echo $taskGroupName ?></td>
+            </tr> <?php */ ?>
+
+            <tr>
+                <td class="label"><label><?php echo Mage::helper('adminhtml')->__('Related Item') ?></label></td>
+                <td class="value"><a href="<?php echo $link?>"><?php echo $name ?></a> </td>
+            </tr>
+        </table>
+
+
+    </fieldset>
+</div>

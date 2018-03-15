@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * BS_KPIReport extension
+ * 
+ * @category       BS
+ * @package        BS_KPIReport
+ * @copyright      Copyright (c) 2017
+ */
+--> 
+<layout>
+    <adminhtml_kpireport_kpireport_index>
+        <reference name="menu">
+            <action method="setActive">
+                <menupath>bs_report/kpireport</menupath>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="bs_kpireport/adminhtml_kpireport" name="kpireport" template="report/grid/container.phtml" >
+                <block type="bs_kpireport/adminhtml_filter_form" name="grid.filter.form" />
+            </block>
+
+        </reference>
+
+    </adminhtml_kpireport_kpireport_index>
+    <adminhtml_kpireport_kpireport_grid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_kpireport/adminhtml_kpireport_grid" name="kpireport_grid"/>
+        </block>
+    </adminhtml_kpireport_kpireport_grid>
+    <!-- Kpireport add/edit action -->
+    <adminhtml_kpireport_kpireport_edit>
+        <update handle="editor"/>
+        <reference name="menu">
+            <action method="setActive">
+                <menupath>bs_report/kpireport</menupath>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="bs_kpireport/adminhtml_kpireport_edit" name="kpireport_edit"></block>
+        </reference>
+        <reference name="left">
+            <block type="bs_kpireport/adminhtml_kpireport_edit_tabs" name="kpireport_tabs"></block>
+        </reference>
+    </adminhtml_kpireport_kpireport_edit>
+
+</layout>

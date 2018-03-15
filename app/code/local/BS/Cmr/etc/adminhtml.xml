@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * BS_Cmr extension
+ * 
+ * @category       BS
+ * @package        BS_Cmr
+ * @copyright      Copyright (c) 2017
+ */
+-->
+<config>
+    <acl>
+        <resources>
+            <admin>
+                <children>
+                    <system>
+                        <children>
+                            <config>
+                                <children>
+                                    <bs_cmr translate="title" module="bs_cmr">
+                                        <title>Cmr</title>
+                                    </bs_cmr>
+                                </children>
+                            </config>
+                        </children>
+                    </system>
+                    <bs_data>
+                        <children>
+                            <cmr translate="title" module="bs_cmr">
+                                <title>CMR Data Data</title>
+                                <sort_order>0</sort_order>
+                                <children>
+                                    <new translate="title"><title>New</title></new>
+                                    <edit translate="title"><title>Edit</title></edit>
+                                    <delete translate="title"><title>Delete</title></delete>
+                                </children>
+                            </cmr>
+                        </children>
+                    </bs_data>
+
+                </children>
+            </admin>
+        </resources>
+    </acl>
+    <menu>
+        <bs_data>
+            <children>
+                <cmr translate="title" module="bs_cmr">
+                    <title>CMR Data</title>
+                    <action>adminhtml/cmr_cmr</action>
+                    <sort_order>0</sort_order>
+                </cmr>
+            </children>
+        </bs_data>
+
+    </menu>
+</config>

@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * BS_Qrqn extension
+ * 
+ * @category       BS
+ * @package        BS_Qrqn
+ * @copyright      Copyright (c) 2016
+ */
+-->
+<config>
+    <modules>
+        <BS_Qr>
+            <active>true</active>
+            <codePool>local</codePool>
+            <depends>
+                <Mage_Core />
+             </depends>
+        </BS_Qr>
+    </modules>
+</config>

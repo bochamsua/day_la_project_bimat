@@ -1,0 +1,109 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * BS_Concession extension
+ * 
+ * @category       BS
+ * @package        BS_Concession
+ * @copyright      Copyright (c) 2017
+ */
+--> 
+<layout>
+    <adminhtml_concession_concession_index>
+        <reference name="menu">
+            <action method="setActive">
+                <menupath>bs_data/concession</menupath>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="bs_concession/adminhtml_concession" name="concession" />
+
+        </reference>
+    </adminhtml_concession_concession_index>
+    <adminhtml_concession_concession_grid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_concession/adminhtml_concession_grid" name="concession_grid"/>
+        </block>
+    </adminhtml_concession_concession_grid>
+    <!-- Concession add/edit action -->
+    <adminhtml_concession_concession_edit>
+        <update handle="editor"/>
+        <reference name="menu">
+            <action method="setActive">
+                <menupath>bs_data/concession</menupath>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="bs_concession/adminhtml_concession_edit" name="concession_edit"></block>
+        </reference>
+        <reference name="left">
+            <block type="bs_concession/adminhtml_concession_edit_tabs" name="concession_tabs"></block>
+        </reference>
+    </adminhtml_concession_concession_edit>
+
+    <adminhtml_concession_concession_irs>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_concession/adminhtml_concession_edit_tab_ir" name="concession.edit.tab.ir"/>
+        </block>
+    </adminhtml_concession_concession_irs>
+    <adminhtml_concession_concession_irsgrid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_concession/adminhtml_concession_edit_tab_ir" name="concession.edit.tab.ir"/>
+        </block>
+    </adminhtml_concession_concession_irsgrid>
+
+    <adminhtml_concession_concession_ncrs>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_concession/adminhtml_concession_edit_tab_ncr" name="concession.edit.tab.ncr"/>
+        </block>
+    </adminhtml_concession_concession_ncrs>
+    <adminhtml_concession_concession_ncrsgrid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_concession/adminhtml_concession_edit_tab_ncr" name="concession.edit.tab.ncr"/>
+        </block>
+    </adminhtml_concession_concession_ncrsgrid>
+
+    <adminhtml_concession_concession_qrs>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_concession/adminhtml_concession_edit_tab_qr" name="concession.edit.tab.qr"/>
+        </block>
+    </adminhtml_concession_concession_qrs>
+    <adminhtml_concession_concession_qrsgrid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_concession/adminhtml_concession_edit_tab_qr" name="concession.edit.tab.qr"/>
+        </block>
+    </adminhtml_concession_concession_qrsgrid>
+
+    <adminhtml_concession_concession_qns>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_concession/adminhtml_concession_edit_tab_qn" name="concession.edit.tab.qn"/>
+        </block>
+    </adminhtml_concession_concession_qns>
+    <adminhtml_concession_concession_qnsgrid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_concession/adminhtml_concession_edit_tab_qn" name="concession.edit.tab.qn"/>
+        </block>
+    </adminhtml_concession_concession_qnsgrid>
+
+    <adminhtml_concession_concession_cars>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_concession/adminhtml_concession_edit_tab_car" name="concession.edit.tab.car"/>
+        </block>
+    </adminhtml_concession_concession_cars>
+    <adminhtml_concession_concession_carsgrid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_concession/adminhtml_concession_edit_tab_car" name="concession.edit.tab.car"/>
+        </block>
+    </adminhtml_concession_concession_carsgrid>
+
+    <adminhtml_concession_concession_drrs>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_concession/adminhtml_concession_edit_tab_drr" name="concession.edit.tab.drr"/>
+        </block>
+    </adminhtml_concession_concession_drrs>
+    <adminhtml_concession_concession_drrsgrid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_concession/adminhtml_concession_edit_tab_drr" name="concession.edit.tab.drr"/>
+        </block>
+    </adminhtml_concession_concession_drrsgrid>
+</layout>

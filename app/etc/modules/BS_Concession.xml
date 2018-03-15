@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * BS_Concession extension
+ * 
+ * @category       BS
+ * @package        BS_Concession
+ * @copyright      Copyright (c) 2017
+ */
+-->
+<config>
+    <modules>
+        <BS_Concession>
+            <active>true</active>
+            <codePool>local</codePool>
+            <depends>
+                <Mage_Core />
+             </depends>
+        </BS_Concession>
+    </modules>
+</config>

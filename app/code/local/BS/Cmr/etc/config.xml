@@ -1,0 +1,86 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * BS_Cmr extension
+ * 
+ * @category       BS
+ * @package        BS_Cmr
+ * @copyright      Copyright (c) 2017
+ */
+-->
+<config>
+    <modules>
+        <BS_Cmr>
+            <version>1.0.1</version>
+        </BS_Cmr>
+    </modules>
+    <global>
+        <resources>
+            <bs_cmr_setup>
+                <setup>
+                    <module>BS_Cmr</module>
+                    <class>BS_Cmr_Model_Resource_Setup</class>
+                </setup>
+            </bs_cmr_setup>
+        </resources>
+        <blocks>
+            <bs_cmr>
+                <class>BS_Cmr_Block</class>
+            </bs_cmr>
+        </blocks>
+        <helpers>
+            <bs_cmr>
+                <class>BS_Cmr_Helper</class>
+            </bs_cmr>
+        </helpers>
+        <models>
+            <bs_cmr>
+                <class>BS_Cmr_Model</class>
+                <resourceModel>bs_cmr_resource</resourceModel>
+            </bs_cmr>
+            <bs_cmr_resource>
+                <class>BS_Cmr_Model_Resource</class>
+                <entities>
+                    <cmr>
+                        <table>bs_cmr_cmr</table>
+                    </cmr>
+                </entities>
+            </bs_cmr_resource>
+        </models>
+    </global>
+    <adminhtml>
+        <layout>
+            <updates>
+                <bs_cmr>
+                    <file>bs_cmr.xml</file>
+                </bs_cmr>
+            </updates>
+        </layout>
+        <translate>
+            <modules>
+                <BS_Cmr>
+                    <files>
+                        <default>BS_Cmr.csv</default>
+                    </files>
+                </BS_Cmr>
+            </modules>
+        </translate>
+        <global_search>
+            <cmr>
+                <class>bs_cmr/adminhtml_search_cmr</class>
+                <acl>bs_cmr</acl>
+            </cmr>
+        </global_search>
+    </adminhtml>
+    <admin>
+        <routers>
+            <adminhtml>
+                <args>
+                    <modules>
+                        <BS_Cmr before="Mage_Adminhtml">BS_Cmr_Adminhtml</BS_Cmr>
+                    </modules>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin>
+</config>

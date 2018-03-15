@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * BS_Nonroutine extension
+ * 
+ * @category       BS
+ * @package        BS_Nonroutine
+ * @copyright      Copyright (c) 2017
+ */
+--> 
+<layout>
+    <adminhtml_nonroutine_nonroutine_index>
+        <reference name="menu">
+            <action method="setActive">
+                <menupath>bs_sched/nonroutine</menupath>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="bs_nonroutine/adminhtml_nonroutine" name="nonroutine" />
+
+        </reference>
+    </adminhtml_nonroutine_nonroutine_index>
+    <adminhtml_nonroutine_nonroutine_grid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_nonroutine/adminhtml_nonroutine_grid" name="nonroutine_grid"/>
+        </block>
+    </adminhtml_nonroutine_nonroutine_grid>
+    <!-- Nonroutine add/edit action -->
+    <adminhtml_nonroutine_nonroutine_edit>
+        <update handle="editor"/>
+        <reference name="menu">
+            <action method="setActive">
+                <menupath>bs_sched/nonroutine</menupath>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="bs_nonroutine/adminhtml_nonroutine_edit" name="nonroutine_edit"></block>
+        </reference>
+        <reference name="left">
+            <block type="bs_nonroutine/adminhtml_nonroutine_edit_tabs" name="nonroutine_tabs"></block>
+        </reference>
+    </adminhtml_nonroutine_nonroutine_edit>
+
+</layout>

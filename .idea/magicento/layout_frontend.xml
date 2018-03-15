@@ -1,0 +1,4 @@
+<layout><default>
+        <block name="formkey" type="core/template" template="core/formkey.phtml" />
+    </default>
+</layout>

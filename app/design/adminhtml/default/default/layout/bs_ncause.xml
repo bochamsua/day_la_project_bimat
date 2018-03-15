@@ -1,0 +1,76 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * BS_NCause extension
+ * 
+ * @category       BS
+ * @package        BS_NCause
+ * @copyright      Copyright (c) 2016
+ */
+--> 
+<layout>
+    <adminhtml_ncause_ncausegroup_index>
+        <reference name="menu">
+            <action method="setActive">
+                <menupath>bs_misc/ncausegroup</menupath>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="bs_ncause/adminhtml_ncausegroup" name="ncausegroup" />
+
+        </reference>
+    </adminhtml_ncause_ncausegroup_index>
+    <adminhtml_ncause_ncausegroup_grid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_ncause/adminhtml_ncausegroup_grid" name="ncausegroup_grid"/>
+        </block>
+    </adminhtml_ncause_ncausegroup_grid>
+    <!-- Ncausegroup add/edit action -->
+    <adminhtml_ncause_ncausegroup_edit>
+        <update handle="editor"/>
+        <reference name="menu">
+            <action method="setActive">
+                <menupath>bs_misc/ncausegroup</menupath>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="bs_ncause/adminhtml_ncausegroup_edit" name="ncausegroup_edit"></block>
+        </reference>
+        <reference name="left">
+            <block type="bs_ncause/adminhtml_ncausegroup_edit_tabs" name="ncausegroup_tabs"></block>
+        </reference>
+    </adminhtml_ncause_ncausegroup_edit>
+
+    <adminhtml_ncause_ncause_index>
+        <reference name="menu">
+            <action method="setActive">
+                <menupath>bs_misc/ncause</menupath>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="bs_ncause/adminhtml_ncause" name="ncause" />
+
+        </reference>
+    </adminhtml_ncause_ncause_index>
+    <adminhtml_ncause_ncause_grid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_ncause/adminhtml_ncause_grid" name="ncause_grid"/>
+        </block>
+    </adminhtml_ncause_ncause_grid>
+    <!-- Ncause add/edit action -->
+    <adminhtml_ncause_ncause_edit>
+        <update handle="editor"/>
+        <reference name="menu">
+            <action method="setActive">
+                <menupath>bs_misc/ncause</menupath>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="bs_ncause/adminhtml_ncause_edit" name="ncause_edit"></block>
+        </reference>
+        <reference name="left">
+            <block type="bs_ncause/adminhtml_ncause_edit_tabs" name="ncause_tabs"></block>
+        </reference>
+    </adminhtml_ncause_ncause_edit>
+
+</layout>

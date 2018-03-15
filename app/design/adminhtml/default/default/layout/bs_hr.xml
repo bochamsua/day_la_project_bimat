@@ -1,0 +1,161 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * BS_HR extension
+ * 
+ * @category       BS
+ * @package        BS_HR
+ * @copyright      Copyright (c) 2016
+ */
+--> 
+<layout>
+    <adminhtml_hr_inspector_index>
+        <reference name="menu">
+            <action method="setActive">
+                <menupath>bs_hr/inspector</menupath>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="bs_hr/adminhtml_inspector" name="inspector" />
+
+        </reference>
+    </adminhtml_hr_inspector_index>
+    <adminhtml_hr_inspector_grid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_hr/adminhtml_inspector_grid" name="inspector_grid"/>
+        </block>
+    </adminhtml_hr_inspector_grid>
+    <!-- Inspector add/edit action -->
+    <adminhtml_hr_inspector_edit>
+        <update handle="editor"/>
+        <reference name="menu">
+            <action method="setActive">
+                <menupath>bs_hr/inspector</menupath>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="bs_hr/adminhtml_inspector_edit" name="inspector_edit"></block>
+        </reference>
+        <reference name="left">
+            <block type="bs_hr/adminhtml_inspector_edit_tabs" name="inspector_tabs"></block>
+        </reference>
+    </adminhtml_hr_inspector_edit>
+
+    <adminhtml_hr_certificate_index>
+        <reference name="menu">
+            <action method="setActive">
+                <menupath>bs_hr/certificate</menupath>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="bs_hr/adminhtml_certificate" name="certificate" />
+
+        </reference>
+    </adminhtml_hr_certificate_index>
+    <adminhtml_hr_certificate_grid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_hr/adminhtml_certificate_grid" name="certificate_grid"/>
+        </block>
+    </adminhtml_hr_certificate_grid>
+    <!-- Certificate add/edit action -->
+    <adminhtml_hr_certificate_edit>
+        <update handle="editor"/>
+        <reference name="menu">
+            <action method="setActive">
+                <menupath>bs_hr/certificate</menupath>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="bs_hr/adminhtml_certificate_edit" name="certificate_edit"></block>
+        </reference>
+        <reference name="left">
+            <block type="bs_hr/adminhtml_certificate_edit_tabs" name="certificate_tabs"></block>
+        </reference>
+    </adminhtml_hr_certificate_edit>
+
+    <adminhtml_hr_training_index>
+        <reference name="menu">
+            <action method="setActive">
+                <menupath>bs_hr/training</menupath>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="bs_hr/adminhtml_training" name="training" />
+
+        </reference>
+    </adminhtml_hr_training_index>
+    <adminhtml_hr_training_grid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_hr/adminhtml_training_grid" name="training_grid"/>
+        </block>
+    </adminhtml_hr_training_grid>
+    <!-- Training add/edit action -->
+    <adminhtml_hr_training_edit>
+        <update handle="editor"/>
+        <reference name="menu">
+            <action method="setActive">
+                <menupath>bs_hr/training</menupath>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="bs_hr/adminhtml_training_edit" name="training_edit"></block>
+        </reference>
+        <reference name="left">
+            <block type="bs_hr/adminhtml_training_edit_tabs" name="training_tabs"></block>
+        </reference>
+    </adminhtml_hr_training_edit>
+
+    <adminhtml_hr_inspector_certs>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_hr/adminhtml_inspector_edit_tab_cert" name="inspector.edit.tab.cert"/>
+        </block>
+    </adminhtml_hr_inspector_certs>
+    <adminhtml_hr_inspector_certsgrid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_hr/adminhtml_inspector_edit_tab_cert" name="inspector.edit.tab.cert"/>
+        </block>
+    </adminhtml_hr_inspector_certsgrid>
+
+    <adminhtml_hr_inspector_trainings>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_hr/adminhtml_inspector_edit_tab_training" name="inspector.edit.tab.training"/>
+        </block>
+    </adminhtml_hr_inspector_trainings>
+    <adminhtml_hr_inspector_trainingsgrid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_hr/adminhtml_inspector_edit_tab_training" name="inspector.edit.tab.training"/>
+        </block>
+    </adminhtml_hr_inspector_trainingsgrid>
+    <adminhtml_hr_staff_index>
+        <reference name="menu">
+            <action method="setActive">
+                <menupath>bs_hr/staff</menupath>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="bs_hr/adminhtml_staff" name="staff" />
+
+        </reference>
+    </adminhtml_hr_staff_index>
+    <adminhtml_hr_staff_grid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_hr/adminhtml_staff_grid" name="staff_grid"/>
+        </block>
+    </adminhtml_hr_staff_grid>
+    <!-- Staff add/edit action -->
+    <adminhtml_hr_staff_edit>
+        <update handle="editor"/>
+        <reference name="menu">
+            <action method="setActive">
+                <menupath>bs_hr/staff</menupath>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="bs_hr/adminhtml_staff_edit" name="staff_edit"></block>
+        </reference>
+        <reference name="left">
+            <block type="bs_hr/adminhtml_staff_edit_tabs" name="staff_tabs"></block>
+        </reference>
+    </adminhtml_hr_staff_edit>
+
+</layout>

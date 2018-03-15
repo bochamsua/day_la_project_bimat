@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * BS_Qr extension
+ * 
+ * @category       BS
+ * @package        BS_Qr
+ * @copyright      Copyright (c) 2016
+ */
+-->
+<config>
+    <acl>
+        <resources>
+            <admin>
+                <children>
+                    <system>
+                        <children>
+                            <config>
+                                <children>
+                                    <bs_qr translate="title" module="bs_qr">
+                                        <title>Qr</title>
+                                    </bs_qr>
+                                </children>
+                            </config>
+                        </children>
+                    </system>
+                    <bs_work>
+                        <children>
+                            <qr translate="title" module="bs_qr">
+                                <title>QR</title>
+                                <sort_order>60</sort_order>
+                                <children>
+                                    <new translate="title"><title>New</title></new>
+                                    <edit translate="title"><title>Edit</title></edit>
+                                    <delete translate="title"><title>Delete</title></delete>
+                                    <accept translate="title"><title>Accept</title></accept>
+                                </children>
+                            </qr>
+                        </children>
+                    </bs_work>
+
+                </children>
+            </admin>
+        </resources>
+    </acl>
+    <menu>
+        <bs_work>
+            <children>
+                <qr translate="title" module="bs_qr">
+                    <title>QR</title>
+                    <action>adminhtml/qr_qr</action>
+                    <sort_order>60</sort_order>
+                </qr>            </children>
+        </bs_work>
+
+    </menu>
+</config>

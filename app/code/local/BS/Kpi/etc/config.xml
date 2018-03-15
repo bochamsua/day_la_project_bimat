@@ -1,0 +1,80 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * BS_Kpi extension
+ * 
+ * @category       BS
+ * @package        BS_Kpi
+ * @copyright      Copyright (c) 2017
+ */
+-->
+<config>
+    <modules>
+        <BS_Kpi>
+            <version>1.0.2</version>
+        </BS_Kpi>
+    </modules>
+    <global>
+        <resources>
+            <bs_kpi_setup>
+                <setup>
+                    <module>BS_Kpi</module>
+                    <class>BS_Kpi_Model_Resource_Setup</class>
+                </setup>
+            </bs_kpi_setup>
+        </resources>
+        <blocks>
+            <bs_kpi>
+                <class>BS_Kpi_Block</class>
+            </bs_kpi>
+        </blocks>
+        <helpers>
+            <bs_kpi>
+                <class>BS_Kpi_Helper</class>
+            </bs_kpi>
+        </helpers>
+        <models>
+            <bs_kpi>
+                <class>BS_Kpi_Model</class>
+                <resourceModel>bs_kpi_resource</resourceModel>
+            </bs_kpi>
+            <bs_kpi_resource>
+                <class>BS_Kpi_Model_Resource</class>
+                <entities>
+                    <kpi>
+                        <table>bs_kpi_kpi</table>
+                    </kpi>
+                </entities>
+            </bs_kpi_resource>
+        </models>
+    </global>
+    <adminhtml>
+        <layout>
+            <updates>
+                <bs_kpi>
+                    <file>bs_kpi.xml</file>
+                </bs_kpi>
+            </updates>
+        </layout>
+        <translate>
+            <modules>
+                <BS_Kpi>
+                    <files>
+                        <default>BS_Kpi.csv</default>
+                    </files>
+                </BS_Kpi>
+            </modules>
+        </translate>
+    </adminhtml>
+    <admin>
+        <routers>
+            <adminhtml>
+                <args>
+                    <modules>
+                        <BS_Kpi before="Mage_Adminhtml">BS_Kpi_Adminhtml</BS_Kpi>
+                    </modules>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin>
+</config>

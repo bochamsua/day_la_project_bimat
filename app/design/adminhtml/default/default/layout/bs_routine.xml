@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * BS_Routine extension
+ * 
+ * @category       BS
+ * @package        BS_Routine
+ * @copyright      Copyright (c) 2017
+ */
+--> 
+<layout>
+    <adminhtml_routine_routine_index>
+        <reference name="menu">
+            <action method="setActive">
+                <menupath>bs_report/routine</menupath>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="bs_routine/adminhtml_routine" name="routine" />
+
+        </reference>
+    </adminhtml_routine_routine_index>
+    <adminhtml_routine_routine_grid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_routine/adminhtml_routine_grid" name="routine_grid"/>
+        </block>
+    </adminhtml_routine_routine_grid>
+    <!-- Routine add/edit action -->
+    <adminhtml_routine_routine_edit>
+        <update handle="editor"/>
+        <reference name="menu">
+            <action method="setActive">
+                <menupath>bs_report/routine</menupath>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="bs_routine/adminhtml_routine_edit" name="routine_edit"></block>
+        </reference>
+        <reference name="left">
+            <block type="bs_routine/adminhtml_routine_edit_tabs" name="routine_tabs"></block>
+        </reference>
+    </adminhtml_routine_routine_edit>
+
+</layout>

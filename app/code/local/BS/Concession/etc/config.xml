@@ -1,0 +1,86 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * BS_Concession extension
+ * 
+ * @category       BS
+ * @package        BS_Concession
+ * @copyright      Copyright (c) 2017
+ */
+-->
+<config>
+    <modules>
+        <BS_Concession>
+            <version>1.0.2</version>
+        </BS_Concession>
+    </modules>
+    <global>
+        <resources>
+            <bs_concession_setup>
+                <setup>
+                    <module>BS_Concession</module>
+                    <class>BS_Concession_Model_Resource_Setup</class>
+                </setup>
+            </bs_concession_setup>
+        </resources>
+        <blocks>
+            <bs_concession>
+                <class>BS_Concession_Block</class>
+            </bs_concession>
+        </blocks>
+        <helpers>
+            <bs_concession>
+                <class>BS_Concession_Helper</class>
+            </bs_concession>
+        </helpers>
+        <models>
+            <bs_concession>
+                <class>BS_Concession_Model</class>
+                <resourceModel>bs_concession_resource</resourceModel>
+            </bs_concession>
+            <bs_concession_resource>
+                <class>BS_Concession_Model_Resource</class>
+                <entities>
+                    <concession>
+                        <table>bs_concession_concession</table>
+                    </concession>
+                </entities>
+            </bs_concession_resource>
+        </models>
+    </global>
+    <adminhtml>
+        <layout>
+            <updates>
+                <bs_concession>
+                    <file>bs_concession.xml</file>
+                </bs_concession>
+            </updates>
+        </layout>
+        <translate>
+            <modules>
+                <BS_Concession>
+                    <files>
+                        <default>BS_Concession.csv</default>
+                    </files>
+                </BS_Concession>
+            </modules>
+        </translate>
+        <global_search>
+            <concession>
+                <class>bs_concession/adminhtml_search_concession</class>
+                <acl>bs_concession</acl>
+            </concession>
+        </global_search>
+    </adminhtml>
+    <admin>
+        <routers>
+            <adminhtml>
+                <args>
+                    <modules>
+                        <BS_Concession before="Mage_Adminhtml">BS_Concession_Adminhtml</BS_Concession>
+                    </modules>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin>
+</config>

@@ -1,0 +1,58 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * BS_NCR extension
+ * 
+ * @category       BS
+ * @package        BS_NCR
+ * @copyright      Copyright (c) 2016
+ */
+-->
+<config>
+    <acl>
+        <resources>
+            <admin>
+                <children>
+                    <system>
+                        <children>
+                            <config>
+                                <children>
+                                    <bs_ncr translate="title" module="bs_ncr">
+                                        <title>NCR</title>
+                                    </bs_ncr>
+                                </children>
+                            </config>
+                        </children>
+                    </system>
+                    <bs_work>
+                        <children>
+                            <ncr translate="title" module="bs_ncr">
+                                <title>NCR</title>
+                                <sort_order>50</sort_order>
+                                <children>
+                                    <new translate="title"><title>New</title></new>
+                                    <edit translate="title"><title>Edit</title></edit>
+                                    <delete translate="title"><title>Delete</title></delete>
+                                    <accept translate="title"><title>Accept</title></accept>
+                                </children>
+                            </ncr>
+                        </children>
+                    </bs_work>
+
+                </children>
+            </admin>
+        </resources>
+    </acl>
+    <menu>
+        <bs_work>
+            <children>
+                <ncr translate="title" module="bs_ncr">
+                    <title>NCR</title>
+                    <action>adminhtml/ncr_ncr</action>
+                    <sort_order>50</sort_order>
+                </ncr>
+            </children>
+        </bs_work>
+
+    </menu>
+</config>

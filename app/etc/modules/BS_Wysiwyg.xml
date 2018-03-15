@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * BS_Wysiwyg extension
+ * 
+ * @category       BS
+ * @package        BS_Wysiwyg
+ * @copyright      Copyright (c) 2017
+ */
+-->
+<config>
+    <modules>
+        <BS_Wysiwyg>
+            <active>true</active>
+            <codePool>local</codePool>
+            <depends>
+                <Mage_Core/>
+            </depends>
+        </BS_Wysiwyg>
+    </modules>
+</config>

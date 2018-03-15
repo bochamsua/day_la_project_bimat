@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * BS_Car extension
+ * 
+ * @category       BS
+ * @package        BS_Car
+ * @copyright      Copyright (c) 2016
+ */
+-->
+<config>
+    <acl>
+        <resources>
+            <admin>
+                <children>
+                    <system>
+                        <children>
+                            <config>
+                                <children>
+                                    <bs_car translate="title" module="bs_car">
+                                        <title>CAR</title>
+                                    </bs_car>
+                                </children>
+                            </config>
+                        </children>
+                    </system>
+                    <bs_work>
+                        <children>
+                            <car translate="title" module="bs_car">
+                                <title>CAR</title>
+                                <sort_order>70</sort_order>
+                                <children>
+                                    <new translate="title"><title>New</title></new>
+                                    <edit translate="title"><title>Edit</title></edit>
+                                    <delete translate="title"><title>Delete</title></delete>
+                                </children>
+                            </car>                       </children>
+                    </bs_work>
+
+                </children>
+            </admin>
+        </resources>
+    </acl>
+    <menu>
+        <bs_work>
+            <children>
+                <car translate="title" module="bs_car">
+                    <title>CAR</title>
+                    <action>adminhtml/car_car</action>
+                    <sort_order>70</sort_order>
+                </car>         </children>
+        </bs_work>
+
+    </menu>
+</config>

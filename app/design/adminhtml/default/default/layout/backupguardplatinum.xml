@@ -1,0 +1,112 @@
+<?xml version="1.0"?>
+
+<layout version="1.0.0">
+	<default>
+	</default>
+	<adminhtml_backupguardplatinum_backups>
+		<reference name="content">
+			<block type="core/template" name="header" template="backupguardplatinum/header.phtml" />
+			<block type="core/template" name="sidebar" template="backupguardplatinum/sidebar.phtml" />
+			<block type="core/template" name="backups" template="backupguardplatinum/backups.phtml" />
+			<block type="core/template" name="modal" template="backupguardplatinum/modal.phtml" />
+			<block type="core/template" name="footer" template="backupguardplatinum/footer.phtml" />
+		</reference>
+		<reference name="head">
+			<action method="addItem">
+            	<type>skin_css</type>
+            	<name>css/BackupGuardPlatinum/bgstyle.less.css</name>
+			</action>
+			<action method="addItem">
+            	<type>skin_css</type>
+            	<name>css/BackupGuardPlatinum/spinner.css</name>
+			</action>
+        </reference>
+	</adminhtml_backupguardplatinum_backups>
+	<adminhtml_backupguardplatinum_cloud>
+		<reference name="content">
+			<block type="core/template" name="header" template="backupguardplatinum/header.phtml" />
+			<block type="core/template" name="sidebar" template="backupguardplatinum/sidebar.phtml" />
+			<block type="core/template" name="backups" template="backupguardplatinum/cloud.phtml" />
+			<block type="core/template" name="modal" template="backupguardplatinum/modal.phtml" />
+			<block type="core/template" name="footer" template="backupguardplatinum/footer.phtml" />
+			<block type="core/template" name="footer_cloud" template="backupguardplatinum/footer.cloud.phtml" />
+		</reference>
+		<reference name="head">
+			<action method="addItem">
+            	<type>skin_css</type>
+            	<name>css/BackupGuardPlatinum/bgstyle.less.css</name>
+			</action>
+			<action method="addItem">
+            	<type>skin_css</type>
+            	<name>css/BackupGuardPlatinum/spinner.css</name>
+			</action>
+			<action method="addItem">
+            	<type>skin_css</type>
+            	<name>css/BackupGuardPlatinum/bootstrap-switch.min.css</name>
+			</action>
+        </reference>
+	</adminhtml_backupguardplatinum_cloud>
+	<adminhtml_backupguardplatinum_schedule>
+		<reference name="content">
+			<block type="core/template" name="header" template="backupguardplatinum/header.phtml" />
+			<block type="core/template" name="sidebar" template="backupguardplatinum/sidebar.phtml" />
+			<block type="core/template" name="backups" template="backupguardplatinum/schedule.phtml" />
+			<block type="core/template" name="modal" template="backupguardplatinum/modal.phtml" />
+			<block type="core/template" name="footer" template="backupguardplatinum/footer.phtml" />
+			<block type="core/template" name="footer_schedule" template="backupguardplatinum/footer.schedule.phtml" />
+		</reference>
+		<reference name="head">
+			<action method="addItem">
+            	<type>skin_css</type>
+            	<name>css/BackupGuardPlatinum/bgstyle.less.css</name>
+			</action>
+			<action method="addItem">
+            	<type>skin_css</type>
+            	<name>css/BackupGuardPlatinum/spinner.css</name>
+			</action>
+			<action method="addItem">
+            	<type>skin_css</type>
+            	<name>css/BackupGuardPlatinum/bootstrap-switch.min.css</name>
+			</action>
+        </reference>
+	</adminhtml_backupguardplatinum_schedule>
+	<adminhtml_backupguardplatinum_settings>
+		<reference name="content">
+			<block type="core/template" name="header" template="backupguardplatinum/header.phtml" />
+			<block type="core/template" name="sidebar" template="backupguardplatinum/sidebar.phtml" />
+			<block type="core/template" name="backups" template="backupguardplatinum/settings.phtml" />
+			<block type="core/template" name="modal" template="backupguardplatinum/modal.phtml" />
+			<block type="core/template" name="footer" template="backupguardplatinum/footer.phtml" />
+			<block type="core/template" name="footer_schedule" template="backupguardplatinum/footer.settings.phtml" />
+		</reference>
+		<reference name="head">
+			<action method="addItem">
+            	<type>skin_css</type>
+            	<name>css/BackupGuardPlatinum/bgstyle.less.css</name>
+			</action>
+			<action method="addItem">
+            	<type>skin_css</type>
+            	<name>css/BackupGuardPlatinum/spinner.css</name>
+			</action>
+			<action method="addItem">
+            	<type>skin_css</type>
+            	<name>css/BackupGuardPlatinum/bootstrap-switch.min.css</name>
+			</action>
+        </reference>
+	</adminhtml_backupguardplatinum_settings>
+	<adminhtml_backupguardplatinum_support>
+		<reference name="content">
+			<block type="core/template" name="header" template="backupguardplatinum/header.phtml" />
+			<block type="core/template" name="sidebar" template="backupguardplatinum/sidebar.phtml" />
+			<block type="core/template" name="backups" template="backupguardplatinum/support.phtml" />
+			<block type="core/template" name="modal" template="backupguardplatinum/modal.phtml" />
+			<block type="core/template" name="footer" template="backupguardplatinum/footer.phtml" />
+		</reference>
+		<reference name="head">
+			<action method="addItem">
+				<type>skin_css</type>
+				<name>css/BackupGuardPlatinum/bgstyle.less.css</name>
+			</action>
+		</reference>
+	</adminhtml_backupguardplatinum_support>
+</layout>

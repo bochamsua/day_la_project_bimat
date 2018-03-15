@@ -1,0 +1,159 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * BS_Misc extension
+ * 
+ * @category       BS
+ * @package        BS_Misc
+ * @copyright      Copyright (c) 2016
+ */
+-->
+<config>
+    <acl>
+        <resources>
+            <admin>
+                <children>
+                    <system>
+                        <children>
+                            <config>
+                                <children>
+                                    <bs_misc translate="title" module="bs_misc">
+                                        <title>Misc</title>
+                                    </bs_misc>
+                                </children>
+                            </config>
+                        </children>
+                    </system>
+                    <bs_misc translate="title" module="bs_misc">
+                        <title>Misc</title>
+
+                        <children>
+                            <department translate="title" module="bs_misc">
+                                <title>Department</title>
+                                <sort_order>0</sort_order>
+                                <children>
+                                    <new translate="title"><title>New</title></new>
+                                    <edit translate="title"><title>Edit</title></edit>
+                                    <delete translate="title"><title>Delete</title></delete>
+                                </children>
+                            </department>
+
+                            <location translate="title" module="bs_misc">
+                                <title>Location</title>
+                                <sort_order>10</sort_order>
+                                <children>
+                                    <new translate="title"><title>New</title></new>
+                                    <edit translate="title"><title>Edit</title></edit>
+                                    <delete translate="title"><title>Delete</title></delete>
+                                </children>
+                            </location>
+                            <aircraft translate="title" module="bs_misc">
+                                <title>Aircraft</title>
+                                <sort_order>20</sort_order>
+                                <children>
+                                    <new translate="title"><title>New</title></new>
+                                    <edit translate="title"><title>Edit</title></edit>
+                                    <delete translate="title"><title>Delete</title></delete>
+                                </children>
+                            </aircraft>
+                            <certtype translate="title" module="bs_misc">
+                                <title>Certificate Type</title>
+                                <sort_order>30</sort_order>
+                                <children>
+                                    <new translate="title"><title>New</title></new>
+                                    <edit translate="title"><title>Edit</title></edit>
+                                    <delete translate="title"><title>Delete</title></delete>
+                                </children>
+                            </certtype>
+                            <taskgroup translate="title" module="bs_misc">
+                                <title>Survey Group</title>
+                                <sort_order>40</sort_order>
+                                <children>
+                                    <new translate="title"><title>New</title></new>
+                                    <edit translate="title"><title>Edit</title></edit>
+                                    <delete translate="title"><title>Delete</title></delete>
+                                </children>
+                            </taskgroup>
+                            <task translate="title" module="bs_misc">
+                                <title>Survey Code</title>
+                                <sort_order>50</sort_order>
+                                <children>
+                                    <new translate="title"><title>New</title></new>
+                                    <edit translate="title"><title>Edit</title></edit>
+                                    <delete translate="title"><title>Delete</title></delete>
+                                </children>
+                            </task>
+                            <subtask translate="title" module="bs_misc">
+                                <title>Survey Sub Code</title>
+                                <sort_order>60</sort_order>
+                                <children>
+                                    <new translate="title"><title>New</title></new>
+                                    <edit translate="title"><title>Edit</title></edit>
+                                    <delete translate="title"><title>Delete</title></delete>
+                                </children>
+                            </subtask>
+                            <subsubtask translate="title" module="bs_misc">
+                                <title>Survey Sub Sub Code</title>
+                                <sort_order>70</sort_order>
+                                <children>
+                                    <new translate="title"><title>New</title></new>
+                                    <edit translate="title"><title>Edit</title></edit>
+                                    <delete translate="title"><title>Delete</title></delete>
+                                </children>
+                            </subsubtask>
+                        </children>
+                    </bs_misc>
+                </children>
+            </admin>
+        </resources>
+    </acl>
+    <menu>
+        <bs_misc translate="title" module="bs_misc">
+            <title>Misc</title>
+            <sort_order>70</sort_order>
+            <children>
+                <department translate="title" module="bs_misc">
+                    <title>Department</title>
+                    <action>adminhtml/misc_department</action>
+                    <sort_order>0</sort_order>
+                </department>
+
+                <location translate="title" module="bs_misc">
+                    <title>Location</title>
+                    <action>adminhtml/misc_location</action>
+                    <sort_order>10</sort_order>
+                </location>
+                <aircraft translate="title" module="bs_misc">
+                    <title>Aircraft</title>
+                    <action>adminhtml/misc_aircraft</action>
+                    <sort_order>20</sort_order>
+                </aircraft>
+                <certtype translate="title" module="bs_misc">
+                    <title>Certificate Type</title>
+                    <action>adminhtml/misc_certtype</action>
+                    <sort_order>30</sort_order>
+                </certtype>
+                <taskgroup translate="title" module="bs_misc">
+                    <title>Survey Code Group</title>
+                    <action>adminhtml/misc_taskgroup</action>
+                    <sort_order>40</sort_order>
+                </taskgroup>
+                <task translate="title" module="bs_misc">
+                    <title>Survey Code</title>
+                    <action>adminhtml/misc_task</action>
+                    <sort_order>50</sort_order>
+                </task>
+                <subtask translate="title" module="bs_misc">
+                    <title>Survey Sub Code</title>
+                    <action>adminhtml/misc_subtask</action>
+                    <sort_order>60</sort_order>
+                </subtask>
+                <subsubtask translate="title" module="bs_misc">
+                    <title>Survey Sub Sub Code</title>
+                    <action>adminhtml/misc_subsubtask</action>
+                    <sort_order>70</sort_order>
+                </subsubtask>
+            </children>
+        </bs_misc>
+    </menu>
+</config>

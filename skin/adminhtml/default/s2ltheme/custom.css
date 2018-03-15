@@ -1,0 +1,143 @@
+.logo {
+    width: 268px;
+}
+.table-responsive {
+    overflow: visible !important;
+}
+.grid tbody td {
+    white-space: normal;
+}
+#page-login {
+    background-color: #D3D3D3;
+}
+.middle .container {
+    padding-top: 10px;
+}
+#page-login .legal {
+    margin-top: 100px;
+}
+.massaction a {
+    padding-right: 5px;
+}
+.form-list td.label label {
+    min-width: 150px;
+}
+.form-list td.value select {
+    width: auto;
+}
+.form-list td.value input.input-text, .form-list td.value textarea {
+    width: 100%;
+}
+input[type=checkbox], input[type=radio]{
+    margin-top: 0;
+    float: none;
+    margin-right: 0;
+}
+
+.card {
+    background: #fff;
+    border-radius: 2px;
+    display: inline-block;
+    height: 300px;
+    margin: 1rem;
+    position: relative;
+    width: 300px;
+}
+
+.card:hover {
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
+
+.table-head {
+    font-size: 12px;
+    font-weight: 600;
+    height: 46px;
+    letter-spacing: 0.6px;
+    line-height: 46px;
+    padding: 0 15px;
+    text-transform: uppercase;
+    background: #ffb849 none repeat scroll 0 0;
+    color: #505458;
+}
+
+.nano {
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+}
+.nano-content {
+    text-align: center;
+    padding: 10px;
+}
+.nano-bottom {
+    padding: 0 10px 10px;
+    border-top: 2px solid #ccc;
+
+
+}
+.nano-bottom h3 {
+    margin-top: 5px;
+    font-size: 18px;
+}
+button.all > span::before {
+    content: "\e669";
+    font-family: "FontAwesome";
+    font-size: 14px;
+}
+.vertical .middle {
+    padding-top: 0 !important;
+}
+.dashboard-w  .content-header{
+    margin-bottom: 0;
+    height: auto;
+}
+.dashboard-w .content-header h3 {
+    margin-top: 0;
+}
+.dashboard-w .db-header-title {
+    font-size: 18px;
+    font-weight: bold;
+}
+.dashboard-w .buttons {
+    float: right;
+    margin-right: 5px;
+}
+.dashboard-w .buttons li {
+    float: left;
+}
+.vertical.fdisable .wrapper .content-header {
+    padding-left: 0;
+}
+.content-header {
+    height: 60px;
+}
+.content-header .form-buttons button {
+    margin-top: 0;
+}
+.content-header h3 {
+    margin-top: 0;
+}
+.content-header h3 span {
+    clear: both;
+}
+/*.actions .f-right {
+    position: fixed;
+    right: 15px;
+}*/
+
+.a-right.filter-actions {
+    float: right;
+}
+
+.content-header-floating .content-buttons {
+    margin-top: 3px;
+}
+.dashboard-content .grid tbody td.last {
+    white-space: normal;
+}
+
+.dashboard-content .grid {
+    overflow-x: auto !important;
+    max-height: 240px;
+}

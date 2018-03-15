@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * BS_QC extension
+ * 
+ * @category       BS
+ * @package        BS_QC
+ * @copyright      Copyright (c) 2016
+ */
+-->
+<config>
+    <acl>
+        <resources>
+            <admin>
+                <children>
+                    <system>
+                        <children>
+                            <config>
+                                <children>
+                                    <bs_evaluation translate="title" module="bs_evaluation">
+                                        <title>Evaluation</title>
+                                    </bs_evaluation>
+                                </children>
+                            </config>
+                        </children>
+                    </system>
+                    <bs_evaluation translate="title" module="bs_evaluation">
+                        <title>Evaluation</title>
+                    </bs_evaluation>
+                </children>
+            </admin>
+        </resources>
+    </acl>
+    <menu>
+        <bs_evaluation translate="title" module="bs_evaluation">
+            <title>Evaluation</title>
+            <sort_order>60</sort_order>
+        </bs_evaluation>
+    </menu>
+</config>

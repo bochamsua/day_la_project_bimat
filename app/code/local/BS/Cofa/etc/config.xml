@@ -1,0 +1,86 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * BS_Cofa extension
+ * 
+ * @category       BS
+ * @package        BS_Cofa
+ * @copyright      Copyright (c) 2017
+ */
+-->
+<config>
+    <modules>
+        <BS_Cofa>
+            <version>1.0.1</version>
+        </BS_Cofa>
+    </modules>
+    <global>
+        <resources>
+            <bs_cofa_setup>
+                <setup>
+                    <module>BS_Cofa</module>
+                    <class>BS_Cofa_Model_Resource_Setup</class>
+                </setup>
+            </bs_cofa_setup>
+        </resources>
+        <blocks>
+            <bs_cofa>
+                <class>BS_Cofa_Block</class>
+            </bs_cofa>
+        </blocks>
+        <helpers>
+            <bs_cofa>
+                <class>BS_Cofa_Helper</class>
+            </bs_cofa>
+        </helpers>
+        <models>
+            <bs_cofa>
+                <class>BS_Cofa_Model</class>
+                <resourceModel>bs_cofa_resource</resourceModel>
+            </bs_cofa>
+            <bs_cofa_resource>
+                <class>BS_Cofa_Model_Resource</class>
+                <entities>
+                    <cofa>
+                        <table>bs_cofa_cofa</table>
+                    </cofa>
+                </entities>
+            </bs_cofa_resource>
+        </models>
+    </global>
+    <adminhtml>
+        <layout>
+            <updates>
+                <bs_cofa>
+                    <file>bs_cofa.xml</file>
+                </bs_cofa>
+            </updates>
+        </layout>
+        <translate>
+            <modules>
+                <BS_Cofa>
+                    <files>
+                        <default>BS_Cofa.csv</default>
+                    </files>
+                </BS_Cofa>
+            </modules>
+        </translate>
+        <global_search>
+            <cofa>
+                <class>bs_cofa/adminhtml_search_cofa</class>
+                <acl>bs_cofa</acl>
+            </cofa>
+        </global_search>
+    </adminhtml>
+    <admin>
+        <routers>
+            <adminhtml>
+                <args>
+                    <modules>
+                        <BS_Cofa before="Mage_Adminhtml">BS_Cofa_Adminhtml</BS_Cofa>
+                    </modules>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin>
+</config>

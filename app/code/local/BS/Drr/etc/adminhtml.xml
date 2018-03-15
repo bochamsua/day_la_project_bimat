@@ -1,0 +1,56 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * BS_Drr extension
+ * 
+ * @category       BS
+ * @package        BS_Drr
+ * @copyright      Copyright (c) 2016
+ */
+-->
+<config>
+    <acl>
+        <resources>
+            <admin>
+                <children>
+                    <system>
+                        <children>
+                            <config>
+                                <children>
+                                    <bs_drr translate="title" module="bs_drr">
+                                        <title>DRR</title>
+                                    </bs_drr>
+                                </children>
+                            </config>
+                        </children>
+                    </system>
+                    <bs_work>
+                        <children>
+                            <drr translate="title" module="bs_drr">
+                                <title>DRR</title>
+                                <sort_order>70</sort_order>
+                                <children>
+                                    <new translate="title"><title>New</title></new>
+                                    <edit translate="title"><title>Edit</title></edit>
+                                    <delete translate="title"><title>Delete</title></delete>
+                                </children>
+                            </drr>                       </children>
+                    </bs_work>
+
+                </children>
+            </admin>
+        </resources>
+    </acl>
+    <menu>
+        <bs_work>
+            <children>
+                <drr translate="title" module="bs_drr">
+                    <title>DRR</title>
+                    <action>adminhtml/drr_drr</action>
+                    <sort_order>70</sort_order>
+                </drr>
+            </children>
+        </bs_work>
+
+    </menu>
+</config>

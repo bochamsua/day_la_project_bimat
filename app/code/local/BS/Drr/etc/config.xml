@@ -1,0 +1,86 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * BS_Drr extension
+ * 
+ * @category       BS
+ * @package        BS_Drr
+ * @copyright      Copyright (c) 2016
+ */
+-->
+<config>
+    <modules>
+        <BS_Drr>
+            <version>1.0.3</version>
+        </BS_Drr>
+    </modules>
+    <global>
+        <resources>
+            <bs_drr_setup>
+                <setup>
+                    <module>BS_Drr</module>
+                    <class>BS_Drr_Model_Resource_Setup</class>
+                </setup>
+            </bs_drr_setup>
+        </resources>
+        <blocks>
+            <bs_drr>
+                <class>BS_Drr_Block</class>
+            </bs_drr>
+        </blocks>
+        <helpers>
+            <bs_drr>
+                <class>BS_Drr_Helper</class>
+            </bs_drr>
+        </helpers>
+        <models>
+            <bs_drr>
+                <class>BS_Drr_Model</class>
+                <resourceModel>bs_drr_resource</resourceModel>
+            </bs_drr>
+            <bs_drr_resource>
+                <class>BS_Drr_Model_Resource</class>
+                <entities>
+                    <drr>
+                        <table>bs_drr_drr</table>
+                    </drr>
+                </entities>
+            </bs_drr_resource>
+        </models>
+    </global>
+    <adminhtml>
+        <layout>
+            <updates>
+                <bs_drr>
+                    <file>bs_drr.xml</file>
+                </bs_drr>
+            </updates>
+        </layout>
+        <translate>
+            <modules>
+                <BS_Drr>
+                    <files>
+                        <default>BS_Drr.csv</default>
+                    </files>
+                </BS_Drr>
+            </modules>
+        </translate>
+        <global_search>
+            <drr>
+                <class>bs_drr/adminhtml_search_drr</class>
+                <acl>bs_drr</acl>
+            </drr>
+        </global_search>
+    </adminhtml>
+    <admin>
+        <routers>
+            <adminhtml>
+                <args>
+                    <modules>
+                        <BS_Drr before="Mage_Adminhtml">BS_Drr_Adminhtml</BS_Drr>
+                    </modules>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin>
+</config>

@@ -1,0 +1,94 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * BS_Report extension
+ * 
+ * @category       BS
+ * @package        BS_Report
+ * @copyright      Copyright (c) 2017
+ */
+-->
+<config>
+    <acl>
+        <resources>
+            <admin>
+                <children>
+                    <system>
+                        <children>
+                            <config>
+                                <children>
+                                    <bs_report translate="title" module="bs_report">
+                                        <title>Report</title>
+                                    </bs_report>
+                                </children>
+                            </config>
+                        </children>
+                    </system>
+                    <bs_report translate="title" module="bs_report">
+                        <title>Report</title>
+
+                    </bs_report>
+                    <bs_evaluation translate="title" module="bs_evaluation">
+                        <title>Evaluation</title>
+                        <children>
+                            <qchaneff translate="title" module="bs_report">
+                                <title>QC HAN Evaluation</title>
+                                <sort_order>0</sort_order>
+                                <children>
+                                    <!--<new translate="title"><title>New</title></new>-->
+                                    <edit translate="title"><title>Update</title></edit>
+                                    <reset translate="title"><title>Reset</title></reset>
+                                    <!--<delete translate="title"><title>Delete</title></delete>-->
+                                </children>
+                            </qchaneff>
+
+                            <workday translate="title" module="bs_report">
+                                <title>Work Day</title>
+                                <sort_order>90</sort_order>
+                                <children>
+                                    <new translate="title"><title>New</title></new>
+                                    <edit translate="title"><title>Edit</title></edit>
+                                    <delete translate="title"><title>Delete</title></delete>
+                                </children>
+                            </workday>
+                            <setting translate="title" module="bs_report">
+                                <title>Setting</title>
+                                <sort_order>100</sort_order>
+                                <children>
+                                    <new translate="title"><title>New</title></new>
+                                    <edit translate="title"><title>Edit</title></edit>
+                                    <delete translate="title"><title>Delete</title></delete>
+                                </children>
+                            </setting>
+                        </children>
+                    </bs_evaluation>
+                </children>
+            </admin>
+        </resources>
+    </acl>
+    <menu>
+        <bs_report translate="title" module="bs_report">
+            <title>Report</title>
+            <sort_order>40</sort_order>
+        </bs_report>
+        <bs_evaluation translate="title" module="bs_evaluation">
+            <children>
+                <qchaneff translate="title" module="bs_report">
+                    <title>QC HAN Evaluation</title>
+                    <action>adminhtml/report_qchaneff</action>
+                    <sort_order>0</sort_order>
+                </qchaneff>
+                <workday translate="title" module="bs_report">
+                    <title>Work Day</title>
+                    <action>adminhtml/report_workday</action>
+                    <sort_order>90</sort_order>
+                </workday>
+                <setting translate="title" module="bs_report">
+                    <title>Setting</title>
+                    <action>adminhtml/report_setting</action>
+                    <sort_order>100</sort_order>
+                </setting>
+            </children>
+        </bs_evaluation>
+    </menu>
+</config>

@@ -1,0 +1,106 @@
+<div class="grid">
+    <div class="container">
+        <div class="hor-scroll table-responsive">
+            <table cellspacing="0" class="data" id="cmrreport_table" width="100%">
+                <thead>
+                <tr class="headings">
+                    <th width="50%"><span class="nobr">Biểu đồ 6 tháng các khuyến cáo thuộc nhóm 1</span></th>
+                    <th width="50%"><span class="nobr">Biểu đồ 6 tháng các khuyến cáo thuộc nhóm 2</span></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td><div id="chart1"></div></td>
+                    <td><div id="chart2"></div></td>
+                </tr>
+                </tbody>
+            </table>
+            <table cellspacing="0" class="data" id="cmrreport_table" width="100%">
+                <thead>
+                <tr class="headings">
+                    <th width="50%"><span class="nobr">Biểu đồ 6 tháng các khuyến cáo thuộc nhóm 3</span></th>
+                    <th width="50%"><span class="nobr">Biểu đồ 6 tháng các khuyến cáo thuộc nhóm 4</span></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td><div id="chart3"></div></td>
+                    <td><div id="chart4"></div></td>
+                </tr>
+                </tbody>
+            </table>
+            <hr>
+            <p>Dữ liệu CMR tháng này (<?php echo $this->getCurrentPeriod() ?>)</p>
+            <table cellspacing="0" class="data" id="cmrreport_table" width="100%">
+                <thead>
+                    <tr class="headings">
+                        <th width="10%"><span class="nobr">&nbsp;</span></th>
+                        <th width="5%"><span class="nobr">Số lượng (%)</span></th>
+                        <th width="5%"><span class="nobr">Mã phát hiện</span></th>
+                        <th width="35%"><span class="nobr">Mô tả</span></th>
+                        <th width="15%"><span class="nobr">Nguyên nhân</span></th>
+                        <th width="15%"><span class="nobr">Hành động khắc phục</span></th>
+                        <th width="11%"><span class="nobr">Biện pháp phòng ngừa</span></th>
+                        <th width="4%"><span class="nobr">Lặp lại</span></th>
+                    </tr>
+                </thead>
+
+
+                <tbody>
+
+                <?php if($this->getCollection() && $this->getCollection()->count()){ ?>
+                    <?php
+                        $option = [
+                            1 => 'Nhóm 1 (Sai lỗi bảo dưỡng)',
+                            2 => 'Nhóm 2 (Kế hoạch bảo dưỡng không đáp ứng)',
+                            3 => 'Nhóm 3 (Chương trình bảo dưỡng không đáp ứng)',
+                            4 => 'Nhóm 4 (Khuyến cáo không có cơ sở)',
+                            5 => 'Nhóm 5 (Khác)'
+                        ];
+                    ?>
+
+                    <?php for($i=1; $i <= 5; $i++){ ?>
+                        <?php $group = $this->{'getGroup'.$i}(); $j = 0; foreach ($group[0] as $item) { ?>
+                            <?php if($j == 0){ ?>
+                                <tr>
+                                    <td rowspan="<?php echo ($item)?$group[1]:1 ?>"><?php echo $option[$i]?></td>
+                                    <td rowspan="<?php echo ($item)?$group[1]:1 ?>"><?php echo $group[1]." ({$group[2]}%)" ?></td>
+                                    <td><?php echo ($item)?$item->getCodeSqs():'&nbsp;' ?></td>
+                                    <td><?php echo ($item)?$item->getDescription():'&nbsp;' ?></td>
+                                    <td><?php echo ($item)?$item->getRootCause():'&nbsp;' ?></td>
+                                    <td><?php echo ($item)?$item->getCorrective():'&nbsp;' ?></td>
+                                    <td><?php echo ($item)?$item->getPreventive():'&nbsp;' ?></td>
+                                    <td><?php echo ($item)?($item->getRepetitive() == 1)?'X':'':'&nbsp;' ?></td>
+                                </tr>
+                            <?php }else { ?>
+                                <tr>
+                                    <td><?php echo $item->getCodeSqs() ?></td>
+                                    <td><?php echo $item->getDescription() ?></td>
+                                    <td><?php echo $item->getRootCause() ?></td>
+                                    <td><?php echo $item->getCorrective()?></td>
+                                    <td><?php echo $item->getPreventive()?></td>
+                                    <td><?php echo ($item->getRepetitive() == 1)?'X':'' ?></td>
+                                </tr>
+                            <?php } ?>
+
+                            <?php $j++; } ?>
+                    <?php } ?>
+                <?php } ?>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<?php
+    for($j=1; $j<= 4; $j++){
+        echo $this->getData('chart'.$j);
+    }
+?>
+<style>
+    <!--
+    #cmrreport_table tbody tr td {
+        border-bottom: 1px solid #ccc;
+        white-space: normal;
+    }
+    //-->
+</style>

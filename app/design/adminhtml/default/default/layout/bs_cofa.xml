@@ -1,0 +1,88 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * BS_Cmr extension
+ * 
+ * @category       BS
+ * @package        BS_Cmr
+ * @copyright      Copyright (c) 2017
+ */
+--> 
+<layout>
+    <adminhtml_cofa_cofa_index>
+        <reference name="menu">
+            <action method="setActive">
+                <menupath>bs_data/cofa</menupath>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="bs_cofa/adminhtml_cofa" name="cofa" />
+
+        </reference>
+    </adminhtml_cofa_cofa_index>
+    <adminhtml_cofa_cofa_grid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_cofa/adminhtml_cofa_grid" name="cofa_grid"/>
+        </block>
+    </adminhtml_cofa_cofa_grid>
+    <!-- Cmr add/edit action -->
+    <adminhtml_cofa_cofa_edit>
+        <update handle="editor"/>
+        <reference name="menu">
+            <action method="setActive">
+                <menupath>bs_data/cofa</menupath>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="bs_cofa/adminhtml_cofa_edit" name="cofa_edit"></block>
+        </reference>
+        <reference name="left">
+            <block type="bs_cofa/adminhtml_cofa_edit_tabs" name="cofa_tabs"></block>
+        </reference>
+    </adminhtml_cofa_cofa_edit>
+
+    <adminhtml_cofa_cofa_irs>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_cofa/adminhtml_cofa_edit_tab_ir" name="cofa.edit.tab.ir"/>
+        </block>
+    </adminhtml_cofa_cofa_irs>
+    <adminhtml_cofa_cofa_irsgrid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_cofa/adminhtml_cofa_edit_tab_ir" name="cofa.edit.tab.ir"/>
+        </block>
+    </adminhtml_cofa_cofa_irsgrid>
+
+    <adminhtml_cofa_cofa_ncrs>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_cofa/adminhtml_cofa_edit_tab_ncr" name="cofa.edit.tab.ncr"/>
+        </block>
+    </adminhtml_cofa_cofa_ncrs>
+    <adminhtml_cofa_cofa_ncrsgrid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_cofa/adminhtml_cofa_edit_tab_ncr" name="cofa.edit.tab.ncr"/>
+        </block>
+    </adminhtml_cofa_cofa_ncrsgrid>
+
+    <adminhtml_cofa_cofa_qrs>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_cofa/adminhtml_cofa_edit_tab_qrr" name="cofa.edit.tab.qr"/>
+        </block>
+    </adminhtml_cofa_cofa_qrs>
+    <adminhtml_cofa_cofa_qrsgrid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_cofa/adminhtml_cofa_edit_tab_qr" name="cofa.edit.tab.qr"/>
+        </block>
+    </adminhtml_cofa_cofa_qrsgrid>
+
+    <adminhtml_cofa_cofa_drrs>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_cofa/adminhtml_cofa_edit_tab_drr" name="cofa.edit.tab.drr"/>
+        </block>
+    </adminhtml_cofa_cofa_drrs>
+    <adminhtml_cofa_cofa_drrsgrid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_cofa/adminhtml_cofa_edit_tab_drr" name="cofa.edit.tab.drr"/>
+        </block>
+    </adminhtml_cofa_cofa_drrsgrid>
+
+</layout>

@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <BS_Theming>
+            <version>0.1.0</version>
+        </BS_Theming>
+    </modules>
+    <global>
+        <models>
+            <bs_theming>
+                <class>BS_Theming_Model</class>
+                <resourceModel>bs_theming_resource</resourceModel>
+            </bs_theming>
+            <bs_theming_resource>
+                <class>BS_Theming_Model_Resource</class>
+            </bs_theming_resource>
+        </models>
+        <blocks>
+            <bs_theming>
+                <class>BS_Theming_Block</class>
+            </bs_theming>
+        </blocks>
+        <helpers>
+            <bs_theming>
+                <class>BS_Theming_Helper</class>
+            </bs_theming>
+        </helpers>
+        <events>
+            <adminhtml_controller_action_predispatch_start>
+                <observers>
+                    <theming_admin_predispatch>
+                        <class>BS_Theming_Model_Adminhtml_Observer</class>
+                        <method>setTheme</method>
+                    </theming_admin_predispatch>
+                </observers>
+            </adminhtml_controller_action_predispatch_start>
+        </events>
+    </global>
+
+</config>

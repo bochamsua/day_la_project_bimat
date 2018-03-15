@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * BS_Sur extension
+ * 
+ * @category       BS
+ * @package        BS_Sur
+ * @copyright      Copyright (c) 2017
+ */
+-->
+<config>
+    <acl>
+        <resources>
+            <admin>
+                <children>
+                    <system>
+                        <children>
+                            <config>
+                                <children>
+                                    <bs_sur translate="title" module="bs_sur">
+                                        <title>Sur</title>
+                                    </bs_sur>
+                                </children>
+                            </config>
+                        </children>
+                    </system>
+                    <bs_work>
+                        <children>
+                            <sur translate="title" module="bs_sur">
+                                <title>Surveillance</title>
+                                <sort_order>1</sort_order>
+                                <children>
+                                    <new translate="title"><title>New</title></new>
+                                    <edit translate="title"><title>Edit</title></edit>
+                                    <delete translate="title"><title>Delete</title></delete>
+                                </children>
+                            </sur>
+                        </children>
+                    </bs_work>
+
+                </children>
+            </admin>
+        </resources>
+    </acl>
+    <menu>
+        <bs_work>
+            <children>
+                <sur translate="title" module="bs_sur">
+                    <title>Surveillance</title>
+                    <action>adminhtml/sur_sur</action>
+                    <sort_order>1</sort_order>
+                </sur>
+            </children>
+        </bs_work>
+
+    </menu>
+</config>

@@ -1,0 +1,65 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * BS_Wysiwyg extension
+ * 
+ * @category       BS
+ * @package        BS_Wysiwyg
+ * @copyright      Copyright (c) 2017
+ */
+-->
+<config>
+    <modules>
+        <BS_Wysiwyg>
+            <version>1.0.0</version>
+        </BS_Wysiwyg>
+    </modules>
+    <global>
+        <blocks>
+            <bs_wysiwyg>
+                <class>BS_Wysiwyg_Block</class>
+            </bs_wysiwyg>
+        </blocks>
+        <helpers>
+            <bs_wysiwyg>
+                <class>BS_Wysiwyg_Helper</class>
+            </bs_wysiwyg>
+        </helpers>
+        <models>
+            <bs_wysiwyg>
+                <class>BS_Wysiwyg_Model</class>
+            </bs_wysiwyg>
+        </models>
+    </global>
+    <adminhtml>
+        <events>
+            <core_block_abstract_to_html_after>
+                <observers>
+                    <wysiwyg_add_js>
+                        <class>bs_wysiwyg/observer</class>
+                        <method>addJs</method>
+                    </wysiwyg_add_js>
+                </observers>
+            </core_block_abstract_to_html_after>
+        </events>
+        <layout>
+            <updates>
+                <bs_wysiwyg>
+                    <file>bs_wysiwyg.xml</file>
+                </bs_wysiwyg>
+            </updates>
+        </layout>
+
+    </adminhtml>
+    <admin>
+        <routers>
+            <adminhtml>
+                <args>
+                    <modules>
+                        <BS_Wysiwyg before="Mage_Adminhtml">BS_Wysiwyg_Adminhtml</BS_Wysiwyg>
+                    </modules>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin>
+</config>

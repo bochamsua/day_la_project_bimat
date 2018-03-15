@@ -1,0 +1,101 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * BS_HR extension
+ * 
+ * @category       BS
+ * @package        BS_HR
+ * @copyright      Copyright (c) 2016
+ */
+-->
+<config>
+    <modules>
+        <BS_HR>
+            <version>1.0.2</version>
+        </BS_HR>
+    </modules>
+    <global>
+        <resources>
+            <bs_hr_setup>
+                <setup>
+                    <module>BS_HR</module>
+                    <class>BS_HR_Model_Resource_Setup</class>
+                </setup>
+            </bs_hr_setup>
+        </resources>
+        <blocks>
+            <bs_hr>
+                <class>BS_HR_Block</class>
+            </bs_hr>
+        </blocks>
+        <helpers>
+            <bs_hr>
+                <class>BS_HR_Helper</class>
+            </bs_hr>
+        </helpers>
+        <models>
+            <bs_hr>
+                <class>BS_HR_Model</class>
+                <resourceModel>bs_hr_resource</resourceModel>
+            </bs_hr>
+            <bs_hr_resource>
+                <class>BS_HR_Model_Resource</class>
+                <entities>
+                    <certificate>
+                        <table>bs_hr_certificate</table>
+                    </certificate>
+                    <training>
+                        <table>bs_hr_training</table>
+                    </training>
+                    <staff>
+                        <table>bs_hr_staff</table>
+                    </staff>
+                </entities>
+            </bs_hr_resource>
+        </models>
+    </global>
+    <adminhtml>
+        <layout>
+            <updates>
+                <bs_hr>
+                    <file>bs_hr.xml</file>
+                </bs_hr>
+            </updates>
+        </layout>
+        <translate>
+            <modules>
+                <BS_HR>
+                    <files>
+                        <default>BS_HR.csv</default>
+                    </files>
+                </BS_HR>
+            </modules>
+        </translate>
+        <global_search>
+            <certificate>
+                <class>bs_hr/adminhtml_search_certificate</class>
+                <acl>bs_hr</acl>
+            </certificate>
+            <training>
+                <class>bs_hr/adminhtml_search_training</class>
+                <acl>bs_hr</acl>
+            </training>
+            <staff>
+                <class>bs_hr/adminhtml_search_staff</class>
+                <acl>bs_hr</acl>
+            </staff>
+
+        </global_search>
+    </adminhtml>
+    <admin>
+        <routers>
+            <adminhtml>
+                <args>
+                    <modules>
+                        <BS_HR before="Mage_Adminhtml">BS_HR_Adminhtml</BS_HR>
+                    </modules>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin>
+</config>

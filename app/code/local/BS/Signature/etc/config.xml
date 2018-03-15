@@ -1,0 +1,86 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * BS_Signature extension
+ * 
+ * @category       BS
+ * @package        BS_Signature
+ * @copyright      Copyright (c) 2016
+ */
+-->
+<config>
+    <modules>
+        <BS_Signature>
+            <version>1.0.1</version>
+        </BS_Signature>
+    </modules>
+    <global>
+        <resources>
+            <bs_signature_setup>
+                <setup>
+                    <module>BS_Signature</module>
+                    <class>BS_Signature_Model_Resource_Setup</class>
+                </setup>
+            </bs_signature_setup>
+        </resources>
+        <blocks>
+            <bs_signature>
+                <class>BS_Signature_Block</class>
+            </bs_signature>
+        </blocks>
+        <helpers>
+            <bs_signature>
+                <class>BS_Signature_Helper</class>
+            </bs_signature>
+        </helpers>
+        <models>
+            <bs_signature>
+                <class>BS_Signature_Model</class>
+                <resourceModel>bs_signature_resource</resourceModel>
+            </bs_signature>
+            <bs_signature_resource>
+                <class>BS_Signature_Model_Resource</class>
+                <entities>
+                    <signature>
+                        <table>bs_signature_signature</table>
+                    </signature>
+                </entities>
+            </bs_signature_resource>
+        </models>
+    </global>
+    <adminhtml>
+        <layout>
+            <updates>
+                <bs_signature>
+                    <file>bs_signature.xml</file>
+                </bs_signature>
+            </updates>
+        </layout>
+        <translate>
+            <modules>
+                <BS_Signature>
+                    <files>
+                        <default>BS_Signature.csv</default>
+                    </files>
+                </BS_Signature>
+            </modules>
+        </translate>
+        <global_search>
+            <signature>
+                <class>bs_signature/adminhtml_search_signature</class>
+                <acl>bs_signature</acl>
+            </signature>
+        </global_search>
+    </adminhtml>
+    <admin>
+        <routers>
+            <adminhtml>
+                <args>
+                    <modules>
+                        <BS_Signature before="Mage_Adminhtml">BS_Signature_Adminhtml</BS_Signature>
+                    </modules>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin>
+</config>

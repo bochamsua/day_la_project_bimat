@@ -1,0 +1,86 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * BS_Other extension
+ * 
+ * @category       BS
+ * @package        BS_Other
+ * @copyright      Copyright (c) 2016
+ */
+-->
+<config>
+    <modules>
+        <BS_Other>
+            <version>1.0.3</version>
+        </BS_Other>
+    </modules>
+    <global>
+        <resources>
+            <bs_other_setup>
+                <setup>
+                    <module>BS_Other</module>
+                    <class>BS_Other_Model_Resource_Setup</class>
+                </setup>
+            </bs_other_setup>
+        </resources>
+        <blocks>
+            <bs_other>
+                <class>BS_Other_Block</class>
+            </bs_other>
+        </blocks>
+        <helpers>
+            <bs_other>
+                <class>BS_Other_Helper</class>
+            </bs_other>
+        </helpers>
+        <models>
+            <bs_other>
+                <class>BS_Other_Model</class>
+                <resourceModel>bs_other_resource</resourceModel>
+            </bs_other>
+            <bs_other_resource>
+                <class>BS_Other_Model_Resource</class>
+                <entities>
+                    <other>
+                        <table>bs_other_other</table>
+                    </other>
+                </entities>
+            </bs_other_resource>
+        </models>
+    </global>
+    <adminhtml>
+        <layout>
+            <updates>
+                <bs_other>
+                    <file>bs_other.xml</file>
+                </bs_other>
+            </updates>
+        </layout>
+        <translate>
+            <modules>
+                <BS_Other>
+                    <files>
+                        <default>BS_Other.csv</default>
+                    </files>
+                </BS_Other>
+            </modules>
+        </translate>
+        <global_search>
+            <other>
+                <class>bs_other/adminhtml_search_other</class>
+                <acl>bs_other</acl>
+            </other>
+        </global_search>
+    </adminhtml>
+    <admin>
+        <routers>
+            <adminhtml>
+                <args>
+                    <modules>
+                        <BS_Other before="Mage_Adminhtml">BS_Other_Adminhtml</BS_Other>
+                    </modules>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin>
+</config>

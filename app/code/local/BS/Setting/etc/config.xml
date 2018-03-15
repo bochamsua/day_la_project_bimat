@@ -1,0 +1,80 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * BS_Setting extension
+ * 
+ * @category       BS
+ * @package        BS_Setting
+ * @copyright      Copyright (c) 2017
+ */
+-->
+<config>
+    <modules>
+        <BS_Setting>
+            <version>1.0.0</version>
+        </BS_Setting>
+    </modules>
+    <global>
+        <resources>
+            <bs_setting_setup>
+                <setup>
+                    <module>BS_Setting</module>
+                    <class>BS_Setting_Model_Resource_Setup</class>
+                </setup>
+            </bs_setting_setup>
+        </resources>
+        <blocks>
+            <bs_setting>
+                <class>BS_Setting_Block</class>
+            </bs_setting>
+        </blocks>
+        <helpers>
+            <bs_setting>
+                <class>BS_Setting_Helper</class>
+            </bs_setting>
+        </helpers>
+        <models>
+            <bs_setting>
+                <class>BS_Setting_Model</class>
+                <resourceModel>bs_setting_resource</resourceModel>
+            </bs_setting>
+            <bs_setting_resource>
+                <class>BS_Setting_Model_Resource</class>
+                <entities>
+                    <field>
+                        <table>bs_setting_field</table>
+                    </field>
+                </entities>
+            </bs_setting_resource>
+        </models>
+    </global>
+    <adminhtml>
+        <layout>
+            <updates>
+                <bs_setting>
+                    <file>bs_setting.xml</file>
+                </bs_setting>
+            </updates>
+        </layout>
+        <translate>
+            <modules>
+                <BS_Setting>
+                    <files>
+                        <default>BS_Setting.csv</default>
+                    </files>
+                </BS_Setting>
+            </modules>
+        </translate>
+    </adminhtml>
+    <admin>
+        <routers>
+            <adminhtml>
+                <args>
+                    <modules>
+                        <BS_Setting before="Mage_Adminhtml">BS_Setting_Adminhtml</BS_Setting>
+                    </modules>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin>
+</config>

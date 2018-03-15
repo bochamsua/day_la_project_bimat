@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * BS_Hidefrontend extension
+ * 
+ * @category       BS
+ * @package        BS_Hidefrontend
+ * @copyright      Copyright (c) 2016
+ */
+-->
+<config>
+    <modules>
+        <BS_Hidefrontend>
+            <active>true</active>
+            <codePool>local</codePool>
+            <depends>
+                <Mage_Core />
+                <Mage_Cms />
+             </depends>
+        </BS_Hidefrontend>
+    </modules>
+</config>

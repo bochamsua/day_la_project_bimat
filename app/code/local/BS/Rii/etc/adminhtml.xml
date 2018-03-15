@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * BS_Rii extension
+ * 
+ * @category       BS
+ * @package        BS_Rii
+ * @copyright      Copyright (c) 2016
+ */
+-->
+<config>
+    <acl>
+        <resources>
+            <admin>
+                <children>
+                    <system>
+                        <children>
+                            <config>
+                                <children>
+                                    <bs_rii translate="title" module="bs_rii">
+                                        <title>Rii</title>
+                                    </bs_rii>
+                                </children>
+                            </config>
+                        </children>
+                    </system>
+                    <bs_work>
+                        <children>
+                            <rii translate="title" module="bs_rii">
+                                <title>RII Sign-off</title>
+                                <sort_order>20</sort_order>
+                                <children>
+                                    <new translate="title"><title>New</title></new>
+                                    <edit translate="title"><title>Edit</title></edit>
+                                    <delete translate="title"><title>Delete</title></delete>
+                                </children>
+                            </rii>                       </children>
+                    </bs_work>
+
+                </children>
+            </admin>
+        </resources>
+    </acl>
+    <menu>
+        <bs_work>
+            <children>
+                <rii translate="title" module="bs_rii">
+                    <title>RII Sign-off</title>
+                    <action>adminhtml/rii_rii</action>
+                    <sort_order>20</sort_order>
+                </rii>           </children>
+        </bs_work>
+
+    </menu>
+</config>

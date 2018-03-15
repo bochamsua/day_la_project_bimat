@@ -1,0 +1,99 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <BackupGuard_BackupGuardPlatinum>
+            <version>1.0.4</version>
+        </BackupGuard_BackupGuardPlatinum>
+    </modules>
+    <admin>
+        <routers>
+            <adminhtml>
+                <args>
+                    <modules>
+                        <BackupGuard_BackupGuardPlatinum after="Mage_Adminhtml">BackupGuard_BackupGuardPlatinum_Adminhtml</BackupGuard_BackupGuardPlatinum>
+                    </modules>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin>
+    <adminhtml>
+        <layout>
+            <updates>
+                <backupguardplatinum>
+                    <file>backupguardplatinum.xml</file>
+                </backupguardplatinum>
+            </updates>
+       </layout>
+    </adminhtml>
+    <global>
+        <resources>
+            <backupguardplatinum_setup>
+                <setup>
+                    <module>BackupGuard_BackupGuardPlatinum</module>
+                    <class>BackupGuard_BackupGuardPlatinum_Model_Resource_Mysql4_Setup</class>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </backupguardplatinum_setup>
+
+            <backupguardplatinum_write>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </backupguardplatinum_write>
+
+            <backupguardplatinum_read>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </backupguardplatinum_read>
+        </resources>
+        <helpers>
+            <backupguardplatinum>
+                <class>BackupGuard_BackupGuardPlatinum_Helper</class>
+            </backupguardplatinum>
+        </helpers>
+        <models>
+            <backupguardplatinum>
+                <class>BackupGuard_BackupGuardPlatinum_Model</class>
+            </backupguardplatinum>
+        </models>
+        <template>
+            <email>
+                <backupguardplatinum_backup_success>
+                    <label>Backup Success Mail</label>
+                    <file>backupguard_backup_success.html</file>
+                    <type>html</type>
+                </backupguardplatinum_backup_success>
+                <backupguardplatinum_backup_fail>
+                    <label>Backup Fail Mail</label>
+                    <file>backupguard_backup_fail.html</file>
+                    <type>html</type>
+                </backupguardplatinum_backup_fail>
+                <backupguardplatinum_restore_success>
+                    <label>Restore Success Mail</label>
+                    <file>backupguard_restore_success.html</file>
+                    <type>html</type>
+                </backupguardplatinum_restore_success>
+                <backupguardplatinum_restore_fail>
+                    <label>Restore Fail Mail</label>
+                    <file>backupguard_restore_fail.html</file>
+                    <type>html</type>
+                </backupguardplatinum_restore_fail>
+            </email>
+        </template>
+    </global>
+    <crontab>
+        <jobs>
+            <backupguard_backup>
+                <schedule>
+                    <cron_expr>0 0 1 1 *</cron_expr>
+                </schedule>
+                <run>
+                    <model>backupguardplatinum/cron::run</model>
+                </run>
+            </backupguard_backup>
+        </jobs>
+    </crontab>
+</config>

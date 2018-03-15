@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * BS_Car extension
+ * 
+ * @category       BS
+ * @package        BS_Car
+ * @copyright      Copyright (c) 2016
+ */
+--> 
+<layout>
+    <adminhtml_car_car_index>
+        <reference name="menu">
+            <action method="setActive">
+                <menupath>bs_work/car</menupath>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="bs_car/adminhtml_car" name="car" />
+
+        </reference>
+    </adminhtml_car_car_index>
+    <adminhtml_car_car_grid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_car/adminhtml_car_grid" name="car_grid"/>
+        </block>
+    </adminhtml_car_car_grid>
+    <!-- Car add/edit action -->
+    <adminhtml_car_car_edit>
+        <update handle="editor"/>
+        <reference name="menu">
+            <action method="setActive">
+                <menupath>bs_work/car</menupath>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="bs_car/adminhtml_car_edit" name="car_edit"></block>
+        </reference>
+        <reference name="left">
+            <block type="bs_car/adminhtml_car_edit_tabs" name="car_tabs"></block>
+        </reference>
+    </adminhtml_car_car_edit>
+
+</layout>

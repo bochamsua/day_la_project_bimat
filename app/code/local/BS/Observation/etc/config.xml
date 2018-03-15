@@ -1,0 +1,107 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * BS_QC extension
+ * 
+ * @category       BS
+ * @package        BS_QC
+ * @copyright      Copyright (c) 2016
+ */
+-->
+<config>
+    <modules>
+        <BS_Observation>
+            <version>1.0.0</version>
+        </BS_Observation>
+    </modules>
+    <global>
+        <helpers>
+            <bs_observation>
+                <class>BS_Observation_Helper</class>
+            </bs_observation>
+        </helpers>
+        <models>
+            <bs_observation>
+                <class>BS_Observation_Model</class>
+            </bs_observation>
+        </models>
+
+        <events>
+            <admin_user_save_before>
+                <observers>
+                    <rewriting_admin_user_save_after>
+                        <class>BS_Observation_Model_Observer</class>
+                        <method>adminUserSaveBefore</method>
+                    </rewriting_admin_user_save_after>
+                </observers>
+            </admin_user_save_before>
+
+            <model_save_before>
+                <observers>
+                    <bs_observation_save_before>
+                        <class>BS_Observation_Model_Observer</class>
+                        <method>modelSaveBefore</method>
+                    </bs_observation_save_before>
+                </observers>
+            </model_save_before>
+
+            <model_save_after>
+                <observers>
+                    <bs_observation_save_after>
+                        <class>BS_Observation_Model_Observer</class>
+                        <method>modelSaveAfter</method>
+                    </bs_observation_save_after>
+                </observers>
+            </model_save_after>
+
+            <model_delete_before>
+                <observers>
+                    <bs_observation_delete_before>
+                        <class>BS_Observation_Model_Observer</class>
+                        <method>modelDeleteBefore</method>
+                    </bs_observation_delete_before>
+                </observers>
+            </model_delete_before>
+        </events>
+    </global>
+    <adminhtml>
+        <events>
+            <core_block_abstract_to_html_before>
+                <observers>
+                    <bs_observation_to_html_before>
+                        <class>BS_Observation_Model_Observer</class>
+                        <method>doBeforeBlockToHtml</method>
+                    </bs_observation_to_html_before>
+                </observers>
+            </core_block_abstract_to_html_before>
+
+            <core_block_abstract_to_html_after>
+                <observers>
+                    <bs_observation_to_html_after>
+                        <class>BS_Observation_Model_Observer</class>
+                        <method>doAfterBlockToHtml</method>
+                    </bs_observation_to_html_after>
+                </observers>
+            </core_block_abstract_to_html_after>
+            <!--<core_collection_abstract_load_after>
+                <observers>
+                    <set_default_filter>
+                        <class>BS_Observation_Model_Observer</class>
+                        <method>setDefaultFilters</method>
+                    </set_default_filter>
+                </observers>
+            </core_collection_abstract_load_after>-->
+        </events>
+    </adminhtml>
+    <admin>
+        <routers>
+            <adminhtml>
+                <args>
+                    <modules>
+                        <BS_Observation before="Mage_Adminhtml">BS_Observation_Adminhtml</BS_Observation>
+                    </modules>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin>
+</config>

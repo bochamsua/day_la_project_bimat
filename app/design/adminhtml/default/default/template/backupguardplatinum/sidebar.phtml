@@ -1,0 +1,23 @@
+<?php
+    $url = $_SERVER['REQUEST_URI'];
+    function sgBuildUrl($action) {
+        return Mage::helper("adminhtml")->getUrl("adminhtml/backupguardplatinum/".$action);
+    }
+?>
+<div id="sg-sidebar-wrapper" class="metro">
+    <nav class="sidebar dark">
+        <ul>
+            <li class="title"><a class="sg-site-url" target="_blank" href="<?php echo SG_BACKUP_SITE_URL;?>"></a></li>
+            <li class="<?php echo strpos($url,'backups')?'active':''?>"><a href="<?php echo sgBuildUrl('backups'); ?>"><span class="glyphicon glyphicon-hdd"></span>Backups</a></li>
+            <?php if(SGBoot::isFeatureAvailable('STORAGE')): ?>
+                <li class="<?php echo strpos($url,'cloud')?'active':''?>"><a href="<?php echo sgBuildUrl('cloud'); ?>"><span class="glyphicon glyphicon-cloud" aria-hidden="true"></span>Cloud</a></li>
+            <?php endif; ?>
+            <?php if(SGBoot::isFeatureAvailable('SCHEDULE')): ?>
+                <li class="<?php echo strpos($url,'schedule')?'active':''?>"><a href="<?php echo sgBuildUrl('schedule'); ?>"><span class="glyphicon glyphicon-time" aria-hidden="true"></span>Schedule</a></li>
+            <?php endif; ?>
+            <li class="<?php echo strpos($url,'settings')?'active':''?>"><a href="<?php echo sgBuildUrl('settings'); ?>"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span>Settings</a></li>
+
+            <li class="<?php echo strpos($url,'support')?'active':''?>"><a href="<?php echo sgBuildUrl('support'); ?>"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>Support</a></li>
+        </ul>
+    </nav>
+</div>

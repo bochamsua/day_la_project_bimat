@@ -1,0 +1,80 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * BS_Routine extension
+ * 
+ * @category       BS
+ * @package        BS_Routine
+ * @copyright      Copyright (c) 2017
+ */
+-->
+<config>
+    <modules>
+        <BS_Routine>
+            <version>1.0.0</version>
+        </BS_Routine>
+    </modules>
+    <global>
+        <resources>
+            <bs_routine_setup>
+                <setup>
+                    <module>BS_Routine</module>
+                    <class>BS_Routine_Model_Resource_Setup</class>
+                </setup>
+            </bs_routine_setup>
+        </resources>
+        <blocks>
+            <bs_routine>
+                <class>BS_Routine_Block</class>
+            </bs_routine>
+        </blocks>
+        <helpers>
+            <bs_routine>
+                <class>BS_Routine_Helper</class>
+            </bs_routine>
+        </helpers>
+        <models>
+            <bs_routine>
+                <class>BS_Routine_Model</class>
+                <resourceModel>bs_routine_resource</resourceModel>
+            </bs_routine>
+            <bs_routine_resource>
+                <class>BS_Routine_Model_Resource</class>
+                <entities>
+                    <routine>
+                        <table>bs_routine_routine</table>
+                    </routine>
+                </entities>
+            </bs_routine_resource>
+        </models>
+    </global>
+    <adminhtml>
+        <layout>
+            <updates>
+                <bs_routine>
+                    <file>bs_routine.xml</file>
+                </bs_routine>
+            </updates>
+        </layout>
+        <translate>
+            <modules>
+                <BS_Routine>
+                    <files>
+                        <default>BS_Routine.csv</default>
+                    </files>
+                </BS_Routine>
+            </modules>
+        </translate>
+    </adminhtml>
+    <admin>
+        <routers>
+            <adminhtml>
+                <args>
+                    <modules>
+                        <BS_Routine before="Mage_Adminhtml">BS_Routine_Adminhtml</BS_Routine>
+                    </modules>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin>
+</config>

@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * BS_Qn extension
+ * 
+ * @category       BS
+ * @package        BS_Qn
+ * @copyright      Copyright (c) 2016
+ */
+-->
+<config>
+    <acl>
+        <resources>
+            <admin>
+                <children>
+                    <system>
+                        <children>
+                            <config>
+                                <children>
+                                    <bs_qn translate="title" module="bs_qn">
+                                        <title>Qn</title>
+                                    </bs_qn>
+                                </children>
+                            </config>
+                        </children>
+                    </system>
+                    <bs_work>
+                        <children>
+                            <qn translate="title" module="bs_qn">
+                                <title>QN</title>
+                                <sort_order>61</sort_order>
+                                <children>
+                                    <new translate="title"><title>New</title></new>
+                                    <edit translate="title"><title>Edit</title></edit>
+                                    <delete translate="title"><title>Delete</title></delete>
+                                </children>
+                            </qn>
+                        </children>
+                    </bs_work>
+
+                </children>
+            </admin>
+        </resources>
+    </acl>
+    <menu>
+        <bs_work>
+            <children>
+                <qn translate="title" module="bs_qn">
+                    <title>QN</title>
+                    <action>adminhtml/qn_qn</action>
+                    <sort_order>61</sort_order>
+                </qn>
+            </children>
+        </bs_work>
+
+    </menu>
+</config>

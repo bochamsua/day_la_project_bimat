@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * BS_Hidefrontend extension
+ * 
+ * @category       BS
+ * @package        BS_Hidefrontend
+ * @copyright      Copyright (c) 2016
+ */
+-->
+<config>
+    <modules>
+        <BS_Hidefrontend>
+            <version>1.0.0</version>
+        </BS_Hidefrontend>
+    </modules>
+    <global>
+        <helpers>
+            <bs_hidefrontend>
+                <class>BS_Hidefrontend_Helper</class>
+            </bs_hidefrontend>
+        </helpers>
+        <models>
+            <hidefrontend>
+                <class>BS_Hidefrontend_Model</class>
+            </hidefrontend>
+
+        </models>
+    </global>
+    <frontend>
+        <events>
+            <controller_action_predispatch>
+                <observers>
+                    <hidefrontend>
+                        <type>singleton</type>
+                        <class>hidefrontend/observer</class>
+                        <method>hideFrontend</method>
+                    </hidefrontend>
+                </observers>
+            </controller_action_predispatch>
+        </events>
+    </frontend>
+
+</config>

@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * BS_Kpi extension
+ * 
+ * @category       BS
+ * @package        BS_Kpi
+ * @copyright      Copyright (c) 2017
+ */
+--> 
+<layout>
+    <adminhtml_kpi_kpi_index>
+        <reference name="menu">
+            <action method="setActive">
+                <menupath>bs_data/kpi</menupath>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="bs_kpi/adminhtml_kpi" name="kpi" />
+
+        </reference>
+    </adminhtml_kpi_kpi_index>
+    <adminhtml_kpi_kpi_grid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_kpi/adminhtml_kpi_grid" name="kpi_grid"/>
+        </block>
+    </adminhtml_kpi_kpi_grid>
+    <!-- Kpi add/edit action -->
+    <adminhtml_kpi_kpi_edit>
+        <update handle="editor"/>
+        <reference name="menu">
+            <action method="setActive">
+                <menupath>bs_data/kpi</menupath>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="bs_kpi/adminhtml_kpi_edit" name="kpi_edit"></block>
+        </reference>
+        <reference name="left">
+            <block type="bs_kpi/adminhtml_kpi_edit_tabs" name="kpi_tabs"></block>
+        </reference>
+    </adminhtml_kpi_kpi_edit>
+
+</layout>

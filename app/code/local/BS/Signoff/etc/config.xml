@@ -1,0 +1,86 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * BS_Signoff extension
+ * 
+ * @category       BS
+ * @package        BS_Signoff
+ * @copyright      Copyright (c) 2016
+ */
+-->
+<config>
+    <modules>
+        <BS_Signoff>
+            <version>1.0.2</version>
+        </BS_Signoff>
+    </modules>
+    <global>
+        <resources>
+            <bs_signoff_setup>
+                <setup>
+                    <module>BS_Signoff</module>
+                    <class>BS_Signoff_Model_Resource_Setup</class>
+                </setup>
+            </bs_signoff_setup>
+        </resources>
+        <blocks>
+            <bs_signoff>
+                <class>BS_Signoff_Block</class>
+            </bs_signoff>
+        </blocks>
+        <helpers>
+            <bs_signoff>
+                <class>BS_Signoff_Helper</class>
+            </bs_signoff>
+        </helpers>
+        <models>
+            <bs_signoff>
+                <class>BS_Signoff_Model</class>
+                <resourceModel>bs_signoff_resource</resourceModel>
+            </bs_signoff>
+            <bs_signoff_resource>
+                <class>BS_Signoff_Model_Resource</class>
+                <entities>
+                    <signoff>
+                        <table>bs_signoff_signoff</table>
+                    </signoff>
+                </entities>
+            </bs_signoff_resource>
+        </models>
+    </global>
+    <adminhtml>
+        <layout>
+            <updates>
+                <bs_signoff>
+                    <file>bs_signoff.xml</file>
+                </bs_signoff>
+            </updates>
+        </layout>
+        <translate>
+            <modules>
+                <BS_Signoff>
+                    <files>
+                        <default>BS_Signoff.csv</default>
+                    </files>
+                </BS_Signoff>
+            </modules>
+        </translate>
+        <global_search>
+            <signoff>
+                <class>bs_signoff/adminhtml_search_signoff</class>
+                <acl>bs_signoff</acl>
+            </signoff>
+        </global_search>
+    </adminhtml>
+    <admin>
+        <routers>
+            <adminhtml>
+                <args>
+                    <modules>
+                        <BS_Signoff before="Mage_Adminhtml">BS_Signoff_Adminhtml</BS_Signoff>
+                    </modules>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin>
+</config>

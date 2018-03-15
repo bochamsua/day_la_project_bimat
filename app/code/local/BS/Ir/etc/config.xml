@@ -1,0 +1,86 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * BS_Ir extension
+ * 
+ * @category       BS
+ * @package        BS_Ir
+ * @copyright      Copyright (c) 2016
+ */
+-->
+<config>
+    <modules>
+        <BS_Ir>
+            <version>1.0.2</version>
+        </BS_Ir>
+    </modules>
+    <global>
+        <resources>
+            <bs_ir_setup>
+                <setup>
+                    <module>BS_Ir</module>
+                    <class>BS_Ir_Model_Resource_Setup</class>
+                </setup>
+            </bs_ir_setup>
+        </resources>
+        <blocks>
+            <bs_ir>
+                <class>BS_Ir_Block</class>
+            </bs_ir>
+        </blocks>
+        <helpers>
+            <bs_ir>
+                <class>BS_Ir_Helper</class>
+            </bs_ir>
+        </helpers>
+        <models>
+            <bs_ir>
+                <class>BS_Ir_Model</class>
+                <resourceModel>bs_ir_resource</resourceModel>
+            </bs_ir>
+            <bs_ir_resource>
+                <class>BS_Ir_Model_Resource</class>
+                <entities>
+                    <ir>
+                        <table>bs_ir_ir</table>
+                    </ir>
+                </entities>
+            </bs_ir_resource>
+        </models>
+    </global>
+    <adminhtml>
+        <layout>
+            <updates>
+                <bs_ir>
+                    <file>bs_ir.xml</file>
+                </bs_ir>
+            </updates>
+        </layout>
+        <translate>
+            <modules>
+                <BS_Ir>
+                    <files>
+                        <default>BS_Ir.csv</default>
+                    </files>
+                </BS_Ir>
+            </modules>
+        </translate>
+        <global_search>
+            <ir>
+                <class>bs_ir/adminhtml_search_ir</class>
+                <acl>bs_ir</acl>
+            </ir>
+        </global_search>
+    </adminhtml>
+    <admin>
+        <routers>
+            <adminhtml>
+                <args>
+                    <modules>
+                        <BS_Ir before="Mage_Adminhtml">BS_Ir_Adminhtml</BS_Ir>
+                    </modules>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin>
+</config>

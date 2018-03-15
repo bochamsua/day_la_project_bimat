@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * BS_Wysiwyg extension
+ * 
+ * @category       BS
+ * @package        BS_Wysiwyg
+ * @copyright      Copyright (c) 2017
+ */
+--> 
+<layout>
+   <default>
+    <reference name="head">
+        <action method="addItem"><type>skin_css</type><name>bs_wysiwyg/css/redactor.css</name></action>
+        <action method="addItem"><type>skin_css</type><name>bs_wysiwyg/css/alignment.css</name></action>
+        <!--<action method="addItem"><type>skin_js</type><name>bs_wysiwyg/js/jquery-migrate-1.3.0.min.js</name><params/></action>-->
+        <action method="addItem"><type>skin_js</type><name>bs_wysiwyg/js/redactor.js</name><params/></action>
+        <action method="addItem"><type>skin_js</type><name>bs_wysiwyg/js/plugins/table.js</name><params/></action>
+        <!--<action method="addItem"><type>skin_js</type><name>bs_wysiwyg/js/plugins/video.js</name><params/></action>-->
+        <action method="addItem"><type>skin_js</type><name>bs_wysiwyg/js/plugins/source.js</name><params/></action>
+        <action method="addItem"><type>skin_js</type><name>bs_wysiwyg/js/plugins/fontcolor.js</name><params/></action>
+        <action method="addItem"><type>skin_js</type><name>bs_wysiwyg/js/plugins/fontsize.js</name><params/></action>
+        <action method="addItem"><type>skin_js</type><name>bs_wysiwyg/js/plugins/inlinestyle.js</name><params/></action>
+        <action method="addItem"><type>skin_js</type><name>bs_wysiwyg/js/plugins/alignment.js</name><params/></action>
+        <action method="addItem"><type>skin_js</type><name>bs_wysiwyg/js/plugins/fullscreen.js</name><params/></action>
+    </reference>
+  </default>
+
+</layout>

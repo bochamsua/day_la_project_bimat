@@ -1,0 +1,80 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * BS_KPIReport extension
+ * 
+ * @category       BS
+ * @package        BS_KPIReport
+ * @copyright      Copyright (c) 2017
+ */
+-->
+<config>
+    <modules>
+        <BS_KPIReport>
+            <version>1.0.0</version>
+        </BS_KPIReport>
+    </modules>
+    <global>
+        <resources>
+            <bs_kpireport_setup>
+                <setup>
+                    <module>BS_KPIReport</module>
+                    <class>BS_KPIReport_Model_Resource_Setup</class>
+                </setup>
+            </bs_kpireport_setup>
+        </resources>
+        <blocks>
+            <bs_kpireport>
+                <class>BS_KPIReport_Block</class>
+            </bs_kpireport>
+        </blocks>
+        <helpers>
+            <bs_kpireport>
+                <class>BS_KPIReport_Helper</class>
+            </bs_kpireport>
+        </helpers>
+        <models>
+            <bs_kpireport>
+                <class>BS_KPIReport_Model</class>
+                <resourceModel>bs_kpireport_resource</resourceModel>
+            </bs_kpireport>
+            <bs_kpireport_resource>
+                <class>BS_KPIReport_Model_Resource</class>
+                <entities>
+                    <kpireport>
+                        <table>bs_kpireport_kpireport</table>
+                    </kpireport>
+                </entities>
+            </bs_kpireport_resource>
+        </models>
+    </global>
+    <adminhtml>
+        <layout>
+            <updates>
+                <bs_kpireport>
+                    <file>bs_kpireport.xml</file>
+                </bs_kpireport>
+            </updates>
+        </layout>
+        <translate>
+            <modules>
+                <BS_KPIReport>
+                    <files>
+                        <default>BS_KPIReport.csv</default>
+                    </files>
+                </BS_KPIReport>
+            </modules>
+        </translate>
+    </adminhtml>
+    <admin>
+        <routers>
+            <adminhtml>
+                <args>
+                    <modules>
+                        <BS_KPIReport before="Mage_Adminhtml">BS_KPIReport_Adminhtml</BS_KPIReport>
+                    </modules>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin>
+</config>

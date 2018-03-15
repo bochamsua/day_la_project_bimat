@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * BS_Logger extension
+ * 
+ * @category       BS
+ * @package        BS_Logger
+ * @copyright      Copyright (c) 2017
+ */
+-->
+<config>
+    <acl>
+        <resources>
+            <admin>
+                <children>
+                    <system>
+                        <children>
+                            <config>
+                                <children>
+                                    <bs_logger translate="title" module="bs_logger">
+                                        <title>Logger</title>
+                                    </bs_logger>
+                                </children>
+                            </config>
+                        </children>
+                    </system>
+                    <system>
+                        <children>
+                            <logger translate="title" module="bs_logger">
+                                <title>Logger</title>
+                                <sort_order>39</sort_order>
+                            </logger>
+                        </children>
+                    </system>
+
+                </children>
+            </admin>
+        </resources>
+    </acl>
+    <menu>
+        <system>
+            <children>
+                <logger translate="title" module="bs_logger">
+                    <title>Logger</title>
+                    <action>adminhtml/logger_logger</action>
+                    <sort_order>39</sort_order>
+                </logger>
+            </children>
+        </system>
+
+    </menu>
+</config>

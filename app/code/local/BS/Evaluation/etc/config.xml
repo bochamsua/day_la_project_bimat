@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * BS_QC extension
+ * 
+ * @category       BS
+ * @package        BS_QC
+ * @copyright      Copyright (c) 2016
+ */
+-->
+<config>
+    <modules>
+        <BS_Evaluation>
+            <version>1.0.0</version>
+        </BS_Evaluation>
+    </modules>
+    <global>
+        <helpers>
+            <bs_evaluation>
+                <class>BS_Evaluation_Helper</class>
+            </bs_evaluation>
+        </helpers>
+
+    </global>
+    <admin>
+        <routers>
+            <adminhtml>
+                <args>
+                    <modules>
+                        <BS_Evaluation before="Mage_Adminhtml">BS_Evaluation_Adminhtml</BS_Evaluation>
+                    </modules>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin>
+</config>

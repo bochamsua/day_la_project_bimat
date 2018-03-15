@@ -1,0 +1,984 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config><menu>
+        <dashboard translate="title" module="adminhtml">
+            <title>Dashboard</title>
+            <sort_order>10</sort_order>
+            <action>adminhtml/dashboard</action>
+        </dashboard>
+        <system translate="title" module="adminhtml">
+            <title>System</title>
+            <sort_order>90</sort_order>
+            <!-- action>adminhtml/system</action -->
+            <children>
+                <myaccount translate="title">
+                    <title>My Account</title>
+                    <action>adminhtml/system_account</action>
+                    <sort_order>10</sort_order>
+                </myaccount>
+                <tools translate="title">
+                    <title>Tools</title>
+                    <sort_order>20</sort_order>
+                <disabled>1</disabled></tools>
+                <design translate="title">
+                    <title>Design</title>
+                    <action>adminhtml/system_design</action>
+                    <sort_order>30</sort_order>
+                <disabled>1</disabled></design>
+                <convert translate="title">
+                    <title>Import/Export</title>
+                    <sort_order>40</sort_order>
+                    <children>
+                        <gui translate="title">
+                            <title>Dataflow - Profiles</title>
+                            <action>adminhtml/system_convert_gui</action>
+                            <sort_order>30</sort_order>
+                        </gui>
+                        <profiles translate="title">
+                            <title>Dataflow - Advanced Profiles</title>
+                            <action>adminhtml/system_convert_profile</action>
+                            <sort_order>40</sort_order>
+                        </profiles>
+                    </children>
+                <disabled>1</disabled></convert>
+                <currency translate="title">
+                    <title>Manage Currency Rates</title>
+                    <action>adminhtml/system_currency</action>
+                    <sort_order>50</sort_order>
+                <disabled>1</disabled></currency>
+                <email_template translate="title">
+                    <title>Transactional Emails</title>
+                    <action>adminhtml/system_email_template</action>
+                    <sort_order>60</sort_order>
+                <disabled>1</disabled></email_template>
+                <variable translate="title">
+                    <title>Custom Variables</title>
+                    <action>adminhtml/system_variable</action>
+                    <sort_order>65</sort_order>
+                <disabled>1</disabled></variable>
+                <acl translate="title">
+                    <title>Permissions</title>
+                    <sort_order>70</sort_order>
+                    <children>
+                        <users translate="title">
+                            <title>Users</title>
+                            <action>adminhtml/permissions_user</action>
+                        </users>
+                        <roles translate="title">
+                            <title>Roles</title>
+                            <action>adminhtml/permissions_role</action>
+                        </roles>
+                        <variables translate="title">
+                            <title>Variables</title>
+                            <action>adminhtml/permissions_variable</action>
+                        </variables>
+                        <blocks translate="title">
+                            <title>Blocks</title>
+                            <action>adminhtml/permissions_block</action>
+                        </blocks>
+                    </children>
+                </acl>
+                <cache translate="title">
+                    <title>Cache Management</title>
+                    <action>adminhtml/cache</action>
+                    <sort_order>90</sort_order>
+                </cache>
+                <store translate="title" module="core">
+                    <title>Manage Stores</title>
+                    <action>adminhtml/system_store/</action>
+                    <sort_order>100</sort_order>
+                <disabled>1</disabled></store>
+                <config translate="title">
+                    <title>Configuration</title>
+                    <action>adminhtml/system_config</action>
+                    <sort_order>110</sort_order>
+                </config>
+            <formtemplate translate="title" module="bs_formtemplate">
+                    <title>FORMS Template</title>
+                    <action>adminhtml/formtemplate_formtemplate</action>
+                    <sort_order>30</sort_order>
+                </formtemplate><field translate="title" module="bs_setting">
+                    <title>Field Dependance</title>
+                    <action>adminhtml/setting_field</action>
+                    <sort_order>40</sort_order>
+                </field><aoe_scheduler translate="title">
+                    <title>Scheduler</title>
+                    <sort_order>1</sort_order>
+                    <children>
+                        <aoe_scheduler_cron translate="title">
+                            <title>Job Configuration</title>
+                            <sort_order>10</sort_order>
+                            <action>adminhtml/job/index</action>
+                        </aoe_scheduler_cron>
+                        <aoe_scheduler_scheduler translate="title">
+                            <title>List View</title>
+                            <sort_order>20</sort_order>
+                            <action>adminhtml/scheduler/index</action>
+                        </aoe_scheduler_scheduler>
+                        <aoe_scheduler_timeline translate="title">
+                            <title>Timeline View</title>
+                            <sort_order>30</sort_order>
+                            <action>adminhtml/timeline/index</action>
+                        </aoe_scheduler_timeline>
+                        <aoe_scheduler_instructions translate="title">
+                            <title>Instructions</title>
+                            <sort_order>40</sort_order>
+                            <action>adminhtml/instructions/index</action>
+                        </aoe_scheduler_instructions>
+                    </children>
+                </aoe_scheduler><logger translate="title" module="bs_logger">
+                    <title>Logger</title>
+                    <action>adminhtml/logger_logger</action>
+                    <sort_order>39</sort_order>
+                </logger></children>
+        </system>
+    <cms translate="title" module="cms">
+            <title>CMS</title>
+            <sort_order>70</sort_order>
+            <children>
+                <page translate="title" module="cms">
+                    <title>Pages</title>
+                    <action>adminhtml/cms_page</action>
+                    <sort_order>0</sort_order>
+                </page>
+                <block translate="title" module="cms">
+                    <title>Static Blocks</title>
+                    <action>adminhtml/cms_block</action>
+                    <sort_order>10</sort_order>
+                </block>
+            </children>
+         <disabled>1</disabled></cms><bs_data>
+            <children>
+                <cmr translate="title" module="bs_cmr">
+                    <title>CMR Data</title>
+                    <action>adminhtml/cmr_cmr</action>
+                    <sort_order>0</sort_order>
+                </cmr>
+            <concession translate="title" module="bs_concession">
+                    <title>Concession Data</title>
+                    <action>adminhtml/concession_concession</action>
+                    <sort_order>75</sort_order>
+                </concession><cofa translate="title" module="bs_cofa">
+                    <title>CoA Data</title>
+                    <action>adminhtml/cofa_cofa</action>
+                    <sort_order>0</sort_order>
+                </cofa><kpi translate="title" module="bs_kpi">
+                    <title>KPI Data</title>
+                    <action>adminhtml/kpi_kpi</action>
+                    <sort_order>75</sort_order>
+                </kpi></children>
+        <title>Data</title><sort_order>30</sort_order></bs_data><bs_misc>
+            <children>
+                <customer translate="title" module="bs_acreg">
+                    <title>Customer</title>
+                    <action>adminhtml/acreg_customer</action>
+                    <sort_order>31</sort_order>
+                </customer>
+                <acreg translate="title" module="bs_acreg">
+                    <title>A/C Reg</title>
+                    <action>adminhtml/acreg_acreg</action>
+                    <sort_order>32</sort_order>
+                </acreg>
+            <department translate="title" module="bs_misc">
+                    <title>Department</title>
+                    <action>adminhtml/misc_department</action>
+                    <sort_order>0</sort_order>
+                </department><location translate="title" module="bs_misc">
+                    <title>Location</title>
+                    <action>adminhtml/misc_location</action>
+                    <sort_order>10</sort_order>
+                </location><aircraft translate="title" module="bs_misc">
+                    <title>Aircraft</title>
+                    <action>adminhtml/misc_aircraft</action>
+                    <sort_order>20</sort_order>
+                </aircraft><certtype translate="title" module="bs_misc">
+                    <title>Certificate Type</title>
+                    <action>adminhtml/misc_certtype</action>
+                    <sort_order>30</sort_order>
+                </certtype><taskgroup translate="title" module="bs_misc">
+                    <title>Survey Code Group</title>
+                    <action>adminhtml/misc_taskgroup</action>
+                    <sort_order>40</sort_order>
+                </taskgroup><task translate="title" module="bs_misc">
+                    <title>Survey Code</title>
+                    <action>adminhtml/misc_task</action>
+                    <sort_order>50</sort_order>
+                </task><subtask translate="title" module="bs_misc">
+                    <title>Survey Sub Code</title>
+                    <action>adminhtml/misc_subtask</action>
+                    <sort_order>60</sort_order>
+                </subtask><subsubtask translate="title" module="bs_misc">
+                    <title>Survey Sub Sub Code</title>
+                    <action>adminhtml/misc_subsubtask</action>
+                    <sort_order>70</sort_order>
+                </subsubtask><ncausegroup translate="title" module="bs_ncause">
+                    <title>Root-Cause Code</title>
+                    <action>adminhtml/ncause_ncausegroup</action>
+                    <sort_order>80</sort_order>
+                </ncausegroup><ncause translate="title" module="bs_ncause">
+                    <title>Root-Cause Sub Code</title>
+                    <action>adminhtml/ncause_ncause</action>
+                    <sort_order>90</sort_order>
+                </ncause><signature translate="title" module="bs_signature">
+                    <title>Signature</title>
+                    <action>adminhtml/signature_signature</action>
+                    <sort_order>100</sort_order>
+                </signature></children>
+        <title>Misc</title><sort_order>70</sort_order></bs_misc><bs_work>
+            <children>
+                <car translate="title" module="bs_car">
+                    <title>CAR</title>
+                    <action>adminhtml/car_car</action>
+                    <sort_order>70</sort_order>
+                </car>         <drr translate="title" module="bs_drr">
+                    <title>DRR</title>
+                    <action>adminhtml/drr_drr</action>
+                    <sort_order>70</sort_order>
+                </drr><qr translate="title" module="bs_qr">
+                    <title>QR</title>
+                    <action>adminhtml/qr_qr</action>
+                    <sort_order>60</sort_order>
+                </qr><other translate="title" module="bs_other">
+                    <title>Other Work</title>
+                    <action>adminhtml/other_other</action>
+                    <sort_order>90</sort_order>
+                </other><ncr translate="title" module="bs_ncr">
+                    <title>NCR</title>
+                    <action>adminhtml/ncr_ncr</action>
+                    <sort_order>50</sort_order>
+                </ncr><signoff translate="title" module="bs_signoff">
+                    <title>AC Sign-off</title>
+                    <action>adminhtml/signoff_signoff</action>
+                    <sort_order>30</sort_order>
+                </signoff><ir translate="title" module="bs_ir">
+                    <title>IR</title>
+                    <action>adminhtml/ir_ir</action>
+                    <sort_order>40</sort_order>
+                </ir><qn translate="title" module="bs_qn">
+                    <title>QN</title>
+                    <action>adminhtml/qn_qn</action>
+                    <sort_order>61</sort_order>
+                </qn><sur translate="title" module="bs_sur">
+                    <title>Surveillance</title>
+                    <action>adminhtml/sur_sur</action>
+                    <sort_order>1</sort_order>
+                </sur><rii translate="title" module="bs_rii">
+                    <title>RII Sign-off</title>
+                    <action>adminhtml/rii_rii</action>
+                    <sort_order>20</sort_order>
+                </rii></children>
+        <title>WORK</title><sort_order>20</sort_order></bs_work><bs_report translate="title" module="bs_report">
+            <title>Report</title>
+            <sort_order>40</sort_order>
+        <children>
+                <routine translate="title" module="bs_routine">
+                    <title>Routine Report</title>
+                    <action>adminhtml/routine_routine</action>
+                    <sort_order>30</sort_order>
+                </routine>
+            <cmrreport translate="title" module="bs_cmrreport">
+                    <title>CMR Report</title>
+                    <action>adminhtml/cmrreport_cmrreport</action>
+                    <sort_order>20</sort_order>
+                </cmrreport><kpireport translate="title" module="bs_kpireport">
+                    <title>KPI Report</title>
+                    <action>adminhtml/kpireport_kpireport</action>
+                    <sort_order>10</sort_order>
+                </kpireport></children></bs_report><bs_evaluation translate="title" module="bs_evaluation">
+            <children>
+                <qchaneff translate="title" module="bs_report">
+                    <title>QC HAN Evaluation</title>
+                    <action>adminhtml/report_qchaneff</action>
+                    <sort_order>0</sort_order>
+                </qchaneff>
+                <workday translate="title" module="bs_report">
+                    <title>Work Day</title>
+                    <action>adminhtml/report_workday</action>
+                    <sort_order>90</sort_order>
+                </workday>
+                <setting translate="title" module="bs_report">
+                    <title>Setting</title>
+                    <action>adminhtml/report_setting</action>
+                    <sort_order>100</sort_order>
+                </setting>
+            </children>
+        <title>Evaluation</title><sort_order>60</sort_order></bs_evaluation><bs_sched>
+            <children>
+                <schedule translate="title" module="bs_schedule">
+                    <title>QC HAN Schedule</title>
+                    <action>adminhtml/schedule_schedule</action>
+                    <sort_order>10</sort_order>
+                </schedule>
+            <nonroutine translate="title" module="bs_nonroutine">
+                    <title>QC HAN Work Non-Routine</title>
+                    <action>adminhtml/nonroutine_nonroutine</action>
+                    <sort_order>20</sort_order>
+                </nonroutine></children>
+        <title>Schedule</title><sort_order>50</sort_order></bs_sched><bs_hr translate="title" module="bs_hr">
+            <title>HR</title>
+            <sort_order>75</sort_order>
+            <children>
+                <staff translate="title" module="bs_hr">
+                    <title>Staff</title>
+                    <action>adminhtml/hr_staff</action>
+                    <sort_order>0</sort_order>
+                </staff>
+
+                <certificate translate="title" module="bs_hr">
+                    <title>Certificate</title>
+                    <action>adminhtml/hr_certificate</action>
+                    <sort_order>10</sort_order>
+                </certificate>
+                <training translate="title" module="bs_hr">
+                    <title>Training</title>
+                    <action>adminhtml/hr_training</action>
+                    <sort_order>20</sort_order>
+                </training>
+            </children>
+        </bs_hr><backupguardplatinum module="backupguardplatinum">
+            <title>Backup Guard Platinum</title>
+            <action>adminhtml/backupguardplatinum/backups</action>
+            <sort_order>99</sort_order>
+            <children>
+                <backups module="backupguardplatinum">
+                    <title>Backups</title>
+                    <action>adminhtml/backupguardplatinum/backups</action>
+                    <sort_order>0</sort_order>
+                </backups>
+                <cloud module="backupguardplatinum">
+                    <title>Cloud</title>
+                    <action>adminhtml/backupguardplatinum/cloud</action>
+                    <sort_order>1</sort_order>
+                </cloud>
+                <schedule module="backupguardplatinum">
+                    <title>Schedule</title>
+                    <action>adminhtml/backupguardplatinum/schedule</action>
+                    <sort_order>2</sort_order>
+                </schedule>
+                <settings module="backupguardplatinum">
+                    <title>Settings</title>
+                    <action>adminhtml/backupguardplatinum/settings</action>
+                    <sort_order>3</sort_order>
+                </settings>
+                <!--<support module="backupguardplatinum">
+                    <title>Support</title>
+                    <action>adminhtml/backupguardplatinum/support</action>
+                    <sort_order>4</sort_order>
+                </support>-->
+            </children>
+        </backupguardplatinum></menu><acl>
+        <resources>
+            <all>
+                <title>Allow everything</title>
+            </all>
+            <admin translate="title" module="adminhtml">
+                <title>Magento Admin</title>
+                <children>
+                    <dashboard translate="title">
+                        <title>Dashboard</title>
+                        <sort_order>0</sort_order>
+                    </dashboard>
+                    <system translate="title">
+                        <title>System</title>
+                        <sort_order>90</sort_order>
+                        <children>
+                            <acl translate="title">
+                                <title>Permissions</title>
+                                <sort_order>0</sort_order>
+                                <children>
+                                    <roles translate="title">
+                                        <title>Roles</title>
+                                        <sort_order>10</sort_order>
+                                    </roles>
+                                    <users translate="title">
+                                        <title>Users</title>
+                                        <sort_order>20</sort_order>
+                                    </users>
+                                    <variables translate="title">
+                                        <title>Variables</title>
+                                    </variables>
+                                    <blocks translate="title">
+                                        <title>Blocks</title>
+                                    </blocks>
+                                </children>
+                            </acl>
+                            <store translate="title">
+                                <title>Manage Stores</title>
+                            <disabled>1</disabled></store>
+                            <design translate="title">
+                                <title>Design</title>
+                                <sort_order>25</sort_order>
+                            <disabled>1</disabled></design>
+                            <config translate="title">
+                                <title>Configuration</title>
+                                <sort_order>20</sort_order>
+                                <children>
+                                    <general translate="title">
+                                        <title>General Section</title>
+                                        <sort_order>20</sort_order>
+                                    </general>
+                                    <web translate="title">
+                                        <title>Web Section</title>
+                                        <sort_order>30</sort_order>
+                                    </web>
+                                    <design translate="title">
+                                        <title>Design Section</title>
+                                        <sort_order>40</sort_order>
+                                    </design>
+                                    <system translate="title">
+                                        <title>System Section</title>
+                                        <sort_order>80</sort_order>
+                                    </system>
+                                    <advanced translate="title">
+                                        <title>Advanced Section</title>
+                                        <sort_order>90</sort_order>
+                                    </advanced>
+                                    <trans_email translate="title">
+                                        <title>Store Email Addresses Section</title>
+                                        <sort_order>100</sort_order>
+                                    </trans_email>
+                                    <dev translate="title">
+                                        <title>Developer Section</title>
+                                        <sort_order>110</sort_order>
+                                    </dev>
+                                    <currency translate="title">
+                                        <title>Currency Setup Section</title>
+                                        <sort_order>120</sort_order>
+                                    </currency>
+                                    <sendfriend translate="title">
+                                        <title>Email to a Friend</title>
+                                        <sort_order>140</sort_order>
+                                    </sendfriend>
+                                    <admin translate="title">
+                                        <title>Advanced Admin Section</title>
+                                        <sort_order>100</sort_order>
+                                    </admin>
+                                <cms translate="title" module="cms">
+                                        <title>Content Management</title>
+                                    </cms><bs_cmr translate="title" module="bs_cmr">
+                                        <title>Cmr</title>
+                                    </bs_cmr><bs_acreg translate="title" module="bs_acreg">
+                                        <title>Acreg</title>
+                                    </bs_acreg><bs_car translate="title" module="bs_car">
+                                        <title>CAR</title>
+                                    </bs_car><bs_report translate="title" module="bs_report">
+                                        <title>Report</title>
+                                    </bs_report><bs_formtemplate translate="title" module="bs_formtemplate">
+                                        <title>Formtemplate</title>
+                                    </bs_formtemplate><bs_evaluation translate="title" module="bs_evaluation">
+                                        <title>Evaluation</title>
+                                    </bs_evaluation><bs_concession translate="title" module="bs_concession">
+                                        <title>Concession</title>
+                                    </bs_concession><bs_setting translate="title" module="bs_setting">
+                                        <title>Setting</title>
+                                    </bs_setting><bs_schedule translate="title" module="bs_schedule">
+                                        <title>Schedule</title>
+                                    </bs_schedule><bs_drr translate="title" module="bs_drr">
+                                        <title>DRR</title>
+                                    </bs_drr><bs_data translate="title" module="bs_data">
+                                        <title>Data</title>
+                                    </bs_data><bs_hr translate="title" module="bs_hr">
+                                        <title>HR</title>
+                                    </bs_hr><bs_routine translate="title" module="bs_routine">
+                                        <title>Routine</title>
+                                    </bs_routine><bs_qr translate="title" module="bs_qr">
+                                        <title>Qr</title>
+                                    </bs_qr><bs_cmrreport translate="title" module="bs_cmrreport">
+                                        <title>CmrReport</title>
+                                    </bs_cmrreport><bs_nonroutine translate="title" module="bs_nonroutine">
+                                        <title>QC HAN Work Non-Routine</title>
+                                    </bs_nonroutine><bs_rewriting translate="title" module="bs_rewriting">
+                                        <title>Rewriting</title>
+                                    </bs_rewriting><bs_other translate="title" module="bs_other">
+                                        <title>Other Work</title>
+                                    </bs_other><bs_ncr translate="title" module="bs_ncr">
+                                        <title>NCR</title>
+                                    </bs_ncr><bs_signoff translate="title" module="bs_signoff">
+                                        <title>Signoff</title>
+                                    </bs_signoff><bs_misc translate="title" module="bs_misc">
+                                        <title>Misc</title>
+                                    </bs_misc><bs_ir translate="title" module="bs_ir">
+                                        <title>IR</title>
+                                    </bs_ir><bs_cofa translate="title" module="bs_cofa">
+                                        <title>Cofa</title>
+                                    </bs_cofa><bs_qn translate="title" module="bs_qn">
+                                        <title>Qn</title>
+                                    </bs_qn><bs_ncause translate="title" module="bs_ncause">
+                                        <title>NCause</title>
+                                    </bs_ncause><bs_chart translate="title" module="bs_chart">
+                                        <title>Chart</title>
+                                    </bs_chart><bs_work translate="title" module="bs_work">
+                                        <title>WORK</title>
+                                    </bs_work><bs_sur translate="title" module="bs_sur">
+                                        <title>Sur</title>
+                                    </bs_sur><bs_kpi translate="title" module="bs_kpi">
+                                        <title>Kpi</title>
+                                    </bs_kpi><bs_rii translate="title" module="bs_rii">
+                                        <title>Rii</title>
+                                    </bs_rii><bs_sched translate="title" module="bs_sched">
+                                        <title>Schedule</title>
+                                    </bs_sched><bs_wysiwyg translate="title" module="bs_wysiwyg">
+                                        <title>Wysiwyg</title>
+                                    </bs_wysiwyg><bs_logger translate="title" module="bs_logger">
+                                        <title>Logger</title>
+                                    </bs_logger><bs_signature translate="title" module="bs_signature">
+                                        <title>Signature</title>
+                                    </bs_signature><bs_kpireport translate="title" module="bs_kpireport">
+                                        <title>KPIReport</title>
+                                    </bs_kpireport></children>
+                            <disabled>1</disabled></config>
+                            <currency translate="title">
+                                <title>Manage Currency Rates</title>
+                                <sort_order>30</sort_order>
+                            <disabled>1</disabled></currency>
+                            <email_template translate="title">
+                                <title>Transactional Emails</title>
+                                <sort_order>40</sort_order>
+                            <disabled>1</disabled></email_template>
+                            <variable translate="title">
+                                <title>Custom Variables</title>
+                                <sort_order>45</sort_order>
+                            <disabled>1</disabled></variable>
+                            <myaccount translate="title">
+                                <title>My Account</title>
+                                <sort_order>50</sort_order>
+                            </myaccount>
+                            <tools translate="title">
+                                <title>Tools</title>
+                                <sort_order>60</sort_order>
+                            <disabled>1</disabled></tools>
+                            <convert translate="title">
+                                <title>Import/Export</title>
+                                <children>
+                                    <gui translate="title">
+                                        <title>Dataflow - Profiles</title>
+                                    </gui>
+                                    <profiles translate="title">
+                                        <title>Dataflow - Advanced Profiles</title>
+                                    </profiles>
+                                </children>
+                            <disabled>1</disabled></convert>
+                            <cache translate="title">
+                                <title>Cache Management</title>
+                            </cache>
+                            <extensions translate="title">
+                                <title>Magento Connect</title>
+                                <children>
+                                    <local translate="title">
+                                        <title>Magento Connect Manager</title>
+                                        <sort_order>0</sort_order>
+                                    </local>
+                                    <custom translate="title">
+                                        <title>Package Extensions</title>
+                                        <sort_order>5</sort_order>
+                                    </custom>
+                                </children>
+                            <disabled>1</disabled></extensions>
+                        <formtemplate translate="title" module="bs_formtemplate">
+                                <title>FORMS Template</title>
+                                <sort_order>30</sort_order>
+                                <children>
+                                    <new translate="title"><title>New</title></new>
+                                    <edit translate="title"><title>Edit</title></edit>
+                                    <delete translate="title"><title>Delete</title></delete>
+                                </children>
+                            </formtemplate><field translate="title" module="bs_setting">
+                                <title>Field Dependance</title>
+                                <sort_order>40</sort_order>
+                                <children>
+                                    <new translate="title"><title>New</title></new>
+                                    <edit translate="title"><title>Edit</title></edit>
+                                    <delete translate="title"><title>Delete</title></delete>
+                                </children>
+                            </field><logger translate="title" module="bs_logger">
+                                <title>Logger</title>
+                                <sort_order>39</sort_order>
+                            </logger></children>
+                    </system>
+                    <global_search translate="title">
+                        <title>Global Search</title>
+                        <sort_order>100</sort_order>
+                    </global_search>
+                <cms translate="title" module="cms">
+                        <title>CMS</title>
+                        <sort_order>70</sort_order>
+                        <children>
+                            <block translate="title">
+                                <title>Static Blocks</title>
+                                <sort_order>10</sort_order>
+                            </block>
+                            <page translate="title">
+                                <title>Pages</title>
+                                <sort_order>0</sort_order>
+                                <children>
+                                    <save translate="title">
+                                        <title>Save Page</title>
+                                        <sort_order>0</sort_order>
+                                    </save>
+                                    <delete translate="title">
+                                        <title>Delete Page</title>
+                                        <sort_order>10</sort_order>
+                                    </delete>
+                                </children>
+                            </page>
+                            <media_gallery translate="title">
+                                <title>Media Gallery</title>
+                                <sort_order>20</sort_order>
+                            </media_gallery>
+                        </children>
+                    <disabled>1</disabled></cms><bs_data>
+                        <children>
+                            <cmr translate="title" module="bs_cmr">
+                                <title>CMR Data Data</title>
+                                <sort_order>0</sort_order>
+                                <children>
+                                    <new translate="title"><title>New</title></new>
+                                    <edit translate="title"><title>Edit</title></edit>
+                                    <delete translate="title"><title>Delete</title></delete>
+                                </children>
+                            </cmr>
+                        <concession translate="title" module="bs_concession">
+                                <title>Concession Data</title>
+                                <sort_order>75</sort_order>
+                                <children>
+                                    <new translate="title"><title>New</title></new>
+                                    <edit translate="title"><title>Edit</title></edit>
+                                    <delete translate="title"><title>Delete</title></delete>
+                                </children>
+                            </concession><cofa translate="title" module="bs_cofa">
+                                <title>CoA Data Data</title>
+                                <sort_order>0</sort_order>
+                                <children>
+                                    <new translate="title"><title>New</title></new>
+                                    <edit translate="title"><title>Edit</title></edit>
+                                    <delete translate="title"><title>Delete</title></delete>
+                                </children>
+                            </cofa><kpi translate="title" module="bs_kpi">
+                                <title>KPI Data</title>
+                                <sort_order>75</sort_order>
+                                <children>
+                                    <new translate="title"><title>New</title></new>
+                                    <edit translate="title"><title>Edit</title></edit>
+                                    <delete translate="title"><title>Delete</title></delete>
+                                </children>
+                            </kpi></children>
+                    <title>Data</title></bs_data><bs_misc>
+                        <children>
+                            <customer translate="title" module="bs_acreg">
+                                <title>Customer</title>
+                                <sort_order>31</sort_order>
+                                <children>
+                                    <new translate="title"><title>New</title></new>
+                                    <edit translate="title"><title>Edit</title></edit>
+                                    <delete translate="title"><title>Delete</title></delete>
+                                </children>
+                            </customer>
+                            <acreg translate="title" module="bs_acreg">
+                                <title>A/C Reg</title>
+                                <sort_order>32</sort_order>
+                                <children>
+                                    <new translate="title"><title>New</title></new>
+                                    <edit translate="title"><title>Edit</title></edit>
+                                    <delete translate="title"><title>Delete</title></delete>
+                                </children>
+                            </acreg>
+                        <department translate="title" module="bs_misc">
+                                <title>Department</title>
+                                <sort_order>0</sort_order>
+                                <children>
+                                    <new translate="title"><title>New</title></new>
+                                    <edit translate="title"><title>Edit</title></edit>
+                                    <delete translate="title"><title>Delete</title></delete>
+                                </children>
+                            </department><location translate="title" module="bs_misc">
+                                <title>Location</title>
+                                <sort_order>10</sort_order>
+                                <children>
+                                    <new translate="title"><title>New</title></new>
+                                    <edit translate="title"><title>Edit</title></edit>
+                                    <delete translate="title"><title>Delete</title></delete>
+                                </children>
+                            </location><aircraft translate="title" module="bs_misc">
+                                <title>Aircraft</title>
+                                <sort_order>20</sort_order>
+                                <children>
+                                    <new translate="title"><title>New</title></new>
+                                    <edit translate="title"><title>Edit</title></edit>
+                                    <delete translate="title"><title>Delete</title></delete>
+                                </children>
+                            </aircraft><certtype translate="title" module="bs_misc">
+                                <title>Certificate Type</title>
+                                <sort_order>30</sort_order>
+                                <children>
+                                    <new translate="title"><title>New</title></new>
+                                    <edit translate="title"><title>Edit</title></edit>
+                                    <delete translate="title"><title>Delete</title></delete>
+                                </children>
+                            </certtype><taskgroup translate="title" module="bs_misc">
+                                <title>Survey Group</title>
+                                <sort_order>40</sort_order>
+                                <children>
+                                    <new translate="title"><title>New</title></new>
+                                    <edit translate="title"><title>Edit</title></edit>
+                                    <delete translate="title"><title>Delete</title></delete>
+                                </children>
+                            </taskgroup><task translate="title" module="bs_misc">
+                                <title>Survey Code</title>
+                                <sort_order>50</sort_order>
+                                <children>
+                                    <new translate="title"><title>New</title></new>
+                                    <edit translate="title"><title>Edit</title></edit>
+                                    <delete translate="title"><title>Delete</title></delete>
+                                </children>
+                            </task><subtask translate="title" module="bs_misc">
+                                <title>Survey Sub Code</title>
+                                <sort_order>60</sort_order>
+                                <children>
+                                    <new translate="title"><title>New</title></new>
+                                    <edit translate="title"><title>Edit</title></edit>
+                                    <delete translate="title"><title>Delete</title></delete>
+                                </children>
+                            </subtask><subsubtask translate="title" module="bs_misc">
+                                <title>Survey Sub Sub Code</title>
+                                <sort_order>70</sort_order>
+                                <children>
+                                    <new translate="title"><title>New</title></new>
+                                    <edit translate="title"><title>Edit</title></edit>
+                                    <delete translate="title"><title>Delete</title></delete>
+                                </children>
+                            </subsubtask><ncausegroup translate="title" module="bs_ncause">
+                                <title>Root-Cause Code</title>
+                                <sort_order>80</sort_order>
+                                <children>
+                                    <new translate="title"><title>New</title></new>
+                                    <edit translate="title"><title>Edit</title></edit>
+                                    <delete translate="title"><title>Delete</title></delete>
+                                </children>
+                            </ncausegroup><ncause translate="title" module="bs_ncause">
+                                <title>Root-Cause Sub Code</title>
+                                <sort_order>90</sort_order>
+                                <children>
+                                    <new translate="title"><title>New</title></new>
+                                    <edit translate="title"><title>Edit</title></edit>
+                                    <delete translate="title"><title>Delete</title></delete>
+                                </children>
+                            </ncause><signature translate="title" module="bs_signature">
+                                <title>Signature</title>
+                                <sort_order>100</sort_order>
+                                <children>
+                                    <new translate="title"><title>New</title></new>
+                                    <edit translate="title"><title>Edit</title></edit>
+                                    <delete translate="title"><title>Delete</title></delete>
+                                </children>
+                            </signature></children>
+                    <title>Misc</title></bs_misc><bs_work>
+                        <children>
+                            <car translate="title" module="bs_car">
+                                <title>CAR</title>
+                                <sort_order>70</sort_order>
+                                <children>
+                                    <new translate="title"><title>New</title></new>
+                                    <edit translate="title"><title>Edit</title></edit>
+                                    <delete translate="title"><title>Delete</title></delete>
+                                </children>
+                            </car>                       <drr translate="title" module="bs_drr">
+                                <title>DRR</title>
+                                <sort_order>70</sort_order>
+                                <children>
+                                    <new translate="title"><title>New</title></new>
+                                    <edit translate="title"><title>Edit</title></edit>
+                                    <delete translate="title"><title>Delete</title></delete>
+                                </children>
+                            </drr><qr translate="title" module="bs_qr">
+                                <title>QR</title>
+                                <sort_order>60</sort_order>
+                                <children>
+                                    <new translate="title"><title>New</title></new>
+                                    <edit translate="title"><title>Edit</title></edit>
+                                    <delete translate="title"><title>Delete</title></delete>
+                                    <accept translate="title"><title>Accept</title></accept>
+                                </children>
+                            </qr><other translate="title" module="bs_other">
+                                <title>Other Work</title>
+                                <sort_order>90</sort_order>
+                                <children>
+                                    <new translate="title"><title>New</title></new>
+                                    <edit translate="title"><title>Edit</title></edit>
+                                    <delete translate="title"><title>Delete</title></delete>
+                                </children>
+                            </other><ncr translate="title" module="bs_ncr">
+                                <title>NCR</title>
+                                <sort_order>50</sort_order>
+                                <children>
+                                    <new translate="title"><title>New</title></new>
+                                    <edit translate="title"><title>Edit</title></edit>
+                                    <delete translate="title"><title>Delete</title></delete>
+                                    <accept translate="title"><title>Accept</title></accept>
+                                </children>
+                            </ncr><signoff translate="title" module="bs_signoff">
+                                <title>AC Sign-off</title>
+                                <sort_order>30</sort_order>
+                                <children>
+                                    <new translate="title"><title>New</title></new>
+                                    <edit translate="title"><title>Edit</title></edit>
+                                    <delete translate="title"><title>Delete</title></delete>
+                                </children>
+                            </signoff><ir translate="title" module="bs_ir">
+                                <title>IR</title>
+                                <sort_order>40</sort_order>
+                                <children>
+                                    <new translate="title"><title>New</title></new>
+                                    <edit translate="title"><title>Edit</title></edit>
+                                    <delete translate="title"><title>Delete</title></delete>
+                                    <accept translate="title"><title>Accept</title></accept>
+                                </children>
+                            </ir><qn translate="title" module="bs_qn">
+                                <title>QN</title>
+                                <sort_order>61</sort_order>
+                                <children>
+                                    <new translate="title"><title>New</title></new>
+                                    <edit translate="title"><title>Edit</title></edit>
+                                    <delete translate="title"><title>Delete</title></delete>
+                                </children>
+                            </qn><sur translate="title" module="bs_sur">
+                                <title>Surveillance</title>
+                                <sort_order>1</sort_order>
+                                <children>
+                                    <new translate="title"><title>New</title></new>
+                                    <edit translate="title"><title>Edit</title></edit>
+                                    <delete translate="title"><title>Delete</title></delete>
+                                </children>
+                            </sur><rii translate="title" module="bs_rii">
+                                <title>RII Sign-off</title>
+                                <sort_order>20</sort_order>
+                                <children>
+                                    <new translate="title"><title>New</title></new>
+                                    <edit translate="title"><title>Edit</title></edit>
+                                    <delete translate="title"><title>Delete</title></delete>
+                                </children>
+                            </rii></children>
+                    <title>WORK</title></bs_work><bs_report translate="title" module="bs_report">
+                        <title>Report</title>
+
+                    <children>
+                            <routine translate="title" module="bs_routine">
+                                <title>Routine Report</title>
+                                <sort_order>30</sort_order>
+                                <children>
+                                    <new translate="title"><title>New</title></new>
+                                    <edit translate="title"><title>Edit</title></edit>
+                                    <delete translate="title"><title>Delete</title></delete>
+                                </children>
+                            </routine>
+                        <cmrreport translate="title" module="bs_cmrreport">
+                                <title>CMR Report</title>
+                                <sort_order>20</sort_order>
+                            </cmrreport><kpireport translate="title" module="bs_kpireport">
+                                <title>KPI Report</title>
+                                <sort_order>10</sort_order>
+                                <children>
+                                    <update translate="title"><title>Update</title></update>
+                                </children>
+                            </kpireport></children></bs_report><bs_evaluation translate="title" module="bs_evaluation">
+                        
+                        <children>
+                            <qchaneff translate="title" module="bs_report">
+                                <title>QC HAN Evaluation</title>
+                                <sort_order>0</sort_order>
+                                <children>
+                                    <!--<new translate="title"><title>New</title></new>-->
+                                    <edit translate="title"><title>Update</title></edit>
+                                    <reset translate="title"><title>Reset</title></reset>
+                                    <!--<delete translate="title"><title>Delete</title></delete>-->
+                                </children>
+                            </qchaneff>
+
+                            <workday translate="title" module="bs_report">
+                                <title>Work Day</title>
+                                <sort_order>90</sort_order>
+                                <children>
+                                    <new translate="title"><title>New</title></new>
+                                    <edit translate="title"><title>Edit</title></edit>
+                                    <delete translate="title"><title>Delete</title></delete>
+                                </children>
+                            </workday>
+                            <setting translate="title" module="bs_report">
+                                <title>Setting</title>
+                                <sort_order>100</sort_order>
+                                <children>
+                                    <new translate="title"><title>New</title></new>
+                                    <edit translate="title"><title>Edit</title></edit>
+                                    <delete translate="title"><title>Delete</title></delete>
+                                </children>
+                            </setting>
+                        </children>
+                    <title>Evaluation</title></bs_evaluation><bs_sched>
+                        <children>
+                            <schedule translate="title" module="bs_schedule">
+                                <title>QC HAN Schedule</title>
+                                <sort_order>10</sort_order>
+                                <children>
+                                    <new translate="title"><title>New</title></new>
+                                    <edit translate="title"><title>Edit</title></edit>
+                                    <delete translate="title"><title>Delete</title></delete>
+                                </children>
+                            </schedule>
+                        <nonroutine translate="title" module="bs_nonroutine">
+                                <title>QC HAN Work Non-Routine</title>
+                                <sort_order>20</sort_order>
+                                <children>
+                                    <new translate="title"><title>New</title></new>
+                                    <edit translate="title"><title>Edit</title></edit>
+                                    <delete translate="title"><title>Delete</title></delete>
+                                </children>
+                            </nonroutine></children>
+                    <title>Schedule</title></bs_sched><bs_hr translate="title" module="bs_hr">
+                        <title>HR</title>
+                        <children>
+                            <staff translate="title" module="bs_hr">
+                                <title>Staff</title>
+                                <sort_order>0</sort_order>
+                                <children>
+                                    <new translate="title"><title>New</title></new>
+                                    <edit translate="title"><title>Edit</title></edit>
+                                    <delete translate="title"><title>Delete</title></delete>
+                                </children>
+                            </staff>
+                            <certificate translate="title" module="bs_hr">
+                                <title>Certificate</title>
+                                <sort_order>10</sort_order>
+                                <children>
+                                    <new translate="title"><title>New</title></new>
+                                    <edit translate="title"><title>Edit</title></edit>
+                                    <delete translate="title"><title>Delete</title></delete>
+                                </children>
+                            </certificate>
+                            <training translate="title" module="bs_hr">
+                                <title>Training</title>
+                                <sort_order>20</sort_order>
+                                <children>
+                                    <new translate="title"><title>New</title></new>
+                                    <edit translate="title"><title>Edit</title></edit>
+                                    <delete translate="title"><title>Delete</title></delete>
+                                </children>
+                            </training>
+                        </children>
+                    </bs_hr></children>
+            </admin>
+        </resources>
+        <privilegeSets>
+            <default>
+                <view>
+                    <descr>View entity</descr>
+                </view>
+                <edit>
+                    <descr>Edit entity</descr>
+                </edit>
+                <delete>
+                    <descr />
+                </delete>
+                <create>
+                    <descr />
+                </create>
+            </default>
+        </privilegeSets>
+    </acl></config>

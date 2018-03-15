@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * BS_Setting extension
+ * 
+ * @category       BS
+ * @package        BS_Setting
+ * @copyright      Copyright (c) 2017
+ */
+-->
+<config>
+    <acl>
+        <resources>
+            <admin>
+                <children>
+                    <system>
+                        <children>
+                            <config>
+                                <children>
+                                    <bs_setting translate="title" module="bs_setting">
+                                        <title>Setting</title>
+                                    </bs_setting>
+                                </children>
+                            </config>
+                        </children>
+                    </system>
+                    <system>
+                        <children>
+                            <field translate="title" module="bs_setting">
+                                <title>Field Dependance</title>
+                                <sort_order>40</sort_order>
+                                <children>
+                                    <new translate="title"><title>New</title></new>
+                                    <edit translate="title"><title>Edit</title></edit>
+                                    <delete translate="title"><title>Delete</title></delete>
+                                </children>
+                            </field>
+                        </children>
+                    </system>
+
+                </children>
+            </admin>
+        </resources>
+    </acl>
+    <menu>
+        <system>
+            <children>
+                <field translate="title" module="bs_setting">
+                    <title>Field Dependance</title>
+                    <action>adminhtml/setting_field</action>
+                    <sort_order>40</sort_order>
+                </field>
+            </children>
+        </system>
+
+    </menu>
+</config>

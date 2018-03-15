@@ -1,0 +1,88 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * BS_Cmr extension
+ * 
+ * @category       BS
+ * @package        BS_Cmr
+ * @copyright      Copyright (c) 2017
+ */
+--> 
+<layout>
+    <adminhtml_cmr_cmr_index>
+        <reference name="menu">
+            <action method="setActive">
+                <menupath>bs_data/cmr</menupath>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="bs_cmr/adminhtml_cmr" name="cmr" />
+
+        </reference>
+    </adminhtml_cmr_cmr_index>
+    <adminhtml_cmr_cmr_grid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_cmr/adminhtml_cmr_grid" name="cmr_grid"/>
+        </block>
+    </adminhtml_cmr_cmr_grid>
+    <!-- Cmr add/edit action -->
+    <adminhtml_cmr_cmr_edit>
+        <update handle="editor"/>
+        <reference name="menu">
+            <action method="setActive">
+                <menupath>bs_data/cmr</menupath>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="bs_cmr/adminhtml_cmr_edit" name="cmr_edit"></block>
+        </reference>
+        <reference name="left">
+            <block type="bs_cmr/adminhtml_cmr_edit_tabs" name="cmr_tabs"></block>
+        </reference>
+    </adminhtml_cmr_cmr_edit>
+
+    <adminhtml_cmr_cmr_irs>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_cmr/adminhtml_cmr_edit_tab_ir" name="cmr.edit.tab.ir"/>
+        </block>
+    </adminhtml_cmr_cmr_irs>
+    <adminhtml_cmr_cmr_irsgrid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_cmr/adminhtml_cmr_edit_tab_ir" name="cmr.edit.tab.ir"/>
+        </block>
+    </adminhtml_cmr_cmr_irsgrid>
+
+    <adminhtml_cmr_cmr_ncrs>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_cmr/adminhtml_cmr_edit_tab_ncr" name="cmr.edit.tab.ncr"/>
+        </block>
+    </adminhtml_cmr_cmr_ncrs>
+    <adminhtml_cmr_cmr_ncrsgrid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_cmr/adminhtml_cmr_edit_tab_ncr" name="cmr.edit.tab.ncr"/>
+        </block>
+    </adminhtml_cmr_cmr_ncrsgrid>
+
+    <adminhtml_cmr_cmr_qrs>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_cmr/adminhtml_cmr_edit_tab_qrr" name="cmr.edit.tab.qr"/>
+        </block>
+    </adminhtml_cmr_cmr_qrs>
+    <adminhtml_cmr_cmr_qrsgrid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_cmr/adminhtml_cmr_edit_tab_qr" name="cmr.edit.tab.qr"/>
+        </block>
+    </adminhtml_cmr_cmr_qrsgrid>
+
+    <adminhtml_cmr_cmr_drrs>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_cmr/adminhtml_cmr_edit_tab_drr" name="cmr.edit.tab.drr"/>
+        </block>
+    </adminhtml_cmr_cmr_drrs>
+    <adminhtml_cmr_cmr_drrsgrid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_cmr/adminhtml_cmr_edit_tab_drr" name="cmr.edit.tab.drr"/>
+        </block>
+    </adminhtml_cmr_cmr_drrsgrid>
+
+</layout>

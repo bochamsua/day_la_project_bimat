@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <BackupGuard_BackupGuardPlatinum>
+        	<active>true</active>
+        	<codePool>community</codePool>
+        </BackupGuard_BackupGuardPlatinum>
+    </modules>
+</config>

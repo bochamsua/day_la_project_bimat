@@ -1,0 +1,84 @@
+<?php
+require_once(SG_BACKUP_PATH.'SGBackupSchedule.php');
+$allSchedules = SGBackupSchedule::getAllSchedules();
+?>
+<div id="sg-content-wrapper">
+    <div class="container-fluid">
+        <div class="sg-schedule-container">
+            <fieldset>
+                <legend><?php echo _t('Schedules')?></legend>
+                <button class="pull-left btn btn-success" data-toggle="modal" data-modal-name="create-schedule" data-remote="modalCreateSchedule"><i class="glyphicon glyphicon-plus"></i> <?php _t('Create schedule')?></button>
+                <div class="clearfix"></div><br/>
+                <table class="table table-striped paginated sg-backup-table">
+                    <thead>
+                    <tr>
+                        <th><?php _t('Label')?></th>
+                        <th><?php _t('Recurrence')?></th>
+                        <th><?php _t('Execution date')?></th>
+                        <th><?php _t('Backup options')?></th>
+                        <th><?php _t('Upload to')?></th>
+                        <th><?php _t('Status')?></th>
+                        <th><?php _t('Actions')?></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        <?php if(empty($allSchedules)): ?>
+                            <tr>
+                                <td colspan="7"><?php _t('No schedules found.')?></td>
+                            </tr>
+                        <?php endif; ?>
+                        <?php foreach ($allSchedules as $schedule):
+
+                            $backupOptions = backupGuardParseBackupOptions($schedule);
+                        ?>
+
+                            <tr>
+                                <td><?php echo $schedule['label']?></td>
+                                <td><?php echo $schedule['recurrence']?></td>
+                                <td><?php echo @date('Y-m-d H:i:s', $schedule['executionDate'])?></td>
+                                <td>
+                                    <?php
+                                        if (!$backupOptions['isCustomBackup']) {
+                                            echo 'Full';
+                                        }
+                                        else {
+                                            if ($backupOptions['isDatabaseSelected']) {
+                                                echo 'DB';
+                                            }
+                                            if ($backupOptions['isFilesSelected']) {
+                                                $selectedDirectories = explode(',', SG_BACKUP_FILE_PATHS);
+
+                                                foreach ($selectedDirectories as $directory) {
+                                                    if($directory == 'wp-content' && in_array($directory, $backupOptions['selectedDirectories'])) {
+                                                        echo 'wp-content ';
+                                                    }
+                                                    elseif ($directory != 'wp-content' && !in_array($directory, $backupOptions['excludeDirectories'])){
+                                                        echo str_replace('wp-content/', ', ', $directory);
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    ?>
+                                </td>
+                                <td>
+                                    <?php
+                                        foreach ($backupOptions['selectedClouds'] as $cloud) {
+                                            echo '<span class="btn-xs sg-status-icon sg-status-3'.$cloud.' active">&nbsp;</span>';
+                                        }
+                                    ?>
+                                </td>
+                                <td><?php echo $schedule['status']==SG_SHCEDULE_STATUS_PENDING?'Pending':'Inactive'?></td>
+                                <td>
+                                    <button data-toggle="modal" data-modal-name="create-schedule" data-remote="modalCreateSchedule" data-sgbp-params="<?php echo $schedule['id']?>" class="btn btn-primary btn-xs" title="<?php _t('Edit')?>">&nbsp;<i class="glyphicon glyphicon-pencil" aria-hidden="true"></i>&nbsp;</button>
+                                    <button onclick="sgBackup.removeSchedule(<?php echo $schedule['id']?>)" class="btn btn-danger btn-xs" title="<?php _t('Delete')?>">&nbsp;<i class="glyphicon glyphicon-remove" aria-hidden="true"></i>&nbsp;</button>
+                                </td>
+                            </tr>
+                        <?php endforeach; ?>
+                    </tbody>
+                </table>
+                <div class="text-right">
+                    <ul class="pagination"></ul>
+                </div>
+            </fieldset>
+        </div>
+    </div>

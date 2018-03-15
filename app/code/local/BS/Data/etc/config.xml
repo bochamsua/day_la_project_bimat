@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * BS_QC extension
+ * 
+ * @category       BS
+ * @package        BS_QC
+ * @copyright      Copyright (c) 2016
+ */
+-->
+<config>
+    <modules>
+        <bs_data>
+            <version>1.0.0</version>
+        </bs_data>
+    </modules>
+    <global>
+        <helpers>
+            <bs_data>
+                <class>BS_Data_Helper</class>
+            </bs_data>
+        </helpers>
+
+    </global>
+    <admin>
+        <routers>
+            <adminhtml>
+                <args>
+                    <modules>
+                        <bs_data before="Mage_Adminhtml">BS_Data_Adminhtml</bs_data>
+                    </modules>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin>
+</config>

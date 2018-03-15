@@ -1,0 +1,77 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * BS_Investigation extension
+ * 
+ * @category       BS
+ * @package        BS_Investigation
+ * @copyright      Copyright (c) 2016
+ */
+--> 
+<layout>
+    <adminhtml_ir_ir_index>
+        <reference name="menu">
+            <action method="setActive">
+                <menupath>bs_work/ir</menupath>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="bs_ir/adminhtml_ir" name="ir" />
+
+        </reference>
+    </adminhtml_ir_ir_index>
+    <adminhtml_ir_ir_grid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_ir/adminhtml_ir_grid" name="ir_grid"/>
+        </block>
+    </adminhtml_ir_ir_grid>
+    <!-- Investigation add/edit action -->
+    <adminhtml_ir_ir_edit>
+        <update handle="editor"/>
+        <reference name="menu">
+            <action method="setActive">
+                <menupath>bs_work/ir</menupath>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="bs_ir/adminhtml_ir_edit" name="ir_edit"></block>
+        </reference>
+        <reference name="left">
+            <block type="bs_ir/adminhtml_ir_edit_tabs" name="ir_tabs"></block>
+        </reference>
+    </adminhtml_ir_ir_edit>
+
+    <adminhtml_ir_ir_ncrs>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_ir/adminhtml_ir_edit_tab_ncr" name="cofa.edit.tab.ncr"/>
+        </block>
+    </adminhtml_ir_ir_ncrs>
+    <adminhtml_ir_ir_ncrsgrid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_ir/adminhtml_ir_edit_tab_ncr" name="cofa.edit.tab.ncr"/>
+        </block>
+    </adminhtml_ir_ir_ncrsgrid>
+
+    <adminhtml_ir_ir_qrs>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_ir/adminhtml_ir_edit_tab_qr" name="cofa.edit.tab.qr"/>
+        </block>
+    </adminhtml_ir_ir_qrs>
+    <adminhtml_ir_ir_qrsgrid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_ir/adminhtml_ir_edit_tab_qr" name="cofa.edit.tab.qr"/>
+        </block>
+    </adminhtml_ir_ir_qrsgrid>
+
+    <adminhtml_ir_ir_drrs>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_ir/adminhtml_ir_edit_tab_drr" name="cofa.edit.tab.drr"/>
+        </block>
+    </adminhtml_ir_ir_drrs>
+    <adminhtml_ir_ir_drrsgrid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_ir/adminhtml_ir_edit_tab_drr" name="cofa.edit.tab.drr"/>
+        </block>
+    </adminhtml_ir_ir_drrsgrid>
+
+</layout>

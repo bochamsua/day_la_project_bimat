@@ -1,0 +1,239 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     default_default
+ * @copyright   Copyright (c) 2013 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+<?php
+    $user = Mage::getSingleton('admin/session')->getUser();
+    $adminUserId = $user->getUserId();
+    $roleId = Mage::getModel('admin/user')->load($adminUserId)->getRole()->getRoleId();
+?>
+<div class="dashboard-w">
+    <div class="content-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6 col-xs-12 admin-page-title">
+                    <h3 class="header-title head-dashboard"><?php echo $this->__('Dashboard') ?></h3>
+                    <span class="header-subtitle">
+                    <?php
+
+                        $name = $user->getFirstname().' '.$user->getLastname();
+
+                        echo sprintf("Aloha! %s. %s", $name, $this->formatDate(null, 'short'));
+                    ?>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="dashboard-container">
+        <?php /* ?>
+        <div class="container">
+            <div class="row">
+                <?php //echo $this->getChildHtml('sales') ?>
+                <div class="col-md-6 col-sm-6 col-xs-12 top-report customer-number">
+                    <?php
+
+                    ?>
+                    <div class="top-report-head">
+                        <h4><?php echo $this->__('Important Notices');?></h4>
+                    </div>
+                    <div class="cms top-report-content">
+                        <div class="row">
+                            <div class="col-xs-3 top-report-icon">
+                                <i class="fa fa-eye"></i>
+                                sadsa
+                            </div>
+                            <div class="col-xs-3 top-report-value">
+                                <?php //echo count($user); ?>
+                                sadasda
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-sm-6 col-xs-12 top-report visitor-online">
+                    <div class="top-report-head">
+                        <h4><?php echo $this->__('Require Action Immediately');?></h4>
+                    </div>
+                    <div class="cms top-report-content">
+                        <div class="row">
+                            <div class="col-xs-3 top-report-icon">
+                                <i class="fa fa-eye"></i>
+                            </div>
+                            <div class="col-xs-9 top-report-value">
+                                Urgent!
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> <?php */ ?>
+        <div class="container recent-last-order">
+            <div class="row">
+                <div class="col-sm-6 col-xs-12 recent-activity">
+                    <div class="dashboard-header">
+                        <span class="db-header-icon ti-calendar"></span>
+                        <span class="db-header-title"><?php echo $this->__('Surveillance');?></span>
+                        <div class="buttons">
+                            <button type="button" class="scalable add" onclick="setLocation('<?php echo $this->getUrl('*/surhcm_line/new')?>')" style=""><span><span><span>Line</span></span></span></button>
+                            <button type="button" class="scalable add" onclick="setLocation('<?php echo $this->getUrl('*/surhcm_base/new')?>')" style=""><span><span><span>Base</span></span></span></button>
+                            <button type="button" class="scalable add" onclick="setLocation('<?php echo $this->getUrl('*/surhcm_shop/new')?>')" style=""><span><span><span>CMC</span></span></span></button>
+                            <button type="button" class="scalable add" onclick="setLocation('<?php echo $this->getUrl('*/surhcm_cimc/new')?>')" style=""><span><span><span>CIMC</span></span></span></button>
+                            <button type="button" class="scalable add" onclick="setLocation('<?php echo $this->getUrl('*/surhcm_cmr/new')?>')" style=""><span><span><span>CMR</span></span></span></button>
+                            <button type="button" class="scalable add" onclick="setLocation('<?php echo $this->getUrl('*/surhcm_cofa/new')?>')" style=""><span><span><span>C of A</span></span></span></button>
+
+                        </div>
+                    </div>
+                    <div class="dashboard-header">
+                        <span class="db-header-icon ti-calendar"></span>
+                        <span class="db-header-title"><?php echo $this->__('RII Sign-off');?></span>
+                        <div class="buttons">
+                            <button type="button" class="scalable add" onclick="setLocation('<?php echo $this->getUrl('*/riihcm_rii/new')?>')" style=""><span><span><span>New RII Sign-off</span></span></span></button>
+                        </div>
+                    </div>
+                    <div class="dashboard-header">
+                        <span class="db-header-icon ti-calendar"></span>
+                        <span class="db-header-title"><?php echo $this->__('Sign-off Check');?></span>
+                        <div class="buttons">
+                            <button type="button" class="scalable add" onclick="setLocation('<?php echo $this->getUrl('*/signoffhcm_signoff/new')?>')" style=""><span><span><span>New Sign-off Check</span></span></span></button>
+                        </div>
+                    </div>
+                    <div class="dashboard-header">
+                        <span class="db-header-icon ti-calendar"></span>
+                        <span class="db-header-title"><?php echo $this->__('Investigation');?></span>
+                        <div class="buttons">
+                            <button type="button" class="scalable add" onclick="setLocation('<?php echo $this->getUrl('*/irhcm_investigation/new')?>')" style=""><span><span><span>New Investigation</span></span></span></button>
+                        </div>
+                    </div>
+                    <div class="dashboard-content">
+		                <?php echo $this->getChildHtml('irhcm'); ?>
+                    </div>
+
+	                <?php if($roleId == 221){ ?>
+                        <div class="dashboard-header">
+                            <span class="db-header-icon ti-alert"></span>
+                            <span class="db-header-title"><?php echo $this->__('Awaiting for Signing Investigation');?></span>
+                        </div>
+                        <div class="dashboard-content">
+			                <?php echo $this->getChildHtml('irhcmSign'); ?>
+                        </div>
+
+	                <?php } ?>
+
+
+
+                </div>
+                <div class="col-sm-6 col-xs-12">
+                    <div class="dashboard-header">
+                        <span class="db-header-icon ti-alert"></span>
+                        <span class="db-header-title"><?php echo $this->__('Your Pending NCR');?></span>
+                        <div class="buttons">
+                            <button type="button" class="scalable add" onclick="setLocation('<?php echo $this->getUrl('*/ncrhcm_ncr/new')?>')" style=""><span><span><span>New NCR</span></span></span></button>
+                        </div>
+                    </div>
+                    <div class="dashboard-content">
+                        <?php echo $this->getChildHtml('ncrhcm'); ?>
+                    </div>
+
+                    <?php if($roleId == 221){ ?>
+                    <div class="dashboard-header">
+                        <span class="db-header-icon ti-alert"></span>
+                        <span class="db-header-title"><?php echo $this->__('Awaiting for Signing NCR');?></span>
+                    </div>
+                    <div class="dashboard-content">
+                        <?php echo $this->getChildHtml('ncrhcmSign'); ?>
+                    </div>
+
+                    <?php } ?>
+
+                    <div class="dashboard-header">
+                        <span class="db-header-icon ti-face-sad"></span>
+                        <span class="db-header-title"><?php echo $this->__('Your Pending QR');?></span>
+                        <div class="buttons">
+                            <button type="button" class="scalable add" onclick="setLocation('<?php echo $this->getUrl('*/qrhcm_qrqn/new')?>')" style=""><span><span><span>New QR</span></span></span></button>
+                        </div>
+                    </div>
+                    <div class="dashboard-content">
+                        <?php echo $this->getChildHtml('qrhcm'); ?>
+                    </div>
+
+                    <?php if($roleId == 221){ ?>
+                        <div class="dashboard-header">
+                            <span class="db-header-icon ti-face-sad"></span>
+                            <span class="db-header-title"><?php echo $this->__('Awaiting for Signing QR');?></span>
+                        </div>
+                        <div class="dashboard-content">
+                            <?php echo $this->getChildHtml('qrhcmSign'); ?>
+                        </div>
+
+                    <?php } ?>
+
+
+                    <div class="dashboard-header">
+                        <span class="db-header-icon ti-face-smile"></span>
+                        <span class="db-header-title"><?php echo $this->__('Your Pending DRR');?></span>
+                        <div class="buttons">
+                            <button type="button" class="scalable add" onclick="setLocation('<?php echo $this->getUrl('*/drrhcm_car/new')?>')" style=""><span><span><span>New DRR</span></span></span></button>
+                        </div>
+                    </div>
+                    <div class="dashboard-content">
+                        <?php echo $this->getChildHtml('drrhcm'); ?>
+                    </div>
+
+                    <?php if($roleId == 221){ ?>
+                        <div class="dashboard-header">
+                            <span class="db-header-icon ti-face-smile"></span>
+                            <span class="db-header-title"><?php echo $this->__('Awaiting for Signing DRR');?></span>
+
+                        </div>
+                        <div class="dashboard-content">
+                            <?php echo $this->getChildHtml('drrhcmSign'); ?>
+                        </div>
+
+                    <?php } ?>
+                </div>
+            </div>
+        </div>
+        <?php /* ?>
+        <div class="container top-views-overviews">
+            <div class="row">
+                <div class="col-lg-12 col-xs-12">
+                    <div class="db-overviews-w">
+                        <div class="dashboard-header">
+                            <span class="db-header-icon ti-view-list-alt"></span>
+                            <span class="db-header-title"><?php echo $this->__('Overviews');?></span>
+
+                        </div>
+                        <div class="dashboard-content">
+                            <?php echo $this->getChildHtml('grids') ?>
+                            <div id="grid_tab_content"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <?php */ ?>
+    </div>
+</div>

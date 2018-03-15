@@ -1,0 +1,86 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * BS_Rii extension
+ * 
+ * @category       BS
+ * @package        BS_Rii
+ * @copyright      Copyright (c) 2016
+ */
+-->
+<config>
+    <modules>
+        <BS_Rii>
+            <version>1.0.2</version>
+        </BS_Rii>
+    </modules>
+    <global>
+        <resources>
+            <bs_rii_setup>
+                <setup>
+                    <module>BS_Rii</module>
+                    <class>BS_Rii_Model_Resource_Setup</class>
+                </setup>
+            </bs_rii_setup>
+        </resources>
+        <blocks>
+            <bs_rii>
+                <class>BS_Rii_Block</class>
+            </bs_rii>
+        </blocks>
+        <helpers>
+            <bs_rii>
+                <class>BS_Rii_Helper</class>
+            </bs_rii>
+        </helpers>
+        <models>
+            <bs_rii>
+                <class>BS_Rii_Model</class>
+                <resourceModel>bs_rii_resource</resourceModel>
+            </bs_rii>
+            <bs_rii_resource>
+                <class>BS_Rii_Model_Resource</class>
+                <entities>
+                    <rii>
+                        <table>bs_rii_rii</table>
+                    </rii>
+                </entities>
+            </bs_rii_resource>
+        </models>
+    </global>
+    <adminhtml>
+        <layout>
+            <updates>
+                <bs_rii>
+                    <file>bs_rii.xml</file>
+                </bs_rii>
+            </updates>
+        </layout>
+        <translate>
+            <modules>
+                <BS_Rii>
+                    <files>
+                        <default>BS_Rii.csv</default>
+                    </files>
+                </BS_Rii>
+            </modules>
+        </translate>
+        <global_search>
+            <rii>
+                <class>bs_rii/adminhtml_search_rii</class>
+                <acl>bs_rii</acl>
+            </rii>
+        </global_search>
+    </adminhtml>
+    <admin>
+        <routers>
+            <adminhtml>
+                <args>
+                    <modules>
+                        <BS_Rii before="Mage_Adminhtml">BS_Rii_Adminhtml</BS_Rii>
+                    </modules>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin>
+</config>

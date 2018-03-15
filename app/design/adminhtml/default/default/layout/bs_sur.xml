@@ -1,0 +1,111 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * BS_Sur extension
+ * 
+ * @category       BS
+ * @package        BS_Sur
+ * @copyright      Copyright (c) 2017
+ */
+--> 
+<layout>
+    <adminhtml_sur_sur_index>
+        <reference name="menu">
+            <action method="setActive">
+                <menupath>bs_work/sur</menupath>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="bs_sur/adminhtml_sur" name="sur" />
+
+        </reference>
+    </adminhtml_sur_sur_index>
+    <adminhtml_sur_sur_grid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_sur/adminhtml_sur_grid" name="sur_grid"/>
+        </block>
+    </adminhtml_sur_sur_grid>
+    <!-- Sur add/edit action -->
+    <adminhtml_sur_sur_edit>
+        <update handle="editor"/>
+        <reference name="menu">
+            <action method="setActive">
+                <menupath>bs_work/sur</menupath>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="bs_sur/adminhtml_sur_edit" name="sur_edit"></block>
+        </reference>
+        <reference name="left">
+            <block type="bs_sur/adminhtml_sur_edit_tabs" name="sur_tabs"></block>
+        </reference>
+    </adminhtml_sur_sur_edit>
+
+
+    <adminhtml_sur_sur_irs>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_sur/adminhtml_sur_edit_tab_ir" name="sur.edit.tab.ir"/>
+        </block>
+    </adminhtml_sur_sur_irs>
+    <adminhtml_sur_sur_irsgrid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_sur/adminhtml_sur_edit_tab_ir" name="sur.edit.tab.ir"/>
+        </block>
+    </adminhtml_sur_sur_irsgrid>
+
+    <adminhtml_sur_sur_ncrs>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_sur/adminhtml_sur_edit_tab_ncr" name="sur.edit.tab.ncr"/>
+        </block>
+    </adminhtml_sur_sur_ncrs>
+    <adminhtml_sur_sur_ncrsgrid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_sur/adminhtml_sur_edit_tab_ncr" name="sur.edit.tab.ncr"/>
+        </block>
+    </adminhtml_sur_sur_ncrsgrid>
+
+    <adminhtml_sur_sur_qrs>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_sur/adminhtml_sur_edit_tab_qr" name="sur.edit.tab.qr"/>
+        </block>
+    </adminhtml_sur_sur_qrs>
+    <adminhtml_sur_sur_qrsgrid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_sur/adminhtml_sur_edit_tab_qr" name="sur.edit.tab.qr"/>
+        </block>
+    </adminhtml_sur_sur_qrsgrid>
+
+    <adminhtml_sur_sur_qns>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_sur/adminhtml_sur_edit_tab_qn" name="sur.edit.tab.qn"/>
+        </block>
+    </adminhtml_sur_sur_qns>
+    <adminhtml_sur_sur_qnsgrid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_sur/adminhtml_sur_edit_tab_qn" name="sur.edit.tab.qn"/>
+        </block>
+    </adminhtml_sur_sur_qnsgrid>
+
+    <adminhtml_sur_sur_cars>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_sur/adminhtml_sur_edit_tab_car" name="sur.edit.tab.car"/>
+        </block>
+    </adminhtml_sur_sur_cars>
+    <adminhtml_sur_sur_carsgrid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_sur/adminhtml_sur_edit_tab_car" name="sur.edit.tab.car"/>
+        </block>
+    </adminhtml_sur_sur_carsgrid>
+
+    <adminhtml_sur_sur_drrs>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_sur/adminhtml_sur_edit_tab_drr" name="sur.edit.tab.drr"/>
+        </block>
+    </adminhtml_sur_sur_drrs>
+    <adminhtml_sur_sur_drrsgrid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_sur/adminhtml_sur_edit_tab_drr" name="sur.edit.tab.drr"/>
+        </block>
+    </adminhtml_sur_sur_drrsgrid>
+
+</layout>

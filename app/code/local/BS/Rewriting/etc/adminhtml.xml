@@ -1,0 +1,92 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * BS_Report extension
+ * 
+ * @category       BS
+ * @package        BS_Report
+ * @copyright      Copyright (c) 2017
+ */
+-->
+<config>
+    <acl>
+        <resources>
+            <admin>
+                <children>
+                    <cms>
+                        <disabled>1</disabled>
+                    </cms>
+                    <system>
+                        <children>
+                            <config>
+                                <children>
+                                    <bs_rewriting translate="title" module="bs_rewriting">
+                                        <title>Rewriting</title>
+                                    </bs_rewriting>
+                                </children>
+                            </config>
+                            <store>
+                                <disabled>1</disabled>
+                            </store>
+                            <design>
+                                <disabled>1</disabled>
+                            </design>
+                            <currency>
+                                <disabled>1</disabled>
+                            </currency>
+                            <tools>
+                                <disabled>1</disabled>
+                            </tools>
+                            <convert>
+                                <disabled>1</disabled>
+                            </convert>
+                            <extensions>
+                                <disabled>1</disabled>
+                            </extensions>
+                            <email_template>
+                                <disabled>1</disabled>
+                            </email_template>
+                            <variable>
+                                <disabled>1</disabled>
+                            </variable>
+                            <config>
+                                <disabled>1</disabled>
+                            </config>
+                        </children>
+                    </system>
+
+                </children>
+            </admin>
+        </resources>
+    </acl>
+    <menu>
+        <system>
+            <children>
+                <tools>
+                    <disabled>1</disabled>
+                </tools>
+                <design>
+                    <disabled>1</disabled>
+                </design>
+                <convert>
+                    <disabled>1</disabled>
+                </convert>
+                <currency>
+                    <disabled>1</disabled>
+                </currency>
+                <email_template>
+                    <disabled>1</disabled>
+                </email_template>
+                <variable>
+                    <disabled>1</disabled>
+                </variable>
+                <store>
+                    <disabled>1</disabled>
+                </store>
+            </children>
+        </system>
+        <cms>
+            <disabled>1</disabled>
+        </cms>
+    </menu>
+</config>

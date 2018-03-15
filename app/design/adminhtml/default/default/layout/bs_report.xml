@@ -1,0 +1,113 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * BS_Report extension
+ * 
+ * @category       BS
+ * @package        BS_Report
+ * @copyright      Copyright (c) 2017
+ */
+--> 
+<layout>
+    <adminhtml_report_qchaneff_index>
+        <reference name="menu">
+            <action method="setActive">
+                <menupath>bs_evaluation/qchaneff</menupath>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="bs_report/adminhtml_qchaneff" name="qchaneff" template="report/grid/container.phtml" >
+                <block type="bs_report/adminhtml_filter_form" name="grid.filter.form" />
+            </block>
+
+        </reference>
+    </adminhtml_report_qchaneff_index>
+    <adminhtml_report_qchaneff_grid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_report/adminhtml_qchaneff_grid" name="qchaneff_grid"/>
+        </block>
+    </adminhtml_report_qchaneff_grid>
+    <!-- Qchaneff add/edit action -->
+    <adminhtml_report_qchaneff_edit>
+        <update handle="editor"/>
+        <reference name="menu">
+            <action method="setActive">
+                <menupath>bs_evaluation/qchaneff</menupath>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="bs_report/adminhtml_qchaneff_edit" name="qchaneff_edit"></block>
+        </reference>
+        <reference name="left">
+            <block type="bs_report/adminhtml_qchaneff_edit_tabs" name="qchaneff_tabs"></block>
+        </reference>
+    </adminhtml_report_qchaneff_edit>
+
+    <adminhtml_report_setting_index>
+        <reference name="menu">
+            <action method="setActive">
+                <menupath>bs_evaluation/setting</menupath>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="bs_report/adminhtml_setting" name="setting" />
+
+        </reference>
+    </adminhtml_report_setting_index>
+    <adminhtml_report_setting_grid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_report/adminhtml_setting_grid" name="setting_grid"/>
+        </block>
+    </adminhtml_report_setting_grid>
+    <!-- Setting add/edit action -->
+    <adminhtml_report_setting_edit>
+        <update handle="editor"/>
+        <reference name="menu">
+            <action method="setActive">
+                <menupath>bs_evaluation/setting</menupath>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="bs_report/adminhtml_setting_edit" name="setting_edit"></block>
+        </reference>
+        <reference name="left">
+            <block type="bs_report/adminhtml_setting_edit_tabs" name="setting_tabs"></block>
+        </reference>
+    </adminhtml_report_setting_edit>
+
+    <adminhtml_report_workday_index>
+        <reference name="menu">
+            <action method="setActive">
+                <menupath>bs_evaluation/workday</menupath>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="bs_report/adminhtml_workday" name="workday" template="report/grid/container.phtml" >
+                <block type="bs_report/adminhtml_filter_workdayform" name="grid.filter.form" />
+            </block>
+
+
+        </reference>
+    </adminhtml_report_workday_index>
+    <adminhtml_report_workday_grid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_report/adminhtml_workday_grid" name="workday_grid"/>
+        </block>
+    </adminhtml_report_workday_grid>
+    <!-- Workday add/edit action -->
+    <adminhtml_report_workday_edit>
+        <update handle="editor"/>
+        <reference name="menu">
+            <action method="setActive">
+                <menupath>bs_evaluation/workday</menupath>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="bs_report/adminhtml_workday_edit" name="workday_edit"></block>
+        </reference>
+        <reference name="left">
+            <block type="bs_report/adminhtml_workday_edit_tabs" name="workday_tabs"></block>
+        </reference>
+    </adminhtml_report_workday_edit>
+
+</layout>

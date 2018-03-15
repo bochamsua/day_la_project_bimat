@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * BS_Cofa extension
+ * 
+ * @category       BS
+ * @package        BS_Cofa
+ * @copyright      Copyright (c) 2017
+ */
+-->
+<config>
+    <acl>
+        <resources>
+            <admin>
+                <children>
+                    <system>
+                        <children>
+                            <config>
+                                <children>
+                                    <bs_cofa translate="title" module="bs_cofa">
+                                        <title>Cofa</title>
+                                    </bs_cofa>
+                                </children>
+                            </config>
+                        </children>
+                    </system>
+                    <bs_data>
+                        <children>
+                            <cofa translate="title" module="bs_cofa">
+                                <title>CoA Data Data</title>
+                                <sort_order>0</sort_order>
+                                <children>
+                                    <new translate="title"><title>New</title></new>
+                                    <edit translate="title"><title>Edit</title></edit>
+                                    <delete translate="title"><title>Delete</title></delete>
+                                </children>
+                            </cofa>
+                        </children>
+                    </bs_data>
+
+                </children>
+            </admin>
+        </resources>
+    </acl>
+    <menu>
+        <bs_data>
+            <children>
+                <cofa translate="title" module="bs_cofa">
+                    <title>CoA Data</title>
+                    <action>adminhtml/cofa_cofa</action>
+                    <sort_order>0</sort_order>
+                </cofa>
+            </children>
+        </bs_data>
+
+    </menu>
+</config>

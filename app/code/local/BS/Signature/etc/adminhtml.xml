@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * BS_Signature extension
+ * 
+ * @category       BS
+ * @package        BS_Signature
+ * @copyright      Copyright (c) 2016
+ */
+-->
+<config>
+    <acl>
+        <resources>
+            <admin>
+                <children>
+                    <system>
+                        <children>
+                            <config>
+                                <children>
+                                    <bs_signature translate="title" module="bs_signature">
+                                        <title>Signature</title>
+                                    </bs_signature>
+                                </children>
+                            </config>
+                        </children>
+                    </system>
+                    <bs_misc>
+                        <children>
+                            <signature translate="title" module="bs_signature">
+                                <title>Signature</title>
+                                <sort_order>100</sort_order>
+                                <children>
+                                    <new translate="title"><title>New</title></new>
+                                    <edit translate="title"><title>Edit</title></edit>
+                                    <delete translate="title"><title>Delete</title></delete>
+                                </children>
+                            </signature>
+                        </children>
+                    </bs_misc>
+
+                </children>
+            </admin>
+        </resources>
+    </acl>
+    <menu>
+        <bs_misc>
+            <children>
+                <signature translate="title" module="bs_signature">
+                    <title>Signature</title>
+                    <action>adminhtml/signature_signature</action>
+                    <sort_order>100</sort_order>
+                </signature>
+            </children>
+        </bs_misc>
+
+    </menu>
+</config>

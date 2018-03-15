@@ -1,0 +1,80 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * BS_CmrReport extension
+ * 
+ * @category       BS
+ * @package        BS_CmrReport
+ * @copyright      Copyright (c) 2017
+ */
+-->
+<config>
+    <modules>
+        <BS_CmrReport>
+            <version>1.0.0</version>
+        </BS_CmrReport>
+    </modules>
+    <global>
+        <resources>
+            <bs_cmrreport_setup>
+                <setup>
+                    <module>BS_CmrReport</module>
+                    <class>BS_CmrReport_Model_Resource_Setup</class>
+                </setup>
+            </bs_cmrreport_setup>
+        </resources>
+        <blocks>
+            <bs_cmrreport>
+                <class>BS_CmrReport_Block</class>
+            </bs_cmrreport>
+        </blocks>
+        <helpers>
+            <bs_cmrreport>
+                <class>BS_CmrReport_Helper</class>
+            </bs_cmrreport>
+        </helpers>
+        <models>
+            <bs_cmrreport>
+                <class>BS_CmrReport_Model</class>
+                <resourceModel>bs_cmrreport_resource</resourceModel>
+            </bs_cmrreport>
+            <bs_cmrreport_resource>
+                <class>BS_CmrReport_Model_Resource</class>
+                <entities>
+                    <cmrreport>
+                        <table>bs_cmrreport_cmrreport</table>
+                    </cmrreport>
+                </entities>
+            </bs_cmrreport_resource>
+        </models>
+    </global>
+    <adminhtml>
+        <layout>
+            <updates>
+                <bs_cmrreport>
+                    <file>bs_cmrreport.xml</file>
+                </bs_cmrreport>
+            </updates>
+        </layout>
+        <translate>
+            <modules>
+                <BS_CmrReport>
+                    <files>
+                        <default>BS_CmrReport.csv</default>
+                    </files>
+                </BS_CmrReport>
+            </modules>
+        </translate>
+    </adminhtml>
+    <admin>
+        <routers>
+            <adminhtml>
+                <args>
+                    <modules>
+                        <BS_CmrReport before="Mage_Adminhtml">BS_CmrReport_Adminhtml</BS_CmrReport>
+                    </modules>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin>
+</config>

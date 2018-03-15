@@ -1,0 +1,71 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * BS_Acreg extension
+ * 
+ * @category       BS
+ * @package        BS_Acreg
+ * @copyright      Copyright (c) 2016
+ */
+-->
+<config>
+    <acl>
+        <resources>
+            <admin>
+                <children>
+                    <system>
+                        <children>
+                            <config>
+                                <children>
+                                    <bs_acreg translate="title" module="bs_acreg">
+                                        <title>Acreg</title>
+                                    </bs_acreg>
+                                </children>
+                            </config>
+                        </children>
+                    </system>
+                    <bs_misc>
+                        <children>
+                            <customer translate="title" module="bs_acreg">
+                                <title>Customer</title>
+                                <sort_order>31</sort_order>
+                                <children>
+                                    <new translate="title"><title>New</title></new>
+                                    <edit translate="title"><title>Edit</title></edit>
+                                    <delete translate="title"><title>Delete</title></delete>
+                                </children>
+                            </customer>
+                            <acreg translate="title" module="bs_acreg">
+                                <title>A/C Reg</title>
+                                <sort_order>32</sort_order>
+                                <children>
+                                    <new translate="title"><title>New</title></new>
+                                    <edit translate="title"><title>Edit</title></edit>
+                                    <delete translate="title"><title>Delete</title></delete>
+                                </children>
+                            </acreg>
+                        </children>
+                    </bs_misc>
+
+                </children>
+            </admin>
+        </resources>
+    </acl>
+    <menu>
+        <bs_misc>
+            <children>
+                <customer translate="title" module="bs_acreg">
+                    <title>Customer</title>
+                    <action>adminhtml/acreg_customer</action>
+                    <sort_order>31</sort_order>
+                </customer>
+                <acreg translate="title" module="bs_acreg">
+                    <title>A/C Reg</title>
+                    <action>adminhtml/acreg_acreg</action>
+                    <sort_order>32</sort_order>
+                </acreg>
+            </children>
+        </bs_misc>
+
+    </menu>
+</config>

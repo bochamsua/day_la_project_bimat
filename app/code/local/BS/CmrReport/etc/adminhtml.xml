@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * BS_CmrReport extension
+ * 
+ * @category       BS
+ * @package        BS_CmrReport
+ * @copyright      Copyright (c) 2017
+ */
+-->
+<config>
+    <acl>
+        <resources>
+            <admin>
+                <children>
+                    <system>
+                        <children>
+                            <config>
+                                <children>
+                                    <bs_cmrreport translate="title" module="bs_cmrreport">
+                                        <title>CmrReport</title>
+                                    </bs_cmrreport>
+                                </children>
+                            </config>
+                        </children>
+                    </system>
+                    <bs_report>
+                        <children>
+                            <cmrreport translate="title" module="bs_cmrreport">
+                                <title>CMR Report</title>
+                                <sort_order>20</sort_order>
+                            </cmrreport>
+                        </children>
+                    </bs_report>
+
+                </children>
+            </admin>
+        </resources>
+    </acl>
+    <menu>
+        <bs_report>
+            <children>
+                <cmrreport translate="title" module="bs_cmrreport">
+                    <title>CMR Report</title>
+                    <action>adminhtml/cmrreport_cmrreport</action>
+                    <sort_order>20</sort_order>
+                </cmrreport>
+            </children>
+        </bs_report>
+
+    </menu>
+</config>

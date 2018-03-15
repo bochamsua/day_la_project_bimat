@@ -1,0 +1,119 @@
+Date: 2018-03-15 06:54
+SG Backup version: 1.1.1
+OS: Darwin
+Server: Apache/2.4.20 (Unix) PHP/7.0.28 mod_wsgi/3.5 Python/3.5.1 OpenSSL/1.0.1p
+User agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.13; rv:59.0) Gecko/20100101 Firefox/59.0
+PHP version: 7.0.28
+SAPI: apache2handler
+Codepage: en_US.UTF-8
+Int size: 4
+Int lib: bcmath
+Memory limit: 2048M
+Max execution time: 30000
+Environment: Magento 1.9.3.2
+
+2018-03-15 06:54: Start restore
+2018-03-15 06:54: Start restore files
+2018-03-15 06:54: Number of files to restore: 1
+2018-03-15 06:54: End restore files
+2018-03-15 06:54: Start restore database
+2018-03-15 06:54: Importing table: `admin_assert`
+2018-03-15 06:54: Importing table: `admin_role`
+2018-03-15 06:54: Importing table: `admin_rule`
+2018-03-15 06:54: Importing table: `admin_user`
+2018-03-15 06:54: Importing table: `bs_acreg_acreg`
+2018-03-15 06:54: Importing table: `bs_acreg_customer`
+2018-03-15 06:54: Importing table: `bs_car_car`
+2018-03-15 06:54: Importing table: `bs_cmr_cmr`
+2018-03-15 06:54: Importing table: `bs_cmrreport_cmrreport`
+2018-03-15 06:54: Importing table: `bs_cofa_cofa`
+2018-03-15 06:54: Importing table: `bs_concession_concession`
+2018-03-15 06:54: Importing table: `bs_drr_drr`
+2018-03-15 06:54: Importing table: `bs_formtemplate_formtemplate`
+2018-03-15 06:54: Importing table: `bs_hr_certificate`
+2018-03-15 06:54: Importing table: `bs_hr_staff`
+2018-03-15 06:54: Importing table: `bs_hr_training`
+2018-03-15 06:54: Importing table: `bs_ir_ir`
+2018-03-15 06:54: Importing table: `bs_kpi_kpi`
+2018-03-15 06:54: Importing table: `bs_kpireport_kpireport`
+2018-03-15 06:54: Importing table: `bs_logger_logger`
+2018-03-15 06:54: Importing table: `bs_misc_aircraft`
+2018-03-15 06:54: Importing table: `bs_misc_certtype`
+2018-03-15 06:54: Importing table: `bs_misc_department`
+2018-03-15 06:54: Importing table: `bs_misc_location`
+2018-03-15 06:54: Importing table: `bs_misc_subsubtask`
+2018-03-15 06:54: Importing table: `bs_misc_subtask`
+2018-03-15 06:54: Importing table: `bs_misc_task`
+2018-03-15 06:54: Importing table: `bs_misc_taskgroup`
+2018-03-15 06:54: Importing table: `bs_ncause_ncause`
+2018-03-15 06:54: Importing table: `bs_ncause_ncausegroup`
+2018-03-15 06:54: Importing table: `bs_ncr_ncr`
+2018-03-15 06:54: Importing table: `bs_nonroutine_nonroutine`
+2018-03-15 06:54: Importing table: `bs_other_other`
+2018-03-15 06:54: Importing table: `bs_qn_qn`
+2018-03-15 06:54: Importing table: `bs_qr_qr`
+2018-03-15 06:54: Importing table: `bs_report_qchaneff`
+2018-03-15 06:54: Importing table: `bs_report_setting`
+2018-03-15 06:54: Importing table: `bs_report_workday`
+2018-03-15 06:54: Importing table: `bs_rii_rii`
+2018-03-15 06:54: Importing table: `bs_routine_routine`
+2018-03-15 06:54: Importing table: `bs_schedule_schedule`
+2018-03-15 06:54: Importing table: `bs_setting_field`
+2018-03-15 06:54: Importing table: `bs_signature_signature`
+2018-03-15 06:54: Importing table: `bs_signoff_signoff`
+2018-03-15 06:54: Importing table: `bs_sur_sur`
+2018-03-15 06:54: Importing table: `cms_block`
+2018-03-15 06:54: Importing table: `cms_block_store`
+2018-03-15 06:54: Importing table: `cms_page`
+2018-03-15 06:54: Importing table: `cms_page_store`
+2018-03-15 06:54: Importing table: `core_cache`
+2018-03-15 06:54: Importing table: `core_cache_option`
+2018-03-15 06:54: Importing table: `core_cache_tag`
+2018-03-15 06:54: Importing table: `core_config_data`
+2018-03-15 06:54: Importing table: `core_email_queue`
+2018-03-15 06:54: Importing table: `core_email_queue_recipients`
+2018-03-15 06:54: Importing table: `core_email_template`
+2018-03-15 06:54: Importing table: `core_flag`
+2018-03-15 06:54: Importing table: `core_layout_link`
+2018-03-15 06:54: Importing table: `core_layout_update`
+2018-03-15 06:54: Importing table: `core_resource`
+2018-03-15 06:54: Importing table: `core_session`
+2018-03-15 06:54: Importing table: `core_store`
+2018-03-15 06:54: Importing table: `core_store_group`
+2018-03-15 06:54: Importing table: `core_translate`
+2018-03-15 06:54: Importing table: `core_url_rewrite`
+2018-03-15 06:54: Importing table: `core_variable`
+2018-03-15 06:54: Importing table: `core_variable_value`
+2018-03-15 06:54: Importing table: `core_website`
+2018-03-15 06:54: Importing table: `cron_schedule`
+2018-03-15 06:54: Importing table: `design_change`
+2018-03-15 06:54: Importing table: `directory_country`
+2018-03-15 06:54: Importing table: `directory_country_format`
+2018-03-15 06:54: Importing table: `directory_country_region`
+2018-03-15 06:54: Importing table: `directory_country_region_name`
+2018-03-15 06:54: Importing table: `directory_currency_rate`
+2018-03-15 06:54: Importing table: `eav_attribute`
+2018-03-15 06:54: Importing table: `eav_attribute_group`
+2018-03-15 06:54: Importing table: `eav_attribute_label`
+2018-03-15 06:54: Importing table: `eav_attribute_option`
+2018-03-15 06:54: Importing table: `eav_attribute_option_value`
+2018-03-15 06:54: Importing table: `eav_attribute_set`
+2018-03-15 06:54: Importing table: `eav_entity`
+2018-03-15 06:54: Importing table: `eav_entity_attribute`
+2018-03-15 06:54: Importing table: `eav_entity_datetime`
+2018-03-15 06:54: Importing table: `eav_entity_decimal`
+2018-03-15 06:54: Importing table: `eav_entity_int`
+2018-03-15 06:54: Importing table: `eav_entity_store`
+2018-03-15 06:54: Importing table: `eav_entity_text`
+2018-03-15 06:54: Importing table: `eav_entity_type`
+2018-03-15 06:54: Importing table: `eav_entity_varchar`
+2018-03-15 06:54: Importing table: `eav_form_element`
+2018-03-15 06:54: Importing table: `eav_form_fieldset`
+2018-03-15 06:54: Importing table: `eav_form_fieldset_label`
+2018-03-15 06:54: Importing table: `eav_form_type`
+2018-03-15 06:54: Importing table: `eav_form_type_entity`
+2018-03-15 06:54: Importing table: `permission_block`
+2018-03-15 06:54: Importing table: `permission_variable`
+2018-03-15 06:54: End restore database
+2018-03-15 06:54: End restore
+2018-03-15 06:54: Total duration: 4.00 seconds

@@ -1,0 +1,93 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * BS_NCause extension
+ * 
+ * @category       BS
+ * @package        BS_NCause
+ * @copyright      Copyright (c) 2016
+ */
+-->
+<config>
+    <modules>
+        <BS_NCause>
+            <version>1.0.1</version>
+        </BS_NCause>
+    </modules>
+    <global>
+        <resources>
+            <bs_ncause_setup>
+                <setup>
+                    <module>BS_NCause</module>
+                    <class>BS_NCause_Model_Resource_Setup</class>
+                </setup>
+            </bs_ncause_setup>
+        </resources>
+        <blocks>
+            <bs_ncause>
+                <class>BS_NCause_Block</class>
+            </bs_ncause>
+        </blocks>
+        <helpers>
+            <bs_ncause>
+                <class>BS_NCause_Helper</class>
+            </bs_ncause>
+        </helpers>
+        <models>
+            <bs_ncause>
+                <class>BS_NCause_Model</class>
+                <resourceModel>bs_ncause_resource</resourceModel>
+            </bs_ncause>
+            <bs_ncause_resource>
+                <class>BS_NCause_Model_Resource</class>
+                <entities>
+                    <ncausegroup>
+                        <table>bs_ncause_ncausegroup</table>
+                    </ncausegroup>
+                    <ncause>
+                        <table>bs_ncause_ncause</table>
+                    </ncause>
+                </entities>
+            </bs_ncause_resource>
+        </models>
+    </global>
+    <adminhtml>
+        <layout>
+            <updates>
+                <bs_ncause>
+                    <file>bs_ncause.xml</file>
+                </bs_ncause>
+            </updates>
+        </layout>
+        <translate>
+            <modules>
+                <BS_NCause>
+                    <files>
+                        <default>BS_NCause.csv</default>
+                    </files>
+                </BS_NCause>
+            </modules>
+        </translate>
+        <global_search>
+            <ncausegroup>
+                <class>bs_ncause/adminhtml_search_ncausegroup</class>
+                <acl>bs_ncause</acl>
+            </ncausegroup>
+            <ncause>
+                <class>bs_ncause/adminhtml_search_ncause</class>
+                <acl>bs_ncause</acl>
+            </ncause>
+        </global_search>
+    </adminhtml>
+    <admin>
+        <routers>
+            <adminhtml>
+                <args>
+                    <modules>
+                        <BS_NCause before="Mage_Adminhtml">BS_NCause_Adminhtml</BS_NCause>
+                    </modules>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin>
+</config>

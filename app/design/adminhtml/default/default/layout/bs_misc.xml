@@ -1,0 +1,268 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * BS_Misc extension
+ * 
+ * @category       BS
+ * @package        BS_Misc
+ * @copyright      Copyright (c) 2016
+ */
+--> 
+<layout>
+    <adminhtml_misc_department_index>
+        <reference name="menu">
+            <action method="setActive">
+                <menupath>bs_misc/department</menupath>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="bs_misc/adminhtml_department" name="department" />
+
+        </reference>
+    </adminhtml_misc_department_index>
+    <adminhtml_misc_department_grid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_misc/adminhtml_department_grid" name="department_grid"/>
+        </block>
+    </adminhtml_misc_department_grid>
+    <!-- Department add/edit action -->
+    <adminhtml_misc_department_edit>
+        <update handle="editor"/>
+        <reference name="menu">
+            <action method="setActive">
+                <menupath>bs_misc/department</menupath>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="bs_misc/adminhtml_department_edit" name="department_edit"></block>
+        </reference>
+        <reference name="left">
+            <block type="bs_misc/adminhtml_department_edit_tabs" name="department_tabs"></block>
+        </reference>
+    </adminhtml_misc_department_edit>
+
+    <adminhtml_misc_location_index>
+        <reference name="menu">
+            <action method="setActive">
+                <menupath>bs_misc/location</menupath>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="bs_misc/adminhtml_location" name="location" />
+
+        </reference>
+    </adminhtml_misc_location_index>
+    <adminhtml_misc_location_grid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_misc/adminhtml_location_grid" name="location_grid"/>
+        </block>
+    </adminhtml_misc_location_grid>
+    <!-- Location add/edit action -->
+    <adminhtml_misc_location_edit>
+        <update handle="editor"/>
+        <reference name="menu">
+            <action method="setActive">
+                <menupath>bs_misc/location</menupath>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="bs_misc/adminhtml_location_edit" name="location_edit"></block>
+        </reference>
+        <reference name="left">
+            <block type="bs_misc/adminhtml_location_edit_tabs" name="location_tabs"></block>
+        </reference>
+    </adminhtml_misc_location_edit>
+
+    <adminhtml_misc_aircraft_index>
+        <reference name="menu">
+            <action method="setActive">
+                <menupath>bs_misc/aircraft</menupath>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="bs_misc/adminhtml_aircraft" name="aircraft" />
+
+        </reference>
+    </adminhtml_misc_aircraft_index>
+    <adminhtml_misc_aircraft_grid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_misc/adminhtml_aircraft_grid" name="aircraft_grid"/>
+        </block>
+    </adminhtml_misc_aircraft_grid>
+    <!-- Aircraft add/edit action -->
+    <adminhtml_misc_aircraft_edit>
+        <update handle="editor"/>
+        <reference name="menu">
+            <action method="setActive">
+                <menupath>bs_misc/aircraft</menupath>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="bs_misc/adminhtml_aircraft_edit" name="aircraft_edit"></block>
+        </reference>
+        <reference name="left">
+            <block type="bs_misc/adminhtml_aircraft_edit_tabs" name="aircraft_tabs"></block>
+        </reference>
+    </adminhtml_misc_aircraft_edit>
+
+    <adminhtml_misc_certtype_index>
+        <reference name="menu">
+            <action method="setActive">
+                <menupath>bs_misc/certtype</menupath>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="bs_misc/adminhtml_certtype" name="certtype" />
+
+        </reference>
+    </adminhtml_misc_certtype_index>
+    <adminhtml_misc_certtype_grid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_misc/adminhtml_certtype_grid" name="certtype_grid"/>
+        </block>
+    </adminhtml_misc_certtype_grid>
+    <!-- Certtype add/edit action -->
+    <adminhtml_misc_certtype_edit>
+        <update handle="editor"/>
+        <reference name="menu">
+            <action method="setActive">
+                <menupath>bs_misc/certtype</menupath>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="bs_misc/adminhtml_certtype_edit" name="certtype_edit"></block>
+        </reference>
+        <reference name="left">
+            <block type="bs_misc/adminhtml_certtype_edit_tabs" name="certtype_tabs"></block>
+        </reference>
+    </adminhtml_misc_certtype_edit>
+
+    <adminhtml_misc_taskgroup_index>
+        <reference name="menu">
+            <action method="setActive">
+                <menupath>bs_misc/taskgroup</menupath>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="bs_misc/adminhtml_taskgroup" name="taskgroup" />
+
+        </reference>
+    </adminhtml_misc_taskgroup_index>
+    <adminhtml_misc_taskgroup_grid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_misc/adminhtml_taskgroup_grid" name="taskgroup_grid"/>
+        </block>
+    </adminhtml_misc_taskgroup_grid>
+    <!-- Taskgroup add/edit action -->
+    <adminhtml_misc_taskgroup_edit>
+        <update handle="editor"/>
+        <reference name="menu">
+            <action method="setActive">
+                <menupath>bs_misc/taskgroup</menupath>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="bs_misc/adminhtml_taskgroup_edit" name="taskgroup_edit"></block>
+        </reference>
+        <reference name="left">
+            <block type="bs_misc/adminhtml_taskgroup_edit_tabs" name="taskgroup_tabs"></block>
+        </reference>
+    </adminhtml_misc_taskgroup_edit>
+
+    <adminhtml_misc_task_index>
+        <reference name="menu">
+            <action method="setActive">
+                <menupath>bs_misc/task</menupath>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="bs_misc/adminhtml_task" name="task" />
+
+        </reference>
+    </adminhtml_misc_task_index>
+    <adminhtml_misc_task_grid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_misc/adminhtml_task_grid" name="task_grid"/>
+        </block>
+    </adminhtml_misc_task_grid>
+    <!-- Task add/edit action -->
+    <adminhtml_misc_task_edit>
+        <update handle="editor"/>
+        <reference name="menu">
+            <action method="setActive">
+                <menupath>bs_misc/task</menupath>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="bs_misc/adminhtml_task_edit" name="task_edit"></block>
+        </reference>
+        <reference name="left">
+            <block type="bs_misc/adminhtml_task_edit_tabs" name="task_tabs"></block>
+        </reference>
+    </adminhtml_misc_task_edit>
+
+    <adminhtml_misc_subtask_index>
+        <reference name="menu">
+            <action method="setActive">
+                <menupath>bs_misc/subtask</menupath>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="bs_misc/adminhtml_subtask" name="subtask" />
+
+        </reference>
+    </adminhtml_misc_subtask_index>
+    <adminhtml_misc_subtask_grid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_misc/adminhtml_subtask_grid" name="subtask_grid"/>
+        </block>
+    </adminhtml_misc_subtask_grid>
+    <!-- Subtask add/edit action -->
+    <adminhtml_misc_subtask_edit>
+        <update handle="editor"/>
+        <reference name="menu">
+            <action method="setActive">
+                <menupath>bs_misc/subtask</menupath>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="bs_misc/adminhtml_subtask_edit" name="subtask_edit"></block>
+        </reference>
+        <reference name="left">
+            <block type="bs_misc/adminhtml_subtask_edit_tabs" name="subtask_tabs"></block>
+        </reference>
+    </adminhtml_misc_subtask_edit>
+
+    <adminhtml_misc_subsubtask_index>
+        <reference name="menu">
+            <action method="setActive">
+                <menupath>bs_misc/subsubtask</menupath>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="bs_misc/adminhtml_subsubtask" name="subsubtask" />
+
+        </reference>
+    </adminhtml_misc_subsubtask_index>
+    <adminhtml_misc_subsubtask_grid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_misc/adminhtml_subsubtask_grid" name="subsubtask_grid"/>
+        </block>
+    </adminhtml_misc_subsubtask_grid>
+    <!-- Subsubtask add/edit action -->
+    <adminhtml_misc_subsubtask_edit>
+        <update handle="editor"/>
+        <reference name="menu">
+            <action method="setActive">
+                <menupath>bs_misc/subsubtask</menupath>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="bs_misc/adminhtml_subsubtask_edit" name="subsubtask_edit"></block>
+        </reference>
+        <reference name="left">
+            <block type="bs_misc/adminhtml_subsubtask_edit_tabs" name="subsubtask_tabs"></block>
+        </reference>
+    </adminhtml_misc_subsubtask_edit>
+
+</layout>

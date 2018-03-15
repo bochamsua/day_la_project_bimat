@@ -1,0 +1,57 @@
+		</div>
+		<div class="clearfix"></div>
+	</div>
+</div>
+<!-- /#sg-wrapper -->
+<script type="text/javascript">
+SG_AJAX_URL = '<?php echo Mage::helper("adminhtml")->getUrl("adminhtml/backupguardplatinum/ajax"); ?>';
+function getAjaxUrl(url) {
+    if (typeof url != 'undefined') return SG_AJAX_URL+'action/'+url;
+    return SG_AJAX_URL;
+}
+function getFormKey() {
+    return '<?php echo Mage::getSingleton("core/session")->getFormKey(); ?>';
+}
+</script>
+<script type="text/javascript">
+    less = {
+        env: "production"
+    };
+</script>
+        <?php /* ?>
+<script type="text/javascript" src="<?php echo $this->getSkinUrl('js/BackupGuardPlatinum/jquery.min.js') ?>"></script>
+<script type="text/javascript">jQuery = jQuery.noConflict();</script>
+        <?php */ ?>
+<script type="text/javascript" src="<?php echo $this->getSkinUrl('js/BackupGuardPlatinum/less.min.js') ?>"></script>
+<?php /* ?><script type="text/javascript" src="<?php echo $this->getSkinUrl('js/BackupGuardPlatinum/bootstrap.min.js') ?>"></script> <?php */ ?>
+<script type="text/javascript" src="<?php echo $this->getSkinUrl('js/BackupGuardPlatinum/main.js') ?>"></script>
+<script type="text/javascript" src="<?php echo $this->getSkinUrl('js/BackupGuardPlatinum/sgbackup.js') ?>"></script>
+<script type="text/javascript" src="<?php echo $this->getSkinUrl('js/BackupGuardPlatinum/sgrequesthandler.js') ?>"></script>
+<script type="text/javascript" src="<?php echo $this->getSkinUrl('js/BackupGuardPlatinum/sgrequesthandler.magento.js') ?>"></script>
+<script type="text/javascript">
+(function() {
+    var isBootstrapEvent = false;
+    if (window.jQuery) {
+        var all = jQuery('*');
+        jQuery.each(['hide.bs.dropdown',
+            'hide.bs.collapse',
+            'hide.bs.modal',
+            'hide.bs.tooltip',
+            'hide.bs.popover'], function(index, eventName) {
+            all.on(eventName, function( event ) {
+                isBootstrapEvent = true;
+            });
+        });
+    }
+    var originalHide = Element.hide;
+    Element.addMethods({
+        hide: function(element) {
+            if(isBootstrapEvent) {
+                isBootstrapEvent = false;
+                return element;
+            }
+            return originalHide(element);
+        }
+    });
+})();
+</script>

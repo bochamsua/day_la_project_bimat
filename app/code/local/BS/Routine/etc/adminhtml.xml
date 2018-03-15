@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * BS_Routine extension
+ * 
+ * @category       BS
+ * @package        BS_Routine
+ * @copyright      Copyright (c) 2017
+ */
+-->
+<config>
+    <acl>
+        <resources>
+            <admin>
+                <children>
+                    <system>
+                        <children>
+                            <config>
+                                <children>
+                                    <bs_routine translate="title" module="bs_routine">
+                                        <title>Routine</title>
+                                    </bs_routine>
+                                </children>
+                            </config>
+                        </children>
+                    </system>
+                    <bs_report>
+                        <children>
+                            <routine translate="title" module="bs_routine">
+                                <title>Routine Report</title>
+                                <sort_order>30</sort_order>
+                                <children>
+                                    <new translate="title"><title>New</title></new>
+                                    <edit translate="title"><title>Edit</title></edit>
+                                    <delete translate="title"><title>Delete</title></delete>
+                                </children>
+                            </routine>
+                        </children>
+                    </bs_report>
+
+                </children>
+            </admin>
+        </resources>
+    </acl>
+    <menu>
+        <bs_report>
+            <children>
+                <routine translate="title" module="bs_routine">
+                    <title>Routine Report</title>
+                    <action>adminhtml/routine_routine</action>
+                    <sort_order>30</sort_order>
+                </routine>
+            </children>
+        </bs_report>
+
+    </menu>
+</config>

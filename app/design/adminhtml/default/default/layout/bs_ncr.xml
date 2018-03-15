@@ -1,0 +1,110 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * BS_NCR extension
+ * 
+ * @category       BS
+ * @package        BS_NCR
+ * @copyright      Copyright (c) 2016
+ */
+--> 
+<layout>
+    <adminhtml_ncr_ncr_index>
+        <reference name="menu">
+            <action method="setActive">
+                <menupath>bs_work/ncr</menupath>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="bs_ncr/adminhtml_ncr" name="ncr" />
+
+        </reference>
+    </adminhtml_ncr_ncr_index>
+    <adminhtml_ncr_ncr_grid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_ncr/adminhtml_ncr_grid" name="ncr_grid"/>
+        </block>
+    </adminhtml_ncr_ncr_grid>
+    <!-- Ncr add/edit action -->
+    <adminhtml_ncr_ncr_edit>
+        <update handle="editor"/>
+        <reference name="menu">
+            <action method="setActive">
+                <menupath>bs_work/ncr</menupath>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="bs_ncr/adminhtml_ncr_edit" name="ncr_edit"></block>
+        </reference>
+        <reference name="left">
+            <block type="bs_ncr/adminhtml_ncr_edit_tabs" name="ncr_tabs"></block>
+        </reference>
+    </adminhtml_ncr_ncr_edit>
+
+    <adminhtml_ncr_ncr_irs>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_ncr/adminhtml_ncr_edit_tab_ir" name="ncr.edit.tab.ir"/>
+        </block>
+    </adminhtml_ncr_ncr_irs>
+    <adminhtml_ncr_ncr_irsgrid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_ncr/adminhtml_ncr_edit_tab_ir" name="ncr.edit.tab.ir"/>
+        </block>
+    </adminhtml_ncr_ncr_irsgrid>
+
+    <adminhtml_ncr_ncr_ncrs>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_ncr/adminhtml_ncr_edit_tab_ncr" name="ncr.edit.tab.ncr"/>
+        </block>
+    </adminhtml_ncr_ncr_ncrs>
+    <adminhtml_ncr_ncr_ncrsgrid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_ncr/adminhtml_ncr_edit_tab_ncr" name="ncr.edit.tab.ncr"/>
+        </block>
+    </adminhtml_ncr_ncr_ncrsgrid>
+
+    <adminhtml_ncr_ncr_qrs>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_ncr/adminhtml_ncr_edit_tab_qr" name="ncr.edit.tab.qr"/>
+        </block>
+    </adminhtml_ncr_ncr_qrs>
+    <adminhtml_ncr_ncr_qrsgrid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_ncr/adminhtml_ncr_edit_tab_qr" name="ncr.edit.tab.qr"/>
+        </block>
+    </adminhtml_ncr_ncr_qrsgrid>
+
+    <adminhtml_ncr_ncr_qns>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_ncr/adminhtml_ncr_edit_tab_qn" name="ncr.edit.tab.qn"/>
+        </block>
+    </adminhtml_ncr_ncr_qns>
+    <adminhtml_ncr_ncr_qnsgrid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_ncr/adminhtml_ncr_edit_tab_qn" name="ncr.edit.tab.qn"/>
+        </block>
+    </adminhtml_ncr_ncr_qnsgrid>
+
+    <adminhtml_ncr_ncr_cars>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_ncr/adminhtml_ncr_edit_tab_car" name="ncr.edit.tab.car"/>
+        </block>
+    </adminhtml_ncr_ncr_cars>
+    <adminhtml_ncr_ncr_carsgrid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_ncr/adminhtml_ncr_edit_tab_car" name="ncr.edit.tab.car"/>
+        </block>
+    </adminhtml_ncr_ncr_carsgrid>
+
+    <adminhtml_ncr_ncr_drrs>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_ncr/adminhtml_ncr_edit_tab_drr" name="ncr.edit.tab.drr"/>
+        </block>
+    </adminhtml_ncr_ncr_drrs>
+    <adminhtml_ncr_ncr_drrsgrid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_ncr/adminhtml_ncr_edit_tab_drr" name="ncr.edit.tab.drr"/>
+        </block>
+    </adminhtml_ncr_ncr_drrsgrid>
+
+</layout>

@@ -1,0 +1,86 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * BS_Qn extension
+ * 
+ * @category       BS
+ * @package        BS_Qn
+ * @copyright      Copyright (c) 2016
+ */
+-->
+<config>
+    <modules>
+        <BS_Qn>
+            <version>1.0.1</version>
+        </BS_Qn>
+    </modules>
+    <global>
+        <resources>
+            <bs_qn_setup>
+                <setup>
+                    <module>BS_Qn</module>
+                    <class>BS_Qn_Model_Resource_Setup</class>
+                </setup>
+            </bs_qn_setup>
+        </resources>
+        <blocks>
+            <bs_qn>
+                <class>BS_Qn_Block</class>
+            </bs_qn>
+        </blocks>
+        <helpers>
+            <bs_qn>
+                <class>BS_Qn_Helper</class>
+            </bs_qn>
+        </helpers>
+        <models>
+            <bs_qn>
+                <class>BS_Qn_Model</class>
+                <resourceModel>bs_qn_resource</resourceModel>
+            </bs_qn>
+            <bs_qn_resource>
+                <class>BS_Qn_Model_Resource</class>
+                <entities>
+                    <qn>
+                        <table>bs_qn_qn</table>
+                    </qn>
+                </entities>
+            </bs_qn_resource>
+        </models>
+    </global>
+    <adminhtml>
+        <layout>
+            <updates>
+                <bs_qn>
+                    <file>bs_qn.xml</file>
+                </bs_qn>
+            </updates>
+        </layout>
+        <translate>
+            <modules>
+                <BS_Qn>
+                    <files>
+                        <default>BS_Qn.csv</default>
+                    </files>
+                </BS_Qn>
+            </modules>
+        </translate>
+        <global_search>
+            <qn>
+                <class>bs_qn/adminhtml_search_qn</class>
+                <acl>bs_qn</acl>
+            </qn>
+        </global_search>
+    </adminhtml>
+    <admin>
+        <routers>
+            <adminhtml>
+                <args>
+                    <modules>
+                        <BS_Qn before="Mage_Adminhtml">BS_Qn_Adminhtml</BS_Qn>
+                    </modules>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin>
+</config>

@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * BS_Qrqn extension
+ * 
+ * @category       BS
+ * @package        BS_Qrqn
+ * @copyright      Copyright (c) 2016
+ */
+--> 
+<layout>
+    <adminhtml_qr_qr_index>
+        <reference name="menu">
+            <action method="setActive">
+                <menupath>bs_work/qr</menupath>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="bs_qr/adminhtml_qr" name="qr" />
+
+        </reference>
+    </adminhtml_qr_qr_index>
+    <adminhtml_qr_qr_grid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_qr/adminhtml_qr_grid" name="qr_grid"/>
+        </block>
+    </adminhtml_qr_qr_grid>
+    <!-- Qrqn add/edit action -->
+    <adminhtml_qr_qr_edit>
+        <update handle="editor"/>
+        <reference name="menu">
+            <action method="setActive">
+                <menupath>bs_work/qr</menupath>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="bs_qr/adminhtml_qr_edit" name="qr_edit"></block>
+        </reference>
+        <reference name="left">
+            <block type="bs_qr/adminhtml_qr_edit_tabs" name="qr_tabs"></block>
+        </reference>
+    </adminhtml_qr_qr_edit>
+
+</layout>

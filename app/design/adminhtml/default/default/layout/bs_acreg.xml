@@ -1,0 +1,76 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * BS_Acreg extension
+ * 
+ * @category       BS
+ * @package        BS_Acreg
+ * @copyright      Copyright (c) 2016
+ */
+--> 
+<layout>
+    <adminhtml_acreg_customer_index>
+        <reference name="menu">
+            <action method="setActive">
+                <menupath>bs_misc/customer</menupath>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="bs_acreg/adminhtml_customer" name="customer" />
+
+        </reference>
+    </adminhtml_acreg_customer_index>
+    <adminhtml_acreg_customer_grid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_acreg/adminhtml_customer_grid" name="customer_grid"/>
+        </block>
+    </adminhtml_acreg_customer_grid>
+    <!-- Customer add/edit action -->
+    <adminhtml_acreg_customer_edit>
+        <update handle="editor"/>
+        <reference name="menu">
+            <action method="setActive">
+                <menupath>bs_misc/customer</menupath>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="bs_acreg/adminhtml_customer_edit" name="customer_edit"></block>
+        </reference>
+        <reference name="left">
+            <block type="bs_acreg/adminhtml_customer_edit_tabs" name="customer_tabs"></block>
+        </reference>
+    </adminhtml_acreg_customer_edit>
+
+    <adminhtml_acreg_acreg_index>
+        <reference name="menu">
+            <action method="setActive">
+                <menupath>bs_misc/acreg</menupath>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="bs_acreg/adminhtml_acreg" name="acreg" />
+
+        </reference>
+    </adminhtml_acreg_acreg_index>
+    <adminhtml_acreg_acreg_grid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_acreg/adminhtml_acreg_grid" name="acreg_grid"/>
+        </block>
+    </adminhtml_acreg_acreg_grid>
+    <!-- Acreg add/edit action -->
+    <adminhtml_acreg_acreg_edit>
+        <update handle="editor"/>
+        <reference name="menu">
+            <action method="setActive">
+                <menupath>bs_misc/acreg</menupath>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="bs_acreg/adminhtml_acreg_edit" name="acreg_edit"></block>
+        </reference>
+        <reference name="left">
+            <block type="bs_acreg/adminhtml_acreg_edit_tabs" name="acreg_tabs"></block>
+        </reference>
+    </adminhtml_acreg_acreg_edit>
+
+</layout>

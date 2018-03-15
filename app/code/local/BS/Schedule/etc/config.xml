@@ -1,0 +1,80 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * BS_Schedule extension
+ * 
+ * @category       BS
+ * @package        BS_Schedule
+ * @copyright      Copyright (c) 2017
+ */
+-->
+<config>
+    <modules>
+        <BS_Schedule>
+            <version>1.0.0</version>
+        </BS_Schedule>
+    </modules>
+    <global>
+        <resources>
+            <bs_schedule_setup>
+                <setup>
+                    <module>BS_Schedule</module>
+                    <class>BS_Schedule_Model_Resource_Setup</class>
+                </setup>
+            </bs_schedule_setup>
+        </resources>
+        <blocks>
+            <bs_schedule>
+                <class>BS_Schedule_Block</class>
+            </bs_schedule>
+        </blocks>
+        <helpers>
+            <bs_schedule>
+                <class>BS_Schedule_Helper</class>
+            </bs_schedule>
+        </helpers>
+        <models>
+            <bs_schedule>
+                <class>BS_Schedule_Model</class>
+                <resourceModel>bs_schedule_resource</resourceModel>
+            </bs_schedule>
+            <bs_schedule_resource>
+                <class>BS_Schedule_Model_Resource</class>
+                <entities>
+                    <schedule>
+                        <table>bs_schedule_schedule</table>
+                    </schedule>
+                </entities>
+            </bs_schedule_resource>
+        </models>
+    </global>
+    <adminhtml>
+        <layout>
+            <updates>
+                <bs_schedule>
+                    <file>bs_schedule.xml</file>
+                </bs_schedule>
+            </updates>
+        </layout>
+        <translate>
+            <modules>
+                <BS_Schedule>
+                    <files>
+                        <default>BS_Schedule.csv</default>
+                    </files>
+                </BS_Schedule>
+            </modules>
+        </translate>
+    </adminhtml>
+    <admin>
+        <routers>
+            <adminhtml>
+                <args>
+                    <modules>
+                        <BS_Schedule before="Mage_Adminhtml">BS_Schedule_Adminhtml</BS_Schedule>
+                    </modules>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin>
+</config>

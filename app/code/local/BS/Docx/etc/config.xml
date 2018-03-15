@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * BS_Docx extension
+ * 
+ * @category       BS
+ * @package        BS_Docx
+ * @copyright      Copyright (c) 2016
+ */
+-->
+<config>
+    <modules>
+        <BS_Docx>
+            <version>1.0.0</version>
+        </BS_Docx>
+    </modules>
+    <global>
+        <helpers>
+            <bs_docx>
+                <class>BS_Docx_Helper</class>
+            </bs_docx>
+        </helpers>
+        <models>
+            <bs_docx>
+                <class>BS_Docx_Model</class>
+            </bs_docx>
+        </models>
+    </global>
+    <admin>
+        <routers>
+            <adminhtml>
+                <args>
+                    <modules>
+                        <BS_Docx before="Mage_Adminhtml">BS_Docx_Adminhtml</BS_Docx>
+                    </modules>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin>
+</config>

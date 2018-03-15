@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * BS_QC extension
+ * 
+ * @category       BS
+ * @package        BS_QC
+ * @copyright      Copyright (c) 2016
+ */
+-->
+<config>
+    <acl>
+        <resources>
+            <admin>
+                <children>
+                    <system>
+                        <children>
+                            <config>
+                                <children>
+                                    <bs_qc translate="title" module="bs_qc">
+                                        <title>QC</title>
+                                    </bs_qc>
+                                </children>
+                            </config>
+                        </children>
+                    </system>
+                    <bs_qc translate="title" module="bs_qc">
+                        <title>QC</title>
+
+                    </bs_qc>
+                </children>
+            </admin>
+        </resources>
+    </acl>
+    <menu>
+        <bs_qc translate="title" module="bs_qc">
+            <title>QC</title>
+            <sort_order>15</sort_order>
+
+        </bs_qc>
+    </menu>
+</config>

@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * BS_Signoff extension
+ * 
+ * @category       BS
+ * @package        BS_Signoff
+ * @copyright      Copyright (c) 2016
+ */
+-->
+<config>
+    <acl>
+        <resources>
+            <admin>
+                <children>
+                    <system>
+                        <children>
+                            <config>
+                                <children>
+                                    <bs_signoff translate="title" module="bs_signoff">
+                                        <title>Signoff</title>
+                                    </bs_signoff>
+                                </children>
+                            </config>
+                        </children>
+                    </system>
+                    <bs_work>
+                        <children>
+                            <signoff translate="title" module="bs_signoff">
+                                <title>AC Sign-off</title>
+                                <sort_order>30</sort_order>
+                                <children>
+                                    <new translate="title"><title>New</title></new>
+                                    <edit translate="title"><title>Edit</title></edit>
+                                    <delete translate="title"><title>Delete</title></delete>
+                                </children>
+                            </signoff>                       </children>
+                    </bs_work>
+
+                </children>
+            </admin>
+        </resources>
+    </acl>
+    <menu>
+        <bs_work>
+            <children>
+                <signoff translate="title" module="bs_signoff">
+                    <title>AC Sign-off</title>
+                    <action>adminhtml/signoff_signoff</action>
+                    <sort_order>30</sort_order>
+                </signoff>          </children>
+        </bs_work>
+
+    </menu>
+</config>

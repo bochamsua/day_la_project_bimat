@@ -1,0 +1,110 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * BS_Car extension
+ * 
+ * @category       BS
+ * @package        BS_Car
+ * @copyright      Copyright (c) 2016
+ */
+--> 
+<layout>
+    <adminhtml_drr_drr_index>
+        <reference name="menu">
+            <action method="setActive">
+                <menupath>bs_work/drr</menupath>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="bs_drr/adminhtml_drr" name="drr" />
+
+        </reference>
+    </adminhtml_drr_drr_index>
+    <adminhtml_drr_drr_grid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_drr/adminhtml_drr_grid" name="drr_grid"/>
+        </block>
+    </adminhtml_drr_drr_grid>
+    <!-- Car add/edit action -->
+    <adminhtml_drr_drr_edit>
+        <update handle="editor"/>
+        <reference name="menu">
+            <action method="setActive">
+                <menupath>bs_work/drr</menupath>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="bs_drr/adminhtml_drr_edit" name="drr_edit"></block>
+        </reference>
+        <reference name="left">
+            <block type="bs_drr/adminhtml_drr_edit_tabs" name="drr_tabs"></block>
+        </reference>
+    </adminhtml_drr_drr_edit>
+
+    <adminhtml_drr_drr_irs>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_drr/adminhtml_drr_edit_tab_ir" name="drr.edit.tab.ir"/>
+        </block>
+    </adminhtml_drr_drr_irs>
+    <adminhtml_drr_drr_irsgrid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_drr/adminhtml_drr_edit_tab_ir" name="drr.edit.tab.ir"/>
+        </block>
+    </adminhtml_drr_drr_irsgrid>
+
+    <adminhtml_drr_drr_ncrs>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_drr/adminhtml_drr_edit_tab_ncr" name="drr.edit.tab.ncr"/>
+        </block>
+    </adminhtml_drr_drr_ncrs>
+    <adminhtml_drr_drr_ncrsgrid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_drr/adminhtml_drr_edit_tab_ncr" name="drr.edit.tab.ncr"/>
+        </block>
+    </adminhtml_drr_drr_ncrsgrid>
+
+    <adminhtml_drr_drr_qrs>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_drr/adminhtml_drr_edit_tab_qr" name="drr.edit.tab.qr"/>
+        </block>
+    </adminhtml_drr_drr_qrs>
+    <adminhtml_drr_drr_qrsgrid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_drr/adminhtml_drr_edit_tab_qr" name="drr.edit.tab.qr"/>
+        </block>
+    </adminhtml_drr_drr_qrsgrid>
+
+    <adminhtml_drr_drr_qns>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_drr/adminhtml_drr_edit_tab_qn" name="drr.edit.tab.qn"/>
+        </block>
+    </adminhtml_drr_drr_qns>
+    <adminhtml_drr_drr_qnsgrid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_drr/adminhtml_drr_edit_tab_qn" name="drr.edit.tab.qn"/>
+        </block>
+    </adminhtml_drr_drr_qnsgrid>
+
+    <adminhtml_drr_drr_cars>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_drr/adminhtml_drr_edit_tab_car" name="drr.edit.tab.car"/>
+        </block>
+    </adminhtml_drr_drr_cars>
+    <adminhtml_drr_drr_carsgrid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_drr/adminhtml_drr_edit_tab_car" name="drr.edit.tab.car"/>
+        </block>
+    </adminhtml_drr_drr_carsgrid>
+
+    <adminhtml_drr_drr_drrs>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_drr/adminhtml_drr_edit_tab_drr" name="drr.edit.tab.drr"/>
+        </block>
+    </adminhtml_drr_drr_drrs>
+    <adminhtml_drr_drr_drrsgrid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_drr/adminhtml_drr_edit_tab_drr" name="drr.edit.tab.drr"/>
+        </block>
+    </adminhtml_drr_drr_drrsgrid>
+
+</layout>

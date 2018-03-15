@@ -1,0 +1,110 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * BS_Signoff extension
+ * 
+ * @category       BS
+ * @package        BS_Signoff
+ * @copyright      Copyright (c) 2016
+ */
+--> 
+<layout>
+    <adminhtml_signoff_signoff_index>
+        <reference name="menu">
+            <action method="setActive">
+                <menupath>bs_work/signoff</menupath>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="bs_signoff/adminhtml_signoff" name="signoff" />
+
+        </reference>
+    </adminhtml_signoff_signoff_index>
+    <adminhtml_signoff_signoff_grid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_signoff/adminhtml_signoff_grid" name="signoff_grid"/>
+        </block>
+    </adminhtml_signoff_signoff_grid>
+    <!-- Signoff add/edit action -->
+    <adminhtml_signoff_signoff_edit>
+        <update handle="editor"/>
+        <reference name="menu">
+            <action method="setActive">
+                <menupath>bs_work/signoff</menupath>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="bs_signoff/adminhtml_signoff_edit" name="signoff_edit"></block>
+        </reference>
+        <reference name="left">
+            <block type="bs_signoff/adminhtml_signoff_edit_tabs" name="signoff_tabs"></block>
+        </reference>
+    </adminhtml_signoff_signoff_edit>
+
+    <adminhtml_signoff_signoff_irs>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_signoff/adminhtml_signoff_edit_tab_ir" name="signoff.edit.tab.ir"/>
+        </block>
+    </adminhtml_signoff_signoff_irs>
+    <adminhtml_signoff_signoff_irsgrid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_signoff/adminhtml_signoff_edit_tab_ir" name="signoff.edit.tab.ir"/>
+        </block>
+    </adminhtml_signoff_signoff_irsgrid>
+
+    <adminhtml_signoff_signoff_ncrs>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_signoff/adminhtml_signoff_edit_tab_ncr" name="signoff.edit.tab.ncr"/>
+        </block>
+    </adminhtml_signoff_signoff_ncrs>
+    <adminhtml_signoff_signoff_ncrsgrid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_signoff/adminhtml_signoff_edit_tab_ncr" name="signoff.edit.tab.ncr"/>
+        </block>
+    </adminhtml_signoff_signoff_ncrsgrid>
+
+    <adminhtml_signoff_signoff_qrs>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_signoff/adminhtml_signoff_edit_tab_qr" name="signoff.edit.tab.qr"/>
+        </block>
+    </adminhtml_signoff_signoff_qrs>
+    <adminhtml_signoff_signoff_qrsgrid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_signoff/adminhtml_signoff_edit_tab_qr" name="signoff.edit.tab.qr"/>
+        </block>
+    </adminhtml_signoff_signoff_qrsgrid>
+
+    <adminhtml_signoff_signoff_qns>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_signoff/adminhtml_signoff_edit_tab_qn" name="signoff.edit.tab.qn"/>
+        </block>
+    </adminhtml_signoff_signoff_qns>
+    <adminhtml_signoff_signoff_qnsgrid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_signoff/adminhtml_signoff_edit_tab_qn" name="signoff.edit.tab.qn"/>
+        </block>
+    </adminhtml_signoff_signoff_qnsgrid>
+
+    <adminhtml_signoff_signoff_cars>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_signoff/adminhtml_signoff_edit_tab_car" name="signoff.edit.tab.car"/>
+        </block>
+    </adminhtml_signoff_signoff_cars>
+    <adminhtml_signoff_signoff_carsgrid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_signoff/adminhtml_signoff_edit_tab_car" name="signoff.edit.tab.car"/>
+        </block>
+    </adminhtml_signoff_signoff_carsgrid>
+
+    <adminhtml_signoff_signoff_drrs>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_signoff/adminhtml_signoff_edit_tab_drr" name="signoff.edit.tab.drr"/>
+        </block>
+    </adminhtml_signoff_signoff_drrs>
+    <adminhtml_signoff_signoff_drrsgrid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_signoff/adminhtml_signoff_edit_tab_drr" name="signoff.edit.tab.drr"/>
+        </block>
+    </adminhtml_signoff_signoff_drrsgrid>
+
+</layout>

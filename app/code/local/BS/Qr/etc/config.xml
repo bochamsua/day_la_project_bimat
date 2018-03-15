@@ -1,0 +1,86 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * BS_Qr extension
+ * 
+ * @category       BS
+ * @package        BS_Qr
+ * @copyright      Copyright (c) 2016
+ */
+-->
+<config>
+    <modules>
+        <BS_Qr>
+            <version>1.0.2</version>
+        </BS_Qr>
+    </modules>
+    <global>
+        <resources>
+            <bs_qr_setup>
+                <setup>
+                    <module>BS_Qr</module>
+                    <class>BS_Qr_Model_Resource_Setup</class>
+                </setup>
+            </bs_qr_setup>
+        </resources>
+        <blocks>
+            <bs_qr>
+                <class>BS_Qr_Block</class>
+            </bs_qr>
+        </blocks>
+        <helpers>
+            <bs_qr>
+                <class>BS_Qr_Helper</class>
+            </bs_qr>
+        </helpers>
+        <models>
+            <bs_qr>
+                <class>BS_Qr_Model</class>
+                <resourceModel>bs_qr_resource</resourceModel>
+            </bs_qr>
+            <bs_qr_resource>
+                <class>BS_Qr_Model_Resource</class>
+                <entities>
+                    <qr>
+                        <table>bs_qr_qr</table>
+                    </qr>
+                </entities>
+            </bs_qr_resource>
+        </models>
+    </global>
+    <adminhtml>
+        <layout>
+            <updates>
+                <bs_qr>
+                    <file>bs_qr.xml</file>
+                </bs_qr>
+            </updates>
+        </layout>
+        <translate>
+            <modules>
+                <BS_Qr>
+                    <files>
+                        <default>BS_Qr.csv</default>
+                    </files>
+                </BS_Qr>
+            </modules>
+        </translate>
+        <global_search>
+            <qr>
+                <class>bs_qr/adminhtml_search_qr</class>
+                <acl>bs_qr</acl>
+            </qr>
+        </global_search>
+    </adminhtml>
+    <admin>
+        <routers>
+            <adminhtml>
+                <args>
+                    <modules>
+                        <BS_Qr before="Mage_Adminhtml">BS_Qr_Adminhtml</BS_Qr>
+                    </modules>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin>
+</config>

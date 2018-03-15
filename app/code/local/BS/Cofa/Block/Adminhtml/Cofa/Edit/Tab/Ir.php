@@ -1,0 +1,192 @@
+<?php
+class BS_Cofa_Block_Adminhtml_Cofa_Edit_Tab_Ir extends Mage_Adminhtml_Block_Widget_Grid
+{
+    /**
+     * constructor
+     *
+     * @access public
+     * @author Bui Phong
+     */
+    public function __construct()
+    {
+        parent::__construct();
+        $this->setId('irGrid');
+        $this->setSaveParametersInSession(true);
+        $this->setUseAjax(true);
+    }
+
+    protected function _prepareLayout(){
+        $this->setChild('add_ir_button',
+            $this->getLayout()->createBlock('adminhtml/widget_button')
+                ->setData(array(
+                    'label'     => Mage::helper('adminhtml')->__('New IR'),
+                    'onclick'   => 'window.open(\''.$this->getUrl('*/ir_ir/new', array('_current'=>false, 'ref_type'=>'cofa', 'task_id'=>$this->getCofa()->getTaskId(), 'ref_id'=>$this->getCofa()->getId(),'popup'=>true)).'\',\'\',\'width=1000,height=700,resizable=1,scrollbars=1\')'
+                ))
+        );
+
+
+        parent::_prepareLayout();
+    }
+
+
+    public function getMainButtonsHtml()
+    {
+        $html = '';
+        if($this->getCofa()->getId()){
+            $html.= $this->getChildHtml('add_ir_button');
+        }else {
+            $html .= 'Please save Cofa first';
+        }
+
+        //$html.= $this->getResetFilterButtonHtml();
+        //$html.= $this->getSearchButtonHtml();
+        return $html;
+
+    }
+
+    /**
+     * prepare collection
+     *
+     * @access protected
+     * @return BS_Subject_Block_Adminhtml_Subjectcontent_Grid
+     * @author Bui Phong
+     */
+    protected function _prepareCollection()
+    {
+        $collection = Mage::getModel('bs_ir/ir')
+            ->getCollection()
+            //->addFieldToFilter('taskgroup_id', 1)
+            ->addFieldToFilter('ref_type', 'cofa')
+            ->addFieldToFilter('ref_id', $this->getCofa()->getId())
+        ;
+        //$collection->getSelect()->order('subcon_order');
+        $this->setCollection($collection);
+        //$this->_prepareTotals('subcon_hour');
+        return parent::_prepareCollection();
+    }
+
+    /**
+     * prepare grid collection
+     *
+     * @access protected
+     * @return BS_Subject_Block_Adminhtml_Subjectcontent_Grid
+     * @author Bui Phong
+     */
+    protected function _prepareColumns()
+    {
+        /*$this->addColumn(
+            'entity_id',
+            array(
+                'header' => Mage::helper('bs_ir')->__('Id'),
+                'index'  => 'entity_id',
+                'type'   => 'number', 'filter' => false
+            )
+        );*/
+
+        $this->addColumn(
+            'ref_no',
+            array(
+                'header'    => Mage::helper('bs_ir')->__('Reference No'),
+                'align'     => 'left',
+                'index'     => 'ref_no',
+            )
+        );
+
+
+        $this->addColumn(
+            'dept_id',
+            array(
+                'header' => Mage::helper('bs_ir')->__('Maint. Center'),
+                'index'  => 'dept_id',
+                'type'=> 'number',
+
+            )
+        );
+        $this->addColumn(
+            'loc_id',
+            array(
+                'header' => Mage::helper('bs_ir')->__('Location'),
+                'index'  => 'loc_id',
+                'type'=> 'number',
+
+            )
+        );
+        $this->addColumn(
+            'ac_reg',
+            array(
+                'header' => Mage::helper('bs_ir')->__('A/C Reg'),
+                'index'  => 'ac_reg',
+                'type'=> 'text',
+
+            )
+        );
+        $this->addColumn(
+            'inspection_date',
+            array(
+                'header' => Mage::helper('bs_ir')->__('Date of Inspection'),
+                'index'  => 'inspection_date',
+                'type'=> 'date',
+
+            )
+        );
+
+        $this->setFilterVisibility(false);
+        $this->setPagerVisibility(false);
+
+
+        return parent::_prepareColumns();
+    }
+
+    /**
+     * prepare mass action
+     *
+     * @access protected
+     * @return BS_Subject_Block_Adminhtml_Subjectcontent_Grid
+     * @author Bui Phong
+     */
+    protected function _prepareMassaction()
+    {
+
+        return $this;
+    }
+
+    /**
+     * get the row url
+     *
+     * @access public
+     * @param BS_Subject_Model_Subjectcontent
+     * @return string
+     * @author Bui Phong
+     */
+    public function getRowUrl($row)
+    {
+        return $this->getUrl('*/ir_ir/edit', array('id' => $row->getId()));
+    }
+
+    /**
+     * get the grid url
+     *
+     * @access public
+     * @return string
+     * @author Bui Phong
+     */
+    public function getGridUrl()
+    {
+        return $this->getUrl('*/*/irsGrid', array('_current'=>true));
+    }
+
+    public function getCofa()
+    {
+        return Mage::registry('current_cofa');
+    }
+
+
+    protected function _afterToHtml($html)
+    {
+
+        $html1 = "<script>
+
+                </script>";
+        return parent::_afterToHtml($html);
+    }
+}

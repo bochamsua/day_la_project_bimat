@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * BS_CmrReport extension
+ * 
+ * @category       BS
+ * @package        BS_CmrReport
+ * @copyright      Copyright (c) 2017
+ */
+--> 
+<layout>
+    <adminhtml_cmrreport_cmrreport_index>
+        <reference name="menu">
+            <action method="setActive">
+                <menupath>bs_report/cmrreport</menupath>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="bs_cmrreport/adminhtml_cmrreport" name="cmrreport" template="report/grid/container.phtml">
+                <block type="bs_cmrreport/adminhtml_filter_form" name="grid.filter.form" />
+            </block>
+
+        </reference>
+    </adminhtml_cmrreport_cmrreport_index>
+    <adminhtml_cmrreport_cmrreport_grid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_cmrreport/adminhtml_cmrreport_grid" name="cmrreport_grid"/>
+        </block>
+    </adminhtml_cmrreport_cmrreport_grid>
+    <!-- Cmrreport add/edit action -->
+    <adminhtml_cmrreport_cmrreport_edit>
+        <update handle="editor"/>
+        <reference name="menu">
+            <action method="setActive">
+                <menupath>bs_report/cmrreport</menupath>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="bs_cmrreport/adminhtml_cmrreport_edit" name="cmrreport_edit"></block>
+        </reference>
+        <reference name="left">
+            <block type="bs_cmrreport/adminhtml_cmrreport_edit_tabs" name="cmrreport_tabs"></block>
+        </reference>
+    </adminhtml_cmrreport_cmrreport_edit>
+
+</layout>

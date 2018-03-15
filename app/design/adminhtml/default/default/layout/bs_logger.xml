@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * BS_Logger extension
+ * 
+ * @category       BS
+ * @package        BS_Logger
+ * @copyright      Copyright (c) 2017
+ */
+--> 
+<layout>
+    <adminhtml_logger_logger_index>
+        <reference name="menu">
+            <action method="setActive">
+                <menupath>system/bs_logger/logger</menupath>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="bs_logger/adminhtml_logger" name="logger" />
+
+        </reference>
+    </adminhtml_logger_logger_index>
+    <adminhtml_logger_logger_grid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_logger/adminhtml_logger_grid" name="logger_grid"/>
+        </block>
+    </adminhtml_logger_logger_grid>
+    <!-- Logger add/edit action -->
+    <adminhtml_logger_logger_edit>
+        <update handle="editor"/>
+        <reference name="menu">
+            <action method="setActive">
+                <menupath>system/bs_logger/logger</menupath>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="bs_logger/adminhtml_logger_edit" name="logger_edit"></block>
+        </reference>
+        <reference name="left">
+            <block type="bs_logger/adminhtml_logger_edit_tabs" name="logger_tabs"></block>
+        </reference>
+    </adminhtml_logger_logger_edit>
+
+</layout>

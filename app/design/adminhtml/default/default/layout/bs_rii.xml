@@ -1,0 +1,110 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * BS_Rii extension
+ * 
+ * @category       BS
+ * @package        BS_Rii
+ * @copyright      Copyright (c) 2016
+ */
+--> 
+<layout>
+    <adminhtml_rii_rii_index>
+        <reference name="menu">
+            <action method="setActive">
+                <menupath>bs_work/rii</menupath>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="bs_rii/adminhtml_rii" name="rii" />
+
+        </reference>
+    </adminhtml_rii_rii_index>
+    <adminhtml_rii_rii_grid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_rii/adminhtml_rii_grid" name="rii_grid"/>
+        </block>
+    </adminhtml_rii_rii_grid>
+    <!-- Rii add/edit action -->
+    <adminhtml_rii_rii_edit>
+        <update handle="editor"/>
+        <reference name="menu">
+            <action method="setActive">
+                <menupath>bs_work/rii</menupath>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="bs_rii/adminhtml_rii_edit" name="rii_edit"></block>
+        </reference>
+        <reference name="left">
+            <block type="bs_rii/adminhtml_rii_edit_tabs" name="rii_tabs"></block>
+        </reference>
+    </adminhtml_rii_rii_edit>
+
+    <adminhtml_rii_rii_irs>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_rii/adminhtml_rii_edit_tab_ir" name="rii.edit.tab.ir"/>
+        </block>
+    </adminhtml_rii_rii_irs>
+    <adminhtml_rii_rii_irsgrid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_rii/adminhtml_rii_edit_tab_ir" name="rii.edit.tab.ir"/>
+        </block>
+    </adminhtml_rii_rii_irsgrid>
+
+    <adminhtml_rii_rii_ncrs>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_rii/adminhtml_rii_edit_tab_ncr" name="rii.edit.tab.ncr"/>
+        </block>
+    </adminhtml_rii_rii_ncrs>
+    <adminhtml_rii_rii_ncrsgrid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_rii/adminhtml_rii_edit_tab_ncr" name="rii.edit.tab.ncr"/>
+        </block>
+    </adminhtml_rii_rii_ncrsgrid>
+
+    <adminhtml_rii_rii_qrs>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_rii/adminhtml_rii_edit_tab_qr" name="rii.edit.tab.qr"/>
+        </block>
+    </adminhtml_rii_rii_qrs>
+    <adminhtml_rii_rii_qrsgrid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_rii/adminhtml_rii_edit_tab_qr" name="rii.edit.tab.qr"/>
+        </block>
+    </adminhtml_rii_rii_qrsgrid>
+
+    <adminhtml_rii_rii_qns>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_rii/adminhtml_rii_edit_tab_qn" name="rii.edit.tab.qn"/>
+        </block>
+    </adminhtml_rii_rii_qns>
+    <adminhtml_rii_rii_qnsgrid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_rii/adminhtml_rii_edit_tab_qn" name="rii.edit.tab.qn"/>
+        </block>
+    </adminhtml_rii_rii_qnsgrid>
+
+    <adminhtml_rii_rii_cars>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_rii/adminhtml_rii_edit_tab_car" name="rii.edit.tab.car"/>
+        </block>
+    </adminhtml_rii_rii_cars>
+    <adminhtml_rii_rii_carsgrid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_rii/adminhtml_rii_edit_tab_car" name="rii.edit.tab.car"/>
+        </block>
+    </adminhtml_rii_rii_carsgrid>
+
+    <adminhtml_rii_rii_drrs>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_rii/adminhtml_rii_edit_tab_drr" name="rii.edit.tab.drr"/>
+        </block>
+    </adminhtml_rii_rii_drrs>
+    <adminhtml_rii_rii_drrsgrid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_rii/adminhtml_rii_edit_tab_drr" name="rii.edit.tab.drr"/>
+        </block>
+    </adminhtml_rii_rii_drrsgrid>
+
+</layout>
