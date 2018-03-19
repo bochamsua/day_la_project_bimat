@@ -77,35 +77,25 @@ class BS_KPIReport_Adminhtml_Kpireport_KpireportController extends BS_Sur_Contro
             $filter = $this->getRequest()->getParam('filter');
             $requestData = Mage::helper('adminhtml')->prepareFilterString($filter);
 
+            $depts = Mage::helper('bs_misc/dept')->getMaintenanceCenters();
+
+
             $reportType = $requestData['report_type'];
-            if($reportType == 1){//individual
-                $depts = [$requestData['dept_single']];
-                $indexes = explode(",", $requestData['index_multiple'][0]);
+            if($reportType == 1){//single month
+                $between = Mage::helper('bs_report')->getMonthYearBetween($requestData['month'], $requestData['year'], $requestData['month'], $requestData['year']);
             }else {//multi
-                $depts = explode(",", $requestData['dept_multiple'][0]);
-                $indexes = [$requestData['index_single']];
+                $between = Mage::helper('bs_report')->getMonthYearBetween($requestData['from_month'], $requestData['from_year'], $requestData['to_month'], $requestData['to_year']);
             }
 
-            $between = Mage::helper('bs_report')->getMonthYearBetween($requestData['from_month'], $requestData['from_year'], $requestData['to_month'], $requestData['to_year']);
 
-            if(count($indexes) && $indexes[0] != ""){
-                if(count($depts) && $depts[0] != ""){
-                    foreach ($depts as $dept) {
-                        foreach ($between as $item) {
-                            Mage::helper('bs_kpireport')->updateData($indexes, $dept, $item[0], $item[1]);
 
-                        }
-                    }
-                    $this->_getSession()->addSuccess(Mage::helper('bs_kpireport')->__('The data has been updated!'));
-                }else {
-                    $this->_getSession()->addError(Mage::helper('bs_kpireport')->__('Please select departments!'));
+            foreach ($depts as $dept) {
+                foreach ($between as $item) {
+                    Mage::helper('bs_kpireport')->updateData(null, $dept, $item[0], $item[1]);
+
                 }
-
-
-
-            }else {
-                $this->_getSession()->addError(Mage::helper('bs_kpireport')->__('Please select report indexes!'));
             }
+            $this->_getSession()->addSuccess(Mage::helper('bs_kpireport')->__('The data has been updated!'));
 
 
 

@@ -55,9 +55,7 @@ class BS_Kpi_Block_Adminhtml_Kpi_Edit_Tab_Form extends Mage_Adminhtml_Block_Widg
 		    )
 	    );
 
-	    $depts = Mage::getResourceModel('bs_misc/department_collection');
-	    $depts->addFieldToFilter('entity_id', ['in' => [1,2,3,4,6,10,15]]);
-	    $depts = $depts->toOptionArray();
+	    $depts = Mage::helper('bs_misc/dept')->getDepts(true);
 	    $fieldset->addField(
 		    'dept_id',
 		    'select',

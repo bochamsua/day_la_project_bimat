@@ -51,24 +51,28 @@ class BS_KPIReport_Block_Adminhtml_Kpireport_Grid extends Mage_Adminhtml_Block_W
         $requestData = Mage::helper('adminhtml')->prepareFilterString($this->getRequest()->getParam('filter'));
 
         if(count($requestData)){
-            $fromMonth = $requestData['from_month'];
-            $fromYear = $requestData['from_year'];
-            $toMonth = $requestData['to_month'];
-            $toYear = $requestData['to_year'];
+            $type = $requestData['report_type'];
+
+            if($type == 1){
+                $fromMonth = $requestData['month'];
+                $fromYear = $requestData['year'];
+                $toMonth = $requestData['month'];
+                $toYear = $requestData['year'];
+            }else {
+                $fromMonth = $requestData['from_month'];
+                $fromYear = $requestData['from_year'];
+                $toMonth = $requestData['to_month'];
+                $toYear = $requestData['to_year'];
+            }
+
         }
 
-        $type = $requestData['report_type'];
-        if($type == 1){
-            $depts = [$requestData['dept_single']];
-        }else {
-            if($requestData['dept_multiple'][0] != ''){
-                $depts = explode(",", $requestData['dept_multiple'][0]);
-            }else {
-                $depts = [];
-            }
-        }
+
+
 
         $between = $this->helper('bs_report')->buildMonthYearQuery($fromMonth, $fromYear, $toMonth, $toYear);
+
+        $depts = Mage::helper('bs_misc/dept')->getMaintenanceCenters();
 
         $collection = Mage::getModel('bs_kpireport/kpireport')
             ->getCollection();
@@ -146,7 +150,7 @@ class BS_KPIReport_Block_Adminhtml_Kpireport_Grid extends Mage_Adminhtml_Block_W
         $this->addColumn(
             'qsr',
             array(
-                'header' => Mage::helper('bs_kpireport')->__('QSR (SUR/1000h)'),
+                'header' => Mage::helper('bs_kpireport')->__('QSR'),
                 'index'  => 'qsr',
                 'type'=> 'text',
 
@@ -155,7 +159,7 @@ class BS_KPIReport_Block_Adminhtml_Kpireport_Grid extends Mage_Adminhtml_Block_W
         $this->addColumn(
             'ncr',
             array(
-                'header' => Mage::helper('bs_kpireport')->__('NCR (NCR/M.SUR)'),
+                'header' => Mage::helper('bs_kpireport')->__('NCR'),
                 'index'  => 'ncr',
                 'type'=> 'text',
 
@@ -164,7 +168,7 @@ class BS_KPIReport_Block_Adminhtml_Kpireport_Grid extends Mage_Adminhtml_Block_W
         $this->addColumn(
             'mncr',
             array(
-                'header' => Mage::helper('bs_kpireport')->__('MNCR (Point/1000h)'),
+                'header' => Mage::helper('bs_kpireport')->__('MNCR'),
                 'index'  => 'mncr',
                 'type'=> 'text',
 
@@ -173,7 +177,7 @@ class BS_KPIReport_Block_Adminhtml_Kpireport_Grid extends Mage_Adminhtml_Block_W
         $this->addColumn(
             'mer',
             array(
-                'header' => Mage::helper('bs_kpireport')->__('MER (Point/1000h)'),
+                'header' => Mage::helper('bs_kpireport')->__('MER'),
                 'index'  => 'mer',
                 'type'=> 'text',
 
@@ -182,7 +186,7 @@ class BS_KPIReport_Block_Adminhtml_Kpireport_Grid extends Mage_Adminhtml_Block_W
         $this->addColumn(
             'ser',
             array(
-                'header' => Mage::helper('bs_kpireport')->__('SER (%)'),
+                'header' => Mage::helper('bs_kpireport')->__('SER'),
                 'index'  => 'ser',
                 'type'=> 'text',
 
@@ -191,7 +195,7 @@ class BS_KPIReport_Block_Adminhtml_Kpireport_Grid extends Mage_Adminhtml_Block_W
         $this->addColumn(
             'rer',
             array(
-                'header' => Mage::helper('bs_kpireport')->__('RER (%)'),
+                'header' => Mage::helper('bs_kpireport')->__('RER'),
                 'index'  => 'rer',
                 'type'=> 'text',
 
@@ -200,7 +204,7 @@ class BS_KPIReport_Block_Adminhtml_Kpireport_Grid extends Mage_Adminhtml_Block_W
         $this->addColumn(
             'camt',
             array(
-                'header' => Mage::helper('bs_kpireport')->__('CAMT (%)'),
+                'header' => Mage::helper('bs_kpireport')->__('CAMT'),
                 'index'  => 'camt',
                 'type'=> 'text',
 
@@ -209,7 +213,7 @@ class BS_KPIReport_Block_Adminhtml_Kpireport_Grid extends Mage_Adminhtml_Block_W
         $this->addColumn(
             'sdr',
             array(
-                'header' => Mage::helper('bs_kpireport')->__('SDR (NCR/1000h)'),
+                'header' => Mage::helper('bs_kpireport')->__('SDR'),
                 'index'  => 'sdr',
                 'type'=> 'text',
 
@@ -218,7 +222,7 @@ class BS_KPIReport_Block_Adminhtml_Kpireport_Grid extends Mage_Adminhtml_Block_W
         $this->addColumn(
             'csr',
             array(
-                'header' => Mage::helper('bs_kpireport')->__('CSR (Complaint/1000h)'),
+                'header' => Mage::helper('bs_kpireport')->__('CSR'),
                 'index'  => 'csr',
                 'type'=> 'text',
 
@@ -227,7 +231,7 @@ class BS_KPIReport_Block_Adminhtml_Kpireport_Grid extends Mage_Adminhtml_Block_W
         $this->addColumn(
             'cir',
             array(
-                'header' => Mage::helper('bs_kpireport')->__('CIR (%)'),
+                'header' => Mage::helper('bs_kpireport')->__('CIR'),
                 'index'  => 'cir',
                 'type'=> 'text',
 
@@ -236,7 +240,7 @@ class BS_KPIReport_Block_Adminhtml_Kpireport_Grid extends Mage_Adminhtml_Block_W
         $this->addColumn(
             'mir',
             array(
-                'header' => Mage::helper('bs_kpireport')->__('MIR (Error/1000h)'),
+                'header' => Mage::helper('bs_kpireport')->__('MIR'),
                 'index'  => 'mir',
                 'type'=> 'text',
 
@@ -245,7 +249,7 @@ class BS_KPIReport_Block_Adminhtml_Kpireport_Grid extends Mage_Adminhtml_Block_W
         $this->addColumn(
             'ppe',
             array(
-                'header' => Mage::helper('bs_kpireport')->__('PPE (%)'),
+                'header' => Mage::helper('bs_kpireport')->__('PPE'),
                 'index'  => 'ppe',
                 'type'=> 'text',
 
@@ -284,7 +288,7 @@ class BS_KPIReport_Block_Adminhtml_Kpireport_Grid extends Mage_Adminhtml_Block_W
         //    )
         //);
         //$this->addExportType('*/*/exportCsv', Mage::helper('bs_kpireport')->__('CSV'));
-        //$this->addExportType('*/*/exportExcel', Mage::helper('bs_kpireport')->__('Excel'));
+        $this->addExportType('*/*/exportExcel', Mage::helper('bs_kpireport')->__('Excel'));
         //$this->addExportType('*/*/exportXml', Mage::helper('bs_kpireport')->__('XML'));
         return parent::_prepareColumns();
     }

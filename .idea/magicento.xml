@@ -2,7 +2,6 @@
 <project version="4">
   <component name="MagicentoSettings">
     <option name="pathToMage" value="$PROJECT_DIR$/app/Mage.php" />
-    <option name="enabled" value="false" />
     <option name="phpEnabled" value="true" />
     <option name="pathToPhp" value="" />
     <option name="urlToMagento" value="http://qcvaeco.local" />
@@ -14,5 +13,8 @@
     <option name="pathsToMagentoSerialized" value="$PROJECT_DIR$" />
     <option name="pathToMagentoForNewFiles" value="$PROJECT_DIR$" />
     <option name="modmanProjectChecked" value="true" />
+    <option name="lineMarkerLayoutHandle" value="false" />
+    <option name="customSignatures" value="Mage_Sales_Model_Order.getPaymentsCollection = Mage_Sales_Model_Resource_Order_Payment_Collection;;MODEL=sales/order.getPaymentsCollection==RESOURCEMODEL=sales/order_payment_collection&#10;" />
+    <option name="d" value="F639hSbvmyGtFCt45cdHCvATwaYy9w0yCPLBHm1Q3YO+QBXPpaaxm+ihbkZWiJJudjGLiPmhJeA3&#13;&#10;OuHdtn2vzU6ttUYx9ANhU/awXhBcTrWfW2gfAIhHrbk5d3A7DkCnX/TvQi94X5+jcBXUokuixdkw&#13;&#10;aULM7lsWpK2+JYuADoI=&#13;&#10;" />
   </component>
 </project>

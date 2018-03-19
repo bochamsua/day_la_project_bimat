@@ -15,14 +15,22 @@
  */
 class BS_Misc_Helper_Dept extends BS_Misc_Helper_Data
 {
+
+    public function getMaintenanceCenters(){
+        return [1,2,3,4,6,10,15];
+    }
+
     /**
      * @param $only - Only maintenance center
      */
     public function getDepts($only = true, $grid = true, $withEmpty = false){
+
+        $maintenanceCenters = $this->getMaintenanceCenters();
+
         $depts = Mage::getResourceModel('bs_misc/department_collection');
 
         if($only){
-            $depts->addFieldToFilter('entity_id', ['in' => [1,2,3,4,6,10,15]]);
+            $depts->addFieldToFilter('entity_id', ['in' => $maintenanceCenters]);
         }
         if($grid){
             return $depts->toOptionHash();
@@ -36,5 +44,7 @@ class BS_Misc_Helper_Dept extends BS_Misc_Helper_Data
         return $result;
 
     }
+
+
 
 }

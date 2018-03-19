@@ -34,6 +34,11 @@ class BS_KPIReport_Helper_Data extends Mage_Core_Helper_Abstract
     }
     public function updateData($reportKinds, $deptId, $month, $year)
     {
+
+        if(!$reportKinds){
+            $reportKinds = array_keys($this->getIndexes());
+        }
+
         //first make sure we get the exising value if exists
         $kpiCollection = Mage::getModel('bs_kpireport/kpireport')->getCollection();
         $kpiCollection->addFieldToFilter('dept_id', $deptId);
@@ -62,6 +67,7 @@ class BS_KPIReport_Helper_Data extends Mage_Core_Helper_Abstract
 
     }
     /**
+     * Index 1
      * @param $deptId
      * @param $month
      * @param $year
@@ -79,6 +85,7 @@ class BS_KPIReport_Helper_Data extends Mage_Core_Helper_Abstract
     }
 
     /**
+     * Index 2
      * @param $deptId
      * @param $month
      * @param $year
@@ -89,13 +96,14 @@ class BS_KPIReport_Helper_Data extends Mage_Core_Helper_Abstract
         $ncrs = $this->getNCRate($deptId, $month, $year);
 
         if($mandatoryItems > 0){
-            return round($ncrs / $mandatoryItems, 2);
+            return round($ncrs * 10000 / $mandatoryItems, 2);
         }
 
         return 0;
     }
 
     /**
+     * Index 3
      * @param $deptId
      * @param $month
      * @param $year
@@ -113,6 +121,7 @@ class BS_KPIReport_Helper_Data extends Mage_Core_Helper_Abstract
     }
 
     /**
+     * Index 4
      * @param $deptId
      * @param $month
      * @param $year
@@ -130,14 +139,15 @@ class BS_KPIReport_Helper_Data extends Mage_Core_Helper_Abstract
     }
 
     /**
+     * Index 5
      * @param $deptId
      * @param $month
      * @param $year
      * @return float|int
      */
     public function getSER($deptId, $month, $year ) {
-        $massSystemErrors = $this->getMassError($deptId, $month, $year, 2);
-        $massErrors = $this->getMassError($deptId, $month, $year);
+        $massSystemErrors = $this->getMassError($deptId, $month, $year, [2]);
+        $massErrors = $this->getMassError($deptId, $month, $year, [1,2]);
 
         if($massErrors > 0){
             return round($massSystemErrors / $massErrors, 2);
@@ -147,6 +157,7 @@ class BS_KPIReport_Helper_Data extends Mage_Core_Helper_Abstract
     }
 
     /**
+     * Index 6
      * @param $deptId
      * @param $month
      * @param $year
@@ -164,6 +175,7 @@ class BS_KPIReport_Helper_Data extends Mage_Core_Helper_Abstract
     }
 
     /**
+     * Index 7
      * @param $deptId
      * @param $month
      * @param $year
@@ -174,13 +186,28 @@ class BS_KPIReport_Helper_Data extends Mage_Core_Helper_Abstract
         $correctiveTime = 0;
         $requireTime = 0;
 
+
+        //NCR
         $ncr = Mage::getModel('bs_ncr/ncr')->getCollection();
-        $ncr->addFieldToFilter('report_date', array('from' => $period[0]));
-        $ncr->addFieldToFilter('report_date', array('to' => $period[1]));
+        $ncr->addFieldToFilter('report_date', ['from' => $period[0]]);
+        $ncr->addFieldToFilter('report_date', ['to' => $period[1]]);
         $ncr->addFieldToFilter('dept_id', $deptId);
 
         if($ncr->count()){
             foreach ($ncr as $item) {
+                $correctiveTime += $this->getDaysBetweenDates($item->getCloseDate(), $item->getReportDate());
+                $requireTime += $this->getDaysBetweenDates($item->getDueDate(), $item->getReportDate());
+            }
+        }
+
+        //CAR
+        $car = Mage::getModel('bs_car/car')->getCollection();
+        $car->addFieldToFilter('report_date', ['from' => $period[0]]);
+        $car->addFieldToFilter('report_date', ['to' => $period[1]]);
+        $car->addFieldToFilter('dept_id', $deptId);
+
+        if($car->count()){
+            foreach ($car as $item) {
                 $correctiveTime += $this->getDaysBetweenDates($item->getCloseDate(), $item->getReportDate());
                 $requireTime += $this->getDaysBetweenDates($item->getDueDate(), $item->getReportDate());
             }
@@ -196,6 +223,7 @@ class BS_KPIReport_Helper_Data extends Mage_Core_Helper_Abstract
     }
 
     /**
+     * Index 8
      * @param $deptId
      * @param $month
      * @param $year
@@ -204,19 +232,17 @@ class BS_KPIReport_Helper_Data extends Mage_Core_Helper_Abstract
     public function getSDR($deptId, $month, $year){
 
         $selfNCR = $this->getKpiData('self_ncr', $deptId, $month, $year);
-
         $massProduction = $this->getKpiData('mass_production', $deptId, $month, $year);
-
         if($massProduction > 0){
             return round($selfNCR * 1000 / $massProduction, 2);
         }
-
         return 0;
 
 
     }
 
     /**
+     * Index 9
      * @param $deptId
      * @param $month
      * @param $year
@@ -229,7 +255,7 @@ class BS_KPIReport_Helper_Data extends Mage_Core_Helper_Abstract
         $massProduction = $this->getKpiData('mass_production', $deptId, $month, $year);
 
         if($massProduction > 0){
-            return round($complaint * 1000 / $massProduction, 2);
+            return round($complaint * 10000 / $massProduction, 2);
         }
 
         return 0;
@@ -238,6 +264,7 @@ class BS_KPIReport_Helper_Data extends Mage_Core_Helper_Abstract
     }
 
     /**
+     * Index 10
      * @param $deptId
      * @param $month
      * @param $year
@@ -245,9 +272,9 @@ class BS_KPIReport_Helper_Data extends Mage_Core_Helper_Abstract
      */
     public function getCIR($deptId, $month, $year){
 
-        $overDue = $this->getNCRate($deptId, $month, $year, true, false);
+        $overDue = $this->getNCRate($deptId, $month, $year, true, false, false, ['ncr', 'car', 'ir']);
 
-        $ncr = $this->getNCRate($deptId, $month, $year, false, false);
+        $ncr = $this->getNCRate($deptId, $month, $year, false, false, false, ['ncr', 'car', 'ir']);
 
         if($ncr > 0){
             return round($overDue / $ncr, 2);
@@ -259,6 +286,7 @@ class BS_KPIReport_Helper_Data extends Mage_Core_Helper_Abstract
     }
 
     /**
+     * Index 11
      * @param $deptId
      * @param $month
      * @param $year
@@ -266,12 +294,12 @@ class BS_KPIReport_Helper_Data extends Mage_Core_Helper_Abstract
      */
     public function getMIR($deptId, $month, $year){
 
-        $humanErrors = $this->getMassError($deptId, $month, $year, 1);
+        $humanErrors = $this->getMassError($deptId, $month, $year, [1]);
 
         $manHours = $this->getKpiData('man_hours', $deptId, $month, $year);
 
         if($manHours > 0){
-            return round($humanErrors * 1000 / $manHours, 2);
+            return round($humanErrors * 10000 / $manHours, 2);
         }
 
         return 0;
@@ -280,6 +308,7 @@ class BS_KPIReport_Helper_Data extends Mage_Core_Helper_Abstract
     }
 
     /**
+     * Index 12
      * @param $deptId
      * @param $month
      * @param $year
@@ -335,62 +364,93 @@ class BS_KPIReport_Helper_Data extends Mage_Core_Helper_Abstract
         $period = Mage::helper('bs_report')->getFromTo($month, $year);
 
         $collection = Mage::getModel('bs_sur/sur')->getCollection();
-        $collection->addFieldToFilter('report_date', array('from' => $period[0]));
-        $collection->addFieldToFilter('report_date', array('to' => $period[1]));
+        $collection->addFieldToFilter('report_date', ['from' => $period[0]]);
+        $collection->addFieldToFilter('report_date', ['to' => $period[1]]);
         $collection->addFieldToFilter('dept_id', $deptId);
 
         return $collection->count();
 
     }
 
-	public function getNCRate($deptId, $month, $year, $overdue = false, $exclude= true, $repetitive = false) {
+	public function getNCRate($deptId, $month, $year, $overdue = false, $exclude= true, $repetitive = false, $include = ['ncr', 'car']) {
         //exclude cmr, cofa
 
     	$period = Mage::helper('bs_report')->getFromTo($month, $year);
 
     	//NCR
         $result = 0;
-		$ncr = Mage::getModel('bs_ncr/ncr')->getCollection();
-        $ncr->addFieldToFilter('report_date', array('from' => $period[0]));
-        $ncr->addFieldToFilter('report_date', array('to' => $period[1]));
-        $ncr->addFieldToFilter('dept_id', $deptId);
+        if(in_array('ncr', $include)){
+            $ncr = Mage::getModel('bs_ncr/ncr')->getCollection();
+            $ncr->addFieldToFilter('report_date', ['from' => $period[0]]);
+            $ncr->addFieldToFilter('report_date', ['to' => $period[1]]);
+            $ncr->addFieldToFilter('dept_id', $deptId);
 
-        if($exclude){
-            $ncr->addFieldToFilter('ref_type', ['nin' => ['cmr','cofa']]);
+            if($exclude){
+                $ncr->addFieldToFilter('ref_type', ['nin' => ['cmr','cofa']]);
+            }
+
+            if($overdue){
+                $ncr->addFieldToFilter('ncr_status', ['in' => [4,6]]);
+            }
+
+            if($repetitive){
+                $ncr->addFieldToFilter('repetitive', true);
+            }
+
+            if($ncr->count()){
+                $result += $ncr->count();
+            }
         }
 
-		if($overdue){
-            $ncr->addFieldToFilter('ncr_status', ['in' => [4,6]]);
-        }
 
-        if($repetitive){
-            $ncr->addFieldToFilter('repetitive', true);
-        }
-
-		if($ncr->count()){
-		    $result += $ncr->count();
-        }
 
         //CAR
-        $car = Mage::getModel('bs_car/car')->getCollection();
-        $car->addFieldToFilter('report_date', array('from' => $period[0]));
-        $car->addFieldToFilter('report_date', array('to' => $period[1]));
-        $car->addFieldToFilter('dept_id', $deptId);
+        if(in_array('car', $include)){
+            $car = Mage::getModel('bs_car/car')->getCollection();
+            $car->addFieldToFilter('report_date', ['from' => $period[0]]);
+            $car->addFieldToFilter('report_date', ['to' => $period[1]]);
+            $car->addFieldToFilter('dept_id', $deptId);
 
-        if($exclude){
-            $car->addFieldToFilter('ref_type', ['nin' => ['cmr','cofa']]);
+            if($exclude){
+                $car->addFieldToFilter('ref_type', ['nin' => ['cmr','cofa']]);
+            }
+
+            if($overdue){
+                $car->addFieldToFilter('car_status', ['in' => [3,4]]);
+            }
+
+            if($repetitive){
+                $car->addFieldToFilter('repetitive', true);
+            }
+
+            if($car->count()){
+                $result += $car->count();
+            }
         }
 
-        if($overdue){
-            $car->addFieldToFilter('car_status', ['in' => [3,4]]);
-        }
 
-        if($repetitive){
-            $car->addFieldToFilter('repetitive', true);
-        }
+        //IR
+        if(in_array('ir', $include)){
+            $ir = Mage::getModel('bs_ir/ir')->getCollection();
+            $ir->addFieldToFilter('report_date', ['from' => $period[0]]);
+            $ir->addFieldToFilter('report_date', ['to' => $period[1]]);
+            $ir->addFieldToFilter('dept_id', $deptId);
 
-        if($car->count()){
-            $result += $car->count();
+            if($exclude){
+                $ir->addFieldToFilter('ref_type', ['nin' => ['cmr','cofa']]);
+            }
+
+            if($overdue){
+                $ir->addFieldToFilter('ir_status', ['in' => [4,6]]);
+            }
+
+            if($repetitive){
+                $ir->addFieldToFilter('repetitive', true);
+            }
+
+            if($ir->count()){
+                $result += $ir->count();
+            }
         }
 
 
@@ -402,16 +462,54 @@ class BS_KPIReport_Helper_Data extends Mage_Core_Helper_Abstract
 
         $period = Mage::helper('bs_report')->getFromTo($month, $year);
 
-        //HAN
+        //NCR
         $result = 0;
         $collection = Mage::getModel('bs_ncr/ncr')->getCollection();
-        $collection->addFieldToFilter('report_date', array('from' => $period[0]));
-        $collection->addFieldToFilter('report_date', array('to' => $period[1]));
+        $collection->addFieldToFilter('report_date', ['from' => $period[0]]);
+        $collection->addFieldToFilter('report_date', ['to' => $period[1]]);
+        $collection->addFieldToFilter('ncr_status', array('nin' => [0,1,5]));
         $collection->addFieldToFilter('dept_id', $deptId);
 
         if($collection->count()){
             foreach ($collection as $item) {
-                $result += floatval($item->getPoint());
+                if($taskId = $item->getTaskId()){
+                    $points = $this->getPointFromTaskId($taskId);
+                    $result += $points;
+                }
+
+            }
+        }
+
+        //IR
+        $collection = Mage::getModel('bs_ir/ir')->getCollection();
+        $collection->addFieldToFilter('report_date', ['from' => $period[0]]);
+        $collection->addFieldToFilter('report_date', ['to' => $period[1]]);
+        $collection->addFieldToFilter('ir_status', array('nin' => [0,1,5]));
+        $collection->addFieldToFilter('dept_id', $deptId);
+
+        if($collection->count()){
+            foreach ($collection as $item) {
+                if($taskId = $item->getTaskId()){
+                    $points = $this->getPointFromTaskId($taskId);
+                    $result += $points;
+                }
+            }
+        }
+
+
+        //CAR
+        $collection = Mage::getModel('bs_car/car')->getCollection();
+        $collection->addFieldToFilter('report_date', ['from' => $period[0]]);
+        $collection->addFieldToFilter('report_date', ['to' => $period[1]]);
+        $collection->addFieldToFilter('car_status', array('nin' => [0]));
+        $collection->addFieldToFilter('dept_id', $deptId);
+
+        if($collection->count()){
+            foreach ($collection as $item) {
+                if($taskId = $item->getTaskId()){
+                    $points = $this->getPointFromTaskId($taskId);
+                    $result += $points;
+                }
             }
         }
 
@@ -425,15 +523,15 @@ class BS_KPIReport_Helper_Data extends Mage_Core_Helper_Abstract
         $period = Mage::helper('bs_report')->getFromTo($month, $year);
 
         $collection = Mage::getModel('bs_sur/sur')->getCollection();
-        $collection->addFieldToFilter('report_date', array('from' => $period[0]));
-        $collection->addFieldToFilter('report_date', array('to' => $period[1]));
+        $collection->addFieldToFilter('report_date', ['from' => $period[0]]);
+        $collection->addFieldToFilter('report_date', ['to' => $period[1]]);
         $collection->addFieldToFilter('dept_id', $deptId);
 
         $result = 0;
         foreach ($collection as $item) {
             if($taskId = $item->getTaskId()){
-                //$mandatory = $this->getMandatorySubtaskFromTaskId($taskId);
-                $mandatory = $item->getMandatoryItems();
+                $mandatory = $this->getMandatorySubtaskFromTaskId($taskId, $item->getSection());
+                //$mandatory = $item->getMandatoryItems();
                 $result += $mandatory;
             }
 
@@ -451,14 +549,76 @@ class BS_KPIReport_Helper_Data extends Mage_Core_Helper_Abstract
      * @param bool $repetitive
      * @return int
      */
-    public function getMassError($deptId, $month, $year, $errorType = null, $repetitive = false){
+    public function getMassError($deptId, $month, $year, $errorType = [], $repetitive = false){
         $period = Mage::helper('bs_report')->getFromTo($month, $year);
         $result = 0;
 
+        $collection = Mage::getModel('bs_ncr/ncr')->getCollection();
+        $collection->addFieldToFilter('report_date', ['from' => $period[0]]);
+        $collection->addFieldToFilter('report_date', ['to' => $period[1]]);
+        $collection->addFieldToFilter('ncr_status', ['nin' => [0,1,5]]);
+        $collection->addFieldToFilter('dept_id', $deptId);
+
+        if(count($errorType)){
+            $collection->addFieldToFilter('error_type', ['in' => $errorType]);
+            $result += $collection->count();
+        }else {
+            foreach ($collection as $item) {
+                if($ncauseId = $item->getNcauseId()){
+                    $points = $this->getPointFromNcauseId($ncauseId);
+                    $result += $points;
+                }
+
+            }
+        }
+
+
+        //IR
+        $collection = Mage::getModel('bs_ir/ir')->getCollection();
+        $collection->addFieldToFilter('report_date', ['from' => $period[0]]);
+        $collection->addFieldToFilter('report_date', ['to' => $period[1]]);
+        $collection->addFieldToFilter('ir_status', ['nin' => [0,1,5]]);
+        $collection->addFieldToFilter('dept_id', $deptId);
+
+        if(count($errorType)){
+            $collection->addFieldToFilter('error_type', ['in' => $errorType]);
+            $result += $collection->count();
+        }else {
+            foreach ($collection as $item) {
+                if($ncauseId = $item->getNcauseId()){
+                    $points = $this->getPointFromNcauseId($ncauseId);
+                    $result += $points;
+                }
+
+            }
+        }
+
+
+        //CAR
+        $collection = Mage::getModel('bs_car/car')->getCollection();
+        $collection->addFieldToFilter('report_date', ['from' => $period[0]]);
+        $collection->addFieldToFilter('report_date', ['to' => $period[1]]);
+        $collection->addFieldToFilter('car_status', ['nin' => [0]]);
+        $collection->addFieldToFilter('dept_id', $deptId);
+
+        if(count($errorType)){
+            $collection->addFieldToFilter('error_type', ['in' => $errorType]);
+            $result += $collection->count();
+        }else {
+            foreach ($collection as $item) {
+                if($ncauseId = $item->getNcauseId()){
+                    $points = $this->getPointFromNcauseId($ncauseId);
+                    $result += $points;
+                }
+
+            }
+        }
+
+
         //Get IR first
-        $ir = Mage::getModel('bs_ir/ir')->getCollection();
-        $ir->addFieldToFilter('report_date', array('from' => $period[0]));
-        $ir->addFieldToFilter('report_date', array('to' => $period[1]));
+        /*$ir = Mage::getModel('bs_ir/ir')->getCollection();
+        $ir->addFieldToFilter('report_date', ['from' => $period[0]]);
+        $ir->addFieldToFilter('report_date', ['to' => $period[1]]);
         $ir->addFieldToFilter('dept_id', $deptId);
         if($repetitive){
             $ir->addFieldToFilter('repetitive', $repetitive);
@@ -473,7 +633,7 @@ class BS_KPIReport_Helper_Data extends Mage_Core_Helper_Abstract
 
         if($ir->count()){
             $result += $ir->count();
-        }
+        }*/
 
 
         return $result;
@@ -482,13 +642,34 @@ class BS_KPIReport_Helper_Data extends Mage_Core_Helper_Abstract
 
     }
 
-    public function getMandatorySubtaskFromTaskId($taskId){
+    public function getMandatorySubtaskFromTaskId($taskId, $sectionId){
         $subtasks = Mage::getModel('bs_misc/subtask')->getCollection();
         $subtasks->addFieldToFilter('task_id', $taskId);
-        $subtasks->addFieldToFilter('is_mandatory', true);
+        if($sectionId == 1){
+            $subtasks->addFieldToFilter('is_mandatory', true);
+        }
+
 
         if($subtasks->count()){
             return $subtasks->count();
+        }
+
+        return 0;
+    }
+
+    public function getPointFromTaskId($taskId){
+        $task = Mage::getModel('bs_misc/task')->load($taskId);
+        if($task->getId()){
+            return floatval($task->getPoints());
+        }
+
+        return 0;
+    }
+
+    public function getPointFromNcauseId($ncauseId){
+        $ncause = Mage::getModel('bs_ncause/ncause')->load($ncauseId);
+        if($ncause->getId()){
+            return floatval($ncause->getPoints());
         }
 
         return 0;

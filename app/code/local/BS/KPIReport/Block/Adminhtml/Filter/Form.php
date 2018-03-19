@@ -32,7 +32,9 @@ class BS_KPIReport_Block_Adminhtml_Filter_Form extends Mage_Adminhtml_Block_Widg
 			    'from_month' => $requestData['from_month'],
 			    'from_year'  => $requestData['from_year'],
                 'to_month' => $requestData['to_month'],
-                'to_year'  => $requestData['to_year']
+                'to_year'  => $requestData['to_year'],
+                'month' => $requestData['month'],
+                'year'  => $requestData['year']
 		    );
 	    }else { //current time
 		    $formValues = array(
@@ -40,16 +42,14 @@ class BS_KPIReport_Block_Adminhtml_Filter_Form extends Mage_Adminhtml_Block_Widg
 			    'from_year'  => Mage::getModel('core/date')->date('Y', now()),
                 'to_month' => Mage::getModel('core/date')->date('m', now()),
                 'to_year'  => Mage::getModel('core/date')->date('Y', now()),
+                'month' => Mage::getModel('core/date')->date('m', now()),
+                'year'  => Mage::getModel('core/date')->date('Y', now()),
 		    );
 	    }
 
         $fieldset = $form->addFieldset('base_fieldset', array('legend'=>Mage::helper('bs_report')->__('&nbsp;', $formValues['month'], $formValues['year'])));
 
         $dateFormatIso = Mage::app()->getLocale()->getDateFormat(Mage_Core_Model_Locale::FORMAT_TYPE_SHORT);
-
-	    $depts = Mage::getResourceModel('bs_misc/department_collection');
-        $depts->addFieldToFilter('entity_id', ['in' => [1,2,3,4,6,10,15]]);
-	    $depts = $depts->toOptionArray();
 
 
         $indexes = $this->helper('bs_kpireport')->getIndexes();
@@ -67,8 +67,8 @@ class BS_KPIReport_Block_Adminhtml_Filter_Form extends Mage_Adminhtml_Block_Widg
 		    'name'      => 'report_type',
 		    'label'     => Mage::helper('adminhtml')->__('Report Type'),
 		    'options'   => array(
-			    '1' => Mage::helper('adminhtml')->__('Individual Department Report'),
-			    '2' => Mage::helper('adminhtml')->__('Multiple Deparments Report'),
+			    '1' => Mage::helper('adminhtml')->__('Single Month'),
+			    '2' => Mage::helper('adminhtml')->__('Multiple Months'),
 		    ),
 	    ), '');
 
@@ -81,7 +81,7 @@ class BS_KPIReport_Block_Adminhtml_Filter_Form extends Mage_Adminhtml_Block_Widg
 		    ),
 	    ), '');*/
 
-        $fieldset->addField('index_single', 'select', array(
+        /*$fieldset->addField('index_single', 'select', array(
             'name'      => 'index_single',
             'label'     => Mage::helper('adminhtml')->__('Index'),
             'values'   => $indexOptionArray,
@@ -107,7 +107,7 @@ class BS_KPIReport_Block_Adminhtml_Filter_Form extends Mage_Adminhtml_Block_Widg
 		    'label'     => Mage::helper('adminhtml')->__('Departments'),
 		    'values'    => $depts,
 		    'display'   => 'none'
-	    ));
+	    ));*/
 
 
 
@@ -127,6 +127,21 @@ class BS_KPIReport_Block_Adminhtml_Filter_Form extends Mage_Adminhtml_Block_Widg
             'label'     => Mage::helper('bs_report')->__('Date To'),
             'title'     => Mage::helper('bs_report')->__('Date To'),
         ));*/
+
+        $fieldset->addField('month', 'select', array(
+            'name' => 'month',
+            'options' => $this->helper('bs_report')->getMonths(),
+            'label' => Mage::helper('reports')->__('Month'),
+            'class' => 'f-left'
+        ));
+
+        $fieldset->addField('year', 'select', array(
+            'name' => 'year',
+            'options' => $this->helper('bs_report')->getYears(),
+            'label' => Mage::helper('reports')->__('Year'),
+            'class' => 'f-left'
+        ));
+
 
 	    $fieldset->addField('from_month', 'select', array(
 		    'name' => 'from_month',
@@ -158,14 +173,18 @@ class BS_KPIReport_Block_Adminhtml_Filter_Form extends Mage_Adminhtml_Block_Widg
 	    // define field dependencies
 	    $this->setChild('form_after', $this->getLayout()->createBlock('adminhtml/widget_form_element_dependence')
             ->addFieldMap("{$htmlIdPrefix}report_type", 'report_type')
-            ->addFieldMap("{$htmlIdPrefix}index_single", 'index_single')
-            ->addFieldMap("{$htmlIdPrefix}index_multiple", 'index_multiple')
-            ->addFieldMap("{$htmlIdPrefix}dept_single", 'dept_single')
-            ->addFieldMap("{$htmlIdPrefix}dept_multiple", 'dept_multiple')
-            ->addFieldDependence('dept_single', 'report_type', '1')
-            ->addFieldDependence('dept_multiple', 'report_type', '2')
-            ->addFieldDependence('index_single', 'report_type', '2')
-            ->addFieldDependence('index_multiple', 'report_type', '1')
+            ->addFieldMap("{$htmlIdPrefix}from_month", 'from_month')
+            ->addFieldMap("{$htmlIdPrefix}from_year", 'from_year')
+            ->addFieldMap("{$htmlIdPrefix}to_month", 'to_month')
+            ->addFieldMap("{$htmlIdPrefix}to_year", 'to_year')
+            ->addFieldMap("{$htmlIdPrefix}month", 'month')
+            ->addFieldMap("{$htmlIdPrefix}year", 'year')
+            ->addFieldDependence('month', 'report_type', '1')
+            ->addFieldDependence('year', 'report_type', '1')
+            ->addFieldDependence('from_month', 'report_type', '2')
+            ->addFieldDependence('from_year', 'report_type', '2')
+            ->addFieldDependence('to_month', 'report_type', '2')
+            ->addFieldDependence('to_year', 'report_type', '2')
 	    );
 
 
