@@ -57,6 +57,21 @@ class BS_Cmr_Block_Adminhtml_Cmr_Grid extends Mage_Adminhtml_Block_Widget_Grid
     protected function _prepareColumns()
     {
 
+        $this->addColumn(
+            'customer',
+            array(
+                'header'    => Mage::helper('bs_cmr')->__('Customer'),
+                'index'     => 'customer',
+                'type'      => 'options',
+                'options'   => Mage::getResourceModel('bs_acreg/customer_collection')
+                    ->toOptionHash(),
+                //'renderer'  => 'bs_acreg/adminhtml_helper_column_renderer_parent',
+                'params'    => array(
+                    'id'    => 'getCustomerId'
+                ),
+                'base_link' => 'adminhtml/acreg_customer/edit'
+            )
+        );
 
         $this->addColumn(
             'code_sqs',
