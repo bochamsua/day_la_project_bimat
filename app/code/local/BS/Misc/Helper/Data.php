@@ -117,6 +117,8 @@ class BS_Misc_Helper_Data extends Mage_Core_Helper_Abstract
 	}
 
     public function shorterString($string, $len) {
+        //strip html tags if any
+        $string = $this->stripTags($string);
         $parts = preg_split('/([\s\n\r]+)/', $string, null, PREG_SPLIT_DELIM_CAPTURE);
         $parts_count = count($parts);
 

@@ -530,7 +530,7 @@ class BS_KPIReport_Helper_Data extends Mage_Core_Helper_Abstract
         $result = 0;
         foreach ($collection as $item) {
             if($taskId = $item->getTaskId()){
-                $mandatory = $this->getMandatorySubtaskFromTaskId($taskId, $item->getSection());
+                $mandatory = Mage::helper('bs_misc/task')->getMandatorySubtaskFromTaskId($taskId, $item->getSection());
                 //$mandatory = $item->getMandatoryItems();
                 $result += $mandatory;
             }
@@ -642,20 +642,6 @@ class BS_KPIReport_Helper_Data extends Mage_Core_Helper_Abstract
 
     }
 
-    public function getMandatorySubtaskFromTaskId($taskId, $sectionId){
-        $subtasks = Mage::getModel('bs_misc/subtask')->getCollection();
-        $subtasks->addFieldToFilter('task_id', $taskId);
-        if($sectionId == 1){
-            $subtasks->addFieldToFilter('is_mandatory', true);
-        }
-
-
-        if($subtasks->count()){
-            return $subtasks->count();
-        }
-
-        return 0;
-    }
 
     public function getPointFromTaskId($taskId){
         $task = Mage::getModel('bs_misc/task')->load($taskId);
