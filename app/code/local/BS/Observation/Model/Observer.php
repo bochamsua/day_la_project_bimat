@@ -805,7 +805,8 @@ class BS_Observation_Model_Observer
                         new Ajax.Request('".$block->getUrl('*/misc_task/updateSubtasks')."', {
                                 method : 'post',
                                 parameters: {
-                                    'task_id'   : task_id
+                                    'task_id'   : task_id,
+                                    'full'      : 1
                                 },
                                 onSuccess : function(transport){
                                     try{
