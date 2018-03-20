@@ -52,7 +52,10 @@ if(!isset($argv[1])){
             processFindReplace($toAdminFile, $from, $to);
 
             //Find and Replace adminhtml template files
-            doFindReplace($toAdminHtmlDir, $from, $to);
+            if(file_exists($fromAdminHtmlDir)){
+                doFindReplace($toAdminHtmlDir, $from, $to);
+            }
+
 
 
             echo "All done! \n";
