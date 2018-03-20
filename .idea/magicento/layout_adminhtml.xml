@@ -721,182 +721,82 @@ Empty hanle for ajax response etc.
         <block name="wysiwyg_images.files" type="adminhtml/cms_wysiwyg_images_content_files" template="cms/browser/content/files.phtml" output="toHtml" />
     </adminhtml_cms_wysiwyg_images_contents>
 
-<adminhtml_timeline_index>
-        <reference name="head">
-            <action method="addCss"><stylesheet>aoe_scheduler/StyleSheet/timeline.css</stylesheet></action>
-            <action method="addCss"><stylesheet>aoe_scheduler/StyleSheet/bars.css</stylesheet></action>
-
-            <action method="addItem"><type>skin_js</type><script>aoe_scheduler/JavaScript/jquery-1.6.2.min.js</script></action>
-            <action method="addItem"><type>skin_js</type><script>aoe_scheduler/JavaScript/tooltip.js</script></action>
-            <action method="addItem"><type>skin_js</type><script>aoe_scheduler/JavaScript/tooltip.dynamic.js</script></action>
-            <action method="addItem"><type>skin_js</type><script>aoe_scheduler/JavaScript/common.js</script></action>
+<adminhtml_cmr_cmr_index>
+        <reference name="menu">
+            <action method="setActive">
+                <menupath>bs_data/cmr</menupath>
+            </action>
         </reference>
         <reference name="content">
-            <block type="aoe_scheduler/adminhtml_timeline" name="aoe_scheduler.timeline" template="aoe_scheduler/timeline.phtml"/>
-            <!--<block type="core/text" name="fix.console" as="fix.console">
-                <action method="setText">
-                    <text><![CDATA[<script type="text/javascript">
-                    iframe = document.createElement('iframe');
-                    iframe.style = 'display:none';
-                    document.getElementsByTagName('body')[0].appendChild(iframe);
-                    window.console = iframe.contentWindow.console;
-                    console.firebug = "faketrue";
-                    </script>]]></text>
-                </action>
-            </block>
-        -->
-        </reference>
-    </adminhtml_timeline_index>
+            <block type="bs_cmr/adminhtml_cmr" name="cmr" />
 
-    <adminhtml_scheduler_index>
-        <reference name="head">
-            <action method="addCss"><stylesheet>aoe_scheduler/StyleSheet/bars.css</stylesheet></action>
+        </reference>
+    </adminhtml_cmr_cmr_index>
+    <adminhtml_cmr_cmr_grid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_cmr/adminhtml_cmr_grid" name="cmr_grid"/>
+        </block>
+    </adminhtml_cmr_cmr_grid>
+    <!-- Cmr add/edit action -->
+    <adminhtml_cmr_cmr_edit>
+        <update handle="editor"/>
+        <reference name="menu">
+            <action method="setActive">
+                <menupath>bs_data/cmr</menupath>
+            </action>
         </reference>
         <reference name="content">
-            <block type="aoe_scheduler/adminhtml_scheduler" name="aoe_scheduler.scheduler"/>
+            <block type="bs_cmr/adminhtml_cmr_edit" name="cmr_edit"></block>
         </reference>
-    </adminhtml_scheduler_index>
-
-    <adminhtml_job_index>
-        <reference name="head">
-            <action method="addCss"><stylesheet>aoe_scheduler/StyleSheet/bars.css</stylesheet></action>
-        </reference>
-        <reference name="content">
-            <block type="aoe_scheduler/adminhtml_job" name="aoe_scheduler.job"/>
-        </reference>
-    </adminhtml_job_index>
-
-    <adminhtml_job_edit>
         <reference name="left">
-            <block type="aoe_scheduler/adminhtml_job_edit_tabs" name="aoe_scheduler_edit_tabs">
-                <block type="aoe_scheduler/adminhtml_job_edit_tab_form" name="aoe_scheduler_edit_tab_form"/>
-                <action method="addTab"><name>information_section</name><block>aoe_scheduler_edit_tab_form</block></action>
-            </block>
+            <block type="bs_cmr/adminhtml_cmr_edit_tabs" name="cmr_tabs"></block>
         </reference>
-        <reference name="content">
-            <block type="aoe_scheduler/adminhtml_job_edit" name="aoe_scheduler_edit_information"/>
-        </reference>
-    </adminhtml_job_edit>
+    </adminhtml_cmr_cmr_edit>
 
-    <adminhtml_instructions_index>
-        <reference name="head">
-            <action method="addCss"><stylesheet>aoe_scheduler/StyleSheet/instructions.css</stylesheet></action>
-            <action method="addItem"><type>skin_js</type><script>aoe_scheduler/JavaScript/jquery-1.6.2.min.js</script></action>
-            <action method="addItem"><type>skin_js</type><script>aoe_scheduler/JavaScript/instructions.js</script></action>
-        </reference>
-        <reference name="content">
-            <block type="aoe_scheduler/adminhtml_instructions" name="aoe_scheduler.instructions" template="aoe_scheduler/instructions.phtml"/>
-        </reference>
-    </adminhtml_instructions_index>
+    <adminhtml_cmr_cmr_irs>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_cmr/adminhtml_cmr_edit_tab_ir" name="cmr.edit.tab.ir"/>
+        </block>
+    </adminhtml_cmr_cmr_irs>
+    <adminhtml_cmr_cmr_irsgrid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_cmr/adminhtml_cmr_edit_tab_ir" name="cmr.edit.tab.ir"/>
+        </block>
+    </adminhtml_cmr_cmr_irsgrid>
 
-<default>
-	</default>
-	<adminhtml_backupguardplatinum_backups>
-		<reference name="content">
-			<block type="core/template" name="header" template="backupguardplatinum/header.phtml" />
-			<block type="core/template" name="sidebar" template="backupguardplatinum/sidebar.phtml" />
-			<block type="core/template" name="backups" template="backupguardplatinum/backups.phtml" />
-			<block type="core/template" name="modal" template="backupguardplatinum/modal.phtml" />
-			<block type="core/template" name="footer" template="backupguardplatinum/footer.phtml" />
-		</reference>
-		<reference name="head">
-			<action method="addItem">
-            	<type>skin_css</type>
-            	<name>css/BackupGuardPlatinum/bgstyle.less.css</name>
-			</action>
-			<action method="addItem">
-            	<type>skin_css</type>
-            	<name>css/BackupGuardPlatinum/spinner.css</name>
-			</action>
-        </reference>
-	</adminhtml_backupguardplatinum_backups>
-	<adminhtml_backupguardplatinum_cloud>
-		<reference name="content">
-			<block type="core/template" name="header" template="backupguardplatinum/header.phtml" />
-			<block type="core/template" name="sidebar" template="backupguardplatinum/sidebar.phtml" />
-			<block type="core/template" name="backups" template="backupguardplatinum/cloud.phtml" />
-			<block type="core/template" name="modal" template="backupguardplatinum/modal.phtml" />
-			<block type="core/template" name="footer" template="backupguardplatinum/footer.phtml" />
-			<block type="core/template" name="footer_cloud" template="backupguardplatinum/footer.cloud.phtml" />
-		</reference>
-		<reference name="head">
-			<action method="addItem">
-            	<type>skin_css</type>
-            	<name>css/BackupGuardPlatinum/bgstyle.less.css</name>
-			</action>
-			<action method="addItem">
-            	<type>skin_css</type>
-            	<name>css/BackupGuardPlatinum/spinner.css</name>
-			</action>
-			<action method="addItem">
-            	<type>skin_css</type>
-            	<name>css/BackupGuardPlatinum/bootstrap-switch.min.css</name>
-			</action>
-        </reference>
-	</adminhtml_backupguardplatinum_cloud>
-	<adminhtml_backupguardplatinum_schedule>
-		<reference name="content">
-			<block type="core/template" name="header" template="backupguardplatinum/header.phtml" />
-			<block type="core/template" name="sidebar" template="backupguardplatinum/sidebar.phtml" />
-			<block type="core/template" name="backups" template="backupguardplatinum/schedule.phtml" />
-			<block type="core/template" name="modal" template="backupguardplatinum/modal.phtml" />
-			<block type="core/template" name="footer" template="backupguardplatinum/footer.phtml" />
-			<block type="core/template" name="footer_schedule" template="backupguardplatinum/footer.schedule.phtml" />
-		</reference>
-		<reference name="head">
-			<action method="addItem">
-            	<type>skin_css</type>
-            	<name>css/BackupGuardPlatinum/bgstyle.less.css</name>
-			</action>
-			<action method="addItem">
-            	<type>skin_css</type>
-            	<name>css/BackupGuardPlatinum/spinner.css</name>
-			</action>
-			<action method="addItem">
-            	<type>skin_css</type>
-            	<name>css/BackupGuardPlatinum/bootstrap-switch.min.css</name>
-			</action>
-        </reference>
-	</adminhtml_backupguardplatinum_schedule>
-	<adminhtml_backupguardplatinum_settings>
-		<reference name="content">
-			<block type="core/template" name="header" template="backupguardplatinum/header.phtml" />
-			<block type="core/template" name="sidebar" template="backupguardplatinum/sidebar.phtml" />
-			<block type="core/template" name="backups" template="backupguardplatinum/settings.phtml" />
-			<block type="core/template" name="modal" template="backupguardplatinum/modal.phtml" />
-			<block type="core/template" name="footer" template="backupguardplatinum/footer.phtml" />
-			<block type="core/template" name="footer_schedule" template="backupguardplatinum/footer.settings.phtml" />
-		</reference>
-		<reference name="head">
-			<action method="addItem">
-            	<type>skin_css</type>
-            	<name>css/BackupGuardPlatinum/bgstyle.less.css</name>
-			</action>
-			<action method="addItem">
-            	<type>skin_css</type>
-            	<name>css/BackupGuardPlatinum/spinner.css</name>
-			</action>
-			<action method="addItem">
-            	<type>skin_css</type>
-            	<name>css/BackupGuardPlatinum/bootstrap-switch.min.css</name>
-			</action>
-        </reference>
-	</adminhtml_backupguardplatinum_settings>
-	<adminhtml_backupguardplatinum_support>
-		<reference name="content">
-			<block type="core/template" name="header" template="backupguardplatinum/header.phtml" />
-			<block type="core/template" name="sidebar" template="backupguardplatinum/sidebar.phtml" />
-			<block type="core/template" name="backups" template="backupguardplatinum/support.phtml" />
-			<block type="core/template" name="modal" template="backupguardplatinum/modal.phtml" />
-			<block type="core/template" name="footer" template="backupguardplatinum/footer.phtml" />
-		</reference>
-		<reference name="head">
-			<action method="addItem">
-				<type>skin_css</type>
-				<name>css/BackupGuardPlatinum/bgstyle.less.css</name>
-			</action>
-		</reference>
-	</adminhtml_backupguardplatinum_support>
+    <adminhtml_cmr_cmr_ncrs>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_cmr/adminhtml_cmr_edit_tab_ncr" name="cmr.edit.tab.ncr"/>
+        </block>
+    </adminhtml_cmr_cmr_ncrs>
+    <adminhtml_cmr_cmr_ncrsgrid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_cmr/adminhtml_cmr_edit_tab_ncr" name="cmr.edit.tab.ncr"/>
+        </block>
+    </adminhtml_cmr_cmr_ncrsgrid>
+
+    <adminhtml_cmr_cmr_qrs>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_cmr/adminhtml_cmr_edit_tab_qrr" name="cmr.edit.tab.qr"/>
+        </block>
+    </adminhtml_cmr_cmr_qrs>
+    <adminhtml_cmr_cmr_qrsgrid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_cmr/adminhtml_cmr_edit_tab_qr" name="cmr.edit.tab.qr"/>
+        </block>
+    </adminhtml_cmr_cmr_qrsgrid>
+
+    <adminhtml_cmr_cmr_drrs>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_cmr/adminhtml_cmr_edit_tab_drr" name="cmr.edit.tab.drr"/>
+        </block>
+    </adminhtml_cmr_cmr_drrs>
+    <adminhtml_cmr_cmr_drrsgrid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_cmr/adminhtml_cmr_edit_tab_drr" name="cmr.edit.tab.drr"/>
+        </block>
+    </adminhtml_cmr_cmr_drrsgrid>
+
 <adminhtml_acreg_customer_index>
         <reference name="menu">
             <action method="setActive">
@@ -993,197 +893,138 @@ Empty hanle for ajax response etc.
         </reference>
     </adminhtml_car_car_edit>
 
-<default>
-    <reference name="head">
-        <action method="addItem"><type>skin_js</type><name>bs_chart/js/fusioncharts.js</name><params/></action>
-        <action method="addItem"><type>skin_js</type><name>bs_chart/js/themes/fusioncharts.theme.ocean.js</name><params/></action>
-    </reference>
-  </default>
-<adminhtml_cmr_cmr_index>
+<adminhtml_report_qchaneff_index>
         <reference name="menu">
             <action method="setActive">
-                <menupath>bs_data/cmr</menupath>
+                <menupath>bs_evaluation/qchaneff</menupath>
             </action>
         </reference>
         <reference name="content">
-            <block type="bs_cmr/adminhtml_cmr" name="cmr" />
-
-        </reference>
-    </adminhtml_cmr_cmr_index>
-    <adminhtml_cmr_cmr_grid>
-        <block type="core/text_list" name="root" output="toHtml">
-            <block type="bs_cmr/adminhtml_cmr_grid" name="cmr_grid"/>
-        </block>
-    </adminhtml_cmr_cmr_grid>
-    <!-- Cmr add/edit action -->
-    <adminhtml_cmr_cmr_edit>
-        <update handle="editor"/>
-        <reference name="menu">
-            <action method="setActive">
-                <menupath>bs_data/cmr</menupath>
-            </action>
-        </reference>
-        <reference name="content">
-            <block type="bs_cmr/adminhtml_cmr_edit" name="cmr_edit"></block>
-        </reference>
-        <reference name="left">
-            <block type="bs_cmr/adminhtml_cmr_edit_tabs" name="cmr_tabs"></block>
-        </reference>
-    </adminhtml_cmr_cmr_edit>
-
-    <adminhtml_cmr_cmr_irs>
-        <block type="core/text_list" name="root" output="toHtml">
-            <block type="bs_cmr/adminhtml_cmr_edit_tab_ir" name="cmr.edit.tab.ir"/>
-        </block>
-    </adminhtml_cmr_cmr_irs>
-    <adminhtml_cmr_cmr_irsgrid>
-        <block type="core/text_list" name="root" output="toHtml">
-            <block type="bs_cmr/adminhtml_cmr_edit_tab_ir" name="cmr.edit.tab.ir"/>
-        </block>
-    </adminhtml_cmr_cmr_irsgrid>
-
-    <adminhtml_cmr_cmr_ncrs>
-        <block type="core/text_list" name="root" output="toHtml">
-            <block type="bs_cmr/adminhtml_cmr_edit_tab_ncr" name="cmr.edit.tab.ncr"/>
-        </block>
-    </adminhtml_cmr_cmr_ncrs>
-    <adminhtml_cmr_cmr_ncrsgrid>
-        <block type="core/text_list" name="root" output="toHtml">
-            <block type="bs_cmr/adminhtml_cmr_edit_tab_ncr" name="cmr.edit.tab.ncr"/>
-        </block>
-    </adminhtml_cmr_cmr_ncrsgrid>
-
-    <adminhtml_cmr_cmr_qrs>
-        <block type="core/text_list" name="root" output="toHtml">
-            <block type="bs_cmr/adminhtml_cmr_edit_tab_qrr" name="cmr.edit.tab.qr"/>
-        </block>
-    </adminhtml_cmr_cmr_qrs>
-    <adminhtml_cmr_cmr_qrsgrid>
-        <block type="core/text_list" name="root" output="toHtml">
-            <block type="bs_cmr/adminhtml_cmr_edit_tab_qr" name="cmr.edit.tab.qr"/>
-        </block>
-    </adminhtml_cmr_cmr_qrsgrid>
-
-    <adminhtml_cmr_cmr_drrs>
-        <block type="core/text_list" name="root" output="toHtml">
-            <block type="bs_cmr/adminhtml_cmr_edit_tab_drr" name="cmr.edit.tab.drr"/>
-        </block>
-    </adminhtml_cmr_cmr_drrs>
-    <adminhtml_cmr_cmr_drrsgrid>
-        <block type="core/text_list" name="root" output="toHtml">
-            <block type="bs_cmr/adminhtml_cmr_edit_tab_drr" name="cmr.edit.tab.drr"/>
-        </block>
-    </adminhtml_cmr_cmr_drrsgrid>
-
-<adminhtml_cmrreport_cmrreport_index>
-        <reference name="menu">
-            <action method="setActive">
-                <menupath>bs_report/cmrreport</menupath>
-            </action>
-        </reference>
-        <reference name="content">
-            <block type="bs_cmrreport/adminhtml_cmrreport" name="cmrreport" template="report/grid/container.phtml">
-                <block type="bs_cmrreport/adminhtml_filter_form" name="grid.filter.form" />
+            <block type="bs_report/adminhtml_qchaneff" name="qchaneff" template="report/grid/container.phtml" >
+                <block type="bs_report/adminhtml_filter_form" name="grid.filter.form" />
             </block>
 
         </reference>
-    </adminhtml_cmrreport_cmrreport_index>
-    <adminhtml_cmrreport_cmrreport_grid>
+    </adminhtml_report_qchaneff_index>
+    <adminhtml_report_qchaneff_grid>
         <block type="core/text_list" name="root" output="toHtml">
-            <block type="bs_cmrreport/adminhtml_cmrreport_grid" name="cmrreport_grid"/>
+            <block type="bs_report/adminhtml_qchaneff_grid" name="qchaneff_grid"/>
         </block>
-    </adminhtml_cmrreport_cmrreport_grid>
-    <!-- Cmrreport add/edit action -->
-    <adminhtml_cmrreport_cmrreport_edit>
+    </adminhtml_report_qchaneff_grid>
+    <!-- Qchaneff add/edit action -->
+    <adminhtml_report_qchaneff_edit>
         <update handle="editor"/>
         <reference name="menu">
             <action method="setActive">
-                <menupath>bs_report/cmrreport</menupath>
+                <menupath>bs_evaluation/qchaneff</menupath>
             </action>
         </reference>
         <reference name="content">
-            <block type="bs_cmrreport/adminhtml_cmrreport_edit" name="cmrreport_edit"></block>
+            <block type="bs_report/adminhtml_qchaneff_edit" name="qchaneff_edit"></block>
         </reference>
         <reference name="left">
-            <block type="bs_cmrreport/adminhtml_cmrreport_edit_tabs" name="cmrreport_tabs"></block>
+            <block type="bs_report/adminhtml_qchaneff_edit_tabs" name="qchaneff_tabs"></block>
         </reference>
-    </adminhtml_cmrreport_cmrreport_edit>
+    </adminhtml_report_qchaneff_edit>
 
-<adminhtml_cofa_cofa_index>
+    <adminhtml_report_setting_index>
         <reference name="menu">
             <action method="setActive">
-                <menupath>bs_data/cofa</menupath>
+                <menupath>bs_evaluation/setting</menupath>
             </action>
         </reference>
         <reference name="content">
-            <block type="bs_cofa/adminhtml_cofa" name="cofa" />
+            <block type="bs_report/adminhtml_setting" name="setting" />
 
         </reference>
-    </adminhtml_cofa_cofa_index>
-    <adminhtml_cofa_cofa_grid>
+    </adminhtml_report_setting_index>
+    <adminhtml_report_setting_grid>
         <block type="core/text_list" name="root" output="toHtml">
-            <block type="bs_cofa/adminhtml_cofa_grid" name="cofa_grid"/>
+            <block type="bs_report/adminhtml_setting_grid" name="setting_grid"/>
         </block>
-    </adminhtml_cofa_cofa_grid>
-    <!-- Cmr add/edit action -->
-    <adminhtml_cofa_cofa_edit>
+    </adminhtml_report_setting_grid>
+    <!-- Setting add/edit action -->
+    <adminhtml_report_setting_edit>
         <update handle="editor"/>
         <reference name="menu">
             <action method="setActive">
-                <menupath>bs_data/cofa</menupath>
+                <menupath>bs_evaluation/setting</menupath>
             </action>
         </reference>
         <reference name="content">
-            <block type="bs_cofa/adminhtml_cofa_edit" name="cofa_edit"></block>
+            <block type="bs_report/adminhtml_setting_edit" name="setting_edit"></block>
         </reference>
         <reference name="left">
-            <block type="bs_cofa/adminhtml_cofa_edit_tabs" name="cofa_tabs"></block>
+            <block type="bs_report/adminhtml_setting_edit_tabs" name="setting_tabs"></block>
         </reference>
-    </adminhtml_cofa_cofa_edit>
+    </adminhtml_report_setting_edit>
 
-    <adminhtml_cofa_cofa_irs>
-        <block type="core/text_list" name="root" output="toHtml">
-            <block type="bs_cofa/adminhtml_cofa_edit_tab_ir" name="cofa.edit.tab.ir"/>
-        </block>
-    </adminhtml_cofa_cofa_irs>
-    <adminhtml_cofa_cofa_irsgrid>
-        <block type="core/text_list" name="root" output="toHtml">
-            <block type="bs_cofa/adminhtml_cofa_edit_tab_ir" name="cofa.edit.tab.ir"/>
-        </block>
-    </adminhtml_cofa_cofa_irsgrid>
+    <adminhtml_report_workday_index>
+        <reference name="menu">
+            <action method="setActive">
+                <menupath>bs_evaluation/workday</menupath>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="bs_report/adminhtml_workday" name="workday" template="report/grid/container.phtml" >
+                <block type="bs_report/adminhtml_filter_workdayform" name="grid.filter.form" />
+            </block>
 
-    <adminhtml_cofa_cofa_ncrs>
-        <block type="core/text_list" name="root" output="toHtml">
-            <block type="bs_cofa/adminhtml_cofa_edit_tab_ncr" name="cofa.edit.tab.ncr"/>
-        </block>
-    </adminhtml_cofa_cofa_ncrs>
-    <adminhtml_cofa_cofa_ncrsgrid>
-        <block type="core/text_list" name="root" output="toHtml">
-            <block type="bs_cofa/adminhtml_cofa_edit_tab_ncr" name="cofa.edit.tab.ncr"/>
-        </block>
-    </adminhtml_cofa_cofa_ncrsgrid>
 
-    <adminhtml_cofa_cofa_qrs>
+        </reference>
+    </adminhtml_report_workday_index>
+    <adminhtml_report_workday_grid>
         <block type="core/text_list" name="root" output="toHtml">
-            <block type="bs_cofa/adminhtml_cofa_edit_tab_qrr" name="cofa.edit.tab.qr"/>
+            <block type="bs_report/adminhtml_workday_grid" name="workday_grid"/>
         </block>
-    </adminhtml_cofa_cofa_qrs>
-    <adminhtml_cofa_cofa_qrsgrid>
-        <block type="core/text_list" name="root" output="toHtml">
-            <block type="bs_cofa/adminhtml_cofa_edit_tab_qr" name="cofa.edit.tab.qr"/>
-        </block>
-    </adminhtml_cofa_cofa_qrsgrid>
+    </adminhtml_report_workday_grid>
+    <!-- Workday add/edit action -->
+    <adminhtml_report_workday_edit>
+        <update handle="editor"/>
+        <reference name="menu">
+            <action method="setActive">
+                <menupath>bs_evaluation/workday</menupath>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="bs_report/adminhtml_workday_edit" name="workday_edit"></block>
+        </reference>
+        <reference name="left">
+            <block type="bs_report/adminhtml_workday_edit_tabs" name="workday_tabs"></block>
+        </reference>
+    </adminhtml_report_workday_edit>
 
-    <adminhtml_cofa_cofa_drrs>
+<adminhtml_formtemplate_formtemplate_index>
+        <reference name="menu">
+            <action method="setActive">
+                <menupath>system/formtemplate</menupath>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="bs_formtemplate/adminhtml_formtemplate" name="formtemplate" />
+
+        </reference>
+    </adminhtml_formtemplate_formtemplate_index>
+    <adminhtml_formtemplate_formtemplate_grid>
         <block type="core/text_list" name="root" output="toHtml">
-            <block type="bs_cofa/adminhtml_cofa_edit_tab_drr" name="cofa.edit.tab.drr"/>
+            <block type="bs_formtemplate/adminhtml_formtemplate_grid" name="formtemplate_grid"/>
         </block>
-    </adminhtml_cofa_cofa_drrs>
-    <adminhtml_cofa_cofa_drrsgrid>
-        <block type="core/text_list" name="root" output="toHtml">
-            <block type="bs_cofa/adminhtml_cofa_edit_tab_drr" name="cofa.edit.tab.drr"/>
-        </block>
-    </adminhtml_cofa_cofa_drrsgrid>
+    </adminhtml_formtemplate_formtemplate_grid>
+    <!-- Formtemplate add/edit action -->
+    <adminhtml_formtemplate_formtemplate_edit>
+        <update handle="editor"/>
+        <reference name="menu">
+            <action method="setActive">
+                <menupath>system/formtemplate</menupath>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="bs_formtemplate/adminhtml_formtemplate_edit" name="formtemplate_edit"></block>
+        </reference>
+        <reference name="left">
+            <block type="bs_formtemplate/adminhtml_formtemplate_edit_tabs" name="formtemplate_tabs"></block>
+        </reference>
+    </adminhtml_formtemplate_formtemplate_edit>
 
 <adminhtml_concession_concession_index>
         <reference name="menu">
@@ -1282,6 +1123,70 @@ Empty hanle for ajax response etc.
             <block type="bs_concession/adminhtml_concession_edit_tab_drr" name="concession.edit.tab.drr"/>
         </block>
     </adminhtml_concession_concession_drrsgrid>
+<adminhtml_setting_field_index>
+        <reference name="menu">
+            <action method="setActive">
+                <menupath>system/bs_setting/field</menupath>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="bs_setting/adminhtml_field" name="field" />
+
+        </reference>
+    </adminhtml_setting_field_index>
+    <adminhtml_setting_field_grid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_setting/adminhtml_field_grid" name="field_grid"/>
+        </block>
+    </adminhtml_setting_field_grid>
+    <!-- Field add/edit action -->
+    <adminhtml_setting_field_edit>
+        <update handle="editor"/>
+        <reference name="menu">
+            <action method="setActive">
+                <menupath>system/bs_setting/field</menupath>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="bs_setting/adminhtml_field_edit" name="field_edit"></block>
+        </reference>
+        <reference name="left">
+            <block type="bs_setting/adminhtml_field_edit_tabs" name="field_tabs"></block>
+        </reference>
+    </adminhtml_setting_field_edit>
+
+<adminhtml_schedule_schedule_index>
+        <reference name="menu">
+            <action method="setActive">
+                <menupath>bs_sched/schedule</menupath>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="bs_schedule/adminhtml_schedule" name="schedule" />
+
+        </reference>
+    </adminhtml_schedule_schedule_index>
+    <adminhtml_schedule_schedule_grid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_schedule/adminhtml_schedule_grid" name="schedule_grid"/>
+        </block>
+    </adminhtml_schedule_schedule_grid>
+    <!-- Schedule add/edit action -->
+    <adminhtml_schedule_schedule_edit>
+        <update handle="editor"/>
+        <reference name="menu">
+            <action method="setActive">
+                <menupath>bs_sched/schedule</menupath>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="bs_schedule/adminhtml_schedule_edit" name="schedule_edit"></block>
+        </reference>
+        <reference name="left">
+            <block type="bs_schedule/adminhtml_schedule_edit_tabs" name="schedule_tabs"></block>
+        </reference>
+    </adminhtml_schedule_schedule_edit>
+
 <adminhtml_drr_drr_index>
         <reference name="menu">
             <action method="setActive">
@@ -1379,38 +1284,6 @@ Empty hanle for ajax response etc.
             <block type="bs_drr/adminhtml_drr_edit_tab_drr" name="drr.edit.tab.drr"/>
         </block>
     </adminhtml_drr_drr_drrsgrid>
-
-<adminhtml_formtemplate_formtemplate_index>
-        <reference name="menu">
-            <action method="setActive">
-                <menupath>system/formtemplate</menupath>
-            </action>
-        </reference>
-        <reference name="content">
-            <block type="bs_formtemplate/adminhtml_formtemplate" name="formtemplate" />
-
-        </reference>
-    </adminhtml_formtemplate_formtemplate_index>
-    <adminhtml_formtemplate_formtemplate_grid>
-        <block type="core/text_list" name="root" output="toHtml">
-            <block type="bs_formtemplate/adminhtml_formtemplate_grid" name="formtemplate_grid"/>
-        </block>
-    </adminhtml_formtemplate_formtemplate_grid>
-    <!-- Formtemplate add/edit action -->
-    <adminhtml_formtemplate_formtemplate_edit>
-        <update handle="editor"/>
-        <reference name="menu">
-            <action method="setActive">
-                <menupath>system/formtemplate</menupath>
-            </action>
-        </reference>
-        <reference name="content">
-            <block type="bs_formtemplate/adminhtml_formtemplate_edit" name="formtemplate_edit"></block>
-        </reference>
-        <reference name="left">
-            <block type="bs_formtemplate/adminhtml_formtemplate_edit_tabs" name="formtemplate_tabs"></block>
-        </reference>
-    </adminhtml_formtemplate_formtemplate_edit>
 
 <adminhtml_hr_inspector_index>
         <reference name="menu">
@@ -1561,169 +1434,429 @@ Empty hanle for ajax response etc.
         </reference>
     </adminhtml_hr_staff_edit>
 
-<adminhtml_ir_ir_index>
+<adminhtml_routine_routine_index>
         <reference name="menu">
             <action method="setActive">
-                <menupath>bs_work/ir</menupath>
+                <menupath>bs_report/routine</menupath>
             </action>
         </reference>
         <reference name="content">
-            <block type="bs_ir/adminhtml_ir" name="ir" />
+            <block type="bs_routine/adminhtml_routine" name="routine" />
 
         </reference>
-    </adminhtml_ir_ir_index>
-    <adminhtml_ir_ir_grid>
+    </adminhtml_routine_routine_index>
+    <adminhtml_routine_routine_grid>
         <block type="core/text_list" name="root" output="toHtml">
-            <block type="bs_ir/adminhtml_ir_grid" name="ir_grid"/>
+            <block type="bs_routine/adminhtml_routine_grid" name="routine_grid"/>
         </block>
-    </adminhtml_ir_ir_grid>
-    <!-- Investigation add/edit action -->
-    <adminhtml_ir_ir_edit>
+    </adminhtml_routine_routine_grid>
+    <!-- Routine add/edit action -->
+    <adminhtml_routine_routine_edit>
         <update handle="editor"/>
         <reference name="menu">
             <action method="setActive">
-                <menupath>bs_work/ir</menupath>
+                <menupath>bs_report/routine</menupath>
             </action>
         </reference>
         <reference name="content">
-            <block type="bs_ir/adminhtml_ir_edit" name="ir_edit"></block>
+            <block type="bs_routine/adminhtml_routine_edit" name="routine_edit"></block>
         </reference>
         <reference name="left">
-            <block type="bs_ir/adminhtml_ir_edit_tabs" name="ir_tabs"></block>
+            <block type="bs_routine/adminhtml_routine_edit_tabs" name="routine_tabs"></block>
         </reference>
-    </adminhtml_ir_ir_edit>
+    </adminhtml_routine_routine_edit>
 
-    <adminhtml_ir_ir_ncrs>
-        <block type="core/text_list" name="root" output="toHtml">
-            <block type="bs_ir/adminhtml_ir_edit_tab_ncr" name="cofa.edit.tab.ncr"/>
-        </block>
-    </adminhtml_ir_ir_ncrs>
-    <adminhtml_ir_ir_ncrsgrid>
-        <block type="core/text_list" name="root" output="toHtml">
-            <block type="bs_ir/adminhtml_ir_edit_tab_ncr" name="cofa.edit.tab.ncr"/>
-        </block>
-    </adminhtml_ir_ir_ncrsgrid>
-
-    <adminhtml_ir_ir_qrs>
-        <block type="core/text_list" name="root" output="toHtml">
-            <block type="bs_ir/adminhtml_ir_edit_tab_qr" name="cofa.edit.tab.qr"/>
-        </block>
-    </adminhtml_ir_ir_qrs>
-    <adminhtml_ir_ir_qrsgrid>
-        <block type="core/text_list" name="root" output="toHtml">
-            <block type="bs_ir/adminhtml_ir_edit_tab_qr" name="cofa.edit.tab.qr"/>
-        </block>
-    </adminhtml_ir_ir_qrsgrid>
-
-    <adminhtml_ir_ir_drrs>
-        <block type="core/text_list" name="root" output="toHtml">
-            <block type="bs_ir/adminhtml_ir_edit_tab_drr" name="cofa.edit.tab.drr"/>
-        </block>
-    </adminhtml_ir_ir_drrs>
-    <adminhtml_ir_ir_drrsgrid>
-        <block type="core/text_list" name="root" output="toHtml">
-            <block type="bs_ir/adminhtml_ir_edit_tab_drr" name="cofa.edit.tab.drr"/>
-        </block>
-    </adminhtml_ir_ir_drrsgrid>
-
-<adminhtml_kpi_kpi_index>
+<adminhtml_qr_qr_index>
         <reference name="menu">
             <action method="setActive">
-                <menupath>bs_data/kpi</menupath>
+                <menupath>bs_work/qr</menupath>
             </action>
         </reference>
         <reference name="content">
-            <block type="bs_kpi/adminhtml_kpi" name="kpi" />
+            <block type="bs_qr/adminhtml_qr" name="qr" />
 
         </reference>
-    </adminhtml_kpi_kpi_index>
-    <adminhtml_kpi_kpi_grid>
+    </adminhtml_qr_qr_index>
+    <adminhtml_qr_qr_grid>
         <block type="core/text_list" name="root" output="toHtml">
-            <block type="bs_kpi/adminhtml_kpi_grid" name="kpi_grid"/>
+            <block type="bs_qr/adminhtml_qr_grid" name="qr_grid"/>
         </block>
-    </adminhtml_kpi_kpi_grid>
-    <!-- Kpi add/edit action -->
-    <adminhtml_kpi_kpi_edit>
+    </adminhtml_qr_qr_grid>
+    <!-- Qrqn add/edit action -->
+    <adminhtml_qr_qr_edit>
         <update handle="editor"/>
         <reference name="menu">
             <action method="setActive">
-                <menupath>bs_data/kpi</menupath>
+                <menupath>bs_work/qr</menupath>
             </action>
         </reference>
         <reference name="content">
-            <block type="bs_kpi/adminhtml_kpi_edit" name="kpi_edit"></block>
+            <block type="bs_qr/adminhtml_qr_edit" name="qr_edit"></block>
         </reference>
         <reference name="left">
-            <block type="bs_kpi/adminhtml_kpi_edit_tabs" name="kpi_tabs"></block>
+            <block type="bs_qr/adminhtml_qr_edit_tabs" name="qr_tabs"></block>
         </reference>
-    </adminhtml_kpi_kpi_edit>
+    </adminhtml_qr_qr_edit>
 
-<adminhtml_kpireport_kpireport_index>
+<adminhtml_cmrreport_cmrreport_index>
         <reference name="menu">
             <action method="setActive">
-                <menupath>bs_report/kpireport</menupath>
+                <menupath>bs_report/cmrreport</menupath>
             </action>
         </reference>
         <reference name="content">
-            <block type="bs_kpireport/adminhtml_kpireport" name="kpireport" template="report/grid/container.phtml" >
-                <block type="bs_kpireport/adminhtml_filter_form" name="grid.filter.form" />
+            <block type="bs_cmrreport/adminhtml_cmrreport" name="cmrreport" template="report/grid/container.phtml">
+                <block type="bs_cmrreport/adminhtml_filter_form" name="grid.filter.form" />
             </block>
 
         </reference>
-
-    </adminhtml_kpireport_kpireport_index>
-    <adminhtml_kpireport_kpireport_grid>
+    </adminhtml_cmrreport_cmrreport_index>
+    <adminhtml_cmrreport_cmrreport_grid>
         <block type="core/text_list" name="root" output="toHtml">
-            <block type="bs_kpireport/adminhtml_kpireport_grid" name="kpireport_grid"/>
+            <block type="bs_cmrreport/adminhtml_cmrreport_grid" name="cmrreport_grid"/>
         </block>
-    </adminhtml_kpireport_kpireport_grid>
-    <!-- Kpireport add/edit action -->
-    <adminhtml_kpireport_kpireport_edit>
+    </adminhtml_cmrreport_cmrreport_grid>
+    <!-- Cmrreport add/edit action -->
+    <adminhtml_cmrreport_cmrreport_edit>
         <update handle="editor"/>
         <reference name="menu">
             <action method="setActive">
-                <menupath>bs_report/kpireport</menupath>
+                <menupath>bs_report/cmrreport</menupath>
             </action>
         </reference>
         <reference name="content">
-            <block type="bs_kpireport/adminhtml_kpireport_edit" name="kpireport_edit"></block>
+            <block type="bs_cmrreport/adminhtml_cmrreport_edit" name="cmrreport_edit"></block>
         </reference>
         <reference name="left">
-            <block type="bs_kpireport/adminhtml_kpireport_edit_tabs" name="kpireport_tabs"></block>
+            <block type="bs_cmrreport/adminhtml_cmrreport_edit_tabs" name="cmrreport_tabs"></block>
         </reference>
-    </adminhtml_kpireport_kpireport_edit>
+    </adminhtml_cmrreport_cmrreport_edit>
 
-<adminhtml_logger_logger_index>
+<adminhtml_nonroutine_nonroutine_index>
         <reference name="menu">
             <action method="setActive">
-                <menupath>system/bs_logger/logger</menupath>
+                <menupath>bs_sched/nonroutine</menupath>
             </action>
         </reference>
         <reference name="content">
-            <block type="bs_logger/adminhtml_logger" name="logger" />
+            <block type="bs_nonroutine/adminhtml_nonroutine" name="nonroutine" />
 
         </reference>
-    </adminhtml_logger_logger_index>
-    <adminhtml_logger_logger_grid>
+    </adminhtml_nonroutine_nonroutine_index>
+    <adminhtml_nonroutine_nonroutine_grid>
         <block type="core/text_list" name="root" output="toHtml">
-            <block type="bs_logger/adminhtml_logger_grid" name="logger_grid"/>
+            <block type="bs_nonroutine/adminhtml_nonroutine_grid" name="nonroutine_grid"/>
         </block>
-    </adminhtml_logger_logger_grid>
-    <!-- Logger add/edit action -->
-    <adminhtml_logger_logger_edit>
+    </adminhtml_nonroutine_nonroutine_grid>
+    <!-- Nonroutine add/edit action -->
+    <adminhtml_nonroutine_nonroutine_edit>
         <update handle="editor"/>
         <reference name="menu">
             <action method="setActive">
-                <menupath>system/bs_logger/logger</menupath>
+                <menupath>bs_sched/nonroutine</menupath>
             </action>
         </reference>
         <reference name="content">
-            <block type="bs_logger/adminhtml_logger_edit" name="logger_edit"></block>
+            <block type="bs_nonroutine/adminhtml_nonroutine_edit" name="nonroutine_edit"></block>
         </reference>
         <reference name="left">
-            <block type="bs_logger/adminhtml_logger_edit_tabs" name="logger_tabs"></block>
+            <block type="bs_nonroutine/adminhtml_nonroutine_edit_tabs" name="nonroutine_tabs"></block>
         </reference>
-    </adminhtml_logger_logger_edit>
+    </adminhtml_nonroutine_nonroutine_edit>
+
+<adminhtml_other_other_index>
+        <reference name="menu">
+            <action method="setActive">
+                <menupath>bs_work/other</menupath>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="bs_other/adminhtml_other" name="other" />
+
+        </reference>
+    </adminhtml_other_other_index>
+    <adminhtml_other_other_grid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_other/adminhtml_other_grid" name="other_grid"/>
+        </block>
+    </adminhtml_other_other_grid>
+    <!-- Other add/edit action -->
+    <adminhtml_other_other_edit>
+        <update handle="editor"/>
+        <reference name="menu">
+            <action method="setActive">
+                <menupath>bs_work/other</menupath>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="bs_other/adminhtml_other_edit" name="other_edit"></block>
+        </reference>
+        <reference name="left">
+            <block type="bs_other/adminhtml_other_edit_tabs" name="other_tabs"></block>
+        </reference>
+    </adminhtml_other_other_edit>
+
+    <adminhtml_other_other_irs>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_other/adminhtml_other_edit_tab_ir" name="other.edit.tab.ir"/>
+        </block>
+    </adminhtml_other_other_irs>
+    <adminhtml_other_other_irsgrid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_other/adminhtml_other_edit_tab_ir" name="other.edit.tab.ir"/>
+        </block>
+    </adminhtml_other_other_irsgrid>
+
+    <adminhtml_other_other_ncrs>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_other/adminhtml_other_edit_tab_ncr" name="other.edit.tab.ncr"/>
+        </block>
+    </adminhtml_other_other_ncrs>
+    <adminhtml_other_other_ncrsgrid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_other/adminhtml_other_edit_tab_ncr" name="other.edit.tab.ncr"/>
+        </block>
+    </adminhtml_other_other_ncrsgrid>
+
+    <adminhtml_other_other_qrs>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_other/adminhtml_other_edit_tab_qr" name="other.edit.tab.qr"/>
+        </block>
+    </adminhtml_other_other_qrs>
+    <adminhtml_other_other_qrsgrid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_other/adminhtml_other_edit_tab_qr" name="other.edit.tab.qr"/>
+        </block>
+    </adminhtml_other_other_qrsgrid>
+
+    <adminhtml_other_other_qns>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_other/adminhtml_other_edit_tab_qn" name="other.edit.tab.qn"/>
+        </block>
+    </adminhtml_other_other_qns>
+    <adminhtml_other_other_qnsgrid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_other/adminhtml_other_edit_tab_qn" name="other.edit.tab.qn"/>
+        </block>
+    </adminhtml_other_other_qnsgrid>
+
+    <adminhtml_other_other_cars>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_other/adminhtml_other_edit_tab_car" name="other.edit.tab.car"/>
+        </block>
+    </adminhtml_other_other_cars>
+    <adminhtml_other_other_carsgrid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_other/adminhtml_other_edit_tab_car" name="other.edit.tab.car"/>
+        </block>
+    </adminhtml_other_other_carsgrid>
+
+    <adminhtml_other_other_drrs>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_other/adminhtml_other_edit_tab_drr" name="other.edit.tab.drr"/>
+        </block>
+    </adminhtml_other_other_drrs>
+    <adminhtml_other_other_drrsgrid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_other/adminhtml_other_edit_tab_drr" name="other.edit.tab.drr"/>
+        </block>
+    </adminhtml_other_other_drrsgrid>
+
+<adminhtml_ncr_ncr_index>
+        <reference name="menu">
+            <action method="setActive">
+                <menupath>bs_work/ncr</menupath>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="bs_ncr/adminhtml_ncr" name="ncr" />
+
+        </reference>
+    </adminhtml_ncr_ncr_index>
+    <adminhtml_ncr_ncr_grid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_ncr/adminhtml_ncr_grid" name="ncr_grid"/>
+        </block>
+    </adminhtml_ncr_ncr_grid>
+    <!-- Ncr add/edit action -->
+    <adminhtml_ncr_ncr_edit>
+        <update handle="editor"/>
+        <reference name="menu">
+            <action method="setActive">
+                <menupath>bs_work/ncr</menupath>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="bs_ncr/adminhtml_ncr_edit" name="ncr_edit"></block>
+        </reference>
+        <reference name="left">
+            <block type="bs_ncr/adminhtml_ncr_edit_tabs" name="ncr_tabs"></block>
+        </reference>
+    </adminhtml_ncr_ncr_edit>
+
+    <adminhtml_ncr_ncr_irs>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_ncr/adminhtml_ncr_edit_tab_ir" name="ncr.edit.tab.ir"/>
+        </block>
+    </adminhtml_ncr_ncr_irs>
+    <adminhtml_ncr_ncr_irsgrid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_ncr/adminhtml_ncr_edit_tab_ir" name="ncr.edit.tab.ir"/>
+        </block>
+    </adminhtml_ncr_ncr_irsgrid>
+
+    <adminhtml_ncr_ncr_ncrs>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_ncr/adminhtml_ncr_edit_tab_ncr" name="ncr.edit.tab.ncr"/>
+        </block>
+    </adminhtml_ncr_ncr_ncrs>
+    <adminhtml_ncr_ncr_ncrsgrid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_ncr/adminhtml_ncr_edit_tab_ncr" name="ncr.edit.tab.ncr"/>
+        </block>
+    </adminhtml_ncr_ncr_ncrsgrid>
+
+    <adminhtml_ncr_ncr_qrs>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_ncr/adminhtml_ncr_edit_tab_qr" name="ncr.edit.tab.qr"/>
+        </block>
+    </adminhtml_ncr_ncr_qrs>
+    <adminhtml_ncr_ncr_qrsgrid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_ncr/adminhtml_ncr_edit_tab_qr" name="ncr.edit.tab.qr"/>
+        </block>
+    </adminhtml_ncr_ncr_qrsgrid>
+
+    <adminhtml_ncr_ncr_qns>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_ncr/adminhtml_ncr_edit_tab_qn" name="ncr.edit.tab.qn"/>
+        </block>
+    </adminhtml_ncr_ncr_qns>
+    <adminhtml_ncr_ncr_qnsgrid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_ncr/adminhtml_ncr_edit_tab_qn" name="ncr.edit.tab.qn"/>
+        </block>
+    </adminhtml_ncr_ncr_qnsgrid>
+
+    <adminhtml_ncr_ncr_cars>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_ncr/adminhtml_ncr_edit_tab_car" name="ncr.edit.tab.car"/>
+        </block>
+    </adminhtml_ncr_ncr_cars>
+    <adminhtml_ncr_ncr_carsgrid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_ncr/adminhtml_ncr_edit_tab_car" name="ncr.edit.tab.car"/>
+        </block>
+    </adminhtml_ncr_ncr_carsgrid>
+
+    <adminhtml_ncr_ncr_drrs>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_ncr/adminhtml_ncr_edit_tab_drr" name="ncr.edit.tab.drr"/>
+        </block>
+    </adminhtml_ncr_ncr_drrs>
+    <adminhtml_ncr_ncr_drrsgrid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_ncr/adminhtml_ncr_edit_tab_drr" name="ncr.edit.tab.drr"/>
+        </block>
+    </adminhtml_ncr_ncr_drrsgrid>
+
+<adminhtml_signoff_signoff_index>
+        <reference name="menu">
+            <action method="setActive">
+                <menupath>bs_work/signoff</menupath>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="bs_signoff/adminhtml_signoff" name="signoff" />
+
+        </reference>
+    </adminhtml_signoff_signoff_index>
+    <adminhtml_signoff_signoff_grid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_signoff/adminhtml_signoff_grid" name="signoff_grid"/>
+        </block>
+    </adminhtml_signoff_signoff_grid>
+    <!-- Signoff add/edit action -->
+    <adminhtml_signoff_signoff_edit>
+        <update handle="editor"/>
+        <reference name="menu">
+            <action method="setActive">
+                <menupath>bs_work/signoff</menupath>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="bs_signoff/adminhtml_signoff_edit" name="signoff_edit"></block>
+        </reference>
+        <reference name="left">
+            <block type="bs_signoff/adminhtml_signoff_edit_tabs" name="signoff_tabs"></block>
+        </reference>
+    </adminhtml_signoff_signoff_edit>
+
+    <adminhtml_signoff_signoff_irs>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_signoff/adminhtml_signoff_edit_tab_ir" name="signoff.edit.tab.ir"/>
+        </block>
+    </adminhtml_signoff_signoff_irs>
+    <adminhtml_signoff_signoff_irsgrid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_signoff/adminhtml_signoff_edit_tab_ir" name="signoff.edit.tab.ir"/>
+        </block>
+    </adminhtml_signoff_signoff_irsgrid>
+
+    <adminhtml_signoff_signoff_ncrs>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_signoff/adminhtml_signoff_edit_tab_ncr" name="signoff.edit.tab.ncr"/>
+        </block>
+    </adminhtml_signoff_signoff_ncrs>
+    <adminhtml_signoff_signoff_ncrsgrid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_signoff/adminhtml_signoff_edit_tab_ncr" name="signoff.edit.tab.ncr"/>
+        </block>
+    </adminhtml_signoff_signoff_ncrsgrid>
+
+    <adminhtml_signoff_signoff_qrs>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_signoff/adminhtml_signoff_edit_tab_qr" name="signoff.edit.tab.qr"/>
+        </block>
+    </adminhtml_signoff_signoff_qrs>
+    <adminhtml_signoff_signoff_qrsgrid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_signoff/adminhtml_signoff_edit_tab_qr" name="signoff.edit.tab.qr"/>
+        </block>
+    </adminhtml_signoff_signoff_qrsgrid>
+
+    <adminhtml_signoff_signoff_qns>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_signoff/adminhtml_signoff_edit_tab_qn" name="signoff.edit.tab.qn"/>
+        </block>
+    </adminhtml_signoff_signoff_qns>
+    <adminhtml_signoff_signoff_qnsgrid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_signoff/adminhtml_signoff_edit_tab_qn" name="signoff.edit.tab.qn"/>
+        </block>
+    </adminhtml_signoff_signoff_qnsgrid>
+
+    <adminhtml_signoff_signoff_cars>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_signoff/adminhtml_signoff_edit_tab_car" name="signoff.edit.tab.car"/>
+        </block>
+    </adminhtml_signoff_signoff_cars>
+    <adminhtml_signoff_signoff_carsgrid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_signoff/adminhtml_signoff_edit_tab_car" name="signoff.edit.tab.car"/>
+        </block>
+    </adminhtml_signoff_signoff_carsgrid>
+
+    <adminhtml_signoff_signoff_drrs>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_signoff/adminhtml_signoff_edit_tab_drr" name="signoff.edit.tab.drr"/>
+        </block>
+    </adminhtml_signoff_signoff_drrs>
+    <adminhtml_signoff_signoff_drrsgrid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_signoff/adminhtml_signoff_edit_tab_drr" name="signoff.edit.tab.drr"/>
+        </block>
+    </adminhtml_signoff_signoff_drrsgrid>
 
 <adminhtml_misc_department_index>
         <reference name="menu">
@@ -1981,6 +2114,179 @@ Empty hanle for ajax response etc.
         </reference>
     </adminhtml_misc_subsubtask_edit>
 
+<adminhtml_ir_ir_index>
+        <reference name="menu">
+            <action method="setActive">
+                <menupath>bs_work/ir</menupath>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="bs_ir/adminhtml_ir" name="ir" />
+
+        </reference>
+    </adminhtml_ir_ir_index>
+    <adminhtml_ir_ir_grid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_ir/adminhtml_ir_grid" name="ir_grid"/>
+        </block>
+    </adminhtml_ir_ir_grid>
+    <!-- Investigation add/edit action -->
+    <adminhtml_ir_ir_edit>
+        <update handle="editor"/>
+        <reference name="menu">
+            <action method="setActive">
+                <menupath>bs_work/ir</menupath>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="bs_ir/adminhtml_ir_edit" name="ir_edit"></block>
+        </reference>
+        <reference name="left">
+            <block type="bs_ir/adminhtml_ir_edit_tabs" name="ir_tabs"></block>
+        </reference>
+    </adminhtml_ir_ir_edit>
+
+    <adminhtml_ir_ir_ncrs>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_ir/adminhtml_ir_edit_tab_ncr" name="cofa.edit.tab.ncr"/>
+        </block>
+    </adminhtml_ir_ir_ncrs>
+    <adminhtml_ir_ir_ncrsgrid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_ir/adminhtml_ir_edit_tab_ncr" name="cofa.edit.tab.ncr"/>
+        </block>
+    </adminhtml_ir_ir_ncrsgrid>
+
+    <adminhtml_ir_ir_qrs>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_ir/adminhtml_ir_edit_tab_qr" name="cofa.edit.tab.qr"/>
+        </block>
+    </adminhtml_ir_ir_qrs>
+    <adminhtml_ir_ir_qrsgrid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_ir/adminhtml_ir_edit_tab_qr" name="cofa.edit.tab.qr"/>
+        </block>
+    </adminhtml_ir_ir_qrsgrid>
+
+    <adminhtml_ir_ir_drrs>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_ir/adminhtml_ir_edit_tab_drr" name="cofa.edit.tab.drr"/>
+        </block>
+    </adminhtml_ir_ir_drrs>
+    <adminhtml_ir_ir_drrsgrid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_ir/adminhtml_ir_edit_tab_drr" name="cofa.edit.tab.drr"/>
+        </block>
+    </adminhtml_ir_ir_drrsgrid>
+
+<adminhtml_cofa_cofa_index>
+        <reference name="menu">
+            <action method="setActive">
+                <menupath>bs_data/cofa</menupath>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="bs_cofa/adminhtml_cofa" name="cofa" />
+
+        </reference>
+    </adminhtml_cofa_cofa_index>
+    <adminhtml_cofa_cofa_grid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_cofa/adminhtml_cofa_grid" name="cofa_grid"/>
+        </block>
+    </adminhtml_cofa_cofa_grid>
+    <!-- Cmr add/edit action -->
+    <adminhtml_cofa_cofa_edit>
+        <update handle="editor"/>
+        <reference name="menu">
+            <action method="setActive">
+                <menupath>bs_data/cofa</menupath>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="bs_cofa/adminhtml_cofa_edit" name="cofa_edit"></block>
+        </reference>
+        <reference name="left">
+            <block type="bs_cofa/adminhtml_cofa_edit_tabs" name="cofa_tabs"></block>
+        </reference>
+    </adminhtml_cofa_cofa_edit>
+
+    <adminhtml_cofa_cofa_irs>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_cofa/adminhtml_cofa_edit_tab_ir" name="cofa.edit.tab.ir"/>
+        </block>
+    </adminhtml_cofa_cofa_irs>
+    <adminhtml_cofa_cofa_irsgrid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_cofa/adminhtml_cofa_edit_tab_ir" name="cofa.edit.tab.ir"/>
+        </block>
+    </adminhtml_cofa_cofa_irsgrid>
+
+    <adminhtml_cofa_cofa_ncrs>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_cofa/adminhtml_cofa_edit_tab_ncr" name="cofa.edit.tab.ncr"/>
+        </block>
+    </adminhtml_cofa_cofa_ncrs>
+    <adminhtml_cofa_cofa_ncrsgrid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_cofa/adminhtml_cofa_edit_tab_ncr" name="cofa.edit.tab.ncr"/>
+        </block>
+    </adminhtml_cofa_cofa_ncrsgrid>
+
+    <adminhtml_cofa_cofa_qrs>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_cofa/adminhtml_cofa_edit_tab_qrr" name="cofa.edit.tab.qr"/>
+        </block>
+    </adminhtml_cofa_cofa_qrs>
+    <adminhtml_cofa_cofa_qrsgrid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_cofa/adminhtml_cofa_edit_tab_qr" name="cofa.edit.tab.qr"/>
+        </block>
+    </adminhtml_cofa_cofa_qrsgrid>
+
+    <adminhtml_cofa_cofa_drrs>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_cofa/adminhtml_cofa_edit_tab_drr" name="cofa.edit.tab.drr"/>
+        </block>
+    </adminhtml_cofa_cofa_drrs>
+    <adminhtml_cofa_cofa_drrsgrid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_cofa/adminhtml_cofa_edit_tab_drr" name="cofa.edit.tab.drr"/>
+        </block>
+    </adminhtml_cofa_cofa_drrsgrid>
+
+<adminhtml_qn_qn_index>
+        <reference name="menu">
+            <action method="setActive">
+                <menupath>bs_work/qn</menupath>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="bs_qn/adminhtml_qn" name="qn" />
+
+        </reference>
+    </adminhtml_qn_qn_index>
+    <adminhtml_qn_qn_grid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_qn/adminhtml_qn_grid" name="qn_grid"/>
+        </block>
+    </adminhtml_qn_qn_grid>
+    <!-- Qrqn add/edit action -->
+    <adminhtml_qn_qn_edit>
+        <update handle="editor"/>
+        <reference name="menu">
+            <action method="setActive">
+                <menupath>bs_work/qn</menupath>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="bs_qn/adminhtml_qn_edit" name="qn_edit"></block>
+        </reference>
+        <reference name="left">
+            <block type="bs_qn/adminhtml_qn_edit_tabs" name="qn_tabs"></block>
+        </reference>
+    </adminhtml_qn_qn_edit>
+
 <adminhtml_ncause_ncausegroup_index>
         <reference name="menu">
             <action method="setActive">
@@ -2045,723 +2351,12 @@ Empty hanle for ajax response etc.
         </reference>
     </adminhtml_ncause_ncause_edit>
 
-<adminhtml_ncr_ncr_index>
-        <reference name="menu">
-            <action method="setActive">
-                <menupath>bs_work/ncr</menupath>
-            </action>
-        </reference>
-        <reference name="content">
-            <block type="bs_ncr/adminhtml_ncr" name="ncr" />
-
-        </reference>
-    </adminhtml_ncr_ncr_index>
-    <adminhtml_ncr_ncr_grid>
-        <block type="core/text_list" name="root" output="toHtml">
-            <block type="bs_ncr/adminhtml_ncr_grid" name="ncr_grid"/>
-        </block>
-    </adminhtml_ncr_ncr_grid>
-    <!-- Ncr add/edit action -->
-    <adminhtml_ncr_ncr_edit>
-        <update handle="editor"/>
-        <reference name="menu">
-            <action method="setActive">
-                <menupath>bs_work/ncr</menupath>
-            </action>
-        </reference>
-        <reference name="content">
-            <block type="bs_ncr/adminhtml_ncr_edit" name="ncr_edit"></block>
-        </reference>
-        <reference name="left">
-            <block type="bs_ncr/adminhtml_ncr_edit_tabs" name="ncr_tabs"></block>
-        </reference>
-    </adminhtml_ncr_ncr_edit>
-
-    <adminhtml_ncr_ncr_irs>
-        <block type="core/text_list" name="root" output="toHtml">
-            <block type="bs_ncr/adminhtml_ncr_edit_tab_ir" name="ncr.edit.tab.ir"/>
-        </block>
-    </adminhtml_ncr_ncr_irs>
-    <adminhtml_ncr_ncr_irsgrid>
-        <block type="core/text_list" name="root" output="toHtml">
-            <block type="bs_ncr/adminhtml_ncr_edit_tab_ir" name="ncr.edit.tab.ir"/>
-        </block>
-    </adminhtml_ncr_ncr_irsgrid>
-
-    <adminhtml_ncr_ncr_ncrs>
-        <block type="core/text_list" name="root" output="toHtml">
-            <block type="bs_ncr/adminhtml_ncr_edit_tab_ncr" name="ncr.edit.tab.ncr"/>
-        </block>
-    </adminhtml_ncr_ncr_ncrs>
-    <adminhtml_ncr_ncr_ncrsgrid>
-        <block type="core/text_list" name="root" output="toHtml">
-            <block type="bs_ncr/adminhtml_ncr_edit_tab_ncr" name="ncr.edit.tab.ncr"/>
-        </block>
-    </adminhtml_ncr_ncr_ncrsgrid>
-
-    <adminhtml_ncr_ncr_qrs>
-        <block type="core/text_list" name="root" output="toHtml">
-            <block type="bs_ncr/adminhtml_ncr_edit_tab_qr" name="ncr.edit.tab.qr"/>
-        </block>
-    </adminhtml_ncr_ncr_qrs>
-    <adminhtml_ncr_ncr_qrsgrid>
-        <block type="core/text_list" name="root" output="toHtml">
-            <block type="bs_ncr/adminhtml_ncr_edit_tab_qr" name="ncr.edit.tab.qr"/>
-        </block>
-    </adminhtml_ncr_ncr_qrsgrid>
-
-    <adminhtml_ncr_ncr_qns>
-        <block type="core/text_list" name="root" output="toHtml">
-            <block type="bs_ncr/adminhtml_ncr_edit_tab_qn" name="ncr.edit.tab.qn"/>
-        </block>
-    </adminhtml_ncr_ncr_qns>
-    <adminhtml_ncr_ncr_qnsgrid>
-        <block type="core/text_list" name="root" output="toHtml">
-            <block type="bs_ncr/adminhtml_ncr_edit_tab_qn" name="ncr.edit.tab.qn"/>
-        </block>
-    </adminhtml_ncr_ncr_qnsgrid>
-
-    <adminhtml_ncr_ncr_cars>
-        <block type="core/text_list" name="root" output="toHtml">
-            <block type="bs_ncr/adminhtml_ncr_edit_tab_car" name="ncr.edit.tab.car"/>
-        </block>
-    </adminhtml_ncr_ncr_cars>
-    <adminhtml_ncr_ncr_carsgrid>
-        <block type="core/text_list" name="root" output="toHtml">
-            <block type="bs_ncr/adminhtml_ncr_edit_tab_car" name="ncr.edit.tab.car"/>
-        </block>
-    </adminhtml_ncr_ncr_carsgrid>
-
-    <adminhtml_ncr_ncr_drrs>
-        <block type="core/text_list" name="root" output="toHtml">
-            <block type="bs_ncr/adminhtml_ncr_edit_tab_drr" name="ncr.edit.tab.drr"/>
-        </block>
-    </adminhtml_ncr_ncr_drrs>
-    <adminhtml_ncr_ncr_drrsgrid>
-        <block type="core/text_list" name="root" output="toHtml">
-            <block type="bs_ncr/adminhtml_ncr_edit_tab_drr" name="ncr.edit.tab.drr"/>
-        </block>
-    </adminhtml_ncr_ncr_drrsgrid>
-
-<adminhtml_nonroutine_nonroutine_index>
-        <reference name="menu">
-            <action method="setActive">
-                <menupath>bs_sched/nonroutine</menupath>
-            </action>
-        </reference>
-        <reference name="content">
-            <block type="bs_nonroutine/adminhtml_nonroutine" name="nonroutine" />
-
-        </reference>
-    </adminhtml_nonroutine_nonroutine_index>
-    <adminhtml_nonroutine_nonroutine_grid>
-        <block type="core/text_list" name="root" output="toHtml">
-            <block type="bs_nonroutine/adminhtml_nonroutine_grid" name="nonroutine_grid"/>
-        </block>
-    </adminhtml_nonroutine_nonroutine_grid>
-    <!-- Nonroutine add/edit action -->
-    <adminhtml_nonroutine_nonroutine_edit>
-        <update handle="editor"/>
-        <reference name="menu">
-            <action method="setActive">
-                <menupath>bs_sched/nonroutine</menupath>
-            </action>
-        </reference>
-        <reference name="content">
-            <block type="bs_nonroutine/adminhtml_nonroutine_edit" name="nonroutine_edit"></block>
-        </reference>
-        <reference name="left">
-            <block type="bs_nonroutine/adminhtml_nonroutine_edit_tabs" name="nonroutine_tabs"></block>
-        </reference>
-    </adminhtml_nonroutine_nonroutine_edit>
-
-<adminhtml_other_other_index>
-        <reference name="menu">
-            <action method="setActive">
-                <menupath>bs_work/other</menupath>
-            </action>
-        </reference>
-        <reference name="content">
-            <block type="bs_other/adminhtml_other" name="other" />
-
-        </reference>
-    </adminhtml_other_other_index>
-    <adminhtml_other_other_grid>
-        <block type="core/text_list" name="root" output="toHtml">
-            <block type="bs_other/adminhtml_other_grid" name="other_grid"/>
-        </block>
-    </adminhtml_other_other_grid>
-    <!-- Other add/edit action -->
-    <adminhtml_other_other_edit>
-        <update handle="editor"/>
-        <reference name="menu">
-            <action method="setActive">
-                <menupath>bs_work/other</menupath>
-            </action>
-        </reference>
-        <reference name="content">
-            <block type="bs_other/adminhtml_other_edit" name="other_edit"></block>
-        </reference>
-        <reference name="left">
-            <block type="bs_other/adminhtml_other_edit_tabs" name="other_tabs"></block>
-        </reference>
-    </adminhtml_other_other_edit>
-
-    <adminhtml_other_other_irs>
-        <block type="core/text_list" name="root" output="toHtml">
-            <block type="bs_other/adminhtml_other_edit_tab_ir" name="other.edit.tab.ir"/>
-        </block>
-    </adminhtml_other_other_irs>
-    <adminhtml_other_other_irsgrid>
-        <block type="core/text_list" name="root" output="toHtml">
-            <block type="bs_other/adminhtml_other_edit_tab_ir" name="other.edit.tab.ir"/>
-        </block>
-    </adminhtml_other_other_irsgrid>
-
-    <adminhtml_other_other_ncrs>
-        <block type="core/text_list" name="root" output="toHtml">
-            <block type="bs_other/adminhtml_other_edit_tab_ncr" name="other.edit.tab.ncr"/>
-        </block>
-    </adminhtml_other_other_ncrs>
-    <adminhtml_other_other_ncrsgrid>
-        <block type="core/text_list" name="root" output="toHtml">
-            <block type="bs_other/adminhtml_other_edit_tab_ncr" name="other.edit.tab.ncr"/>
-        </block>
-    </adminhtml_other_other_ncrsgrid>
-
-    <adminhtml_other_other_qrs>
-        <block type="core/text_list" name="root" output="toHtml">
-            <block type="bs_other/adminhtml_other_edit_tab_qr" name="other.edit.tab.qr"/>
-        </block>
-    </adminhtml_other_other_qrs>
-    <adminhtml_other_other_qrsgrid>
-        <block type="core/text_list" name="root" output="toHtml">
-            <block type="bs_other/adminhtml_other_edit_tab_qr" name="other.edit.tab.qr"/>
-        </block>
-    </adminhtml_other_other_qrsgrid>
-
-    <adminhtml_other_other_qns>
-        <block type="core/text_list" name="root" output="toHtml">
-            <block type="bs_other/adminhtml_other_edit_tab_qn" name="other.edit.tab.qn"/>
-        </block>
-    </adminhtml_other_other_qns>
-    <adminhtml_other_other_qnsgrid>
-        <block type="core/text_list" name="root" output="toHtml">
-            <block type="bs_other/adminhtml_other_edit_tab_qn" name="other.edit.tab.qn"/>
-        </block>
-    </adminhtml_other_other_qnsgrid>
-
-    <adminhtml_other_other_cars>
-        <block type="core/text_list" name="root" output="toHtml">
-            <block type="bs_other/adminhtml_other_edit_tab_car" name="other.edit.tab.car"/>
-        </block>
-    </adminhtml_other_other_cars>
-    <adminhtml_other_other_carsgrid>
-        <block type="core/text_list" name="root" output="toHtml">
-            <block type="bs_other/adminhtml_other_edit_tab_car" name="other.edit.tab.car"/>
-        </block>
-    </adminhtml_other_other_carsgrid>
-
-    <adminhtml_other_other_drrs>
-        <block type="core/text_list" name="root" output="toHtml">
-            <block type="bs_other/adminhtml_other_edit_tab_drr" name="other.edit.tab.drr"/>
-        </block>
-    </adminhtml_other_other_drrs>
-    <adminhtml_other_other_drrsgrid>
-        <block type="core/text_list" name="root" output="toHtml">
-            <block type="bs_other/adminhtml_other_edit_tab_drr" name="other.edit.tab.drr"/>
-        </block>
-    </adminhtml_other_other_drrsgrid>
-
-<adminhtml_qn_qn_index>
-        <reference name="menu">
-            <action method="setActive">
-                <menupath>bs_work/qn</menupath>
-            </action>
-        </reference>
-        <reference name="content">
-            <block type="bs_qn/adminhtml_qn" name="qn" />
-
-        </reference>
-    </adminhtml_qn_qn_index>
-    <adminhtml_qn_qn_grid>
-        <block type="core/text_list" name="root" output="toHtml">
-            <block type="bs_qn/adminhtml_qn_grid" name="qn_grid"/>
-        </block>
-    </adminhtml_qn_qn_grid>
-    <!-- Qrqn add/edit action -->
-    <adminhtml_qn_qn_edit>
-        <update handle="editor"/>
-        <reference name="menu">
-            <action method="setActive">
-                <menupath>bs_work/qn</menupath>
-            </action>
-        </reference>
-        <reference name="content">
-            <block type="bs_qn/adminhtml_qn_edit" name="qn_edit"></block>
-        </reference>
-        <reference name="left">
-            <block type="bs_qn/adminhtml_qn_edit_tabs" name="qn_tabs"></block>
-        </reference>
-    </adminhtml_qn_qn_edit>
-
-<adminhtml_qr_qr_index>
-        <reference name="menu">
-            <action method="setActive">
-                <menupath>bs_work/qr</menupath>
-            </action>
-        </reference>
-        <reference name="content">
-            <block type="bs_qr/adminhtml_qr" name="qr" />
-
-        </reference>
-    </adminhtml_qr_qr_index>
-    <adminhtml_qr_qr_grid>
-        <block type="core/text_list" name="root" output="toHtml">
-            <block type="bs_qr/adminhtml_qr_grid" name="qr_grid"/>
-        </block>
-    </adminhtml_qr_qr_grid>
-    <!-- Qrqn add/edit action -->
-    <adminhtml_qr_qr_edit>
-        <update handle="editor"/>
-        <reference name="menu">
-            <action method="setActive">
-                <menupath>bs_work/qr</menupath>
-            </action>
-        </reference>
-        <reference name="content">
-            <block type="bs_qr/adminhtml_qr_edit" name="qr_edit"></block>
-        </reference>
-        <reference name="left">
-            <block type="bs_qr/adminhtml_qr_edit_tabs" name="qr_tabs"></block>
-        </reference>
-    </adminhtml_qr_qr_edit>
-
-<adminhtml_report_qchaneff_index>
-        <reference name="menu">
-            <action method="setActive">
-                <menupath>bs_evaluation/qchaneff</menupath>
-            </action>
-        </reference>
-        <reference name="content">
-            <block type="bs_report/adminhtml_qchaneff" name="qchaneff" template="report/grid/container.phtml" >
-                <block type="bs_report/adminhtml_filter_form" name="grid.filter.form" />
-            </block>
-
-        </reference>
-    </adminhtml_report_qchaneff_index>
-    <adminhtml_report_qchaneff_grid>
-        <block type="core/text_list" name="root" output="toHtml">
-            <block type="bs_report/adminhtml_qchaneff_grid" name="qchaneff_grid"/>
-        </block>
-    </adminhtml_report_qchaneff_grid>
-    <!-- Qchaneff add/edit action -->
-    <adminhtml_report_qchaneff_edit>
-        <update handle="editor"/>
-        <reference name="menu">
-            <action method="setActive">
-                <menupath>bs_evaluation/qchaneff</menupath>
-            </action>
-        </reference>
-        <reference name="content">
-            <block type="bs_report/adminhtml_qchaneff_edit" name="qchaneff_edit"></block>
-        </reference>
-        <reference name="left">
-            <block type="bs_report/adminhtml_qchaneff_edit_tabs" name="qchaneff_tabs"></block>
-        </reference>
-    </adminhtml_report_qchaneff_edit>
-
-    <adminhtml_report_setting_index>
-        <reference name="menu">
-            <action method="setActive">
-                <menupath>bs_evaluation/setting</menupath>
-            </action>
-        </reference>
-        <reference name="content">
-            <block type="bs_report/adminhtml_setting" name="setting" />
-
-        </reference>
-    </adminhtml_report_setting_index>
-    <adminhtml_report_setting_grid>
-        <block type="core/text_list" name="root" output="toHtml">
-            <block type="bs_report/adminhtml_setting_grid" name="setting_grid"/>
-        </block>
-    </adminhtml_report_setting_grid>
-    <!-- Setting add/edit action -->
-    <adminhtml_report_setting_edit>
-        <update handle="editor"/>
-        <reference name="menu">
-            <action method="setActive">
-                <menupath>bs_evaluation/setting</menupath>
-            </action>
-        </reference>
-        <reference name="content">
-            <block type="bs_report/adminhtml_setting_edit" name="setting_edit"></block>
-        </reference>
-        <reference name="left">
-            <block type="bs_report/adminhtml_setting_edit_tabs" name="setting_tabs"></block>
-        </reference>
-    </adminhtml_report_setting_edit>
-
-    <adminhtml_report_workday_index>
-        <reference name="menu">
-            <action method="setActive">
-                <menupath>bs_evaluation/workday</menupath>
-            </action>
-        </reference>
-        <reference name="content">
-            <block type="bs_report/adminhtml_workday" name="workday" template="report/grid/container.phtml" >
-                <block type="bs_report/adminhtml_filter_workdayform" name="grid.filter.form" />
-            </block>
-
-
-        </reference>
-    </adminhtml_report_workday_index>
-    <adminhtml_report_workday_grid>
-        <block type="core/text_list" name="root" output="toHtml">
-            <block type="bs_report/adminhtml_workday_grid" name="workday_grid"/>
-        </block>
-    </adminhtml_report_workday_grid>
-    <!-- Workday add/edit action -->
-    <adminhtml_report_workday_edit>
-        <update handle="editor"/>
-        <reference name="menu">
-            <action method="setActive">
-                <menupath>bs_evaluation/workday</menupath>
-            </action>
-        </reference>
-        <reference name="content">
-            <block type="bs_report/adminhtml_workday_edit" name="workday_edit"></block>
-        </reference>
-        <reference name="left">
-            <block type="bs_report/adminhtml_workday_edit_tabs" name="workday_tabs"></block>
-        </reference>
-    </adminhtml_report_workday_edit>
-
-<adminhtml_rii_rii_index>
-        <reference name="menu">
-            <action method="setActive">
-                <menupath>bs_work/rii</menupath>
-            </action>
-        </reference>
-        <reference name="content">
-            <block type="bs_rii/adminhtml_rii" name="rii" />
-
-        </reference>
-    </adminhtml_rii_rii_index>
-    <adminhtml_rii_rii_grid>
-        <block type="core/text_list" name="root" output="toHtml">
-            <block type="bs_rii/adminhtml_rii_grid" name="rii_grid"/>
-        </block>
-    </adminhtml_rii_rii_grid>
-    <!-- Rii add/edit action -->
-    <adminhtml_rii_rii_edit>
-        <update handle="editor"/>
-        <reference name="menu">
-            <action method="setActive">
-                <menupath>bs_work/rii</menupath>
-            </action>
-        </reference>
-        <reference name="content">
-            <block type="bs_rii/adminhtml_rii_edit" name="rii_edit"></block>
-        </reference>
-        <reference name="left">
-            <block type="bs_rii/adminhtml_rii_edit_tabs" name="rii_tabs"></block>
-        </reference>
-    </adminhtml_rii_rii_edit>
-
-    <adminhtml_rii_rii_irs>
-        <block type="core/text_list" name="root" output="toHtml">
-            <block type="bs_rii/adminhtml_rii_edit_tab_ir" name="rii.edit.tab.ir"/>
-        </block>
-    </adminhtml_rii_rii_irs>
-    <adminhtml_rii_rii_irsgrid>
-        <block type="core/text_list" name="root" output="toHtml">
-            <block type="bs_rii/adminhtml_rii_edit_tab_ir" name="rii.edit.tab.ir"/>
-        </block>
-    </adminhtml_rii_rii_irsgrid>
-
-    <adminhtml_rii_rii_ncrs>
-        <block type="core/text_list" name="root" output="toHtml">
-            <block type="bs_rii/adminhtml_rii_edit_tab_ncr" name="rii.edit.tab.ncr"/>
-        </block>
-    </adminhtml_rii_rii_ncrs>
-    <adminhtml_rii_rii_ncrsgrid>
-        <block type="core/text_list" name="root" output="toHtml">
-            <block type="bs_rii/adminhtml_rii_edit_tab_ncr" name="rii.edit.tab.ncr"/>
-        </block>
-    </adminhtml_rii_rii_ncrsgrid>
-
-    <adminhtml_rii_rii_qrs>
-        <block type="core/text_list" name="root" output="toHtml">
-            <block type="bs_rii/adminhtml_rii_edit_tab_qr" name="rii.edit.tab.qr"/>
-        </block>
-    </adminhtml_rii_rii_qrs>
-    <adminhtml_rii_rii_qrsgrid>
-        <block type="core/text_list" name="root" output="toHtml">
-            <block type="bs_rii/adminhtml_rii_edit_tab_qr" name="rii.edit.tab.qr"/>
-        </block>
-    </adminhtml_rii_rii_qrsgrid>
-
-    <adminhtml_rii_rii_qns>
-        <block type="core/text_list" name="root" output="toHtml">
-            <block type="bs_rii/adminhtml_rii_edit_tab_qn" name="rii.edit.tab.qn"/>
-        </block>
-    </adminhtml_rii_rii_qns>
-    <adminhtml_rii_rii_qnsgrid>
-        <block type="core/text_list" name="root" output="toHtml">
-            <block type="bs_rii/adminhtml_rii_edit_tab_qn" name="rii.edit.tab.qn"/>
-        </block>
-    </adminhtml_rii_rii_qnsgrid>
-
-    <adminhtml_rii_rii_cars>
-        <block type="core/text_list" name="root" output="toHtml">
-            <block type="bs_rii/adminhtml_rii_edit_tab_car" name="rii.edit.tab.car"/>
-        </block>
-    </adminhtml_rii_rii_cars>
-    <adminhtml_rii_rii_carsgrid>
-        <block type="core/text_list" name="root" output="toHtml">
-            <block type="bs_rii/adminhtml_rii_edit_tab_car" name="rii.edit.tab.car"/>
-        </block>
-    </adminhtml_rii_rii_carsgrid>
-
-    <adminhtml_rii_rii_drrs>
-        <block type="core/text_list" name="root" output="toHtml">
-            <block type="bs_rii/adminhtml_rii_edit_tab_drr" name="rii.edit.tab.drr"/>
-        </block>
-    </adminhtml_rii_rii_drrs>
-    <adminhtml_rii_rii_drrsgrid>
-        <block type="core/text_list" name="root" output="toHtml">
-            <block type="bs_rii/adminhtml_rii_edit_tab_drr" name="rii.edit.tab.drr"/>
-        </block>
-    </adminhtml_rii_rii_drrsgrid>
-
-<adminhtml_routine_routine_index>
-        <reference name="menu">
-            <action method="setActive">
-                <menupath>bs_report/routine</menupath>
-            </action>
-        </reference>
-        <reference name="content">
-            <block type="bs_routine/adminhtml_routine" name="routine" />
-
-        </reference>
-    </adminhtml_routine_routine_index>
-    <adminhtml_routine_routine_grid>
-        <block type="core/text_list" name="root" output="toHtml">
-            <block type="bs_routine/adminhtml_routine_grid" name="routine_grid"/>
-        </block>
-    </adminhtml_routine_routine_grid>
-    <!-- Routine add/edit action -->
-    <adminhtml_routine_routine_edit>
-        <update handle="editor"/>
-        <reference name="menu">
-            <action method="setActive">
-                <menupath>bs_report/routine</menupath>
-            </action>
-        </reference>
-        <reference name="content">
-            <block type="bs_routine/adminhtml_routine_edit" name="routine_edit"></block>
-        </reference>
-        <reference name="left">
-            <block type="bs_routine/adminhtml_routine_edit_tabs" name="routine_tabs"></block>
-        </reference>
-    </adminhtml_routine_routine_edit>
-
-<adminhtml_schedule_schedule_index>
-        <reference name="menu">
-            <action method="setActive">
-                <menupath>bs_sched/schedule</menupath>
-            </action>
-        </reference>
-        <reference name="content">
-            <block type="bs_schedule/adminhtml_schedule" name="schedule" />
-
-        </reference>
-    </adminhtml_schedule_schedule_index>
-    <adminhtml_schedule_schedule_grid>
-        <block type="core/text_list" name="root" output="toHtml">
-            <block type="bs_schedule/adminhtml_schedule_grid" name="schedule_grid"/>
-        </block>
-    </adminhtml_schedule_schedule_grid>
-    <!-- Schedule add/edit action -->
-    <adminhtml_schedule_schedule_edit>
-        <update handle="editor"/>
-        <reference name="menu">
-            <action method="setActive">
-                <menupath>bs_sched/schedule</menupath>
-            </action>
-        </reference>
-        <reference name="content">
-            <block type="bs_schedule/adminhtml_schedule_edit" name="schedule_edit"></block>
-        </reference>
-        <reference name="left">
-            <block type="bs_schedule/adminhtml_schedule_edit_tabs" name="schedule_tabs"></block>
-        </reference>
-    </adminhtml_schedule_schedule_edit>
-
-<adminhtml_setting_field_index>
-        <reference name="menu">
-            <action method="setActive">
-                <menupath>system/bs_setting/field</menupath>
-            </action>
-        </reference>
-        <reference name="content">
-            <block type="bs_setting/adminhtml_field" name="field" />
-
-        </reference>
-    </adminhtml_setting_field_index>
-    <adminhtml_setting_field_grid>
-        <block type="core/text_list" name="root" output="toHtml">
-            <block type="bs_setting/adminhtml_field_grid" name="field_grid"/>
-        </block>
-    </adminhtml_setting_field_grid>
-    <!-- Field add/edit action -->
-    <adminhtml_setting_field_edit>
-        <update handle="editor"/>
-        <reference name="menu">
-            <action method="setActive">
-                <menupath>system/bs_setting/field</menupath>
-            </action>
-        </reference>
-        <reference name="content">
-            <block type="bs_setting/adminhtml_field_edit" name="field_edit"></block>
-        </reference>
-        <reference name="left">
-            <block type="bs_setting/adminhtml_field_edit_tabs" name="field_tabs"></block>
-        </reference>
-    </adminhtml_setting_field_edit>
-
-<adminhtml_signature_signature_index>
-        <reference name="menu">
-            <action method="setActive">
-                <menupath>bs_misc/signature</menupath>
-            </action>
-        </reference>
-        <reference name="content">
-            <block type="bs_signature/adminhtml_signature" name="signature" />
-
-        </reference>
-    </adminhtml_signature_signature_index>
-    <adminhtml_signature_signature_grid>
-        <block type="core/text_list" name="root" output="toHtml">
-            <block type="bs_signature/adminhtml_signature_grid" name="signature_grid"/>
-        </block>
-    </adminhtml_signature_signature_grid>
-    <!-- Signature add/edit action -->
-    <adminhtml_signature_signature_edit>
-        <update handle="editor"/>
-        <reference name="menu">
-            <action method="setActive">
-                <menupath>bs_misc/signature</menupath>
-            </action>
-        </reference>
-        <reference name="content">
-            <block type="bs_signature/adminhtml_signature_edit" name="signature_edit"></block>
-        </reference>
-        <reference name="left">
-            <block type="bs_signature/adminhtml_signature_edit_tabs" name="signature_tabs"></block>
-        </reference>
-    </adminhtml_signature_signature_edit>
-
-<adminhtml_signoff_signoff_index>
-        <reference name="menu">
-            <action method="setActive">
-                <menupath>bs_work/signoff</menupath>
-            </action>
-        </reference>
-        <reference name="content">
-            <block type="bs_signoff/adminhtml_signoff" name="signoff" />
-
-        </reference>
-    </adminhtml_signoff_signoff_index>
-    <adminhtml_signoff_signoff_grid>
-        <block type="core/text_list" name="root" output="toHtml">
-            <block type="bs_signoff/adminhtml_signoff_grid" name="signoff_grid"/>
-        </block>
-    </adminhtml_signoff_signoff_grid>
-    <!-- Signoff add/edit action -->
-    <adminhtml_signoff_signoff_edit>
-        <update handle="editor"/>
-        <reference name="menu">
-            <action method="setActive">
-                <menupath>bs_work/signoff</menupath>
-            </action>
-        </reference>
-        <reference name="content">
-            <block type="bs_signoff/adminhtml_signoff_edit" name="signoff_edit"></block>
-        </reference>
-        <reference name="left">
-            <block type="bs_signoff/adminhtml_signoff_edit_tabs" name="signoff_tabs"></block>
-        </reference>
-    </adminhtml_signoff_signoff_edit>
-
-    <adminhtml_signoff_signoff_irs>
-        <block type="core/text_list" name="root" output="toHtml">
-            <block type="bs_signoff/adminhtml_signoff_edit_tab_ir" name="signoff.edit.tab.ir"/>
-        </block>
-    </adminhtml_signoff_signoff_irs>
-    <adminhtml_signoff_signoff_irsgrid>
-        <block type="core/text_list" name="root" output="toHtml">
-            <block type="bs_signoff/adminhtml_signoff_edit_tab_ir" name="signoff.edit.tab.ir"/>
-        </block>
-    </adminhtml_signoff_signoff_irsgrid>
-
-    <adminhtml_signoff_signoff_ncrs>
-        <block type="core/text_list" name="root" output="toHtml">
-            <block type="bs_signoff/adminhtml_signoff_edit_tab_ncr" name="signoff.edit.tab.ncr"/>
-        </block>
-    </adminhtml_signoff_signoff_ncrs>
-    <adminhtml_signoff_signoff_ncrsgrid>
-        <block type="core/text_list" name="root" output="toHtml">
-            <block type="bs_signoff/adminhtml_signoff_edit_tab_ncr" name="signoff.edit.tab.ncr"/>
-        </block>
-    </adminhtml_signoff_signoff_ncrsgrid>
-
-    <adminhtml_signoff_signoff_qrs>
-        <block type="core/text_list" name="root" output="toHtml">
-            <block type="bs_signoff/adminhtml_signoff_edit_tab_qr" name="signoff.edit.tab.qr"/>
-        </block>
-    </adminhtml_signoff_signoff_qrs>
-    <adminhtml_signoff_signoff_qrsgrid>
-        <block type="core/text_list" name="root" output="toHtml">
-            <block type="bs_signoff/adminhtml_signoff_edit_tab_qr" name="signoff.edit.tab.qr"/>
-        </block>
-    </adminhtml_signoff_signoff_qrsgrid>
-
-    <adminhtml_signoff_signoff_qns>
-        <block type="core/text_list" name="root" output="toHtml">
-            <block type="bs_signoff/adminhtml_signoff_edit_tab_qn" name="signoff.edit.tab.qn"/>
-        </block>
-    </adminhtml_signoff_signoff_qns>
-    <adminhtml_signoff_signoff_qnsgrid>
-        <block type="core/text_list" name="root" output="toHtml">
-            <block type="bs_signoff/adminhtml_signoff_edit_tab_qn" name="signoff.edit.tab.qn"/>
-        </block>
-    </adminhtml_signoff_signoff_qnsgrid>
-
-    <adminhtml_signoff_signoff_cars>
-        <block type="core/text_list" name="root" output="toHtml">
-            <block type="bs_signoff/adminhtml_signoff_edit_tab_car" name="signoff.edit.tab.car"/>
-        </block>
-    </adminhtml_signoff_signoff_cars>
-    <adminhtml_signoff_signoff_carsgrid>
-        <block type="core/text_list" name="root" output="toHtml">
-            <block type="bs_signoff/adminhtml_signoff_edit_tab_car" name="signoff.edit.tab.car"/>
-        </block>
-    </adminhtml_signoff_signoff_carsgrid>
-
-    <adminhtml_signoff_signoff_drrs>
-        <block type="core/text_list" name="root" output="toHtml">
-            <block type="bs_signoff/adminhtml_signoff_edit_tab_drr" name="signoff.edit.tab.drr"/>
-        </block>
-    </adminhtml_signoff_signoff_drrs>
-    <adminhtml_signoff_signoff_drrsgrid>
-        <block type="core/text_list" name="root" output="toHtml">
-            <block type="bs_signoff/adminhtml_signoff_edit_tab_drr" name="signoff.edit.tab.drr"/>
-        </block>
-    </adminhtml_signoff_signoff_drrsgrid>
-
+<default>
+    <reference name="head">
+        <action method="addItem"><type>skin_js</type><name>bs_chart/js/fusioncharts.js</name><params/></action>
+        <action method="addItem"><type>skin_js</type><name>bs_chart/js/themes/fusioncharts.theme.ocean.js</name><params/></action>
+    </reference>
+  </default>
 <adminhtml_sur_sur_index>
         <reference name="menu">
             <action method="setActive">
@@ -2861,6 +2456,136 @@ Empty hanle for ajax response etc.
         </block>
     </adminhtml_sur_sur_drrsgrid>
 
+<adminhtml_kpi_kpi_index>
+        <reference name="menu">
+            <action method="setActive">
+                <menupath>bs_data/kpi</menupath>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="bs_kpi/adminhtml_kpi" name="kpi" />
+
+        </reference>
+    </adminhtml_kpi_kpi_index>
+    <adminhtml_kpi_kpi_grid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_kpi/adminhtml_kpi_grid" name="kpi_grid"/>
+        </block>
+    </adminhtml_kpi_kpi_grid>
+    <!-- Kpi add/edit action -->
+    <adminhtml_kpi_kpi_edit>
+        <update handle="editor"/>
+        <reference name="menu">
+            <action method="setActive">
+                <menupath>bs_data/kpi</menupath>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="bs_kpi/adminhtml_kpi_edit" name="kpi_edit"></block>
+        </reference>
+        <reference name="left">
+            <block type="bs_kpi/adminhtml_kpi_edit_tabs" name="kpi_tabs"></block>
+        </reference>
+    </adminhtml_kpi_kpi_edit>
+
+<adminhtml_rii_rii_index>
+        <reference name="menu">
+            <action method="setActive">
+                <menupath>bs_work/rii</menupath>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="bs_rii/adminhtml_rii" name="rii" />
+
+        </reference>
+    </adminhtml_rii_rii_index>
+    <adminhtml_rii_rii_grid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_rii/adminhtml_rii_grid" name="rii_grid"/>
+        </block>
+    </adminhtml_rii_rii_grid>
+    <!-- Rii add/edit action -->
+    <adminhtml_rii_rii_edit>
+        <update handle="editor"/>
+        <reference name="menu">
+            <action method="setActive">
+                <menupath>bs_work/rii</menupath>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="bs_rii/adminhtml_rii_edit" name="rii_edit"></block>
+        </reference>
+        <reference name="left">
+            <block type="bs_rii/adminhtml_rii_edit_tabs" name="rii_tabs"></block>
+        </reference>
+    </adminhtml_rii_rii_edit>
+
+    <adminhtml_rii_rii_irs>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_rii/adminhtml_rii_edit_tab_ir" name="rii.edit.tab.ir"/>
+        </block>
+    </adminhtml_rii_rii_irs>
+    <adminhtml_rii_rii_irsgrid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_rii/adminhtml_rii_edit_tab_ir" name="rii.edit.tab.ir"/>
+        </block>
+    </adminhtml_rii_rii_irsgrid>
+
+    <adminhtml_rii_rii_ncrs>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_rii/adminhtml_rii_edit_tab_ncr" name="rii.edit.tab.ncr"/>
+        </block>
+    </adminhtml_rii_rii_ncrs>
+    <adminhtml_rii_rii_ncrsgrid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_rii/adminhtml_rii_edit_tab_ncr" name="rii.edit.tab.ncr"/>
+        </block>
+    </adminhtml_rii_rii_ncrsgrid>
+
+    <adminhtml_rii_rii_qrs>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_rii/adminhtml_rii_edit_tab_qr" name="rii.edit.tab.qr"/>
+        </block>
+    </adminhtml_rii_rii_qrs>
+    <adminhtml_rii_rii_qrsgrid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_rii/adminhtml_rii_edit_tab_qr" name="rii.edit.tab.qr"/>
+        </block>
+    </adminhtml_rii_rii_qrsgrid>
+
+    <adminhtml_rii_rii_qns>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_rii/adminhtml_rii_edit_tab_qn" name="rii.edit.tab.qn"/>
+        </block>
+    </adminhtml_rii_rii_qns>
+    <adminhtml_rii_rii_qnsgrid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_rii/adminhtml_rii_edit_tab_qn" name="rii.edit.tab.qn"/>
+        </block>
+    </adminhtml_rii_rii_qnsgrid>
+
+    <adminhtml_rii_rii_cars>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_rii/adminhtml_rii_edit_tab_car" name="rii.edit.tab.car"/>
+        </block>
+    </adminhtml_rii_rii_cars>
+    <adminhtml_rii_rii_carsgrid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_rii/adminhtml_rii_edit_tab_car" name="rii.edit.tab.car"/>
+        </block>
+    </adminhtml_rii_rii_carsgrid>
+
+    <adminhtml_rii_rii_drrs>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_rii/adminhtml_rii_edit_tab_drr" name="rii.edit.tab.drr"/>
+        </block>
+    </adminhtml_rii_rii_drrs>
+    <adminhtml_rii_rii_drrsgrid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_rii/adminhtml_rii_edit_tab_drr" name="rii.edit.tab.drr"/>
+        </block>
+    </adminhtml_rii_rii_drrsgrid>
+
 <default>
     <reference name="head">
         <action method="addItem"><type>skin_css</type><name>bs_wysiwyg/css/redactor.css</name></action>
@@ -2877,6 +2602,281 @@ Empty hanle for ajax response etc.
         <action method="addItem"><type>skin_js</type><name>bs_wysiwyg/js/plugins/fullscreen.js</name><params/></action>
     </reference>
   </default>
+
+<default>
+	</default>
+	<adminhtml_backupguardplatinum_backups>
+		<reference name="content">
+			<block type="core/template" name="header" template="backupguardplatinum/header.phtml" />
+			<block type="core/template" name="sidebar" template="backupguardplatinum/sidebar.phtml" />
+			<block type="core/template" name="backups" template="backupguardplatinum/backups.phtml" />
+			<block type="core/template" name="modal" template="backupguardplatinum/modal.phtml" />
+			<block type="core/template" name="footer" template="backupguardplatinum/footer.phtml" />
+		</reference>
+		<reference name="head">
+			<action method="addItem">
+            	<type>skin_css</type>
+            	<name>css/BackupGuardPlatinum/bgstyle.less.css</name>
+			</action>
+			<action method="addItem">
+            	<type>skin_css</type>
+            	<name>css/BackupGuardPlatinum/spinner.css</name>
+			</action>
+        </reference>
+	</adminhtml_backupguardplatinum_backups>
+	<adminhtml_backupguardplatinum_cloud>
+		<reference name="content">
+			<block type="core/template" name="header" template="backupguardplatinum/header.phtml" />
+			<block type="core/template" name="sidebar" template="backupguardplatinum/sidebar.phtml" />
+			<block type="core/template" name="backups" template="backupguardplatinum/cloud.phtml" />
+			<block type="core/template" name="modal" template="backupguardplatinum/modal.phtml" />
+			<block type="core/template" name="footer" template="backupguardplatinum/footer.phtml" />
+			<block type="core/template" name="footer_cloud" template="backupguardplatinum/footer.cloud.phtml" />
+		</reference>
+		<reference name="head">
+			<action method="addItem">
+            	<type>skin_css</type>
+            	<name>css/BackupGuardPlatinum/bgstyle.less.css</name>
+			</action>
+			<action method="addItem">
+            	<type>skin_css</type>
+            	<name>css/BackupGuardPlatinum/spinner.css</name>
+			</action>
+			<action method="addItem">
+            	<type>skin_css</type>
+            	<name>css/BackupGuardPlatinum/bootstrap-switch.min.css</name>
+			</action>
+        </reference>
+	</adminhtml_backupguardplatinum_cloud>
+	<adminhtml_backupguardplatinum_schedule>
+		<reference name="content">
+			<block type="core/template" name="header" template="backupguardplatinum/header.phtml" />
+			<block type="core/template" name="sidebar" template="backupguardplatinum/sidebar.phtml" />
+			<block type="core/template" name="backups" template="backupguardplatinum/schedule.phtml" />
+			<block type="core/template" name="modal" template="backupguardplatinum/modal.phtml" />
+			<block type="core/template" name="footer" template="backupguardplatinum/footer.phtml" />
+			<block type="core/template" name="footer_schedule" template="backupguardplatinum/footer.schedule.phtml" />
+		</reference>
+		<reference name="head">
+			<action method="addItem">
+            	<type>skin_css</type>
+            	<name>css/BackupGuardPlatinum/bgstyle.less.css</name>
+			</action>
+			<action method="addItem">
+            	<type>skin_css</type>
+            	<name>css/BackupGuardPlatinum/spinner.css</name>
+			</action>
+			<action method="addItem">
+            	<type>skin_css</type>
+            	<name>css/BackupGuardPlatinum/bootstrap-switch.min.css</name>
+			</action>
+        </reference>
+	</adminhtml_backupguardplatinum_schedule>
+	<adminhtml_backupguardplatinum_settings>
+		<reference name="content">
+			<block type="core/template" name="header" template="backupguardplatinum/header.phtml" />
+			<block type="core/template" name="sidebar" template="backupguardplatinum/sidebar.phtml" />
+			<block type="core/template" name="backups" template="backupguardplatinum/settings.phtml" />
+			<block type="core/template" name="modal" template="backupguardplatinum/modal.phtml" />
+			<block type="core/template" name="footer" template="backupguardplatinum/footer.phtml" />
+			<block type="core/template" name="footer_schedule" template="backupguardplatinum/footer.settings.phtml" />
+		</reference>
+		<reference name="head">
+			<action method="addItem">
+            	<type>skin_css</type>
+            	<name>css/BackupGuardPlatinum/bgstyle.less.css</name>
+			</action>
+			<action method="addItem">
+            	<type>skin_css</type>
+            	<name>css/BackupGuardPlatinum/spinner.css</name>
+			</action>
+			<action method="addItem">
+            	<type>skin_css</type>
+            	<name>css/BackupGuardPlatinum/bootstrap-switch.min.css</name>
+			</action>
+        </reference>
+	</adminhtml_backupguardplatinum_settings>
+	<adminhtml_backupguardplatinum_support>
+		<reference name="content">
+			<block type="core/template" name="header" template="backupguardplatinum/header.phtml" />
+			<block type="core/template" name="sidebar" template="backupguardplatinum/sidebar.phtml" />
+			<block type="core/template" name="backups" template="backupguardplatinum/support.phtml" />
+			<block type="core/template" name="modal" template="backupguardplatinum/modal.phtml" />
+			<block type="core/template" name="footer" template="backupguardplatinum/footer.phtml" />
+		</reference>
+		<reference name="head">
+			<action method="addItem">
+				<type>skin_css</type>
+				<name>css/BackupGuardPlatinum/bgstyle.less.css</name>
+			</action>
+		</reference>
+	</adminhtml_backupguardplatinum_support>
+<adminhtml_timeline_index>
+        <reference name="head">
+            <action method="addCss"><stylesheet>aoe_scheduler/StyleSheet/timeline.css</stylesheet></action>
+            <action method="addCss"><stylesheet>aoe_scheduler/StyleSheet/bars.css</stylesheet></action>
+
+            <action method="addItem"><type>skin_js</type><script>aoe_scheduler/JavaScript/jquery-1.6.2.min.js</script></action>
+            <action method="addItem"><type>skin_js</type><script>aoe_scheduler/JavaScript/tooltip.js</script></action>
+            <action method="addItem"><type>skin_js</type><script>aoe_scheduler/JavaScript/tooltip.dynamic.js</script></action>
+            <action method="addItem"><type>skin_js</type><script>aoe_scheduler/JavaScript/common.js</script></action>
+        </reference>
+        <reference name="content">
+            <block type="aoe_scheduler/adminhtml_timeline" name="aoe_scheduler.timeline" template="aoe_scheduler/timeline.phtml"/>
+            <!--<block type="core/text" name="fix.console" as="fix.console">
+                <action method="setText">
+                    <text><![CDATA[<script type="text/javascript">
+                    iframe = document.createElement('iframe');
+                    iframe.style = 'display:none';
+                    document.getElementsByTagName('body')[0].appendChild(iframe);
+                    window.console = iframe.contentWindow.console;
+                    console.firebug = "faketrue";
+                    </script>]]></text>
+                </action>
+            </block>
+        -->
+        </reference>
+    </adminhtml_timeline_index>
+
+    <adminhtml_scheduler_index>
+        <reference name="head">
+            <action method="addCss"><stylesheet>aoe_scheduler/StyleSheet/bars.css</stylesheet></action>
+        </reference>
+        <reference name="content">
+            <block type="aoe_scheduler/adminhtml_scheduler" name="aoe_scheduler.scheduler"/>
+        </reference>
+    </adminhtml_scheduler_index>
+
+    <adminhtml_job_index>
+        <reference name="head">
+            <action method="addCss"><stylesheet>aoe_scheduler/StyleSheet/bars.css</stylesheet></action>
+        </reference>
+        <reference name="content">
+            <block type="aoe_scheduler/adminhtml_job" name="aoe_scheduler.job"/>
+        </reference>
+    </adminhtml_job_index>
+
+    <adminhtml_job_edit>
+        <reference name="left">
+            <block type="aoe_scheduler/adminhtml_job_edit_tabs" name="aoe_scheduler_edit_tabs">
+                <block type="aoe_scheduler/adminhtml_job_edit_tab_form" name="aoe_scheduler_edit_tab_form"/>
+                <action method="addTab"><name>information_section</name><block>aoe_scheduler_edit_tab_form</block></action>
+            </block>
+        </reference>
+        <reference name="content">
+            <block type="aoe_scheduler/adminhtml_job_edit" name="aoe_scheduler_edit_information"/>
+        </reference>
+    </adminhtml_job_edit>
+
+    <adminhtml_instructions_index>
+        <reference name="head">
+            <action method="addCss"><stylesheet>aoe_scheduler/StyleSheet/instructions.css</stylesheet></action>
+            <action method="addItem"><type>skin_js</type><script>aoe_scheduler/JavaScript/jquery-1.6.2.min.js</script></action>
+            <action method="addItem"><type>skin_js</type><script>aoe_scheduler/JavaScript/instructions.js</script></action>
+        </reference>
+        <reference name="content">
+            <block type="aoe_scheduler/adminhtml_instructions" name="aoe_scheduler.instructions" template="aoe_scheduler/instructions.phtml"/>
+        </reference>
+    </adminhtml_instructions_index>
+
+<adminhtml_logger_logger_index>
+        <reference name="menu">
+            <action method="setActive">
+                <menupath>system/bs_logger/logger</menupath>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="bs_logger/adminhtml_logger" name="logger" />
+
+        </reference>
+    </adminhtml_logger_logger_index>
+    <adminhtml_logger_logger_grid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_logger/adminhtml_logger_grid" name="logger_grid"/>
+        </block>
+    </adminhtml_logger_logger_grid>
+    <!-- Logger add/edit action -->
+    <adminhtml_logger_logger_edit>
+        <update handle="editor"/>
+        <reference name="menu">
+            <action method="setActive">
+                <menupath>system/bs_logger/logger</menupath>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="bs_logger/adminhtml_logger_edit" name="logger_edit"></block>
+        </reference>
+        <reference name="left">
+            <block type="bs_logger/adminhtml_logger_edit_tabs" name="logger_tabs"></block>
+        </reference>
+    </adminhtml_logger_logger_edit>
+
+<adminhtml_signature_signature_index>
+        <reference name="menu">
+            <action method="setActive">
+                <menupath>bs_misc/signature</menupath>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="bs_signature/adminhtml_signature" name="signature" />
+
+        </reference>
+    </adminhtml_signature_signature_index>
+    <adminhtml_signature_signature_grid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_signature/adminhtml_signature_grid" name="signature_grid"/>
+        </block>
+    </adminhtml_signature_signature_grid>
+    <!-- Signature add/edit action -->
+    <adminhtml_signature_signature_edit>
+        <update handle="editor"/>
+        <reference name="menu">
+            <action method="setActive">
+                <menupath>bs_misc/signature</menupath>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="bs_signature/adminhtml_signature_edit" name="signature_edit"></block>
+        </reference>
+        <reference name="left">
+            <block type="bs_signature/adminhtml_signature_edit_tabs" name="signature_tabs"></block>
+        </reference>
+    </adminhtml_signature_signature_edit>
+
+<adminhtml_kpireport_kpireport_index>
+        <reference name="menu">
+            <action method="setActive">
+                <menupath>bs_report/kpireport</menupath>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="bs_kpireport/adminhtml_kpireport" name="kpireport" template="report/grid/container.phtml" >
+                <block type="bs_kpireport/adminhtml_filter_form" name="grid.filter.form" />
+            </block>
+
+        </reference>
+
+    </adminhtml_kpireport_kpireport_index>
+    <adminhtml_kpireport_kpireport_grid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_kpireport/adminhtml_kpireport_grid" name="kpireport_grid"/>
+        </block>
+    </adminhtml_kpireport_kpireport_grid>
+    <!-- Kpireport add/edit action -->
+    <adminhtml_kpireport_kpireport_edit>
+        <update handle="editor"/>
+        <reference name="menu">
+            <action method="setActive">
+                <menupath>bs_report/kpireport</menupath>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="bs_kpireport/adminhtml_kpireport_edit" name="kpireport_edit"></block>
+        </reference>
+        <reference name="left">
+            <block type="bs_kpireport/adminhtml_kpireport_edit_tabs" name="kpireport_tabs"></block>
+        </reference>
+    </adminhtml_kpireport_kpireport_edit>
 
 <default translate="label" module="page">
         <reference name="head">
