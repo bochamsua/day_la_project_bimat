@@ -192,7 +192,7 @@ function processFindReplace($fileName, $oldName, $newName){
 function usageHelp()
 {
     return <<<USAGE
-    Usage:  php -f module-duplicator.php -- [options]
+    Usage:  php -f module-copy.php -- [options]
     
       --from <from_module>        E.g. Ncr
       --to <new_name>             E.g. Qst
