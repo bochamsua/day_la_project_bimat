@@ -105,42 +105,53 @@ function copyDir($src, $dst) {
 }
 
 function doRename($moduleDir, $oldName, $newName) {
-    $fromNames = [
-        $oldName,
-        strtoupper($oldName),
-        strtolower($oldName)
-    ];
-    $toNames = [
-        $newName,
-        strtoupper($newName),
-        strtolower($newName)
-    ];
 
     $dir = opendir($moduleDir);
     while(false !== ( $file = readdir($dir)) ) {
         if (( $file != '.' ) && ( $file != '..' )) {
             $currentName = $moduleDir . DS . $file;
-            $currentNewName = str_replace($fromNames, $toNames, $currentName);
+
             if ( is_dir($currentName) ) {
                 //rename current dir and recursively into
-
-                rename($currentName, $currentNewName);
+                $currentNewName = processRename($currentName, $oldName, $newName);
                 doRename($currentNewName, $oldName, $newName);
             }
             else {
                 //$info = pathinfo($currentName);
                 //$file_name =  basename($file,'.'.$info['extension']);
 
-                rename($currentName, $currentNewName);
+                processRename($currentName, $oldName, $newName);
             }
         }
     }
     closedir($dir);
 }
 
+function processRename($currentName, $fromName, $toName){
+    $fromNames = [
+        strtoupper($fromName),
+        $fromName,
+        strtolower($fromName)
+    ];
+
+    $toNames = [
+        strtoupper($toName),
+        $toName,
+        strtolower($toName)
+    ];
+
+    $newName = str_replace($fromNames, $toNames, $currentName);
+
+    rename($currentName, $newName);
+
+    return $newName;
+
+
+
+}
+
+
 function doFindReplace($moduleDir, $oldName, $newName) {
-
-
 
     $dir = opendir($moduleDir);
     while(false !== ( $file = readdir($dir)) ) {
