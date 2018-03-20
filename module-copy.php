@@ -23,13 +23,19 @@ if(!isset($argv[1])){
             $fromCodeDir = $workingDir.'app'.DS.'code'.DS.'local'.DS.'BS'.DS.$from;
             $fromConfigFile = $workingDir.'app'.DS.'etc'.DS.'modules'.DS.'BS_'.$from.'.xml';
             $fromAdminFile = $workingDir.'app'.DS.'design'.DS.'adminhtml'.DS.'default'.DS.'default'.DS.'layout/bs_'.strtolower($from).'.xml';
+            $fromAdminHtmlDir = $workingDir.'app'.DS.'design'.DS.'adminhtml'.DS.'default'.DS.'default'.DS.'template/bs_'.strtolower($from);
 
             $toCodeDir = $workingDir.'app'.DS.'code'.DS.'local'.DS.'BS'.DS.$to;
             $toConfigFile = $workingDir.'app'.DS.'etc'.DS.'modules'.DS.'BS_'.$to.'.xml';
             $toAdminFile = $workingDir.'app'.DS.'design'.DS.'adminhtml'.DS.'default'.DS.'default'.DS.'layout/bs_'.strtolower($to).'.xml';
+            $toAdminHtmlDir = $workingDir.'app'.DS.'design'.DS.'adminhtml'.DS.'default'.DS.'default'.DS.'template/bs_'.strtolower($to);
 
             //Copy all files to new module
             copyDir($fromCodeDir, $toCodeDir);
+            if(file_exists($fromAdminHtmlDir)){
+                copyDir($fromAdminHtmlDir, $toAdminHtmlDir);
+            }
+
             copy($fromConfigFile, $toConfigFile);
             copy($fromAdminFile, $toAdminFile);
 
@@ -44,6 +50,9 @@ if(!isset($argv[1])){
 
             //Find and Replace adminhtml file
             processFindReplace($toAdminFile, $from, $to);
+
+            //Find and Replace adminhtml template files
+            doFindReplace($toAdminHtmlDir, $from, $to);
 
 
             echo "All done! \n";
