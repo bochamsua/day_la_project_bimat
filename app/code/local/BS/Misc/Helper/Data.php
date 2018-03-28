@@ -242,7 +242,7 @@ class BS_Misc_Helper_Data extends Mage_Core_Helper_Abstract
             return $this->getNextOtherRefNo($type, $regionId, $this->_otherTypes[$type]);
         }
 
-        return $this->getNextRelationRefNo($type, $regionId);
+        return '';
 
     }
 

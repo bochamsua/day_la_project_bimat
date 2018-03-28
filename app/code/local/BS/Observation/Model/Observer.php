@@ -158,6 +158,11 @@ class BS_Observation_Model_Observer
         'qr'
     ];
 
+    protected $_notHaveRefNo = [
+        //some entities dont have ref_no field so we need to exclude
+        'concession',
+    ];
+
     public function doBeforeBlockToHtml($observer)
     {
         $helper = Mage::helper('bs_observation');
@@ -624,325 +629,7 @@ class BS_Observation_Model_Observer
 
     }
 
-    public function alterScriptAfterToHtml($block, $type){//like updateAcreg, task, subtask, etc
-        $id = $block->getForm()->getHtmlIdPrefix();
-        $html = "<script>";
 
-        if(!Mage::registry("current_{$type}")->getId()){
-            $html .= "Event.observe(document, \"dom:loaded\", function(e) {";
-            $html .= "
-                        if($('".$id.$type."_type') != undefined){ //like ncr_type
-                            updateDueDate();
-                        }
-                        
-                        if($('".$id."task_id') != undefined){
-                            updateSubtasks($('".$id."task_id').value);
-                        }
-                        
-                        
-                        
-                       if($('".$id."short_desc').value == ''){
-                          $('".$id."description').up('tr').hide(); 
-                       }
-                       
-                       $('".$id."short_desc').observe('change', function(){
-                            $('".$id."description').up('tr').show(); 
-                       });
-                    ";
-            $html .= "});";
-        }
-
-        $html .= "Event.observe(document, \"dom:loaded\", function(e) {";
-        $html .= "
-                      
-                        if($('".$id."customer') != undefined && $('".$id."ac_type') != undefined){
-                            //updateAcreg($('".$id."customer').value, $('".$id."ac_type').value);
-                        }
-                        
-                      
-                    ";
-        $html .= "});";
-
-        $html .= "Event.observe(document, \"dom:loaded\", function(e) {
-                          $$('.closes').each(function (el){
-                            $(el).hide();
-                          });
-                          
-                          if($('".$id."remark') != undefined){
-	                          $('".$id."remark').observe('change', function(){
-		                          $$('.closes').each(function (el){
-		                            $(el).hide();
-		                          });
-	                          
-	                            if(checkCloseCondition()){
-	                                $$('.closes').each(function (el){
-			                            $(el).show();
-			                          });
-	                          
-	                            }
-	                          });
-                          }
-                          
-                          
-                          if($('".$id."ncausegroup_id') != undefined){ 
-	                          $('".$id."ncausegroup_id').observe('change', function(){
-		                          $$('.closes').each(function (el){
-		                            $(el).hide();
-		                          });
-	                            if(checkCloseCondition()){
-	                                $$('.closes').each(function (el){
-			                            $(el).show();
-			                          });
-	                          
-	                            }
-	                          });
-	                          
-	                          Event.observe('".$id."ncausegroup_id', 'change', function(evt){
-		                            updateCauses($('".$id."ncausegroup_id').value);
-		                     });
-                          }
-                          if($('".$id."ncause_id') != undefined){ 
-	                          $('".$id."ncause_id').observe('change', function(){
-	                            $$('.closes').each(function (el){
-		                            $(el).hide();
-		                          });
-	                          
-	                            if(checkCloseCondition()){
-	                                $$('.closes').each(function (el){
-			                            $(el).show();
-			                          });
-	                          
-	                            }
-	                          });
-	                          
-	                          
-                          }
-                          
-                          if($('".$id."close_date') != undefined){ 
-	                          $('".$id."close_date').observe('change', function(){
-	                            $$('.closes').each(function (el){
-		                            $(el).hide();
-		                          });
-	                          
-	                            if(checkCloseCondition()){
-	                                $$('.closes').each(function (el){
-			                            $(el).show();
-			                          });
-	                          
-	                            }
-	                          });
-	                          
-	                          
-                          }
-                     
-                    });
-                    if($('".$id."task_id') != undefined){
-                        Event.observe('".$id."task_id', 'change', function(evt){
-                            updateSubtasks($('".$id."task_id').value);
-                        });
-                    }
-                    
-                     
-                    if($('".$id."ncr_type') != undefined){
-                        //update due date according to type
-                         Event.observe('".$id."ncr_type', 'change', function(evt){
-                            updateDueDate();
-                         });  
-                         
-                         Event.observe('".$id."report_date', 'change', function(evt){
-                            updateDueDate();
-                         });
-                    }
-                    
-                    if($('".$id."customer') != undefined){
-                        Event.observe('".$id."customer', 'change', function(evt){
-                            updateAcreg($('".$id."customer').value, $('".$id."ac_type').value);
-                        });
-                    }
-                    
-                    if($('".$id."ac_type') != undefined){
-                        Event.observe('".$id."ac_type', 'change', function(evt){
-                            updateAcreg($('".$id."customer').value, $('".$id."ac_type').value);
-                        });
-                    }
-                    
-                    //if($('".$id."task_id') != undefined){}
-                   
-                    
-                    function checkCloseCondition(){
-                        var check = 1;
-                        if($('".$id."remark') != undefined){
-                            if($('".$id."remark').value == ''){
-                                check = 0 ;
-                            }
-                        }
-                        
-                        if($('".$id."ncausegroup_id') != undefined){
-                            if($('".$id."ncausegroup_id').value == ''){
-                                check = 0 ;
-                            }
-                        }
-                        
-                        if($('".$id."ncause_id') != undefined){
-                            if($('".$id."ncause_id').value == ''){
-                                check = 0 ;
-                            }
-                        }
-                        
-                        if($('".$id."close_date') != undefined){
-                            if($('".$id."close_date').value == ''){
-                                check = 0 ;
-                            }
-                        }
-                        
-                        return check;
-                        
-                    
-                    }
-                    
-
-                     function updateSubtasks(task_id){
-                        new Ajax.Request('".$block->getUrl('*/misc_task/updateSubtasks')."', {
-                                method : 'post',
-                                parameters: {
-                                    'task_id'   : task_id,
-                                    'full'      : 1
-                                },
-                                onSuccess : function(transport){
-                                    try{
-                                        response = eval('(' + transport.responseText + ')');
-                                    } catch (e) {
-                                        response = {};
-                                    }
-                                    if (response.subtask) {
-
-                                        if($('".$id."subtask_id') != undefined){
-                                            $('".$id."subtask_id').innerHTML = response.subtask;
-                                        }
-
-                                    }else {
-                                        alert('Something went wrong');
-                                    }
-
-                                },
-                                onFailure : function(transport) {
-                                    alert('Something went wrong')
-                                }
-                            });
-                    }
-                    
-                    function updateCauses(group_id){
-                        new Ajax.Request('".$block->getUrl('*/ncause_ncausegroup/updateCauses')."', {
-                                method : 'post',
-                                parameters: {
-                                    'group_id'   : group_id
-                                },
-                                onSuccess : function(transport){
-                                    try{
-                                        response = eval('(' + transport.responseText + ')');
-                                    } catch (e) {
-                                        response = {};
-                                    }
-                                    if (response.causes) {
-
-                                        if($('".$id."ncause_id') != undefined){
-                                            $('".$id."ncause_id').innerHTML = response.causes;
-                                        }
-
-                                    }else {
-                                        alert('Something went wrong');
-                                    }
-
-                                },
-                                onFailure : function(transport) {
-                                    alert('Something went wrong')
-                                }
-                            });
-                    }
-                    
-                    function updateDueDate(){
-                        var type_id = $('".$id.$type."_type').value;
-                        var report_date = $('".$id."report_date').value;
-                        
-                        if(type_id != '' && report_date != ''){
-                            var dateArray = report_date.split('/');
-                            var addDay = 0;
-                            switch(type_id){
-                                case '1':
-                                    addDay = 3;
-                                    break;
-                                case '2':
-                                    addDay = 10;
-                                    break;
-                               
-                                default:
-                                    break;
-                                    
-                            }
-                            
-                            var result = new Date(dateArray[2], dateArray[1]-1, dateArray[0]);
-                            result.setDate(result.getDate() + addDay);
-                            
-                            var dayday = result.getDate();
-                            if(dayday < 10) {
-                                dayday = '0' + dayday;
-                            }
-                            var month = result.getMonth() * 1 + 1;
-                            if(month < 10) {
-                                month = '0' + month;
-                            }
-                            
-                            var duedate = dayday + '/' + month + '/' + result.getFullYear();
-                                                        
-                            if($('".$id."due_date') != undefined){
-                                $('".$id."due_date').value = duedate;
-                            }
-                        }
-                       
-                    }
-                     
-                    function updateAcreg(customer_id, ac_type){
-                        new Ajax.Request('".$block->getUrl('*/acreg_acreg/updateAcreg')."', {
-                                method : 'post',
-                                parameters: {
-                                    'customer_id'   : customer_id,
-                                    'ac_type'   : ac_type
-                                },
-                                onSuccess : function(transport){
-                                    try{
-                                        response = eval('(' + transport.responseText + ')');
-                                    } catch (e) {
-                                        response = {};
-                                    }
-                                    if (response.acreg) {
-
-                                        if($('".$id."ac_reg') != undefined){
-                                            $('".$id."ac_reg').innerHTML = response.acreg;
-                                        }
-
-                                    }else {
-                                        alert('Something went wrong');
-                                    }
-
-                                },
-                                onFailure : function(transport) {
-                                    alert('Something went wrong')
-                                }
-                            });
-                    }
-                    
-                    function submitFinishObj(obj, url, field){
-                        if(field != ''){
-                            $(obj +'_'+field).addClassName('required-entry');
-                        }
-                        editForm.submit(url);
-                    }
-                   
-                    
-                </script>";
-
-        return $html;
-    }
 
 
     public function adminUserSaveBefore($observer)
@@ -979,7 +666,10 @@ class BS_Observation_Model_Observer
         $obj = $observer->getObject();
         $isNew = $obj->isObjectNew();
 
+
         $resourceName = $obj->getResourceName();
+
+
         $id = $obj->getId();
         $type = end(explode("/", $resourceName));
 
@@ -996,9 +686,10 @@ class BS_Observation_Model_Observer
                 $data['region'] = $currentUser[2];
                 $data['section'] = $currentUser[3];
                 $data[$type.'_status'] = 0;
-                $data['ref_no'] = Mage::helper('bs_misc')->getNextRefNo($type, $currentUser[2], $deptId);
 
-
+                if(!in_array($type, $this->_notHaveRefNo)){
+                    $data['ref_no'] = Mage::helper('bs_misc')->getNextRefNo($type, $currentUser[2], $deptId);
+                }
 
                 $obj->addData($data);
                 //$data['ref_no'] = Mage::helper('bs_ncr')->getNextRefNo();
@@ -1100,6 +791,371 @@ class BS_Observation_Model_Observer
         }
 
 
+    }
+
+
+    public function alterScriptAfterToHtml($block, $type){//like updateAcreg, task, subtask, etc
+        $id = $block->getForm()->getHtmlIdPrefix();
+        $html = "<script>";
+
+        if(!Mage::registry("current_{$type}")->getId()){
+            $html .= "Event.observe(document, \"dom:loaded\", function(e) {";
+            $html .= "
+                        if($('".$id.$type."_type') != undefined){ //like ncr_type
+                            updateDueDate();
+                        }
+                        
+                        if($('".$id."task_id') != undefined){
+                            updateSubtasks($('".$id."task_id').value);
+                        }
+                        
+                        
+                        if($('".$id."short_desc') != undefined){
+                            if($('".$id."short_desc').value == ''){
+                              $('".$id."description').up('tr').hide(); 
+                           }
+                           
+                           $('".$id."short_desc').observe('change', function(){
+                                $('".$id."description').up('tr').show(); 
+                           });
+                       
+                        }
+                        
+                       
+                       
+                    ";
+            $html .= "});";
+        }
+
+        $html .= "Event.observe(document, \"dom:loaded\", function(e) {";
+        $html .= "
+                    if($('".$id."customer') != undefined && $('".$id."ac_type') != undefined){
+                        //updateAcreg($('".$id."customer').value, $('".$id."ac_type').value);
+                    }
+                        
+                      
+                    ";
+        $html .= "});";
+
+        $html .= "Event.observe(document, \"dom:loaded\", function(e) {";
+
+        $html .= $this->buildHideCloseButtonJs($id);
+
+
+        $html .= "});";
+
+        $html .= "
+                if($('".$id."task_id') != undefined){
+                    Event.observe('".$id."task_id', 'change', function(evt){
+                        updateSubtasks($('".$id."task_id').value);
+                    });
+                }
+                
+                 
+                if($('".$id."ncr_type') != undefined){
+                    //update due date according to type
+                     Event.observe('".$id."ncr_type', 'change', function(evt){
+                        updateDueDate();
+                     });  
+                     
+                     Event.observe('".$id."report_date', 'change', function(evt){
+                        updateDueDate();
+                     });
+                }
+                
+                if($('".$id."customer') != undefined){
+                    Event.observe('".$id."customer', 'change', function(evt){
+                        updateAcreg($('".$id."customer').value, $('".$id."ac_type').value);
+                    });
+                }
+                
+                if($('".$id."ac_type') != undefined){
+                    Event.observe('".$id."ac_type', 'change', function(evt){
+                        updateAcreg($('".$id."customer').value, $('".$id."ac_type').value);
+                    });
+                }
+                    
+                    ";
+
+        $html .= $this->buildCheckCloseConditionJs($id);
+        $html .= $this->buildUpdateSubtaskJs($block, $id);
+        $html .= $this->buildUpdateCauseJs($block, $id);
+        $html .= $this->buildUpdateDueDateJs($type, $id);
+        $html .= $this->buildUpdateAcregJs($block, $id);
+
+        $html .= "                    
+                    function submitFinishObj(obj, url, field){
+                        if(field != ''){
+                            $(obj +'_'+field).addClassName('required-entry');
+                        }
+                        editForm.submit(url);
+                    }
+                   
+                    
+                </script>";
+
+        return $html;
+    }
+
+
+    public function buildHideCloseButtonJs($id){
+
+        return "
+            $$('.closes').each(function (el){
+                $(el).hide();
+            });
+              
+            if($('".$id."ncause_id') != undefined){ 
+              $('".$id."ncause_id').observe('change', function(){
+                $$('.closes').each(function (el){
+                    $(el).hide();
+                  });
+              
+                if(checkCloseCondition()){
+                    $$('.closes').each(function (el){
+                        $(el).show();
+                      });
+              
+                }
+              });
+              
+              
+            }
+            if($('".$id."close_date') != undefined){ 
+              $('".$id."close_date').observe('change', function(){
+                $$('.closes').each(function (el){
+                    $(el).hide();
+                  });
+              
+                if(checkCloseCondition()){
+                    $$('.closes').each(function (el){
+                        $(el).show();
+                      });
+              
+                }
+              });
+              
+              
+            }
+            
+            if($('".$id."remark') != undefined){
+                  $('".$id."remark').observe('change', function(){
+                      $$('.closes').each(function (el){
+                        $(el).hide();
+                      });
+                  
+                    if(checkCloseCondition()){
+                        $$('.closes').each(function (el){
+                            $(el).show();
+                          });
+                  
+                    }
+                  });
+              }
+              
+              if($('".$id."ncausegroup_id') != undefined){ 
+                  $('".$id."ncausegroup_id').observe('change', function(){
+                      $$('.closes').each(function (el){
+                        $(el).hide();
+                      });
+                    if(checkCloseCondition()){
+                        $$('.closes').each(function (el){
+                            $(el).show();
+                          });
+                  
+                    }
+                  });
+                  
+                  Event.observe('".$id."ncausegroup_id', 'change', function(evt){
+                        updateCauses($('".$id."ncausegroup_id').value);
+                 });
+              }
+            
+            ";
+    }
+
+    public function buildCheckCloseConditionJs($id){
+
+
+        return "
+            function checkCloseCondition(){
+                var check = 1;
+                if($('".$id."remark') != undefined){
+                    if($('".$id."remark').value == ''){
+                        check = 0 ;
+                    }
+                }
+                
+                if($('".$id."ncausegroup_id') != undefined){
+                    if($('".$id."ncausegroup_id').value == ''){
+                        check = 0 ;
+                    }
+                }
+                
+                if($('".$id."ncause_id') != undefined){
+                    if($('".$id."ncause_id').value == ''){
+                        check = 0 ;
+                    }
+                }
+                
+                if($('".$id."close_date') != undefined){
+                    if($('".$id."close_date').value == ''){
+                        check = 0 ;
+                    }
+                }
+                
+                return check;
+                
+            
+            }
+            ";
+    }
+
+    public function buildUpdateSubtaskJs($block, $id){
+
+        return "
+            function updateSubtasks(task_id){
+                new Ajax.Request('".$block->getUrl('*/misc_task/updateSubtasks')."', {
+                        method : 'post',
+                        parameters: {
+                            'task_id'   : task_id,
+                            'full'      : 1
+                        },
+                        onSuccess : function(transport){
+                            try{
+                                response = eval('(' + transport.responseText + ')');
+                            } catch (e) {
+                                response = {};
+                            }
+                            if (response.subtask) {
+
+                                if($('".$id."subtask_id') != undefined){
+                                    $('".$id."subtask_id').innerHTML = response.subtask;
+                                }
+
+                            }else {
+                                alert('Something went wrong');
+                            }
+
+                        },
+                        onFailure : function(transport) {
+                            alert('Something went wrong')
+                        }
+                    });
+            }
+            ";
+    }
+
+    public function buildUpdateCauseJs($block, $id){
+
+        return "
+            function updateCauses(group_id){
+                new Ajax.Request('".$block->getUrl('*/ncause_ncausegroup/updateCauses')."', {
+                        method : 'post',
+                        parameters: {
+                            'group_id'   : group_id
+                        },
+                        onSuccess : function(transport){
+                            try{
+                                response = eval('(' + transport.responseText + ')');
+                            } catch (e) {
+                                response = {};
+                            }
+                            if (response.causes) {
+
+                                if($('".$id."ncause_id') != undefined){
+                                    $('".$id."ncause_id').innerHTML = response.causes;
+                                }
+
+                            }else {
+                                alert('Something went wrong');
+                            }
+
+                        },
+                        onFailure : function(transport) {
+                            alert('Something went wrong')
+                        }
+                    });
+            }";
+    }
+
+    public function buildUpdateDueDateJs($type, $id){
+
+        return "
+            function updateDueDate(){
+                var type_id = $('".$id.$type."_type').value;
+                var report_date = $('".$id."report_date').value;
+                
+                if(type_id != '' && report_date != ''){
+                    var dateArray = report_date.split('/');
+                    var addDay = 0;
+                    switch(type_id){
+                        case '1':
+                            addDay = 3;
+                            break;
+                        case '2':
+                            addDay = 10;
+                            break;
+                       
+                        default:
+                            break;
+                            
+                    }
+                    
+                    var result = new Date(dateArray[2], dateArray[1]-1, dateArray[0]);
+                    result.setDate(result.getDate() + addDay);
+                    
+                    var dayday = result.getDate();
+                    if(dayday < 10) {
+                        dayday = '0' + dayday;
+                    }
+                    var month = result.getMonth() * 1 + 1;
+                    if(month < 10) {
+                        month = '0' + month;
+                    }
+                    
+                    var duedate = dayday + '/' + month + '/' + result.getFullYear();
+                                                
+                    if($('".$id."due_date') != undefined){
+                        $('".$id."due_date').value = duedate;
+                    }
+                }
+               
+            }";
+    }
+
+    public function buildUpdateAcregJs($block, $id){
+        return "
+            function updateAcreg(customer_id, ac_type){
+                new Ajax.Request('".$block->getUrl('*/acreg_acreg/updateAcreg')."', {
+                    method : 'post',
+                    parameters: {
+                        'customer_id'   : customer_id,
+                        'ac_type'   : ac_type
+                    },
+                    onSuccess : function(transport){
+                        try{
+                            response = eval('(' + transport.responseText + ')');
+                        } catch (e) {
+                            response = {};
+                        }
+                        if (response.acreg) {
+    
+                            if($('".$id."ac_reg') != undefined){
+                                $('".$id."ac_reg').innerHTML = response.acreg;
+                            }
+    
+                        }else {
+                            alert('Something went wrong');
+                        }
+    
+                    },
+                    onFailure : function(transport) {
+                        alert('Something went wrong')
+                    }
+                });
+            }
+        ";
     }
 
 }

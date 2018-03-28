@@ -120,6 +120,16 @@ class BS_Sur_Adminhtml_Sur_SurController extends BS_Sur_Controller_Adminhtml_Sur
         if ($data = $this->getRequest()->getPost('sur')) {
             try {
                 $data = $this->_filterDates($data, array('report_date'));
+
+                if($data['description'] == ""){
+                    Mage::getSingleton('adminhtml/session')->addError(
+                        Mage::helper('bs_sur')->__('Please enter description!')
+                    );
+
+                    //Mage::getSingleton('adminhtml/session')->setSurData($data);
+                    $this->_redirect('*/*/new');
+                    return;
+                }
                 $sur = $this->_initSur();
 
                 $sur->addData($data);
