@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * BS_Safety extension
+ * 
+ * @category       BS
+ * @package        BS_Safety
+ * @copyright      Copyright (c) 2018
+ */
+-->
+<config>
+    <modules>
+        <BS_Safety>
+            <active>true</active>
+            <codePool>local</codePool>
+            <depends>
+                <Mage_Core />
+             </depends>
+        </BS_Safety>
+    </modules>
+</config>

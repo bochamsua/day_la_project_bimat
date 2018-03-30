@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * BS_Meda extension
+ * 
+ * @category       BS
+ * @package        BS_Meda
+ * @copyright      Copyright (c) 2018
+ */
+--> 
+<layout>
+    <adminhtml_meda_meda_index>
+        <reference name="menu">
+            <action method="setActive">
+                <menupath>bs_work/meda</menupath>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="bs_meda/adminhtml_meda" name="meda" />
+
+        </reference>
+    </adminhtml_meda_meda_index>
+    <adminhtml_meda_meda_grid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_meda/adminhtml_meda_grid" name="meda_grid"/>
+        </block>
+    </adminhtml_meda_meda_grid>
+    <!-- Meda add/edit action -->
+    <adminhtml_meda_meda_edit>
+        <update handle="editor"/>
+        <reference name="menu">
+            <action method="setActive">
+                <menupath>bs_work/meda</menupath>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="bs_meda/adminhtml_meda_edit" name="meda_edit"></block>
+        </reference>
+        <reference name="left">
+            <block type="bs_meda/adminhtml_meda_edit_tabs" name="meda_tabs"></block>
+        </reference>
+    </adminhtml_meda_meda_edit>
+
+</layout>

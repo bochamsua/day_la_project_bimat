@@ -1,11 +1,11 @@
 <?xml version="1.0"?>
 <!--
 /**
- * BS_Other extension
+ * BS_Hira extension
  * 
  * @category       BS
- * @package        BS_Other
- * @copyright      Copyright (c) 2016
+ * @package        BS_Hira
+ * @copyright      Copyright (c) 2018
  */
 -->
 <config>
@@ -17,24 +17,24 @@
                         <children>
                             <config>
                                 <children>
-                                    <bs_other translate="title" module="bs_other">
-                                        <title>Other Work</title>
-                                    </bs_other>
+                                    <bs_hira translate="title" module="bs_hira">
+                                        <title>Hira</title>
+                                    </bs_hira>
                                 </children>
                             </config>
                         </children>
                     </system>
                     <bs_work>
                         <children>
-                            <other translate="title" module="bs_other">
-                                <title>Other Work</title>
-                                <sort_order>900</sort_order>
+                            <hira translate="title" module="bs_hira">
+                                <title>HIRA</title>
+                                <sort_order>80</sort_order>
                                 <children>
                                     <new translate="title"><title>New</title></new>
                                     <edit translate="title"><title>Edit</title></edit>
                                     <delete translate="title"><title>Delete</title></delete>
                                 </children>
-                            </other>
+                            </hira>
                         </children>
                     </bs_work>
 
@@ -45,11 +45,11 @@
     <menu>
         <bs_work>
             <children>
-                <other translate="title" module="bs_other">
-                    <title>Other Work</title>
-                    <action>adminhtml/other_other</action>
-                    <sort_order>900</sort_order>
-                </other>
+                <hira translate="title" module="bs_hira">
+                    <title>HIRA</title>
+                    <action>adminhtml/hira_hira</action>
+                    <sort_order>80</sort_order>
+                </hira>
             </children>
         </bs_work>
 

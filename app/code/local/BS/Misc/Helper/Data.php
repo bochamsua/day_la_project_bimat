@@ -37,6 +37,11 @@ class BS_Misc_Helper_Data extends Mage_Core_Helper_Abstract
 
     protected $_otherTypes = [
         'other' => 'o',
+        'hira'  => 'h',
+        'mor'   => 'm',
+        'meda'   => 'md',
+        'safety'   => 'sd',
+
     ];
 
     protected $_customTypes = [

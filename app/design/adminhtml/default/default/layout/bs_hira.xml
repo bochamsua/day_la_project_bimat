@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * BS_Hira extension
+ * 
+ * @category       BS
+ * @package        BS_Hira
+ * @copyright      Copyright (c) 2018
+ */
+--> 
+<layout>
+    <adminhtml_hira_hira_index>
+        <reference name="menu">
+            <action method="setActive">
+                <menupath>bs_work/hira</menupath>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="bs_hira/adminhtml_hira" name="hira" />
+
+        </reference>
+    </adminhtml_hira_hira_index>
+    <adminhtml_hira_hira_grid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_hira/adminhtml_hira_grid" name="hira_grid"/>
+        </block>
+    </adminhtml_hira_hira_grid>
+    <!-- Hira add/edit action -->
+    <adminhtml_hira_hira_edit>
+        <update handle="editor"/>
+        <reference name="menu">
+            <action method="setActive">
+                <menupath>bs_work/hira</menupath>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="bs_hira/adminhtml_hira_edit" name="hira_edit"></block>
+        </reference>
+        <reference name="left">
+            <block type="bs_hira/adminhtml_hira_edit_tabs" name="hira_tabs"></block>
+        </reference>
+    </adminhtml_hira_hira_edit>
+
+</layout>

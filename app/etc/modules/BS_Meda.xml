@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * BS_Meda extension
+ * 
+ * @category       BS
+ * @package        BS_Meda
+ * @copyright      Copyright (c) 2018
+ */
+-->
+<config>
+    <modules>
+        <BS_Meda>
+            <active>true</active>
+            <codePool>local</codePool>
+            <depends>
+                <Mage_Core />
+             </depends>
+        </BS_Meda>
+    </modules>
+</config>

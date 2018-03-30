@@ -1,0 +1,86 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * BS_Mor extension
+ * 
+ * @category       BS
+ * @package        BS_Mor
+ * @copyright      Copyright (c) 2018
+ */
+-->
+<config>
+    <modules>
+        <BS_Mor>
+            <version>1.0.0</version>
+        </BS_Mor>
+    </modules>
+    <global>
+        <resources>
+            <bs_mor_setup>
+                <setup>
+                    <module>BS_Mor</module>
+                    <class>BS_Mor_Model_Resource_Setup</class>
+                </setup>
+            </bs_mor_setup>
+        </resources>
+        <blocks>
+            <bs_mor>
+                <class>BS_Mor_Block</class>
+            </bs_mor>
+        </blocks>
+        <helpers>
+            <bs_mor>
+                <class>BS_Mor_Helper</class>
+            </bs_mor>
+        </helpers>
+        <models>
+            <bs_mor>
+                <class>BS_Mor_Model</class>
+                <resourceModel>bs_mor_resource</resourceModel>
+            </bs_mor>
+            <bs_mor_resource>
+                <class>BS_Mor_Model_Resource</class>
+                <entities>
+                    <mor>
+                        <table>bs_mor_mor</table>
+                    </mor>
+                </entities>
+            </bs_mor_resource>
+        </models>
+    </global>
+    <adminhtml>
+        <layout>
+            <updates>
+                <bs_mor>
+                    <file>bs_mor.xml</file>
+                </bs_mor>
+            </updates>
+        </layout>
+        <translate>
+            <modules>
+                <BS_Mor>
+                    <files>
+                        <default>BS_Mor.csv</default>
+                    </files>
+                </BS_Mor>
+            </modules>
+        </translate>
+        <global_search>
+            <mor>
+                <class>bs_mor/adminhtml_search_mor</class>
+                <acl>bs_mor</acl>
+            </mor>
+        </global_search>
+    </adminhtml>
+    <admin>
+        <routers>
+            <adminhtml>
+                <args>
+                    <modules>
+                        <BS_Mor before="Mage_Adminhtml">BS_Mor_Adminhtml</BS_Mor>
+                    </modules>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin>
+</config>

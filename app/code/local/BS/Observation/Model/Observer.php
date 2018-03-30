@@ -9,7 +9,8 @@ class BS_Observation_Model_Observer
         'drr'   => [0],
         'ir'    => [0],
         'ncr'   => [0],
-        'qr'    => [0]
+        'qr'    => [0],
+        //'hira'    => [0]
     ];
 
     protected $_hasCloseButton = [
@@ -47,7 +48,19 @@ class BS_Observation_Model_Observer
                 'fields' => 'remark,close_date'
                 //values will be taken from POST object
             ],
-        ]
+        ],
+        /*'mor'    => [
+            'status' => [0],//status of object that Close button will be avaible
+            'close'    => [
+                'status' => 1,//new status of close action
+                'fields' => 'close_date'
+                //fields will be saved when closing
+            ],
+            'remove' => [//buttons to be removed when object is in closed status
+                'save',
+                'delete'
+            ],
+        ]*/
     ];
 
     protected $_hasSubmitButton = [
@@ -122,7 +135,7 @@ class BS_Observation_Model_Observer
 
         ],
         'ncr'   => [
-            'status'    => [1],
+            'status'    => [1],//status that buttons are available
             'accept' => [
                 'status' => 2,
                 'fields' => ''
@@ -134,7 +147,7 @@ class BS_Observation_Model_Observer
             ],
         ],
         'qr'    => [
-            'status'    => [1],
+            'status'    => [1],//status that buttons are available
             'accept' => [
                 'status' => 2,
                 'fields' => ''
@@ -143,6 +156,50 @@ class BS_Observation_Model_Observer
                 'status' => 0,//new status of reject action
                 'fields' => 'reject_reason',
                 //values will be taken from POST object
+            ],
+        ],
+        'hira'    => [
+            'status'    => [0],//status that buttons are available
+            'accept' => [
+                'status' => 1,//new status of accept action
+                'fields' => ''
+            ],
+            'reject'    => [
+                'status' => 0,//new status of reject action
+                'fields' => '',
+                //values will be taken from POST object
+            ],
+        ],
+        'mor'    => [
+            'status'    => [0],//status that buttons are available
+            'accept' => [
+                'status' => 1,//new status of accept action
+                'fields' => ''
+            ],
+            'reject'    => [
+                'status' => 0,//new status of reject action
+                'fields' => '',
+                //values will be taken from POST object
+            ],
+            'remove' => [//buttons to be removed when object is in accepted status
+                'save',
+                'delete'
+            ],
+        ],
+        'meda'    => [
+            'status'    => [0],//status that buttons are available
+            'accept' => [
+                'status' => 1,//new status of accept action
+                'fields' => ''
+            ],
+            'reject'    => [
+                'status' => 0,//new status of reject action
+                'fields' => '',
+                //values will be taken from POST object
+            ],
+            'remove' => [//buttons to be removed when object is in accepted status
+                'save',
+                'delete'
             ],
         ]
 
@@ -394,7 +451,18 @@ class BS_Observation_Model_Observer
                         $saveConds[$currentType.'_status'] = $status;
                     }
                 }
-                //print button
+
+                if($misc->canEdit($currentObj, null, $saveConds)){
+                    $block->addButton(
+                        'save_button',
+                        array(
+                            'label'   => Mage::helper('bs_misc')->__('Save'),
+                            'onclick'   => "saveOnly()",
+                            'class'   => 'save',
+                        )
+                    );
+                }
+
                 if($objectExisted){
 
                     if(isset($this->_hasAddNewButton[$currentType])){
@@ -418,14 +486,18 @@ class BS_Observation_Model_Observer
                         );
                     }
 
-                    $block->addButton(
-                        'print_button',
-                        array(
-                            'label'   => Mage::helper('bs_misc')->__('Print'),
-                            'onclick'   => "setLocation('{$block->getUrl('*/*/generate'.ucfirst($currentType), ['_current' => true])}')",
-                            'class'   => 'reset',
-                        )
-                    );
+                    if(isset($this->_hasPrintButton[$currentType])){
+                        $block->addButton(
+                            'print_button',
+                            array(
+                                'label'   => Mage::helper('bs_misc')->__('Print'),
+                                'onclick'   => "setLocation('{$block->getUrl('*/*/generate'.ucfirst($currentType), ['_current' => true])}')",
+                                'class'   => 'reset',
+                            )
+                        );
+                    }
+
+
 
                     //submit button
                     if(isset($this->_hasSubmitButton[$currentType])){
@@ -532,6 +604,16 @@ class BS_Observation_Model_Observer
                                 )
                             );
                         }
+
+                        if($this->_hasAcceptRejectButtons[$currentType]['accept']['status'] == $currentStatus) {//if object is in closed status, we need to disable some buttons
+                            if(isset($this->_hasAcceptRejectButtons[$currentType]['remove']) && count($this->_hasAcceptRejectButtons[$currentType]['remove'])){
+                                foreach ($this->_hasAcceptRejectButtons[$currentType]['remove'] as $item) {
+                                    $block->removeButton($item.'_button');
+                                }
+
+                            }
+
+                        }
                     }
 
 
@@ -560,7 +642,15 @@ class BS_Observation_Model_Observer
                                 );
                             }
 
-                        }
+                        }/*else if($this->_hasCloseButton[$currentType]['close']['status'] == $currentStatus) {//if object is in closed status, we need to disable some buttons
+                            if(isset($this->_hasCloseButton[$currentType]['remove']) && count($this->_hasCloseButton[$currentType]['remove'])){
+                                foreach ($this->_hasCloseButton[$currentType]['remove'] as $item) {
+                                    $block->removeButton($item.'_button');
+                                }
+
+                            }
+
+                        }*/
                     }
 
 
@@ -568,16 +658,7 @@ class BS_Observation_Model_Observer
 
 
 
-                if($misc->canEdit($currentObj, null, $saveConds)){
-                    $block->addButton(
-                        'save_button',
-                        array(
-                            'label'   => Mage::helper('bs_misc')->__('Save'),
-                            'onclick'   => "saveOnly()",
-                            'class'   => 'save',
-                        )
-                    );
-                }
+
             }
 
 
@@ -1084,42 +1165,46 @@ class BS_Observation_Model_Observer
         return "
             function updateDueDate(){
                 var type_id = $('".$id.$type."_type').value;
-                var report_date = $('".$id."report_date').value;
+                if($('".$id."report_date') != undefined){
+                    var report_date = $('".$id."report_date').value;
                 
-                if(type_id != '' && report_date != ''){
-                    var dateArray = report_date.split('/');
-                    var addDay = 0;
-                    switch(type_id){
-                        case '1':
-                            addDay = 3;
-                            break;
-                        case '2':
-                            addDay = 10;
-                            break;
-                       
-                        default:
-                            break;
-                            
+                    if(type_id != '' && report_date != ''){
+                        var dateArray = report_date.split('/');
+                        var addDay = 0;
+                        switch(type_id){
+                            case '1':
+                                addDay = 3;
+                                break;
+                            case '2':
+                                addDay = 10;
+                                break;
+                           
+                            default:
+                                break;
+                                
+                        }
+                        
+                        var result = new Date(dateArray[2], dateArray[1]-1, dateArray[0]);
+                        result.setDate(result.getDate() + addDay);
+                        
+                        var dayday = result.getDate();
+                        if(dayday < 10) {
+                            dayday = '0' + dayday;
+                        }
+                        var month = result.getMonth() * 1 + 1;
+                        if(month < 10) {
+                            month = '0' + month;
+                        }
+                        
+                        var duedate = dayday + '/' + month + '/' + result.getFullYear();
+                                                    
+                        if($('".$id."due_date') != undefined){
+                            $('".$id."due_date').value = duedate;
+                        }
                     }
-                    
-                    var result = new Date(dateArray[2], dateArray[1]-1, dateArray[0]);
-                    result.setDate(result.getDate() + addDay);
-                    
-                    var dayday = result.getDate();
-                    if(dayday < 10) {
-                        dayday = '0' + dayday;
-                    }
-                    var month = result.getMonth() * 1 + 1;
-                    if(month < 10) {
-                        month = '0' + month;
-                    }
-                    
-                    var duedate = dayday + '/' + month + '/' + result.getFullYear();
-                                                
-                    if($('".$id."due_date') != undefined){
-                        $('".$id."due_date').value = duedate;
-                    }
+                
                 }
+                
                
             }";
     }

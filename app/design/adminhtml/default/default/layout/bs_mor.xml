@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * BS_Mor extension
+ * 
+ * @category       BS
+ * @package        BS_Mor
+ * @copyright      Copyright (c) 2018
+ */
+--> 
+<layout>
+    <adminhtml_mor_mor_index>
+        <reference name="menu">
+            <action method="setActive">
+                <menupath>bs_work/mor</menupath>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="bs_mor/adminhtml_mor" name="mor" />
+
+        </reference>
+    </adminhtml_mor_mor_index>
+    <adminhtml_mor_mor_grid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_mor/adminhtml_mor_grid" name="mor_grid"/>
+        </block>
+    </adminhtml_mor_mor_grid>
+    <!-- Mor add/edit action -->
+    <adminhtml_mor_mor_edit>
+        <update handle="editor"/>
+        <reference name="menu">
+            <action method="setActive">
+                <menupath>bs_work/mor</menupath>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="bs_mor/adminhtml_mor_edit" name="mor_edit"></block>
+        </reference>
+        <reference name="left">
+            <block type="bs_mor/adminhtml_mor_edit_tabs" name="mor_tabs"></block>
+        </reference>
+    </adminhtml_mor_mor_edit>
+
+</layout>

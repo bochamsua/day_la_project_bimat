@@ -1,0 +1,86 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * BS_Safety extension
+ * 
+ * @category       BS
+ * @package        BS_Safety
+ * @copyright      Copyright (c) 2018
+ */
+-->
+<config>
+    <modules>
+        <BS_Safety>
+            <version>1.0.0</version>
+        </BS_Safety>
+    </modules>
+    <global>
+        <resources>
+            <bs_safety_setup>
+                <setup>
+                    <module>BS_Safety</module>
+                    <class>BS_Safety_Model_Resource_Setup</class>
+                </setup>
+            </bs_safety_setup>
+        </resources>
+        <blocks>
+            <bs_safety>
+                <class>BS_Safety_Block</class>
+            </bs_safety>
+        </blocks>
+        <helpers>
+            <bs_safety>
+                <class>BS_Safety_Helper</class>
+            </bs_safety>
+        </helpers>
+        <models>
+            <bs_safety>
+                <class>BS_Safety_Model</class>
+                <resourceModel>bs_safety_resource</resourceModel>
+            </bs_safety>
+            <bs_safety_resource>
+                <class>BS_Safety_Model_Resource</class>
+                <entities>
+                    <safety>
+                        <table>bs_safety_safety</table>
+                    </safety>
+                </entities>
+            </bs_safety_resource>
+        </models>
+    </global>
+    <adminhtml>
+        <layout>
+            <updates>
+                <bs_safety>
+                    <file>bs_safety.xml</file>
+                </bs_safety>
+            </updates>
+        </layout>
+        <translate>
+            <modules>
+                <BS_Safety>
+                    <files>
+                        <default>BS_Safety.csv</default>
+                    </files>
+                </BS_Safety>
+            </modules>
+        </translate>
+        <global_search>
+            <safety>
+                <class>bs_safety/adminhtml_search_safety</class>
+                <acl>bs_safety</acl>
+            </safety>
+        </global_search>
+    </adminhtml>
+    <admin>
+        <routers>
+            <adminhtml>
+                <args>
+                    <modules>
+                        <BS_Safety before="Mage_Adminhtml">BS_Safety_Adminhtml</BS_Safety>
+                    </modules>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin>
+</config>

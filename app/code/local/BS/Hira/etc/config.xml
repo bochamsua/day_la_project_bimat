@@ -1,0 +1,86 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * BS_Hira extension
+ * 
+ * @category       BS
+ * @package        BS_Hira
+ * @copyright      Copyright (c) 2018
+ */
+-->
+<config>
+    <modules>
+        <BS_Hira>
+            <version>1.0.0</version>
+        </BS_Hira>
+    </modules>
+    <global>
+        <resources>
+            <bs_hira_setup>
+                <setup>
+                    <module>BS_Hira</module>
+                    <class>BS_Hira_Model_Resource_Setup</class>
+                </setup>
+            </bs_hira_setup>
+        </resources>
+        <blocks>
+            <bs_hira>
+                <class>BS_Hira_Block</class>
+            </bs_hira>
+        </blocks>
+        <helpers>
+            <bs_hira>
+                <class>BS_Hira_Helper</class>
+            </bs_hira>
+        </helpers>
+        <models>
+            <bs_hira>
+                <class>BS_Hira_Model</class>
+                <resourceModel>bs_hira_resource</resourceModel>
+            </bs_hira>
+            <bs_hira_resource>
+                <class>BS_Hira_Model_Resource</class>
+                <entities>
+                    <hira>
+                        <table>bs_hira_hira</table>
+                    </hira>
+                </entities>
+            </bs_hira_resource>
+        </models>
+    </global>
+    <adminhtml>
+        <layout>
+            <updates>
+                <bs_hira>
+                    <file>bs_hira.xml</file>
+                </bs_hira>
+            </updates>
+        </layout>
+        <translate>
+            <modules>
+                <BS_Hira>
+                    <files>
+                        <default>BS_Hira.csv</default>
+                    </files>
+                </BS_Hira>
+            </modules>
+        </translate>
+        <global_search>
+            <hira>
+                <class>bs_hira/adminhtml_search_hira</class>
+                <acl>bs_hira</acl>
+            </hira>
+        </global_search>
+    </adminhtml>
+    <admin>
+        <routers>
+            <adminhtml>
+                <args>
+                    <modules>
+                        <BS_Hira before="Mage_Adminhtml">BS_Hira_Adminhtml</BS_Hira>
+                    </modules>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin>
+</config>

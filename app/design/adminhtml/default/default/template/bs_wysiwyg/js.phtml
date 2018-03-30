@@ -5,7 +5,7 @@ $url =  Mage::getUrl('*/wysiwyg/load', ['form_key' => $formKey]);
 <script>
 if (typeof jQuery != 'undefined') {
     jQuery(document).ready(function(){
-        jQuery('.textarea').redactor({
+        jQuery('.textarea:not(:disabled)').redactor({
             imageUpload: '<?php echo $url; ?>',
             plugins: ['table','source','inlinestyle','alignment','fontsize','fontcolor','fullscreen'],
             imagePosition: true,

@@ -1,0 +1,86 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * BS_Meda extension
+ * 
+ * @category       BS
+ * @package        BS_Meda
+ * @copyright      Copyright (c) 2018
+ */
+-->
+<config>
+    <modules>
+        <BS_Meda>
+            <version>1.0.0</version>
+        </BS_Meda>
+    </modules>
+    <global>
+        <resources>
+            <bs_meda_setup>
+                <setup>
+                    <module>BS_Meda</module>
+                    <class>BS_Meda_Model_Resource_Setup</class>
+                </setup>
+            </bs_meda_setup>
+        </resources>
+        <blocks>
+            <bs_meda>
+                <class>BS_Meda_Block</class>
+            </bs_meda>
+        </blocks>
+        <helpers>
+            <bs_meda>
+                <class>BS_Meda_Helper</class>
+            </bs_meda>
+        </helpers>
+        <models>
+            <bs_meda>
+                <class>BS_Meda_Model</class>
+                <resourceModel>bs_meda_resource</resourceModel>
+            </bs_meda>
+            <bs_meda_resource>
+                <class>BS_Meda_Model_Resource</class>
+                <entities>
+                    <meda>
+                        <table>bs_meda_meda</table>
+                    </meda>
+                </entities>
+            </bs_meda_resource>
+        </models>
+    </global>
+    <adminhtml>
+        <layout>
+            <updates>
+                <bs_meda>
+                    <file>bs_meda.xml</file>
+                </bs_meda>
+            </updates>
+        </layout>
+        <translate>
+            <modules>
+                <BS_Meda>
+                    <files>
+                        <default>BS_Meda.csv</default>
+                    </files>
+                </BS_Meda>
+            </modules>
+        </translate>
+        <global_search>
+            <meda>
+                <class>bs_meda/adminhtml_search_meda</class>
+                <acl>bs_meda</acl>
+            </meda>
+        </global_search>
+    </adminhtml>
+    <admin>
+        <routers>
+            <adminhtml>
+                <args>
+                    <modules>
+                        <BS_Meda before="Mage_Adminhtml">BS_Meda_Adminhtml</BS_Meda>
+                    </modules>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin>
+</config>

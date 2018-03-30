@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * BS_Safety extension
+ * 
+ * @category       BS
+ * @package        BS_Safety
+ * @copyright      Copyright (c) 2018
+ */
+--> 
+<layout>
+    <adminhtml_safety_safety_index>
+        <reference name="menu">
+            <action method="setActive">
+                <menupath>bs_work/safety</menupath>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="bs_safety/adminhtml_safety" name="safety" />
+
+        </reference>
+    </adminhtml_safety_safety_index>
+    <adminhtml_safety_safety_grid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_safety/adminhtml_safety_grid" name="safety_grid"/>
+        </block>
+    </adminhtml_safety_safety_grid>
+    <!-- Safety add/edit action -->
+    <adminhtml_safety_safety_edit>
+        <update handle="editor"/>
+        <reference name="menu">
+            <action method="setActive">
+                <menupath>bs_work/safety</menupath>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="bs_safety/adminhtml_safety_edit" name="safety_edit"></block>
+        </reference>
+        <reference name="left">
+            <block type="bs_safety/adminhtml_safety_edit_tabs" name="safety_tabs"></block>
+        </reference>
+    </adminhtml_safety_safety_edit>
+
+</layout>

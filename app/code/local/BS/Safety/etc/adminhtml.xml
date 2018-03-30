@@ -1,11 +1,11 @@
 <?xml version="1.0"?>
 <!--
 /**
- * BS_Other extension
+ * BS_Safety extension
  * 
  * @category       BS
- * @package        BS_Other
- * @copyright      Copyright (c) 2016
+ * @package        BS_Safety
+ * @copyright      Copyright (c) 2018
  */
 -->
 <config>
@@ -17,24 +17,24 @@
                         <children>
                             <config>
                                 <children>
-                                    <bs_other translate="title" module="bs_other">
-                                        <title>Other Work</title>
-                                    </bs_other>
+                                    <bs_safety translate="title" module="bs_safety">
+                                        <title>Safety</title>
+                                    </bs_safety>
                                 </children>
                             </config>
                         </children>
                     </system>
                     <bs_work>
                         <children>
-                            <other translate="title" module="bs_other">
-                                <title>Other Work</title>
-                                <sort_order>900</sort_order>
+                            <safety translate="title" module="bs_safety">
+                                <title>Safety Data</title>
+                                <sort_order>110</sort_order>
                                 <children>
                                     <new translate="title"><title>New</title></new>
                                     <edit translate="title"><title>Edit</title></edit>
                                     <delete translate="title"><title>Delete</title></delete>
                                 </children>
-                            </other>
+                            </safety>
                         </children>
                     </bs_work>
 
@@ -45,11 +45,11 @@
     <menu>
         <bs_work>
             <children>
-                <other translate="title" module="bs_other">
-                    <title>Other Work</title>
-                    <action>adminhtml/other_other</action>
-                    <sort_order>900</sort_order>
-                </other>
+                <safety translate="title" module="bs_safety">
+                    <title>Safety Data</title>
+                    <action>adminhtml/safety_safety</action>
+                    <sort_order>110</sort_order>
+                </safety>
             </children>
         </bs_work>
 
