@@ -486,7 +486,7 @@ class BS_Observation_Model_Observer
                         );
                     }
 
-                    if(isset($this->_hasPrintButton[$currentType])){
+                    if(in_array($currentType, $this->_hasPrintButton)){
                         $block->addButton(
                             'print_button',
                             array(
