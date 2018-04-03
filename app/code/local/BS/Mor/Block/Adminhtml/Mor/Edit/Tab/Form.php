@@ -33,6 +33,11 @@ class BS_Mor_Block_Adminhtml_Mor_Edit_Tab_Form extends Mage_Adminhtml_Block_Widg
             array('legend' => Mage::helper('bs_mor')->__('MOR'))
         );
 
+        $fieldset->addType(
+            'file',
+            Mage::getConfig()->getBlockClassName('bs_mor/adminhtml_mor_helper_file')
+        );
+
         $currentObj = Mage::registry('current_mor');
 
         $customers = Mage::getResourceModel('bs_acreg/customer_collection');
@@ -92,6 +97,16 @@ class BS_Mor_Block_Adminhtml_Mor_Edit_Tab_Form extends Mage_Adminhtml_Block_Widg
            )
         );*/
 
+
+        $fieldset->addField(
+            'mor_source',
+            'file',
+            array(
+                'label' => Mage::helper('bs_mor')->__('Source'),
+                'name'  => 'mor_source',
+
+            )
+        );
 
 
         $fieldset->addField(

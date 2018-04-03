@@ -1546,7 +1546,7 @@
         </BS_Formtemplate><BS_Evaluation>
             <version>1.0.0</version>
         </BS_Evaluation><BS_Mor>
-            <version>1.0.0</version>
+            <version>1.0.1</version>
         </BS_Mor><BS_Concession>
             <version>1.0.2</version>
         </BS_Concession><BS_Setting>
@@ -1594,7 +1594,7 @@
         </BS_Work><BS_Sur>
             <version>1.0.2</version>
         </BS_Sur><BS_Hira>
-            <version>1.0.0</version>
+            <version>1.0.1</version>
         </BS_Hira><BS_Kpi>
             <version>1.0.2</version>
         </BS_Kpi><BS_Rii>

@@ -33,6 +33,11 @@ class BS_Meda_Block_Adminhtml_Meda_Edit_Tab_Form extends Mage_Adminhtml_Block_Wi
             array('legend' => Mage::helper('bs_meda')->__('MEDA'))
         );
 
+        $fieldset->addType(
+            'file',
+            Mage::getConfig()->getBlockClassName('bs_meda/adminhtml_meda_helper_file')
+        );
+
         $currentObj = Mage::registry('current_meda');
 
 
@@ -93,6 +98,17 @@ class BS_Meda_Block_Adminhtml_Meda_Edit_Tab_Form extends Mage_Adminhtml_Block_Wi
             'format'  => Mage::app()->getLocale()->getDateFormat(Mage_Core_Model_Locale::FORMAT_TYPE_SHORT),
            )
         );*/
+
+        $fieldset->addField(
+            'meda_source',
+            'file',
+            array(
+                'label' => Mage::helper('bs_meda')->__('Source'),
+                'name'  => 'meda_source',
+
+            )
+        );
+
 
         $fieldset->addField(
             'meda_no',

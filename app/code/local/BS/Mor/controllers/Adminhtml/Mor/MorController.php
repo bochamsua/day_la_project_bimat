@@ -122,6 +122,12 @@ class BS_Mor_Adminhtml_Mor_MorController extends BS_Mor_Controller_Adminhtml_Mor
                 $data = $this->_filterDates($data, array('report_date' ,'occur_date' ,'due_date' ,'close_date'));
                 $mor = $this->_initMor();
                 $mor->addData($data);
+                $morSourceName = $this->_uploadAndGetName(
+                    'mor_source',
+                    Mage::helper('bs_mor/mor')->getFileBaseDir(),
+                    $data
+                );
+                $mor->setData('mor_source', $morSourceName);
                 $mor->save();
                 $add = '';
                 if($this->getRequest()->getParam('popup')){
@@ -138,12 +144,18 @@ class BS_Mor_Adminhtml_Mor_MorController extends BS_Mor_Controller_Adminhtml_Mor
                 $this->_redirect('*/*/');
                 return;
             } catch (Mage_Core_Exception $e) {
+                if (isset($data['mor_source']['value'])) {
+                    $data['mor_source'] = $data['mor_source']['value'];
+                }
                 Mage::getSingleton('adminhtml/session')->addError($e->getMessage());
                 Mage::getSingleton('adminhtml/session')->setMorData($data);
                 $this->_redirect('*/*/edit', array('id' => $this->getRequest()->getParam('id')));
                 return;
             } catch (Exception $e) {
                 Mage::logException($e);
+                if (isset($data['mor_source']['value'])) {
+                    $data['mor_source'] = $data['mor_source']['value'];
+                }
                 Mage::getSingleton('adminhtml/session')->addError(
                     Mage::helper('bs_mor')->__('There was a problem saving the mor.')
                 );
@@ -157,6 +169,7 @@ class BS_Mor_Adminhtml_Mor_MorController extends BS_Mor_Controller_Adminhtml_Mor
         );
         $this->_redirect('*/*/');
     }
+
 
     /**
      * delete mor - action

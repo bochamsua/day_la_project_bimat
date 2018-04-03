@@ -33,6 +33,11 @@ class BS_Hira_Block_Adminhtml_Hira_Edit_Tab_Form extends Mage_Adminhtml_Block_Wi
             array('legend' => Mage::helper('bs_hira')->__('HIRA'))
         );
 
+        $fieldset->addType(
+            'file',
+            Mage::getConfig()->getBlockClassName('bs_hira/adminhtml_hira_helper_file')
+        );
+
         $currentObj = Mage::registry('current_hira');
         $misc = $this->helper('bs_misc');
 
@@ -64,6 +69,16 @@ class BS_Hira_Block_Adminhtml_Hira_Edit_Tab_Form extends Mage_Adminhtml_Block_Wi
             'format'  => Mage::app()->getLocale()->getDateFormat(Mage_Core_Model_Locale::FORMAT_TYPE_SHORT),
            )
         );*/
+
+        $fieldset->addField(
+            'hira_source',
+            'file',
+            array(
+                'label' => Mage::helper('bs_hira')->__('Source'),
+                'name'  => 'hira_source',
+
+            )
+        );
 
         $fieldset->addField(
             'specify_component',

@@ -122,6 +122,12 @@ class BS_Meda_Adminhtml_Meda_MedaController extends BS_Meda_Controller_Adminhtml
                 $data = $this->_filterDates($data, array('report_date' ,'event_date' ,'due_date' ,'close_date'));
                 $meda = $this->_initMeda();
                 $meda->addData($data);
+                $medaSourceName = $this->_uploadAndGetName(
+                    'meda_source',
+                    Mage::helper('bs_meda/meda')->getFileBaseDir(),
+                    $data
+                );
+                $meda->setData('meda_source', $medaSourceName);
                 $meda->save();
                 $add = '';
                 if($this->getRequest()->getParam('popup')){
@@ -138,12 +144,18 @@ class BS_Meda_Adminhtml_Meda_MedaController extends BS_Meda_Controller_Adminhtml
                 $this->_redirect('*/*/');
                 return;
             } catch (Mage_Core_Exception $e) {
+                if (isset($data['meda_source']['value'])) {
+                    $data['meda_source'] = $data['meda_source']['value'];
+                }
                 Mage::getSingleton('adminhtml/session')->addError($e->getMessage());
                 Mage::getSingleton('adminhtml/session')->setMedaData($data);
                 $this->_redirect('*/*/edit', array('id' => $this->getRequest()->getParam('id')));
                 return;
             } catch (Exception $e) {
                 Mage::logException($e);
+                if (isset($data['meda_source']['value'])) {
+                    $data['meda_source'] = $data['meda_source']['value'];
+                }
                 Mage::getSingleton('adminhtml/session')->addError(
                     Mage::helper('bs_meda')->__('There was a problem saving the meda.')
                 );
@@ -157,6 +169,7 @@ class BS_Meda_Adminhtml_Meda_MedaController extends BS_Meda_Controller_Adminhtml
         );
         $this->_redirect('*/*/');
     }
+
 
     /**
      * delete meda - action
