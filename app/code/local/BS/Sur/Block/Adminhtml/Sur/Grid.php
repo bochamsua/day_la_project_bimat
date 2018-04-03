@@ -215,7 +215,7 @@ class BS_Sur_Block_Adminhtml_Sur_Grid extends Mage_Adminhtml_Block_Widget_Grid
         $this->addColumn(
             'task_id',
             array(
-                'header' => Mage::helper('bs_ncr')->__('Sur Code'),
+                'header' => Mage::helper('bs_sur')->__('Sur Code'),
                 'index'  => 'task_id',
                 'type'  => 'text',
                 'renderer' => 'bs_misc/adminhtml_helper_column_renderer_task',
@@ -226,11 +226,24 @@ class BS_Sur_Block_Adminhtml_Sur_Grid extends Mage_Adminhtml_Block_Widget_Grid
         $this->addColumn(
             'subtask_id',
             array(
-                'header' => Mage::helper('bs_ncr')->__('Sur Sub Code'),
+                'header' => Mage::helper('bs_sur')->__('Sur Sub Code'),
                 'index'  => 'subtask_id',
                 'type'  => 'text',
                 'renderer' => 'bs_misc/adminhtml_helper_column_renderer_subtask',
                 'filter_condition_callback' => array($this, '_filterSubtask'),
+
+            )
+        );
+
+        $this->addColumn(
+            'sur_status',
+            array(
+                'header' => Mage::helper('bs_sur')->__('Record Status'),
+                'index'  => 'sur_status',
+                'type'  => 'options',
+                'options' => Mage::helper('bs_sur')->convertOptions(
+                    Mage::getModel('bs_sur/sur_attribute_source_surstatus')->getAllOptions(false)
+                )
 
             )
         );

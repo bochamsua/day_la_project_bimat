@@ -277,4 +277,42 @@ class BS_Misc_Helper_Date extends Mage_Core_Helper_Abstract
 
     }
 
+    public function compareDate($date1, $date2, $fuction = '<'){
+        //format
+        //$date = ['date'=>$date, 'plus' => $plus, 'minus' => $minus]
+        $d1 = new DateTime($date1['date']);
+        if(isset($date1['plus']) && intval($date1['plus']) > 0){
+            $d1->add(new DateInterval('P'.intval($date1['plus']).'D'));
+        }else if(isset($date1['minus']) && intval($date1['minus']) > 0){
+            $d1->sub(new DateInterval('P'.intval($date1['minus']).'D'));
+        }
+
+        $d2 = new DateTime($date2['date']);
+        if(isset($date2['plus']) && intval($date2['plus']) > 0){
+            $d2->add(new DateInterval('P'.intval($date2['plus']).'D'));
+        }else if(isset($date2['minus']) && intval($date2['minus']) > 0){
+            $d2->sub(new DateInterval('P'.intval($date2['minus']).'D'));
+        }
+
+        if($fuction == '<'){
+            return $d1 < $d2;
+        }
+
+        if($fuction == '='){
+            return $d1 == $d2;
+        }
+
+        if($fuction == '>'){
+            return $d1 > $d2;
+        }
+
+        if($fuction == '<='){
+            return $d1 <= $d2;
+        }
+
+        if($fuction == '>='){
+            return $d1 >= $d2;
+        }
+    }
+
 }

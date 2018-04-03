@@ -121,6 +121,47 @@ class BS_Sur_Adminhtml_Sur_SurController extends BS_Sur_Controller_Adminhtml_Sur
             try {
                 $data = $this->_filterDates($data, array('report_date'));
 
+                //check date
+                $currentDate = Mage::helper('bs_misc/date')->getNowStoreDate();
+                $inputDate = $data['report_date'];
+
+                $currentDateArray = [
+                  'date' => $currentDate
+                ];
+
+                $inputDateArray = [
+                  'date' => $inputDate
+                ];
+
+                $inputDate7Array = [
+                    'date' => $inputDate,
+                    'plus'  => 7
+                ];
+
+                $check1 = Mage::helper('bs_misc/date')->compareDate($currentDateArray, $inputDateArray, '<');
+                $check2 = Mage::helper('bs_misc/date')->compareDate($inputDate7Array, $currentDateArray, '>=');
+                if($check1){//if report date > current date --> fake!!!
+                    Mage::getSingleton('adminhtml/session')->addError(
+                        Mage::helper('bs_sur')->__('Please check report date!')
+                    );
+
+                    if($id = $this->getRequest()->getParam('id')){
+                        $this->_redirect('*/*/edit', array('id' => $id));
+                        return;
+                    }
+                    $this->_redirect('*/*/new');
+                    return;
+                }
+
+                if($check2){
+                    $data['sur_status'] = 1;
+                }else {
+                    $data['sur_status'] = 0;
+                }
+
+
+
+
                 if($data['description'] == ""){
                     Mage::getSingleton('adminhtml/session')->addError(
                         Mage::helper('bs_sur')->__('Please enter description!')
