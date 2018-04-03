@@ -139,7 +139,7 @@ class BS_Sur_Adminhtml_Sur_SurController extends BS_Sur_Controller_Adminhtml_Sur
                 ];
 
                 $check1 = Mage::helper('bs_misc/date')->compareDate($currentDateArray, $inputDateArray, '<');
-                $check2 = Mage::helper('bs_misc/date')->compareDate($inputDate7Array, $currentDateArray, '>=');
+                $check2 = Mage::helper('bs_misc/date')->compareDate($inputDate7Array, $currentDateArray, '<=');
                 if($check1){//if report date > current date --> fake!!!
                     Mage::getSingleton('adminhtml/session')->addError(
                         Mage::helper('bs_sur')->__('Please check report date!')
