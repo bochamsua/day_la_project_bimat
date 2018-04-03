@@ -154,9 +154,9 @@ class BS_Sur_Adminhtml_Sur_SurController extends BS_Sur_Controller_Adminhtml_Sur
                 }
 
                 if($check2){
-                    $data['sur_status'] = 1;
+                    $data['record_status'] = 1;
                 }else {
-                    $data['sur_status'] = 0;
+                    $data['record_status'] = 0;
                 }
 
 

@@ -236,13 +236,13 @@ class BS_Sur_Block_Adminhtml_Sur_Grid extends Mage_Adminhtml_Block_Widget_Grid
         );
 
         $this->addColumn(
-            'sur_status',
+            'record_status',
             array(
                 'header' => Mage::helper('bs_sur')->__('Record Status'),
-                'index'  => 'sur_status',
+                'index'  => 'record_status',
                 'type'  => 'options',
                 'options' => Mage::helper('bs_sur')->convertOptions(
-                    Mage::getModel('bs_sur/sur_attribute_source_surstatus')->getAllOptions(false)
+                    Mage::getModel('bs_sur/sur_attribute_source_recordstatus')->getAllOptions(false)
                 )
 
             )

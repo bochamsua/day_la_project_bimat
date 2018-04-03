@@ -13,7 +13,7 @@
  * @package     BS_Sur
  * @author Bui Phong
  */
-class BS_Sur_Model_Sur_Attribute_Source_Surstatus
+class BS_Sur_Model_Sur_Attribute_Source_Recordstatus
 {
     /**
      * get possible values
