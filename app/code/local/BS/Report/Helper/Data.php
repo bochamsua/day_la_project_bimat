@@ -472,7 +472,12 @@ class BS_Report_Helper_Data extends Mage_Core_Helper_Abstract
 		$model->addFieldToFilter('ins_id', $insId);
 
 		//dont count cmr
-        $model->addFieldToFilter('ref_type', ['neq'=>'cmr']);
+        $model->addFieldToFilter('ref_type', [
+            ['null' => true],
+            ['neq'=>'cmr']
+        ]);
+
+        //$str = $model->getSelect()->__toString();
 
 		$exclStatuses = [];
 
