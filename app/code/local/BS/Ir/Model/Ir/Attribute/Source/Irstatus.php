@@ -13,38 +13,38 @@ class BS_Ir_Model_Ir_Attribute_Source_Irstatus
      */
     public function getAllOptions($withEmpty = true, $defaultValues = false)
     {
-        $options =  array(
-            array(
+        $options =  [
+            [
                 'label' => Mage::helper('bs_ir')->__('Draft'),
                 'value' => 0
-            ),
-            array(
+            ],
+            [
                 'label' => Mage::helper('bs_ir')->__('Processing'),
                 'value' => 1
-            ),
-            array(
+            ],
+            [
                 'label' => Mage::helper('bs_ir')->__('Published'),
                 'value' => 2
-            ),
-            array(
+            ],
+            [
                 'label' => Mage::helper('bs_ir')->__('Closed'),
                 'value' => 3
-            ),
-            array(
+            ],
+            [
                 'label' => Mage::helper('bs_ir')->__('Overdued'),
                 'value' => 4
-            ),
-            array(
+            ],
+            [
                 'label' => Mage::helper('bs_ir')->__('Cancelled'),
                 'value' => 5
-            ),
-            array(
+            ],
+            [
                 'label' => Mage::helper('bs_ir')->__('Late Closed'),
                 'value' => 6
-            ),
-        );
+            ],
+        ];
         if ($withEmpty) {
-            array_unshift($options, array('label'=>'', 'value'=>''));
+            array_unshift($options, ['label'=>'', 'value'=>'']);
         }
         return $options;
 
@@ -60,7 +60,7 @@ class BS_Ir_Model_Ir_Attribute_Source_Irstatus
      */
     public function getOptionsArray($withEmpty = true)
     {
-        $options = array();
+        $options = [];
         foreach ($this->getAllOptions($withEmpty) as $option) {
             $options[$option['value']] = $option['label'];
         }
@@ -81,7 +81,7 @@ class BS_Ir_Model_Ir_Attribute_Source_Irstatus
         if (!is_array($value)) {
             $value = explode(',', $value);
         }
-        $texts = array();
+        $texts = [];
         foreach ($value as $v) {
             if (isset($options[$v])) {
                 $texts[] = $options[$v];

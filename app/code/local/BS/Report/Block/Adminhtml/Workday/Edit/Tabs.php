@@ -40,14 +40,14 @@ class BS_Report_Block_Adminhtml_Workday_Edit_Tabs extends Mage_Adminhtml_Block_W
     {
         $this->addTab(
             'form_workday',
-            array(
+            [
                 'label'   => Mage::helper('bs_report')->__('Work Day'),
                 'title'   => Mage::helper('bs_report')->__('Work Day'),
                 'content' => $this->getLayout()->createBlock(
                     'bs_report/adminhtml_workday_edit_tab_form'
                 )
                 ->toHtml(),
-            )
+            ]
         );
         return parent::_beforeToHtml();
     }

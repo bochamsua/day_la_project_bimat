@@ -24,27 +24,27 @@ class BS_NCause_Model_Adminhtml_Search_Ncausegroup extends Varien_Object
      */
     public function load()
     {
-        $arr = array();
+        $arr = [];
         if (!$this->hasStart() || !$this->hasLimit() || !$this->hasQuery()) {
             $this->setResults($arr);
             return $this;
         }
         $collection = Mage::getResourceModel('bs_ncause/ncausegroup_collection')
-            ->addFieldToFilter('group_code', array('like' => $this->getQuery().'%'))
+            ->addFieldToFilter('group_code', ['like' => $this->getQuery().'%'])
             ->setCurPage($this->getStart())
             ->setPageSize($this->getLimit())
             ->load();
         foreach ($collection->getItems() as $ncausegroup) {
-            $arr[] = array(
+            $arr[] = [
                 'id'          => 'ncausegroup/1/'.$ncausegroup->getId(),
                 'type'        => Mage::helper('bs_ncause')->__('Root Cause Code'),
                 'name'        => $ncausegroup->getGroupCode(),
                 'description' => $ncausegroup->getGroupCode(),
                 'url' => Mage::helper('adminhtml')->getUrl(
                     '*/ncause_ncausegroup/edit',
-                    array('id'=>$ncausegroup->getId())
+                    ['id'=>$ncausegroup->getId()]
                 ),
-            );
+            ];
         }
         $this->setResults($arr);
         return $this;

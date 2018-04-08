@@ -109,7 +109,7 @@ class BS_Acreg_Model_Customer extends Mage_Core_Model_Abstract
      */
     public function getDefaultValues()
     {
-        $values = array();
+        $values = [];
         $values['status'] = 1;
         return $values;
     }

@@ -12,7 +12,7 @@ class BS_Rewriting_Block_Adminhtml_Permissions_Role_Grid_User extends Mage_Admin
 	{
 		$roleId = $this->getRequest()->getParam('rid');
 		Mage::register('RID', $roleId);
-		$collection = Mage::getModel('admin/roles')->getUsersCollection()->addFieldToFilter('user_id', array('gt'=>1));
+		$collection = Mage::getModel('admin/roles')->getUsersCollection()->addFieldToFilter('user_id', ['gt'=>1]);
 		$this->setCollection($collection);
 		if ($this->getCollection()) {
 

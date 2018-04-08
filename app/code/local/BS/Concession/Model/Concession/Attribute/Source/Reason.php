@@ -26,22 +26,22 @@ class BS_Concession_Model_Concession_Attribute_Source_Reason
      */
     public function getAllOptions($withEmpty = true, $defaultValues = false)
     {
-        $options =  array(
-            array(
+        $options =  [
+            [
                 'label' => Mage::helper('bs_concession')->__('Spare'),
                 'value' => 1
-            ),
-            array(
+            ],
+            [
                 'label' => Mage::helper('bs_concession')->__('Trouble Shooting'),
                 'value' => 2
-            ),
-            array(
+            ],
+            [
                 'label' => Mage::helper('bs_concession')->__('Down Time'),
                 'value' => 3
-            ),
-        );
+            ],
+        ];
         if ($withEmpty) {
-            array_unshift($options, array('label'=>'', 'value'=>''));
+            array_unshift($options, ['label'=>'', 'value'=>'']);
         }
         return $options;
 
@@ -57,7 +57,7 @@ class BS_Concession_Model_Concession_Attribute_Source_Reason
      */
     public function getOptionsArray($withEmpty = true)
     {
-        $options = array();
+        $options = [];
         foreach ($this->getAllOptions($withEmpty) as $option) {
             $options[$option['value']] = $option['label'];
         }
@@ -78,7 +78,7 @@ class BS_Concession_Model_Concession_Attribute_Source_Reason
         if (!is_array($value)) {
             $value = explode(',', $value);
         }
-        $texts = array();
+        $texts = [];
         foreach ($value as $v) {
             if (isset($options[$v])) {
                 $texts[] = $options[$v];

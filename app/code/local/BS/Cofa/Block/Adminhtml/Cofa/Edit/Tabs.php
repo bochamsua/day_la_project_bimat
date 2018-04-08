@@ -40,14 +40,14 @@ class BS_Cofa_Block_Adminhtml_Cofa_Edit_Tabs extends Mage_Adminhtml_Block_Widget
     {
         $this->addTab(
             'form_cofa',
-            array(
+            [
                 'label'   => Mage::helper('bs_cofa')->__('CoA Data'),
                 'title'   => Mage::helper('bs_cofa')->__('CoA Data'),
                 'content' => $this->getLayout()->createBlock(
                     'bs_cofa/adminhtml_cofa_edit_tab_form'
                 )
                 ->toHtml(),
-            )
+            ]
         );
 
         $id = 0;
@@ -58,29 +58,29 @@ class BS_Cofa_Block_Adminhtml_Cofa_Edit_Tabs extends Mage_Adminhtml_Block_Widget
 
         $this->addTab(
             'ir',
-            array(
+            [
                 'label' => Mage::helper('bs_cofa')->__('IR (%s)', $countRelations['ir']),
-                'url' => $this->getUrl('adminhtml/cofa_cofa/irs', array('_current' => true)),
+                'url' => $this->getUrl('adminhtml/cofa_cofa/irs', ['_current' => true]),
                 'class' => 'ajax',
-            )
+            ]
         );
 
         $this->addTab(
             'ncr',
-            array(
+            [
                 'label' => Mage::helper('bs_cofa')->__('NCR (%s)', $countRelations['ncr']),
-                'url' => $this->getUrl('adminhtml/cofa_cofa/ncrs', array('_current' => true)),
+                'url' => $this->getUrl('adminhtml/cofa_cofa/ncrs', ['_current' => true]),
                 'class' => 'ajax',
-            )
+            ]
         );
 
         $this->addTab(
             'drr',
-            array(
+            [
                 'label' => Mage::helper('bs_cofa')->__('DRR (%s)', $countRelations['drr']),
-                'url' => $this->getUrl('adminhtml/cofa_cofa/drrs', array('_current' => true)),
+                'url' => $this->getUrl('adminhtml/cofa_cofa/drrs', ['_current' => true]),
                 'class' => 'ajax',
-            )
+            ]
         );
 
         return parent::_beforeToHtml();

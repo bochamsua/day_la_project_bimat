@@ -30,19 +30,19 @@ class BS_Nonroutine_Block_Adminhtml_Nonroutine_Edit_Tab_Form extends Mage_Adminh
         $this->setForm($form);
         $fieldset = $form->addFieldset(
             'nonroutine_form',
-            array('legend' => Mage::helper('bs_nonroutine')->__('QC HAN Work Non-Routine'))
+            ['legend' => Mage::helper('bs_nonroutine')->__('QC HAN Work Non-Routine')]
         );
 
         $fieldset->addField(
             'name',
             'text',
-            array(
+            [
                 'label' => Mage::helper('bs_nonroutine')->__('Name'),
                 'name'  => 'name',
             'required'  => true,
             'class' => 'required-entry',
 
-           )
+            ]
         );
         /*$fieldset->addField(
             'status',
@@ -64,7 +64,7 @@ class BS_Nonroutine_Block_Adminhtml_Nonroutine_Edit_Tab_Form extends Mage_Adminh
         );*/
         $formValues = Mage::registry('current_nonroutine')->getDefaultValues();
         if (!is_array($formValues)) {
-            $formValues = array();
+            $formValues = [];
         }
         if (Mage::getSingleton('adminhtml/session')->getNonroutineData()) {
             $formValues = array_merge($formValues, Mage::getSingleton('adminhtml/session')->getNonroutineData());

@@ -24,27 +24,27 @@ class BS_Rii_Model_Adminhtml_Search_Rii extends Varien_Object
      */
     public function load()
     {
-        $arr = array();
+        $arr = [];
         if (!$this->hasStart() || !$this->hasLimit() || !$this->hasQuery()) {
             $this->setResults($arr);
             return $this;
         }
         $collection = Mage::getResourceModel('bs_rii/rii_collection')
-            ->addFieldToFilter('ref_no', array('like' => $this->getQuery().'%'))
+            ->addFieldToFilter('ref_no', ['like' => $this->getQuery().'%'])
             ->setCurPage($this->getStart())
             ->setPageSize($this->getLimit())
             ->load();
         foreach ($collection->getItems() as $rii) {
-            $arr[] = array(
+            $arr[] = [
                 'id'          => 'rii/1/'.$rii->getId(),
                 'type'        => Mage::helper('bs_rii')->__('RII Sign-off'),
                 'name'        => $rii->getRefNo(),
                 'description' => $rii->getRefNo(),
                 'url' => Mage::helper('adminhtml')->getUrl(
                     '*/rii_rii/edit',
-                    array('id'=>$rii->getId())
+                    ['id'=>$rii->getId()]
                 ),
-            );
+            ];
         }
         $this->setResults($arr);
         return $this;

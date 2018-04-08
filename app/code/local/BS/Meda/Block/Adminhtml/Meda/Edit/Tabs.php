@@ -40,14 +40,14 @@ class BS_Meda_Block_Adminhtml_Meda_Edit_Tabs extends Mage_Adminhtml_Block_Widget
     {
         $this->addTab(
             'form_meda',
-            array(
+            [
                 'label'   => Mage::helper('bs_meda')->__('MEDA'),
                 'title'   => Mage::helper('bs_meda')->__('MEDA'),
                 'content' => $this->getLayout()->createBlock(
                     'bs_meda/adminhtml_meda_edit_tab_form'
                 )
                 ->toHtml(),
-            )
+            ]
         );
         return parent::_beforeToHtml();
     }

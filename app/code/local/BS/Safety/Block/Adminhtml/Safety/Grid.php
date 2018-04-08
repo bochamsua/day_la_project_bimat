@@ -43,7 +43,7 @@ class BS_Safety_Block_Adminhtml_Safety_Grid extends Mage_Adminhtml_Block_Widget_
         $collection = Mage::getModel('bs_safety/safety')
             ->getCollection();
 
-        $collection->getSelect()->joinLeft(array('r'=>'bs_acreg_acreg'),'ac_reg = r.entity_id','reg');
+        $collection->getSelect()->joinLeft(['r'=>'bs_acreg_acreg'],'ac_reg = r.entity_id','reg');
         
         $this->setCollection($collection);
         return parent::_prepareCollection();
@@ -61,16 +61,16 @@ class BS_Safety_Block_Adminhtml_Safety_Grid extends Mage_Adminhtml_Block_Widget_
 
         $this->addColumn(
             'ref_no',
-            array(
+            [
                 'header'    => Mage::helper('bs_safety')->__('Reference No'),
                 'align'     => 'left',
                 'index'     => 'ref_no',
-            )
+            ]
         );
 
         $this->addColumn(
             'safety_type',
-            array(
+            [
                 'header' => Mage::helper('bs_safety')->__('Type'),
                 'index'  => 'safety_type',
                 'type'  => 'options',
@@ -78,100 +78,100 @@ class BS_Safety_Block_Adminhtml_Safety_Grid extends Mage_Adminhtml_Block_Widget_
                     Mage::getModel('bs_safety/safety_attribute_source_safetytype')->getAllOptions(false)
                 )
 
-            )
+            ]
         );
 
 
 
         $this->addColumn(
             'customer',
-            array(
+            [
                 'header'    => Mage::helper('bs_acreg')->__('Customer'),
                 'index'     => 'customer',
                 'type'      => 'options',
                 'options'   => Mage::getResourceModel('bs_acreg/customer_collection')
                     ->toOptionHash(),
                 //'renderer'  => 'bs_acreg/adminhtml_helper_column_renderer_parent',
-                'params'    => array(
+                'params'    => [
                     'id'    => 'getCustomerId'
-                ),
+                ],
                 'base_link' => 'adminhtml/acreg_customer/edit'
-            )
+            ]
         );
 
         $acTypes = Mage::getModel('bs_misc/aircraft')->getCollection()->toOptionHash();
         $this->addColumn(
             'ac_type',
-            array(
+            [
                 'header' => Mage::helper('bs_ncr')->__('A/C Type'),
                 'index'     => 'ac_type',
                 'type'      => 'options',
                 'options'   => $acTypes,
 
-            )
+            ]
         );
 
 
         $this->addColumn(
             'ac_reg',
-            array(
+            [
                 'header' => Mage::helper('bs_ncr')->__('A/C Reg'),
                 'index'  => 'ac_reg',
                 'type'  => 'text',
                 'renderer' => 'bs_acreg/adminhtml_helper_column_renderer_acreg',
-                'filter_condition_callback' => array($this, '_filterAcReg'),
+                'filter_condition_callback' => [$this, '_filterAcReg'],
 
-            )
+            ]
         );
 
-        $ins = Mage::getModel('admin/user')->getCollection()->addFieldToFilter('user_id', array('gt' => 1))->load();
-        $inspectors = array();
+        $ins = Mage::getModel('admin/user')->getCollection()->addFieldToFilter('user_id', ['gt' => 1])->load();
+        $inspectors = [];
         foreach ($ins as $in) {
             $inspectors[$in->getUserId()] = strtoupper($in->getUsername());
         }
         $this->addColumn(
             'ins_id',
-            array(
+            [
                 'header'    => Mage::helper('bs_misc')->__('Inspector'),
                 'index'     => 'ins_id',
                 'type'      => 'options',
                 'options'   => $inspectors,
 
-            )
+            ]
         );
 
         $depts = Mage::getResourceModel('bs_misc/department_collection');
         $depts = $depts->toOptionHash();
         $this->addColumn(
             'from_dept',
-            array(
+            [
                 'header'    => Mage::helper('bs_misc')->__('From Maint. Center'),
                 'index'     => 'from_dept',
                 'type'      => 'options',
                 'options'   => $depts,
 
-            )
+            ]
         );
 
         $this->addColumn(
             'to_dept',
-            array(
+            [
                 'header'    => Mage::helper('bs_misc')->__('To Maint. Center'),
                 'index'     => 'to_dept',
                 'type'      => 'options',
                 'options'   => $depts,
 
-            )
+            ]
         );
 
 
         $this->addColumn(
             'related_personel',
-            array(
+            [
                 'header'    => Mage::helper('bs_safety')->__('Related Personel'),
                 'align'     => 'left',
                 'index'     => 'related_personel',
-            )
+            ]
         );
 
 
@@ -225,10 +225,10 @@ class BS_Safety_Block_Adminhtml_Safety_Grid extends Mage_Adminhtml_Block_Widget_
         $this->setMassactionIdField('entity_id');
         $this->getMassactionBlock()->setFormFieldName('safety');
 
-        $this->getMassactionBlock()->addItem('separator', array(
+        $this->getMassactionBlock()->addItem('separator', [
             'label'=> '---Select---',
             'url'  => ''
-        ));
+        ]);
 
         return $this;
     }
@@ -257,7 +257,7 @@ class BS_Safety_Block_Adminhtml_Safety_Grid extends Mage_Adminhtml_Block_Widget_
      */
     public function getRowUrl($row)
     {
-        return $this->getUrl('*/*/edit', array('id' => $row->getId()));
+        return $this->getUrl('*/*/edit', ['id' => $row->getId()]);
     }
 
     /**
@@ -269,7 +269,7 @@ class BS_Safety_Block_Adminhtml_Safety_Grid extends Mage_Adminhtml_Block_Widget_
      */
     public function getGridUrl()
     {
-        return $this->getUrl('*/*/grid', array('_current'=>true));
+        return $this->getUrl('*/*/grid', ['_current'=>true]);
     }
 
     /**

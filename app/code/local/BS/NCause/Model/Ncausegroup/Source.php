@@ -33,7 +33,7 @@ class BS_NCause_Model_Ncausegroup_Source extends Mage_Eav_Model_Entity_Attribute
         }
         $options = $this->_options;
         if ($withEmpty) {
-            array_unshift($options, array('value'=>'', 'label'=>''));
+            array_unshift($options, ['value'=>'', 'label'=>'']);
         }
         return $options;
     }
@@ -79,11 +79,11 @@ class BS_NCause_Model_Ncausegroup_Source extends Mage_Eav_Model_Entity_Attribute
     public function getFlatColums()
     {
         $attributeCode = $this->getAttribute()->getAttributeCode();
-        $column = array(
+        $column = [
             'unsigned'  => true,
             'default'   => null,
             'extra'     => null
-        );
+        ];
         if (Mage::helper('core')->useDbCompatibleMode()) {
             $column['type']     = 'int';
             $column['is_null']  = true;
@@ -92,7 +92,7 @@ class BS_NCause_Model_Ncausegroup_Source extends Mage_Eav_Model_Entity_Attribute
             $column['nullable'] = true;
             $column['comment']  = $attributeCode . ' Root Cause Code column';
         }
-        return array($attributeCode => $column);
+        return [$attributeCode => $column];
     }
 
     /**

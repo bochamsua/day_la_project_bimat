@@ -47,12 +47,12 @@ class BS_Ir_Block_Adminhtml_Ir_Dashboard_Grid extends BS_Rewriting_Block_Adminht
         $collection = Mage::getModel('bs_ir/ir')
             ->getCollection()
             ->addFieldToFilter('ins_id', Mage::getSingleton('admin/session')->getUser()->getUserId())
-            ->addFieldToFilter('accept', array(
-                array('eq' => 0),
-                array('null' => true),
-            ))
+            ->addFieldToFilter('accept', [
+                ['eq' => 0],
+                ['null' => true],
+            ])
 
-	        ->addFieldToFilter('ir_status', array('nin' => array(2,5)))//2 - signed
+	        ->addFieldToFilter('ir_status', ['nin' => [2,5]])//2 - signed
 
             ->setOrder('ref_no', 'DESC')
 
@@ -69,28 +69,28 @@ class BS_Ir_Block_Adminhtml_Ir_Dashboard_Grid extends BS_Rewriting_Block_Adminht
     {
         $this->addColumn(
             'ref_no',
-            array(
+            [
                 'header'    => Mage::helper('bs_ir')->__('Reference No'),
                 'align'     => 'left',
                 'index'     => 'ref_no',
-            )
+            ]
         );
 
 
 
         $this->addColumn(
             'report_date',
-            array(
+            [
                 'header' => Mage::helper('bs_ir')->__('Report Date'),
                 'index'  => 'report_date',
                 'type'=> 'date',
 
-            )
+            ]
         );
 
         $this->addColumn(
             'ir_status',
-            array(
+            [
                 'header' => Mage::helper('bs_ir')->__('Status'),
                 'index'  => 'ir_status',
                 'type'  => 'options',
@@ -98,17 +98,17 @@ class BS_Ir_Block_Adminhtml_Ir_Dashboard_Grid extends BS_Rewriting_Block_Adminht
                     Mage::getModel('bs_ir/ir_attribute_source_irstatus')->getAllOptions(false)
                 )
 
-            )
+            ]
         );
 
         $this->addColumn(
             'due_date',
-            array(
+            [
                 'header' => Mage::helper('bs_ir')->__('Due Date'),
                 'index'  => 'due_date',
                 'type'=> 'date',
 
-            )
+            ]
         );
 
 
@@ -120,6 +120,6 @@ class BS_Ir_Block_Adminhtml_Ir_Dashboard_Grid extends BS_Rewriting_Block_Adminht
 
     public function getRowUrl($row)
     {
-        return $this->getUrl('*/ir_ir/edit', array('id' => $row->getId()));
+        return $this->getUrl('*/ir_ir/edit', ['id' => $row->getId()]);
     }
 }

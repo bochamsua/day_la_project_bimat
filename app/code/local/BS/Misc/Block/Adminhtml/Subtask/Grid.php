@@ -58,53 +58,53 @@ class BS_Misc_Block_Adminhtml_Subtask_Grid extends Mage_Adminhtml_Block_Widget_G
     {
         $this->addColumn(
             'entity_id',
-            array(
+            [
                 'header' => Mage::helper('bs_misc')->__('Id'),
                 'index'  => 'entity_id',
                 'type'   => 'number', 'filter' => false
-            )
+            ]
         );
         $this->addColumn(
             'task_id',
-            array(
+            [
                 'header'    => Mage::helper('bs_misc')->__('Survey Code'),
                 'index'     => 'task_id',
                 'type'      => 'options',
                 'options'   => Mage::getResourceModel('bs_misc/task_collection')
                     ->toOptionHash(),
                 'renderer'  => 'bs_misc/adminhtml_helper_column_renderer_parent',
-                'params'    => array(
+                'params'    => [
                     'id'    => 'getTaskId'
-                ),
+                ],
                 'base_link' => 'adminhtml/misc_task/edit'
-            )
+            ]
         );
         $this->addColumn(
             'sub_code',
-            array(
+            [
                 'header'    => Mage::helper('bs_misc')->__('Sub Task Code'),
                 'align'     => 'left',
                 'index'     => 'sub_code',
-            )
+            ]
         );
 
         $this->addColumn(
             'points',
-            array(
+            [
                 'header'    => Mage::helper('bs_misc')->__('Points'),
                 'align'     => 'left',
                 'index'     => 'points',
-            )
+            ]
         );
 
 
         $this->addColumn(
             'sub_desc',
-            array(
+            [
                 'header'    => Mage::helper('bs_misc')->__('Description'),
                 'align'     => 'left',
                 'index'     => 'sub_desc',
-            )
+            ]
         );
 
 //        $this->addColumn(
@@ -150,33 +150,33 @@ class BS_Misc_Block_Adminhtml_Subtask_Grid extends Mage_Adminhtml_Block_Widget_G
         if($isAllowedDelete){
             $this->getMassactionBlock()->addItem(
                 'delete',
-                array(
+                [
                     'label'=> Mage::helper('bs_misc')->__('Delete'),
                     'url'  => $this->getUrl('*/*/massDelete'),
                     'confirm'  => Mage::helper('bs_misc')->__('Are you sure?')
-                )
+                ]
             );
         }
 
         if($isAllowedEdit){
             $this->getMassactionBlock()->addItem(
                 'status',
-                array(
+                [
                     'label'      => Mage::helper('bs_misc')->__('Change status'),
-                    'url'        => $this->getUrl('*/*/massStatus', array('_current'=>true)),
-                    'additional' => array(
-                        'status' => array(
+                    'url'        => $this->getUrl('*/*/massStatus', ['_current'=>true]),
+                    'additional' => [
+                        'status' => [
                             'name'   => 'status',
                             'type'   => 'select',
                             'class'  => 'required-entry',
                             'label'  => Mage::helper('bs_misc')->__('Status'),
-                            'values' => array(
+                            'values' => [
                                 '1' => Mage::helper('bs_misc')->__('Enabled'),
                                 '0' => Mage::helper('bs_misc')->__('Disabled'),
-                            )
-                        )
-                    )
-                )
+                            ]
+                        ]
+                    ]
+                ]
             );
 
 
@@ -188,19 +188,19 @@ class BS_Misc_Block_Adminhtml_Subtask_Grid extends Mage_Adminhtml_Block_Widget_G
         $values = array_reverse($values, true);
         $this->getMassactionBlock()->addItem(
             'task_id',
-            array(
+            [
                 'label'      => Mage::helper('bs_misc')->__('Change Survey Code'),
-                'url'        => $this->getUrl('*/*/massTaskId', array('_current'=>true)),
-                'additional' => array(
-                    'flag_task_id' => array(
+                'url'        => $this->getUrl('*/*/massTaskId', ['_current'=>true]),
+                'additional' => [
+                    'flag_task_id' => [
                         'name'   => 'flag_task_id',
                         'type'   => 'select',
                         'class'  => 'required-entry',
                         'label'  => Mage::helper('bs_misc')->__('Survey Code'),
                         'values' => $values
-                    )
-                )
-            )
+                    ]
+                ]
+            ]
         );
         }
         return $this;
@@ -216,7 +216,7 @@ class BS_Misc_Block_Adminhtml_Subtask_Grid extends Mage_Adminhtml_Block_Widget_G
      */
     public function getRowUrl($row)
     {
-        return $this->getUrl('*/*/edit', array('id' => $row->getId()));
+        return $this->getUrl('*/*/edit', ['id' => $row->getId()]);
     }
 
     /**
@@ -228,7 +228,7 @@ class BS_Misc_Block_Adminhtml_Subtask_Grid extends Mage_Adminhtml_Block_Widget_G
      */
     public function getGridUrl()
     {
-        return $this->getUrl('*/*/grid', array('_current'=>true));
+        return $this->getUrl('*/*/grid', ['_current'=>true]);
     }
 
     /**

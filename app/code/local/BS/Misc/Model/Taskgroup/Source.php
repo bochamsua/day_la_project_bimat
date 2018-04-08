@@ -33,7 +33,7 @@ class BS_Misc_Model_Taskgroup_Source extends Mage_Eav_Model_Entity_Attribute_Sou
         }
         $options = $this->_options;
         if ($withEmpty) {
-            array_unshift($options, array('value'=>'', 'label'=>''));
+            array_unshift($options, ['value'=>'', 'label'=>'']);
         }
         return $options;
     }
@@ -79,11 +79,11 @@ class BS_Misc_Model_Taskgroup_Source extends Mage_Eav_Model_Entity_Attribute_Sou
     public function getFlatColums()
     {
         $attributeCode = $this->getAttribute()->getAttributeCode();
-        $column = array(
+        $column = [
             'unsigned'  => true,
             'default'   => null,
             'extra'     => null
-        );
+        ];
         if (Mage::helper('core')->useDbCompatibleMode()) {
             $column['type']     = 'int';
             $column['is_null']  = true;
@@ -92,7 +92,7 @@ class BS_Misc_Model_Taskgroup_Source extends Mage_Eav_Model_Entity_Attribute_Sou
             $column['nullable'] = true;
             $column['comment']  = $attributeCode . ' Survey Group column';
         }
-        return array($attributeCode => $column);
+        return [$attributeCode => $column];
     }
 
     /**

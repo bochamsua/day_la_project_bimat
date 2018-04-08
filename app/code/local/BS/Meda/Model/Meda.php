@@ -88,7 +88,7 @@ class BS_Meda_Model_Meda extends Mage_Core_Model_Abstract
      */
     public function getDefaultValues()
     {
-        $values = array();
+        $values = [];
         $values['status'] = 1;
         $values['meda_status'] = '4';
 

@@ -40,14 +40,14 @@ class BS_Misc_Block_Adminhtml_Certtype_Edit_Tabs extends Mage_Adminhtml_Block_Wi
     {
         $this->addTab(
             'form_certtype',
-            array(
+            [
                 'label'   => Mage::helper('bs_misc')->__('Certificate Type'),
                 'title'   => Mage::helper('bs_misc')->__('Certificate Type'),
                 'content' => $this->getLayout()->createBlock(
                     'bs_misc/adminhtml_certtype_edit_tab_form'
                 )
                 ->toHtml(),
-            )
+            ]
         );
         return parent::_beforeToHtml();
     }

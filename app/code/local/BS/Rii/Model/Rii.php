@@ -88,7 +88,7 @@ class BS_Rii_Model_Rii extends Mage_Core_Model_Abstract
      */
     public function getDefaultValues()
     {
-        $values = array();
+        $values = [];
         $values['status'] = 1;
         return $values;
     }

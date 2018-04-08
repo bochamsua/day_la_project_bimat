@@ -59,19 +59,19 @@ class BS_HR_Block_Adminhtml_Certificate_Grid extends Mage_Adminhtml_Block_Widget
     {
         $this->addColumn(
             'entity_id',
-            array(
+            [
                 'header' => Mage::helper('bs_hr')->__('Id'),
                 'index'  => 'entity_id',
                 'type'   => 'number', 'filter' => false
-            )
+            ]
         );
         $this->addColumn(
             'cert_desc',
-            array(
+            [
                 'header'    => Mage::helper('bs_hr')->__('Description'),
                 'align'     => 'left',
                 'index'     => 'cert_desc',
-            )
+            ]
         );
 
 
@@ -96,57 +96,57 @@ class BS_HR_Block_Adminhtml_Certificate_Grid extends Mage_Adminhtml_Block_Widget
         );*/
         $this->addColumn(
             'crs_approved',
-            array(
+            [
                 'header' => Mage::helper('bs_hr')->__('CRS Approved Date'),
                 'index'  => 'crs_approved',
                 'type'=> 'date',
 
-            )
+            ]
         );
         $this->addColumn(
             'crs_expire',
-            array(
+            [
                 'header' => Mage::helper('bs_hr')->__('CRS Expire Date'),
                 'index'  => 'crs_expire',
                 'type'=> 'date',
 
-            )
+            ]
         );
         $this->addColumn(
             'caav_approved',
-            array(
+            [
                 'header' => Mage::helper('bs_hr')->__('CAAV Approved Date'),
                 'index'  => 'caav_approved',
                 'type'=> 'date',
 
-            )
+            ]
         );
         $this->addColumn(
             'caav_expire',
-            array(
+            [
                 'header' => Mage::helper('bs_hr')->__('CAAV Expire Date'),
                 'index'  => 'caav_expire',
                 'type'=> 'date',
 
-            )
+            ]
         );
         $this->addColumn(
             'ac_id',
-            array(
+            [
                 'header' => Mage::helper('bs_hr')->__('Aircraft'),
                 'index'  => 'ac_id',
                 'type'=> 'number',
 
-            )
+            ]
         );
         $this->addColumn(
             'certtype_id',
-            array(
+            [
                 'header' => Mage::helper('bs_hr')->__('Cert Type'),
                 'index'  => 'certtype_id',
                 'type'=> 'number',
 
-            )
+            ]
         );
 
 //        $this->addColumn(
@@ -192,33 +192,33 @@ class BS_HR_Block_Adminhtml_Certificate_Grid extends Mage_Adminhtml_Block_Widget
         if($isAllowedDelete){
             $this->getMassactionBlock()->addItem(
                 'delete',
-                array(
+                [
                     'label'=> Mage::helper('bs_hr')->__('Delete'),
                     'url'  => $this->getUrl('*/*/massDelete'),
                     'confirm'  => Mage::helper('bs_hr')->__('Are you sure?')
-                )
+                ]
             );
         }
 
         if($isAllowedEdit){
             $this->getMassactionBlock()->addItem(
                 'status',
-                array(
+                [
                     'label'      => Mage::helper('bs_hr')->__('Change status'),
-                    'url'        => $this->getUrl('*/*/massStatus', array('_current'=>true)),
-                    'additional' => array(
-                        'status' => array(
+                    'url'        => $this->getUrl('*/*/massStatus', ['_current'=>true]),
+                    'additional' => [
+                        'status' => [
                             'name'   => 'status',
                             'type'   => 'select',
                             'class'  => 'required-entry',
                             'label'  => Mage::helper('bs_hr')->__('Status'),
-                            'values' => array(
+                            'values' => [
                                 '1' => Mage::helper('bs_hr')->__('Enabled'),
                                 '0' => Mage::helper('bs_hr')->__('Disabled'),
-                            )
-                        )
-                    )
-                )
+                            ]
+                        ]
+                    ]
+                ]
             );
 
 
@@ -238,7 +238,7 @@ class BS_HR_Block_Adminhtml_Certificate_Grid extends Mage_Adminhtml_Block_Widget
      */
     public function getRowUrl($row)
     {
-        return $this->getUrl('*/*/edit', array('id' => $row->getId()));
+        return $this->getUrl('*/*/edit', ['id' => $row->getId()]);
     }
 
     /**
@@ -250,7 +250,7 @@ class BS_HR_Block_Adminhtml_Certificate_Grid extends Mage_Adminhtml_Block_Widget
      */
     public function getGridUrl()
     {
-        return $this->getUrl('*/*/grid', array('_current'=>true));
+        return $this->getUrl('*/*/grid', ['_current'=>true]);
     }
 
     /**

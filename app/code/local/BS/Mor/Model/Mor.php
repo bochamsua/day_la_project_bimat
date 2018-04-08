@@ -88,7 +88,7 @@ class BS_Mor_Model_Mor extends Mage_Core_Model_Abstract
      */
     public function getDefaultValues()
     {
-        $values = array();
+        $values = [];
         $values['status'] = 1;
         $values['mor_status'] = '4';
 

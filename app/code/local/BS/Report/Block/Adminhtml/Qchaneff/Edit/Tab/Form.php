@@ -30,153 +30,153 @@ class BS_Report_Block_Adminhtml_Qchaneff_Edit_Tab_Form extends Mage_Adminhtml_Bl
         $this->setForm($form);
         $fieldset = $form->addFieldset(
             'qchaneff_form',
-            array('legend' => Mage::helper('bs_report')->__('QC HAN Evaluation'))
+            ['legend' => Mage::helper('bs_report')->__('QC HAN Evaluation')]
         );
 
         $fieldset->addField(
             'name',
             'text',
-            array(
+            [
                 'label' => Mage::helper('bs_report')->__('Name'),
                 'name'  => 'name',
             'required'  => true,
             'class' => 'required-entry',
 
-           )
+            ]
         );
 
         $fieldset->addField(
             'from_date',
             'date',
-            array(
+            [
                 'label' => Mage::helper('bs_report')->__('From Date'),
                 'name'  => 'from_date',
 
             'image' => $this->getSkinUrl('images/grid-cal.gif'),
             'format'  => Mage::app()->getLocale()->getDateFormat(Mage_Core_Model_Locale::FORMAT_TYPE_SHORT),
-           )
+            ]
         );
 
         $fieldset->addField(
             'to_date',
             'date',
-            array(
+            [
                 'label' => Mage::helper('bs_report')->__('To Date'),
                 'name'  => 'to_date',
 
             'image' => $this->getSkinUrl('images/grid-cal.gif'),
             'format'  => Mage::app()->getLocale()->getDateFormat(Mage_Core_Model_Locale::FORMAT_TYPE_SHORT),
-           )
+            ]
         );
 
         $fieldset->addField(
             'ins_id',
             'text',
-            array(
+            [
                 'label' => Mage::helper('bs_report')->__('Inspector Id'),
                 'name'  => 'ins_id',
 
-           )
+            ]
         );
 
         $fieldset->addField(
             'ir',
             'text',
-            array(
+            [
                 'label' => Mage::helper('bs_report')->__('Ir'),
                 'name'  => 'ir',
 
-           )
+            ]
         );
 
         $fieldset->addField(
             'ncr',
             'text',
-            array(
+            [
                 'label' => Mage::helper('bs_report')->__('NCR'),
                 'name'  => 'ncr',
 
-           )
+            ]
         );
 
         $fieldset->addField(
             'drr',
             'text',
-            array(
+            [
                 'label' => Mage::helper('bs_report')->__('DRR'),
                 'name'  => 'drr',
 
-           )
+            ]
         );
 
         $fieldset->addField(
             'qcwork',
             'text',
-            array(
+            [
                 'label' => Mage::helper('bs_report')->__('QC Work'),
                 'name'  => 'qcwork',
 
-           )
+            ]
         );
 
         $fieldset->addField(
             'd1',
             'text',
-            array(
+            [
                 'label' => Mage::helper('bs_report')->__('D1'),
                 'name'  => 'd1',
 
-           )
+            ]
         );
 
         $fieldset->addField(
             'd2',
             'text',
-            array(
+            [
                 'label' => Mage::helper('bs_report')->__('D2'),
                 'name'  => 'd2',
 
-           )
+            ]
         );
 
         $fieldset->addField(
             'd3',
             'text',
-            array(
+            [
                 'label' => Mage::helper('bs_report')->__('D3'),
                 'name'  => 'd3',
 
-           )
+            ]
         );
 
         $fieldset->addField(
             'dall',
             'text',
-            array(
+            [
                 'label' => Mage::helper('bs_report')->__('D'),
                 'name'  => 'dall',
 
-           )
+            ]
         );
 
         $fieldset->addField(
             'level',
             'text',
-            array(
+            [
                 'label' => Mage::helper('bs_report')->__('Level'),
                 'name'  => 'level',
 
-           )
+            ]
         );
 
         $fieldset->addField(
             'note',
             'textarea',
-            array(
+            [
                 'label' => Mage::helper('bs_report')->__('Note'),
                 'name'  => 'note',
 
-           )
+            ]
         );
         /*$fieldset->addField(
             'status',
@@ -198,7 +198,7 @@ class BS_Report_Block_Adminhtml_Qchaneff_Edit_Tab_Form extends Mage_Adminhtml_Bl
         );*/
         $formValues = Mage::registry('current_qchaneff')->getDefaultValues();
         if (!is_array($formValues)) {
-            $formValues = array();
+            $formValues = [];
         }
         if (Mage::getSingleton('adminhtml/session')->getQchaneffData()) {
             $formValues = array_merge($formValues, Mage::getSingleton('adminhtml/session')->getQchaneffData());

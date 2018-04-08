@@ -6,10 +6,10 @@ class BS_Report_Block_Adminhtml_Widget_Form_Renderer_Fieldset extends Mage_Admin
 		$element = $this->_element;
 		$type = $element->getForm()->getParent()->getType();
 		//$buttons = $element->getContainer()->getParent()->getParentBlock()->getButtonsHtml();
-		$allowedTypes = array(
+		$allowedTypes = [
 			'bs_report/adminhtml_filter_form',
 
-		);
+        ];
 		if($type == 'bs_report/adminhtml_filter_form'){
 			$element->setHeaderBar($this->getEffHeaderBar());
 		}elseif($type == 'bs_report/adminhtml_filter_workdayform'){

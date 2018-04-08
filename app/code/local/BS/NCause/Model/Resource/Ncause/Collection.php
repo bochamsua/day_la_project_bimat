@@ -15,7 +15,7 @@
  */
 class BS_NCause_Model_Resource_Ncause_Collection extends Mage_Core_Model_Resource_Db_Collection_Abstract
 {
-    protected $_joinedFields = array();
+    protected $_joinedFields = [];
 
     /**
      * constructor
@@ -40,7 +40,7 @@ class BS_NCause_Model_Resource_Ncause_Collection extends Mage_Core_Model_Resourc
      * @return array
      * @author Bui Phong
      */
-    protected function _toOptionArray($valueField='entity_id', $labelField='cause_code', $additional=array())
+    protected function _toOptionArray($valueField='entity_id', $labelField='cause_code', $additional= [])
     {
         return parent::_toOptionArray($valueField, $labelField, $additional);
     }

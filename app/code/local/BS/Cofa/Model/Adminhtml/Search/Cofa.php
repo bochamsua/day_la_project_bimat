@@ -24,27 +24,27 @@ class BS_Cofa_Model_Adminhtml_Search_Cofa extends Varien_Object
      */
     public function load()
     {
-        $arr = array();
+        $arr = [];
         if (!$this->hasStart() || !$this->hasLimit() || !$this->hasQuery()) {
             $this->setResults($arr);
             return $this;
         }
         $collection = Mage::getResourceModel('bs_cofa/cofa_collection')
-            ->addFieldToFilter('ref_no', array('like' => $this->getQuery().'%'))
+            ->addFieldToFilter('ref_no', ['like' => $this->getQuery().'%'])
             ->setCurPage($this->getStart())
             ->setPageSize($this->getLimit())
             ->load();
         foreach ($collection->getItems() as $cofa) {
-            $arr[] = array(
+            $arr[] = [
                 'id'          => 'cofa/1/'.$cofa->getId(),
                 'type'        => Mage::helper('bs_cofa')->__('CoA Data'),
                 'name'        => $cofa->getRefNo(),
                 'description' => $cofa->getRefNo(),
                 'url' => Mage::helper('adminhtml')->getUrl(
                     '*/cofa_cofa/edit',
-                    array('id'=>$cofa->getId())
+                    ['id'=>$cofa->getId()]
                 ),
-            );
+            ];
         }
         $this->setResults($arr);
         return $this;

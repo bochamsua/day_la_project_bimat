@@ -58,30 +58,30 @@ class BS_Misc_Block_Adminhtml_Taskgroup_Grid extends Mage_Adminhtml_Block_Widget
     {
         $this->addColumn(
             'entity_id',
-            array(
+            [
                 'header' => Mage::helper('bs_misc')->__('Id'),
                 'index'  => 'entity_id',
                 'type'   => 'number', 'filter' => false
-            )
+            ]
         );
         $this->addColumn(
             'group_name',
-            array(
+            [
                 'header'    => Mage::helper('bs_misc')->__('Group Name'),
                 'align'     => 'left',
                 'index'     => 'group_name',
-            )
+            ]
         );
         
 
         $this->addColumn(
             'group_code',
-            array(
+            [
                 'header' => Mage::helper('bs_misc')->__('Group Code'),
                 'index'  => 'group_code',
                 'type'=> 'text',
 
-            )
+            ]
         );
 
 
@@ -150,7 +150,7 @@ class BS_Misc_Block_Adminhtml_Taskgroup_Grid extends Mage_Adminhtml_Block_Widget
      */
     public function getRowUrl($row)
     {
-        return $this->getUrl('*/*/edit', array('id' => $row->getId()));
+        return $this->getUrl('*/*/edit', ['id' => $row->getId()]);
     }
 
     /**
@@ -162,7 +162,7 @@ class BS_Misc_Block_Adminhtml_Taskgroup_Grid extends Mage_Adminhtml_Block_Widget
      */
     public function getGridUrl()
     {
-        return $this->getUrl('*/*/grid', array('_current'=>true));
+        return $this->getUrl('*/*/grid', ['_current'=>true]);
     }
 
     /**

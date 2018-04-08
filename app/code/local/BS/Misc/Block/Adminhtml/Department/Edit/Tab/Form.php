@@ -31,51 +31,51 @@ class BS_Misc_Block_Adminhtml_Department_Edit_Tab_Form extends Mage_Adminhtml_Bl
         $this->setForm($form);
         $fieldset = $form->addFieldset(
             'department_form',
-            array('legend' => Mage::helper('bs_misc')->__('Department'))
+            ['legend' => Mage::helper('bs_misc')->__('Department')]
         );
 
         $fieldset->addField(
             'dept_name',
             'text',
-            array(
+            [
                 'label' => Mage::helper('bs_misc')->__('Name'),
                 'name'  => 'dept_name',
             'required'  => true,
             'class' => 'required-entry',
 
-           )
+            ]
         );
 
         $fieldset->addField(
             'dept_code',
             'text',
-            array(
+            [
                 'label' => Mage::helper('bs_misc')->__('Code'),
                 'name'  => 'dept_code',
 
-           )
+            ]
         );
         $fieldset->addField(
             'status',
             'select',
-            array(
+            [
                 'label'  => Mage::helper('bs_misc')->__('Status'),
                 'name'   => 'status',
-                'values' => array(
-                    array(
+                'values' => [
+                    [
                         'value' => 1,
                         'label' => Mage::helper('bs_misc')->__('Enabled'),
-                    ),
-                    array(
+                    ],
+                    [
                         'value' => 0,
                         'label' => Mage::helper('bs_misc')->__('Disabled'),
-                    ),
-                ),
-            )
+                    ],
+                ],
+            ]
         );
         $formValues = Mage::registry('current_department')->getDefaultValues();
         if (!is_array($formValues)) {
-            $formValues = array();
+            $formValues = [];
         }
         if (Mage::getSingleton('adminhtml/session')->getDepartmentData()) {
             $formValues = array_merge($formValues, Mage::getSingleton('adminhtml/session')->getDepartmentData());

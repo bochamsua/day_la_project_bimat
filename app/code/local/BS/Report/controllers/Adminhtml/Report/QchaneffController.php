@@ -119,7 +119,7 @@ class BS_Report_Adminhtml_Report_QchaneffController extends BS_Sur_Controller_Ad
     {
         if ($data = $this->getRequest()->getPost('qchaneff')) {
             try {
-                $data = $this->_filterDates($data, array('from_date' ,'to_date'));
+                $data = $this->_filterDates($data, ['from_date' ,'to_date']);
                 $qchaneff = $this->_initQchaneff();
                 $qchaneff->addData($data);
                 $qchaneff->save();
@@ -132,7 +132,7 @@ class BS_Report_Adminhtml_Report_QchaneffController extends BS_Sur_Controller_Ad
                 );
                 Mage::getSingleton('adminhtml/session')->setFormData(false);
                 if ($this->getRequest()->getParam('back')) {
-                    $this->_redirect('*/*/edit', array('id' => $qchaneff->getId()));
+                    $this->_redirect('*/*/edit', ['id' => $qchaneff->getId()]);
                     return;
                 }
                 $this->_redirect('*/*/');
@@ -140,7 +140,7 @@ class BS_Report_Adminhtml_Report_QchaneffController extends BS_Sur_Controller_Ad
             } catch (Mage_Core_Exception $e) {
                 Mage::getSingleton('adminhtml/session')->addError($e->getMessage());
                 Mage::getSingleton('adminhtml/session')->setQchaneffData($data);
-                $this->_redirect('*/*/edit', array('id' => $this->getRequest()->getParam('id')));
+                $this->_redirect('*/*/edit', ['id' => $this->getRequest()->getParam('id')]);
                 return;
             } catch (Exception $e) {
                 Mage::logException($e);
@@ -148,7 +148,7 @@ class BS_Report_Adminhtml_Report_QchaneffController extends BS_Sur_Controller_Ad
                     Mage::helper('bs_report')->__('There was a problem saving the qc han efficiency.')
                 );
                 Mage::getSingleton('adminhtml/session')->setQchaneffData($data);
-                $this->_redirect('*/*/edit', array('id' => $this->getRequest()->getParam('id')));
+                $this->_redirect('*/*/edit', ['id' => $this->getRequest()->getParam('id')]);
                 return;
             }
         }
@@ -178,12 +178,12 @@ class BS_Report_Adminhtml_Report_QchaneffController extends BS_Sur_Controller_Ad
                 return;
             } catch (Mage_Core_Exception $e) {
                 Mage::getSingleton('adminhtml/session')->addError($e->getMessage());
-                $this->_redirect('*/*/edit', array('id' => $this->getRequest()->getParam('id')));
+                $this->_redirect('*/*/edit', ['id' => $this->getRequest()->getParam('id')]);
             } catch (Exception $e) {
                 Mage::getSingleton('adminhtml/session')->addError(
                     Mage::helper('bs_report')->__('There was an error deleting qc han efficiency.')
                 );
-                $this->_redirect('*/*/edit', array('id' => $this->getRequest()->getParam('id')));
+                $this->_redirect('*/*/edit', ['id' => $this->getRequest()->getParam('id')]);
                 Mage::logException($e);
                 return;
             }
@@ -364,7 +364,7 @@ class BS_Report_Adminhtml_Report_QchaneffController extends BS_Sur_Controller_Ad
 		}
 
 
-		$redirect = array('filter' => $filter);
+		$redirect = ['filter' => $filter];
 		if($additional){
 			$redirect['chart'] = '1';
 		}
@@ -396,18 +396,18 @@ class BS_Report_Adminhtml_Report_QchaneffController extends BS_Sur_Controller_Ad
 			$workdays = $workday->getFirstItem()->getDays();
 		}
 
-		$data = array(
+		$data = [
 			'month' => $month,
 			'year'  => $year,
 			'workdays'  => $workdays
-		);
+        ];
 
 		//get all report
 		$report = Mage::getModel('bs_report/qchaneff')->getCollection();
 		$report->addFieldToFilter('month', $month);
 		$report->addFieldToFilter('year', $year);
 
-		$pointData = array();
+		$pointData = [];
 
 		$i=1;
 		foreach ( $report as $item ) {
@@ -416,7 +416,7 @@ class BS_Report_Adminhtml_Report_QchaneffController extends BS_Sur_Controller_Ad
 
 			$vaecoId = $user->getVaecoId();
 
-			$pointData[] = array(
+			$pointData[] = [
 				'i' => $i,
 				'vaecoid' => $vaecoId,
 				'name' => $user->getFirstname().' '.$user->getLastname(),
@@ -425,12 +425,12 @@ class BS_Report_Adminhtml_Report_QchaneffController extends BS_Sur_Controller_Ad
 				'd3' => $item->getD3(),
 				'd'   => $item->getDall(),
 				'level' => 'Mức '.$item->getLevel()
-			);
+            ];
 
 			$i ++;
 		}
 
-		$tableData = array($pointData);
+		$tableData = [$pointData];
 
 		try {
 			$res = Mage::helper('bs_docx')->generateDocx($fileName, $template, $data, $tableData);
@@ -444,7 +444,7 @@ class BS_Report_Adminhtml_Report_QchaneffController extends BS_Sur_Controller_Ad
 		}
 
 		
-		$this->_redirect('*/*/', array('filter' => $this->getRequest()->getParam('filter')));
+		$this->_redirect('*/*/', ['filter' => $this->getRequest()->getParam('filter')]);
 	}
 
 	public function updateAction()
@@ -489,7 +489,7 @@ class BS_Report_Adminhtml_Report_QchaneffController extends BS_Sur_Controller_Ad
 
 
 
-		$result = array();
+		$result = [];
 		$result['filter'] = $filter;
 
 		$this->getResponse()->setBody(Mage::helper('core')->jsonEncode($result));
@@ -518,7 +518,7 @@ class BS_Report_Adminhtml_Report_QchaneffController extends BS_Sur_Controller_Ad
 		$this->_getSession()->addSuccess(Mage::helper('bs_report')->__('The report for %s-%s has been reset!', $requestData['month'], $requestData['year']));
 
 
-		$this->_redirect('*/*/', array('filter' => $filter));
+		$this->_redirect('*/*/', ['filter' => $filter]);
 	}
     /**
      * Check if admin has permissions to visit related pages

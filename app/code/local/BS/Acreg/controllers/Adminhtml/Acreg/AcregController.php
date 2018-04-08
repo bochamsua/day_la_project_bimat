@@ -146,7 +146,7 @@ class BS_Acreg_Adminhtml_Acreg_AcregController extends BS_Sur_Controller_Adminht
 		            );
 
 		            //back to new import
-		            $this->_redirect('*/*/new', array());
+		            $this->_redirect('*/*/new', []);
 		            return;
 
 	            }else {
@@ -164,7 +164,7 @@ class BS_Acreg_Adminhtml_Acreg_AcregController extends BS_Sur_Controller_Adminht
                 );
                 Mage::getSingleton('adminhtml/session')->setFormData(false);
                 if ($this->getRequest()->getParam('back')) {
-                    $this->_redirect('*/*/edit', array('id' => $acreg->getId()));
+                    $this->_redirect('*/*/edit', ['id' => $acreg->getId()]);
                     return;
                 }
                 $this->_redirect('*/*/');
@@ -172,7 +172,7 @@ class BS_Acreg_Adminhtml_Acreg_AcregController extends BS_Sur_Controller_Adminht
             } catch (Mage_Core_Exception $e) {
                 Mage::getSingleton('adminhtml/session')->addError($e->getMessage());
                 Mage::getSingleton('adminhtml/session')->setAcregData($data);
-                $this->_redirect('*/*/edit', array('id' => $this->getRequest()->getParam('id')));
+                $this->_redirect('*/*/edit', ['id' => $this->getRequest()->getParam('id')]);
                 return;
             } catch (Exception $e) {
                 Mage::logException($e);
@@ -180,7 +180,7 @@ class BS_Acreg_Adminhtml_Acreg_AcregController extends BS_Sur_Controller_Adminht
                     Mage::helper('bs_acreg')->__('There was a problem saving the a/c reg.')
                 );
                 Mage::getSingleton('adminhtml/session')->setAcregData($data);
-                $this->_redirect('*/*/edit', array('id' => $this->getRequest()->getParam('id')));
+                $this->_redirect('*/*/edit', ['id' => $this->getRequest()->getParam('id')]);
                 return;
             }
         }
@@ -210,12 +210,12 @@ class BS_Acreg_Adminhtml_Acreg_AcregController extends BS_Sur_Controller_Adminht
                 return;
             } catch (Mage_Core_Exception $e) {
                 Mage::getSingleton('adminhtml/session')->addError($e->getMessage());
-                $this->_redirect('*/*/edit', array('id' => $this->getRequest()->getParam('id')));
+                $this->_redirect('*/*/edit', ['id' => $this->getRequest()->getParam('id')]);
             } catch (Exception $e) {
                 Mage::getSingleton('adminhtml/session')->addError(
                     Mage::helper('bs_acreg')->__('There was an error deleting a/c reg.')
                 );
-                $this->_redirect('*/*/edit', array('id' => $this->getRequest()->getParam('id')));
+                $this->_redirect('*/*/edit', ['id' => $this->getRequest()->getParam('id')]);
                 Mage::logException($e);
                 return;
             }
@@ -381,7 +381,7 @@ class BS_Acreg_Adminhtml_Acreg_AcregController extends BS_Sur_Controller_Adminht
     }
 
 	public function updateAcregAction(){
-		$result = array();
+		$result = [];
 		$customerId = $this->getRequest()->getPost('customer_id');
 		$acTypeId = $this->getRequest()->getPost('ac_type');
 		$result['acreg'] = '<option value="">No A/C Reg</option>';

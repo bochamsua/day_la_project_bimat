@@ -86,7 +86,7 @@
 class StyleParser {
 
   // All CSS 2.1 properties, and their default values
-  static $aDefaultProperties = array(
+  static $aDefaultProperties = [
     "background_color" => "transparent",
     "background" => "",
     "border_collapse" => "separate",
@@ -144,7 +144,7 @@ class StyleParser {
     "text_transform" => "none",
     "vertical_align" => "baseline",
     "width" => "auto",
-  );
+  ];
 
   /**
    * Default font size, in points.
@@ -234,8 +234,8 @@ class StyleParser {
    */
   function __construct(StyleParsersheet $stylesheet) {
 
-    $this->_props = array();
-    $this->_important_props = array();
+    $this->_props = [];
+    $this->_important_props = [];
     $this->_stylesheet = $stylesheet;
     $this->_parent_font_size = null;
     $this->__font_size_calculated = false;
@@ -250,7 +250,7 @@ class StyleParser {
       };
 
       // Properties that inherit by default
-      self::$_inherited = array(//"azimuth",
+      self::$_inherited = [//"azimuth",
                                  "background_color",
                                  //"border_collapse",
                                  //"border_spacing",
@@ -295,7 +295,7 @@ class StyleParser {
                                  //"white_space",
                                  //"widows",
                                  //"word_spacing"
-                                 );
+      ];
     }
 
   }
@@ -317,7 +317,7 @@ class StyleParser {
   function length_in_pt($length, $ref_size = null) {
 
     if ( !is_array($length) )
-      $length = array($length);
+      $length = [$length];
 
     if ( !isset($ref_size) )
       $ref_size = $this->default_font_size;
@@ -499,7 +499,7 @@ class StyleParser {
    * @return array
    */
   function munge_colour($colour) {
-    static $cssColorNames = array("aliceblue" => "F0F8FF", "antiquewhite" => "FAEBD7", "aqua" => "00FFFF","aquamarine" => "7FFFD4", "azure" => "F0FFFF",
+    static $cssColorNames = ["aliceblue" => "F0F8FF", "antiquewhite" => "FAEBD7", "aqua" => "00FFFF","aquamarine" => "7FFFD4", "azure" => "F0FFFF",
     "beige" => "F5F5DC", "bisque" => "FFE4C4", "black" => "000000", "blanchedalmond" => "FFEBCD", "blue" => "0000FF", "blueviolet" => "8A2BE2", "brown" => "A52A2A",
     "burlywood" => "DEB887", "cadetblue" => "5F9EA0", "chartreuse" => "7FFF00", "chocolate" => "D2691E", "coral" => "FF7F50", "cornflowerblue" => "6495ED",
     "cornsilk" => "FFF8DC", "crimson" => "DC143C", "cyan" => "00FFFF", "darkblue" => "00008B", "darkcyan" => "008B8B", "darkgoldenrod" => "B8860B",
@@ -524,7 +524,7 @@ class StyleParser {
     "silver" => "C0C0C0", "skyblue" => "87CEEB", "slateblue" => "6A5ACD", "slategray" => "708090", "slategrey" => "708090", "snow" => "FFFAFA",
     "springgreen" => "00FF7F", "steelblue" => "4682B4", "tan" => "D2B48C", "teal" => "008080", "thistle" => "D8BFD8", "tomato" => "FF6347", "turquoise" => "40E0D0",
     "violet" => "EE82EE", "wheat" => "F5DEB3", "white" => "FFFFFF", "whitesmoke" => "F5F5F5", "yellow" => "FFFF00", "yellowgreen" => "9ACD32"
-    );
+    ];
 
     if ( is_array($colour) )
       // Assume the array has the right format...
@@ -601,7 +601,7 @@ class StyleParser {
   private function getArray($colour) {
 
     //$c = array(null, null, null, null, "hex" => null);
-    $c = array("hex" => null); //We only get the hex color
+    $c = ["hex" => null]; //We only get the hex color
     if (is_array($colour)) {
       $c = $colour;
       /*$c["c"] = $c[0];
@@ -674,7 +674,7 @@ class StyleParser {
     }
 
     if ( $prop !== "content" && $prop !== "font_family" && is_string($val) && strlen($val) > 5 && mb_strpos($val, "url") === false ) {
-      $val = mb_strtolower(trim(str_replace(array("\n", "\t"), array(" "), $val)));
+      $val = mb_strtolower(trim(str_replace(["\n", "\t"], [" "], $val)));
       $val = preg_replace("/([0-9]+) (pt|px|pc|em|ex|in|cm|mm|%)/S", "\\1\\2", $val);
     }
 
@@ -837,7 +837,7 @@ class StyleParser {
     if ( !isset($this->_parent_font_size) )
       $this->_parent_font_size = $this->default_font_size;
 
-    $font_size_keywords = array(
+    $font_size_keywords = [
       "xx-small" => 0.6,   // 3/5
       "x-small"  => 0.75,  // 3/4
       "small"    => 0.889, // 8/9
@@ -845,7 +845,7 @@ class StyleParser {
       "large"    => 1.2,   // 6/5
       "x-large"  => 1.5,   // 3/2
       "xx-large" => 2.0,   // 2/1
-    );
+    ];
 
     switch ($fs) {
     case "xx-small":
@@ -1236,7 +1236,7 @@ class StyleParser {
    */
   function set_background($val) {
     $col = null;
-    $pos = array();
+    $pos = [];
     $tmp = preg_replace("/\s*\,\s*/", ",", $val); // when rgb() has spaces
     $tmp = explode(" ", $tmp);
     $important = isset($this->_important_props["background"]);
@@ -1454,7 +1454,7 @@ class StyleParser {
     $this->_set_style_side_type('border',$side,'_width',self::$_defaults['border_'.$side.'_width'],$important);
     $this->_set_style_side_type('border',$side,'_color',self::$_defaults['border_'.$side.'_color'],$important);
 
-    $BORDER_STYLES = array("none", "hidden", "dotted", "dashed", "solid", "double", "groove", "ridge", "inset", "outset");
+    $BORDER_STYLES = ["none", "hidden", "dotted", "dashed", "solid", "double", "groove", "ridge", "inset", "outset"];
     foreach ($arr as $value) {
       $value = trim($value);
       if ( in_array($value, $BORDER_STYLES) ) {
@@ -1553,7 +1553,7 @@ $this->_set_border("left", $val, isset($this->_important_props['border_left']));
     $important = isset($this->_important_props["list_style"]);
     $arr = explode(" ", str_replace(",", " ", $val));
 
-    static $types = array(
+    static $types = [
       "disc", "circle", "square",
       "decimal-leading-zero", "decimal", "1",
       "lower-roman", "upper-roman", "a", "A",
@@ -1563,9 +1563,9 @@ $this->_set_border("left", $val, isset($this->_important_props['border_left']));
       "armenian", "georgian", "hebrew",
       "cjk-ideographic", "hiragana", "katakana",
       "hiragana-iroha", "katakana-iroha", "none"
-    );
+    ];
 
-    static $positions = array("inside", "outside");
+    static $positions = ["inside", "outside"];
 
     foreach ($arr as $value) {
       /* http://www.w3.org/TR/CSS21/generate.html#list-style
@@ -1611,7 +1611,7 @@ $this->_set_border("left", $val, isset($this->_important_props['border_left']));
 
     $parts = preg_split("/\s+/", $val);
 
-    $computed = array();
+    $computed = [];
     if ( preg_match($length_re, $parts[0]) ) {
       $computed[] = $this->length_in_pt($parts[0]);
 

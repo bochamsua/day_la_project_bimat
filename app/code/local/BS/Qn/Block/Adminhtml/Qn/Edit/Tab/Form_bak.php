@@ -31,7 +31,7 @@ class BS_Qn_Block_Adminhtml_Qn_Edit_Tab_Form extends Mage_Adminhtml_Block_Widget
         $this->setForm($form);
         $fieldset = $form->addFieldset(
             'qn_form',
-            array('legend' => Mage::helper('bs_qn')->__('QN'))
+            ['legend' => Mage::helper('bs_qn')->__('QN')]
         );
 
         $fieldset->addType(
@@ -65,23 +65,23 @@ class BS_Qn_Block_Adminhtml_Qn_Edit_Tab_Form extends Mage_Adminhtml_Block_Widget
         $fieldset->addField(
             'ref_id',
             'hidden',
-            array(
+            [
                 'label' => Mage::helper('bs_qn')->__('ref_id'),
                 'name'  => 'ref_id',
 
 
-            )
+            ]
         );
 
         $fieldset->addField(
             'ref_type',
             'hidden',
-            array(
+            [
                 'label' => Mage::helper('bs_qn')->__('ref_type'),
                 'name'  => 'ref_type',
 
 
-            )
+            ]
         );
 
         if($taskId){
@@ -91,28 +91,28 @@ class BS_Qn_Block_Adminhtml_Qn_Edit_Tab_Form extends Mage_Adminhtml_Block_Widget
             $fieldset->addField(
                 'task_id',
                 'select',
-                array(
+                [
                     'label' => Mage::helper('bs_qn')->__('Survey Code'),
                     'name'  => 'task_id',
                     'values'=> $tasks,
                     'disabled'  => $disable
-                )
+                ]
             );
 
             $subtasks = Mage::getResourceModel('bs_misc/subtask_collection');
             $subtasks->addFieldToFilter('task_id', $taskId);
             $subtasks = $subtasks->toOptionArray();
-            array_unshift($subtasks, array('value'=>'0', 'label'=>'N/A'));
+            array_unshift($subtasks, ['value'=>'0', 'label'=>'N/A']);
 
             $fieldset->addField(
                 'subtask_id',
                 'select',
-                array(
+                [
                     'label' => Mage::helper('bs_qn')->__('Source'),
                     'name'  => 'subtask_id',
                     'values'=> $subtasks,
                     'disabled'  => $disable
-                )
+                ]
             );
         }else {
             $label = 'Other';
@@ -122,60 +122,60 @@ class BS_Qn_Block_Adminhtml_Qn_Edit_Tab_Form extends Mage_Adminhtml_Block_Widget
             $fieldset->addField(
                 'task_id',
                 'select',
-                array(
+                [
                     'label' => Mage::helper('bs_qn')->__('Source'),
                     'name'  => 'task_id',
                     'values'=> [['value'=>'0', 'label'=>$label]],
                     'disabled'  => $disable
-                )
+                ]
             );
 
             $fieldset->addField(
                 'source_other',
                 'text',
-                array(
+                [
                     'label' => Mage::helper('bs_qn')->__('Source Other'),
                     'name'  => 'source_other',
                     'disabled'  => $disable
-                )
+                ]
             );
         }
 
 	    $fieldset->addField(
 		    'report_date',
 		    'date',
-		    array(
+		    [
 			    'label' => Mage::helper('bs_qn')->__('Report Date'),
 			    'name'  => 'report_date',
 
 			    'image' => $this->getSkinUrl('images/grid-cal.gif'),
 			    'format'  => Mage::app()->getLocale()->getDateFormat(Mage_Core_Model_Locale::FORMAT_TYPE_SHORT),
 			    'disabled'  => $disable
-		    )
+            ]
 	    );
 
 	    $fieldset->addField(
 		    'due_date',
 		    'date',
-		    array(
+		    [
 			    'label' => Mage::helper('bs_qn')->__('Due Date'),
 			    'name'  => 'due_date',
 
 			    'image' => $this->getSkinUrl('images/grid-cal.gif'),
 			    'format'  => Mage::app()->getLocale()->getDateFormat(Mage_Core_Model_Locale::FORMAT_TYPE_SHORT),
 			    'disabled'  => $disable
-		    )
+            ]
 	    );
 
         $fieldset->addField(
             'qn_source',
             'file',
-            array(
+            [
                 'label' => Mage::helper('bs_qn')->__('Source'),
                 'name'  => 'qn_source',
                 'disabled'  => $disable
 
-           )
+            ]
         );
 
 	    $depts = Mage::getResourceModel('bs_misc/department_collection');
@@ -183,57 +183,57 @@ class BS_Qn_Block_Adminhtml_Qn_Edit_Tab_Form extends Mage_Adminhtml_Block_Widget
 	    $fieldset->addField(
 		    'dept_id',
 		    'select',
-		    array(
+		    [
 			    'label'     => Mage::helper('bs_ncr')->__('Sent To'),
 			    'name'      => 'dept_id',
 			    'required'  => false,
 			    'values'    => $depts,
-		    )
+            ]
 	    );
 
 
 	    $fieldset->addField(
 		    'dept_id_cc',
 		    'select',
-		    array(
+		    [
 			    'label'     => Mage::helper('bs_ncr')->__('CC'),
 			    'name'      => 'dept_id_cc',
 			    'required'  => false,
 			    'values'    => $depts,
-		    )
+            ]
 	    );
 
 	    $fieldset->addField(
 		    'subject',
 		    'textarea',
-		    array(
+		    [
 			    'label' => Mage::helper('bs_qn')->__('Subject'),
 			    'name'  => 'subject',
 			    'disabled'  => $disable,
 			    'config' => $wysiwygConfig,
-		    )
+            ]
 	    );
 
 	    $fieldset->addField(
 		    'content',
 		    'textarea',
-		    array(
+		    [
 			    'label' => Mage::helper('bs_qn')->__('Content'),
 			    'name'  => 'content',
 			    'disabled'  => $disable,
 			    'config' => $wysiwygConfig,
-		    )
+            ]
 	    );
 
 	    $fieldset->addField(
 		    'remark_text',
 		    'textarea',
-		    array(
+		    [
 			    'label' => Mage::helper('bs_qn')->__('Remark'),
 			    'name'  => 'remark_text',
 			    'disabled'  => $disable,
 			    'config' => $wysiwygConfig,
-		    )
+            ]
 	    );
 
 
@@ -241,12 +241,12 @@ class BS_Qn_Block_Adminhtml_Qn_Edit_Tab_Form extends Mage_Adminhtml_Block_Widget
 		    $fieldset->addField(
 			    'qn_status',
 			    'select',
-			    array(
+			    [
 				    'label' => Mage::helper('bs_qn')->__('Status'),
 				    'name'  => 'qn_status',
 
 				    'values'=> Mage::getModel('bs_qn/qn_attribute_source_qnstatus')->getAllOptions(false),
-			    )
+                ]
 		    );
 
 		    /*$fieldset->addField(
@@ -263,7 +263,7 @@ class BS_Qn_Block_Adminhtml_Qn_Edit_Tab_Form extends Mage_Adminhtml_Block_Widget
 		    );*/
 	    }
 
-	    if(in_array($currentObj->getQnStatus(), array(2,3,4,5))){// && $currentObj->getAccept() == 1
+	    if(in_array($currentObj->getQnStatus(), [2,3,4,5])){// && $currentObj->getAccept() == 1
 		    $disableProof = false;
 		    if($currentObj->getQnStatus() == 3 && !$misc->isAdmin($currentObj)){//closed, disable but still allow admin edit
 			    $disableProof = true;
@@ -271,12 +271,12 @@ class BS_Qn_Block_Adminhtml_Qn_Edit_Tab_Form extends Mage_Adminhtml_Block_Widget
 		    $fieldset->addField(
 			    'remark',
 			    'file',
-			    array(
+			    [
 				    'label' => Mage::helper('adminhtml')->__('Proof of Close'),
 				    'name'  => 'remark',
 				    'disabled'  => $disableProof
 
-			    )
+                ]
 		    );
 
 	    }
@@ -379,13 +379,13 @@ class BS_Qn_Block_Adminhtml_Qn_Edit_Tab_Form extends Mage_Adminhtml_Block_Widget
         $fieldset->addField(
             'close_date',
             'date',
-            array(
+            [
                 'label' => Mage::helper('bs_qn')->__('Close Date'),
                 'name'  => 'close_date',
 
             'image' => $this->getSkinUrl('images/grid-cal.gif'),
             'format'  => Mage::app()->getLocale()->getDateFormat(Mage_Core_Model_Locale::FORMAT_TYPE_SHORT),
-           )
+            ]
         );
 
         if($misc->isManager($currentObj)){//manager
@@ -393,11 +393,11 @@ class BS_Qn_Block_Adminhtml_Qn_Edit_Tab_Form extends Mage_Adminhtml_Block_Widget
             $fieldset->addField(
                 'reject_reason',
                 'text',
-                array(
+                [
                     'label' => Mage::helper('bs_qn')->__('Reject Reason'),
                     'name'  => 'reject_reason',
 
-                )
+                ]
             );
         }
 
@@ -407,17 +407,17 @@ class BS_Qn_Block_Adminhtml_Qn_Edit_Tab_Form extends Mage_Adminhtml_Block_Widget
         $fieldset->addField(
             'self_remark',
             'textarea',
-            array(
+            [
                 'label' => Mage::helper('bs_qn')->__('Note'),
                 'name'  => 'self_remark'
 
-            )
+            ]
         );
 
 
         $formValues = Mage::registry('current_qn')->getDefaultValues();
         if (!is_array($formValues)) {
-            $formValues = array();
+            $formValues = [];
         }
         if (Mage::getSingleton('adminhtml/session')->getQnData()) {
             $formValues = array_merge($formValues, Mage::getSingleton('adminhtml/session')->getQnData());
@@ -426,11 +426,11 @@ class BS_Qn_Block_Adminhtml_Qn_Edit_Tab_Form extends Mage_Adminhtml_Block_Widget
             $formValues = array_merge($formValues, Mage::registry('current_qn')->getData());
         }
 
-        $formValues = array_merge($formValues, array(
+        $formValues = array_merge($formValues, [
             'ref_id'    => $refId,
             'ref_type'  => $refType
 
-        ));
+        ]);
 
         $form->setValues($formValues);
 

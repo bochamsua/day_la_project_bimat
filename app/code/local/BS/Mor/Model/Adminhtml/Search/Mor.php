@@ -24,27 +24,27 @@ class BS_Mor_Model_Adminhtml_Search_Mor extends Varien_Object
      */
     public function load()
     {
-        $arr = array();
+        $arr = [];
         if (!$this->hasStart() || !$this->hasLimit() || !$this->hasQuery()) {
             $this->setResults($arr);
             return $this;
         }
         $collection = Mage::getResourceModel('bs_mor/mor_collection')
-            ->addFieldToFilter('ref_no', array('like' => $this->getQuery().'%'))
+            ->addFieldToFilter('ref_no', ['like' => $this->getQuery().'%'])
             ->setCurPage($this->getStart())
             ->setPageSize($this->getLimit())
             ->load();
         foreach ($collection->getItems() as $mor) {
-            $arr[] = array(
+            $arr[] = [
                 'id'          => 'mor/1/'.$mor->getId(),
                 'type'        => Mage::helper('bs_mor')->__('MOR'),
                 'name'        => $mor->getRefNo(),
                 'description' => $mor->getRefNo(),
                 'url' => Mage::helper('adminhtml')->getUrl(
                     '*/mor_mor/edit',
-                    array('id'=>$mor->getId())
+                    ['id'=>$mor->getId()]
                 ),
-            );
+            ];
         }
         $this->setResults($arr);
         return $this;

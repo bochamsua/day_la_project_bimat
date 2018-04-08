@@ -239,7 +239,7 @@ class BS_Observation_Model_Observer
             $name = $block->getFormFieldName();
 
             //Inspectors
-            $ins = Mage::getModel('admin/user')->getCollection()->addFieldToFilter('user_id', array('gt' => 1));
+            $ins = Mage::getModel('admin/user')->getCollection()->addFieldToFilter('user_id', ['gt' => 1]);
 
             if(!$misc->isSuperAdmin() && !$misc->isAdmin()){
                 $ins->addFieldToFilter('region', $currentUser[2]);
@@ -261,14 +261,14 @@ class BS_Observation_Model_Observer
 
 
             $ins->load();
-            $inspectors = array();
+            $inspectors = [];
             foreach ($ins as $in) {
                 $inspectors[$in->getUserId()] = $in->getFirstname().' '.$in->getLastname();
             }
 
             //Managers
             $mans = Mage::getModel('admin/user')->getCollection()
-                ->addFieldToFilter('user_id', array('gt' => 1));
+                ->addFieldToFilter('user_id', ['gt' => 1]);
 
             if($misc->isQAAdmin() || $misc->isQCAdmin()){
                 $mans->addFieldToFilter('region', $currentUser[2]);
@@ -277,7 +277,7 @@ class BS_Observation_Model_Observer
 
             $mans->getSelect()->where("user_id IN (SELECT user_id FROM admin_role WHERE parent_id IN (5,9))");
             $mans->load();
-            $managers = array();
+            $managers = [];
             foreach ($mans as $m) {
                 $managers[$m->getUserId()] = $m->getFirstname().' '.$m->getLastname();
             }
@@ -455,11 +455,11 @@ class BS_Observation_Model_Observer
                 if($misc->canEdit($currentObj, null, $saveConds)){
                     $block->addButton(
                         'save_button',
-                        array(
+                        [
                             'label'   => Mage::helper('bs_misc')->__('Save'),
                             'onclick'   => "saveOnly()",
                             'class'   => 'save',
-                        )
+                        ]
                     );
                 }
 
@@ -468,32 +468,32 @@ class BS_Observation_Model_Observer
                     if(isset($this->_hasAddNewButton[$currentType])){
                         $block->addButton(
                             'new_button',
-                            array(
+                            [
                                 'label'   => Mage::helper('bs_misc')->__('Add New'),
                                 'onclick'   => 'setLocation(\'' . $block->getUrl('*/*/new', ['from'=>$currentObj->getId()]) .'\')',
                                 'class'   => 'add',
-                            )
+                            ]
                         );
                     }
                     if($misc->canDelete($currentObj, null, $saveConds)){
                         $block->addButton(
                             'delete_button',
-                            array(
+                            [
                                 'label'   => Mage::helper('bs_misc')->__('Delete'),
                                 'onclick'   => "deleteOnly()",
                                 'class'   => 'delete',
-                            )
+                            ]
                         );
                     }
 
                     if(in_array($currentType, $this->_hasPrintButton)){
                         $block->addButton(
                             'print_button',
-                            array(
+                            [
                                 'label'   => Mage::helper('bs_misc')->__('Print'),
                                 'onclick'   => "setLocation('{$block->getUrl('*/*/generate'.ucfirst($currentType), ['_current' => true])}')",
                                 'class'   => 'reset',
-                            )
+                            ]
                         );
                     }
 
@@ -515,11 +515,11 @@ class BS_Observation_Model_Observer
                             if($misc->isOwner($currentObj)){
                                 $block->addButton(
                                     'submit_button',
-                                    array(
+                                    [
                                         'label'   => Mage::helper('bs_misc')->__('Submit'),
                                         'onclick'   => "submitFinishObj('{$currentType}','{$submitUrl}','{$this->_hasSubmitButton[$currentType]['submit']['require']}');",
                                         'class'   => 'save submit',
-                                    )
+                                    ]
                                 );
                             }
 
@@ -542,11 +542,11 @@ class BS_Observation_Model_Observer
                             if($misc->isOwner($currentObj)){
                                 $block->addButton(
                                     'finish_button',
-                                    array(
+                                    [
                                         'label'   => Mage::helper('bs_misc')->__('Finish'),
                                         'onclick'   => "submitFinishObj('{$currentType}','{$finishUrl}','{$this->_hasFinishButton[$currentType]['finish']['require']}');",
                                         'class'   => 'save submit',
-                                    )
+                                    ]
                                 );
                             }
 
@@ -588,20 +588,20 @@ class BS_Observation_Model_Observer
 
                             $block->addButton(
                                 'reject',
-                                array(
+                                [
                                     'label'   => Mage::helper('bs_misc')->__('Reject'),
                                     'onclick'   => "editForm.submit('{$rejectUrl}');",
                                     'class'   => 'save',
-                                )
+                                ]
                             );
 
                             $block->addButton(
                                 'accept',
-                                array(
+                                [
                                     'label'   => Mage::helper('bs_misc')->__('Accept'),
                                     'onclick'   => "editForm.submit('{$acceptUrl}');",
                                     'class'   => 'save',
-                                )
+                                ]
                             );
                         }
 
@@ -634,11 +634,11 @@ class BS_Observation_Model_Observer
 
                                 $block->addButton(
                                     'close_button',
-                                    array(
+                                    [
                                         'label'   => Mage::helper('bs_misc')->__('Close'),
                                         'onclick'   => "editForm.submit('{$closeUrl}');",
                                         'class'   => 'save closes',
-                                    )
+                                    ]
                                 );
                             }
 

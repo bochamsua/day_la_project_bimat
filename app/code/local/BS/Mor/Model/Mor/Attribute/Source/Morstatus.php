@@ -26,18 +26,18 @@ class BS_Mor_Model_Mor_Attribute_Source_Morstatus
      */
     public function getAllOptions($withEmpty = true, $defaultValues = false)
     {
-        $options =  array(
-            array(
+        $options =  [
+            [
                 'label' => Mage::helper('bs_mor')->__('Draft'),
                 'value' => 0
-            ),
-            array(
+            ],
+            [
                 'label' => Mage::helper('bs_mor')->__('Closed'),
                 'value' => 1
-            ),
-        );
+            ],
+        ];
         if ($withEmpty) {
-            array_unshift($options, array('label'=>'', 'value'=>''));
+            array_unshift($options, ['label'=>'', 'value'=>'']);
         }
         return $options;
 
@@ -53,7 +53,7 @@ class BS_Mor_Model_Mor_Attribute_Source_Morstatus
      */
     public function getOptionsArray($withEmpty = true)
     {
-        $options = array();
+        $options = [];
         foreach ($this->getAllOptions($withEmpty) as $option) {
             $options[$option['value']] = $option['label'];
         }
@@ -74,7 +74,7 @@ class BS_Mor_Model_Mor_Attribute_Source_Morstatus
         if (!is_array($value)) {
             $value = explode(',', $value);
         }
-        $texts = array();
+        $texts = [];
         foreach ($value as $v) {
             if (isset($options[$v])) {
                 $texts[] = $options[$v];

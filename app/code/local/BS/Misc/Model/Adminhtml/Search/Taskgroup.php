@@ -24,27 +24,27 @@ class BS_Misc_Model_Adminhtml_Search_Taskgroup extends Varien_Object
      */
     public function load()
     {
-        $arr = array();
+        $arr = [];
         if (!$this->hasStart() || !$this->hasLimit() || !$this->hasQuery()) {
             $this->setResults($arr);
             return $this;
         }
         $collection = Mage::getResourceModel('bs_misc/taskgroup_collection')
-            ->addFieldToFilter('group_name', array('like' => $this->getQuery().'%'))
+            ->addFieldToFilter('group_name', ['like' => $this->getQuery().'%'])
             ->setCurPage($this->getStart())
             ->setPageSize($this->getLimit())
             ->load();
         foreach ($collection->getItems() as $taskgroup) {
-            $arr[] = array(
+            $arr[] = [
                 'id'          => 'taskgroup/1/'.$taskgroup->getId(),
                 'type'        => Mage::helper('bs_misc')->__('Survey Group'),
                 'name'        => $taskgroup->getGroupName(),
                 'description' => $taskgroup->getGroupName(),
                 'url' => Mage::helper('adminhtml')->getUrl(
                     '*/misc_taskgroup/edit',
-                    array('id'=>$taskgroup->getId())
+                    ['id'=>$taskgroup->getId()]
                 ),
-            );
+            ];
         }
         $this->setResults($arr);
         return $this;

@@ -40,14 +40,14 @@ class BS_Kpi_Block_Adminhtml_Kpi_Edit_Tabs extends Mage_Adminhtml_Block_Widget_T
     {
         $this->addTab(
             'form_kpi',
-            array(
+            [
                 'label'   => Mage::helper('bs_kpi')->__('KPI Data'),
                 'title'   => Mage::helper('bs_kpi')->__('KPI Data'),
                 'content' => $this->getLayout()->createBlock(
                     'bs_kpi/adminhtml_kpi_edit_tab_form'
                 )
                 ->toHtml(),
-            )
+            ]
         );
         return parent::_beforeToHtml();
     }

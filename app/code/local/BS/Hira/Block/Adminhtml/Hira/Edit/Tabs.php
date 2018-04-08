@@ -40,14 +40,14 @@ class BS_Hira_Block_Adminhtml_Hira_Edit_Tabs extends Mage_Adminhtml_Block_Widget
     {
         $this->addTab(
             'form_hira',
-            array(
+            [
                 'label'   => Mage::helper('bs_hira')->__('HIRA'),
                 'title'   => Mage::helper('bs_hira')->__('HIRA'),
                 'content' => $this->getLayout()->createBlock(
                     'bs_hira/adminhtml_hira_edit_tab_form'
                 )
                 ->toHtml(),
-            )
+            ]
         );
         return parent::_beforeToHtml();
     }

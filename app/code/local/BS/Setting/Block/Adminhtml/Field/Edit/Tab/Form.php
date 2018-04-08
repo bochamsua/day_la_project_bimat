@@ -30,27 +30,27 @@ class BS_Setting_Block_Adminhtml_Field_Edit_Tab_Form extends Mage_Adminhtml_Bloc
         $this->setForm($form);
         $fieldset = $form->addFieldset(
             'field_form',
-            array('legend' => Mage::helper('bs_setting')->__('Field Dependance'))
+            ['legend' => Mage::helper('bs_setting')->__('Field Dependance')]
         );
 
         $fieldset->addField(
             'name',
             'text',
-            array(
+            [
                 'label' => Mage::helper('bs_setting')->__('Field Name Suffix'),
                 'name'  => 'name',
 
-           )
+            ]
         );
 
         $fieldset->addField(
             'definition',
             'textarea',
-            array(
+            [
                 'label' => Mage::helper('bs_setting')->__('Dependences Definition'),
                 'name'  => 'definition',
 
-           )
+            ]
         );
         /*$fieldset->addField(
             'status',
@@ -72,7 +72,7 @@ class BS_Setting_Block_Adminhtml_Field_Edit_Tab_Form extends Mage_Adminhtml_Bloc
         );*/
         $formValues = Mage::registry('current_field')->getDefaultValues();
         if (!is_array($formValues)) {
-            $formValues = array();
+            $formValues = [];
         }
         if (Mage::getSingleton('adminhtml/session')->getFieldData()) {
             $formValues = array_merge($formValues, Mage::getSingleton('adminhtml/session')->getFieldData());

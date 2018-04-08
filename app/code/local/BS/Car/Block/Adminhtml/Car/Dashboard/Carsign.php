@@ -47,13 +47,13 @@ class BS_Car_Block_Adminhtml_Car_Dashboard_Carsign extends BS_Rewriting_Block_Ad
         $currentUser = $this->helper('bs_misc')->getCurrentUserInfo();
         $collection = Mage::getModel('bs_car/car')
             ->getCollection()
-	        ->addFieldToFilter('car_status', array('eq'=>0))
+	        ->addFieldToFilter('car_status', ['eq'=>0])
             ->addFieldToFilter('region', $currentUser[2])
             ->addFieldToFilter('section', $currentUser[3])
-            ->addFieldToFilter('accept', array(
-                array('eq' => 0),
-                array('null' => true),
-            ))
+            ->addFieldToFilter('accept', [
+                ['eq' => 0],
+                ['null' => true],
+            ])
             ->setOrder('ref_no', 'DESC')
 
         ;
@@ -68,21 +68,21 @@ class BS_Car_Block_Adminhtml_Car_Dashboard_Carsign extends BS_Rewriting_Block_Ad
     {
         $this->addColumn(
             'ref_no',
-            array(
+            [
                 'header'    => Mage::helper('bs_car')->__('Reference No'),
                 'align'     => 'left',
                 'index'     => 'ref_no',
-            )
+            ]
         );
 
         $this->addColumn(
             'report_date',
-            array(
+            [
                 'header' => Mage::helper('bs_car')->__('Report Date'),
                 'index'  => 'report_date',
                 'type'=> 'date',
 
-            )
+            ]
         );
 
 
@@ -96,6 +96,6 @@ class BS_Car_Block_Adminhtml_Car_Dashboard_Carsign extends BS_Rewriting_Block_Ad
 
     public function getRowUrl($row)
     {
-        return $this->getUrl('*/car_car/edit', array('id' => $row->getId()));
+        return $this->getUrl('*/car_car/edit', ['id' => $row->getId()]);
     }
 }

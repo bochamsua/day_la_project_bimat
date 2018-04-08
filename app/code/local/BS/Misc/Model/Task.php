@@ -134,7 +134,7 @@ class BS_Misc_Model_Task extends Mage_Core_Model_Abstract
      */
     public function getDefaultValues()
     {
-        $values = array();
+        $values = [];
         $values['status'] = 1;
         return $values;
     }

@@ -26,38 +26,38 @@ class BS_Mor_Model_Mor_Attribute_Source_Morfilter
      */
     public function getAllOptions($withEmpty = true, $defaultValues = false)
     {
-        $options =  array(
-            array(
+        $options =  [
+            [
                 'label' => Mage::helper('bs_mor')->__('Equipment reliability'),
                 'value' => 1
-            ),
-            array(
+            ],
+            [
                 'label' => Mage::helper('bs_mor')->__('Lightning strike '),
                 'value' => 2
-            ),
-            array(
+            ],
+            [
                 'label' => Mage::helper('bs_mor')->__('Bird strike'),
                 'value' => 3
-            ),
-            array(
+            ],
+            [
                 'label' => Mage::helper('bs_mor')->__('Objective'),
                 'value' => 4
-            ),
-            array(
+            ],
+            [
                 'label' => Mage::helper('bs_mor')->__('Human error'),
                 'value' => 5
-            ),
-            array(
+            ],
+            [
                 'label' => Mage::helper('bs_mor')->__('Hard landing'),
                 'value' => 6
-            ),
-            array(
+            ],
+            [
                 'label' => Mage::helper('bs_mor')->__('Other'),
                 'value' => 7
-            ),
-        );
+            ],
+        ];
         if ($withEmpty) {
-            array_unshift($options, array('label'=>'', 'value'=>''));
+            array_unshift($options, ['label'=>'', 'value'=>'']);
         }
         return $options;
 
@@ -73,7 +73,7 @@ class BS_Mor_Model_Mor_Attribute_Source_Morfilter
      */
     public function getOptionsArray($withEmpty = true)
     {
-        $options = array();
+        $options = [];
         foreach ($this->getAllOptions($withEmpty) as $option) {
             $options[$option['value']] = $option['label'];
         }
@@ -94,7 +94,7 @@ class BS_Mor_Model_Mor_Attribute_Source_Morfilter
         if (!is_array($value)) {
             $value = explode(',', $value);
         }
-        $texts = array();
+        $texts = [];
         foreach ($value as $v) {
             if (isset($options[$v])) {
                 $texts[] = $options[$v];

@@ -40,14 +40,14 @@ class BS_Safety_Block_Adminhtml_Safety_Edit_Tabs extends Mage_Adminhtml_Block_Wi
     {
         $this->addTab(
             'form_safety',
-            array(
+            [
                 'label'   => Mage::helper('bs_safety')->__('Safety Data'),
                 'title'   => Mage::helper('bs_safety')->__('Safety Data'),
                 'content' => $this->getLayout()->createBlock(
                     'bs_safety/adminhtml_safety_edit_tab_form'
                 )
                 ->toHtml(),
-            )
+            ]
         );
         return parent::_beforeToHtml();
     }

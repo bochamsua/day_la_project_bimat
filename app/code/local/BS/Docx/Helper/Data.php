@@ -27,7 +27,7 @@ class BS_Docx_Helper_Data extends Mage_Core_Helper_Abstract
      */
     public function convertOptions($options)
     {
-        $converted = array();
+        $converted = [];
         foreach ($options as $option) {
             if (isset($option['value']) && !is_array($option['value']) &&
                 isset($option['label']) && !is_array($option['label'])) {
@@ -70,7 +70,7 @@ class BS_Docx_Helper_Data extends Mage_Core_Helper_Abstract
             }
         }
         if($replaceContent){
-            $docx->replaceVariableByExternalFile(array('content'=>$replaceContent),array());
+            $docx->replaceVariableByExternalFile(['content'=>$replaceContent], []);
         }
         if($content){
             if(count($content)){
@@ -92,7 +92,7 @@ class BS_Docx_Helper_Data extends Mage_Core_Helper_Abstract
                     }
 
                     $content = '<div style="font-family: Arial;">'.$content.'</div>';
-                    $docx->replaceVariableByHTML($ht['code'], $ht['type'], $content, array('isFile' => false, 'parseDivsAsPs' => true, 'downloadImages' => false, 'strictWordStyles' => false));
+                    $docx->replaceVariableByHTML($ht['code'], $ht['type'], $content, ['isFile' => false, 'parseDivsAsPs' => true, 'downloadImages' => false, 'strictWordStyles' => false]);
 
                 }
 
@@ -103,19 +103,19 @@ class BS_Docx_Helper_Data extends Mage_Core_Helper_Abstract
         if($tableHtml){
 
             if($tableHtml['type'] == 'embed'){
-                $docx->embedHTML($tableHtml['content'], array('customListStyles'=>true));
+                $docx->embedHTML($tableHtml['content'], ['customListStyles'=>true]);
             }else {
                 if(isset($tableHtml['isarray'])){
                     foreach ($tableHtml['array'] as $key=>$value ) {
                     	//make sure to escape those special characters
-	                    $value = str_replace(array("&"),array("&amp;"),$value);
-                        $docx->replaceVariableByWordML(array($key => $value));
+	                    $value = str_replace(["&"], ["&amp;"],$value);
+                        $docx->replaceVariableByWordML([$key => $value]);
                     }
 
                 }else {
-	                $tableHtml['content'] = str_replace(array("&"),array("&amp;"),$tableHtml['content']);
+	                $tableHtml['content'] = str_replace(["&"], ["&amp;"],$tableHtml['content']);
 
-                    $docx->replaceVariableByWordML(array($tableHtml['variable'] => $tableHtml['content']));
+                    $docx->replaceVariableByWordML([$tableHtml['variable'] => $tableHtml['content']]);
                 }
 
             }
@@ -125,7 +125,7 @@ class BS_Docx_Helper_Data extends Mage_Core_Helper_Abstract
 
         if($footer){
             //$docx->replaceVariableByExternalFile(array('footer'=>$footer),array());
-            $docx->addExternalFile(array('src' => $footer));
+            $docx->addExternalFile(['src' => $footer]);
         }
 
         if(count($images)){
@@ -134,10 +134,10 @@ class BS_Docx_Helper_Data extends Mage_Core_Helper_Abstract
 		        if(is_array($image)){
                     $img->addImage(array_merge(['src' => $image['image']], $image['options']));
                 }else {
-                    $img->addImage(array('src' => $image , 'float' => 'right', 'textWrap' => 3, 'width' => 99, 'height' => 49, 'verticalOffset' => -360000));
+                    $img->addImage(['src' => $image , 'float' => 'right', 'textWrap' => 3, 'width' => 99, 'height' => 49, 'verticalOffset' => -360000]);
                 }
 
-		        $docx->replaceVariableByWordFragment(array($key => $img), array('type' => 'inline'));
+		        $docx->replaceVariableByWordFragment([$key => $img], ['type' => 'inline']);
 	        }
 
 
@@ -166,10 +166,10 @@ class BS_Docx_Helper_Data extends Mage_Core_Helper_Abstract
 
         if($res){
 
-            return array(
+            return [
                 'name'  => $filename,
                 'url'   => $finalUrl.$filename.'.docx'
-            );
+            ];
         }
 
         return false;
@@ -226,7 +226,7 @@ class BS_Docx_Helper_Data extends Mage_Core_Helper_Abstract
 
 	public function convertToUnsign($cs, $case = null)
 	{
-		$vietnamese = array("à", "á", "ạ", "ả", "ã", "â", "ầ", "ấ", "ậ", "ẩ", "ẫ", "ă",
+		$vietnamese = ["à", "á", "ạ", "ả", "ã", "â", "ầ", "ấ", "ậ", "ẩ", "ẫ", "ă",
 			"ằ", "ắ", "ặ", "ẳ", "ẵ", "è", "é", "ẹ", "ẻ", "ẽ", "ê", "ề",
 			"ế", "ệ", "ể", "ễ",
 			"ì", "í", "ị", "ỉ", "ĩ",
@@ -242,9 +242,9 @@ class BS_Docx_Helper_Data extends Mage_Core_Helper_Abstract
 			"Ò", "Ó", "Ọ", "Ỏ", "Õ", "Ô", "Ồ", "Ố", "Ộ", "Ổ", "Ỗ", "Ơ", "Ờ", "Ớ", "Ợ", "Ở", "Ỡ",
 			"Ù", "Ú", "Ụ", "Ủ", "Ũ", "Ư", "Ừ", "Ứ", "Ự", "Ử", "Ữ",
 			"Ỳ", "Ý", "Ỵ", "Ỷ", "Ỹ",
-			"Đ");
+			"Đ"];
 
-		$vietnameseUnsign = array("a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a",
+		$vietnameseUnsign = ["a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a",
 			"a", "a", "a", "a", "a", "a",
 			"e", "e", "e", "e", "e", "e", "e", "e", "e", "e", "e",
 			"i", "i", "i", "i", "i",
@@ -260,10 +260,10 @@ class BS_Docx_Helper_Data extends Mage_Core_Helper_Abstract
 			"O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O",
 			"U", "U", "U", "U", "U", "U", "U", "U", "U", "U", "U",
 			"Y", "Y", "Y", "Y", "Y",
-			"D");
+			"D"];
 
 
-		$trans = array(
+		$trans = [
 			'á' => 'a', 'à' => 'a', 'ả' => 'a', 'ã' => 'a', 'ạ' => 'a',
 			'ắ' => 'a', 'ằ' => 'a', 'ẳ' => 'a', 'ẵ' => 'a', 'ặ' => 'a', 'ă' => 'a',
 			'ấ' => 'a', 'ầ' => 'a', 'ẩ' => 'a', 'ẫ' => 'a', 'ậ' => 'a', 'â' => 'a',
@@ -289,7 +289,7 @@ class BS_Docx_Helper_Data extends Mage_Core_Helper_Abstract
 			'Ứ' => 'u', 'Ừ' => 'u', 'Ử' => 'u', 'Ữ' => 'u', 'Ự' => 'u', 'Ư' => 'u',
 			'ý' => 'y', 'ỳ' => 'y', 'ỷ' => 'y', 'ỹ' => 'y', 'ỵ' => 'y',
 			'Ý' => 'y', 'Ỳ' => 'y', 'Ỷ' => 'y', 'Ỹ' => 'y', 'Ỵ' => 'y'
-		);
+        ];
 
 		$result = str_replace($vietnamese, $vietnameseUnsign, $cs);
 

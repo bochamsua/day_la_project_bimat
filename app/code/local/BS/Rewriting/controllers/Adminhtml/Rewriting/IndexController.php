@@ -36,7 +36,7 @@ class BS_Rewriting_Adminhtml_Rewriting_IndexController extends Mage_Adminhtml_Co
 
 	public function loginAsOtherAction()
 	{
-		$result = array();
+		$result = [];
 
 		$session = Mage::getSingleton('admin/session');
 		$currentUser = $session->getUser();

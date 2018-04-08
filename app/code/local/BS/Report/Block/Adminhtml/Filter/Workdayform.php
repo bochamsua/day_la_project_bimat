@@ -19,11 +19,11 @@ class BS_Report_Block_Adminhtml_Filter_Workdayform extends Mage_Adminhtml_Block_
     {
         $actionUrl = $this->getUrl('*/*/report');
         $form = new Varien_Data_Form(
-            array('id' => 'filter_form', 'action' => $actionUrl, 'method' => 'get')
+            ['id' => 'filter_form', 'action' => $actionUrl, 'method' => 'get']
         );
         $htmlIdPrefix = 'report_';
         $form->setHtmlIdPrefix($htmlIdPrefix);
-        $fieldset = $form->addFieldset('base_fieldset', array('legend'=>Mage::helper('bs_report')->__('Select Year to generate work days')));
+        $fieldset = $form->addFieldset('base_fieldset', ['legend'=>Mage::helper('bs_report')->__('Select Year to generate work days')]);
 
         $dateFormatIso = Mage::app()->getLocale()->getDateFormat(Mage_Core_Model_Locale::FORMAT_TYPE_SHORT);
 
@@ -62,12 +62,12 @@ class BS_Report_Block_Adminhtml_Filter_Workdayform extends Mage_Adminhtml_Block_
 		    'title' => Mage::helper('reports')->__('Month')
 	    ));*/
 
-	    $fieldset->addField('year', 'select', array(
+	    $fieldset->addField('year', 'select', [
 		    'name' => 'year',
 		    'options' => $this->helper('bs_report')->getYears(),
 		    'label' => Mage::helper('reports')->__('Year'),
 		    'title' => Mage::helper('reports')->__('Year')
-	    ));
+        ]);
 
         $form->setUseContainer(true);
         $this->setForm($form);
@@ -85,7 +85,7 @@ class BS_Report_Block_Adminhtml_Filter_Workdayform extends Mage_Adminhtml_Block_
 	public function getFilterUrl()
 	{
 		$this->getRequest()->setParam('filter', null);
-		return $this->getUrl('*/*/generateWorkday', array('_current' => true));
+		return $this->getUrl('*/*/generateWorkday', ['_current' => true]);
 	}
 
 	protected function _afterToHtml( $html ) {

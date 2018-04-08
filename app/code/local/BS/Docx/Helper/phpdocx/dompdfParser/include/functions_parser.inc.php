@@ -165,7 +165,7 @@ function build_url_parser($protocol, $host, $base_path, $url) {
 
   $ret = $protocol;
 
-  if (!in_array(mb_strtolower($protocol), array("http://", "https://", "ftp://", "ftps://"))) {
+  if (!in_array(mb_strtolower($protocol), ["http://", "https://", "ftp://", "ftps://"])) {
     //On Windows local file, an abs path can begin also with a '\' or a drive letter and colon
     //drive: followed by a relative path would be a drive specific default folder.
     //not known in php app code, treat as abs path
@@ -278,11 +278,11 @@ function explode_url_parser($url) {
     }
   }
 
-  $ret = array($protocol, $host, $path, $file,
+  $ret = [$protocol, $host, $path, $file,
                "protocol" => $protocol,
                "host" => $host,
                "path" => $path,
-               "file" => $file);
+               "file" => $file];
   return $ret;
 }
 
@@ -306,11 +306,11 @@ if ( !function_exists("mb_strlen") ) {
     }
   }
   
-  function mb_detect_encoding($data, $encoding_list = array('iso-8859-1'), $strict = false) {
+  function mb_detect_encoding($data, $encoding_list = ['iso-8859-1'], $strict = false) {
     return 'iso-8859-1';
   }
   
-  function mb_detect_order($encoding_list = array('iso-8859-1')) {
+  function mb_detect_order($encoding_list = ['iso-8859-1']) {
     return 'iso-8859-1';
   }
   
@@ -361,7 +361,7 @@ if ( !function_exists("mb_strlen") ) {
     return htmlspecialchars($str);
   }
   
-  function mb_convert_case($str, $mode = MB_CASE_UPPER, $encoding = array()) {
+  function mb_convert_case($str, $mode = MB_CASE_UPPER, $encoding = []) {
     switch($mode) {
       case MB_CASE_UPPER: return mb_strtoupper($str);
       case MB_CASE_LOWER: return mb_strtolower($str);
@@ -371,11 +371,11 @@ if ( !function_exists("mb_strlen") ) {
   }
   
   function mb_list_encodings() {
-    return array(
+    return [
       "ISO-8859-1",
       "UTF-8",
       "8bit",
-    );
+    ];
   }
 }
 
@@ -426,7 +426,7 @@ function rle8_decode_parser($str, $width){
 function rle4_decode_parser($str, $width) {
   $w = floor($width/2) + ($width % 2);
   $lineWidth = $w + (3 - ( ($width-1) / 2) % 4);
-  $pixels = array();
+  $pixels = [];
   $cnt = strlen($str);
   
   for ($i = 0; $i < $cnt; $i++) {
@@ -533,7 +533,7 @@ function imagecreatefrombmp($filename) {
   $meta['colors'] = !$meta['colors'] ? pow(2, $meta['bits']) : $meta['colors'];
   
   // read color palette
-  $palette = array();
+  $palette = [];
   if ($meta['bits'] < 16) {
     $palette = unpack('l' . $meta['colors'], fread($fh, $meta['colors'] * 4));
     // in rare cases the color value is signed

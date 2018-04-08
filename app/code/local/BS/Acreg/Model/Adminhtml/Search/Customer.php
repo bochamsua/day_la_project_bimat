@@ -24,27 +24,27 @@ class BS_Acreg_Model_Adminhtml_Search_Customer extends Varien_Object
      */
     public function load()
     {
-        $arr = array();
+        $arr = [];
         if (!$this->hasStart() || !$this->hasLimit() || !$this->hasQuery()) {
             $this->setResults($arr);
             return $this;
         }
         $collection = Mage::getResourceModel('bs_acreg/customer_collection')
-            ->addFieldToFilter('name', array('like' => $this->getQuery().'%'))
+            ->addFieldToFilter('name', ['like' => $this->getQuery().'%'])
             ->setCurPage($this->getStart())
             ->setPageSize($this->getLimit())
             ->load();
         foreach ($collection->getItems() as $customer) {
-            $arr[] = array(
+            $arr[] = [
                 'id'          => 'customer/1/'.$customer->getId(),
                 'type'        => Mage::helper('bs_acreg')->__('Customer'),
                 'name'        => $customer->getName(),
                 'description' => $customer->getName(),
                 'url' => Mage::helper('adminhtml')->getUrl(
                     '*/acreg_customer/edit',
-                    array('id'=>$customer->getId())
+                    ['id'=>$customer->getId()]
                 ),
-            );
+            ];
         }
         $this->setResults($arr);
         return $this;

@@ -18,10 +18,10 @@ class BS_Sur_Block_Adminhtml_Sur_Edit_Tab_Car extends Mage_Adminhtml_Block_Widge
     protected function _prepareLayout(){
         $this->setChild('add_car_button',
             $this->getLayout()->createBlock('adminhtml/widget_button')
-                ->setData(array(
+                ->setData([
                     'label'     => Mage::helper('adminhtml')->__('New CAR'),
-                    'onclick'   => 'window.open(\''.$this->getUrl('*/car_car/new', array('_current'=>false, 'ref_type'=>'sur', 'task_id'=>$this->getSur()->getTaskId(), 'ref_id'=>$this->getSur()->getId(),'popup'=>true)).'\',\'\',\'width=1000,height=700,resizable=1,scrollbars=1\')'
-                ))
+                    'onclick'   => 'window.open(\''.$this->getUrl('*/car_car/new', ['_current'=>false, 'ref_type'=>'sur', 'task_id'=>$this->getSur()->getTaskId(), 'ref_id'=>$this->getSur()->getId(),'popup'=>true]).'\',\'\',\'width=1000,height=700,resizable=1,scrollbars=1\')'
+                ])
         );
 
 
@@ -77,53 +77,53 @@ class BS_Sur_Block_Adminhtml_Sur_Edit_Tab_Car extends Mage_Adminhtml_Block_Widge
     {
         $this->addColumn(
             'ref_no',
-            array(
+            [
                 'header'    => Mage::helper('bs_car')->__('Reference No'),
                 'align'     => 'left',
                 'index'     => 'ref_no',
-            )
+            ]
         );
 
 
         $this->addColumn(
             'ins_id',
-            array(
+            [
                 'header' => Mage::helper('bs_car')->__('Inspector'),
                 'index'  => 'ins_id',
                 'type'=> 'number',
 
-            )
+            ]
         );
         $this->addColumn(
             'report_date',
-            array(
+            [
                 'header' => Mage::helper('bs_car')->__('Report Date'),
                 'index'  => 'report_date',
                 'type'=> 'date',
 
-            )
+            ]
         );
         $this->addColumn(
             'ref_doc',
-            array(
+            [
                 'header' => Mage::helper('bs_car')->__('Ref Doc'),
                 'index'  => 'ref_doc',
                 'type'=> 'text',
 
-            )
+            ]
         );
         $this->addColumn(
             'ac',
-            array(
+            [
                 'header' => Mage::helper('bs_car')->__('A/C'),
                 'index'  => 'ac',
                 'type'=> 'text',
 
-            )
+            ]
         );
         $this->addColumn(
             'qr_type',
-            array(
+            [
                 'header' => Mage::helper('bs_car')->__('Type'),
                 'index'  => 'qr_type',
                 'type'  => 'options',
@@ -131,16 +131,16 @@ class BS_Sur_Block_Adminhtml_Sur_Edit_Tab_Car extends Mage_Adminhtml_Block_Widge
                     Mage::getModel('bs_car/car_attribute_source_qrtype')->getAllOptions(false)
                 )
 
-            )
+            ]
         );
         $this->addColumn(
             'due_date',
-            array(
+            [
                 'header' => Mage::helper('bs_car')->__('Due Date'),
                 'index'  => 'due_date',
                 'type'=> 'date',
 
-            )
+            ]
         );
 
         $this->setFilterVisibility(false);
@@ -173,7 +173,7 @@ class BS_Sur_Block_Adminhtml_Sur_Edit_Tab_Car extends Mage_Adminhtml_Block_Widge
      */
     public function getRowUrl($row)
     {
-        return $this->getUrl('*/car_car/edit', array('id' => $row->getId()));
+        return $this->getUrl('*/car_car/edit', ['id' => $row->getId()]);
     }
 
     /**
@@ -185,7 +185,7 @@ class BS_Sur_Block_Adminhtml_Sur_Edit_Tab_Car extends Mage_Adminhtml_Block_Widge
      */
     public function getGridUrl()
     {
-        return $this->getUrl('*/*/carsGrid', array('_current'=>true));
+        return $this->getUrl('*/*/carsGrid', ['_current'=>true]);
     }
 
     public function getSur()

@@ -18,10 +18,10 @@ class BS_Concession_Block_Adminhtml_Concession_Edit_Tab_Ir extends Mage_Adminhtm
     protected function _prepareLayout(){
         $this->setChild('add_ir_button',
             $this->getLayout()->createBlock('adminhtml/widget_button')
-                ->setData(array(
+                ->setData([
                     'label'     => Mage::helper('adminhtml')->__('New IR'),
-                    'onclick'   => 'window.open(\''.$this->getUrl('*/ir_ir/new', array('_current'=>false, 'ref_type'=>'concession', 'task_id'=>$this->getConcession()->getTaskId(), 'ref_id'=>$this->getConcession()->getId(),'popup'=>true)).'\',\'\',\'width=1000,height=700,resizable=1,scrollbars=1\')'
-                ))
+                    'onclick'   => 'window.open(\''.$this->getUrl('*/ir_ir/new', ['_current'=>false, 'ref_type'=>'concession', 'task_id'=>$this->getConcession()->getTaskId(), 'ref_id'=>$this->getConcession()->getId(),'popup'=>true]).'\',\'\',\'width=1000,height=700,resizable=1,scrollbars=1\')'
+                ])
         );
 
 
@@ -85,49 +85,49 @@ class BS_Concession_Block_Adminhtml_Concession_Edit_Tab_Ir extends Mage_Adminhtm
 
         $this->addColumn(
             'ref_no',
-            array(
+            [
                 'header'    => Mage::helper('bs_ir')->__('Reference No'),
                 'align'     => 'left',
                 'index'     => 'ref_no',
-            )
+            ]
         );
 
 
         $this->addColumn(
             'dept_id',
-            array(
+            [
                 'header' => Mage::helper('bs_ir')->__('Maint. Center'),
                 'index'  => 'dept_id',
                 'type'=> 'number',
 
-            )
+            ]
         );
         $this->addColumn(
             'loc_id',
-            array(
+            [
                 'header' => Mage::helper('bs_ir')->__('Location'),
                 'index'  => 'loc_id',
                 'type'=> 'number',
 
-            )
+            ]
         );
         $this->addColumn(
             'ac_reg',
-            array(
+            [
                 'header' => Mage::helper('bs_ir')->__('A/C Reg'),
                 'index'  => 'ac_reg',
                 'type'=> 'text',
 
-            )
+            ]
         );
         $this->addColumn(
             'inspection_date',
-            array(
+            [
                 'header' => Mage::helper('bs_ir')->__('Date of Inspection'),
                 'index'  => 'inspection_date',
                 'type'=> 'date',
 
-            )
+            ]
         );
 
         $this->setFilterVisibility(false);
@@ -160,7 +160,7 @@ class BS_Concession_Block_Adminhtml_Concession_Edit_Tab_Ir extends Mage_Adminhtm
      */
     public function getRowUrl($row)
     {
-        return $this->getUrl('*/ir_ir/edit', array('id' => $row->getId()));
+        return $this->getUrl('*/ir_ir/edit', ['id' => $row->getId()]);
     }
 
     /**
@@ -172,7 +172,7 @@ class BS_Concession_Block_Adminhtml_Concession_Edit_Tab_Ir extends Mage_Adminhtm
      */
     public function getGridUrl()
     {
-        return $this->getUrl('*/*/irsGrid', array('_current'=>true));
+        return $this->getUrl('*/*/irsGrid', ['_current'=>true]);
     }
 
     public function getConcession()

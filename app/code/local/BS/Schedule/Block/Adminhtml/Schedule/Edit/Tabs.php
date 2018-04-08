@@ -40,14 +40,14 @@ class BS_Schedule_Block_Adminhtml_Schedule_Edit_Tabs extends Mage_Adminhtml_Bloc
     {
         $this->addTab(
             'form_schedule',
-            array(
+            [
                 'label'   => Mage::helper('bs_schedule')->__('Schedule'),
                 'title'   => Mage::helper('bs_schedule')->__('Schedule'),
                 'content' => $this->getLayout()->createBlock(
                     'bs_schedule/adminhtml_schedule_edit_tab_form'
                 )
                 ->toHtml(),
-            )
+            ]
         );
         return parent::_beforeToHtml();
     }

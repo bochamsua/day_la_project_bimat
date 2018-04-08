@@ -88,7 +88,7 @@ class BS_HR_Model_Staff extends Mage_Core_Model_Abstract
      */
     public function getDefaultValues()
     {
-        $values = array();
+        $values = [];
         $values['status'] = 1;
         $values['region'] = '4';
 

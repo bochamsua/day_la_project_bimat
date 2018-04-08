@@ -18,10 +18,10 @@ $this->getConnection()
     ->addColumn(
         $this->getTable('bs_hira/hira'),
         'hira_source',
-        array(
+        [
             'type' => Varien_Db_Ddl_Table::TYPE_TEXT,
             'comment'   => 'Source'
-        )
+        ]
     )
 ;
 $this->endSetup();

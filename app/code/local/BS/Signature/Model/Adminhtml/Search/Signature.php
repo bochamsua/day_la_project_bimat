@@ -24,27 +24,27 @@ class BS_Signature_Model_Adminhtml_Search_Signature extends Varien_Object
      */
     public function load()
     {
-        $arr = array();
+        $arr = [];
         if (!$this->hasStart() || !$this->hasLimit() || !$this->hasQuery()) {
             $this->setResults($arr);
             return $this;
         }
         $collection = Mage::getResourceModel('bs_signature/signature_collection')
-            ->addFieldToFilter('name', array('like' => $this->getQuery().'%'))
+            ->addFieldToFilter('name', ['like' => $this->getQuery().'%'])
             ->setCurPage($this->getStart())
             ->setPageSize($this->getLimit())
             ->load();
         foreach ($collection->getItems() as $signature) {
-            $arr[] = array(
+            $arr[] = [
                 'id'          => 'signature/1/'.$signature->getId(),
                 'type'        => Mage::helper('bs_signature')->__('Signature'),
                 'name'        => $signature->getName(),
                 'description' => $signature->getName(),
                 'url' => Mage::helper('adminhtml')->getUrl(
                     '*/signature_signature/edit',
-                    array('id'=>$signature->getId())
+                    ['id'=>$signature->getId()]
                 ),
-            );
+            ];
         }
         $this->setResults($arr);
         return $this;

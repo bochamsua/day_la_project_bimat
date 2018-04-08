@@ -30,19 +30,19 @@ class BS_CmrReport_Block_Adminhtml_Cmrreport_Edit_Tab_Form extends Mage_Adminhtm
         $this->setForm($form);
         $fieldset = $form->addFieldset(
             'cmrreport_form',
-            array('legend' => Mage::helper('bs_cmrreport')->__('CMR Report'))
+            ['legend' => Mage::helper('bs_cmrreport')->__('CMR Report')]
         );
 
         $fieldset->addField(
             'name',
             'text',
-            array(
+            [
                 'label' => Mage::helper('bs_cmrreport')->__('Name'),
                 'name'  => 'name',
             'required'  => true,
             'class' => 'required-entry',
 
-           )
+            ]
         );
         /*$fieldset->addField(
             'status',
@@ -64,7 +64,7 @@ class BS_CmrReport_Block_Adminhtml_Cmrreport_Edit_Tab_Form extends Mage_Adminhtm
         );*/
         $formValues = Mage::registry('current_cmrreport')->getDefaultValues();
         if (!is_array($formValues)) {
-            $formValues = array();
+            $formValues = [];
         }
         if (Mage::getSingleton('adminhtml/session')->getCmrreportData()) {
             $formValues = array_merge($formValues, Mage::getSingleton('adminhtml/session')->getCmrreportData());

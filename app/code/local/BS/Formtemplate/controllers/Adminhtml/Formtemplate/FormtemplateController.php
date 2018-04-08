@@ -119,7 +119,7 @@ class BS_Formtemplate_Adminhtml_Formtemplate_FormtemplateController extends BS_S
     {
         if ($data = $this->getRequest()->getPost('formtemplate')) {
             try {
-                $data = $this->_filterDates($data, array('template_date'));
+                $data = $this->_filterDates($data, ['template_date']);
                 $formtemplate = $this->_initFormtemplate();
                 $formtemplate->addData($data);
                 $templateFileName = $this->_uploadAndGetName(
@@ -138,7 +138,7 @@ class BS_Formtemplate_Adminhtml_Formtemplate_FormtemplateController extends BS_S
                 );
                 Mage::getSingleton('adminhtml/session')->setFormData(false);
                 if ($this->getRequest()->getParam('back')) {
-                    $this->_redirect('*/*/edit', array('id' => $formtemplate->getId()));
+                    $this->_redirect('*/*/edit', ['id' => $formtemplate->getId()]);
                     return;
                 }
                 $this->_redirect('*/*/');
@@ -149,7 +149,7 @@ class BS_Formtemplate_Adminhtml_Formtemplate_FormtemplateController extends BS_S
                 }
                 Mage::getSingleton('adminhtml/session')->addError($e->getMessage());
                 Mage::getSingleton('adminhtml/session')->setFormtemplateData($data);
-                $this->_redirect('*/*/edit', array('id' => $this->getRequest()->getParam('id')));
+                $this->_redirect('*/*/edit', ['id' => $this->getRequest()->getParam('id')]);
                 return;
             } catch (Exception $e) {
                 Mage::logException($e);
@@ -166,7 +166,7 @@ class BS_Formtemplate_Adminhtml_Formtemplate_FormtemplateController extends BS_S
                     Mage::helper('bs_formtemplate')->__('There was a problem saving the form template. %s', $error)
                 );
                 Mage::getSingleton('adminhtml/session')->setFormtemplateData($data);
-                $this->_redirect('*/*/edit', array('id' => $this->getRequest()->getParam('id')));
+                $this->_redirect('*/*/edit', ['id' => $this->getRequest()->getParam('id')]);
                 return;
             }
         }
@@ -196,12 +196,12 @@ class BS_Formtemplate_Adminhtml_Formtemplate_FormtemplateController extends BS_S
                 return;
             } catch (Mage_Core_Exception $e) {
                 Mage::getSingleton('adminhtml/session')->addError($e->getMessage());
-                $this->_redirect('*/*/edit', array('id' => $this->getRequest()->getParam('id')));
+                $this->_redirect('*/*/edit', ['id' => $this->getRequest()->getParam('id')]);
             } catch (Exception $e) {
                 Mage::getSingleton('adminhtml/session')->addError(
                     Mage::helper('bs_formtemplate')->__('There was an error deleting form template.')
                 );
-                $this->_redirect('*/*/edit', array('id' => $this->getRequest()->getParam('id')));
+                $this->_redirect('*/*/edit', ['id' => $this->getRequest()->getParam('id')]);
                 Mage::logException($e);
                 return;
             }

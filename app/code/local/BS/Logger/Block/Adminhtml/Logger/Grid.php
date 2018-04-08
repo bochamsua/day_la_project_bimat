@@ -58,58 +58,58 @@ class BS_Logger_Block_Adminhtml_Logger_Grid extends Mage_Adminhtml_Block_Widget_
     {
         $this->addColumn(
             'entity_id',
-            array(
+            [
                 'header' => Mage::helper('bs_logger')->__('Id'),
                 'index'  => 'entity_id',
                 'type'   => 'number',
                 'filter'    => false
-            )
+            ]
         );
-        $ins = Mage::getModel('admin/user')->getCollection()->addFieldToFilter('user_id', array('gt' => 1))->load();
-        $inspectors = array();
+        $ins = Mage::getModel('admin/user')->getCollection()->addFieldToFilter('user_id', ['gt' => 1])->load();
+        $inspectors = [];
         foreach ($ins as $in) {
             $inspectors[$in->getUserId()] = strtoupper($in->getUsername());
         }
         $this->addColumn(
             'user_id',
-            array(
+            [
                 'header'    => Mage::helper('bs_logger')->__('User'),
                 'index'     => 'user_id',
                 'type'      => 'options',
                 'options'   => $inspectors,
 
-            )
+            ]
         );
         
 
         $this->addColumn(
             'ip',
-            array(
+            [
                 'header' => Mage::helper('bs_logger')->__('IP Address'),
                 'index'  => 'ip',
                 'type'=> 'text',
 
-            )
+            ]
         );
 
         $this->addColumn(
-            'created_at', array(
+            'created_at', [
                 'header' => Mage::helper('bs_logger')->__('Date'),
                 'align' => 'left',
                 'width' => '150px',
                 'index' => 'created_at',
                 'type'=> 'text',
-            )
+            ]
         );
 
         $this->addColumn(
             'message',
-            array(
+            [
                 'header' => Mage::helper('bs_logger')->__('Message'),
                 'index'  => 'message',
                 'type'=> 'text',
 
-            )
+            ]
         );
         /*$this->addColumn(
             'status',
@@ -167,11 +167,11 @@ class BS_Logger_Block_Adminhtml_Logger_Grid extends Mage_Adminhtml_Block_Widget_
         if($isAllowedDelete){
             $this->getMassactionBlock()->addItem(
                 'delete',
-                array(
+                [
                     'label'=> Mage::helper('bs_logger')->__('Delete'),
                     'url'  => $this->getUrl('*/*/massDelete'),
                     'confirm'  => Mage::helper('bs_logger')->__('Are you sure?')
-                )
+                ]
             );
         }
 
@@ -189,7 +189,7 @@ class BS_Logger_Block_Adminhtml_Logger_Grid extends Mage_Adminhtml_Block_Widget_
      */
     public function getRowUrl($row)
     {
-        return $this->getUrl('*/*/edit', array('id' => $row->getId()));
+        return $this->getUrl('*/*/edit', ['id' => $row->getId()]);
     }
 
     /**
@@ -201,7 +201,7 @@ class BS_Logger_Block_Adminhtml_Logger_Grid extends Mage_Adminhtml_Block_Widget_
      */
     public function getGridUrl()
     {
-        return $this->getUrl('*/*/grid', array('_current'=>true));
+        return $this->getUrl('*/*/grid', ['_current'=>true]);
     }
 
     /**

@@ -46,9 +46,9 @@ class BS_Ncr_Block_Adminhtml_Ncr_Grid extends Mage_Adminhtml_Block_Widget_Grid
             //->addFieldToFilter('ins_id', Mage::getSingleton('admin/session')->getUser()->getUserId())
         ;
 
-	    $collection->getSelect()->joinLeft(array('r'=>'bs_acreg_acreg'),'ac_reg = r.entity_id','reg');
-	    $collection->getSelect()->joinLeft(array('t'=>'bs_misc_task'),'task_id = t.entity_id','task_code');
-	    $collection->getSelect()->joinLeft(array('s'=>'bs_misc_subtask'),'subtask_id = s.entity_id','sub_code');
+	    $collection->getSelect()->joinLeft(['r'=>'bs_acreg_acreg'],'ac_reg = r.entity_id','reg');
+	    $collection->getSelect()->joinLeft(['t'=>'bs_misc_task'],'task_id = t.entity_id','task_code');
+	    $collection->getSelect()->joinLeft(['s'=>'bs_misc_subtask'],'subtask_id = s.entity_id','sub_code');
 
 	    //$collection->setOrder('entity_id', 'DESC');
         
@@ -75,60 +75,60 @@ class BS_Ncr_Block_Adminhtml_Ncr_Grid extends Mage_Adminhtml_Block_Widget_Grid
         );*/
         $this->addColumn(
             'ref_no',
-            array(
+            [
                 'header'    => Mage::helper('bs_ncr')->__('Reference No'),
                 'align'     => 'left',
                 'index'     => 'ref_no',
-            )
+            ]
         );
 
 	    $depts = Mage::getResourceModel('bs_misc/department_collection');
 	    $depts = $depts->toOptionHash();
 	    $this->addColumn(
 		    'dept_id',
-		    array(
+		    [
 			    'header'    => Mage::helper('bs_misc')->__('Maint. Center'),
 			    'index'     => 'dept_id',
 			    'type'      => 'options',
 			    'options'   => $depts,
 
-		    )
+            ]
 	    );
 
 	    $this->addColumn(
 		    'short_desc',
-		    array(
+		    [
 			    'header' => Mage::helper('bs_ncr')->__('Short Desc'),
 			    'index'  => 'short_desc',
 			    'type'=> 'text',
 
-		    )
+            ]
 	    );
 
 	    $locs = Mage::getResourceModel('bs_misc/location_collection');
 	    $locs = $locs->toOptionHash();
 	    $this->addColumn(
 		    'loc_id',
-		    array(
+		    [
 			    'header'    => Mage::helper('bs_misc')->__('Location'),
 			    'index'     => 'loc_id',
 			    'type'      => 'options',
 			    'options'   => $locs,
 
-		    )
+            ]
 	    );
 
 
 	    $this->addColumn(
 		    'task_id',
-		    array(
+		    [
 			    'header' => Mage::helper('bs_ncr')->__('Survey Code'),
 			    'index'  => 'task_id',
 			    'type'  => 'text',
 			    'renderer' => 'bs_misc/adminhtml_helper_column_renderer_task',
-			    'filter_condition_callback' => array($this, '_filterTask'),
+			    'filter_condition_callback' => [$this, '_filterTask'],
 
-		    )
+            ]
 	    );
 
         /*$tasks = Mage::getResourceModel('bs_misc/task_collection');
@@ -146,14 +146,14 @@ class BS_Ncr_Block_Adminhtml_Ncr_Grid extends Mage_Adminhtml_Block_Widget_Grid
 
 	    $this->addColumn(
 		    'subtask_id',
-		    array(
+		    [
 			    'header' => Mage::helper('bs_ncr')->__('Survey Sub Code'),
 			    'index'  => 'subtask_id',
 			    'type'  => 'text',
 			    'renderer' => 'bs_misc/adminhtml_helper_column_renderer_subtask',
-			    'filter_condition_callback' => array($this, '_filterSubtask'),
+			    'filter_condition_callback' => [$this, '_filterSubtask'],
 
-		    )
+            ]
 	    );
 
         /*$subtasks = Mage::getResourceModel('bs_misc/subtask_collection');
@@ -174,91 +174,91 @@ class BS_Ncr_Block_Adminhtml_Ncr_Grid extends Mage_Adminhtml_Block_Widget_Grid
 
 	    $this->addColumn(
 		    'ncausegroup_id',
-		    array(
+		    [
 			    'header'    => Mage::helper('bs_misc')->__('Cause Group'),
 			    'index'     => 'ncausegroup_id',
 			    'type'      => 'options',
 			    'options'   => $causeGroups,
 
-		    )
+            ]
 	    );
 
 	    $causes = Mage::getResourceModel('bs_ncause/ncause_collection');
 	    $causes = $causes->toOptionHash();
 	    $this->addColumn(
 		    'ncause_id',
-		    array(
+		    [
 			    'header'    => Mage::helper('bs_misc')->__('Cause'),
 			    'index'     => 'ncause_id',
 			    'type'      => 'options',
 			    'options'   => $causes,
 
-		    )
+            ]
 	    );
 
 
-        $ins = Mage::getModel('admin/user')->getCollection()->addFieldToFilter('user_id', array('gt' => 1))->load();
-        $inspectors = array();
+        $ins = Mage::getModel('admin/user')->getCollection()->addFieldToFilter('user_id', ['gt' => 1])->load();
+        $inspectors = [];
         foreach ($ins as $in) {
 	        $inspectors[$in->getUserId()] = strtoupper($in->getUsername());
         }
         $this->addColumn(
             'ins_id',
-            array(
+            [
                 'header'    => Mage::helper('bs_misc')->__('Inspector'),
                 'index'     => 'ins_id',
                 'type'      => 'options',
                 'options'   => $inspectors,
 
-            )
+            ]
         );
 
 
         $this->addColumn(
             'report_date',
-            array(
+            [
                 'header' => Mage::helper('bs_ncr')->__('Report Date'),
                 'index'  => 'report_date',
                 'type'=> 'date',
 
-            )
+            ]
         );
         $this->addColumn(
             'ref_doc',
-            array(
+            [
                 'header' => Mage::helper('bs_ncr')->__('REF Doc'),
                 'index'  => 'ref_doc',
                 'type'=> 'text',
 
-            )
+            ]
         );
 
 	    $this->addColumn(
 		    'customer',
-		    array(
+		    [
 			    'header'    => Mage::helper('bs_acreg')->__('Customer'),
 			    'index'     => 'customer',
 			    'type'      => 'options',
 			    'options'   => Mage::getResourceModel('bs_acreg/customer_collection')
 			                       ->toOptionHash(),
 			    //'renderer'  => 'bs_acreg/adminhtml_helper_column_renderer_parent',
-			    'params'    => array(
+			    'params'    => [
 				    'id'    => 'getCustomerId'
-			    ),
+                ],
 			    'base_link' => 'adminhtml/acreg_customer/edit'
-		    )
+            ]
 	    );
 
 	    $acTypes = Mage::getModel('bs_misc/aircraft')->getCollection()->toOptionHash();
 	    $this->addColumn(
 		    'ac_type',
-		    array(
+		    [
 			    'header' => Mage::helper('bs_ncr')->__('A/C Type'),
 			    'index'     => 'ac_type',
 			    'type'      => 'options',
 			    'options'   => $acTypes,
 
-		    )
+            ]
 	    );
 
 	    /*$acregs = Mage::getModel('bs_acreg/acreg')->getCollection()->toOptionHash();
@@ -275,20 +275,20 @@ class BS_Ncr_Block_Adminhtml_Ncr_Grid extends Mage_Adminhtml_Block_Widget_Grid
 
 	    $this->addColumn(
 		    'ac_reg',
-		    array(
+		    [
 			    'header' => Mage::helper('bs_ncr')->__('A/C Reg'),
 			    'index'  => 'ac_reg',
 			    'type'  => 'text',
 			    'renderer' => 'bs_acreg/adminhtml_helper_column_renderer_acreg',
-			    'filter_condition_callback' => array($this, '_filterAcReg'),
+			    'filter_condition_callback' => [$this, '_filterAcReg'],
 
-		    )
+            ]
 	    );
 
 
         $this->addColumn(
             'ncr_type',
-            array(
+            [
                 'header' => Mage::helper('bs_ncr')->__('Type'),
                 'index'  => 'ncr_type',
                 'type'  => 'options',
@@ -296,32 +296,32 @@ class BS_Ncr_Block_Adminhtml_Ncr_Grid extends Mage_Adminhtml_Block_Widget_Grid
                     Mage::getModel('bs_ncr/ncr_attribute_source_ncrtype')->getAllOptions(false)
                 )
 
-            )
+            ]
         );
         $this->addColumn(
             'due_date',
-            array(
+            [
                 'header' => Mage::helper('bs_ncr')->__('Due Date'),
                 'index'  => 'due_date',
                 'type'=> 'date',
 
-            )
+            ]
         );
 
         $this->addColumn(
             'approval_id',
-            array(
+            [
                 'header'    => Mage::helper('bs_misc')->__('Approved By'),
                 'index'     => 'approval_id',
                 'type'      => 'options',
                 'options'   => $inspectors,
 
-            )
+            ]
         );
 
         $this->addColumn(
             'ncr_status',
-            array(
+            [
                 'header' => Mage::helper('bs_ncr')->__('Status'),
                 'index'  => 'ncr_status',
                 'type'  => 'options',
@@ -329,29 +329,29 @@ class BS_Ncr_Block_Adminhtml_Ncr_Grid extends Mage_Adminhtml_Block_Widget_Grid
                     Mage::getModel('bs_ncr/ncr_attribute_source_ncrstatus')->getAllOptions(false)
                 )
 
-            )
+            ]
         );
         $this->addColumn(
             'close_date',
-            array(
+            [
                 'header' => Mage::helper('bs_ncr')->__('Close Date'),
                 'index'  => 'close_date',
                 'type'=> 'date',
 
-            )
+            ]
         );
 
         $this->addColumn(
             'repetitive',
-            array(
+            [
                 'header'  => Mage::helper('bs_misc')->__('Repetitive'),
                 'index'   => 'repetitive',
                 'type'    => 'options',
-                'options' => array(
+                'options' => [
                     '1' => Mage::helper('bs_misc')->__('Yes'),
                     '0' => Mage::helper('bs_misc')->__('No'),
-                )
-            )
+                ]
+            ]
         );
 
         /*$this->addColumn(
@@ -370,12 +370,12 @@ class BS_Ncr_Block_Adminhtml_Ncr_Grid extends Mage_Adminhtml_Block_Widget_Grid
 
         $this->addColumn(
             'reject_reason',
-            array(
+            [
                 'header' => Mage::helper('bs_ncr')->__('Reject Reason'),
                 'index'  => 'reject_reason',
                 'type'=> 'text',
 
-            )
+            ]
         );
 
 
@@ -418,10 +418,10 @@ class BS_Ncr_Block_Adminhtml_Ncr_Grid extends Mage_Adminhtml_Block_Widget_Grid
         $this->getMassactionBlock()->setFormFieldName('ncr');
 
 
-        $this->getMassactionBlock()->addItem('separator', array(
+        $this->getMassactionBlock()->addItem('separator', [
             'label'=> '---Select---',
             'url'  => ''
-        ));
+        ]);
 
         return $this;
     }
@@ -436,7 +436,7 @@ class BS_Ncr_Block_Adminhtml_Ncr_Grid extends Mage_Adminhtml_Block_Widget_Grid
      */
     public function getRowUrl($row)
     {
-        return $this->getUrl('*/*/edit', array('id' => $row->getId()));
+        return $this->getUrl('*/*/edit', ['id' => $row->getId()]);
     }
 
     /**
@@ -448,7 +448,7 @@ class BS_Ncr_Block_Adminhtml_Ncr_Grid extends Mage_Adminhtml_Block_Widget_Grid
      */
     public function getGridUrl()
     {
-        return $this->getUrl('*/*/grid', array('_current'=>true));
+        return $this->getUrl('*/*/grid', ['_current'=>true]);
     }
 
 

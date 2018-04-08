@@ -40,14 +40,14 @@ class BS_NCause_Block_Adminhtml_Ncause_Edit_Tabs extends Mage_Adminhtml_Block_Wi
     {
         $this->addTab(
             'form_ncause',
-            array(
+            [
                 'label'   => Mage::helper('bs_ncause')->__('Root Cause Sub Code'),
                 'title'   => Mage::helper('bs_ncause')->__('Root Cause Sub Code'),
                 'content' => $this->getLayout()->createBlock(
                     'bs_ncause/adminhtml_ncause_edit_tab_form'
                 )
                 ->toHtml(),
-            )
+            ]
         );
         return parent::_beforeToHtml();
     }

@@ -25,7 +25,7 @@ class BS_Ir_Helper_Data extends Mage_Core_Helper_Abstract
      */
     public function convertOptions($options)
     {
-        $converted = array();
+        $converted = [];
         foreach ($options as $option) {
             if (isset($option['value']) && !is_array($option['value']) &&
                 isset($option['label']) && !is_array($option['label'])) {
@@ -47,7 +47,7 @@ class BS_Ir_Helper_Data extends Mage_Core_Helper_Abstract
             'to' => $dateEnd,
             'date' => true,
         ));*/
-	    $collection->addFieldToFilter('ref_no', array('like' => '%-'.$year.'%'));
+	    $collection->addFieldToFilter('ref_no', ['like' => '%-'.$year.'%']);
         $collection->setOrder('entity_id', 'DESC');
 
         $nextRefNo = null;
@@ -72,7 +72,7 @@ class BS_Ir_Helper_Data extends Mage_Core_Helper_Abstract
         $refNo = $this->getNextRefNo();
         $currentDate = Mage::getModel('core/date')->date('Y-m-d h:m:s');
         $currentIns = Mage::getSingleton('admin/session')->getUser()->getId();
-        $data = array();
+        $data = [];
         $data['ref_no'] = $refNo;
         $data['ins_id'] = $currentIns;
         $data['inspection_date'] = $currentDate;

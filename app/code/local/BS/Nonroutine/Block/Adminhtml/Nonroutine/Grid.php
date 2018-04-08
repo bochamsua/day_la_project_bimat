@@ -58,19 +58,19 @@ class BS_Nonroutine_Block_Adminhtml_Nonroutine_Grid extends Mage_Adminhtml_Block
     {
         $this->addColumn(
             'entity_id',
-            array(
+            [
                 'header' => Mage::helper('bs_nonroutine')->__('Id'),
                 'index'  => 'entity_id',
                 'type'   => 'number'
-            )
+            ]
         );
         $this->addColumn(
             'name',
-            array(
+            [
                 'header'    => Mage::helper('bs_nonroutine')->__('Name'),
                 'align'     => 'left',
                 'index'     => 'name',
-            )
+            ]
         );
         
 
@@ -130,33 +130,33 @@ class BS_Nonroutine_Block_Adminhtml_Nonroutine_Grid extends Mage_Adminhtml_Block
         if($isAllowedDelete){
             $this->getMassactionBlock()->addItem(
                 'delete',
-                array(
+                [
                     'label'=> Mage::helper('bs_nonroutine')->__('Delete'),
                     'url'  => $this->getUrl('*/*/massDelete'),
                     'confirm'  => Mage::helper('bs_nonroutine')->__('Are you sure?')
-                )
+                ]
             );
         }
 
         if($isAllowedEdit){
             $this->getMassactionBlock()->addItem(
                 'status',
-                array(
+                [
                     'label'      => Mage::helper('bs_nonroutine')->__('Change status'),
-                    'url'        => $this->getUrl('*/*/massStatus', array('_current'=>true)),
-                    'additional' => array(
-                        'status' => array(
+                    'url'        => $this->getUrl('*/*/massStatus', ['_current'=>true]),
+                    'additional' => [
+                        'status' => [
                             'name'   => 'status',
                             'type'   => 'select',
                             'class'  => 'required-entry',
                             'label'  => Mage::helper('bs_nonroutine')->__('Status'),
-                            'values' => array(
+                            'values' => [
                                 '1' => Mage::helper('bs_nonroutine')->__('Enabled'),
                                 '0' => Mage::helper('bs_nonroutine')->__('Disabled'),
-                            )
-                        )
-                    )
-                )
+                            ]
+                        ]
+                    ]
+                ]
             );
 
 
@@ -176,7 +176,7 @@ class BS_Nonroutine_Block_Adminhtml_Nonroutine_Grid extends Mage_Adminhtml_Block
      */
     public function getRowUrl($row)
     {
-        return $this->getUrl('*/*/edit', array('id' => $row->getId()));
+        return $this->getUrl('*/*/edit', ['id' => $row->getId()]);
     }
 
     /**
@@ -188,7 +188,7 @@ class BS_Nonroutine_Block_Adminhtml_Nonroutine_Grid extends Mage_Adminhtml_Block
      */
     public function getGridUrl()
     {
-        return $this->getUrl('*/*/grid', array('_current'=>true));
+        return $this->getUrl('*/*/grid', ['_current'=>true]);
     }
 
     /**

@@ -40,24 +40,24 @@ class BS_Car_Block_Adminhtml_Car_Edit_Tabs extends Mage_Adminhtml_Block_Widget_T
     {
         $this->addTab(
             'form_car',
-            array(
+            [
                 'label'   => Mage::helper('bs_car')->__('Car'),
                 'title'   => Mage::helper('bs_car')->__('Car'),
                 'content' => $this->getLayout()->createBlock(
                     'bs_car/adminhtml_car_edit_tab_form'
                 )
                 ->toHtml(),
-            )
+            ]
         );
 
         if($this->getCar()->getId()){
-            $this->addTab('general_info', array(
+            $this->addTab('general_info', [
                 'label'     => Mage::helper('bs_car')->__('Related Info'),
                 'content' => $this->getLayout()->createBlock(
                     'bs_car/adminhtml_car_edit_tab_info'
                 )
                     ->toHtml()
-            ));
+            ]);
         }
 
         return parent::_beforeToHtml();

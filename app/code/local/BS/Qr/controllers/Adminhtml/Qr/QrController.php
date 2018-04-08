@@ -119,7 +119,7 @@ class BS_Qr_Adminhtml_Qr_QrController extends BS_Sur_Controller_Adminhtml_Sur
     {
         if ($data = $this->getRequest()->getPost('qr')) {
             try {
-                $data = $this->_filterDates($data, array('report_date' ,'due_date' ,'close_date'));
+                $data = $this->_filterDates($data, ['report_date' ,'due_date' ,'close_date']);
                 $qr = $this->_initQr();
 
                 $qr->addData($data);
@@ -145,7 +145,7 @@ class BS_Qr_Adminhtml_Qr_QrController extends BS_Sur_Controller_Adminhtml_Sur
                     Mage::helper('bs_qr')->__('QR was successfully saved. %s', $add)
                 );
                 Mage::getSingleton('adminhtml/session')->setFormData(false);
-	            $this->_redirect('*/*/edit', array('id' => $qr->getId()));
+	            $this->_redirect('*/*/edit', ['id' => $qr->getId()]);
 	            return;
             } catch (Mage_Core_Exception $e) {
                 if (isset($data['qr_source']['value'])) {
@@ -156,7 +156,7 @@ class BS_Qr_Adminhtml_Qr_QrController extends BS_Sur_Controller_Adminhtml_Sur
                 }
                 Mage::getSingleton('adminhtml/session')->addError($e->getMessage());
                 Mage::getSingleton('adminhtml/session')->setQrData($data);
-                $this->_redirect('*/*/edit', array('id' => $this->getRequest()->getParam('id')));
+                $this->_redirect('*/*/edit', ['id' => $this->getRequest()->getParam('id')]);
                 return;
             } catch (Exception $e) {
                 Mage::logException($e);
@@ -170,7 +170,7 @@ class BS_Qr_Adminhtml_Qr_QrController extends BS_Sur_Controller_Adminhtml_Sur
                     Mage::helper('bs_qr')->__('There was a problem saving the qr.')
                 );
                 Mage::getSingleton('adminhtml/session')->setQrData($data);
-                $this->_redirect('*/*/edit', array('id' => $this->getRequest()->getParam('id')));
+                $this->_redirect('*/*/edit', ['id' => $this->getRequest()->getParam('id')]);
                 return;
             }
         }
@@ -200,12 +200,12 @@ class BS_Qr_Adminhtml_Qr_QrController extends BS_Sur_Controller_Adminhtml_Sur
                 return;
             } catch (Mage_Core_Exception $e) {
                 Mage::getSingleton('adminhtml/session')->addError($e->getMessage());
-                $this->_redirect('*/*/edit', array('id' => $this->getRequest()->getParam('id')));
+                $this->_redirect('*/*/edit', ['id' => $this->getRequest()->getParam('id')]);
             } catch (Exception $e) {
                 Mage::getSingleton('adminhtml/session')->addError(
                     Mage::helper('bs_qr')->__('There was an error deleting qr.')
                 );
-                $this->_redirect('*/*/edit', array('id' => $this->getRequest()->getParam('id')));
+                $this->_redirect('*/*/edit', ['id' => $this->getRequest()->getParam('id')]);
                 Mage::logException($e);
                 return;
             }
@@ -492,10 +492,10 @@ class BS_Qr_Adminhtml_Qr_QrController extends BS_Sur_Controller_Adminhtml_Sur
 		}
 		$this->_redirect(
 			'*/qr_qr/edit',
-			array(
+			[
 				'id' => $this->getRequest()->getParam('id'),
 				'_current' => true
-			)
+            ]
 		);
 
 	}
@@ -562,36 +562,36 @@ class BS_Qr_Adminhtml_Qr_QrController extends BS_Sur_Controller_Adminhtml_Sur
 		}
 
 
-		$tableWordML = array(
+		$tableWordML = [
 			'isarray'  => true,
-			'array'   => array(
+			'array'   => [
 				'subject'   => $subjectML,
 				'content' => $contentML,
 				'remark' => $remarkML,
-			)
-		);
+            ]
+        ];
 
-		$htmlVariables = array(
-			array(
+		$htmlVariables = [
+			[
 				'code' => 'subject',
 				'content' => $obj->getSubject()
-			),
-			array(
+            ],
+			[
 				'code' => 'content',
 				'content' => $obj->getContent()
-			),
-			array(
+            ],
+			[
 				'code' => 'remark',
 				'content' => $obj->getRemarkText()
-			),
+            ],
 
-		);
+        ];
 
 		$reportDate = Mage::getModel('core/date')->date("d/m/Y", $obj->getReportDate());
 		$closeDate = Mage::getModel('core/date')->date("d/m/Y", $obj->getCloseDate());
 		$dueDate = Mage::getModel('core/date')->date("d/m/Y", $obj->getDueDate());
 
-		$data = array(
+		$data = [
 			'ref' => $obj->getRefNo(),
 			'date' => $reportDate,
 			'request_by' => $approvalName,
@@ -606,7 +606,7 @@ class BS_Qr_Adminhtml_Qr_QrController extends BS_Sur_Controller_Adminhtml_Sur
 			'signature' => '',
 
 
-		);
+        ];
 
 		$signatureManager = Mage::getModel('bs_signature/signature')->getCollection()
 		                        ->addFieldToFilter('user_id', $obj->getApprovalId())
@@ -622,10 +622,10 @@ class BS_Qr_Adminhtml_Qr_QrController extends BS_Sur_Controller_Adminhtml_Sur
 
 		$inspectorSign = Mage::helper('bs_signature/signature')->getFileBaseDir().$signatureInspector->getFirstItem()->getSignature();
 
-		$images = array(
+		$images = [
 			'manager_sign' => $managerSign,
 			'inspector_sign' => $inspectorSign
-		);
+        ];
 
 
 

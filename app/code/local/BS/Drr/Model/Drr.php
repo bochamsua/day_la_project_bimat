@@ -88,7 +88,7 @@ class BS_Drr_Model_Drr extends Mage_Core_Model_Abstract
      */
     public function getDefaultValues()
     {
-        $values = array();
+        $values = [];
         $values['status'] = 1;
         return $values;
     }

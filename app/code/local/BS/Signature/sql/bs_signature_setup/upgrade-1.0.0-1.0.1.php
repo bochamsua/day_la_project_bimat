@@ -18,10 +18,10 @@ $this->getConnection()
     ->addColumn(
         $this->getTable('bs_signature/signature'),
         'user_id',
-        array(
+        [
             'type' => Varien_Db_Ddl_Table::TYPE_INTEGER,
             'comment'   => 'User Id'
-        )
+        ]
     )
 ;
 

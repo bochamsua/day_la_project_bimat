@@ -40,14 +40,14 @@ class BS_Signature_Block_Adminhtml_Signature_Edit_Tabs extends Mage_Adminhtml_Bl
     {
         $this->addTab(
             'form_signature',
-            array(
+            [
                 'label'   => Mage::helper('bs_signature')->__('Signature'),
                 'title'   => Mage::helper('bs_signature')->__('Signature'),
                 'content' => $this->getLayout()->createBlock(
                     'bs_signature/adminhtml_signature_edit_tab_form'
                 )
                 ->toHtml(),
-            )
+            ]
         );
         return parent::_beforeToHtml();
     }

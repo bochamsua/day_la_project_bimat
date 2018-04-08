@@ -31,7 +31,7 @@ class BS_Drr_Block_Adminhtml_Drr_Edit_Tab_Form extends Mage_Adminhtml_Block_Widg
         $this->setForm($form);
         $fieldset = $form->addFieldset(
             'drr_form',
-            array('legend' => Mage::helper('bs_drr')->__('Drr'))
+            ['legend' => Mage::helper('bs_drr')->__('Drr')]
         );
         $fieldset->addType(
             'file',
@@ -63,23 +63,23 @@ class BS_Drr_Block_Adminhtml_Drr_Edit_Tab_Form extends Mage_Adminhtml_Block_Widg
         $fieldset->addField(
             'ref_id',
             'hidden',
-            array(
+            [
                 'label' => Mage::helper('bs_car')->__('ref_id'),
                 'name'  => 'ref_id',
 
 
-            )
+            ]
         );
 
         $fieldset->addField(
             'ref_type',
             'hidden',
-            array(
+            [
                 'label' => Mage::helper('bs_car')->__('ref_type'),
                 'name'  => 'ref_type',
 
 
-            )
+            ]
         );
 
         /*if($taskId){
@@ -155,25 +155,25 @@ class BS_Drr_Block_Adminhtml_Drr_Edit_Tab_Form extends Mage_Adminhtml_Block_Widg
 	    $fieldset->addField(
 		    'dept_id',
 		    'select',
-		    array(
+		    [
 			    'label'     => Mage::helper('bs_drr')->__('Maint. Center'),
 			    'name'      => 'dept_id',
 			    'required'  => false,
 			    'values'    => $depts,
-		    )
+            ]
 	    );
 
         $fieldset->addField(
             'report_date',
             'date',
-            array(
+            [
                 'label' => Mage::helper('bs_drr')->__('Report Date'),
                 'name'  => 'report_date',
 
             'image' => $this->getSkinUrl('images/grid-cal.gif'),
             'format'  => Mage::app()->getLocale()->getDateFormat(Mage_Core_Model_Locale::FORMAT_TYPE_SHORT),
                 'disabled'  => $disable
-           )
+            ]
         );
 
 
@@ -183,12 +183,12 @@ class BS_Drr_Block_Adminhtml_Drr_Edit_Tab_Form extends Mage_Adminhtml_Block_Widg
 	    $fieldset->addField(
 		    'customer',
 		    'select',
-		    array(
+		    [
 			    'label'     => Mage::helper('bs_drr')->__('Customer'),
 			    'name'      => 'customer',
 			    'required'  => false,
 			    'values'    => $customers,
-		    )
+            ]
 	    );
 
 	    $acTypes = Mage::getResourceModel('bs_misc/aircraft_collection');
@@ -197,12 +197,12 @@ class BS_Drr_Block_Adminhtml_Drr_Edit_Tab_Form extends Mage_Adminhtml_Block_Widg
 	    $fieldset->addField(
 		    'ac_type',
 		    'select',
-		    array(
+		    [
 			    'label'     => Mage::helper('bs_drr')->__('A/C Type'),
 			    'name'      => 'ac_type',
 			    'required'  => false,
 			    'values'    => $acTypes,
-		    )
+            ]
 	    );
 
 	    $acRegs = Mage::getResourceModel('bs_acreg/acreg_collection');
@@ -211,23 +211,23 @@ class BS_Drr_Block_Adminhtml_Drr_Edit_Tab_Form extends Mage_Adminhtml_Block_Widg
 	    $fieldset->addField(
 		    'ac_reg',
 		    'select',
-		    array(
+		    [
 			    'label'     => Mage::helper('bs_drr')->__('A/C Reg'),
 			    'name'      => 'ac_reg',
 			    'required'  => false,
 			    'values'    => $acRegs,
-		    )
+            ]
 	    );
 
 	    $fieldset->addField(
 		    'flight_no',
 		    'text',
-		    array(
+		    [
 			    'label' => Mage::helper('bs_drr')->__('Flight No'),
 			    'name'  => 'flight_no',
 			    'disabled'  => $disable
 
-		    )
+            ]
 	    );
 
 	    /*$fieldset->addField(
@@ -259,26 +259,26 @@ class BS_Drr_Block_Adminhtml_Drr_Edit_Tab_Form extends Mage_Adminhtml_Block_Widg
        $fieldset->addField(
             'description',
             'textarea',
-            array(
+            [
                 'label' => Mage::helper('bs_drr')->__('Description'),
                 'name'  => 'description',
                 'disabled'  => $disable,
 	            'config'    => $wysiwygConfig
 
-           )
+            ]
         );
 
         $fieldset->addField(
             'due_date',
             'date',
-            array(
+            [
                 'label' => Mage::helper('bs_drr')->__('Due Date'),
                 'name'  => 'due_date',
 
             'image' => $this->getSkinUrl('images/grid-cal.gif'),
             'format'  => Mage::app()->getLocale()->getDateFormat(Mage_Core_Model_Locale::FORMAT_TYPE_SHORT),
                 'disabled'  => $disable
-           )
+            ]
         );
 
 
@@ -304,12 +304,12 @@ class BS_Drr_Block_Adminhtml_Drr_Edit_Tab_Form extends Mage_Adminhtml_Block_Widg
 	    $fieldset->addField(
 		    'remark',
 		    'file',
-		    array(
+		    [
 			    'label' => Mage::helper('bs_drr')->__('Proof of Close'),
 			    'name'  => 'remark',
 			    'disabled'  => $disableProof
 
-		    )
+            ]
 	    );
 
 	    /*$causeGroups = Mage::getResourceModel('bs_ncause/ncausegroup_collection');
@@ -346,14 +346,14 @@ class BS_Drr_Block_Adminhtml_Drr_Edit_Tab_Form extends Mage_Adminhtml_Block_Widg
        $fieldset->addField(
             'close_date',
             'date',
-            array(
+            [
                 'label' => Mage::helper('bs_drr')->__('Close Date'),
                 'name'  => 'close_date',
 
             'image' => $this->getSkinUrl('images/grid-cal.gif'),
             'format'  => Mage::app()->getLocale()->getDateFormat(Mage_Core_Model_Locale::FORMAT_TYPE_SHORT),
                 'disabled'  => $disable
-           )
+            ]
         );
 
 
@@ -363,12 +363,12 @@ class BS_Drr_Block_Adminhtml_Drr_Edit_Tab_Form extends Mage_Adminhtml_Block_Widg
 		    $fieldset->addField(
 			    'drr_status',
 			    'select',
-			    array(
+			    [
 				    'label' => Mage::helper('bs_drr')->__('Status'),
 				    'name'  => 'drr_status',
 
 				    'values'=> Mage::getModel('bs_drr/drr_attribute_source_drrstatus')->getAllOptions(false),
-			    )
+                ]
 		    );
 
 		    /*$fieldset->addField(
@@ -388,11 +388,11 @@ class BS_Drr_Block_Adminhtml_Drr_Edit_Tab_Form extends Mage_Adminhtml_Block_Widg
         $fieldset->addField(
             'self_remark',
             'textarea',
-            array(
+            [
                 'label' => Mage::helper('bs_drr')->__('Note'),
                 'name'  => 'self_remark'
 
-            )
+            ]
         );
 
 
@@ -401,7 +401,7 @@ class BS_Drr_Block_Adminhtml_Drr_Edit_Tab_Form extends Mage_Adminhtml_Block_Widg
 
         $formValues = Mage::registry('current_drr')->getDefaultValues();
         if (!is_array($formValues)) {
-            $formValues = array();
+            $formValues = [];
         }
         if (Mage::getSingleton('adminhtml/session')->getDrrData()) {
             $formValues = array_merge($formValues, Mage::getSingleton('adminhtml/session')->getDrrData());
@@ -409,11 +409,11 @@ class BS_Drr_Block_Adminhtml_Drr_Edit_Tab_Form extends Mage_Adminhtml_Block_Widg
         } elseif (Mage::registry('current_drr')) {
             $formValues = array_merge($formValues, Mage::registry('current_drr')->getData());
         }
-        $formValues = array_merge($formValues, array(
+        $formValues = array_merge($formValues, [
             'ref_id'    => $refId,
             'ref_type'  => $refType
 
-        ));
+        ]);
 
         $form->setValues($formValues);
         return parent::_prepareForm();

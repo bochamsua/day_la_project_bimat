@@ -88,7 +88,7 @@ class BS_Hira_Model_Hira extends Mage_Core_Model_Abstract
      */
     public function getDefaultValues()
     {
-        $values = array();
+        $values = [];
         $values['status'] = 1;
         $values['hira_status'] = '4';
 

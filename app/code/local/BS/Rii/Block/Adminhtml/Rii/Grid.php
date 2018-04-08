@@ -67,139 +67,139 @@ class BS_Rii_Block_Adminhtml_Rii_Grid extends Mage_Adminhtml_Block_Widget_Grid
         );*/
         $this->addColumn(
             'ref_no',
-            array(
+            [
                 'header'    => Mage::helper('bs_rii')->__('Reference No'),
                 'align'     => 'left',
                 'index'     => 'ref_no',
-            )
+            ]
         );
 
-        $ins = Mage::getModel('admin/user')->getCollection()->addFieldToFilter('user_id', array('gt' => 1))->load();
-        $inspectors = array();
+        $ins = Mage::getModel('admin/user')->getCollection()->addFieldToFilter('user_id', ['gt' => 1])->load();
+        $inspectors = [];
         foreach ($ins as $in) {
 	        $inspectors[$in->getUserId()] = strtoupper($in->getUsername());
         }
         $this->addColumn(
             'ins_id',
-            array(
+            [
                 'header'    => Mage::helper('bs_misc')->__('Inspector'),
                 'index'     => 'ins_id',
                 'type'      => 'options',
                 'options'   => $inspectors,
 
-            )
+            ]
         );
 
 	    $depts = Mage::getResourceModel('bs_misc/department_collection');
 	    $depts = $depts->toOptionHash();
 	    $this->addColumn(
 		    'dept_id',
-		    array(
+		    [
 			    'header'    => Mage::helper('bs_misc')->__('Maint. Center'),
 			    'index'     => 'dept_id',
 			    'type'      => 'options',
 			    'options'   => $depts,
 
-		    )
+            ]
 	    );
         $this->addColumn(
             'loc_id',
-            array(
+            [
                 'header' => Mage::helper('bs_rii')->__('Location'),
                 'index'  => 'loc_id',
                 'type'=> 'number',
 
-            )
+            ]
         );
 
 	    $acregs = Mage::getModel('bs_acreg/acreg')->getCollection()->toOptionHash();
 
 	    $this->addColumn(
 		    'ac_reg',
-		    array(
+		    [
 			    'header' => Mage::helper('bs_rii')->__('A/C Reg'),
 			    'index'     => 'ac_reg',
 			    'type'      => 'options',
 			    'options'   => $acregs,
 
-		    )
+            ]
 	    );
 
 
         $this->addColumn(
             'customer',
-            array(
+            [
                 'header' => Mage::helper('bs_rii')->__('Customer'),
                 'index'  => 'customer',
                 'type'=> 'text',
 
-            )
+            ]
         );
         $this->addColumn(
             'report_date',
-            array(
+            [
                 'header' => Mage::helper('bs_rii')->__('Date of Inspection'),
                 'index'  => 'report_date',
                 'type'=> 'date',
 
-            )
+            ]
         );
         $this->addColumn(
             'wp',
-            array(
+            [
                 'header' => Mage::helper('bs_rii')->__('Workpack'),
                 'index'  => 'wp',
                 'type'=> 'text',
 
-            )
+            ]
         );
         $this->addColumn(
             'ir',
-            array(
+            [
                 'header' => Mage::helper('bs_rii')->__('Ir'),
                 'index'  => 'ir',
                 'type'    => 'options',
-                    'options'    => array(
+                    'options'    => [
                     '1' => Mage::helper('bs_rii')->__('Yes'),
                     '0' => Mage::helper('bs_rii')->__('No'),
-                )
+                    ]
 
-            )
+            ]
         );
         $this->addColumn(
             'ncr',
-            array(
+            [
                 'header' => Mage::helper('bs_rii')->__('NCR'),
                 'index'  => 'ncr',
                 'type'    => 'options',
-                    'options'    => array(
+                    'options'    => [
                     '1' => Mage::helper('bs_rii')->__('Yes'),
                     '0' => Mage::helper('bs_rii')->__('No'),
-                )
+                    ]
 
-            )
+            ]
         );
         $this->addColumn(
             'qr',
-            array(
+            [
                 'header' => Mage::helper('bs_rii')->__('QR'),
                 'index'  => 'qr',
                 'type'    => 'options',
-                    'options'    => array(
+                    'options'    => [
                     '1' => Mage::helper('bs_rii')->__('Yes'),
                     '0' => Mage::helper('bs_rii')->__('No'),
-                )
+                    ]
 
-            )
+            ]
         );
         $this->addColumn(
             'task_id',
-            array(
+            [
                 'header' => Mage::helper('bs_rii')->__('Task ID'),
                 'index'  => 'task_id',
                 'type'=> 'number',
 
-            )
+            ]
         );
 
 
@@ -222,10 +222,10 @@ class BS_Rii_Block_Adminhtml_Rii_Grid extends Mage_Adminhtml_Block_Widget_Grid
         $this->setMassactionIdField('entity_id');
         $this->getMassactionBlock()->setFormFieldName('rii');
 
-        $this->getMassactionBlock()->addItem('separator', array(
+        $this->getMassactionBlock()->addItem('separator', [
             'label'=> '---Select---',
             'url'  => ''
-        ));
+        ]);
         return $this;
     }
 
@@ -239,7 +239,7 @@ class BS_Rii_Block_Adminhtml_Rii_Grid extends Mage_Adminhtml_Block_Widget_Grid
      */
     public function getRowUrl($row)
     {
-        return $this->getUrl('*/*/edit', array('id' => $row->getId()));
+        return $this->getUrl('*/*/edit', ['id' => $row->getId()]);
     }
 
     /**
@@ -251,7 +251,7 @@ class BS_Rii_Block_Adminhtml_Rii_Grid extends Mage_Adminhtml_Block_Widget_Grid
      */
     public function getGridUrl()
     {
-        return $this->getUrl('*/*/grid', array('_current'=>true));
+        return $this->getUrl('*/*/grid', ['_current'=>true]);
     }
 
     /**

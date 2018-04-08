@@ -66,28 +66,28 @@ class BS_Hira_Block_Adminhtml_Hira_Grid extends Mage_Adminhtml_Block_Widget_Grid
         );*/
         $this->addColumn(
             'ref_no',
-            array(
+            [
                 'header'    => Mage::helper('bs_hira')->__('Reference No'),
                 'align'     => 'left',
                 'index'     => 'ref_no',
-            )
+            ]
         );
 
 
-        $ins = Mage::getModel('admin/user')->getCollection()->addFieldToFilter('user_id', array('gt' => 1))->load();
-        $inspectors = array();
+        $ins = Mage::getModel('admin/user')->getCollection()->addFieldToFilter('user_id', ['gt' => 1])->load();
+        $inspectors = [];
         foreach ($ins as $in) {
             $inspectors[$in->getUserId()] = strtoupper($in->getUsername());
         }
         $this->addColumn(
             'ins_id',
-            array(
+            [
                 'header'    => Mage::helper('bs_misc')->__('Inspector'),
                 'index'     => 'ins_id',
                 'type'      => 'options',
                 'options'   => $inspectors,
 
-            )
+            ]
         );
 
         /*$this->addColumn(
@@ -102,7 +102,7 @@ class BS_Hira_Block_Adminhtml_Hira_Grid extends Mage_Adminhtml_Block_Widget_Grid
 
         $this->addColumn(
             'probability_after',
-            array(
+            [
                 'header' => Mage::helper('bs_hira')->__('Probability after mitigation'),
                 'index'  => 'probability_after',
                 'type'  => 'options',
@@ -110,11 +110,11 @@ class BS_Hira_Block_Adminhtml_Hira_Grid extends Mage_Adminhtml_Block_Widget_Grid
                     Mage::getModel('bs_hira/hira_attribute_source_probabilityafter')->getAllOptions(false)
                 )
 
-            )
+            ]
         );
         $this->addColumn(
             'severity_after',
-            array(
+            [
                 'header' => Mage::helper('bs_hira')->__('Severity after mitigation'),
                 'index'  => 'severity_after',
                 'type'  => 'options',
@@ -122,7 +122,7 @@ class BS_Hira_Block_Adminhtml_Hira_Grid extends Mage_Adminhtml_Block_Widget_Grid
                     Mage::getModel('bs_hira/hira_attribute_source_severityafter')->getAllOptions(false)
                 )
 
-            )
+            ]
         );
         /*$this->addColumn(
             'hira_type',
@@ -306,10 +306,10 @@ class BS_Hira_Block_Adminhtml_Hira_Grid extends Mage_Adminhtml_Block_Widget_Grid
         $this->setMassactionIdField('entity_id');
         $this->getMassactionBlock()->setFormFieldName('hira');
 
-        $this->getMassactionBlock()->addItem('separator', array(
+        $this->getMassactionBlock()->addItem('separator', [
             'label'=> '---Select---',
             'url'  => ''
-        ));
+        ]);
 
         return $this;
     }
@@ -324,7 +324,7 @@ class BS_Hira_Block_Adminhtml_Hira_Grid extends Mage_Adminhtml_Block_Widget_Grid
      */
     public function getRowUrl($row)
     {
-        return $this->getUrl('*/*/edit', array('id' => $row->getId()));
+        return $this->getUrl('*/*/edit', ['id' => $row->getId()]);
     }
 
     /**
@@ -336,7 +336,7 @@ class BS_Hira_Block_Adminhtml_Hira_Grid extends Mage_Adminhtml_Block_Widget_Grid
      */
     public function getGridUrl()
     {
-        return $this->getUrl('*/*/grid', array('_current'=>true));
+        return $this->getUrl('*/*/grid', ['_current'=>true]);
     }
 
     /**

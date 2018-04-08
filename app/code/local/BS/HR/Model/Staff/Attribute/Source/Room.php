@@ -26,18 +26,18 @@ class BS_HR_Model_Staff_Attribute_Source_Room
      */
     public function getAllOptions($withEmpty = true, $defaultValues = false)
     {
-        $options =  array(
-            array(
+        $options =  [
+            [
                 'label' => Mage::helper('bs_hr')->__('QC'),
                 'value' => 1
-            ),
-            array(
+            ],
+            [
                 'label' => Mage::helper('bs_hr')->__('QA'),
                 'value' => 2
-            ),
-        );
+            ],
+        ];
         if ($withEmpty) {
-            array_unshift($options, array('label'=>'', 'value'=>''));
+            array_unshift($options, ['label'=>'', 'value'=>'']);
         }
         return $options;
 
@@ -53,7 +53,7 @@ class BS_HR_Model_Staff_Attribute_Source_Room
      */
     public function getOptionsArray($withEmpty = true)
     {
-        $options = array();
+        $options = [];
         foreach ($this->getAllOptions($withEmpty) as $option) {
             $options[$option['value']] = $option['label'];
         }
@@ -74,7 +74,7 @@ class BS_HR_Model_Staff_Attribute_Source_Room
         if (!is_array($value)) {
             $value = explode(',', $value);
         }
-        $texts = array();
+        $texts = [];
         foreach ($value as $v) {
             if (isset($options[$v])) {
                 $texts[] = $options[$v];

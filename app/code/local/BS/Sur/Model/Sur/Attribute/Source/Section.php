@@ -47,7 +47,7 @@ class BS_Sur_Model_Sur_Attribute_Source_Section
         }
 
         if ($withEmpty) {
-            array_unshift($options, array('label'=>'', 'value'=>''));
+            array_unshift($options, ['label'=>'', 'value'=>'']);
         }
         return $options;
 
@@ -63,7 +63,7 @@ class BS_Sur_Model_Sur_Attribute_Source_Section
      */
     public function getOptionsArray($withEmpty = true)
     {
-        $options = array();
+        $options = [];
         foreach ($this->getAllOptions($withEmpty) as $option) {
             $options[$option['value']] = $option['label'];
         }
@@ -84,7 +84,7 @@ class BS_Sur_Model_Sur_Attribute_Source_Section
         if (!is_array($value)) {
             $value = explode(',', $value);
         }
-        $texts = array();
+        $texts = [];
         foreach ($value as $v) {
             if (isset($options[$v])) {
                 $texts[] = $options[$v];

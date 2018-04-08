@@ -16,50 +16,50 @@ class BS_Rewriting_Block_Adminhtml_Permissions_User_Edit_Tab_Main extends Mage_A
 
 		$form->setHtmlIdPrefix('user_');
 
-		$fieldset = $form->addFieldset('base_fieldset', array('legend'=>Mage::helper('adminhtml')->__('Account Information')));
+		$fieldset = $form->addFieldset('base_fieldset', ['legend'=>Mage::helper('adminhtml')->__('Account Information')]);
 
 		if ($model->getUserId()) {
-			$fieldset->addField('user_id', 'hidden', array(
+			$fieldset->addField('user_id', 'hidden', [
 				'name' => 'user_id',
-			));
+            ]);
 		} else {
 			if (! $model->hasData('is_active')) {
 				$model->setIsActive(1);
 			}
 		}
 
-		$fieldset->addField('username', 'text', array(
+		$fieldset->addField('username', 'text', [
 			'name'  => 'username',
 			'label' => Mage::helper('adminhtml')->__('User Name'),
 			'id'    => 'username',
 			'title' => Mage::helper('adminhtml')->__('User Name'),
 			'required' => true,
-		));
+        ]);
 
-		$fieldset->addField('firstname', 'text', array(
+		$fieldset->addField('firstname', 'text', [
 			'name'  => 'firstname',
 			'label' => Mage::helper('adminhtml')->__('First Name'),
 			'id'    => 'firstname',
 			'title' => Mage::helper('adminhtml')->__('First Name'),
 			'required' => true,
-		));
+        ]);
 
-		$fieldset->addField('lastname', 'text', array(
+		$fieldset->addField('lastname', 'text', [
 			'name'  => 'lastname',
 			'label' => Mage::helper('adminhtml')->__('Last Name'),
 			'id'    => 'lastname',
 			'title' => Mage::helper('adminhtml')->__('Last Name'),
 			'required' => true,
-		));
+        ]);
 
-		$fieldset->addField('email', 'text', array(
+		$fieldset->addField('email', 'text', [
 			'name'  => 'email',
 			'label' => Mage::helper('adminhtml')->__('Email'),
 			'id'    => 'customer_email',
 			'title' => Mage::helper('adminhtml')->__('User Email'),
 			'class' => 'required-entry validate-email',
 			'required' => true,
-		));
+        ]);
 
 		$misc = $this->helper('bs_misc');
 		$regions = Mage::getModel('bs_sur/sur_attribute_source_region')->getAllOptions(false);
@@ -69,14 +69,14 @@ class BS_Rewriting_Block_Adminhtml_Permissions_User_Edit_Tab_Main extends Mage_A
         $fieldset->addField(
             'region',
             'select',
-            array(
+            [
                 'label' => Mage::helper('bs_sur')->__('Region'),
                 'name'  => 'region',
                 'required'  => true,
                 'class' => 'required-entry',
 
                 'values'=> $regions,
-            )
+            ]
         );
 
 
@@ -87,81 +87,81 @@ class BS_Rewriting_Block_Adminhtml_Permissions_User_Edit_Tab_Main extends Mage_A
         $fieldset->addField(
             'section',
             'select',
-            array(
+            [
                 'label' => Mage::helper('bs_sur')->__('Section'),
                 'name'  => 'section',
 
                 'values'=> $sections,
-            )
+            ]
         );
 
 
-		$fieldset->addField('vaeco_id', 'text', array(
+		$fieldset->addField('vaeco_id', 'text', [
 			'name'  => 'vaeco_id',
 			'label' => Mage::helper('adminhtml')->__('Vaeco ID'),
 			'id'    => 'vaeco_id',
 			'title' => Mage::helper('adminhtml')->__('Vaeco ID'),
-		));
+        ]);
 
-		$fieldset->addField('crs_no', 'text', array(
+		$fieldset->addField('crs_no', 'text', [
 			'name'  => 'crs_no',
 			'label' => Mage::helper('adminhtml')->__('CRS Number'),
 			'id'    => 'crs_no',
 			'title' => Mage::helper('adminhtml')->__('CRS Number'),
-		));
+        ]);
 
 
 		if ($model->getUserId()) {
-			$fieldset->addField('password', 'password', array(
+			$fieldset->addField('password', 'password', [
 				'name'  => 'new_password',
 				'label' => Mage::helper('adminhtml')->__('New Password'),
 				'id'    => 'new_pass',
 				'title' => Mage::helper('adminhtml')->__('New Password'),
 				'class' => 'input-text validate-password',
-			));
+            ]);
 
-			$fieldset->addField('confirmation', 'password', array(
+			$fieldset->addField('confirmation', 'password', [
 				'name'  => 'password_confirmation',
 				'label' => Mage::helper('adminhtml')->__('Password Confirmation'),
 				'id'    => 'confirmation',
 				'class' => 'input-text validate-cpassword',
-			));
+            ]);
 		}
 		else {
-			$fieldset->addField('password', 'password', array(
+			$fieldset->addField('password', 'password', [
 				'name'  => 'password',
 				'label' => Mage::helper('adminhtml')->__('Password'),
 				'id'    => 'customer_pass',
 				'title' => Mage::helper('adminhtml')->__('Password'),
 				'class' => 'input-text required-entry validate-password',
 				'required' => true,
-			));
-			$fieldset->addField('confirmation', 'password', array(
+            ]);
+			$fieldset->addField('confirmation', 'password', [
 				'name'  => 'password_confirmation',
 				'label' => Mage::helper('adminhtml')->__('Password Confirmation'),
 				'id'    => 'confirmation',
 				'title' => Mage::helper('adminhtml')->__('Password Confirmation'),
 				'class' => 'input-text required-entry validate-cpassword',
 				'required' => true,
-			));
+            ]);
 		}
 
 		if (Mage::getSingleton('admin/session')->getUser()->getId() != $model->getUserId()) {
-			$fieldset->addField('is_active', 'select', array(
+			$fieldset->addField('is_active', 'select', [
 				'name'      => 'is_active',
 				'label'     => Mage::helper('adminhtml')->__('This account is'),
 				'id'        => 'is_active',
 				'title'     => Mage::helper('adminhtml')->__('Account Status'),
 				'class'     => 'input-select',
 				'style'        => 'width: 80px',
-				'options'    => array('1' => Mage::helper('adminhtml')->__('Active'), '0' => Mage::helper('adminhtml')->__('Inactive')),
-			));
+				'options'    => ['1' => Mage::helper('adminhtml')->__('Active'), '0' => Mage::helper('adminhtml')->__('Inactive')],
+            ]);
 		}
 
-		$fieldset->addField('user_roles', 'hidden', array(
+		$fieldset->addField('user_roles', 'hidden', [
 			'name' => 'user_roles',
 			'id'   => '_user_roles',
-		));
+        ]);
 
 		$data = $model->getData();
 

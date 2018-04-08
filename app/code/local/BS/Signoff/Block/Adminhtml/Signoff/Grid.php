@@ -66,125 +66,125 @@ class BS_Signoff_Block_Adminhtml_Signoff_Grid extends Mage_Adminhtml_Block_Widge
         );*/
         $this->addColumn(
             'ref_no',
-            array(
+            [
                 'header'    => Mage::helper('bs_signoff')->__('Reference No'),
                 'align'     => 'left',
                 'index'     => 'ref_no',
-            )
+            ]
         );
 
-        $ins = Mage::getModel('admin/user')->getCollection()->addFieldToFilter('user_id', array('gt' => 1))->load();
-        $inspectors = array();
+        $ins = Mage::getModel('admin/user')->getCollection()->addFieldToFilter('user_id', ['gt' => 1])->load();
+        $inspectors = [];
         foreach ($ins as $in) {
 	        $inspectors[$in->getUserId()] = strtoupper($in->getUsername());
         }
         $this->addColumn(
             'ins_id',
-            array(
+            [
                 'header'    => Mage::helper('bs_misc')->__('Inspector'),
                 'index'     => 'ins_id',
                 'type'      => 'options',
                 'options'   => $inspectors,
 
-            )
+            ]
         );
         
 
         $this->addColumn(
             'dept_id',
-            array(
+            [
                 'header' => Mage::helper('bs_signoff')->__('Maint. Center'),
                 'index'  => 'dept_id',
                 'type'=> 'number',
 
-            )
+            ]
         );
         $this->addColumn(
             'loc_id',
-            array(
+            [
                 'header' => Mage::helper('bs_signoff')->__('Location'),
                 'index'  => 'loc_id',
                 'type'=> 'number',
 
-            )
+            ]
         );
 	    $acregs = Mage::getModel('bs_acreg/acreg')->getCollection()->toOptionHash();
 
 	    $this->addColumn(
 		    'ac_reg',
-		    array(
+		    [
 			    'header' => Mage::helper('bs_rii')->__('A/C Reg'),
 			    'index'     => 'ac_reg',
 			    'type'      => 'options',
 			    'options'   => $acregs,
 
-		    )
+            ]
 	    );
 	    $this->addColumn(
             'report_date',
-            array(
+            [
                 'header' => Mage::helper('bs_signoff')->__('Date of Inspection'),
                 'index'  => 'report_date',
                 'type'=> 'date',
 
-            )
+            ]
         );
         $this->addColumn(
             'wp',
-            array(
+            [
                 'header' => Mage::helper('bs_signoff')->__('Workpack'),
                 'index'  => 'wp',
                 'type'=> 'text',
 
-            )
+            ]
         );
         $this->addColumn(
             'ir',
-            array(
+            [
                 'header' => Mage::helper('bs_signoff')->__('Ir'),
                 'index'  => 'ir',
                 'type'    => 'options',
-                    'options'    => array(
+                    'options'    => [
                     '1' => Mage::helper('bs_signoff')->__('Yes'),
                     '0' => Mage::helper('bs_signoff')->__('No'),
-                )
+                    ]
 
-            )
+            ]
         );
         $this->addColumn(
             'ncr',
-            array(
+            [
                 'header' => Mage::helper('bs_signoff')->__('NCR'),
                 'index'  => 'ncr',
                 'type'    => 'options',
-                    'options'    => array(
+                    'options'    => [
                     '1' => Mage::helper('bs_signoff')->__('Yes'),
                     '0' => Mage::helper('bs_signoff')->__('No'),
-                )
+                    ]
 
-            )
+            ]
         );
         $this->addColumn(
             'qr',
-            array(
+            [
                 'header' => Mage::helper('bs_signoff')->__('QR'),
                 'index'  => 'qr',
                 'type'    => 'options',
-                    'options'    => array(
+                    'options'    => [
                     '1' => Mage::helper('bs_signoff')->__('Yes'),
                     '0' => Mage::helper('bs_signoff')->__('No'),
-                )
+                    ]
 
-            )
+            ]
         );
         $this->addColumn(
             'task_id',
-            array(
+            [
                 'header' => Mage::helper('bs_signoff')->__('Task ID'),
                 'index'  => 'task_id',
                 'type'=> 'number',
 
-            )
+            ]
         );
 
 
@@ -225,10 +225,10 @@ class BS_Signoff_Block_Adminhtml_Signoff_Grid extends Mage_Adminhtml_Block_Widge
         $this->setMassactionIdField('entity_id');
         $this->getMassactionBlock()->setFormFieldName('signoff');
 
-        $this->getMassactionBlock()->addItem('separator', array(
+        $this->getMassactionBlock()->addItem('separator', [
             'label'=> '---Select---',
             'url'  => ''
-        ));
+        ]);
         return $this;
     }
 
@@ -242,7 +242,7 @@ class BS_Signoff_Block_Adminhtml_Signoff_Grid extends Mage_Adminhtml_Block_Widge
      */
     public function getRowUrl($row)
     {
-        return $this->getUrl('*/*/edit', array('id' => $row->getId()));
+        return $this->getUrl('*/*/edit', ['id' => $row->getId()]);
     }
 
     /**
@@ -254,7 +254,7 @@ class BS_Signoff_Block_Adminhtml_Signoff_Grid extends Mage_Adminhtml_Block_Widge
      */
     public function getGridUrl()
     {
-        return $this->getUrl('*/*/grid', array('_current'=>true));
+        return $this->getUrl('*/*/grid', ['_current'=>true]);
     }
 
     /**

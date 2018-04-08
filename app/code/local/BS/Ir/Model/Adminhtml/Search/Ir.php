@@ -24,27 +24,27 @@ class BS_Ir_Model_Adminhtml_Search_Ir extends Varien_Object
      */
     public function load()
     {
-        $arr = array();
+        $arr = [];
         if (!$this->hasStart() || !$this->hasLimit() || !$this->hasQuery()) {
             $this->setResults($arr);
             return $this;
         }
         $collection = Mage::getResourceModel('bs_ir/ir_collection')
-            ->addFieldToFilter('ref_no', array('like' => $this->getQuery().'%'))
+            ->addFieldToFilter('ref_no', ['like' => $this->getQuery().'%'])
             ->setCurPage($this->getStart())
             ->setPageSize($this->getLimit())
             ->load();
         foreach ($collection->getItems() as $ir) {
-            $arr[] = array(
+            $arr[] = [
                 'id'          => 'ir/1/'.$ir->getId(),
                 'type'        => Mage::helper('bs_ir')->__('Ir'),
                 'name'        => $ir->getRefNo(),
                 'description' => $ir->getRefNo(),
                 'url' => Mage::helper('adminhtml')->getUrl(
                     '*/ir_ir/edit',
-                    array('id'=>$ir->getId())
+                    ['id'=>$ir->getId()]
                 ),
-            );
+            ];
         }
         $this->setResults($arr);
         return $this;

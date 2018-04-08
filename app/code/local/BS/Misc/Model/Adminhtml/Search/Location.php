@@ -24,27 +24,27 @@ class BS_Misc_Model_Adminhtml_Search_Location extends Varien_Object
      */
     public function load()
     {
-        $arr = array();
+        $arr = [];
         if (!$this->hasStart() || !$this->hasLimit() || !$this->hasQuery()) {
             $this->setResults($arr);
             return $this;
         }
         $collection = Mage::getResourceModel('bs_misc/location_collection')
-            ->addFieldToFilter('loc_name', array('like' => $this->getQuery().'%'))
+            ->addFieldToFilter('loc_name', ['like' => $this->getQuery().'%'])
             ->setCurPage($this->getStart())
             ->setPageSize($this->getLimit())
             ->load();
         foreach ($collection->getItems() as $location) {
-            $arr[] = array(
+            $arr[] = [
                 'id'          => 'location/1/'.$location->getId(),
                 'type'        => Mage::helper('bs_misc')->__('Location'),
                 'name'        => $location->getLocName(),
                 'description' => $location->getLocName(),
                 'url' => Mage::helper('adminhtml')->getUrl(
                     '*/misc_location/edit',
-                    array('id'=>$location->getId())
+                    ['id'=>$location->getId()]
                 ),
-            );
+            ];
         }
         $this->setResults($arr);
         return $this;

@@ -24,27 +24,27 @@ class BS_Misc_Model_Adminhtml_Search_Certtype extends Varien_Object
      */
     public function load()
     {
-        $arr = array();
+        $arr = [];
         if (!$this->hasStart() || !$this->hasLimit() || !$this->hasQuery()) {
             $this->setResults($arr);
             return $this;
         }
         $collection = Mage::getResourceModel('bs_misc/certtype_collection')
-            ->addFieldToFilter('cert_code', array('like' => $this->getQuery().'%'))
+            ->addFieldToFilter('cert_code', ['like' => $this->getQuery().'%'])
             ->setCurPage($this->getStart())
             ->setPageSize($this->getLimit())
             ->load();
         foreach ($collection->getItems() as $certtype) {
-            $arr[] = array(
+            $arr[] = [
                 'id'          => 'certtype/1/'.$certtype->getId(),
                 'type'        => Mage::helper('bs_misc')->__('Certificate Type'),
                 'name'        => $certtype->getCertCode(),
                 'description' => $certtype->getCertCode(),
                 'url' => Mage::helper('adminhtml')->getUrl(
                     '*/misc_certtype/edit',
-                    array('id'=>$certtype->getId())
+                    ['id'=>$certtype->getId()]
                 ),
-            );
+            ];
         }
         $this->setResults($arr);
         return $this;

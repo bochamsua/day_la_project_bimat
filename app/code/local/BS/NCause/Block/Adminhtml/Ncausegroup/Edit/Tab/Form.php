@@ -31,27 +31,27 @@ class BS_NCause_Block_Adminhtml_Ncausegroup_Edit_Tab_Form extends Mage_Adminhtml
         $this->setForm($form);
         $fieldset = $form->addFieldset(
             'ncausegroup_form',
-            array('legend' => Mage::helper('bs_ncause')->__('Root Cause Code'))
+            ['legend' => Mage::helper('bs_ncause')->__('Root Cause Code')]
         );
 
         $fieldset->addField(
             'group_code',
             'text',
-            array(
+            [
                 'label' => Mage::helper('bs_ncause')->__('Group Code'),
                 'name'  => 'group_code',
 
-           )
+            ]
         );
 
         $fieldset->addField(
             'group_name',
             'text',
-            array(
+            [
                 'label' => Mage::helper('bs_ncause')->__('Name'),
                 'name'  => 'group_name',
 
-           )
+            ]
         );
         /*$fieldset->addField(
             'status',
@@ -73,7 +73,7 @@ class BS_NCause_Block_Adminhtml_Ncausegroup_Edit_Tab_Form extends Mage_Adminhtml
         );*/
         $formValues = Mage::registry('current_ncausegroup')->getDefaultValues();
         if (!is_array($formValues)) {
-            $formValues = array();
+            $formValues = [];
         }
         if (Mage::getSingleton('adminhtml/session')->getNcausegroupData()) {
             $formValues = array_merge($formValues, Mage::getSingleton('adminhtml/session')->getNcausegroupData());

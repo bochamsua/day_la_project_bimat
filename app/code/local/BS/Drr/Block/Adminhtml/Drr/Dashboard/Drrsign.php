@@ -47,13 +47,13 @@ class BS_Drr_Block_Adminhtml_Drr_Dashboard_Drrsign extends BS_Rewriting_Block_Ad
         $currentUser = $this->helper('bs_misc')->getCurrentUserInfo();
         $collection = Mage::getModel('bs_drr/drr')
             ->getCollection()
-	        ->addFieldToFilter('drr_status', array('eq'=>0))
+	        ->addFieldToFilter('drr_status', ['eq'=>0])
             ->addFieldToFilter('region', $currentUser[2])
             ->addFieldToFilter('section', $currentUser[3])
-            ->addFieldToFilter('accept', array(
-                array('eq' => 0),
-                array('null' => true),
-            ))
+            ->addFieldToFilter('accept', [
+                ['eq' => 0],
+                ['null' => true],
+            ])
             ->setOrder('ref_no', 'DESC')
 
         ;
@@ -68,21 +68,21 @@ class BS_Drr_Block_Adminhtml_Drr_Dashboard_Drrsign extends BS_Rewriting_Block_Ad
     {
         $this->addColumn(
             'ref_no',
-            array(
+            [
                 'header'    => Mage::helper('bs_drr')->__('Reference No'),
                 'align'     => 'left',
                 'index'     => 'ref_no',
-            )
+            ]
         );
 
         $this->addColumn(
             'report_date',
-            array(
+            [
                 'header' => Mage::helper('bs_drr')->__('Report Date'),
                 'index'  => 'report_date',
                 'type'=> 'date',
 
-            )
+            ]
         );
 
 
@@ -96,6 +96,6 @@ class BS_Drr_Block_Adminhtml_Drr_Dashboard_Drrsign extends BS_Rewriting_Block_Ad
 
     public function getRowUrl($row)
     {
-        return $this->getUrl('*/drr_drr/edit', array('id' => $row->getId()));
+        return $this->getUrl('*/drr_drr/edit', ['id' => $row->getId()]);
     }
 }

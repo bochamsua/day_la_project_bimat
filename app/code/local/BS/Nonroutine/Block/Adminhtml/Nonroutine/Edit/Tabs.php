@@ -40,14 +40,14 @@ class BS_Nonroutine_Block_Adminhtml_Nonroutine_Edit_Tabs extends Mage_Adminhtml_
     {
         $this->addTab(
             'form_nonroutine',
-            array(
+            [
                 'label'   => Mage::helper('bs_nonroutine')->__('QC HAN Work Non-Routine'),
                 'title'   => Mage::helper('bs_nonroutine')->__('QC HAN Work Non-Routine'),
                 'content' => $this->getLayout()->createBlock(
                     'bs_nonroutine/adminhtml_nonroutine_edit_tab_form'
                 )
                 ->toHtml(),
-            )
+            ]
         );
         return parent::_beforeToHtml();
     }

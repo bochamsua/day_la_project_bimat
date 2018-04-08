@@ -18,10 +18,10 @@ class BS_Cofa_Block_Adminhtml_Cofa_Edit_Tab_Ncr extends Mage_Adminhtml_Block_Wid
     protected function _prepareLayout(){
         $this->setChild('add_ncr_button',
             $this->getLayout()->createBlock('adminhtml/widget_button')
-                ->setData(array(
+                ->setData([
                     'label'     => Mage::helper('adminhtml')->__('New NCR'),
-                    'onclick'   => 'window.open(\''.$this->getUrl('*/ncr_ncr/new', array('_current'=>false, 'ref_type'=>'cofa', 'task_id'=>$this->getCofa()->getTaskId(), 'ref_id'=>$this->getCofa()->getId(),'popup'=>true)).'\',\'\',\'width=1000,height=700,resizable=1,scrollbars=1\')'
-                ))
+                    'onclick'   => 'window.open(\''.$this->getUrl('*/ncr_ncr/new', ['_current'=>false, 'ref_type'=>'cofa', 'task_id'=>$this->getCofa()->getTaskId(), 'ref_id'=>$this->getCofa()->getId(),'popup'=>true]).'\',\'\',\'width=1000,height=700,resizable=1,scrollbars=1\')'
+                ])
         );
 
 
@@ -83,71 +83,71 @@ class BS_Cofa_Block_Adminhtml_Cofa_Edit_Tab_Ncr extends Mage_Adminhtml_Block_Wid
 
         $this->addColumn(
             'ref_no',
-            array(
+            [
                 'header'    => Mage::helper('bs_ncr')->__('Reference No'),
                 'align'     => 'left',
                 'index'     => 'ref_no',
-            )
+            ]
         );
 
         $this->addColumn(
             'task_id',
-            array(
+            [
                 'header' => Mage::helper('bs_ncr')->__('Code'),
                 'index'  => 'task_id',
                 'type'  => 'text',
                 'renderer' => 'bs_misc/adminhtml_helper_column_renderer_task',
 
-            )
+            ]
         );
 
         $this->addColumn(
             'subtask_id',
-            array(
+            [
                 'header' => Mage::helper('bs_ncr')->__('Sub Code'),
                 'index'  => 'subtask_id',
                 'type'  => 'text',
                 'renderer' => 'bs_misc/adminhtml_helper_column_renderer_subtask',
 
-            )
+            ]
         );
 
         $this->addColumn(
             'report_date',
-            array(
+            [
                 'header' => Mage::helper('bs_ncr')->__('Report Date'),
                 'index'  => 'report_date',
                 'type'=> 'date',
 
-            )
+            ]
         );
 
         $acTypes = Mage::getModel('bs_misc/aircraft')->getCollection()->toOptionHash();
         $this->addColumn(
             'ac_type',
-            array(
+            [
                 'header' => Mage::helper('bs_ncr')->__('A/C Type'),
                 'index'     => 'ac_type',
                 'type'      => 'options',
                 'options'   => $acTypes,
 
-            )
+            ]
         );
 
         $this->addColumn(
             'ac_reg',
-            array(
+            [
                 'header' => Mage::helper('bs_ncr')->__('A/C Reg'),
                 'index'  => 'ac_reg',
                 'type'  => 'text',
                 'renderer' => 'bs_acreg/adminhtml_helper_column_renderer_acreg',
 
-            )
+            ]
         );
 
         $this->addColumn(
         'ncr_type',
-        array(
+        [
             'header' => Mage::helper('bs_ncr')->__('Type'),
             'index'  => 'ncr_type',
             'type'  => 'options',
@@ -155,29 +155,29 @@ class BS_Cofa_Block_Adminhtml_Cofa_Edit_Tab_Ncr extends Mage_Adminhtml_Block_Wid
                 Mage::getModel('bs_ncr/ncr_attribute_source_ncrtype')->getAllOptions(false)
             )
 
-        )
+        ]
     );
         $this->addColumn(
             'due_date',
-            array(
+            [
                 'header' => Mage::helper('bs_ncr')->__('Due Date'),
                 'index'  => 'due_date',
                 'type'=> 'date',
 
-            )
+            ]
         );
         $this->addColumn(
             'approval_id',
-            array(
+            [
                 'header' => Mage::helper('bs_ncr')->__('Approved By'),
                 'index'  => 'approval_id',
                 'type'=> 'number',
 
-            )
+            ]
         );
         $this->addColumn(
             'ncr_status',
-            array(
+            [
                 'header' => Mage::helper('bs_ncr')->__('Status'),
                 'index'  => 'ncr_status',
                 'type'  => 'options',
@@ -185,16 +185,16 @@ class BS_Cofa_Block_Adminhtml_Cofa_Edit_Tab_Ncr extends Mage_Adminhtml_Block_Wid
                     Mage::getModel('bs_ncr/ncr_attribute_source_ncrstatus')->getAllOptions(false)
                 )
 
-            )
+            ]
         );
         $this->addColumn(
             'close_date',
-            array(
+            [
                 'header' => Mage::helper('bs_ncr')->__('Close Date'),
                 'index'  => 'close_date',
                 'type'=> 'date',
 
-            )
+            ]
         );
 
         $this->setFilterVisibility(false);
@@ -227,7 +227,7 @@ class BS_Cofa_Block_Adminhtml_Cofa_Edit_Tab_Ncr extends Mage_Adminhtml_Block_Wid
      */
     public function getRowUrl($row)
     {
-        return $this->getUrl('*/ncr_ncr/edit', array('id' => $row->getId()));
+        return $this->getUrl('*/ncr_ncr/edit', ['id' => $row->getId()]);
     }
 
     /**
@@ -239,7 +239,7 @@ class BS_Cofa_Block_Adminhtml_Cofa_Edit_Tab_Ncr extends Mage_Adminhtml_Block_Wid
      */
     public function getGridUrl()
     {
-        return $this->getUrl('*/*/ncrsGrid', array('_current'=>true));
+        return $this->getUrl('*/*/ncrsGrid', ['_current'=>true]);
     }
 
     public function getCofa()

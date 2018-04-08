@@ -88,7 +88,7 @@ class BS_Cmr_Model_Cmr extends Mage_Core_Model_Abstract
      */
     public function getDefaultValues()
     {
-        $values = array();
+        $values = [];
         $values['status'] = 1;
         return $values;
     }

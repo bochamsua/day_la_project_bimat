@@ -19,10 +19,10 @@ $this->getConnection()
     ->addColumn(
         $this->getTable('bs_signoff/signoff'),
         'region',
-        array(
+        [
             'type' => Varien_Db_Ddl_Table::TYPE_INTEGER,
             'comment'   => 'region'
-        )
+        ]
     )
 ;
 
@@ -30,10 +30,10 @@ $this->getConnection()
     ->addColumn(
         $this->getTable('bs_signoff/signoff'),
         'section',
-        array(
+        [
             'type' => Varien_Db_Ddl_Table::TYPE_INTEGER,
             'comment'   => 'section'
-        )
+        ]
     )
 ;
 
@@ -41,27 +41,27 @@ $this->getConnection()
     ->addColumn(
         $this->getTable('bs_signoff/signoff'),
         'ref_type',
-        array(
+        [
             'type' => Varien_Db_Ddl_Table::TYPE_TEXT,
             'comment'   => 'ref_type'
-        )
+        ]
     )
 ;
 
-$this->getConnection()->changeColumn($this->getTable('bs_signoff/signoff'), 'inspection_date','report_date', array(
+$this->getConnection()->changeColumn($this->getTable('bs_signoff/signoff'), 'inspection_date','report_date', [
     'type'      => Varien_Db_Ddl_Table::TYPE_DATE,
     'comment'   => 'Report Date'
-));
+]);
 
-$this->getConnection()->changeColumn($this->getTable('bs_signoff/signoff'), 'investigation','ir', array(
+$this->getConnection()->changeColumn($this->getTable('bs_signoff/signoff'), 'investigation','ir', [
     'type'      => Varien_Db_Ddl_Table::TYPE_SMALLINT,
     'comment'   => 'investigation'
-));
+]);
 
-$this->getConnection()->changeColumn($this->getTable('bs_signoff/signoff'), 'qrqn','qr', array(
+$this->getConnection()->changeColumn($this->getTable('bs_signoff/signoff'), 'qrqn','qr', [
     'type'      => Varien_Db_Ddl_Table::TYPE_SMALLINT,
     'comment'   => 'qr'
-));
+]);
 
 
 $this->endSetup();

@@ -25,7 +25,7 @@ class BS_Nonroutine_Helper_Data extends Mage_Core_Helper_Abstract
      */
     public function convertOptions($options)
     {
-        $converted = array();
+        $converted = [];
         foreach ($options as $option) {
             if (isset($option['value']) && !is_array($option['value']) &&
                 isset($option['label']) && !is_array($option['label'])) {

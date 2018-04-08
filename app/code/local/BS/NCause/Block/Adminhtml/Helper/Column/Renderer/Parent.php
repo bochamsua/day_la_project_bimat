@@ -29,11 +29,11 @@ class BS_NCause_Block_Adminhtml_Helper_Column_Renderer_Parent extends Mage_Admin
             return parent::render($row);
         }
         $paramsData = $this->getColumn()->getData('params');
-        $params = array();
+        $params = [];
         if (is_array($paramsData)) {
             foreach ($paramsData as $name=>$getter) {
-                if (is_callable(array($row, $getter))) {
-                    $params[$name] = call_user_func(array($row, $getter));
+                if (is_callable([$row, $getter])) {
+                    $params[$name] = call_user_func([$row, $getter]);
                 }
             }
         }
@@ -48,7 +48,7 @@ class BS_NCause_Block_Adminhtml_Helper_Column_Renderer_Parent extends Mage_Admin
         if (!empty($options) && is_array($options)) {
             $value = $row->getData($this->getColumn()->getIndex());
             if (is_array($value)) {
-                $res = array();
+                $res = [];
                 foreach ($value as $item) {
                     if (isset($options[$item])) {
                         $res[] = '<a href="'.$this->getUrl($base, $params).'" target="_blank">'.

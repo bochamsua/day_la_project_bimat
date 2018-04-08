@@ -51,11 +51,11 @@ class BS_Car_Block_Adminhtml_Car_Edit extends Mage_Adminhtml_Block_Widget_Form_C
 
 		    $this->_addButton(
 			    'close',
-			    array(
+			    [
 				    'label'   => Mage::helper('bs_car')->__('Close'),
 				    'onclick'   => "closeCar()",
 				    'class'   => 'save closes',
-			    )
+                ]
 		    );
 
 		    if($currentObj->getCarStatus() == 1){//car is closed, remove close button
@@ -76,18 +76,18 @@ class BS_Car_Block_Adminhtml_Car_Edit extends Mage_Adminhtml_Block_Widget_Form_C
             $this->_removeButton('back');
             $this->_addButton(
                 'closewindow',
-                array(
+                [
                     'label'   => Mage::helper('bs_car')->__('Close'),
                     'onclick' => 'window.close()',
                     'class'   => 'back',
-                ),
+                ],
                 -1
             );
         }
         $this->_formScripts[] = "
 
             function deleteOnly() {
-                deleteConfirm('". Mage::helper('adminhtml')->__('Are you sure you want to do this?')."','".$this->getUrl('*/*/delete', array($this->_objectId => $this->getRequest()->getParam($this->_objectId), 'popup'=>1)) . "');
+                deleteConfirm('". Mage::helper('adminhtml')->__('Are you sure you want to do this?')."','".$this->getUrl('*/*/delete', [$this->_objectId => $this->getRequest()->getParam($this->_objectId), 'popup'=>1]) . "');
             }
             function saveOnly() {
                 editForm.submit($('edit_form').action+'".$add."');
@@ -156,11 +156,11 @@ class BS_Car_Block_Adminhtml_Car_Edit extends Mage_Adminhtml_Block_Widget_Form_C
 
 		    $this->_addButton(
 			    'save1',
-			    array(
+			    [
 				    'label'   => Mage::helper('bs_car')->__('Save admin slin kin kin'),
 				    'onclick'   => "saveAndContinueEdit()",
 				    'class'   => 'save',
-			    )
+                ]
 		    );
 	    }
 
@@ -191,12 +191,12 @@ class BS_Car_Block_Adminhtml_Car_Edit extends Mage_Adminhtml_Block_Widget_Form_C
     }
     public function getSaveAndContinueUrl()
         {
-            return $this->getUrl('*/*/save', array(
+            return $this->getUrl('*/*/save', [
                 '_current'   => true,
                 'back'       => 'edit',
                 'tab'        => '{{tab_id}}',
                 'active_tab' => null
-            ));
+            ]);
         }
     public function getSelectedTabId()
         {

@@ -15,18 +15,18 @@
  */
 $installer = $this;
 $installer->startSetup();
-$installer->getConnection()->addColumn($installer->getTable('admin/user'), 'region', array(
+$installer->getConnection()->addColumn($installer->getTable('admin/user'), 'region', [
     'type' => Varien_Db_Ddl_Table::TYPE_INTEGER,
     'nullable' => true,
     'default' => null,
     'comment' => 'region'
-));
+]);
 
-$installer->getConnection()->addColumn($installer->getTable('admin/user'), 'section', array(
+$installer->getConnection()->addColumn($installer->getTable('admin/user'), 'section', [
     'type' => Varien_Db_Ddl_Table::TYPE_INTEGER,
     'nullable' => true,
     'default' => null,
     'comment' => 'section'
-));
+]);
 
 $this->endSetup();

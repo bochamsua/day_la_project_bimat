@@ -119,7 +119,7 @@ class BS_Drr_Adminhtml_Drr_DrrController extends BS_Sur_Controller_Adminhtml_Sur
     {
         if ($data = $this->getRequest()->getPost('drr')) {
             try {
-                $data = $this->_filterDates($data, array('report_date' ,'due_date' ,'close_date'));
+                $data = $this->_filterDates($data, ['report_date' ,'due_date' ,'close_date']);
                 $drr = $this->_initDrr();
 
 
@@ -148,7 +148,7 @@ class BS_Drr_Adminhtml_Drr_DrrController extends BS_Sur_Controller_Adminhtml_Sur
                     Mage::helper('bs_drr')->__('Drr was successfully saved. %s', $add)
                 );
                 Mage::getSingleton('adminhtml/session')->setFormData(false);
-	            $this->_redirect('*/*/edit', array('id' => $drr->getId()));
+	            $this->_redirect('*/*/edit', ['id' => $drr->getId()]);
 	            return;
             } catch (Mage_Core_Exception $e) {
                 if (isset($data['drr_source']['value'])) {
@@ -159,7 +159,7 @@ class BS_Drr_Adminhtml_Drr_DrrController extends BS_Sur_Controller_Adminhtml_Sur
                 }
                 Mage::getSingleton('adminhtml/session')->addError($e->getMessage());
                 Mage::getSingleton('adminhtml/session')->setDrrData($data);
-                $this->_redirect('*/*/edit', array('id' => $this->getRequest()->getParam('id')));
+                $this->_redirect('*/*/edit', ['id' => $this->getRequest()->getParam('id')]);
                 return;
             } catch (Exception $e) {
                 Mage::logException($e);
@@ -173,7 +173,7 @@ class BS_Drr_Adminhtml_Drr_DrrController extends BS_Sur_Controller_Adminhtml_Sur
                     Mage::helper('bs_drr')->__('There was a problem saving the drr.')
                 );
                 Mage::getSingleton('adminhtml/session')->setDrrData($data);
-                $this->_redirect('*/*/edit', array('id' => $this->getRequest()->getParam('id')));
+                $this->_redirect('*/*/edit', ['id' => $this->getRequest()->getParam('id')]);
                 return;
             }
         }
@@ -203,12 +203,12 @@ class BS_Drr_Adminhtml_Drr_DrrController extends BS_Sur_Controller_Adminhtml_Sur
                 return;
             } catch (Mage_Core_Exception $e) {
                 Mage::getSingleton('adminhtml/session')->addError($e->getMessage());
-                $this->_redirect('*/*/edit', array('id' => $this->getRequest()->getParam('id')));
+                $this->_redirect('*/*/edit', ['id' => $this->getRequest()->getParam('id')]);
             } catch (Exception $e) {
                 Mage::getSingleton('adminhtml/session')->addError(
                     Mage::helper('bs_drr')->__('There was an error deleting drr.')
                 );
-                $this->_redirect('*/*/edit', array('id' => $this->getRequest()->getParam('id')));
+                $this->_redirect('*/*/edit', ['id' => $this->getRequest()->getParam('id')]);
                 Mage::logException($e);
                 return;
             }
@@ -593,10 +593,10 @@ class BS_Drr_Adminhtml_Drr_DrrController extends BS_Sur_Controller_Adminhtml_Sur
         }
         $this->_redirect(
             '*/drr_drr/edit',
-            array(
+            [
                 'id' => $this->getRequest()->getParam('id'),
                 '_current' => true
-            )
+            ]
         );
 
     }
@@ -635,7 +635,7 @@ class BS_Drr_Adminhtml_Drr_DrrController extends BS_Sur_Controller_Adminhtml_Sur
 
         $subjectOther = '';
         $subject = $obj->getSubject();
-        $checkbox = array();
+        $checkbox = [];
         if($subject == 1){
             $checkbox['maint_error'] = 1;
         }
@@ -732,7 +732,7 @@ class BS_Drr_Adminhtml_Drr_DrrController extends BS_Sur_Controller_Adminhtml_Sur
         $eventDate = Mage::getModel('core/date')->date("d/m/Y", $obj->getEventDate());
         $dueDate = Mage::getModel('core/date')->date("d/m/Y", $obj->getDueDate());
 
-        $data = array(
+        $data = [
             'ref' => $obj->getRefNo(),
             'report_date' => $reportDate,
             'due_date' => $dueDate,
@@ -751,7 +751,7 @@ class BS_Drr_Adminhtml_Drr_DrrController extends BS_Sur_Controller_Adminhtml_Sur
             //'corrective' => '',
 
 
-        );
+        ];
 
         /*$signatureManager = Mage::getModel('bs_signature/signature')->getCollection()
             ->addFieldToFilter('user_id', $obj->getApprovalId())
@@ -767,10 +767,10 @@ class BS_Drr_Adminhtml_Drr_DrrController extends BS_Sur_Controller_Adminhtml_Sur
 
         $inspectorSign = Mage::helper('bs_signature/signature')->getFileBaseDir().$signatureInspector->getFirstItem()->getSignature();
 
-        $images = array(
+        $images = [
             //'manager_sign' => $managerSign,
             'inspector_sign' => $inspectorSign
-        );
+        ];
 
 
 

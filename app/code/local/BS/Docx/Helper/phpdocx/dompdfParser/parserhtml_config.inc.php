@@ -296,7 +296,7 @@ mb_internal_encoding('UTF-8');
  * @var array
  */
 global $_dompdf_warnings;
-$_dompdf_warnings = array();
+$_dompdf_warnings = [];
 
 /**
  * If true, $_dompdf_warnings is dumped on script termination when using

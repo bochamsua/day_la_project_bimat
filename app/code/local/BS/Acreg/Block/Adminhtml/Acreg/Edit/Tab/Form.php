@@ -31,7 +31,7 @@ class BS_Acreg_Block_Adminhtml_Acreg_Edit_Tab_Form extends Mage_Adminhtml_Block_
         $this->setForm($form);
         $fieldset = $form->addFieldset(
             'acreg_form',
-            array('legend' => Mage::helper('bs_acreg')->__('A/C Reg'))
+            ['legend' => Mage::helper('bs_acreg')->__('A/C Reg')]
         );
         $values = Mage::getResourceModel('bs_acreg/customer_collection')
             ->toOptionArray();
@@ -44,7 +44,7 @@ class BS_Acreg_Block_Adminhtml_Acreg_Edit_Tab_Form extends Mage_Adminhtml_Block_
                     $(\'acreg_customer_id_link\').hide();
                 } else {
                     $(\'acreg_customer_id_link\').show();
-                    var url = \''.$this->getUrl('adminhtml/acreg_customer/edit', array('id'=>'{#id}', 'clear'=>1)).'\';
+                    var url = \''.$this->getUrl('adminhtml/acreg_customer/edit', ['id'=>'{#id}', 'clear'=>1]).'\';
                     var text = \''.Mage::helper('core')->escapeHtml($this->__('View {#name}')).'\';
                     var realUrl = url.replace(\'{#id}\', $(\'acreg_customer_id\').value);
                     $(\'acreg_customer_id_link\').href = realUrl;
@@ -58,57 +58,57 @@ class BS_Acreg_Block_Adminhtml_Acreg_Edit_Tab_Form extends Mage_Adminhtml_Block_
         $fieldset->addField(
             'customer_id',
             'select',
-            array(
+            [
                 'label'     => Mage::helper('bs_acreg')->__('Customer'),
                 'name'      => 'customer_id',
                 'required'  => false,
                 'values'    => $values,
                 //'after_element_html' => $html
-            )
+            ]
         );
 
 	    $acTypes = Mage::getResourceModel('bs_misc/aircraft_collection')
 	                 ->toOptionArray();
-	    array_unshift($values, array('label' => '', 'value' => ''));
+	    array_unshift($values, ['label' => '', 'value' => '']);
 
 	    $fieldset->addField(
 		    'ac_type',
 		    'select',
-		    array(
+		    [
 			    'label'     => Mage::helper('bs_acreg')->__('A/C Type'),
 			    'name'      => 'ac_type',
 			    'required'  => false,
 			    'values'    => $acTypes,
-		    )
+            ]
 	    );
 
         $fieldset->addField(
             'reg',
             'text',
-            array(
+            [
                 'label' => Mage::helper('bs_acreg')->__('Number'),
                 'name'  => 'reg',
 
-           )
+            ]
         );
 
 
 	    $fieldset->addField(
 		    'import',
 		    'textarea',
-		    array(
+		    [
 			    'label' => Mage::helper('bs_acreg')->__('Or import from this?'),
 			    'name'  => 'import',
 			    'config' => $wysiwygConfig,
 
-		    )
+            ]
 	    );
 
 
 
         $formValues = Mage::registry('current_acreg')->getDefaultValues();
         if (!is_array($formValues)) {
-            $formValues = array();
+            $formValues = [];
         }
         if (Mage::getSingleton('adminhtml/session')->getAcregData()) {
             $formValues = array_merge($formValues, Mage::getSingleton('adminhtml/session')->getAcregData());

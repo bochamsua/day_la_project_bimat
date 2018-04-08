@@ -14,10 +14,10 @@ class BS_Rewriting_Model_Admin_User extends Mage_Admin_Model_User {
 		$result = false;
 
 		try {
-			Mage::dispatchEvent('admin_user_authenticate_before', array(
+			Mage::dispatchEvent('admin_user_authenticate_before', [
 				'username' => $username,
 				'user'     => $this
-			));
+            ]);
 			$this->loadByUsername($username);
 			$sensitive = ($config) ? $username == $this->getUsername() : true;
 
@@ -31,12 +31,12 @@ class BS_Rewriting_Model_Admin_User extends Mage_Admin_Model_User {
 				$result = true;
 			}
 
-			Mage::dispatchEvent('admin_user_authenticate_after', array(
+			Mage::dispatchEvent('admin_user_authenticate_after', [
 				'username' => $username,
 				'password' => $password,
 				'user'     => $this,
 				'result'   => $result,
-			));
+            ]);
 		}
 		catch (Mage_Core_Exception $e) {
 			$this->unsetData();
@@ -104,10 +104,10 @@ class BS_Rewriting_Model_Admin_User extends Mage_Admin_Model_User {
 				$errors[] = Mage::helper('adminhtml')->__('Password confirmation must be same as password.');
 			}
 
-			Mage::dispatchEvent('admin_user_validate', array(
+			Mage::dispatchEvent('admin_user_validate', [
 				'user' => $this,
 				'errors' => $errors,
-			));
+            ]);
 		}
 
 		if ($this->userExists()) {

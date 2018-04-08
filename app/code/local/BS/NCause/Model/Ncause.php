@@ -113,7 +113,7 @@ class BS_NCause_Model_Ncause extends Mage_Core_Model_Abstract
      */
     public function getDefaultValues()
     {
-        $values = array();
+        $values = [];
         $values['status'] = 1;
         return $values;
     }

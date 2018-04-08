@@ -26,19 +26,19 @@ class BS_Meda_Model_Meda_Attribute_Source_Medastatus
      */
     public function getAllOptions($withEmpty = true, $defaultValues = false)
     {
-        $options =  array(
-            array(
+        $options =  [
+            [
                 'label' => Mage::helper('bs_meda')->__('Draft'),
                 'value' => 0
-            ),
-            array(
+            ],
+            [
                 'label' => Mage::helper('bs_meda')->__('Accepted'),
                 'value' => 1
-            ),
+            ],
 
-        );
+        ];
         if ($withEmpty) {
-            array_unshift($options, array('label'=>'', 'value'=>''));
+            array_unshift($options, ['label'=>'', 'value'=>'']);
         }
         return $options;
 
@@ -54,7 +54,7 @@ class BS_Meda_Model_Meda_Attribute_Source_Medastatus
      */
     public function getOptionsArray($withEmpty = true)
     {
-        $options = array();
+        $options = [];
         foreach ($this->getAllOptions($withEmpty) as $option) {
             $options[$option['value']] = $option['label'];
         }
@@ -75,7 +75,7 @@ class BS_Meda_Model_Meda_Attribute_Source_Medastatus
         if (!is_array($value)) {
             $value = explode(',', $value);
         }
-        $texts = array();
+        $texts = [];
         foreach ($value as $v) {
             if (isset($options[$v])) {
                 $texts[] = $options[$v];

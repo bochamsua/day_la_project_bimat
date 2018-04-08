@@ -119,7 +119,7 @@ class BS_Ncr_Adminhtml_Ncr_NcrController extends BS_Sur_Controller_Adminhtml_Sur
     {
         if ($data = $this->getRequest()->getPost('ncr')) {
             try {
-                $data = $this->_filterDates($data, array('report_date' ,'due_date' ,'close_date'));
+                $data = $this->_filterDates($data, ['report_date' ,'due_date' ,'close_date']);
                 $ncr = $this->_initNcr();
 
 	            $message = 'saved';
@@ -150,7 +150,7 @@ class BS_Ncr_Adminhtml_Ncr_NcrController extends BS_Sur_Controller_Adminhtml_Sur
                     Mage::helper('bs_ncr')->__('Ncr was successfully %s. %s', $message, $add)
                 );
                 Mage::getSingleton('adminhtml/session')->setFormData(false);
-	            $this->_redirect('*/*/edit', array('id' => $ncr->getId()));
+	            $this->_redirect('*/*/edit', ['id' => $ncr->getId()]);
 	            return;
             } catch (Mage_Core_Exception $e) {
                 if (isset($data['ncr_source']['value'])) {
@@ -161,7 +161,7 @@ class BS_Ncr_Adminhtml_Ncr_NcrController extends BS_Sur_Controller_Adminhtml_Sur
                 }
                 Mage::getSingleton('adminhtml/session')->addError($e->getMessage());
                 Mage::getSingleton('adminhtml/session')->setNcrData($data);
-                $this->_redirect('*/*/edit', array('id' => $this->getRequest()->getParam('id')));
+                $this->_redirect('*/*/edit', ['id' => $this->getRequest()->getParam('id')]);
                 return;
             } catch (Exception $e) {
                 Mage::logException($e);
@@ -175,7 +175,7 @@ class BS_Ncr_Adminhtml_Ncr_NcrController extends BS_Sur_Controller_Adminhtml_Sur
                     Mage::helper('bs_ncr')->__('There was a problem saving the ncr.')
                 );
                 Mage::getSingleton('adminhtml/session')->setNcrData($data);
-                $this->_redirect('*/*/edit', array('id' => $this->getRequest()->getParam('id')));
+                $this->_redirect('*/*/edit', ['id' => $this->getRequest()->getParam('id')]);
                 return;
             }
         }
@@ -210,12 +210,12 @@ class BS_Ncr_Adminhtml_Ncr_NcrController extends BS_Sur_Controller_Adminhtml_Sur
                 return;
             } catch (Mage_Core_Exception $e) {
                 Mage::getSingleton('adminhtml/session')->addError($e->getMessage());
-                $this->_redirect('*/*/edit', array('id' => $this->getRequest()->getParam('id')));
+                $this->_redirect('*/*/edit', ['id' => $this->getRequest()->getParam('id')]);
             } catch (Exception $e) {
                 Mage::getSingleton('adminhtml/session')->addError(
                     Mage::helper('bs_ncr')->__('There was an error deleting ncr.')
                 );
-                $this->_redirect('*/*/edit', array('id' => $this->getRequest()->getParam('id')));
+                $this->_redirect('*/*/edit', ['id' => $this->getRequest()->getParam('id')]);
                 Mage::logException($e);
                 return;
             }
@@ -490,7 +490,7 @@ class BS_Ncr_Adminhtml_Ncr_NcrController extends BS_Sur_Controller_Adminhtml_Sur
     }
 
     public function updateDueDateAction(){
-        $result = array();
+        $result = [];
         $typeId = $this->getRequest()->getPost('type_id');
         $fromDate = $this->getRequest()->getPost('from_date');
 
@@ -531,10 +531,10 @@ class BS_Ncr_Adminhtml_Ncr_NcrController extends BS_Sur_Controller_Adminhtml_Sur
 		}
 		$this->_redirect(
 			'*/ncr_ncr/edit',
-			array(
+			[
 				'id' => $this->getRequest()->getParam('id'),
 				'_current' => true
-			)
+            ]
 		);
 
 	}
@@ -560,7 +560,7 @@ class BS_Ncr_Adminhtml_Ncr_NcrController extends BS_Sur_Controller_Adminhtml_Sur
 		$approvalName = Mage::helper('bs_docx')->toUppercase($approvalName);
 
 
-		$area = array();
+		$area = [];
 		$acReg = Mage::getModel('bs_acreg/acreg')->load($ncr->getAcReg())->getReg();
 		if($acReg != ''){
 			$area[] = $acReg;
@@ -599,30 +599,30 @@ class BS_Ncr_Adminhtml_Ncr_NcrController extends BS_Sur_Controller_Adminhtml_Sur
 
 		$inspectorSign = Mage::helper('bs_signature/signature')->getFileBaseDir().$signatureInspector->getFirstItem()->getSignature();
 
-		$images = array(
+		$images = [
 			'manager_sign' => $managerSign,
 			'inspector_sign' => $inspectorSign
-		);
+        ];
 
 
-		$tableWordML = array(
+		$tableWordML = [
 			'isarray'  => true,
-			'array'   => array(
+			'array'   => [
 				'description'   => $wordML,
 
-			)
-		);
+            ]
+        ];
 
-		$htmlVariables = array(
-			array(
+		$htmlVariables = [
+			[
 			'code' => 'description',
 			'content'   => $ncr->getDescription()
-		));
+            ]];
 
 		$raisedDate = Mage::getModel('core/date')->date("d/m/Y", $ncr->getReportDate());
 		$dueDate = Mage::getModel('core/date')->date("d/m/Y", $ncr->getDueDate());
 
-		$data = array(
+		$data = [
 			'ref' => $ncr->getRefNo(),
 			'from' => 'QC HAN DIVISION',
 			'to' => strtoupper($toName),
@@ -644,9 +644,7 @@ class BS_Ncr_Adminhtml_Ncr_NcrController extends BS_Sur_Controller_Adminhtml_Sur
 			'close_date' => '',
 
 
-
-
-		);
+        ];
 
 
 
@@ -686,7 +684,7 @@ class BS_Ncr_Adminhtml_Ncr_NcrController extends BS_Sur_Controller_Adminhtml_Sur
 				Mage::helper('bs_ncr')->__('An error occurred while generating the files.')
 			);
 		}
-		$this->_redirect('*/*/', array('store' => $storeId));
+		$this->_redirect('*/*/', ['store' => $storeId]);
 	}
 
 

@@ -31,7 +31,7 @@ class BS_Signoff_Block_Adminhtml_Signoff_Edit_Tab_Form extends Mage_Adminhtml_Bl
         $this->setForm($form);
         $fieldset = $form->addFieldset(
             'signoff_form',
-            array('legend' => Mage::helper('bs_signoff')->__('AC Sign-off'))
+            ['legend' => Mage::helper('bs_signoff')->__('AC Sign-off')]
         );
 
 
@@ -40,13 +40,13 @@ class BS_Signoff_Block_Adminhtml_Signoff_Edit_Tab_Form extends Mage_Adminhtml_Bl
         $taskcode = $fieldset->addField(
             'task_id',
             'select',
-            array(
+            [
                 'label'     => Mage::helper('bs_misc')->__('Task Code'),
                 'name'      => 'task_id',
                 'required'  => false,
                 'values'    => $tasks,
                 //'after_element_html' => $html
-            )
+            ]
         );
 
         $depts = Mage::getResourceModel('bs_misc/department_collection');
@@ -54,12 +54,12 @@ class BS_Signoff_Block_Adminhtml_Signoff_Edit_Tab_Form extends Mage_Adminhtml_Bl
         $fieldset->addField(
             'dept_id',
             'select',
-            array(
+            [
                 'label'     => Mage::helper('bs_misc')->__('Maint. Center'),
                 'name'      => 'dept_id',
                 'required'  => false,
                 'values'    => $depts,
-            )
+            ]
         );
 
         $locs = Mage::getResourceModel('bs_misc/location_collection');
@@ -68,12 +68,12 @@ class BS_Signoff_Block_Adminhtml_Signoff_Edit_Tab_Form extends Mage_Adminhtml_Bl
         $fieldset->addField(
             'loc_id',
             'select',
-            array(
+            [
                 'label'     => Mage::helper('bs_misc')->__('Location'),
                 'name'      => 'loc_id',
                 'required'  => false,
                 'values'    => $locs,
-            )
+            ]
         );
 
 	    $customers = Mage::getResourceModel('bs_acreg/customer_collection');
@@ -82,12 +82,12 @@ class BS_Signoff_Block_Adminhtml_Signoff_Edit_Tab_Form extends Mage_Adminhtml_Bl
 	    $fieldset->addField(
 		    'customer',
 		    'select',
-		    array(
+		    [
 			    'label'     => Mage::helper('bs_signoff')->__('Customer'),
 			    'name'      => 'customer',
 			    'required'  => false,
 			    'values'    => $customers,
-		    )
+            ]
 	    );
 
 	    $acTypes = Mage::getResourceModel('bs_misc/aircraft_collection');
@@ -96,12 +96,12 @@ class BS_Signoff_Block_Adminhtml_Signoff_Edit_Tab_Form extends Mage_Adminhtml_Bl
 	    $fieldset->addField(
 		    'ac_type',
 		    'select',
-		    array(
+		    [
 			    'label'     => Mage::helper('bs_signoff')->__('A/C Type'),
 			    'name'      => 'ac_type',
 			    'required'  => false,
 			    'values'    => $acTypes,
-		    )
+            ]
 	    );
 
 	    $acRegs = Mage::getResourceModel('bs_acreg/acreg_collection');
@@ -111,52 +111,52 @@ class BS_Signoff_Block_Adminhtml_Signoff_Edit_Tab_Form extends Mage_Adminhtml_Bl
 	    $fieldset->addField(
 		    'ac_reg',
 		    'select',
-		    array(
+		    [
 			    'label'     => Mage::helper('bs_signoff')->__('A/C Reg'),
 			    'name'      => 'ac_reg',
 			    'required'  => false,
 			    'values'    => $acRegs,
-		    )
+            ]
 	    );
 
         $fieldset->addField(
             'report_date',
             'date',
-            array(
+            [
                 'label' => Mage::helper('bs_signoff')->__('Date of Inspection'),
                 'name'  => 'report_date',
 
             'image' => $this->getSkinUrl('images/grid-cal.gif'),
             'format'  => Mage::app()->getLocale()->getDateFormat(Mage_Core_Model_Locale::FORMAT_TYPE_SHORT),
-           )
+            ]
         );
 
         $fieldset->addField(
             'wp',
             'text',
-            array(
+            [
                 'label' => Mage::helper('bs_signoff')->__('Workpack'),
                 'name'  => 'wp',
 
-           )
+            ]
         );
 
         $fieldset->addField(
             'description',
             'textarea',
-            array(
+            [
                 'label' => Mage::helper('bs_signoff')->__('Description'),
                 'name'  => 'description',
                 'config' => $wysiwygConfig,
 
-           )
+            ]
         );
 
 
 
         $formValues = Mage::registry('current_signoff')->getDefaultValues();
         if (!is_array($formValues)) {
-            $formValues = array();
+            $formValues = [];
         }
         if (Mage::getSingleton('adminhtml/session')->getSignoffData()) {
             $formValues = array_merge($formValues, Mage::getSingleton('adminhtml/session')->getSignoffData());

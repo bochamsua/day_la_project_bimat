@@ -18,20 +18,20 @@ $this->getConnection()
     ->addColumn(
         $this->getTable('bs_concession/concession'),
         'ins_id',
-        array(
+        [
             'type' => Varien_Db_Ddl_Table::TYPE_INTEGER,
             'comment'   => 'Inspector'
-        )
+        ]
     )
 ;
 $this->getConnection()
     ->addColumn(
         $this->getTable('bs_concession/concession'),
         'description',
-        array(
+        [
             'type' => Varien_Db_Ddl_Table::TYPE_TEXT,
             'comment'   => 'description'
-        )
+        ]
     )
 ;
 

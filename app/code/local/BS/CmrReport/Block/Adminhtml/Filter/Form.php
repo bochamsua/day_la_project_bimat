@@ -21,42 +21,42 @@ class BS_CmrReport_Block_Adminhtml_Filter_Form extends Mage_Adminhtml_Block_Widg
     {
         $actionUrl = $this->getUrl('*/*/report');
         $form = new Varien_Data_Form(
-            array('id' => 'filter_form', 'action' => $actionUrl, 'method' => 'get')
+            ['id' => 'filter_form', 'action' => $actionUrl, 'method' => 'get']
         );
         $htmlIdPrefix = 'report_';
         $form->setHtmlIdPrefix($htmlIdPrefix);
 
 	    $requestData = Mage::helper('adminhtml')->prepareFilterString($this->getRequest()->getParam('filter'));
 	    if(count($requestData)){
-		    $formValues = array(
+		    $formValues = [
 			    'month' => $requestData['month'],
 			    'year'  => $requestData['year']
-		    );
+            ];
 	    }else { //current time
-		    $formValues = array(
+		    $formValues = [
 			    'month' => Mage::getModel('core/date')->date('m', now()),
 			    'year'  => Mage::getModel('core/date')->date('Y', now())
-		    );
+            ];
 	    }
 
-        $fieldset = $form->addFieldset('base_fieldset', array('legend'=>Mage::helper('bs_report')->__('CMR Report for %s-%s', $formValues['month'], $formValues['year'])));
+        $fieldset = $form->addFieldset('base_fieldset', ['legend'=>Mage::helper('bs_report')->__('CMR Report for %s-%s', $formValues['month'], $formValues['year'])]);
 
         //$dateFormatIso = Mage::app()->getLocale()->getDateFormat(Mage_Core_Model_Locale::FORMAT_TYPE_SHORT);
 
 
-	    $fieldset->addField('month', 'select', array(
+	    $fieldset->addField('month', 'select', [
 		    'name' => 'month',
 		    'options' => $this->helper('bs_report')->getMonths(),
 		    'label' => Mage::helper('reports')->__('Month'),
 		    'title' => Mage::helper('reports')->__('Month')
-	    ));
+        ]);
 
-	    $fieldset->addField('year', 'select', array(
+	    $fieldset->addField('year', 'select', [
 		    'name' => 'year',
 		    'options' => $this->helper('bs_report')->getYears(),
 		    'label' => Mage::helper('reports')->__('Year'),
 		    'title' => Mage::helper('reports')->__('Year')
-	    ));
+        ]);
 
 
 
@@ -84,7 +84,7 @@ class BS_CmrReport_Block_Adminhtml_Filter_Form extends Mage_Adminhtml_Block_Widg
 	public function getResetUrl()
 	{
 		//$this->getRequest()->setParam('filter', null);
-		return $this->getUrl('*/*/reset', array('_current' => false));
+		return $this->getUrl('*/*/reset', ['_current' => false]);
 	}
 
 
@@ -92,19 +92,19 @@ class BS_CmrReport_Block_Adminhtml_Filter_Form extends Mage_Adminhtml_Block_Widg
 	public function getUpdateUrl()
 	{
 		//$this->getRequest()->setParam('filter', null);
-		return $this->getUrl('*/*/update', array('_current' => false));
+		return $this->getUrl('*/*/update', ['_current' => false]);
 	}
 
 	public function getPrintUrl()
 	{
 		//$this->getRequest()->setParam('filter', null);
-		return $this->getUrl('*/*/print', array('_current' => false));
+		return $this->getUrl('*/*/print', ['_current' => false]);
 	}
 
 	public function getFilterUrl()
 	{
 		//$this->getRequest()->setParam('filter', null);
-		return $this->getUrl('*/*/report', array('_current' => false));
+		return $this->getUrl('*/*/report', ['_current' => false]);
 	}
 
 	public function getGridUrl(){

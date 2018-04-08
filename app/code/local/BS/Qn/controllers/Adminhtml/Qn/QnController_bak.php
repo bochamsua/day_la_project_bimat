@@ -119,7 +119,7 @@ class BS_Qn_Adminhtml_Qn_QnController extends BS_Sur_Controller_Adminhtml_Sur
     {
         if ($data = $this->getRequest()->getPost('qn')) {
             try {
-                $data = $this->_filterDates($data, array('report_date' ,'due_date' ,'close_date'));
+                $data = $this->_filterDates($data, ['report_date' ,'due_date' ,'close_date']);
                 $qn = $this->_initQn();
 
                 $currentUser = Mage::helper('bs_misc')->getCurrentUserInfo();
@@ -149,7 +149,7 @@ class BS_Qn_Adminhtml_Qn_QnController extends BS_Sur_Controller_Adminhtml_Sur
 				            Mage::helper('adminhtml')->__('QN was successfully %s.', $message)
 			            );
 
-			            $this->_redirect('*/*/edit', array('id' => $qn->getId()));
+			            $this->_redirect('*/*/edit', ['id' => $qn->getId()]);
 			            return;
 		            }elseif($this->getRequest()->getParam('reject')){
 			            //$data['ncr_status'] = 0;
@@ -162,7 +162,7 @@ class BS_Qn_Adminhtml_Qn_QnController extends BS_Sur_Controller_Adminhtml_Sur
 				            Mage::helper('adminhtml')->__('QN was successfully %s.', $message)
 			            );
 
-			            $this->_redirect('*/*/edit', array('id' => $qn->getId()));
+			            $this->_redirect('*/*/edit', ['id' => $qn->getId()]);
 			            return;
 		            }elseif($this->getRequest()->getParam('close')){
 			            //$data['ncr_status'] = 3;
@@ -189,7 +189,7 @@ class BS_Qn_Adminhtml_Qn_QnController extends BS_Sur_Controller_Adminhtml_Sur
 				            Mage::helper('adminhtml')->__('QN was successfully %s.', $message)
 			            );
 
-			            $this->_redirect('*/*/edit', array('id' => $qn->getId()));
+			            $this->_redirect('*/*/edit', ['id' => $qn->getId()]);
 			            return;
 		            }elseif($this->getRequest()->getParam('submitted')){
 			            $qn->setQnStatus(1);
@@ -212,7 +212,7 @@ class BS_Qn_Adminhtml_Qn_QnController extends BS_Sur_Controller_Adminhtml_Sur
 				            Mage::helper('adminhtml')->__('QN was successfully %s.', $message)
 			            );
 
-			            $this->_redirect('*/*/edit', array('id' => $qn->getId()));
+			            $this->_redirect('*/*/edit', ['id' => $qn->getId()]);
 			            return;
 		            }
 
@@ -263,7 +263,7 @@ class BS_Qn_Adminhtml_Qn_QnController extends BS_Sur_Controller_Adminhtml_Sur
                     Mage::helper('bs_qn')->__('QN was successfully saved. %s', $add)
                 );
                 Mage::getSingleton('adminhtml/session')->setFormData(false);
-	            $this->_redirect('*/*/edit', array('id' => $qn->getId()));
+	            $this->_redirect('*/*/edit', ['id' => $qn->getId()]);
 	            return;
             } catch (Mage_Core_Exception $e) {
                 if (isset($data['qn_source']['value'])) {
@@ -274,7 +274,7 @@ class BS_Qn_Adminhtml_Qn_QnController extends BS_Sur_Controller_Adminhtml_Sur
                 }
                 Mage::getSingleton('adminhtml/session')->addError($e->getMessage());
                 Mage::getSingleton('adminhtml/session')->setQnData($data);
-                $this->_redirect('*/*/edit', array('id' => $this->getRequest()->getParam('id')));
+                $this->_redirect('*/*/edit', ['id' => $this->getRequest()->getParam('id')]);
                 return;
             } catch (Exception $e) {
                 Mage::logException($e);
@@ -288,7 +288,7 @@ class BS_Qn_Adminhtml_Qn_QnController extends BS_Sur_Controller_Adminhtml_Sur
                     Mage::helper('bs_qn')->__('There was a problem saving the qn.')
                 );
                 Mage::getSingleton('adminhtml/session')->setQnData($data);
-                $this->_redirect('*/*/edit', array('id' => $this->getRequest()->getParam('id')));
+                $this->_redirect('*/*/edit', ['id' => $this->getRequest()->getParam('id')]);
                 return;
             }
         }
@@ -318,12 +318,12 @@ class BS_Qn_Adminhtml_Qn_QnController extends BS_Sur_Controller_Adminhtml_Sur
                 return;
             } catch (Mage_Core_Exception $e) {
                 Mage::getSingleton('adminhtml/session')->addError($e->getMessage());
-                $this->_redirect('*/*/edit', array('id' => $this->getRequest()->getParam('id')));
+                $this->_redirect('*/*/edit', ['id' => $this->getRequest()->getParam('id')]);
             } catch (Exception $e) {
                 Mage::getSingleton('adminhtml/session')->addError(
                     Mage::helper('bs_qn')->__('There was an error deleting qn.')
                 );
-                $this->_redirect('*/*/edit', array('id' => $this->getRequest()->getParam('id')));
+                $this->_redirect('*/*/edit', ['id' => $this->getRequest()->getParam('id')]);
                 Mage::logException($e);
                 return;
             }
@@ -610,10 +610,10 @@ class BS_Qn_Adminhtml_Qn_QnController extends BS_Sur_Controller_Adminhtml_Sur
 		}
 		$this->_redirect(
 			'*/qn_qn/edit',
-			array(
+			[
 				'id' => $this->getRequest()->getParam('id'),
 				'_current' => true
-			)
+            ]
 		);
 
 	}
@@ -680,36 +680,36 @@ class BS_Qn_Adminhtml_Qn_QnController extends BS_Sur_Controller_Adminhtml_Sur
 		}
 
 
-		$tableWordML = array(
+		$tableWordML = [
 			'isarray'  => true,
-			'array'   => array(
+			'array'   => [
 				'subject'   => $subjectML,
 				'content' => $contentML,
 				'remark' => $remarkML,
-			)
-		);
+            ]
+        ];
 
-		$htmlVariables = array(
-			array(
+		$htmlVariables = [
+			[
 				'code' => 'subject',
 				'content' => $obj->getSubject()
-			),
-			array(
+            ],
+			[
 				'code' => 'content',
 				'content' => $obj->getContent()
-			),
-			array(
+            ],
+			[
 				'code' => 'remark',
 				'content' => $obj->getRemarkText()
-			),
+            ],
 
-		);
+        ];
 
 		$reportDate = Mage::getModel('core/date')->date("d/m/Y", $obj->getReportDate());
 		$closeDate = Mage::getModel('core/date')->date("d/m/Y", $obj->getCloseDate());
 		$dueDate = Mage::getModel('core/date')->date("d/m/Y", $obj->getDueDate());
 
-		$data = array(
+		$data = [
 			'ref' => $obj->getRefNo(),
 			'date' => $reportDate,
 			'request_by' => $approvalName,
@@ -724,7 +724,7 @@ class BS_Qn_Adminhtml_Qn_QnController extends BS_Sur_Controller_Adminhtml_Sur
 			'signature' => '',
 
 
-		);
+        ];
 
 		$signatureManager = Mage::getModel('bs_signature/signature')->getCollection()
 		                        ->addFieldToFilter('user_id', $obj->getApprovalId())
@@ -740,10 +740,10 @@ class BS_Qn_Adminhtml_Qn_QnController extends BS_Sur_Controller_Adminhtml_Sur
 
 		$inspectorSign = Mage::helper('bs_signature/signature')->getFileBaseDir().$signatureInspector->getFirstItem()->getSignature();
 
-		$images = array(
+		$images = [
 			'manager_sign' => $managerSign,
 			'inspector_sign' => $inspectorSign
-		);
+        ];
 
 
 

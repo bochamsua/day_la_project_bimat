@@ -119,7 +119,7 @@ class BS_Meda_Adminhtml_Meda_MedaController extends BS_Meda_Controller_Adminhtml
     {
         if ($data = $this->getRequest()->getPost('meda')) {
             try {
-                $data = $this->_filterDates($data, array('report_date' ,'event_date' ,'due_date' ,'close_date'));
+                $data = $this->_filterDates($data, ['report_date' ,'event_date' ,'due_date' ,'close_date']);
                 $meda = $this->_initMeda();
                 $meda->addData($data);
                 $medaSourceName = $this->_uploadAndGetName(
@@ -138,7 +138,7 @@ class BS_Meda_Adminhtml_Meda_MedaController extends BS_Meda_Controller_Adminhtml
                 );
                 Mage::getSingleton('adminhtml/session')->setFormData(false);
                 if ($this->getRequest()->getParam('back')) {
-                    $this->_redirect('*/*/edit', array('id' => $meda->getId()));
+                    $this->_redirect('*/*/edit', ['id' => $meda->getId()]);
                     return;
                 }
                 $this->_redirect('*/*/');
@@ -149,7 +149,7 @@ class BS_Meda_Adminhtml_Meda_MedaController extends BS_Meda_Controller_Adminhtml
                 }
                 Mage::getSingleton('adminhtml/session')->addError($e->getMessage());
                 Mage::getSingleton('adminhtml/session')->setMedaData($data);
-                $this->_redirect('*/*/edit', array('id' => $this->getRequest()->getParam('id')));
+                $this->_redirect('*/*/edit', ['id' => $this->getRequest()->getParam('id')]);
                 return;
             } catch (Exception $e) {
                 Mage::logException($e);
@@ -160,7 +160,7 @@ class BS_Meda_Adminhtml_Meda_MedaController extends BS_Meda_Controller_Adminhtml
                     Mage::helper('bs_meda')->__('There was a problem saving the meda.')
                 );
                 Mage::getSingleton('adminhtml/session')->setMedaData($data);
-                $this->_redirect('*/*/edit', array('id' => $this->getRequest()->getParam('id')));
+                $this->_redirect('*/*/edit', ['id' => $this->getRequest()->getParam('id')]);
                 return;
             }
         }
@@ -191,12 +191,12 @@ class BS_Meda_Adminhtml_Meda_MedaController extends BS_Meda_Controller_Adminhtml
                 return;
             } catch (Mage_Core_Exception $e) {
                 Mage::getSingleton('adminhtml/session')->addError($e->getMessage());
-                $this->_redirect('*/*/edit', array('id' => $this->getRequest()->getParam('id')));
+                $this->_redirect('*/*/edit', ['id' => $this->getRequest()->getParam('id')]);
             } catch (Exception $e) {
                 Mage::getSingleton('adminhtml/session')->addError(
                     Mage::helper('bs_meda')->__('There was an error deleting meda.')
                 );
-                $this->_redirect('*/*/edit', array('id' => $this->getRequest()->getParam('id')));
+                $this->_redirect('*/*/edit', ['id' => $this->getRequest()->getParam('id')]);
                 Mage::logException($e);
                 return;
             }

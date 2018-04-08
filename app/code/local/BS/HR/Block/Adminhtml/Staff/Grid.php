@@ -58,27 +58,27 @@ class BS_HR_Block_Adminhtml_Staff_Grid extends Mage_Adminhtml_Block_Widget_Grid
     {
         $this->addColumn(
             'entity_id',
-            array(
+            [
                 'header' => Mage::helper('bs_hr')->__('Id'),
                 'index'  => 'entity_id',
                 'type'   => 'number'
-            )
+            ]
         );
 
-	    $ins = Mage::getModel('admin/user')->getCollection()->addFieldToFilter('user_id', array('gt' => 1))->load();
-	    $inspectors = array();
+	    $ins = Mage::getModel('admin/user')->getCollection()->addFieldToFilter('user_id', ['gt' => 1])->load();
+	    $inspectors = [];
 	    foreach ($ins as $in) {
 		    $inspectors[$in->getUserId()] = $in->getFirstname().' '.$in->getLastname();
 	    }
 
 	    $this->addColumn(
 		    'user_id',
-		    array(
+		    [
 			    'header'    => Mage::helper('bs_hr')->__('Admin User'),
 			    'type'     => 'options',
 			    'index'     => 'user_id',
 			    'options'   => $inspectors,
-		    )
+            ]
 	    );
 
 
@@ -86,7 +86,7 @@ class BS_HR_Block_Adminhtml_Staff_Grid extends Mage_Adminhtml_Block_Widget_Grid
 
         $this->addColumn(
             'region',
-            array(
+            [
                 'header' => Mage::helper('bs_sur')->__('Region'),
                 'index'  => 'region',
                 'type'  => 'options',
@@ -94,11 +94,11 @@ class BS_HR_Block_Adminhtml_Staff_Grid extends Mage_Adminhtml_Block_Widget_Grid
                     Mage::getModel('bs_sur/sur_attribute_source_region')->getAllOptions(false)
                 )
 
-            )
+            ]
         );
         $this->addColumn(
             'section',
-            array(
+            [
                 'header' => Mage::helper('bs_sur')->__('Section'),
                 'index'  => 'section',
                 'type'  => 'options',
@@ -106,7 +106,7 @@ class BS_HR_Block_Adminhtml_Staff_Grid extends Mage_Adminhtml_Block_Widget_Grid
                     Mage::getModel('bs_sur/sur_attribute_source_section')->getAllOptions(false)
                 )
 
-            )
+            ]
         );
         /*$this->addColumn(
             'status',
@@ -164,33 +164,33 @@ class BS_HR_Block_Adminhtml_Staff_Grid extends Mage_Adminhtml_Block_Widget_Grid
         if($isAllowedDelete){
             $this->getMassactionBlock()->addItem(
                 'delete',
-                array(
+                [
                     'label'=> Mage::helper('bs_hr')->__('Delete'),
                     'url'  => $this->getUrl('*/*/massDelete'),
                     'confirm'  => Mage::helper('bs_hr')->__('Are you sure?')
-                )
+                ]
             );
         }
 
         if($isAllowedEdit){
             $this->getMassactionBlock()->addItem(
                 'status',
-                array(
+                [
                     'label'      => Mage::helper('bs_hr')->__('Change status'),
-                    'url'        => $this->getUrl('*/*/massStatus', array('_current'=>true)),
-                    'additional' => array(
-                        'status' => array(
+                    'url'        => $this->getUrl('*/*/massStatus', ['_current'=>true]),
+                    'additional' => [
+                        'status' => [
                             'name'   => 'status',
                             'type'   => 'select',
                             'class'  => 'required-entry',
                             'label'  => Mage::helper('bs_hr')->__('Status'),
-                            'values' => array(
+                            'values' => [
                                 '1' => Mage::helper('bs_hr')->__('Enabled'),
                                 '0' => Mage::helper('bs_hr')->__('Disabled'),
-                            )
-                        )
-                    )
-                )
+                            ]
+                        ]
+                    ]
+                ]
             );
 
 
@@ -198,11 +198,11 @@ class BS_HR_Block_Adminhtml_Staff_Grid extends Mage_Adminhtml_Block_Widget_Grid
 
         $this->getMassactionBlock()->addItem(
             'room',
-            array(
+            [
                 'label'      => Mage::helper('bs_hr')->__('Change Room'),
-                'url'        => $this->getUrl('*/*/massRoom', array('_current'=>true)),
-                'additional' => array(
-                    'flag_room' => array(
+                'url'        => $this->getUrl('*/*/massRoom', ['_current'=>true]),
+                'additional' => [
+                    'flag_room' => [
                         'name'   => 'flag_room',
                         'type'   => 'select',
                         'class'  => 'required-entry',
@@ -210,17 +210,17 @@ class BS_HR_Block_Adminhtml_Staff_Grid extends Mage_Adminhtml_Block_Widget_Grid
                         'values' => Mage::getModel('bs_hr/staff_attribute_source_room')
                             ->getAllOptions(true),
 
-                    )
-                )
-            )
+                    ]
+                ]
+            ]
         );
         $this->getMassactionBlock()->addItem(
             'region',
-            array(
+            [
                 'label'      => Mage::helper('bs_hr')->__('Change Region'),
-                'url'        => $this->getUrl('*/*/massRegion', array('_current'=>true)),
-                'additional' => array(
-                    'flag_region' => array(
+                'url'        => $this->getUrl('*/*/massRegion', ['_current'=>true]),
+                'additional' => [
+                    'flag_region' => [
                         'name'   => 'flag_region',
                         'type'   => 'select',
                         'class'  => 'required-entry',
@@ -228,9 +228,9 @@ class BS_HR_Block_Adminhtml_Staff_Grid extends Mage_Adminhtml_Block_Widget_Grid
                         'values' => Mage::getModel('bs_hr/staff_attribute_source_region')
                             ->getAllOptions(true),
 
-                    )
-                )
-            )
+                    ]
+                ]
+            ]
         );
         }
         return $this;
@@ -246,7 +246,7 @@ class BS_HR_Block_Adminhtml_Staff_Grid extends Mage_Adminhtml_Block_Widget_Grid
      */
     public function getRowUrl($row)
     {
-        return $this->getUrl('*/*/edit', array('id' => $row->getId()));
+        return $this->getUrl('*/*/edit', ['id' => $row->getId()]);
     }
 
     /**
@@ -258,7 +258,7 @@ class BS_HR_Block_Adminhtml_Staff_Grid extends Mage_Adminhtml_Block_Widget_Grid
      */
     public function getGridUrl()
     {
-        return $this->getUrl('*/*/grid', array('_current'=>true));
+        return $this->getUrl('*/*/grid', ['_current'=>true]);
     }
 
     /**

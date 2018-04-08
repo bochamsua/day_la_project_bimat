@@ -24,27 +24,27 @@ class BS_Hira_Model_Adminhtml_Search_Hira extends Varien_Object
      */
     public function load()
     {
-        $arr = array();
+        $arr = [];
         if (!$this->hasStart() || !$this->hasLimit() || !$this->hasQuery()) {
             $this->setResults($arr);
             return $this;
         }
         $collection = Mage::getResourceModel('bs_hira/hira_collection')
-            ->addFieldToFilter('ref_no', array('like' => $this->getQuery().'%'))
+            ->addFieldToFilter('ref_no', ['like' => $this->getQuery().'%'])
             ->setCurPage($this->getStart())
             ->setPageSize($this->getLimit())
             ->load();
         foreach ($collection->getItems() as $hira) {
-            $arr[] = array(
+            $arr[] = [
                 'id'          => 'hira/1/'.$hira->getId(),
                 'type'        => Mage::helper('bs_hira')->__('HIRA'),
                 'name'        => $hira->getRefNo(),
                 'description' => $hira->getRefNo(),
                 'url' => Mage::helper('adminhtml')->getUrl(
                     '*/hira_hira/edit',
-                    array('id'=>$hira->getId())
+                    ['id'=>$hira->getId()]
                 ),
-            );
+            ];
         }
         $this->setResults($arr);
         return $this;

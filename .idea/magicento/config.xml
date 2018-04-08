@@ -121,7 +121,12 @@
                     <module>BS_Routine</module>
                     <class>BS_Routine_Model_Resource_Setup</class>
                 </setup>
-            </bs_routine_setup><bs_qr_setup>
+            </bs_routine_setup><bs_meda_setup>
+                <setup>
+                    <module>BS_Meda</module>
+                    <class>BS_Meda_Model_Resource_Setup</class>
+                </setup>
+            </bs_meda_setup><bs_qr_setup>
                 <setup>
                     <module>BS_Qr</module>
                     <class>BS_Qr_Model_Resource_Setup</class>
@@ -180,7 +185,12 @@
                     <module>BS_NCause</module>
                     <class>BS_NCause_Model_Resource_Setup</class>
                 </setup>
-            </bs_ncause_setup><bs_sur_setup>
+            </bs_ncause_setup><bs_safety_setup>
+                <setup>
+                    <module>BS_Safety</module>
+                    <class>BS_Safety_Model_Resource_Setup</class>
+                </setup>
+            </bs_safety_setup><bs_sur_setup>
                 <setup>
                     <module>BS_Sur</module>
                     <class>BS_Sur_Model_Resource_Setup</class>
@@ -553,7 +563,17 @@
                         <table>bs_routine_routine</table>
                     </routine>
                 </entities>
-            </bs_routine_resource><bs_qr>
+            </bs_routine_resource><bs_meda>
+                <class>BS_Meda_Model</class>
+                <resourceModel>bs_meda_resource</resourceModel>
+            </bs_meda><bs_meda_resource>
+                <class>BS_Meda_Model_Resource</class>
+                <entities>
+                    <meda>
+                        <table>bs_meda_meda</table>
+                    </meda>
+                </entities>
+            </bs_meda_resource><bs_qr>
                 <class>BS_Qr_Model</class>
                 <resourceModel>bs_qr_resource</resourceModel>
             </bs_qr><bs_qr_resource>
@@ -702,7 +722,17 @@
                 <resourceModel>bs_chart_resource</resourceModel>
             </bs_chart><bs_chart_resource>
                 <class>BS_Chart_Model_Resource</class>
-            </bs_chart_resource><bs_sur>
+            </bs_chart_resource><bs_safety>
+                <class>BS_Safety_Model</class>
+                <resourceModel>bs_safety_resource</resourceModel>
+            </bs_safety><bs_safety_resource>
+                <class>BS_Safety_Model_Resource</class>
+                <entities>
+                    <safety>
+                        <table>bs_safety_safety</table>
+                    </safety>
+                </entities>
+            </bs_safety_resource><bs_sur>
                 <class>BS_Sur_Model</class>
                 <resourceModel>bs_sur_resource</resourceModel>
             </bs_sur><bs_sur_resource>
@@ -838,7 +868,9 @@
                 <class>BS_HR_Block</class>
             </bs_hr><bs_routine>
                 <class>BS_Routine_Block</class>
-            </bs_routine><bs_qr>
+            </bs_routine><bs_meda>
+                <class>BS_Meda_Block</class>
+            </bs_meda><bs_qr>
                 <class>BS_Qr_Block</class>
             </bs_qr><bs_cmrreport>
                 <class>BS_CmrReport_Block</class>
@@ -866,7 +898,9 @@
                 <class>BS_NCause_Block</class>
             </bs_ncause><bs_chart>
                 <class>BS_Chart_Block</class>
-            </bs_chart><bs_sur>
+            </bs_chart><bs_safety>
+                <class>BS_Safety_Block</class>
+            </bs_safety><bs_sur>
                 <class>BS_Sur_Block</class>
             </bs_sur><bs_hira>
                 <class>BS_Hira_Block</class>
@@ -920,7 +954,9 @@
                 <class>BS_HR_Helper</class>
             </bs_hr><bs_routine>
                 <class>BS_Routine_Helper</class>
-            </bs_routine><bs_qr>
+            </bs_routine><bs_meda>
+                <class>BS_Meda_Helper</class>
+            </bs_meda><bs_qr>
                 <class>BS_Qr_Helper</class>
             </bs_qr><bs_cmrreport>
                 <class>BS_CmrReport_Helper</class>
@@ -948,7 +984,9 @@
                 <class>BS_NCause_Helper</class>
             </bs_ncause><bs_chart>
                 <class>BS_Chart_Helper</class>
-            </bs_chart><bs_work>
+            </bs_chart><bs_safety>
+                <class>BS_Safety_Helper</class>
+            </bs_safety><bs_work>
                 <class>BS_Work_Helper</class>
             </bs_work><bs_sur>
                 <class>BS_Sur_Helper</class>
@@ -1561,7 +1599,9 @@
             <version>1.0.2</version>
         </BS_HR><BS_Routine>
             <version>1.0.0</version>
-        </BS_Routine><BS_Qr>
+        </BS_Routine><BS_Meda>
+            <version>1.0.1</version>
+        </BS_Meda><BS_Qr>
             <version>1.0.2</version>
         </BS_Qr><BS_CmrReport>
             <version>1.0.0</version>
@@ -1589,7 +1629,9 @@
             <version>1.0.1</version>
         </BS_NCause><BS_Chart>
             <version>0.1.0</version>
-        </BS_Chart><BS_Work>
+        </BS_Chart><BS_Safety>
+            <version>1.0.0</version>
+        </BS_Safety><BS_Work>
             <version>1.0.0</version>
         </BS_Work><BS_Sur>
             <version>1.0.4</version>
@@ -1776,7 +1818,11 @@
                     <files>
                         <default>BS_Routine.csv</default>
                     </files>
-                </BS_Routine><BS_Qr>
+                </BS_Routine><BS_Meda>
+                    <files>
+                        <default>BS_Meda.csv</default>
+                    </files>
+                </BS_Meda><BS_Qr>
                     <files>
                         <default>BS_Qr.csv</default>
                     </files>
@@ -1820,7 +1866,11 @@
                     <files>
                         <default>BS_NCause.csv</default>
                     </files>
-                </BS_NCause><BS_Sur>
+                </BS_NCause><BS_Safety>
+                    <files>
+                        <default>BS_Safety.csv</default>
+                    </files>
+                </BS_Safety><BS_Sur>
                     <files>
                         <default>BS_Sur.csv</default>
                     </files>
@@ -1967,7 +2017,9 @@
                     <file>bs_hr.xml</file>
                 </bs_hr><bs_routine>
                     <file>bs_routine.xml</file>
-                </bs_routine><bs_qr>
+                </bs_routine><bs_meda>
+                    <file>bs_meda.xml</file>
+                </bs_meda><bs_qr>
                     <file>bs_qr.xml</file>
                 </bs_qr><bs_cmrreport>
                     <file>bs_cmrreport.xml</file>
@@ -1991,7 +2043,9 @@
                     <file>bs_ncause.xml</file>
                 </bs_ncause><bs_chart>
                     <file>bs_chart.xml</file>
-                </bs_chart><bs_sur>
+                </bs_chart><bs_safety>
+                    <file>bs_safety.xml</file>
+                </bs_safety><bs_sur>
                     <file>bs_sur.xml</file>
                 </bs_sur><bs_hira>
                     <file>bs_hira.xml</file>
@@ -2100,7 +2154,10 @@
             </training><staff>
                 <class>bs_hr/adminhtml_search_staff</class>
                 <acl>bs_hr</acl>
-            </staff><qr>
+            </staff><meda>
+                <class>bs_meda/adminhtml_search_meda</class>
+                <acl>bs_meda</acl>
+            </meda><qr>
                 <class>bs_qr/adminhtml_search_qr</class>
                 <acl>bs_qr</acl>
             </qr><other>
@@ -2151,7 +2208,10 @@
             </ncausegroup><ncause>
                 <class>bs_ncause/adminhtml_search_ncause</class>
                 <acl>bs_ncause</acl>
-            </ncause><sur>
+            </ncause><safety>
+                <class>bs_safety/adminhtml_search_safety</class>
+                <acl>bs_safety</acl>
+            </safety><sur>
                 <class>bs_sur/adminhtml_search_sur</class>
                 <acl>bs_sur</acl>
             </sur><hira>
@@ -2210,7 +2270,7 @@
                     
                 <modules>
                         <BS_Cmr before="Mage_Adminhtml">BS_Cmr_Adminhtml</BS_Cmr>
-                    <BS_Acreg before="Mage_Adminhtml">BS_Acreg_Adminhtml</BS_Acreg><BS_Car before="Mage_Adminhtml">BS_Car_Adminhtml</BS_Car><BS_Report before="Mage_Adminhtml">BS_Report_Adminhtml</BS_Report><BS_Formtemplate before="Mage_Adminhtml">BS_Formtemplate_Adminhtml</BS_Formtemplate><BS_Evaluation before="Mage_Adminhtml">BS_Evaluation_Adminhtml</BS_Evaluation><BS_Mor before="Mage_Adminhtml">BS_Mor_Adminhtml</BS_Mor><BS_Concession before="Mage_Adminhtml">BS_Concession_Adminhtml</BS_Concession><BS_Setting before="Mage_Adminhtml">BS_Setting_Adminhtml</BS_Setting><BS_Schedule before="Mage_Adminhtml">BS_Schedule_Adminhtml</BS_Schedule><BS_Drr before="Mage_Adminhtml">BS_Drr_Adminhtml</BS_Drr><bs_data before="Mage_Adminhtml">BS_Data_Adminhtml</bs_data><BS_HR before="Mage_Adminhtml">BS_HR_Adminhtml</BS_HR><BS_Routine before="Mage_Adminhtml">BS_Routine_Adminhtml</BS_Routine><BS_Qr before="Mage_Adminhtml">BS_Qr_Adminhtml</BS_Qr><BS_CmrReport before="Mage_Adminhtml">BS_CmrReport_Adminhtml</BS_CmrReport><BS_Nonroutine before="Mage_Adminhtml">BS_Nonroutine_Adminhtml</BS_Nonroutine><BS_Rewriting before="Mage_Adminhtml">BS_Rewriting_Adminhtml</BS_Rewriting><BS_Other before="Mage_Adminhtml">BS_Other_Adminhtml</BS_Other><BS_Ncr before="Mage_Adminhtml">BS_Ncr_Adminhtml</BS_Ncr><BS_Signoff before="Mage_Adminhtml">BS_Signoff_Adminhtml</BS_Signoff><BS_Misc before="Mage_Adminhtml">BS_Misc_Adminhtml</BS_Misc><BS_Ir before="Mage_Adminhtml">BS_Ir_Adminhtml</BS_Ir><BS_Cofa before="Mage_Adminhtml">BS_Cofa_Adminhtml</BS_Cofa><BS_Qn before="Mage_Adminhtml">BS_Qn_Adminhtml</BS_Qn><BS_NCause before="Mage_Adminhtml">BS_NCause_Adminhtml</BS_NCause><BS_Chart before="Mage_Adminhtml">BS_Chart_Adminhtml</BS_Chart><BS_Work before="Mage_Adminhtml">BS_Work_Adminhtml</BS_Work><BS_Sur before="Mage_Adminhtml">BS_Sur_Adminhtml</BS_Sur><BS_Hira before="Mage_Adminhtml">BS_Hira_Adminhtml</BS_Hira><BS_Kpi before="Mage_Adminhtml">BS_Kpi_Adminhtml</BS_Kpi><BS_Rii before="Mage_Adminhtml">BS_Rii_Adminhtml</BS_Rii><BS_Sched before="Mage_Adminhtml">BS_Sched_Adminhtml</BS_Sched><BS_Wysiwyg before="Mage_Adminhtml">BS_Wysiwyg_Adminhtml</BS_Wysiwyg><BackupGuard_BackupGuardPlatinum after="Mage_Adminhtml">BackupGuard_BackupGuardPlatinum_Adminhtml</BackupGuard_BackupGuardPlatinum><BS_Observation before="Mage_Adminhtml">BS_Observation_Adminhtml</BS_Observation><Aoe_Scheduler before="Mage_Adminhtml">Aoe_Scheduler_Adminhtml</Aoe_Scheduler><BS_Logger before="Mage_Adminhtml">BS_Logger_Adminhtml</BS_Logger><BS_Docx before="Mage_Adminhtml">BS_Docx_Adminhtml</BS_Docx><BS_Signature before="Mage_Adminhtml">BS_Signature_Adminhtml</BS_Signature><BS_KPIReport before="Mage_Adminhtml">BS_KPIReport_Adminhtml</BS_KPIReport></modules><frontName><![CDATA[admin]]></frontName></args>
+                    <BS_Acreg before="Mage_Adminhtml">BS_Acreg_Adminhtml</BS_Acreg><BS_Car before="Mage_Adminhtml">BS_Car_Adminhtml</BS_Car><BS_Report before="Mage_Adminhtml">BS_Report_Adminhtml</BS_Report><BS_Formtemplate before="Mage_Adminhtml">BS_Formtemplate_Adminhtml</BS_Formtemplate><BS_Evaluation before="Mage_Adminhtml">BS_Evaluation_Adminhtml</BS_Evaluation><BS_Mor before="Mage_Adminhtml">BS_Mor_Adminhtml</BS_Mor><BS_Concession before="Mage_Adminhtml">BS_Concession_Adminhtml</BS_Concession><BS_Setting before="Mage_Adminhtml">BS_Setting_Adminhtml</BS_Setting><BS_Schedule before="Mage_Adminhtml">BS_Schedule_Adminhtml</BS_Schedule><BS_Drr before="Mage_Adminhtml">BS_Drr_Adminhtml</BS_Drr><bs_data before="Mage_Adminhtml">BS_Data_Adminhtml</bs_data><BS_HR before="Mage_Adminhtml">BS_HR_Adminhtml</BS_HR><BS_Routine before="Mage_Adminhtml">BS_Routine_Adminhtml</BS_Routine><BS_Meda before="Mage_Adminhtml">BS_Meda_Adminhtml</BS_Meda><BS_Qr before="Mage_Adminhtml">BS_Qr_Adminhtml</BS_Qr><BS_CmrReport before="Mage_Adminhtml">BS_CmrReport_Adminhtml</BS_CmrReport><BS_Nonroutine before="Mage_Adminhtml">BS_Nonroutine_Adminhtml</BS_Nonroutine><BS_Rewriting before="Mage_Adminhtml">BS_Rewriting_Adminhtml</BS_Rewriting><BS_Other before="Mage_Adminhtml">BS_Other_Adminhtml</BS_Other><BS_Ncr before="Mage_Adminhtml">BS_Ncr_Adminhtml</BS_Ncr><BS_Signoff before="Mage_Adminhtml">BS_Signoff_Adminhtml</BS_Signoff><BS_Misc before="Mage_Adminhtml">BS_Misc_Adminhtml</BS_Misc><BS_Ir before="Mage_Adminhtml">BS_Ir_Adminhtml</BS_Ir><BS_Cofa before="Mage_Adminhtml">BS_Cofa_Adminhtml</BS_Cofa><BS_Qn before="Mage_Adminhtml">BS_Qn_Adminhtml</BS_Qn><BS_NCause before="Mage_Adminhtml">BS_NCause_Adminhtml</BS_NCause><BS_Chart before="Mage_Adminhtml">BS_Chart_Adminhtml</BS_Chart><BS_Safety before="Mage_Adminhtml">BS_Safety_Adminhtml</BS_Safety><BS_Work before="Mage_Adminhtml">BS_Work_Adminhtml</BS_Work><BS_Sur before="Mage_Adminhtml">BS_Sur_Adminhtml</BS_Sur><BS_Hira before="Mage_Adminhtml">BS_Hira_Adminhtml</BS_Hira><BS_Kpi before="Mage_Adminhtml">BS_Kpi_Adminhtml</BS_Kpi><BS_Rii before="Mage_Adminhtml">BS_Rii_Adminhtml</BS_Rii><BS_Sched before="Mage_Adminhtml">BS_Sched_Adminhtml</BS_Sched><BS_Wysiwyg before="Mage_Adminhtml">BS_Wysiwyg_Adminhtml</BS_Wysiwyg><BackupGuard_BackupGuardPlatinum after="Mage_Adminhtml">BackupGuard_BackupGuardPlatinum_Adminhtml</BackupGuard_BackupGuardPlatinum><BS_Observation before="Mage_Adminhtml">BS_Observation_Adminhtml</BS_Observation><Aoe_Scheduler before="Mage_Adminhtml">Aoe_Scheduler_Adminhtml</Aoe_Scheduler><BS_Logger before="Mage_Adminhtml">BS_Logger_Adminhtml</BS_Logger><BS_Docx before="Mage_Adminhtml">BS_Docx_Adminhtml</BS_Docx><BS_Signature before="Mage_Adminhtml">BS_Signature_Adminhtml</BS_Signature><BS_KPIReport before="Mage_Adminhtml">BS_KPIReport_Adminhtml</BS_KPIReport></modules><frontName><![CDATA[admin]]></frontName></args>
             </adminhtml>
         </routers>
     </admin><websites>

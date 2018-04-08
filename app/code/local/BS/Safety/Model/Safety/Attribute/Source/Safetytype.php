@@ -26,26 +26,26 @@ class BS_Safety_Model_Safety_Attribute_Source_Safetytype
      */
     public function getAllOptions($withEmpty = true, $defaultValues = false)
     {
-        $options =  array(
-            array(
+        $options =  [
+            [
                 'label' => Mage::helper('bs_safety')->__('Internal Complaint'),
                 'value' => 1
-            ),
-            array(
+            ],
+            [
                 'label' => Mage::helper('bs_safety')->__('External Complaint'),
                 'value' => 2
-            ),
-            array(
+            ],
+            [
                 'label' => Mage::helper('bs_safety')->__('Self Report'),
                 'value' => 3
-            ),
-            array(
+            ],
+            [
                 'label' => Mage::helper('bs_safety')->__('Others'),
                 'value' => 4
-            ),
-        );
+            ],
+        ];
         if ($withEmpty) {
-            array_unshift($options, array('label'=>'', 'value'=>''));
+            array_unshift($options, ['label'=>'', 'value'=>'']);
         }
         return $options;
 
@@ -61,7 +61,7 @@ class BS_Safety_Model_Safety_Attribute_Source_Safetytype
      */
     public function getOptionsArray($withEmpty = true)
     {
-        $options = array();
+        $options = [];
         foreach ($this->getAllOptions($withEmpty) as $option) {
             $options[$option['value']] = $option['label'];
         }
@@ -82,7 +82,7 @@ class BS_Safety_Model_Safety_Attribute_Source_Safetytype
         if (!is_array($value)) {
             $value = explode(',', $value);
         }
-        $texts = array();
+        $texts = [];
         foreach ($value as $v) {
             if (isset($options[$v])) {
                 $texts[] = $options[$v];

@@ -30,11 +30,11 @@ class BS_Formtemplate_Block_Adminhtml_Formtemplate_Edit extends Mage_Adminhtml_B
 
         $this->_addButton(
             'saveandcontinue',
-            array(
+            [
                 'label'   => Mage::helper('bs_formtemplate')->__('Save And Continue Edit'),
                 'onclick' => 'saveAndContinueEdit()',
                 'class'   => 'save',
-            ),
+            ],
             -100
         );
 
@@ -48,18 +48,18 @@ class BS_Formtemplate_Block_Adminhtml_Formtemplate_Edit extends Mage_Adminhtml_B
             $this->_removeButton('back');
             $this->_addButton(
                 'closewindow',
-                array(
+                [
                     'label'   => Mage::helper('bs_formtemplate')->__('Close'),
                     'onclick' => 'window.close()',
                     'class'   => 'back',
-                ),
+                ],
                 -1
             );
         }
         $this->_formScripts[] = "
 
             function deleteOnly() {
-                deleteConfirm('". Mage::helper('adminhtml')->__('Are you sure you want to do this?')."','".$this->getUrl('*/*/delete', array($this->_objectId => $this->getRequest()->getParam($this->_objectId), 'popup'=>1)) . "');
+                deleteConfirm('". Mage::helper('adminhtml')->__('Are you sure you want to do this?')."','".$this->getUrl('*/*/delete', [$this->_objectId => $this->getRequest()->getParam($this->_objectId), 'popup'=>1]) . "');
             }
             function saveOnly() {
                 editForm.submit($('edit_form').action+'".$add."');

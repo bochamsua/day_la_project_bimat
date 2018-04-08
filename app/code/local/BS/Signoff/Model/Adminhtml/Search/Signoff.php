@@ -24,27 +24,27 @@ class BS_Signoff_Model_Adminhtml_Search_Signoff extends Varien_Object
      */
     public function load()
     {
-        $arr = array();
+        $arr = [];
         if (!$this->hasStart() || !$this->hasLimit() || !$this->hasQuery()) {
             $this->setResults($arr);
             return $this;
         }
         $collection = Mage::getResourceModel('bs_signoff/signoff_collection')
-            ->addFieldToFilter('ref_no', array('like' => $this->getQuery().'%'))
+            ->addFieldToFilter('ref_no', ['like' => $this->getQuery().'%'])
             ->setCurPage($this->getStart())
             ->setPageSize($this->getLimit())
             ->load();
         foreach ($collection->getItems() as $signoff) {
-            $arr[] = array(
+            $arr[] = [
                 'id'          => 'signoff/1/'.$signoff->getId(),
                 'type'        => Mage::helper('bs_signoff')->__('AC Sign-off'),
                 'name'        => $signoff->getRefNo(),
                 'description' => $signoff->getRefNo(),
                 'url' => Mage::helper('adminhtml')->getUrl(
                     '*/signoff_signoff/edit',
-                    array('id'=>$signoff->getId())
+                    ['id'=>$signoff->getId()]
                 ),
-            );
+            ];
         }
         $this->setResults($arr);
         return $this;

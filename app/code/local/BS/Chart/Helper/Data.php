@@ -10,7 +10,7 @@
 require_once(dirname(__FILE__).DS.'fcimg.php');
 class BS_Chart_Helper_Data extends Mage_Core_Helper_Abstract {
 
-	private $constructorOptions = array();
+	private $constructorOptions = [];
 
 	private $constructorTemplate = '
         <script type="text/javascript">
@@ -37,7 +37,7 @@ class BS_Chart_Helper_Data extends Mage_Core_Helper_Abstract {
 		isset($dataFormat) ? $this->constructorOptions['dataFormat'] = $dataFormat : '';
 		isset($dataSource) ? $this->constructorOptions['dataSource'] = $dataSource : '';
 
-		$tempArray = array();
+		$tempArray = [];
 		foreach($this->constructorOptions as $key => $value) {
 			if ($key === 'dataSource') {
 				$tempArray['dataSource'] = '__dataSource__';
@@ -86,14 +86,14 @@ class BS_Chart_Helper_Data extends Mage_Core_Helper_Abstract {
 			$type.".swf",                  // SWF Name. SWF File not required
             $chartData,                    // the input XML String
 			$height, $width,                        // height and width
-			array(                           // options
+			[                           // options
 				'licensed_fusioncharts_js' => $skinDir."fusioncharts.js", // REQUIRED: Path to licensed fusioncharts.js
 				'licensed_fusioncharts_charts_js' => $skinDir."fusioncharts.charts.js", // REQUIRED: Path to licensed fusioncharts.charts.js
 				'imageType' => $imageType,        // OPTIONAL: set image type as JPG
 				'quality' => 100,              // OPTIONAL: increase Quality
                 'render_delay' => 2000,       // OPTIONAL: increase render delay
                 //'wkhtmltoimage_path' => "D:\Program Files\wkhtmltox\bin\wkhtmltoimage.exe" // OPTIONAL: alternative wkhtmltoimage_path
-            )
+            ]
 		);
 
 		return ['url' => $outputUrl, 'file' => $outputFile];

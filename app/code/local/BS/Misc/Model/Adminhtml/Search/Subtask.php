@@ -24,27 +24,27 @@ class BS_Misc_Model_Adminhtml_Search_Subtask extends Varien_Object
      */
     public function load()
     {
-        $arr = array();
+        $arr = [];
         if (!$this->hasStart() || !$this->hasLimit() || !$this->hasQuery()) {
             $this->setResults($arr);
             return $this;
         }
         $collection = Mage::getResourceModel('bs_misc/subtask_collection')
-            ->addFieldToFilter('sub_code', array('like' => $this->getQuery().'%'))
+            ->addFieldToFilter('sub_code', ['like' => $this->getQuery().'%'])
             ->setCurPage($this->getStart())
             ->setPageSize($this->getLimit())
             ->load();
         foreach ($collection->getItems() as $subtask) {
-            $arr[] = array(
+            $arr[] = [
                 'id'          => 'subtask/1/'.$subtask->getId(),
                 'type'        => Mage::helper('bs_misc')->__('Survey Sub Code'),
                 'name'        => $subtask->getSubCode(),
                 'description' => $subtask->getSubCode(),
                 'url' => Mage::helper('adminhtml')->getUrl(
                     '*/misc_subtask/edit',
-                    array('id'=>$subtask->getId())
+                    ['id'=>$subtask->getId()]
                 ),
-            );
+            ];
         }
         $this->setResults($arr);
         return $this;

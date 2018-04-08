@@ -40,14 +40,14 @@ class BS_Routine_Block_Adminhtml_Routine_Edit_Tabs extends Mage_Adminhtml_Block_
     {
         $this->addTab(
             'form_routine',
-            array(
+            [
                 'label'   => Mage::helper('bs_routine')->__('Routine Report'),
                 'title'   => Mage::helper('bs_routine')->__('Routine Report'),
                 'content' => $this->getLayout()->createBlock(
                     'bs_routine/adminhtml_routine_edit_tab_form'
                 )
                 ->toHtml(),
-            )
+            ]
         );
         return parent::_beforeToHtml();
     }

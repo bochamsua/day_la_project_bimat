@@ -58,54 +58,54 @@ class BS_NCause_Block_Adminhtml_Ncause_Grid extends Mage_Adminhtml_Block_Widget_
     {
         $this->addColumn(
             'entity_id',
-            array(
+            [
                 'header' => Mage::helper('bs_ncause')->__('Id'),
                 'index'  => 'entity_id',
                 'type'   => 'number'
-            )
+            ]
         );
         $this->addColumn(
             'ncausegroup_id',
-            array(
+            [
                 'header'    => Mage::helper('bs_ncause')->__('Root Cause Code'),
                 'index'     => 'ncausegroup_id',
                 'type'      => 'options',
                 'options'   => Mage::getResourceModel('bs_ncause/ncausegroup_collection')
                     ->toOptionHash(),
                 'renderer'  => 'bs_ncause/adminhtml_helper_column_renderer_parent',
-                'params'    => array(
+                'params'    => [
                     'id'    => 'getNcausegroupId'
-                ),
+                ],
                 'base_link' => 'adminhtml/ncause_ncausegroup/edit'
-            )
+            ]
         );
         $this->addColumn(
             'cause_code',
-            array(
+            [
                 'header'    => Mage::helper('bs_ncause')->__('Cause Code'),
                 'align'     => 'left',
                 'index'     => 'cause_code',
-            )
+            ]
         );
         
 
         $this->addColumn(
             'cause_name',
-            array(
+            [
                 'header' => Mage::helper('bs_ncause')->__('Cause Name'),
                 'index'  => 'cause_name',
                 'type'=> 'text',
 
-            )
+            ]
         );
 
         $this->addColumn(
             'points',
-            array(
+            [
                 'header'    => Mage::helper('bs_ncause')->__('Points'),
                 'align'     => 'left',
                 'index'     => 'points',
-            )
+            ]
         );
         /*$this->addColumn(
             'status',
@@ -158,10 +158,10 @@ class BS_NCause_Block_Adminhtml_Ncause_Grid extends Mage_Adminhtml_Block_Widget_
         $this->setMassactionIdField('entity_id');
         $this->getMassactionBlock()->setFormFieldName('ncause');
 
-        $this->getMassactionBlock()->addItem('separator', array(
+        $this->getMassactionBlock()->addItem('separator', [
             'label'=> '---Select---',
             'url'  => ''
-        ));
+        ]);
 
         return $this;
     }
@@ -176,7 +176,7 @@ class BS_NCause_Block_Adminhtml_Ncause_Grid extends Mage_Adminhtml_Block_Widget_
      */
     public function getRowUrl($row)
     {
-        return $this->getUrl('*/*/edit', array('id' => $row->getId()));
+        return $this->getUrl('*/*/edit', ['id' => $row->getId()]);
     }
 
     /**
@@ -188,7 +188,7 @@ class BS_NCause_Block_Adminhtml_Ncause_Grid extends Mage_Adminhtml_Block_Widget_
      */
     public function getGridUrl()
     {
-        return $this->getUrl('*/*/grid', array('_current'=>true));
+        return $this->getUrl('*/*/grid', ['_current'=>true]);
     }
 
     /**

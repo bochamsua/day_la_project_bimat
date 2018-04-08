@@ -119,7 +119,7 @@ class BS_Ir_Adminhtml_Ir_IrController extends BS_Sur_Controller_Adminhtml_Sur
     {
         if ($data = $this->getRequest()->getPost('ir')) {
             try {
-                $data = $this->_filterDates($data, array('report_date', 'event_date'));
+                $data = $this->_filterDates($data, ['report_date', 'event_date']);
                 $ir = $this->_initIr();
 
 
@@ -157,7 +157,7 @@ class BS_Ir_Adminhtml_Ir_IrController extends BS_Sur_Controller_Adminhtml_Sur
 				            Mage::helper('bs_ir')->__('Ir was successfully %s.', $message)
 			            );
 
-			            $this->_redirect('*/*/edit', array('id' => $ir->getId()));
+			            $this->_redirect('*/*/edit', ['id' => $ir->getId()]);
 			            return;
 		            }elseif($this->getRequest()->getParam('reject')){
 			            //$data['ncr_status'] = 0;
@@ -170,7 +170,7 @@ class BS_Ir_Adminhtml_Ir_IrController extends BS_Sur_Controller_Adminhtml_Sur
 				            Mage::helper('bs_ncr')->__('Ir was successfully %s.', $message)
 			            );
 
-			            $this->_redirect('*/*/edit', array('id' => $ir->getId()));
+			            $this->_redirect('*/*/edit', ['id' => $ir->getId()]);
 			            return;
 		            }elseif($this->getRequest()->getParam('submitted')){
 			            $ir->addData($data);
@@ -188,7 +188,7 @@ class BS_Ir_Adminhtml_Ir_IrController extends BS_Sur_Controller_Adminhtml_Sur
 				            Mage::helper('bs_ncr')->__('Ir was successfully %s.', $message)
 			            );
 
-			            $this->_redirect('*/*/edit', array('id' => $ir->getId()));
+			            $this->_redirect('*/*/edit', ['id' => $ir->getId()]);
 			            return;
 		            }
 
@@ -229,7 +229,7 @@ class BS_Ir_Adminhtml_Ir_IrController extends BS_Sur_Controller_Adminhtml_Sur
                     Mage::helper('bs_ir')->__('Ir was successfully saved. %s', $add)
                 );
                 Mage::getSingleton('adminhtml/session')->setFormData(false);
-	            $this->_redirect('*/*/edit', array('id' => $ir->getId()));
+	            $this->_redirect('*/*/edit', ['id' => $ir->getId()]);
 	            return;
             } catch (Mage_Core_Exception $e) {
 	            if (isset($data['ir_source']['value'])) {
@@ -237,7 +237,7 @@ class BS_Ir_Adminhtml_Ir_IrController extends BS_Sur_Controller_Adminhtml_Sur
 	            }
                 Mage::getSingleton('adminhtml/session')->addError($e->getMessage());
                 Mage::getSingleton('adminhtml/session')->setIrData($data);
-                $this->_redirect('*/*/edit', array('id' => $this->getRequest()->getParam('id')));
+                $this->_redirect('*/*/edit', ['id' => $this->getRequest()->getParam('id')]);
                 return;
             } catch (Exception $e) {
 	            if (isset($data['ir_source']['value'])) {
@@ -248,7 +248,7 @@ class BS_Ir_Adminhtml_Ir_IrController extends BS_Sur_Controller_Adminhtml_Sur
                     Mage::helper('bs_ir')->__('There was a problem saving the ir.')
                 );
                 Mage::getSingleton('adminhtml/session')->setIrData($data);
-                $this->_redirect('*/*/edit', array('id' => $this->getRequest()->getParam('id')));
+                $this->_redirect('*/*/edit', ['id' => $this->getRequest()->getParam('id')]);
                 return;
             }
         }
@@ -278,12 +278,12 @@ class BS_Ir_Adminhtml_Ir_IrController extends BS_Sur_Controller_Adminhtml_Sur
                 return;
             } catch (Mage_Core_Exception $e) {
                 Mage::getSingleton('adminhtml/session')->addError($e->getMessage());
-                $this->_redirect('*/*/edit', array('id' => $this->getRequest()->getParam('id')));
+                $this->_redirect('*/*/edit', ['id' => $this->getRequest()->getParam('id')]);
             } catch (Exception $e) {
                 Mage::getSingleton('adminhtml/session')->addError(
                     Mage::helper('bs_ir')->__('There was an error deleting ir.')
                 );
-                $this->_redirect('*/*/edit', array('id' => $this->getRequest()->getParam('id')));
+                $this->_redirect('*/*/edit', ['id' => $this->getRequest()->getParam('id')]);
                 Mage::logException($e);
                 return;
             }
@@ -533,10 +533,10 @@ class BS_Ir_Adminhtml_Ir_IrController extends BS_Sur_Controller_Adminhtml_Sur
 		}
 		$this->_redirect(
 			'*/ir_ir/edit',
-			array(
+			[
 				'id' => $this->getRequest()->getParam('id'),
 				'_current' => true
-			)
+            ]
 		);
 
 	}
@@ -571,7 +571,7 @@ class BS_Ir_Adminhtml_Ir_IrController extends BS_Sur_Controller_Adminhtml_Sur
 
 		$subjectOther = '';
 		$subject = $obj->getSubject();
-		$checkbox = array();
+		$checkbox = [];
 		if($subject == 1){
 			$checkbox['maint_error'] = 1;
 		}
@@ -655,35 +655,35 @@ class BS_Ir_Adminhtml_Ir_IrController extends BS_Sur_Controller_Adminhtml_Sur
 			)
 		);*/
 
-		$htmlVariables = array(
-			array(
+		$htmlVariables = [
+			[
 				'code' => 'description',
 				'content' => $obj->getDescription()
-			),
-			array(
+            ],
+			[
 				'code' => 'analysis',
 				'content' => $obj->getAnalysis()
-			),
-			array(
+            ],
+			[
 				'code' => 'cause',
 				'content' => $obj->getCauses()
-			),
-			array(
+            ],
+			[
 				'code' => 'corrective',
 				'content' => $obj->getCorrective()
-			),
-            array(
+            ],
+            [
                 'code' => 'cons_other',
                 'type'  => 'inline',
                 'content' => $consOther
-            ),
-		);
+            ],
+        ];
 
 		$reportDate = Mage::getModel('core/date')->date("d/m/Y", $obj->getReportDate());
 		$eventDate = Mage::getModel('core/date')->date("d/m/Y", $obj->getEventDate());
 		$dueDate = Mage::getModel('core/date')->date("d/m/Y", $obj->getDueDate());
 
-		$data = array(
+		$data = [
 			'ref' => $obj->getRefNo(),
 			'report_date' => $reportDate,
 			'event_date'    => $eventDate,
@@ -701,7 +701,7 @@ class BS_Ir_Adminhtml_Ir_IrController extends BS_Sur_Controller_Adminhtml_Sur
 			//'corrective' => '',
 
 
-		);
+        ];
 
 		$signatureManager = Mage::getModel('bs_signature/signature')->getCollection()
 		                 ->addFieldToFilter('user_id', $obj->getApprovalId())
@@ -717,10 +717,10 @@ class BS_Ir_Adminhtml_Ir_IrController extends BS_Sur_Controller_Adminhtml_Sur
 
 		$inspectorSign = Mage::helper('bs_signature/signature')->getFileBaseDir().$signatureInspector->getFirstItem()->getSignature();
 
-		$images = array(
+		$images = [
 			'manager_sign' => $managerSign,
 			'inspector_sign' => $inspectorSign
-		);
+        ];
 
 
 

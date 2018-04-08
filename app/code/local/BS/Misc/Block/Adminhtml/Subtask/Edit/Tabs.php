@@ -40,14 +40,14 @@ class BS_Misc_Block_Adminhtml_Subtask_Edit_Tabs extends Mage_Adminhtml_Block_Wid
     {
         $this->addTab(
             'form_subtask',
-            array(
+            [
                 'label'   => Mage::helper('bs_misc')->__('Survey Sub Code'),
                 'title'   => Mage::helper('bs_misc')->__('Survey Sub Code'),
                 'content' => $this->getLayout()->createBlock(
                     'bs_misc/adminhtml_subtask_edit_tab_form'
                 )
                 ->toHtml(),
-            )
+            ]
         );
         return parent::_beforeToHtml();
     }

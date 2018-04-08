@@ -19,10 +19,10 @@ $this->getConnection()
     ->addColumn(
         $this->getTable('bs_drr/drr'),
         'task_id',
-        array(
+        [
             'type' => Varien_Db_Ddl_Table::TYPE_INTEGER,
             'comment'   => 'Task Id'
-        )
+        ]
     )
 ;
 
@@ -30,10 +30,10 @@ $this->getConnection()
     ->addColumn(
         $this->getTable('bs_drr/drr'),
         'subtask_id',
-        array(
+        [
             'type' => Varien_Db_Ddl_Table::TYPE_INTEGER,
             'comment'   => 'Sub Task Id'
-        )
+        ]
     )
 ;
 

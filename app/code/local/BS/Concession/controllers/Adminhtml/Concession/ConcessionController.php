@@ -119,7 +119,7 @@ class BS_Concession_Adminhtml_Concession_ConcessionController extends BS_Sur_Con
     {
         if ($data = $this->getRequest()->getPost('concession')) {
             try {
-                $data = $this->_filterDates($data, array('report_date' ,'spare_do'));
+                $data = $this->_filterDates($data, ['report_date' ,'spare_do']);
                 $concession = $this->_initConcession();
 
 	            /*$tobeRaised = false;
@@ -160,7 +160,7 @@ class BS_Concession_Adminhtml_Concession_ConcessionController extends BS_Sur_Con
                 );
                 Mage::getSingleton('adminhtml/session')->setFormData(false);
                 if ($this->getRequest()->getParam('back')) {
-                    $this->_redirect('*/*/edit', array('id' => $concession->getId()));
+                    $this->_redirect('*/*/edit', ['id' => $concession->getId()]);
                     return;
                 }
                 $this->_redirect('*/*/');
@@ -174,7 +174,7 @@ class BS_Concession_Adminhtml_Concession_ConcessionController extends BS_Sur_Con
                 }
                 Mage::getSingleton('adminhtml/session')->addError($e->getMessage());
                 Mage::getSingleton('adminhtml/session')->setConcessionData($data);
-                $this->_redirect('*/*/edit', array('id' => $this->getRequest()->getParam('id')));
+                $this->_redirect('*/*/edit', ['id' => $this->getRequest()->getParam('id')]);
                 return;
             } catch (Exception $e) {
                 Mage::logException($e);
@@ -188,7 +188,7 @@ class BS_Concession_Adminhtml_Concession_ConcessionController extends BS_Sur_Con
                     Mage::helper('bs_concession')->__('There was a problem saving the concession.')
                 );
                 Mage::getSingleton('adminhtml/session')->setConcessionData($data);
-                $this->_redirect('*/*/edit', array('id' => $this->getRequest()->getParam('id')));
+                $this->_redirect('*/*/edit', ['id' => $this->getRequest()->getParam('id')]);
                 return;
             }
         }
@@ -218,12 +218,12 @@ class BS_Concession_Adminhtml_Concession_ConcessionController extends BS_Sur_Con
                 return;
             } catch (Mage_Core_Exception $e) {
                 Mage::getSingleton('adminhtml/session')->addError($e->getMessage());
-                $this->_redirect('*/*/edit', array('id' => $this->getRequest()->getParam('id')));
+                $this->_redirect('*/*/edit', ['id' => $this->getRequest()->getParam('id')]);
             } catch (Exception $e) {
                 Mage::getSingleton('adminhtml/session')->addError(
                     Mage::helper('bs_concession')->__('There was an error deleting concession.')
                 );
-                $this->_redirect('*/*/edit', array('id' => $this->getRequest()->getParam('id')));
+                $this->_redirect('*/*/edit', ['id' => $this->getRequest()->getParam('id')]);
                 Mage::logException($e);
                 return;
             }

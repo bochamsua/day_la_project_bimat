@@ -40,14 +40,14 @@ class BS_Report_Block_Adminhtml_Setting_Edit_Tabs extends Mage_Adminhtml_Block_W
     {
         $this->addTab(
             'form_setting',
-            array(
+            [
                 'label'   => Mage::helper('bs_report')->__('Setting'),
                 'title'   => Mage::helper('bs_report')->__('Setting'),
                 'content' => $this->getLayout()->createBlock(
                     'bs_report/adminhtml_setting_edit_tab_form'
                 )
                 ->toHtml(),
-            )
+            ]
         );
         return parent::_beforeToHtml();
     }

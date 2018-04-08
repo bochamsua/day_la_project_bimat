@@ -31,17 +31,17 @@ class BS_HR_Block_Adminhtml_Certificate_Edit_Tab_Form extends Mage_Adminhtml_Blo
         $this->setForm($form);
         $fieldset = $form->addFieldset(
             'certificate_form',
-            array('legend' => Mage::helper('bs_hr')->__('Certificate'))
+            ['legend' => Mage::helper('bs_hr')->__('Certificate')]
         );
 
         $fieldset->addField(
             'cert_desc',
             'text',
-            array(
+            [
                 'label' => Mage::helper('bs_hr')->__('Description'),
                 'name'  => 'cert_desc',
 
-           )
+            ]
         );
 
         $currentCert = Mage::registry('current_certificate');
@@ -77,69 +77,69 @@ class BS_HR_Block_Adminhtml_Certificate_Edit_Tab_Form extends Mage_Adminhtml_Blo
         $fieldset->addField(
             'crs_approved',
             'date',
-            array(
+            [
                 'label' => Mage::helper('bs_hr')->__('CRS Approved Date'),
                 'name'  => 'crs_approved',
 
             'image' => $this->getSkinUrl('images/grid-cal.gif'),
             'format'  => Mage::app()->getLocale()->getDateFormat(Mage_Core_Model_Locale::FORMAT_TYPE_SHORT),
-           )
+            ]
         );
 
         $fieldset->addField(
             'crs_expire',
             'date',
-            array(
+            [
                 'label' => Mage::helper('bs_hr')->__('CRS Expire Date'),
                 'name'  => 'crs_expire',
 
             'image' => $this->getSkinUrl('images/grid-cal.gif'),
             'format'  => Mage::app()->getLocale()->getDateFormat(Mage_Core_Model_Locale::FORMAT_TYPE_SHORT),
-           )
+            ]
         );
 
         $fieldset->addField(
             'caav_approved',
             'date',
-            array(
+            [
                 'label' => Mage::helper('bs_hr')->__('CAAV Approved Date'),
                 'name'  => 'caav_approved',
 
             'image' => $this->getSkinUrl('images/grid-cal.gif'),
             'format'  => Mage::app()->getLocale()->getDateFormat(Mage_Core_Model_Locale::FORMAT_TYPE_SHORT),
-           )
+            ]
         );
 
         $fieldset->addField(
             'caav_expire',
             'date',
-            array(
+            [
                 'label' => Mage::helper('bs_hr')->__('CAAV Expire Date'),
                 'name'  => 'caav_expire',
 
             'image' => $this->getSkinUrl('images/grid-cal.gif'),
             'format'  => Mage::app()->getLocale()->getDateFormat(Mage_Core_Model_Locale::FORMAT_TYPE_SHORT),
-           )
+            ]
         );
 
         $fieldset->addField(
             'ac_id',
             'text',
-            array(
+            [
                 'label' => Mage::helper('bs_hr')->__('Aircraft'),
                 'name'  => 'ac_id',
 
-           )
+            ]
         );
 
         $fieldset->addField(
             'certtype_id',
             'text',
-            array(
+            [
                 'label' => Mage::helper('bs_hr')->__('Cert Type'),
                 'name'  => 'certtype_id',
 
-           )
+            ]
         );
         /*$fieldset->addField(
             'status',
@@ -161,7 +161,7 @@ class BS_HR_Block_Adminhtml_Certificate_Edit_Tab_Form extends Mage_Adminhtml_Blo
         );*/
         $formValues = Mage::registry('current_certificate')->getDefaultValues();
         if (!is_array($formValues)) {
-            $formValues = array();
+            $formValues = [];
         }
         if (Mage::getSingleton('adminhtml/session')->getCertificateData()) {
             $formValues = array_merge($formValues, Mage::getSingleton('adminhtml/session')->getCertificateData());

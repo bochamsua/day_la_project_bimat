@@ -131,7 +131,7 @@ class BS_Report_Adminhtml_Report_WorkdayController extends BS_Sur_Controller_Adm
                 );
                 Mage::getSingleton('adminhtml/session')->setFormData(false);
                 if ($this->getRequest()->getParam('back')) {
-                    $this->_redirect('*/*/edit', array('id' => $workday->getId()));
+                    $this->_redirect('*/*/edit', ['id' => $workday->getId()]);
                     return;
                 }
                 $this->_redirect('*/*/');
@@ -139,7 +139,7 @@ class BS_Report_Adminhtml_Report_WorkdayController extends BS_Sur_Controller_Adm
             } catch (Mage_Core_Exception $e) {
                 Mage::getSingleton('adminhtml/session')->addError($e->getMessage());
                 Mage::getSingleton('adminhtml/session')->setWorkdayData($data);
-                $this->_redirect('*/*/edit', array('id' => $this->getRequest()->getParam('id')));
+                $this->_redirect('*/*/edit', ['id' => $this->getRequest()->getParam('id')]);
                 return;
             } catch (Exception $e) {
                 Mage::logException($e);
@@ -147,7 +147,7 @@ class BS_Report_Adminhtml_Report_WorkdayController extends BS_Sur_Controller_Adm
                     Mage::helper('bs_report')->__('There was a problem saving the work day.')
                 );
                 Mage::getSingleton('adminhtml/session')->setWorkdayData($data);
-                $this->_redirect('*/*/edit', array('id' => $this->getRequest()->getParam('id')));
+                $this->_redirect('*/*/edit', ['id' => $this->getRequest()->getParam('id')]);
                 return;
             }
         }
@@ -177,12 +177,12 @@ class BS_Report_Adminhtml_Report_WorkdayController extends BS_Sur_Controller_Adm
                 return;
             } catch (Mage_Core_Exception $e) {
                 Mage::getSingleton('adminhtml/session')->addError($e->getMessage());
-                $this->_redirect('*/*/edit', array('id' => $this->getRequest()->getParam('id')));
+                $this->_redirect('*/*/edit', ['id' => $this->getRequest()->getParam('id')]);
             } catch (Exception $e) {
                 Mage::getSingleton('adminhtml/session')->addError(
                     Mage::helper('bs_report')->__('There was an error deleting work day.')
                 );
-                $this->_redirect('*/*/edit', array('id' => $this->getRequest()->getParam('id')));
+                $this->_redirect('*/*/edit', ['id' => $this->getRequest()->getParam('id')]);
                 Mage::logException($e);
                 return;
             }

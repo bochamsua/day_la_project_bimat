@@ -33,7 +33,7 @@ class BS_Misc_Model_Subtask_Source extends Mage_Eav_Model_Entity_Attribute_Sourc
         }
         $options = $this->_options;
         if ($withEmpty) {
-            array_unshift($options, array('value'=>'', 'label'=>''));
+            array_unshift($options, ['value'=>'', 'label'=>'']);
         }
         return $options;
     }
@@ -79,11 +79,11 @@ class BS_Misc_Model_Subtask_Source extends Mage_Eav_Model_Entity_Attribute_Sourc
     public function getFlatColums()
     {
         $attributeCode = $this->getAttribute()->getAttributeCode();
-        $column = array(
+        $column = [
             'unsigned'  => true,
             'default'   => null,
             'extra'     => null
-        );
+        ];
         if (Mage::helper('core')->useDbCompatibleMode()) {
             $column['type']     = 'int';
             $column['is_null']  = true;
@@ -92,7 +92,7 @@ class BS_Misc_Model_Subtask_Source extends Mage_Eav_Model_Entity_Attribute_Sourc
             $column['nullable'] = true;
             $column['comment']  = $attributeCode . ' Sub Task column';
         }
-        return array($attributeCode => $column);
+        return [$attributeCode => $column];
     }
 
     /**

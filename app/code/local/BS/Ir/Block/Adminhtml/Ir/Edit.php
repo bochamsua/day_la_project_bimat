@@ -50,18 +50,18 @@ class BS_Ir_Block_Adminhtml_Ir_Edit extends Mage_Adminhtml_Block_Widget_Form_Con
             $this->_removeButton('back');
             $this->_addButton(
                 'closewindow',
-                array(
+                [
                     'label'   => Mage::helper('bs_ir')->__('Close'),
                     'onclick' => 'window.close()',
                     'class'   => 'back',
-                ),
+                ],
                 -1
             );
         }
         $this->_formScripts[] = "
 
             function deleteOnly() {
-                deleteConfirm('". Mage::helper('adminhtml')->__('Are you sure you want to do this?')."','".$this->getUrl('*/*/delete', array($this->_objectId => $this->getRequest()->getParam($this->_objectId), 'popup'=>1)) . "');
+                deleteConfirm('". Mage::helper('adminhtml')->__('Are you sure you want to do this?')."','".$this->getUrl('*/*/delete', [$this->_objectId => $this->getRequest()->getParam($this->_objectId), 'popup'=>1]) . "');
             }
             function saveOnly() {
                 editForm.submit($('edit_form').action+'".$add."');
@@ -157,12 +157,12 @@ class BS_Ir_Block_Adminhtml_Ir_Edit extends Mage_Adminhtml_Block_Widget_Form_Con
     }
     public function getSaveAndContinueUrl()
         {
-            return $this->getUrl('*/*/save', array(
+            return $this->getUrl('*/*/save', [
                 '_current'   => true,
                 'back'       => 'edit',
                 'tab'        => '{{tab_id}}',
                 'active_tab' => null
-            ));
+            ]);
         }
     public function getSelectedTabId()
         {

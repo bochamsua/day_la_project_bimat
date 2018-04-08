@@ -55,12 +55,12 @@ class BS_Logger_Block_Adminhtml_Logger_Edit extends Mage_Adminhtml_Block_Widget_
     }
     public function getSaveAndContinueUrl()
         {
-            return $this->getUrl('*/*/save', array(
+            return $this->getUrl('*/*/save', [
                 '_current'   => true,
                 'back'       => 'edit',
                 'tab'        => '{{tab_id}}',
                 'active_tab' => null
-            ));
+            ]);
         }
     public function getSelectedTabId()
         {

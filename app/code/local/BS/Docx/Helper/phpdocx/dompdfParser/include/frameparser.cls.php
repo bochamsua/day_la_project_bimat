@@ -418,7 +418,7 @@ class FrameParserTreeIterator implements Iterator {
    * @var FrameParser
    */
   protected $_root;
-  protected $_stack = array();
+  protected $_stack = [];
   
   /**
    * @var int
@@ -433,7 +433,7 @@ class FrameParserTreeIterator implements Iterator {
 
   function rewind() {
 
-    $this->_stack = array($this->_root);
+    $this->_stack = [$this->_root];
     $this->_num = 0;
   }
   

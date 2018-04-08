@@ -31,7 +31,7 @@ class BS_Ir_Block_Adminhtml_Ir_Edit_Tab_Form extends Mage_Adminhtml_Block_Widget
         $this->setForm($form);
         $fieldset = $form->addFieldset(
             'ir_form',
-            array('legend' => Mage::helper('bs_ir')->__('Ir'))
+            ['legend' => Mage::helper('bs_ir')->__('Ir')]
         );
 
 	    $fieldset->addType(
@@ -62,23 +62,23 @@ class BS_Ir_Block_Adminhtml_Ir_Edit_Tab_Form extends Mage_Adminhtml_Block_Widget
         $fieldset->addField(
             'ref_id',
             'hidden',
-            array(
+            [
                 'label' => Mage::helper('bs_ir')->__('ref_id'),
                 'name'  => 'ref_id',
 
 
-            )
+            ]
         );
 
         $fieldset->addField(
             'ref_type',
             'hidden',
-            array(
+            [
                 'label' => Mage::helper('bs_ir')->__('ref_type'),
                 'name'  => 'ref_type',
 
 
-            )
+            ]
         );
 
         if($taskId){
@@ -88,28 +88,28 @@ class BS_Ir_Block_Adminhtml_Ir_Edit_Tab_Form extends Mage_Adminhtml_Block_Widget
             $fieldset->addField(
                 'task_id',
                 'select',
-                array(
+                [
                     'label' => Mage::helper('bs_ir')->__('Survey Code'),
                     'name'  => 'task_id',
                     'values'=> $tasks,
                     'disabled'  => $disable
-                )
+                ]
             );
 
             $subtasks = Mage::getResourceModel('bs_misc/subtask_collection');
             $subtasks->addFieldToFilter('task_id', $taskId);
             $subtasks = $subtasks->toOptionArray();
-            array_unshift($subtasks, array('value'=>'0', 'label'=>'N/A'));
+            array_unshift($subtasks, ['value'=>'0', 'label'=>'N/A']);
 
             $fieldset->addField(
                 'subtask_id',
                 'select',
-                array(
+                [
                     'label' => Mage::helper('bs_ir')->__('Source'),
                     'name'  => 'subtask_id',
                     'values'=> $subtasks,
                     'disabled'  => $disable
-                )
+                ]
             );
         }else {
             $label = 'Other';
@@ -119,22 +119,22 @@ class BS_Ir_Block_Adminhtml_Ir_Edit_Tab_Form extends Mage_Adminhtml_Block_Widget
             $fieldset->addField(
                 'task_id',
                 'select',
-                array(
+                [
                     'label' => Mage::helper('bs_ir')->__('Source'),
                     'name'  => 'task_id',
                     'values'=> [['value'=>'0', 'label'=>$label]],
                     'disabled'  => $disable
-                )
+                ]
             );
 
             $fieldset->addField(
                 'source_other',
                 'text',
-                array(
+                [
                     'label' => Mage::helper('bs_ir')->__('Source Other'),
                     'name'  => 'source_other',
                     'disabled'  => $disable
-                )
+                ]
             );
         }
 
@@ -146,12 +146,12 @@ class BS_Ir_Block_Adminhtml_Ir_Edit_Tab_Form extends Mage_Adminhtml_Block_Widget
         $fieldset->addField(
             'dept_id',
             'select',
-            array(
+            [
                 'label'     => Mage::helper('bs_misc')->__('Maint. Center'),
                 'name'      => 'dept_id',
                 'required'  => false,
                 'values'    => $depts,
-            )
+            ]
         );
 
         $locs = Mage::getResourceModel('bs_misc/location_collection');
@@ -160,12 +160,12 @@ class BS_Ir_Block_Adminhtml_Ir_Edit_Tab_Form extends Mage_Adminhtml_Block_Widget
         $fieldset->addField(
             'loc_id',
             'select',
-            array(
+            [
                 'label'     => Mage::helper('bs_misc')->__('Location'),
                 'name'      => 'loc_id',
                 'required'  => false,
                 'values'    => $locs,
-            )
+            ]
         );
 
 	    $customers = Mage::getResourceModel('bs_acreg/customer_collection');
@@ -174,226 +174,226 @@ class BS_Ir_Block_Adminhtml_Ir_Edit_Tab_Form extends Mage_Adminhtml_Block_Widget
 	    $fieldset->addField(
 		    'customer',
 		    'select',
-		    array(
+		    [
 			    'label'     => Mage::helper('bs_ir')->__('Customer'),
 			    'name'      => 'customer',
 			    'required'  => false,
 			    'values'    => $customers,
-		    )
+            ]
 	    );
 
 	    $acTypes = Mage::getResourceModel('bs_misc/aircraft_collection');
 	    $acTypes = $acTypes->toOptionArray();
-	    array_unshift($acTypes, array('value' => 0, 'label' => 'N/A'));
+	    array_unshift($acTypes, ['value' => 0, 'label' => 'N/A']);
 	    $fieldset->addField(
 		    'ac_type',
 		    'select',
-		    array(
+		    [
 			    'label'     => Mage::helper('bs_ir')->__('A/C Type'),
 			    'name'      => 'ac_type',
 			    'required'  => false,
 			    'values'    => $acTypes,
-		    )
+            ]
 	    );
 
 	    $acRegs = Mage::getResourceModel('bs_acreg/acreg_collection');
         $acRegs->setOrder('reg', 'ASC');
 	    $acRegs = $acRegs->toOptionArray();
-	    array_unshift($acRegs, array('value' => 0, 'label' => 'N/A'));
+	    array_unshift($acRegs, ['value' => 0, 'label' => 'N/A']);
 	    $fieldset->addField(
 		    'ac_reg',
 		    'select',
-		    array(
+		    [
 			    'label'     => Mage::helper('bs_ir')->__('A/C Reg'),
 			    'name'      => 'ac_reg',
 			    'required'  => false,
 			    'values'    => $acRegs,
-		    )
+            ]
 	    );
 
 	    $fieldset->addField(
 		    'ir_source',
 		    'file',
-		    array(
+		    [
 			    'label' => Mage::helper('bs_ir')->__('Source'),
 			    'name'  => 'ir_source',
                 'note'  => Mage::helper('bs_misc')->__('Maximum file size allowed is 10MB'),
 			    //'disabled'  => $disable
 
-		    )
+            ]
 	    );
 
         $fieldset->addField(
             'report_date',
             'date',
-            array(
+            [
                 'label' => Mage::helper('bs_ir')->__('Report Date'),
                 'name'  => 'report_date',
 
             'image' => $this->getSkinUrl('images/grid-cal.gif'),
             'format'  => Mage::app()->getLocale()->getDateFormat(Mage_Core_Model_Locale::FORMAT_TYPE_SHORT),
-           )
+            ]
         );
 
 	    $fieldset->addField(
 		    'event_date',
 		    'date',
-		    array(
+		    [
 			    'label' => Mage::helper('bs_ir')->__('Date of Event'),
 			    'name'  => 'event_date',
 
 			    'image' => $this->getSkinUrl('images/grid-cal.gif'),
 			    'format'  => Mage::app()->getLocale()->getDateFormat(Mage_Core_Model_Locale::FORMAT_TYPE_SHORT),
-		    )
+            ]
 	    );
 
 	    $fieldset->addField(
 		    'subject',
 		    'select',
-		    array(
+		    [
 			    'label' => Mage::helper('bs_ir')->__('Ir Subject'),
 			    'name'  => 'subject',
 			    'values'=> Mage::getModel('bs_ir/ir_attribute_source_irsubject')->getAllOptions(false),
-		    )
+            ]
 	    );
 
 
 	    $fieldset->addField(
 		    'subject_other',
 		    'textarea',
-		    array(
+		    [
 			    'label' => Mage::helper('bs_ir')->__('Subject Other'),
 			    'name'  => 'subject_other',
 			    'config' => $wysiwygConfig,
 
-		    )
+            ]
 	    );
 
 	    $fieldset->addField(
 		    'consequence',
 		    'select',
-		    array(
+		    [
 			    'label' => Mage::helper('bs_ir')->__('Consequence'),
 			    'name'  => 'consequence',
 			    'values'=> Mage::getModel('bs_ir/ir_attribute_source_irconsequence')->getAllOptions(false),
-		    )
+            ]
 	    );
 
 	    $fieldset->addField(
 		    'consequence_other',
 		    'textarea',
-		    array(
+		    [
 			    'label' => Mage::helper('bs_ir')->__('Consequence Other'),
 			    'name'  => 'consequence_other',
 			    'config' => $wysiwygConfig,
 
-		    )
+            ]
 	    );
 
 
 	    $fieldset->addField(
 		    'description',
 		    'textarea',
-		    array(
+		    [
 			    'label' => Mage::helper('bs_ir')->__('Description'),
 			    'name'  => 'description',
 			    'config' => $wysiwygConfig,
 
-		    )
+            ]
 	    );
 
         $fieldset->addField(
             'analysis',
             'textarea',
-            array(
+            [
                 'label' => Mage::helper('bs_ir')->__('Analysis of Occurrence'),
                 'name'  => 'analysis',
                 'config' => $wysiwygConfig,
 
-           )
+            ]
         );
 
 	    $fieldset->addField(
 		    'causes',
 		    'textarea',
-		    array(
+		    [
 			    'label' => Mage::helper('bs_ir')->__('Causes of Occurrence'),
 			    'name'  => 'causes',
 			    'config' => $wysiwygConfig,
 
-		    )
+            ]
 	    );
 
 	    $fieldset->addField(
 		    'corrective',
 		    'textarea',
-		    array(
+		    [
 			    'label' => Mage::helper('bs_ir')->__('Corrective Actions'),
 			    'name'  => 'corrective',
 			    'config' => $wysiwygConfig,
 
-		    )
+            ]
 	    );
 
         $fieldset->addField(
             'point',
             'text',
-            array(
+            [
                 'label' => Mage::helper('bs_ir')->__('Point'),
                 'name'  => 'point',
                 //'disabled'  => $disable
 
 
-            )
+            ]
         );
 
 	    $fieldset->addField(
 		    'remark',
 		    'textarea',
-		    array(
+		    [
 			    'label' => Mage::helper('bs_ir')->__('Remark'),
 			    'name'  => 'remark',
 			    'config' => $wysiwygConfig,
 
-		    )
+            ]
 	    );
 
 	    $fieldset->addField(
 		    'error_type',
 		    'select',
-		    array(
+		    [
 			    'label' => Mage::helper('bs_ir')->__('Error Type'),
 			    'name'  => 'error_type',
 			    'values'=> Mage::getModel('bs_ncr/ncr_attribute_source_errortype')->getAllOptions(false),
-		    )
+            ]
 	    );
 
 	    $causeGroups = Mage::getResourceModel('bs_ncause/ncausegroup_collection');
 	    $causeGroups = $causeGroups->toOptionArray();
-	    array_unshift($causeGroups, array('value' => 0, 'label' => 'N/A'));
+	    array_unshift($causeGroups, ['value' => 0, 'label' => 'N/A']);
 	    $fieldset->addField(
 		    'ncausegroup_id',
 		    'select',
-		    array(
+		    [
 			    'label'     => Mage::helper('bs_ir')->__('Cause Group'),
 			    'name'      => 'ncausegroup_id',
 			    'required'  => true,
 			    'values'    => $causeGroups,
-		    )
+            ]
 	    );
 
 	    $causes = Mage::getResourceModel('bs_ncause/ncause_collection');
 	    $causes = $causes->toOptionArray();
-	    array_unshift($causes, array('value' => 0, 'label' => 'N/A'));
+	    array_unshift($causes, ['value' => 0, 'label' => 'N/A']);
 	    $fieldset->addField(
 		    'ncause_id',
 		    'select',
-		    array(
+		    [
 			    'label'     => Mage::helper('bs_ir')->__('Cause'),
 			    'name'      => 'ncause_id',
 			    'required'  => true,
 			    'values'    => $causes,
-		    )
+            ]
 	    );
 
         $bypass = Mage::getSingleton('admin/session')->isAllowed("bs_work/ir/accept");
@@ -402,10 +402,10 @@ class BS_Ir_Block_Adminhtml_Ir_Edit_Tab_Form extends Mage_Adminhtml_Block_Widget
 		    $fieldset->addField(
 			    'reject_reason',
 			    'text',
-			    array(
+			    [
 				    'label' => Mage::helper('bs_ir')->__('Reject Reason'),
 				    'name'  => 'reject_reason',
-			    )
+                ]
 		    );
 	    }
 
@@ -413,37 +413,37 @@ class BS_Ir_Block_Adminhtml_Ir_Edit_Tab_Form extends Mage_Adminhtml_Block_Widget
         $fieldset->addField(
             'repetitive',
             'select',
-            array(
+            [
                 'label'  => Mage::helper('bs_ir')->__('Repetitive'),
                 'name'   => 'repetitive',
-                'values' => array(
-                    array(
+                'values' => [
+                    [
                         'value' => 1,
                         'label' => Mage::helper('bs_ir')->__('Yes'),
-                    ),
-                    array(
+                    ],
+                    [
                         'value' => 0,
                         'label' => Mage::helper('bs_ir')->__('No'),
-                    ),
-                ),
+                    ],
+                ],
 
-            )
+            ]
         );
 
         $fieldset->addField(
             'self_remark',
             'textarea',
-            array(
+            [
                 'label' => Mage::helper('bs_ir')->__('Note'),
                 'name'  => 'self_remark'
 
-            )
+            ]
         );
 
 
         $formValues = Mage::registry('current_ir')->getDefaultValues();
         if (!is_array($formValues)) {
-            $formValues = array();
+            $formValues = [];
         }
         if (Mage::getSingleton('adminhtml/session')->getIrData()) {
             $formValues = array_merge($formValues, Mage::getSingleton('adminhtml/session')->getIrData());
@@ -451,11 +451,11 @@ class BS_Ir_Block_Adminhtml_Ir_Edit_Tab_Form extends Mage_Adminhtml_Block_Widget
         } elseif (Mage::registry('current_ir')) {
             $formValues = array_merge($formValues, Mage::registry('current_ir')->getData());
         }
-        $formValues = array_merge($formValues, array(
+        $formValues = array_merge($formValues, [
             'ref_id'    => $refId,
             'ref_type'  => $refType
 
-        ));
+        ]);
 
         $form->setValues($formValues);
 
@@ -464,8 +464,8 @@ class BS_Ir_Block_Adminhtml_Ir_Edit_Tab_Form extends Mage_Adminhtml_Block_Widget
 		    ->addFieldMap('ir_subject_other', 'subject_other')
 		    ->addFieldMap('ir_consequence', 'consequence')
 		    ->addFieldMap('ir_consequence_other', 'consequence_other')
-	        ->addFieldDependence('subject_other', 'subject', array('4'))
-		    ->addFieldDependence('consequence_other', 'consequence', array('6'))
+	        ->addFieldDependence('subject_other', 'subject', ['4'])
+		    ->addFieldDependence('consequence_other', 'consequence', ['6'])
 
 	    );
 

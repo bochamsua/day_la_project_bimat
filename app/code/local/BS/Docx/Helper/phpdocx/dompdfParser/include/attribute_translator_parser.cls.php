@@ -50,34 +50,34 @@ class Attribute_Translator_Parser {
   // http://www.w3.org/TR/REC-html40/index/attributes.html
   //
   // thank you var_export() :D
-  static private $__ATTRIBUTE_LOOKUP = array(
+  static private $__ATTRIBUTE_LOOKUP = [
     //'caption' => array ( 'align' => '', ),
-    'img' => array(
-      'align' => array(
+    'img' => [
+      'align' => [
         'bottom' => 'vertical-align: baseline;',
         'middle' => 'vertical-align: middle;',
         'top'    => 'vertical-align: top;',
         'left'   => 'float: left;',
         'right'  => 'float: right;'
-      ),
+      ],
       'border' => 'border-width: %0.2F px;',
       'height' => 'height: %s px;',
       'hspace' => 'padding-left: %1$0.2F px; padding-right: %1$0.2F px;',
       'vspace' => 'padding-top: %1$0.2F px; padding-bottom: %1$0.2F px;',
       'width'  => 'width: %s px;',
-    ),
-    'table' => array(
-      'align' => array(
+    ],
+    'table' => [
+      'align' => [
         'left'   => 'margin-left: 0; margin-right: auto;',
         'center' => 'margin-left: auto; margin-right: auto;',
         'right'  => 'margin-left: auto; margin-right: 0;'
-      ),
+      ],
       'bgcolor' => 'background-color: %s;',
       'border' => '!set_table_border',
       'cellpadding' => '!set_table_cellpadding',
       'cellspacing' => 'border-spacing: %0.2F; border-collapse: separate;',
       'dir' => 'direction: %s;',
-      'frame' => array(
+      'frame' => [
         'void'   => 'border-style: none;',
         'above'  => 'border-top-style: solid;',
         'below'  => 'border-bottom-style: solid;',
@@ -87,48 +87,48 @@ class Attribute_Translator_Parser {
         'rhs'    => 'border-right-style: solid;',
         'box'    => 'border-style: solid;',
         'border' => 'border-style: solid;'
-      ),
+      ],
       'rules' => '!set_table_rules',
       'width' => 'width: %s;',
-    ),
-    'hr' => array(
+    ],
+    'hr' => [
       'align' => '!set_hr_align', // Need to grab width to set 'left' & 'right' correctly
       'noshade' => 'border-style: solid;',
       'size' => 'border-width: %0.2F px;',
       'width' => 'width: %s;',
-    ),
-    'div' => array(
+    ],
+    'div' => [
       'align' => 'text-align: %s;',
       'dir' => 'direction: %s;',
-    ),
-    'h1' => array(
+    ],
+    'h1' => [
       'align' => 'text-align: %s;',
       'dir' => 'direction: %s;',
-    ),
-    'h2' => array(
+    ],
+    'h2' => [
       'align' => 'text-align: %s;',
       'dir' => 'direction: %s;',
-    ),
-    'h3' => array(
+    ],
+    'h3' => [
       'align' => 'text-align: %s;',
       'dir' => 'direction: %s;',
-    ),
-    'h4' => array(
+    ],
+    'h4' => [
       'align' => 'text-align: %s;',
       'dir' => 'direction: %s;',
-    ),
-    'h5' => array(
+    ],
+    'h5' => [
       'align' => 'text-align: %s;',
       'dir' => 'direction: %s;',
-    ),
-    'h6' => array(
+    ],
+    'h6' => [
       'align' => 'text-align: %s;',
       'dir' => 'direction: %s;',
-    ),
-    'p' => array(
+    ],
+    'p' => [
       'align' => 'text-align: %s;',
       'dir' => 'direction: %s;',
-    ),
+    ],
 //    'col' => array(
 //      'align'  => '',
 //      'valign' => '',
@@ -137,12 +137,12 @@ class Attribute_Translator_Parser {
 //      'align'  => '',
 //      'valign' => '',
 //    ),
-    'tbody' => array(
+    'tbody' => [
       'align'  => '!set_table_row_align',
       'dir' => 'direction: %s;',
       'valign' => '!set_table_row_valign',
-    ),
-    'td' => array(
+    ],
+    'td' => [
       'align'   => 'text-align: %s;',
       'bgcolor' => 'background-color: %s;',
       'dir' => 'direction: %s;',
@@ -150,13 +150,13 @@ class Attribute_Translator_Parser {
       'nowrap'  => 'white-space: nowrap;',
       'valign'  => 'vertical-align: %s;',
       'width'   => 'width: %s;',
-    ),
-    'tfoot' => array(
+    ],
+    'tfoot' => [
       'align'   => '!set_table_row_align',
       'dir' => 'direction: %s;',
       'valign'  => '!set_table_row_valign',
-    ),
-    'th' => array(
+    ],
+    'th' => [
       'align'   => 'text-align: %s;',
       'bgcolor' => 'background-color: %s;',
       'dir' => 'direction: %s;',
@@ -164,79 +164,79 @@ class Attribute_Translator_Parser {
       'nowrap'  => 'white-space: nowrap;',
       'valign'  => 'vertical-align: %s;',
       'width'   => 'width: %s;',
-    ),
-    'thead' => array(
+    ],
+    'thead' => [
       'align'   => '!set_table_row_align',
       'dir' => 'direction: %s;',
       'valign'  => '!set_table_row_valign',
-    ),
-    'tr' => array(
+    ],
+    'tr' => [
       'align'   => '!set_table_row_align',
       'bgcolor' => '!set_table_row_bgcolor',
       'dir' => 'direction: %s;',
       'valign'  => '!set_table_row_valign',
-    ),
-    'body' => array(
+    ],
+    'body' => [
       'background' => 'background-image: url(%s);',
       'bgcolor'    => 'background-color: %s;',
       'dir' => 'direction: %s;',
       'link'       => '!set_body_link',
       'text'       => 'color: %s;',
-    ),
-    'html' => array(
+    ],
+    'html' => [
       'bgcolor'    => 'background-color: %s;',
       'dir' => 'direction: %s;',
-    ),
-    'br' => array(
+    ],
+    'br' => [
       'clear' => 'clear: %s;',
-    ),
-    'basefont' => array(
+    ],
+    'basefont' => [
       'color' => 'color: %s;',
       'face'  => 'font-family: %s;',
       'size'  => '!set_basefont_size',
-    ),
-    'font' => array(
+    ],
+    'font' => [
       'color' => 'color: %s;',
       'dir' => 'direction: %s;',
       'face'  => 'font-family: %s;',
       'size'  => '!set_font_size',
-    ),
-    'dir' => array(
+    ],
+    'dir' => [
       'compact' => 'margin: 0.5em 0;',
-    ),
-    'dl' => array(
-      'compact' => 'margin: 0.5em 0;',
-      'dir' => 'direction: %s;',
-    ),
-    'menu' => array(
+    ],
+    'dl' => [
       'compact' => 'margin: 0.5em 0;',
       'dir' => 'direction: %s;',
-    ),
-    'ol' => array(
+    ],
+    'menu' => [
+      'compact' => 'margin: 0.5em 0;',
+      'dir' => 'direction: %s;',
+    ],
+    'ol' => [
       'compact' => 'margin: 0.5em 0;',
       'dir' => 'direction: %s;',
       'start'   => 'counter-reset: -dompdf-default-counter %d;',
       'type'    => 'list-style-type: %s;',
-    ),
-    'ul' => array(
+    ],
+    'ul' => [
       'compact' => 'margin: 0.5em 0;',
       'dir' => 'direction: %s;',
       'type'    => 'list-style-type: %s;',
-    ),
-    'li' => array(
+    ],
+    'li' => [
       'dir' => 'direction: %s;',
       'type'    => 'list-style-type: %s;',
       'value'   => 'counter-reset: -dompdf-default-counter %d;',
-    ),
-    'pre' => array(
+    ],
+    'pre' => [
       'dir' => 'direction: %s;',
       'width' => 'width: %s;',
-    ),
-  );
+    ],
+  ];
 
   
   static protected $_last_basefont_size = 3;
-  static protected $_font_size_lookup = array(
+  static protected $_font_size_lookup = [
     // For basefont support
     -3 => "4pt",
     -2 => "5pt",
@@ -256,7 +256,7 @@ class Attribute_Translator_Parser {
      9 => "44pt",
     10 => "52pt",
     11 => "60pt",
-  );
+  ];
 
   static function translate_attributes($frame) {
     $node = $frame->get_node();

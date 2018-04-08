@@ -24,27 +24,27 @@ class BS_Sur_Model_Adminhtml_Search_Sur extends Varien_Object
      */
     public function load()
     {
-        $arr = array();
+        $arr = [];
         if (!$this->hasStart() || !$this->hasLimit() || !$this->hasQuery()) {
             $this->setResults($arr);
             return $this;
         }
         $collection = Mage::getResourceModel('bs_sur/sur_collection')
-            ->addFieldToFilter('ref_no', array('like' => $this->getQuery().'%'))
+            ->addFieldToFilter('ref_no', ['like' => $this->getQuery().'%'])
             ->setCurPage($this->getStart())
             ->setPageSize($this->getLimit())
             ->load();
         foreach ($collection->getItems() as $sur) {
-            $arr[] = array(
+            $arr[] = [
                 'id'          => 'sur/1/'.$sur->getId(),
                 'type'        => Mage::helper('bs_sur')->__('Surveillance'),
                 'name'        => $sur->getRefNo(),
                 'description' => $sur->getRefNo(),
                 'url' => Mage::helper('adminhtml')->getUrl(
                     '*/sur_sur/edit',
-                    array('id'=>$sur->getId())
+                    ['id'=>$sur->getId()]
                 ),
-            );
+            ];
         }
         $this->setResults($arr);
         return $this;

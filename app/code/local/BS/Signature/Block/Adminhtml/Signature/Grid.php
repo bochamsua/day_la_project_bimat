@@ -82,30 +82,30 @@ class BS_Signature_Block_Adminhtml_Signature_Grid extends Mage_Adminhtml_Block_W
             )
         );*/
 
-	    $ins = Mage::getModel('admin/user')->getCollection()->addFieldToFilter('user_id', array('gt' => 1))->load();
-	    $inspectors = array();
+	    $ins = Mage::getModel('admin/user')->getCollection()->addFieldToFilter('user_id', ['gt' => 1])->load();
+	    $inspectors = [];
 	    foreach ($ins as $in) {
 		    $inspectors[$in->getUserId()] = $in->getFirstname().' '.$in->getLastname();
 	    }
 	    $this->addColumn(
 		    'user_id',
-		    array(
+		    [
 			    'header'    => Mage::helper('bs_signature')->__('User'),
 			    'index'     => 'user_id',
 			    'type'      => 'options',
 			    'options'   => $inspectors,
 
-		    )
+            ]
 	    );
 
 	    $this->addColumn(
 		    'template_file',
-		    array(
+		    [
 			    'header' => Mage::helper('bs_signature')->__('Signature'),
 			    'type'=> 'text',
 			    'renderer'  => 'bs_signature/adminhtml_helper_column_renderer_file'
 
-		    )
+            ]
 	    );
 
 
@@ -169,10 +169,10 @@ class BS_Signature_Block_Adminhtml_Signature_Grid extends Mage_Adminhtml_Block_W
         $this->setMassactionIdField('entity_id');
         $this->getMassactionBlock()->setFormFieldName('signature');
 
-        $this->getMassactionBlock()->addItem('separator', array(
+        $this->getMassactionBlock()->addItem('separator', [
             'label'=> '---Select---',
             'url'  => ''
-        ));
+        ]);
 
         return $this;
     }
@@ -187,7 +187,7 @@ class BS_Signature_Block_Adminhtml_Signature_Grid extends Mage_Adminhtml_Block_W
      */
     public function getRowUrl($row)
     {
-        return $this->getUrl('*/*/edit', array('id' => $row->getId()));
+        return $this->getUrl('*/*/edit', ['id' => $row->getId()]);
     }
 
     /**
@@ -199,7 +199,7 @@ class BS_Signature_Block_Adminhtml_Signature_Grid extends Mage_Adminhtml_Block_W
      */
     public function getGridUrl()
     {
-        return $this->getUrl('*/*/grid', array('_current'=>true));
+        return $this->getUrl('*/*/grid', ['_current'=>true]);
     }
 
     /**

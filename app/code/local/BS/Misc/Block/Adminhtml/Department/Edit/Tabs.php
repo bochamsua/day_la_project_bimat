@@ -40,14 +40,14 @@ class BS_Misc_Block_Adminhtml_Department_Edit_Tabs extends Mage_Adminhtml_Block_
     {
         $this->addTab(
             'form_department',
-            array(
+            [
                 'label'   => Mage::helper('bs_misc')->__('Department'),
                 'title'   => Mage::helper('bs_misc')->__('Department'),
                 'content' => $this->getLayout()->createBlock(
                     'bs_misc/adminhtml_department_edit_tab_form'
                 )
                 ->toHtml(),
-            )
+            ]
         );
         return parent::_beforeToHtml();
     }

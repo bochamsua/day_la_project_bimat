@@ -25,7 +25,7 @@ class BS_CmrReport_Helper_Data extends Mage_Core_Helper_Abstract
      */
     public function convertOptions($options)
     {
-        $converted = array();
+        $converted = [];
         foreach ($options as $option) {
             if (isset($option['value']) && !is_array($option['value']) &&
                 isset($option['label']) && !is_array($option['label'])) {
@@ -133,8 +133,8 @@ class BS_CmrReport_Helper_Data extends Mage_Core_Helper_Abstract
             $value = array_values($cmr);
             sort($value);
 
-            $chartData = array(
-                "chart" => array(
+            $chartData = [
+                "chart" => [
                     "caption" => "Xu huớng các khuyến cáo Nhóm {$type}",
                     "subCaption" => $first .'-'.$second,
                     "yAxisName" => "",
@@ -157,8 +157,8 @@ class BS_CmrReport_Helper_Data extends Mage_Core_Helper_Abstract
                     "exportEnabled" => 0,
                     "exportAtClientSide" => 1,
                     "exportFileName" => ""
-                )
-            );
+                ]
+            ];
 
             /*$chartData["trendlines"] = array(
                 array(

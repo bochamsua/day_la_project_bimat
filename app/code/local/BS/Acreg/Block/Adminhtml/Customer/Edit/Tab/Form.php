@@ -31,42 +31,42 @@ class BS_Acreg_Block_Adminhtml_Customer_Edit_Tab_Form extends Mage_Adminhtml_Blo
         $this->setForm($form);
         $fieldset = $form->addFieldset(
             'customer_form',
-            array('legend' => Mage::helper('bs_acreg')->__('Customer'))
+            ['legend' => Mage::helper('bs_acreg')->__('Customer')]
         );
 
         $fieldset->addField(
             'name',
             'text',
-            array(
+            [
                 'label' => Mage::helper('bs_acreg')->__('Name'),
                 'name'  => 'name',
 
-           )
+            ]
         );
 
         $fieldset->addField(
             'code',
             'text',
-            array(
+            [
                 'label' => Mage::helper('bs_acreg')->__('Code'),
                 'name'  => 'code',
 
-           )
+            ]
         );
 
         $fieldset->addField(
             'note',
             'text',
-            array(
+            [
                 'label' => Mage::helper('bs_acreg')->__('Note'),
                 'name'  => 'note',
 
-           )
+            ]
         );
 
         $formValues = Mage::registry('current_customer')->getDefaultValues();
         if (!is_array($formValues)) {
-            $formValues = array();
+            $formValues = [];
         }
         if (Mage::getSingleton('adminhtml/session')->getCustomerData()) {
             $formValues = array_merge($formValues, Mage::getSingleton('adminhtml/session')->getCustomerData());

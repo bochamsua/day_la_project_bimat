@@ -40,14 +40,14 @@ class BS_HR_Block_Adminhtml_Certificate_Edit_Tabs extends Mage_Adminhtml_Block_W
     {
         $this->addTab(
             'form_certificate',
-            array(
+            [
                 'label'   => Mage::helper('bs_hr')->__('Certificate'),
                 'title'   => Mage::helper('bs_hr')->__('Certificate'),
                 'content' => $this->getLayout()->createBlock(
                     'bs_hr/adminhtml_certificate_edit_tab_form'
                 )
                 ->toHtml(),
-            )
+            ]
         );
         return parent::_beforeToHtml();
     }

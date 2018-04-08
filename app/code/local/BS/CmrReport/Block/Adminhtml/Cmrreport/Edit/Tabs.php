@@ -40,14 +40,14 @@ class BS_CmrReport_Block_Adminhtml_Cmrreport_Edit_Tabs extends Mage_Adminhtml_Bl
     {
         $this->addTab(
             'form_cmrreport',
-            array(
+            [
                 'label'   => Mage::helper('bs_cmrreport')->__('CMR Report'),
                 'title'   => Mage::helper('bs_cmrreport')->__('CMR Report'),
                 'content' => $this->getLayout()->createBlock(
                     'bs_cmrreport/adminhtml_cmrreport_edit_tab_form'
                 )
                 ->toHtml(),
-            )
+            ]
         );
         return parent::_beforeToHtml();
     }

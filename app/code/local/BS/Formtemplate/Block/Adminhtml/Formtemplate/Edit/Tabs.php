@@ -40,14 +40,14 @@ class BS_Formtemplate_Block_Adminhtml_Formtemplate_Edit_Tabs extends Mage_Adminh
     {
         $this->addTab(
             'form_formtemplate',
-            array(
+            [
                 'label'   => Mage::helper('bs_formtemplate')->__('Form Template'),
                 'title'   => Mage::helper('bs_formtemplate')->__('Form Template'),
                 'content' => $this->getLayout()->createBlock(
                     'bs_formtemplate/adminhtml_formtemplate_edit_tab_form'
                 )
                 ->toHtml(),
-            )
+            ]
         );
         return parent::_beforeToHtml();
     }

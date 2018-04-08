@@ -119,7 +119,7 @@ class BS_Signature_Adminhtml_Signature_SignatureController extends BS_Sur_Contro
     {
         if ($data = $this->getRequest()->getPost('signature')) {
             try {
-                $data = $this->_filterDates($data, array('update_date'));
+                $data = $this->_filterDates($data, ['update_date']);
 
                 if(!isset($data['user_id'])){
 	                $user = Mage::getSingleton('admin/session')->getUser();
@@ -147,7 +147,7 @@ class BS_Signature_Adminhtml_Signature_SignatureController extends BS_Sur_Contro
                 );
                 Mage::getSingleton('adminhtml/session')->setFormData(false);
                 if ($this->getRequest()->getParam('back')) {
-                    $this->_redirect('*/*/edit', array('id' => $signature->getId()));
+                    $this->_redirect('*/*/edit', ['id' => $signature->getId()]);
                     return;
                 }
                 $this->_redirect('*/*/');
@@ -158,7 +158,7 @@ class BS_Signature_Adminhtml_Signature_SignatureController extends BS_Sur_Contro
                 }
                 Mage::getSingleton('adminhtml/session')->addError($e->getMessage());
                 Mage::getSingleton('adminhtml/session')->setSignatureData($data);
-                $this->_redirect('*/*/edit', array('id' => $this->getRequest()->getParam('id')));
+                $this->_redirect('*/*/edit', ['id' => $this->getRequest()->getParam('id')]);
                 return;
             } catch (Exception $e) {
                 Mage::logException($e);
@@ -169,7 +169,7 @@ class BS_Signature_Adminhtml_Signature_SignatureController extends BS_Sur_Contro
                     Mage::helper('bs_signature')->__('There was a problem saving the signature.')
                 );
                 Mage::getSingleton('adminhtml/session')->setSignatureData($data);
-                $this->_redirect('*/*/edit', array('id' => $this->getRequest()->getParam('id')));
+                $this->_redirect('*/*/edit', ['id' => $this->getRequest()->getParam('id')]);
                 return;
             }
         }
@@ -199,12 +199,12 @@ class BS_Signature_Adminhtml_Signature_SignatureController extends BS_Sur_Contro
                 return;
             } catch (Mage_Core_Exception $e) {
                 Mage::getSingleton('adminhtml/session')->addError($e->getMessage());
-                $this->_redirect('*/*/edit', array('id' => $this->getRequest()->getParam('id')));
+                $this->_redirect('*/*/edit', ['id' => $this->getRequest()->getParam('id')]);
             } catch (Exception $e) {
                 Mage::getSingleton('adminhtml/session')->addError(
                     Mage::helper('bs_signature')->__('There was an error deleting signature.')
                 );
-                $this->_redirect('*/*/edit', array('id' => $this->getRequest()->getParam('id')));
+                $this->_redirect('*/*/edit', ['id' => $this->getRequest()->getParam('id')]);
                 Mage::logException($e);
                 return;
             }

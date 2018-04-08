@@ -40,14 +40,14 @@ class BS_Signoff_Block_Adminhtml_Signoff_Edit_Tabs extends Mage_Adminhtml_Block_
     {
         $this->addTab(
             'form_signoff',
-            array(
+            [
                 'label'   => Mage::helper('bs_signoff')->__('AC Sign-off'),
                 'title'   => Mage::helper('bs_signoff')->__('AC Sign-off'),
                 'content' => $this->getLayout()->createBlock(
                     'bs_signoff/adminhtml_signoff_edit_tab_form'
                 )
                 ->toHtml(),
-            )
+            ]
         );
 
         $id = 0;
@@ -58,29 +58,29 @@ class BS_Signoff_Block_Adminhtml_Signoff_Edit_Tabs extends Mage_Adminhtml_Block_
 
         $this->addTab(
             'ir',
-            array(
+            [
                 'label' => Mage::helper('bs_signoff')->__('IR (%s)', $countRelations['ir']),
-                'url' => $this->getUrl('adminhtml/signoff_signoff/irs', array('_current' => true)),
+                'url' => $this->getUrl('adminhtml/signoff_signoff/irs', ['_current' => true]),
                 'class' => 'ajax',
-            )
+            ]
         );
 
         $this->addTab(
             'ncr',
-            array(
+            [
                 'label' => Mage::helper('bs_signoff')->__('NCR (%s)', $countRelations['ncr']),
-                'url' => $this->getUrl('adminhtml/signoff_signoff/ncrs', array('_current' => true)),
+                'url' => $this->getUrl('adminhtml/signoff_signoff/ncrs', ['_current' => true]),
                 'class' => 'ajax',
-            )
+            ]
         );
 
         $this->addTab(
             'qr',
-            array(
+            [
                 'label' => Mage::helper('bs_signoff')->__('QR (%s)', $countRelations['qr']),
-                'url' => $this->getUrl('adminhtml/signoff_signoff/qrs', array('_current' => true)),
+                'url' => $this->getUrl('adminhtml/signoff_signoff/qrs', ['_current' => true]),
                 'class' => 'ajax',
-            )
+            ]
         );
         
         return parent::_beforeToHtml();

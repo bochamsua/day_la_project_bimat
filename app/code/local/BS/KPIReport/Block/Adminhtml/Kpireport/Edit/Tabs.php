@@ -40,14 +40,14 @@ class BS_KPIReport_Block_Adminhtml_Kpireport_Edit_Tabs extends Mage_Adminhtml_Bl
     {
         $this->addTab(
             'form_kpireport',
-            array(
+            [
                 'label'   => Mage::helper('bs_kpireport')->__('KPI Report'),
                 'title'   => Mage::helper('bs_kpireport')->__('KPI Report'),
                 'content' => $this->getLayout()->createBlock(
                     'bs_kpireport/adminhtml_kpireport_edit_tab_form'
                 )
                 ->toHtml(),
-            )
+            ]
         );
         return parent::_beforeToHtml();
     }

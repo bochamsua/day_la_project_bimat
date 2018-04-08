@@ -60,124 +60,124 @@ class BS_Cofa_Block_Adminhtml_Cofa_Grid extends Mage_Adminhtml_Block_Widget_Grid
 
         $this->addColumn(
             'code_sqs',
-            array(
+            [
                 'header'    => Mage::helper('bs_cofa')->__('Code SQS'),
                 'align'     => 'left',
                 'index'     => 'code_sqs',
-            )
+            ]
         );
 
 
         $this->addColumn(
             'cofa_type',
-            array(
+            [
                 'header' => Mage::helper('bs_ncr')->__('Type'),
                 'index'     => 'cofa_type',
                 'type'      => 'options',
-                'options'   => array(
+                'options'   => [
                     '1' => Mage::helper('bs_cofa')->__('1'),
                     '2' => Mage::helper('bs_cofa')->__('2'),
                     '3' => Mage::helper('bs_cofa')->__('3'),
                     '4' => Mage::helper('bs_cofa')->__('4'),
 
-                ),
+                ],
 
-            )
+            ]
         );
 
         $this->addColumn(
             'report_date',
-            array(
+            [
                 'header' => Mage::helper('bs_cofa')->__('Date of Inspection'),
                 'index'  => 'report_date',
                 'type'=> 'date',
 
-            )
+            ]
         );
 
         $this->addColumn(
             'description',
-            array(
+            [
                 'header'    => Mage::helper('bs_cofa')->__('Description'),
                 'align'     => 'left',
                 'index'     => 'description',
                 'renderer'  => 'bs_misc/adminhtml_helper_column_renderer_shorter',
-            )
+            ]
         );
 
         $this->addColumn(
             'corrective',
-            array(
+            [
                 'header'    => Mage::helper('bs_cofa')->__('Corrective'),
                 'align'     => 'left',
                 'index'     => 'corrective',
                 'renderer'  => 'bs_misc/adminhtml_helper_column_renderer_shorter',
-            )
+            ]
         );
 
         $this->addColumn(
             'preventive',
-            array(
+            [
                 'header'    => Mage::helper('bs_cofa')->__('Preventive'),
                 'align'     => 'left',
                 'index'     => 'preventive',
                 'renderer'  => 'bs_misc/adminhtml_helper_column_renderer_shorter',
-            )
+            ]
         );
 
 
         $this->addColumn(
             'root_cause',
-            array(
+            [
                 'header'    => Mage::helper('bs_cofa')->__('Root Cause'),
                 'align'     => 'left',
                 'index'     => 'root_cause',
                 'renderer'  => 'bs_misc/adminhtml_helper_column_renderer_shorter',
-            )
+            ]
         );
 
 
-        $ins = Mage::getModel('admin/user')->getCollection()->addFieldToFilter('user_id', array('gt' => 1))->load();
-        $inspectors = array();
+        $ins = Mage::getModel('admin/user')->getCollection()->addFieldToFilter('user_id', ['gt' => 1])->load();
+        $inspectors = [];
         foreach ($ins as $in) {
             $inspectors[$in->getUserId()] = strtoupper($in->getUsername());
         }
         $this->addColumn(
             'ins_id',
-            array(
+            [
                 'header'    => Mage::helper('bs_misc')->__('Inspector'),
                 'index'     => 'ins_id',
                 'type'      => 'options',
                 'options'   => $inspectors,
 
-            )
+            ]
         );
 
         $this->addColumn(
             'ncr',
-            array(
+            [
                 'header' => Mage::helper('bs_cofa')->__('NCR'),
                 'index'  => 'ncr',
                 'type'    => 'options',
-                'options'    => array(
+                'options'    => [
                     '1' => Mage::helper('bs_cofa')->__('Yes'),
                     '0' => Mage::helper('bs_cofa')->__('No'),
-                )
+                ]
 
-            )
+            ]
         );
         $this->addColumn(
             'drr',
-            array(
+            [
                 'header' => Mage::helper('bs_cofa')->__('DRR'),
                 'index'  => 'drr',
                 'type'    => 'options',
-                'options'    => array(
+                'options'    => [
                     '1' => Mage::helper('bs_cofa')->__('Yes'),
                     '0' => Mage::helper('bs_cofa')->__('No'),
-                )
+                ]
 
-            )
+            ]
         );
 
         /*$this->addColumn(
@@ -430,10 +430,10 @@ class BS_Cofa_Block_Adminhtml_Cofa_Grid extends Mage_Adminhtml_Block_Widget_Grid
         $this->setMassactionIdField('entity_id');
         $this->getMassactionBlock()->setFormFieldName('cofa');
 
-        $this->getMassactionBlock()->addItem('separator', array(
+        $this->getMassactionBlock()->addItem('separator', [
             'label'=> '---Select---',
             'url'  => ''
-        ));
+        ]);
         return $this;
     }
 
@@ -447,7 +447,7 @@ class BS_Cofa_Block_Adminhtml_Cofa_Grid extends Mage_Adminhtml_Block_Widget_Grid
      */
     public function getRowUrl($row)
     {
-        return $this->getUrl('*/*/edit', array('id' => $row->getId()));
+        return $this->getUrl('*/*/edit', ['id' => $row->getId()]);
     }
 
     /**
@@ -459,7 +459,7 @@ class BS_Cofa_Block_Adminhtml_Cofa_Grid extends Mage_Adminhtml_Block_Widget_Grid
      */
     public function getGridUrl()
     {
-        return $this->getUrl('*/*/grid', array('_current'=>true));
+        return $this->getUrl('*/*/grid', ['_current'=>true]);
     }
 
     /**

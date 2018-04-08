@@ -40,14 +40,14 @@ class BS_Logger_Block_Adminhtml_Logger_Edit_Tabs extends Mage_Adminhtml_Block_Wi
     {
         $this->addTab(
             'form_logger',
-            array(
+            [
                 'label'   => Mage::helper('bs_logger')->__('Logger'),
                 'title'   => Mage::helper('bs_logger')->__('Logger'),
                 'content' => $this->getLayout()->createBlock(
                     'bs_logger/adminhtml_logger_edit_tab_form'
                 )
                 ->toHtml(),
-            )
+            ]
         );
         return parent::_beforeToHtml();
     }

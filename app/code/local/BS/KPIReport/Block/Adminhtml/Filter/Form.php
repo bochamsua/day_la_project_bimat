@@ -21,56 +21,56 @@ class BS_KPIReport_Block_Adminhtml_Filter_Form extends Mage_Adminhtml_Block_Widg
     {
         $actionUrl = $this->getUrl('*/*/report');
         $form = new Varien_Data_Form(
-            array('id' => 'filter_form', 'action' => $actionUrl, 'method' => 'get')
+            ['id' => 'filter_form', 'action' => $actionUrl, 'method' => 'get']
         );
         $htmlIdPrefix = 'report_';
         $form->setHtmlIdPrefix($htmlIdPrefix);
 
 	    $requestData = Mage::helper('adminhtml')->prepareFilterString($this->getRequest()->getParam('filter'));
 	    if(count($requestData)){
-		    $formValues = array(
+		    $formValues = [
 			    'from_month' => $requestData['from_month'],
 			    'from_year'  => $requestData['from_year'],
                 'to_month' => $requestData['to_month'],
                 'to_year'  => $requestData['to_year'],
                 'month' => $requestData['month'],
                 'year'  => $requestData['year']
-		    );
+            ];
 	    }else { //current time
-		    $formValues = array(
+		    $formValues = [
 			    'from_month' => Mage::getModel('core/date')->date('m', now()),
 			    'from_year'  => Mage::getModel('core/date')->date('Y', now()),
                 'to_month' => Mage::getModel('core/date')->date('m', now()),
                 'to_year'  => Mage::getModel('core/date')->date('Y', now()),
                 'month' => Mage::getModel('core/date')->date('m', now()),
                 'year'  => Mage::getModel('core/date')->date('Y', now()),
-		    );
+            ];
 	    }
 
-        $fieldset = $form->addFieldset('base_fieldset', array('legend'=>Mage::helper('bs_report')->__('&nbsp;', $formValues['month'], $formValues['year'])));
+        $fieldset = $form->addFieldset('base_fieldset', ['legend'=>Mage::helper('bs_report')->__('&nbsp;', $formValues['month'], $formValues['year'])]);
 
         $dateFormatIso = Mage::app()->getLocale()->getDateFormat(Mage_Core_Model_Locale::FORMAT_TYPE_SHORT);
 
 
         $indexes = $this->helper('bs_kpireport')->getIndexes();
 
-        $indexOptionArray = array();
+        $indexOptionArray = [];
 	    foreach ( $indexes as $key => $label ) {
-            $indexOptionArray[] = array(
+            $indexOptionArray[] = [
 				'value' => $key,
 				'label' => $label
-			);
+            ];
 	    }
 
 
-	    $fieldset->addField('report_type', 'select', array(
+	    $fieldset->addField('report_type', 'select', [
 		    'name'      => 'report_type',
 		    'label'     => Mage::helper('adminhtml')->__('Report Type'),
-		    'options'   => array(
+		    'options'   => [
 			    '1' => Mage::helper('adminhtml')->__('Single Month'),
 			    '2' => Mage::helper('adminhtml')->__('Multiple Months'),
-		    ),
-	    ), '');
+            ],
+        ], '');
 
 	    /*$fieldset->addField('graph_type', 'select', array(
 		    'name'      => 'graph_type',
@@ -128,46 +128,46 @@ class BS_KPIReport_Block_Adminhtml_Filter_Form extends Mage_Adminhtml_Block_Widg
             'title'     => Mage::helper('bs_report')->__('Date To'),
         ));*/
 
-        $fieldset->addField('month', 'select', array(
+        $fieldset->addField('month', 'select', [
             'name' => 'month',
             'options' => $this->helper('bs_report')->getMonths(),
             'label' => Mage::helper('reports')->__('Month'),
             'class' => 'f-left'
-        ));
+        ]);
 
-        $fieldset->addField('year', 'select', array(
+        $fieldset->addField('year', 'select', [
             'name' => 'year',
             'options' => $this->helper('bs_report')->getYears(),
             'label' => Mage::helper('reports')->__('Year'),
             'class' => 'f-left'
-        ));
+        ]);
 
 
-	    $fieldset->addField('from_month', 'select', array(
+	    $fieldset->addField('from_month', 'select', [
 		    'name' => 'from_month',
 		    'options' => $this->helper('bs_report')->getMonths(),
 		    'label' => Mage::helper('reports')->__('From month'),
 		    'class' => 'f-left'
-	    ));
+        ]);
 
-	    $fieldset->addField('from_year', 'select', array(
+	    $fieldset->addField('from_year', 'select', [
 		    'name' => 'from_year',
 		    'options' => $this->helper('bs_report')->getYears(),
 		    'label' => Mage::helper('reports')->__('From year'),
 		    'class' => 'f-left'
-	    ));
+        ]);
 
-	    $fieldset->addField('to_month', 'select', array(
+	    $fieldset->addField('to_month', 'select', [
 		    'name' => 'to_month',
 		    'options' => $this->helper('bs_report')->getMonths(),
 		    'label' => Mage::helper('reports')->__('To month'),
-	    ));
+        ]);
 
-	    $fieldset->addField('to_year', 'select', array(
+	    $fieldset->addField('to_year', 'select', [
 		    'name' => 'to_year',
 		    'options' => $this->helper('bs_report')->getYears(),
 		    'label' => Mage::helper('reports')->__('To year'),
-	    ));
+        ]);
 
 
 	    // define field dependencies
@@ -201,13 +201,13 @@ class BS_KPIReport_Block_Adminhtml_Filter_Form extends Mage_Adminhtml_Block_Widg
 	public function getFilterUrl()
 	{
 		//$this->getRequest()->setParam('filter', null);
-		return $this->getUrl('*/*/report', array('_current' => false));
+		return $this->getUrl('*/*/report', ['_current' => false]);
 	}
 
     public function getUpdateUrl()
     {
         //$this->getRequest()->setParam('filter', null);
-        return $this->getUrl('*/*/update', array('_current' => false));
+        return $this->getUrl('*/*/update', ['_current' => false]);
     }
 
 	public function getHeaderBar(){

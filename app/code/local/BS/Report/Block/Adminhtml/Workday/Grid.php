@@ -58,19 +58,19 @@ class BS_Report_Block_Adminhtml_Workday_Grid extends Mage_Adminhtml_Block_Widget
     {
         $this->addColumn(
             'entity_id',
-            array(
+            [
                 'header' => Mage::helper('bs_report')->__('Id'),
                 'index'  => 'entity_id',
                 'type'   => 'number',
 	            'filter'    => false
-            )
+            ]
         );
 
         
 
         $this->addColumn(
             'month',
-            array(
+            [
                 'header' => Mage::helper('bs_report')->__('Month'),
                 'index'  => 'month',
                 'type'  => 'options',
@@ -78,11 +78,11 @@ class BS_Report_Block_Adminhtml_Workday_Grid extends Mage_Adminhtml_Block_Widget
                     Mage::getModel('bs_report/workday_attribute_source_month')->getAllOptions(false)
                 )
 
-            )
+            ]
         );
         $this->addColumn(
             'year',
-            array(
+            [
                 'header' => Mage::helper('bs_report')->__('Year'),
                 'index'  => 'year',
                 'type'  => 'options',
@@ -90,15 +90,15 @@ class BS_Report_Block_Adminhtml_Workday_Grid extends Mage_Adminhtml_Block_Widget
                     Mage::getModel('bs_report/workday_attribute_source_year')->getAllOptions(false)
                 )
 
-            )
+            ]
         );
         $this->addColumn(
 		    'days',
-		    array(
+		    [
 			    'header'    => Mage::helper('bs_report')->__('Days'),
 			    'align'     => 'left',
 			    'index'     => 'days',
-		    )
+            ]
 	    );
         /*$this->addColumn(
             'status',
@@ -156,33 +156,33 @@ class BS_Report_Block_Adminhtml_Workday_Grid extends Mage_Adminhtml_Block_Widget
         if($isAllowedDelete){
             $this->getMassactionBlock()->addItem(
                 'delete',
-                array(
+                [
                     'label'=> Mage::helper('bs_report')->__('Delete'),
                     'url'  => $this->getUrl('*/*/massDelete'),
                     'confirm'  => Mage::helper('bs_report')->__('Are you sure?')
-                )
+                ]
             );
         }
 
         if($isAllowedEdit){
             $this->getMassactionBlock()->addItem(
                 'status',
-                array(
+                [
                     'label'      => Mage::helper('bs_report')->__('Change status'),
-                    'url'        => $this->getUrl('*/*/massStatus', array('_current'=>true)),
-                    'additional' => array(
-                        'status' => array(
+                    'url'        => $this->getUrl('*/*/massStatus', ['_current'=>true]),
+                    'additional' => [
+                        'status' => [
                             'name'   => 'status',
                             'type'   => 'select',
                             'class'  => 'required-entry',
                             'label'  => Mage::helper('bs_report')->__('Status'),
-                            'values' => array(
+                            'values' => [
                                 '1' => Mage::helper('bs_report')->__('Enabled'),
                                 '0' => Mage::helper('bs_report')->__('Disabled'),
-                            )
-                        )
-                    )
-                )
+                            ]
+                        ]
+                    ]
+                ]
             );
 
 
@@ -190,11 +190,11 @@ class BS_Report_Block_Adminhtml_Workday_Grid extends Mage_Adminhtml_Block_Widget
 
         $this->getMassactionBlock()->addItem(
             'month',
-            array(
+            [
                 'label'      => Mage::helper('bs_report')->__('Change Month'),
-                'url'        => $this->getUrl('*/*/massMonth', array('_current'=>true)),
-                'additional' => array(
-                    'flag_month' => array(
+                'url'        => $this->getUrl('*/*/massMonth', ['_current'=>true]),
+                'additional' => [
+                    'flag_month' => [
                         'name'   => 'flag_month',
                         'type'   => 'select',
                         'class'  => 'required-entry',
@@ -202,17 +202,17 @@ class BS_Report_Block_Adminhtml_Workday_Grid extends Mage_Adminhtml_Block_Widget
                         'values' => Mage::getModel('bs_report/workday_attribute_source_month')
                             ->getAllOptions(true),
 
-                    )
-                )
-            )
+                    ]
+                ]
+            ]
         );
         $this->getMassactionBlock()->addItem(
             'year',
-            array(
+            [
                 'label'      => Mage::helper('bs_report')->__('Change Year'),
-                'url'        => $this->getUrl('*/*/massYear', array('_current'=>true)),
-                'additional' => array(
-                    'flag_year' => array(
+                'url'        => $this->getUrl('*/*/massYear', ['_current'=>true]),
+                'additional' => [
+                    'flag_year' => [
                         'name'   => 'flag_year',
                         'type'   => 'select',
                         'class'  => 'required-entry',
@@ -220,9 +220,9 @@ class BS_Report_Block_Adminhtml_Workday_Grid extends Mage_Adminhtml_Block_Widget
                         'values' => Mage::getModel('bs_report/workday_attribute_source_year')
                             ->getAllOptions(true),
 
-                    )
-                )
-            )
+                    ]
+                ]
+            ]
         );
         }
         return $this;
@@ -238,7 +238,7 @@ class BS_Report_Block_Adminhtml_Workday_Grid extends Mage_Adminhtml_Block_Widget
      */
     public function getRowUrl($row)
     {
-        return $this->getUrl('*/*/edit', array('id' => $row->getId()));
+        return $this->getUrl('*/*/edit', ['id' => $row->getId()]);
     }
 
     /**
@@ -250,7 +250,7 @@ class BS_Report_Block_Adminhtml_Workday_Grid extends Mage_Adminhtml_Block_Widget
      */
     public function getGridUrl()
     {
-        return $this->getUrl('*/*/grid', array('_current'=>true));
+        return $this->getUrl('*/*/grid', ['_current'=>true]);
     }
 
     /**

@@ -31,34 +31,34 @@ class BS_Misc_Block_Adminhtml_Taskgroup_Edit_Tab_Form extends Mage_Adminhtml_Blo
         $this->setForm($form);
         $fieldset = $form->addFieldset(
             'taskgroup_form',
-            array('legend' => Mage::helper('bs_misc')->__('Survey Group'))
+            ['legend' => Mage::helper('bs_misc')->__('Survey Group')]
         );
 
         $fieldset->addField(
             'group_name',
             'text',
-            array(
+            [
                 'label' => Mage::helper('bs_misc')->__('Group Name'),
                 'name'  => 'group_name',
             'required'  => true,
             'class' => 'required-entry',
 
-           )
+            ]
         );
 
         $fieldset->addField(
             'group_code',
             'text',
-            array(
+            [
                 'label' => Mage::helper('bs_misc')->__('Group Code'),
                 'name'  => 'group_code',
 
-           )
+            ]
         );
 
         $formValues = Mage::registry('current_taskgroup')->getDefaultValues();
         if (!is_array($formValues)) {
-            $formValues = array();
+            $formValues = [];
         }
         if (Mage::getSingleton('adminhtml/session')->getTaskgroupData()) {
             $formValues = array_merge($formValues, Mage::getSingleton('adminhtml/session')->getTaskgroupData());

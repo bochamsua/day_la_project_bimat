@@ -35,10 +35,10 @@ class BS_Wysiwyg_Adminhtml_WysiwygController extends Mage_Adminhtml_Controller_A
 
 			$imageUrl = sprintf('%s%s/%s', Mage::getBaseUrl('media'), Mage_Cms_Model_Wysiwyg_Config::IMAGE_DIRECTORY, $result['file']);
 
-			$array = array(
+			$array = [
 				'url' => $imageUrl,
 				'title' => $_FILES['file']['name']
-			);
+            ];
 
 			echo stripslashes(json_encode($array));
 			exit;

@@ -24,27 +24,27 @@ class BS_Cmr_Model_Adminhtml_Search_Cmr extends Varien_Object
      */
     public function load()
     {
-        $arr = array();
+        $arr = [];
         if (!$this->hasStart() || !$this->hasLimit() || !$this->hasQuery()) {
             $this->setResults($arr);
             return $this;
         }
         $collection = Mage::getResourceModel('bs_cmr/cmr_collection')
-            ->addFieldToFilter('ref_no', array('like' => $this->getQuery().'%'))
+            ->addFieldToFilter('ref_no', ['like' => $this->getQuery().'%'])
             ->setCurPage($this->getStart())
             ->setPageSize($this->getLimit())
             ->load();
         foreach ($collection->getItems() as $cmr) {
-            $arr[] = array(
+            $arr[] = [
                 'id'          => 'cmr/1/'.$cmr->getId(),
                 'type'        => Mage::helper('bs_cmr')->__('CMR Data'),
                 'name'        => $cmr->getRefNo(),
                 'description' => $cmr->getRefNo(),
                 'url' => Mage::helper('adminhtml')->getUrl(
                     '*/cmr_cmr/edit',
-                    array('id'=>$cmr->getId())
+                    ['id'=>$cmr->getId()]
                 ),
-            );
+            ];
         }
         $this->setResults($arr);
         return $this;

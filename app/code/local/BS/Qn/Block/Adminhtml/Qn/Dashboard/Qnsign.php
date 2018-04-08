@@ -48,13 +48,13 @@ class BS_Qn_Block_Adminhtml_Qn_Dashboard_Qnsign extends BS_Rewriting_Block_Admin
 
         $collection = Mage::getModel('bs_qn/qn')
             ->getCollection()
-	        ->addFieldToFilter('qn_status', array('eq'=>1))
+	        ->addFieldToFilter('qn_status', ['eq'=>1])
             ->addFieldToFilter('region', $currentUser[2])
             ->addFieldToFilter('section', $currentUser[3])
-            ->addFieldToFilter('accept', array(
-                array('eq' => 0),
-                array('null' => true),
-            ))
+            ->addFieldToFilter('accept', [
+                ['eq' => 0],
+                ['null' => true],
+            ])
             ->setOrder('ref_no', 'DESC')
 
         ;
@@ -69,21 +69,21 @@ class BS_Qn_Block_Adminhtml_Qn_Dashboard_Qnsign extends BS_Rewriting_Block_Admin
     {
         $this->addColumn(
             'ref_no',
-            array(
+            [
                 'header'    => Mage::helper('bs_qn')->__('Reference No'),
                 'align'     => 'left',
                 'index'     => 'ref_no',
-            )
+            ]
         );
 
         $this->addColumn(
             'report_date',
-            array(
+            [
                 'header' => Mage::helper('bs_qn')->__('Report Date'),
                 'index'  => 'report_date',
                 'type'=> 'date',
 
-            )
+            ]
         );
 
 
@@ -97,6 +97,6 @@ class BS_Qn_Block_Adminhtml_Qn_Dashboard_Qnsign extends BS_Rewriting_Block_Admin
 
     public function getRowUrl($row)
     {
-        return $this->getUrl('*/qn_qn/edit', array('id' => $row->getId()));
+        return $this->getUrl('*/qn_qn/edit', ['id' => $row->getId()]);
     }
 }

@@ -26,31 +26,31 @@ class BS_Drr_Model_Drr_Attribute_Source_Drrstatus
      */
     public function getAllOptions($withEmpty = true, $defaultValues = false)
     {
-        $options =  array(
-            array(
+        $options =  [
+            [
                 'label' => Mage::helper('bs_drr')->__('Draft'),
                 'value' => 0
-            ),
-            array(
+            ],
+            [
                 'label' => Mage::helper('bs_drr')->__('Published'),
                 'value' => 1
-            ),
-            array(
+            ],
+            [
                 'label' => Mage::helper('bs_drr')->__('Closed'),
                 'value' => 2
-            ),
-	        array(
+            ],
+	        [
 		        'label' => Mage::helper('bs_drr')->__('Late Closed'),
 		        'value' => 3
-	        ),
-            array(
+            ],
+            [
                 'label' => Mage::helper('bs_drr')->__('Overdued'),
                 'value' => 4
-            ),
+            ],
 
-        );
+        ];
         if ($withEmpty) {
-            array_unshift($options, array('label'=>'', 'value'=>''));
+            array_unshift($options, ['label'=>'', 'value'=>'']);
         }
         return $options;
 
@@ -66,7 +66,7 @@ class BS_Drr_Model_Drr_Attribute_Source_Drrstatus
      */
     public function getOptionsArray($withEmpty = true)
     {
-        $options = array();
+        $options = [];
         foreach ($this->getAllOptions($withEmpty) as $option) {
             $options[$option['value']] = $option['label'];
         }
@@ -87,7 +87,7 @@ class BS_Drr_Model_Drr_Attribute_Source_Drrstatus
         if (!is_array($value)) {
             $value = explode(',', $value);
         }
-        $texts = array();
+        $texts = [];
         foreach ($value as $v) {
             if (isset($options[$v])) {
                 $texts[] = $options[$v];

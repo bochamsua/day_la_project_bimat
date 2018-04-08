@@ -467,7 +467,7 @@ class BS_KPIReport_Helper_Data extends Mage_Core_Helper_Abstract
         $collection = Mage::getModel('bs_ncr/ncr')->getCollection();
         $collection->addFieldToFilter('report_date', ['from' => $period[0]]);
         $collection->addFieldToFilter('report_date', ['to' => $period[1]]);
-        $collection->addFieldToFilter('ncr_status', array('nin' => [0,1,5]));
+        $collection->addFieldToFilter('ncr_status', ['nin' => [0,1,5]]);
         $collection->addFieldToFilter('dept_id', $deptId);
 
         if($collection->count()){
@@ -484,7 +484,7 @@ class BS_KPIReport_Helper_Data extends Mage_Core_Helper_Abstract
         $collection = Mage::getModel('bs_ir/ir')->getCollection();
         $collection->addFieldToFilter('report_date', ['from' => $period[0]]);
         $collection->addFieldToFilter('report_date', ['to' => $period[1]]);
-        $collection->addFieldToFilter('ir_status', array('nin' => [0,1,5]));
+        $collection->addFieldToFilter('ir_status', ['nin' => [0,1,5]]);
         $collection->addFieldToFilter('dept_id', $deptId);
 
         if($collection->count()){
@@ -501,7 +501,7 @@ class BS_KPIReport_Helper_Data extends Mage_Core_Helper_Abstract
         $collection = Mage::getModel('bs_car/car')->getCollection();
         $collection->addFieldToFilter('report_date', ['from' => $period[0]]);
         $collection->addFieldToFilter('report_date', ['to' => $period[1]]);
-        $collection->addFieldToFilter('car_status', array('nin' => [0]));
+        $collection->addFieldToFilter('car_status', ['nin' => [0]]);
         $collection->addFieldToFilter('dept_id', $deptId);
 
         if($collection->count()){
@@ -671,7 +671,7 @@ class BS_KPIReport_Helper_Data extends Mage_Core_Helper_Abstract
      */
     public function convertOptions($options)
     {
-        $converted = array();
+        $converted = [];
         foreach ($options as $option) {
             if (isset($option['value']) && !is_array($option['value']) &&
                 isset($option['label']) && !is_array($option['label'])) {

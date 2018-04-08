@@ -56,10 +56,10 @@ class FrameParser_Tree {
    *
    * @var array
    */
-  static protected $_HIDDEN_TAGS = array("area", "base", "basefont", "head", "style",
+  static protected $_HIDDEN_TAGS = ["area", "base", "basefont", "head", "style",
                                          "meta", "title", "colgroup",
                                          "noembed", "noscript", "param", "#comment"
-                                         , 'script');
+                                         , 'script'];
 
   /**
    * The main DomDocument
@@ -91,7 +91,7 @@ class FrameParser_Tree {
   function __construct(DomDocument $dom) {
     $this->_dom = $dom;
     $this->_root = null;
-    $this->_registry = array();
+    $this->_registry = [];
   }
   
   function __destruct() {
@@ -202,7 +202,7 @@ class FrameParser_Tree {
     //foreach ($node->childNodes as $child) {
 
     // Store the children in an array so that the tree can be modified
-    $children = array();
+    $children = [];
     for ($i = 0; $i < $node->childNodes->length; $i++)
       $children[] = $node->childNodes->item($i);
 

@@ -24,27 +24,27 @@ class BS_HR_Model_Adminhtml_Search_Certificate extends Varien_Object
      */
     public function load()
     {
-        $arr = array();
+        $arr = [];
         if (!$this->hasStart() || !$this->hasLimit() || !$this->hasQuery()) {
             $this->setResults($arr);
             return $this;
         }
         $collection = Mage::getResourceModel('bs_hr/certificate_collection')
-            ->addFieldToFilter('cert_desc', array('like' => $this->getQuery().'%'))
+            ->addFieldToFilter('cert_desc', ['like' => $this->getQuery().'%'])
             ->setCurPage($this->getStart())
             ->setPageSize($this->getLimit())
             ->load();
         foreach ($collection->getItems() as $certificate) {
-            $arr[] = array(
+            $arr[] = [
                 'id'          => 'certificate/1/'.$certificate->getId(),
                 'type'        => Mage::helper('bs_hr')->__('Certificate'),
                 'name'        => $certificate->getCertDesc(),
                 'description' => $certificate->getCertDesc(),
                 'url' => Mage::helper('adminhtml')->getUrl(
                     '*/hr_certificate/edit',
-                    array('id'=>$certificate->getId())
+                    ['id'=>$certificate->getId()]
                 ),
-            );
+            ];
         }
         $this->setResults($arr);
         return $this;

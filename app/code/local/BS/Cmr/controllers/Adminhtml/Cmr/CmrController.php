@@ -119,7 +119,7 @@ class BS_Cmr_Adminhtml_Cmr_CmrController extends BS_Sur_Controller_Adminhtml_Sur
     {
         if ($data = $this->getRequest()->getPost('cmr')) {
             try {
-                $data = $this->_filterDates($data, array('report_date' ,'due_date' ,'close_date'));
+                $data = $this->_filterDates($data, ['report_date' ,'due_date' ,'close_date']);
                 $cmr = $this->_initCmr();
 
                 $cmr->addData($data);
@@ -133,12 +133,12 @@ class BS_Cmr_Adminhtml_Cmr_CmrController extends BS_Sur_Controller_Adminhtml_Sur
                     Mage::helper('bs_cmr')->__('CMR Data was successfully saved. %s', $add)
                 );
                 Mage::getSingleton('adminhtml/session')->setFormData(false);
-                $this->_redirect('*/*/edit', array('id' => $cmr->getId()));
+                $this->_redirect('*/*/edit', ['id' => $cmr->getId()]);
                 return;
             } catch (Mage_Core_Exception $e) {
                 Mage::getSingleton('adminhtml/session')->addError($e->getMessage());
                 Mage::getSingleton('adminhtml/session')->setCmrData($data);
-                $this->_redirect('*/*/edit', array('id' => $this->getRequest()->getParam('id')));
+                $this->_redirect('*/*/edit', ['id' => $this->getRequest()->getParam('id')]);
                 return;
             } catch (Exception $e) {
                 Mage::logException($e);
@@ -146,7 +146,7 @@ class BS_Cmr_Adminhtml_Cmr_CmrController extends BS_Sur_Controller_Adminhtml_Sur
                     Mage::helper('bs_cmr')->__('There was a problem saving the cmr.')
                 );
                 Mage::getSingleton('adminhtml/session')->setCmrData($data);
-                $this->_redirect('*/*/edit', array('id' => $this->getRequest()->getParam('id')));
+                $this->_redirect('*/*/edit', ['id' => $this->getRequest()->getParam('id')]);
                 return;
             }
         }
@@ -176,12 +176,12 @@ class BS_Cmr_Adminhtml_Cmr_CmrController extends BS_Sur_Controller_Adminhtml_Sur
                 return;
             } catch (Mage_Core_Exception $e) {
                 Mage::getSingleton('adminhtml/session')->addError($e->getMessage());
-                $this->_redirect('*/*/edit', array('id' => $this->getRequest()->getParam('id')));
+                $this->_redirect('*/*/edit', ['id' => $this->getRequest()->getParam('id')]);
             } catch (Exception $e) {
                 Mage::getSingleton('adminhtml/session')->addError(
                     Mage::helper('bs_cmr')->__('There was an error deleting cmr.')
                 );
-                $this->_redirect('*/*/edit', array('id' => $this->getRequest()->getParam('id')));
+                $this->_redirect('*/*/edit', ['id' => $this->getRequest()->getParam('id')]);
                 Mage::logException($e);
                 return;
             }

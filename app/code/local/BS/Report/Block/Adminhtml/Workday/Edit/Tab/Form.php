@@ -30,39 +30,39 @@ class BS_Report_Block_Adminhtml_Workday_Edit_Tab_Form extends Mage_Adminhtml_Blo
         $this->setForm($form);
         $fieldset = $form->addFieldset(
             'workday_form',
-            array('legend' => Mage::helper('bs_report')->__('Work Day'))
+            ['legend' => Mage::helper('bs_report')->__('Work Day')]
         );
 
         $fieldset->addField(
             'month',
             'select',
-            array(
+            [
                 'label' => Mage::helper('bs_report')->__('Month'),
                 'name'  => 'month',
 
             'values'=> Mage::getModel('bs_report/workday_attribute_source_month')->getAllOptions(true),
-           )
+            ]
         );
 
         $fieldset->addField(
             'year',
             'select',
-            array(
+            [
                 'label' => Mage::helper('bs_report')->__('Year'),
                 'name'  => 'year',
 
             'values'=> Mage::getModel('bs_report/workday_attribute_source_year')->getAllOptions(true),
-           )
+            ]
         );
 
         $fieldset->addField(
             'days',
             'text',
-            array(
+            [
                 'label' => Mage::helper('bs_report')->__('Days'),
                 'name'  => 'days',
 
-           )
+            ]
         );
         /*$fieldset->addField(
             'status',
@@ -84,7 +84,7 @@ class BS_Report_Block_Adminhtml_Workday_Edit_Tab_Form extends Mage_Adminhtml_Blo
         );*/
         $formValues = Mage::registry('current_workday')->getDefaultValues();
         if (!is_array($formValues)) {
-            $formValues = array();
+            $formValues = [];
         }
         if (Mage::getSingleton('adminhtml/session')->getWorkdayData()) {
             $formValues = array_merge($formValues, Mage::getSingleton('adminhtml/session')->getWorkdayData());

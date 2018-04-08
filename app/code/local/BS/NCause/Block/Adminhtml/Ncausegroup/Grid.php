@@ -58,30 +58,30 @@ class BS_NCause_Block_Adminhtml_Ncausegroup_Grid extends Mage_Adminhtml_Block_Wi
     {
         $this->addColumn(
             'entity_id',
-            array(
+            [
                 'header' => Mage::helper('bs_ncause')->__('Id'),
                 'index'  => 'entity_id',
                 'type'   => 'number'
-            )
+            ]
         );
         $this->addColumn(
             'group_code',
-            array(
+            [
                 'header'    => Mage::helper('bs_ncause')->__('Group Code'),
                 'align'     => 'left',
                 'index'     => 'group_code',
-            )
+            ]
         );
         
 
         $this->addColumn(
             'group_name',
-            array(
+            [
                 'header' => Mage::helper('bs_ncause')->__('Name'),
                 'index'  => 'group_name',
                 'type'=> 'text',
 
-            )
+            ]
         );
         /*$this->addColumn(
             'status',
@@ -134,10 +134,10 @@ class BS_NCause_Block_Adminhtml_Ncausegroup_Grid extends Mage_Adminhtml_Block_Wi
         $this->setMassactionIdField('entity_id');
         $this->getMassactionBlock()->setFormFieldName('ncausegroup');
 
-        $this->getMassactionBlock()->addItem('separator', array(
+        $this->getMassactionBlock()->addItem('separator', [
             'label'=> '---Select---',
             'url'  => ''
-        ));
+        ]);
 
         return $this;
     }
@@ -152,7 +152,7 @@ class BS_NCause_Block_Adminhtml_Ncausegroup_Grid extends Mage_Adminhtml_Block_Wi
      */
     public function getRowUrl($row)
     {
-        return $this->getUrl('*/*/edit', array('id' => $row->getId()));
+        return $this->getUrl('*/*/edit', ['id' => $row->getId()]);
     }
 
     /**
@@ -164,7 +164,7 @@ class BS_NCause_Block_Adminhtml_Ncausegroup_Grid extends Mage_Adminhtml_Block_Wi
      */
     public function getGridUrl()
     {
-        return $this->getUrl('*/*/grid', array('_current'=>true));
+        return $this->getUrl('*/*/grid', ['_current'=>true]);
     }
 
     /**

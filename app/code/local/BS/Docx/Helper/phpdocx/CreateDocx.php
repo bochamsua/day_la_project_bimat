@@ -643,8 +643,8 @@ class CreateDocx
         // initialize some required variables
         $this->_background = ''; // w:background OOXML element
         $this->_backgroundColor = 'FFFFFF'; // docx background color
-        self::$bookmarksIds = array();
-        $this->_idWords = array();
+        self::$bookmarksIds = [];
+        $this->_idWords = [];
         self::$intIdWord = rand(9999999, 99999999);
         self::$_encodeUTF = 0;
         $this->_language = 'en-US';
@@ -657,19 +657,19 @@ class CreateDocx
         $this->_defaultFont = '';
         $this->_macro = 0;
         $this->_modifiedDocxProperties = false;
-        $this->_modifiedHeadersFooters= array();
-        $this->_relsHeader = array();
-        $this->_relsFooter = array();
-        $this->_parsedStyles = array();
-        self::$_relsHeaderFooterImage = array();
-        self::$_relsHeaderFooterExternalImage = array();
-        self::$_relsHeaderFooterLink = array();
-        self::$_relsNotesExternalImage = array();
-        self::$_relsNotesImage = array();
-        self::$_relsNotesLink = array();
+        $this->_modifiedHeadersFooters= [];
+        $this->_relsHeader = [];
+        $this->_relsFooter = [];
+        $this->_parsedStyles = [];
+        self::$_relsHeaderFooterImage = [];
+        self::$_relsHeaderFooterExternalImage = [];
+        self::$_relsHeaderFooterLink = [];
+        self::$_relsNotesExternalImage = [];
+        self::$_relsNotesImage = [];
+        self::$_relsNotesLink = [];
         $this->_sectPr = NULL;
         $this->_tempDocumentDOM = NULL;
-        $this->_tempFileXLSX = array();
+        $this->_tempFileXLSX = [];
         $this->_uniqid = 'phpdocx_' . uniqid();
         $this->_wordCommentsT = new DOMDocument();
         $this->_wordCommentsRelsT = new DOMDocument();
@@ -678,21 +678,21 @@ class CreateDocx
         $this->_wordDocumentStyles = '';
         $this->_wordEndnotesT = new DOMDocument();
         $this->_wordEndnotesRelsT = new DOMDocument();
-        $this->_wordFooterC = array();
-        $this->_wordFooterT = array();
+        $this->_wordFooterC = [];
+        $this->_wordFooterT = [];
         $this->_wordFootnotesT = new DOMDocument();
         $this->_wordFootnotesRelsT = new DOMDocument();
-        $this->_wordHeaderC = array();
-        $this->_wordHeaderT = array();
+        $this->_wordHeaderC = [];
+        $this->_wordHeaderT = [];
         $this->_wordNumberingT;
         $this->_wordRelsDocumentRelsT = NULL;
         $this->_wordSettingsT = '';
         $this->_wordStylesT = NULL;
         //
-        self::$customLists = array();
-        self::$insertNameSpaces = array();
-        self::$nameSpaces = array();
-        self::$unlinkFiles = array();
+        self::$customLists = [];
+        self::$insertNameSpaces = [];
+        self::$nameSpaces = [];
+        self::$unlinkFiles = [];
 
         $baseTemplateDocumentT = $this->getFromZip('word/document.xml');
 
@@ -871,7 +871,7 @@ class CreateDocx
                     $tempArray = explode('/', $completeType);
                     $type = array_pop($tempArray);
                     // this array holds the data that has to be changed
-                    $arrayCleaner = array();
+                    $arrayCleaner = [];
 
                     switch ($type) {
                         case 'header':
@@ -900,7 +900,7 @@ class CreateDocx
                     $tempArray = explode('/', $completeType);
                     $type = array_pop($tempArray);
                     // this array holds the data that has to be changed
-                    $arrayCleaner = array();
+                    $arrayCleaner = [];
 
                     switch ($type) {
                         case 'header':
@@ -930,7 +930,7 @@ class CreateDocx
             self::$rtl = false;
         }
         if (self::$bidi || self::$rtl) {
-            $this->setRTL(array('bidi' => self::$bidi, 'rtl' => self::$rtl));
+            $this->setRTL(['bidi' => self::$bidi, 'rtl' => self::$rtl]);
         }
     }
 
@@ -1045,7 +1045,7 @@ class CreateDocx
         $relsNodeImage->appendXML($relsImage);
         $this->_wordRelsDocumentRelsT->documentElement->appendChild($relsNodeImage);
         // modify the settings to display the background image
-        $this->docxSettings(array('displayBackgroundShape' => true));
+        $this->docxSettings(['displayBackgroundShape' => true]);
     }
 
     /**
@@ -1058,7 +1058,7 @@ class CreateDocx
      * 'type' (start, end)
      * 'name' (string)
      */
-    public function addBookmark($options = array('type' => null, 'name' => null))
+    public function addBookmark($options = ['type' => null, 'name' => null])
     {
         $class = get_class($this);
         $type = $options['type'];
@@ -1102,7 +1102,7 @@ class CreateDocx
      * 'type' (line, page, column)
      * 'number' (int) the number of breaks that we want to include
      */
-    public function addBreak($options = array('type' => 'line', 'number' => 1))
+    public function addBreak($options = ['type' => 'line', 'number' => 1])
     {
         if (!isset($options['type'])) {
             $options['type'] = 'line';
@@ -1191,7 +1191,7 @@ class CreateDocx
      *  'showValue' (0,1) shows the values inside the chart
      *  'showCategory' (0,1) shows the category inside the chart
      */
-    public function addChart($options = array())
+    public function addChart($options = [])
     {
         //PhpdocxLogger::logger('Create chart.', 'debug');
         $class = get_class($this);
@@ -1272,7 +1272,7 @@ class CreateDocx
      * 'author' (string)
      * 'date' (string)
      */
-    public function addComment($options = array())
+    public function addComment($options = [])
     {
         $class = get_class($this);
         $id = rand(9999, 32766); //this number can not be bigger or equal than 32767
@@ -1298,8 +1298,8 @@ class CreateDocx
                 xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main"
                 xmlns:wne="http://schemas.microsoft.com/office/word/2006/wordml"
                 >';
-            $commentBase .= $this->parseWordMLNote('comment', $options['textComment'], array(), array());
-            $commentbase .= '<w:bookmarkStart w:id="' . $idBookmark . '" w:name="_GoBack"/><w:bookmarkEnd w:id="' . $idBookmark . '"/>';
+            $commentBase .= $this->parseWordMLNote('comment', $options['textComment'], [], []);
+            $commentBase .= '<w:bookmarkStart w:id="' . $idBookmark . '" w:name="_GoBack"/><w:bookmarkEnd w:id="' . $idBookmark . '"/>';
             $commentBase .= '</w:comment>';
         } else {
             $commentBase = '<w:comment w:id="' . $id . '"';
@@ -1328,11 +1328,11 @@ class CreateDocx
                 $commentBase .= '<w:rPr><w:rtl /></w:rPr>';
             }
             $commentBase .= '<w:t xml:space="preserve">' . $options['textComment'] . '</w:t></w:r></w:p>';
-            $commentbase .= '<w:bookmarkStart w:id="' . $idBookmark . '" w:name="_GoBack"/><w:bookmarkEnd w:id="' . $idBookmark . '"/>';
+            $commentBase .= '<w:bookmarkStart w:id="' . $idBookmark . '" w:name="_GoBack"/><w:bookmarkEnd w:id="' . $idBookmark . '"/>';
             $commentBase .= '</w:comment>';
         }
         if (!is_array($options['textDocument'])) {
-            $options['textDocument'] = array('text' => $options['textDocument']);
+            $options['textDocument'] = ['text' => $options['textDocument']];
         }
         $textOptions = $options['textDocument'];
         $text = $textOptions['text'];
@@ -1392,7 +1392,7 @@ class CreateDocx
      * 'wordWrap' (boolean)     
      *
      */
-    public function addDateAndHour($options = array('dateFormat' => 'dd/MM/yyyy H:mm:ss'))
+    public function addDateAndHour($options = ['dateFormat' => 'dd/MM/yyyy H:mm:ss'])
     {
         $options = self::setRTLOptions($options);
         $class = get_class($this);
@@ -1451,7 +1451,7 @@ class CreateDocx
      * 'endnoteMark' (array) bidi, customMark, font, fontSize, bold, italic, color, rtl
      * 'referenceMark' (array) bidi, font, fontSize, bold, italic, color, rtl
      */
-    public function addEndnote($options = array())
+    public function addEndnote($options = [])
     {
         $options['endnoteMark'] = self::translateTextOptions2StandardFormat($options['endnoteMark']);
         $options['endnoteMark'] = self::setRTLOptions($options['endnoteMark']);
@@ -1519,7 +1519,7 @@ class CreateDocx
                 </w:endnote>';
         }
         if (!is_array($options['textDocument'])) {
-            $options['textDocument'] = array('text' => $options['textDocument']);
+            $options['textDocument'] = ['text' => $options['textDocument']];
         }
         $textOptions = $options['textDocument'];
         $textOptions = self::setRTLOptions($textOptions);
@@ -1698,9 +1698,9 @@ class CreateDocx
                 // refresh the _relsFooter array
                 $this->_relsFooter[] = $key . 'Footer.xml';
                 // refresh the arrays used to hold the image and link data
-                CreateDocx::$_relsHeaderFooterImage[$key . 'Footer'] = array();
-                CreateDocx::$_relsHeaderFooterExternalImage[$key . 'Footer'] = array();
-                CreateDocx::$_relsHeaderFooterLink[$key . 'Footer'] = array();
+                CreateDocx::$_relsHeaderFooterImage[$key . 'Footer'] = [];
+                CreateDocx::$_relsHeaderFooterExternalImage[$key . 'Footer'] = [];
+                CreateDocx::$_relsHeaderFooterLink[$key . 'Footer'] = [];
             } else {
                 //PhpdocxLogger::logger('The footer contents must be WordML fragments', 'fatal');
             }
@@ -1721,7 +1721,7 @@ class CreateDocx
      * 'footnoteMark' (array) bidi, customMark, font, fontSize, bold, italic, color, rtl
      * 'referenceMark' (array) bidi, font, fontSize, bold, italic, color, rtl
      */
-    public function addFootnote($options = array())
+    public function addFootnote($options = [])
     {
         $options['footnoteMark'] = self::translateTextOptions2StandardFormat($options['footnoteMark']);
         $options['footnoteMark'] = self::setRTLOptions($options['footnoteMark']);
@@ -1788,7 +1788,7 @@ class CreateDocx
                 </w:footnote>';
         }
         if (!is_array($options['textDocument'])) {
-            $options['textDocument'] = array('text' => $options['textDocument']);
+            $options['textDocument'] = ['text' => $options['textDocument']];
         }
         $textOptions = $options['textDocument'];
         $textOptions = self::setRTLOptions($textOptions);
@@ -1874,18 +1874,18 @@ class CreateDocx
      * for the options of a select form element
      * 'selectOptions' (array) an array of options for the dropdown menu
      */
-    public function addFormElement($type, $options = array())
+    public function addFormElement($type, $options = [])
     {
         $options = self::setRTLOptions($options);
         $class = get_class($this);
-        $formElementTypes = array('textfield', 'checkbox', 'select');
+        $formElementTypes = ['textfield', 'checkbox', 'select'];
         if (!in_array($type, $formElementTypes)) {
             //PhpdocxLogger::logger('The chosen form element type is not available', 'fatal');
         }
         $formElementBase = CreateText::getInstance();
         $ParagraphOptions = $options;
         $formElementBase = new WordFragment();
-        $formElementBase->addText(array(array('text' => '__formElement__')), $ParagraphOptions);
+        $formElementBase->addText([['text' => '__formElement__']], $ParagraphOptions);
         $formElement = CreateFormElement::getInstance();
         $formElement->createFormElement($type, $options, (string) $formElementBase);
         //PhpdocxLogger::logger('Add form element to Word document.', 'info');
@@ -1987,9 +1987,9 @@ class CreateDocx
                 // refresh the _relsHeader array
                 $this->_relsHeader[] = $key . 'Header.xml';
                 //8.Refresh the arrays used to hold the image and link data
-                CreateDocx::$_relsHeaderFooterImage[$key . 'Header'] = array();
-                CreateDocx::$_relsHeaderFooterExternalImage[$key . 'Header'] = array();
-                CreateDocx::$_relsHeaderFooterLink[$key . 'Header'] = array();
+                CreateDocx::$_relsHeaderFooterImage[$key . 'Header'] = [];
+                CreateDocx::$_relsHeaderFooterExternalImage[$key . 'Header'] = [];
+                CreateDocx::$_relsHeaderFooterLink[$key . 'Header'] = [];
             } else {
                 //PhpdocxLogger::logger('The header contents must be WordML fragments', 'fatal');
             }
@@ -2025,7 +2025,7 @@ class CreateDocx
      * 'widowControl' (on, off)
      * 'wordWrap' (on, off)
      */
-    public function addHeading($text, $level = 1, $options = array())
+    public function addHeading($text, $level = 1, $options = [])
     {
         $options = self::translateTextOptions2StandardFormat($options);
         $options = self::setRTLOptions($options);
@@ -2136,11 +2136,11 @@ class CreateDocx
                                     $data['target'] == 'defaultFooter' ||
                                     $data['target'] == 'firstFooter' ||
                                     $data['target'] == 'evenFooter') {
-                                createDocx::$_relsHeaderFooterImage[$data['target']][] = array('rId' => 'rId' . self::$intIdWord, 'extension' => $dir['extension']);
+                                createDocx::$_relsHeaderFooterImage[$data['target']][] = ['rId' => 'rId' . self::$intIdWord, 'extension' => $dir['extension']];
                             } else if ($data['target'] == 'footnote' ||
                                     $data['target'] == 'endnote' ||
                                     $data['target'] == 'comment') {
-                                CreateDocx::$_relsNotesImage[$data['target']][] = array('rId' => 'rId' . self::$intIdWord, 'extension' => $dir['extension']);
+                                CreateDocx::$_relsNotesImage[$data['target']][] = ['rId' => 'rId' . self::$intIdWord, 'extension' => $dir['extension']];
                             } else {
                                 $this->generateRELATIONSHIP(
                                         'rId' . self::$intIdWord, 'image', 'media/imgrId' . self::$intIdWord . '.'
@@ -2182,11 +2182,11 @@ class CreateDocx
      *      newSection (the numbering restarts at the beginning of every section)
      * sectionNumbers (array) if empty it will apply to all sections
      */
-    public function addLineNumbering($options = array())
+    public function addLineNumbering($options = [])
     {
         // restart condition available types
-        $restart_types = array('continuous', 'newPage', 'newSection');
-        $lineNumberOptions = array();
+        $restart_types = ['continuous', 'newPage', 'newSection'];
+        $lineNumberOptions = [];
         // set defaults
         if (isset($options['countBy']) && is_int($options['countBy'])) {
             $lineNumberOptions['countBy'] = $options['countBy'];
@@ -2230,7 +2230,7 @@ class CreateDocx
      * 'url' (string) URL or #bookmarkName
      *
      */
-    public function addLink($text, $options = array())
+    public function addLink($text, $options = [])
     {
         if (!isset($options['color'])) {
             $options['color'] = '0000ff';
@@ -2305,7 +2305,7 @@ class CreateDocx
      * 'underline' (none, dash, dotted, double, single, wave, words)
      * 
      */
-    public function addList($data, $styleType = 1, $options = array())
+    public function addList($data, $styleType = 1, $options = [])
     {
         $options['val'] = (int) $styleType;
         $class = get_class($this);
@@ -2425,7 +2425,7 @@ class CreateDocx
      * Fot the avalaible options @see addText
      *
      */
-    public function addMergeField($name, $mergeParameters = array(), $options = array())
+    public function addMergeField($name, $mergeParameters = [], $options = [])
     {
         $options = self::setRTLOptions($options);
         if (!isset($mergeParameters['preserveFormat'])) {
@@ -2507,7 +2507,7 @@ class CreateDocx
      *      this value can be override for each side with 'borderTopWidth', 'borderRightWidth', 'borderBottomWidth' and 'borderLeftWidth'
      * sectionNumbers (array)
      */
-    public function addPageBorders($options = array())
+    public function addPageBorders($options = [])
     {
         if (!isset($options['sectionNumbers'])) {
             $options['sectionNumbers'] = NULL;
@@ -2552,7 +2552,7 @@ class CreateDocx
      * 'defaultValue' (int)
      *
      */
-    public function addPageNumber($type = 'numerical', $options = array('defaultValue' => 1))
+    public function addPageNumber($type = 'numerical', $options = ['defaultValue' => 1])
     {
         $options = self::setRTLOptions($options);
         $class = get_class($this);
@@ -2614,7 +2614,7 @@ class CreateDocx
             self::$propsCore = $prop->createProperties($values, self::$propsCore);
         }
         if (isset($values['contentStatus']) && $values['contentStatus'] == 'Final') {
-            self::$propsCustom = $prop->createPropertiesCustom(array('_MarkAsFinal' => array('boolean' => 'true')), self::$propsCustom);
+            self::$propsCustom = $prop->createPropertiesCustom(['_MarkAsFinal' => ['boolean' => 'true']], self::$propsCustom);
         }
         if (!empty($values['Manager']) || !empty($values['Company'])) {
             self::$propsApp = $prop->createPropertiesApp($values, self::$propsApp);
@@ -2656,7 +2656,7 @@ class CreateDocx
      * bidi (bool)
      * rtl (bool)
      */
-    public function addSection($sectionType = 'nextPage', $paperType = '', $options = array())
+    public function addSection($sectionType = 'nextPage', $paperType = '', $options = [])
     {
         $options = self::translateTextOptions2StandardFormat($options);
         $options = self::setRTLOptions($options);
@@ -2700,7 +2700,7 @@ class CreateDocx
      * roundrect: 'arcsize' (0.5, 1.8, ...)
      * shape: 'path' (VML path), 'coordsize' (x,y)
      */
-    public function addShape($type, $options = array())
+    public function addShape($type, $options = [])
     {
         if (!empty($options['marginTop'])) {
             $options['margin-top'] = $options['marginTop'];
@@ -2753,12 +2753,12 @@ class CreateDocx
      * 'updateFields' (bool)
      *
      */
-    public function addSimpleField($fieldName, $type = 'general', $format = '', $options = array())
+    public function addSimpleField($fieldName, $type = 'general', $format = '', $options = [])
     {
         $options = self::setRTLOptions($options);
         $class = get_class($this);
-        $availableTypes = array('date' => '\@', 'numeric' => '\#', 'general' => '\*');
-        $fieldOptions = array();
+        $availableTypes = ['date' => '\@', 'numeric' => '\#', 'general' => '\*'];
+        $fieldOptions = [];
         if (isset($options['doNotShadeFormData']) && $options['doNotShadeFormData']) {
             $fieldOptions['doNotShadeFormData'] = true;
         }
@@ -2821,11 +2821,11 @@ class CreateDocx
      * 'temporary (boolean) if true the structured tag is removed after editing
      * 'listItems' (array) an array of arrays each one of them containing the text to show and value
      */
-    public function addStructuredDocumentTag($type, $options = array())
+    public function addStructuredDocumentTag($type, $options = [])
     {
         $options = self::setRTLOptions($options);
         $class = get_class($this);
-        $sdtTypes = array('comboBox', 'date', 'dropDownList', 'richText');
+        $sdtTypes = ['comboBox', 'date', 'dropDownList', 'richText'];
         if (!in_array($type, $sdtTypes)) {
             //PhpdocxLogger::logger('The chosen Structured Document Tag type is not available', 'fatal');
             exit();
@@ -2833,7 +2833,7 @@ class CreateDocx
         $sdtBase = CreateText::getInstance();
         $ParagraphOptions = $options;
         $ParagraphOptions['text'] = $options['placeholderText'];
-        $sdtBase->createText(array($ParagraphOptions), $ParagraphOptions);
+        $sdtBase->createText([$ParagraphOptions], $ParagraphOptions);
         $sdt = CreateStructuredDocumentTag::getInstance();
         $sdt->createStructuredDocumentTag($type, $options, (string) $sdtBase);
         //PhpdocxLogger::logger('Add Structured Document Tag to Word document.', 'info');
@@ -2922,7 +2922,7 @@ class CreateDocx
      *      'height' (int) in twentieths of a point
      *      'tableHeader' (boolean) if true this row repeats at the beguinning of each new page
      */
-    public function addTable($tableData, $tableProperties = array(), $rowProperties = array())
+    public function addTable($tableData, $tableProperties = [], $rowProperties = [])
     {
         $tableProperties = CreateDocx::translateTableOptions2StandardFormat($tableProperties);
         $tableProperties = self::setRTLOptions($tableProperties);
@@ -2966,12 +2966,12 @@ class CreateDocx
      * 'wordWrap' (bool)
      * @param (string) $stylesTOC path to the docx with the required styles for the Table of Contents
      */
-    public function addTableContents($options = array(), $legend = array(), $stylesTOC = '')
+    public function addTableContents($options = [], $legend = [], $stylesTOC = '')
     {
         $legend = self::translateTextOptions2StandardFormat($legend);
         $legend = self::setRTLOptions($legend);
         if (!empty($stylesTOC)) {
-            $this->importStyles($stylesTOC, 'merge', array('TDC1', 'TDC2', 'TDC3', 'TDC4', 'TDC5', 'TDC6', 'TDC7', 'TDC8', 'TDC9'), 'styleID');
+            $this->importStyles($stylesTOC, 'merge', ['TDC1', 'TDC2', 'TDC3', 'TDC4', 'TDC5', 'TDC6', 'TDC7', 'TDC8', 'TDC9'], 'styleID');
         }
         if (empty($legend['text'])) {
             $legend['text'] = 'Click here to update the Table of Contents';
@@ -2979,7 +2979,7 @@ class CreateDocx
         $legendOptions = $legend;
         unset($legendOptions['text']);
         $legendData = new WordFragment();
-        $legendData->addText(array($legend), $legendOptions);
+        $legendData->addText([$legend], $legendOptions);
         $tableContents = CreateTableContents::getInstance();
         $tableContents->createTableContents($options, $legendData);
         if ($options['autoUpdate']) {
@@ -3065,7 +3065,7 @@ class CreateDocx
      * 'widowControl' (boolean)
      * 'wordWrap' (boolean)
      */
-    public function addText($textParams, $paragraphParams = array())
+    public function addText($textParams, $paragraphParams = [])
     {
         $paragraphParams = self::setRTLOptions($paragraphParams);
         $textParams = self::translateTextOptions2StandardFormat($textParams);
@@ -3106,7 +3106,7 @@ class CreateDocx
      * 'paddingRight' (float) distance in mm (default is 2.5)
      * 'paddingTop' (float) distance in mm (default is 1.3)
      */
-    public function addTextBox($content, $options = array())
+    public function addTextBox($content, $options = [])
     {
         $class = get_class($this);
         $textBox = CreateTextBox::getInstance();
@@ -3221,13 +3221,13 @@ class CreateDocx
 
         //$this->addBackgroundImage(dirname(__FILE__) . '/../examples/img/imagebg.jpg');
         $this->addProperties(
-            array(
+            [
                 'creator' => 'Bui Phong <phongbx.vaeco@vietnamairlines.com>',
                 'description' => 'The Great Mind',
                 'title' => 'Training Center',
                 'Manager'   => 'Bui Phong',
                 'Company'   => 'VAECO TC'
-            )
+            ]
         );
 
         $this->saveToZip($this->_contentTypeT, '[Content_Types].xml');
@@ -3266,7 +3266,7 @@ class CreateDocx
         $contentRepair = (string) $repair;
         if (file_exists(dirname(__FILE__) . '/RepairPDF.inc')) {
             if ($this->_compatibilityMode) {
-                $contentRepair = RepairPDF::repairPDFConversion($contentRepair, '', array());
+                $contentRepair = RepairPDF::repairPDFConversion($contentRepair, '', []);
             }
         }
 
@@ -3373,7 +3373,7 @@ class CreateDocx
      *  'hanging' the extra space for the numbering, should be big enough to accomodate it, the default is 360
      *  'left' the left indent. The default value is 720 times the list level
      */
-    public function createListStyle($name, $listOptions = array())
+    public function createListStyle($name, $listOptions = [])
     {
         $newStyle = new CreateListStyle();
         $style = $newStyle->addListStyle($name, $listOptions);
@@ -3429,7 +3429,7 @@ class CreateDocx
      * 'widowControl' (on, off)
      * 'wordWrap' (on, off)
      */
-    public function createParagraphStyle($name, $styleOptions = array())
+    public function createParagraphStyle($name, $styleOptions = [])
     {
         $styleOptions = self::translateTextOptions2StandardFormat($styleOptions);
         $newStyle = new CreateParagraphStyle();
@@ -3478,7 +3478,7 @@ class CreateDocx
      */
     public function docxSettings($settingParameters)
     {
-        $settingParams = array(
+        $settingParams = [
             'view',
             'zoom',
             'displayBackgroundShape',
@@ -3504,7 +3504,7 @@ class CreateDocx
             'printTwoOnOne',
             'savePreviewPicture',
             'updateFields'
-        );
+        ];
         foreach ($settingParameters as $tag => $value) {
             if ((!in_array($tag, $settingParams))) {
                 //PhpdocxLogger::logger('That setting tag is not supported.', 'info');
@@ -3563,7 +3563,7 @@ class CreateDocx
      * @param array styles.
      * keys: table => true/false,list => true/false, paragraph => true/false, footnote => true/false, endnote => true/false, chart => (0=false,1=array,2=table)
      */
-    public static function docx2txt($from, $to, $options = array())
+    public static function docx2txt($from, $to, $options = [])
     {
         $text = new Docx2Text($options);
         $text->setDocx($from);
@@ -3593,7 +3593,7 @@ class CreateDocx
      * 'strictWordStyles' (boolean) if true ignores all CSS styles and uses the styles set via the wordStyles option (see next)
      * 'wordStyles' (array) associates a particular class, id or HTML tag to a Word style
      */
-    public function embedHTML($html = '<html><body></body></html>', $options = array())
+    public function embedHTML($html = '<html><body></body></html>', $options = [])
     {
         $class = get_class($this);
         if ($class != 'CreateDocx') {
@@ -3734,8 +3734,8 @@ class CreateDocx
         //We are assuming there is only one section
         $docSectPr = $docHeadersFootersContent->getElementsByTagName('sectPr')->item(0);
 
-        $headerTypes = array();
-        $footerTypes = array();
+        $headerTypes = [];
+        $footerTypes = [];
         $titlePg = false;
         $extraSections = false;
         foreach ($docSectPr->childNodes as $value) {
@@ -4038,7 +4038,7 @@ class CreateDocx
      * @param array $myStyles. A list of specific styles to be merged. If it is empty or the choosen type is 'replace' it will be ignored.
      * @param string $styleIdentifier can be styleName or styleID
      */
-    public function importStyles($path, $type = 'replace', $myStyles = array(), $styleIdentifier = 'styleName')
+    public function importStyles($path, $type = 'replace', $myStyles = [], $styleIdentifier = 'styleName')
     {
 
         $zipStyles = new ZipArchive();
@@ -4319,13 +4319,13 @@ class CreateDocx
      * onlyLastSection (boolean): if true it only modifies the last section (default value is false)
      * sectionNumbers (array): an array with the sections that we want to modify
      */
-    public function modifyPageLayout($paperType = 'letter', $options = array())
+    public function modifyPageLayout($paperType = 'letter', $options = [])
     {
         $options = $options = self::setRTLOptions($options);
         if (empty($options['onlyLastSection'])) {
             $options['onlyLastSection'] = false;
         }
-        $paperTypes = array('A4',
+        $paperTypes = ['A4',
             'A3',
             'letter',
             'legal',
@@ -4333,9 +4333,9 @@ class CreateDocx
             'A3-landscape',
             'letter-landscape',
             'legal-landscape',
-            'custom');
+            'custom'];
 
-        $layoutOptions = array('width',
+        $layoutOptions = ['width',
             'height',
             'numberCols',
             'orient',
@@ -4348,9 +4348,9 @@ class CreateDocx
             'marginFooter',
             'gutter',
             'bidi',
-            'rtlGutter');
-        $referenceSizes = array(
-            'A4' => array(
+            'rtlGutter'];
+        $referenceSizes = [
+            'A4' => [
                 'width' => '11906',
                 'height' => '16838',
                 'numberCols' => '1',
@@ -4363,8 +4363,8 @@ class CreateDocx
                 'marginHeader' => '708',
                 'marginFooter' => '708',
                 'gutter' => '0'
-            ),
-            'A4-landscape' => array(
+            ],
+            'A4-landscape' => [
                 'width' => '16838',
                 'height' => '11906',
                 'numberCols' => '1',
@@ -4377,8 +4377,8 @@ class CreateDocx
                 'marginHeader' => '708',
                 'marginFooter' => '708',
                 'gutter' => '0'
-            ),
-            'A3' => array(
+            ],
+            'A3' => [
                 'width' => '16839',
                 'height' => '23814',
                 'numberCols' => '1',
@@ -4391,8 +4391,8 @@ class CreateDocx
                 'marginHeader' => '708',
                 'marginFooter' => '708',
                 'gutter' => '0'
-            ),
-            'A3-landscape' => array(
+            ],
+            'A3-landscape' => [
                 'width' => '23814',
                 'height' => '16839',
                 'numberCols' => '1',
@@ -4405,8 +4405,8 @@ class CreateDocx
                 'marginHeader' => '708',
                 'marginFooter' => '708',
                 'gutter' => '0'
-            ),
-            'letter' => array(
+            ],
+            'letter' => [
                 'width' => '12240',
                 'height' => '15840',
                 'numberCols' => '1',
@@ -4419,8 +4419,8 @@ class CreateDocx
                 'marginHeader' => '708',
                 'marginFooter' => '708',
                 'gutter' => '0'
-            ),
-            'letter-landscape' => array(
+            ],
+            'letter-landscape' => [
                 'width' => '15840',
                 'height' => '12240',
                 'numberCols' => '1',
@@ -4433,8 +4433,8 @@ class CreateDocx
                 'marginHeader' => '708',
                 'marginFooter' => '708',
                 'gutter' => '0'
-            ),
-            'legal' => array(
+            ],
+            'legal' => [
                 'width' => '12240',
                 'height' => '20160',
                 'numberCols' => '1',
@@ -4447,8 +4447,8 @@ class CreateDocx
                 'marginHeader' => '708',
                 'marginFooter' => '708',
                 'gutter' => '0'
-            ),
-            'legal-landscape' => array(
+            ],
+            'legal-landscape' => [
                 'width' => '20160',
                 'height' => '12240',
                 'numberCols' => '1',
@@ -4461,8 +4461,8 @@ class CreateDocx
                 'marginHeader' => '708',
                 'marginFooter' => '708',
                 'gutter' => '0'
-            ),
-        );
+            ],
+        ];
 
         try {
             if (!in_array($paperType, $paperTypes)) {
@@ -4473,7 +4473,7 @@ class CreateDocx
         }
 
 
-        $layout = array();
+        $layout = [];
         foreach ($layoutOptions as $opt) {
             if (isset($referenceSizes[$paperType][$opt])) {
                 $layout[$opt] = $referenceSizes[$paperType][$opt];
@@ -4491,7 +4491,7 @@ class CreateDocx
         // get the current sectPr nodes
         if ($options['onlyLastSection']) {
             $this->_tempDocumentDOM = $this->getDOMDocx();
-            $sectPrNodes = array();
+            $sectPrNodes = [];
             $sectPrNodes[] = $this->_sectPr->documentElement;
         } else {
             $sectPrNodes = $this->getSectionNodes($options['sectionNumbers']);
@@ -4532,10 +4532,10 @@ class CreateDocx
                 $sectionNode->getElementsByTagName('pgMar')->item(0)->setAttribute('w:gutter', $layout['gutter']);
             }
             if (isset($layout['bidi'])) {
-                $this->modifySingleSectionProperty($sectionNode, 'bidi', array('val' => $layout['bidi']));
+                $this->modifySingleSectionProperty($sectionNode, 'bidi', ['val' => $layout['bidi']]);
             }
             if (isset($layout['rtlGutter'])) {
-                $this->modifySingleSectionProperty($sectionNode, 'rtlGutter', array('val' => $layout['rtlGutter']));
+                $this->modifySingleSectionProperty($sectionNode, 'rtlGutter', ['val' => $layout['rtlGutter']]);
             }
 
             //Now we look at the case of numberCols
@@ -4608,27 +4608,27 @@ class CreateDocx
         // include certain sample content to create the resulting style docx
 
         $myParagraph = 'This is some sample paragraph test';
-        $myList = array('item 1', 'item 2', array('subitem 2_1', 'subitem 2_2'), 'item 3', array('subitem 3_1', 'subitem 3_2', array('sub_subitem 3_2_1', 'sub_subitem 3_2_1')), 'item 4');
-        $myTable = array(
-            array(
+        $myList = ['item 1', 'item 2', ['subitem 2_1', 'subitem 2_2'], 'item 3', ['subitem 3_1', 'subitem 3_2', ['sub_subitem 3_2_1', 'sub_subitem 3_2_1']], 'item 4'];
+        $myTable = [
+            [
                 'Title A',
                 'Title B',
                 'Title C'
-            ),
-            array(
+            ],
+            [
                 'First row A',
                 'First row B',
                 'First row C'
-            ),
-            array(
+            ],
+            [
                 'Second row A',
                 'Second row B',
                 'Second row C'
-            )
-        );
+            ]
+        ];
 
         // parse the different list numberings from
-        $this->addText('List styles: ' . $title, array('jc' => 'center', 'color' => 'b90000', 'b' => 'single', 'sz' => '18', 'u' => 'double'));
+        $this->addText('List styles: ' . $title, ['jc' => 'center', 'color' => 'b90000', 'b' => 'single', 'sz' => '18', 'u' => 'double']);
 
         $wordListChunk = '<w:p><w:pPr><w:rPr><w:b/></w:rPr></w:pPr>
         <w:r><w:rPr><w:b/></w:rPr><w:t>SAMPLE CODE:</w:t></w:r>
@@ -4692,10 +4692,10 @@ class CreateDocx
             $wordListChunkTemp = str_replace('NUMID', $node->getAttribute('w:numId'), $wordListChunk);
             $this->_wordDocumentC .= $wordListChunkTemp;
             $this->addList($myList, (int) $node->getAttribute('w:numId'));
-            $this->addBreak(array('type' => 'page'));
+            $this->addBreak(['type' => 'page']);
         }
 
-        $this->addText('Paragraph and Table styles: ' . $title, array('jc' => 'center', 'color' => 'b90000', 'b' => 'single', 'sz' => '18', 'u' => 'double'));
+        $this->addText('Paragraph and Table styles: ' . $title, ['jc' => 'center', 'color' => 'b90000', 'b' => 'single', 'sz' => '18', 'u' => 'double']);
 
         // parse the different styles using XPath
         $StylesDoc = new DOMDocument();
@@ -4717,7 +4717,7 @@ class CreateDocx
                     $styleName = $child->getAttribute('w:val');
                 }
             }
-            $this->parsedStyles[$count] = array('id' => $styleId, 'name' => $styleName, 'type' => $styleType, 'default' => $styleDefault, 'custom' => $styleCustom);
+            $this->parsedStyles[$count] = ['id' => $styleId, 'name' => $styleName, 'type' => $styleType, 'default' => $styleDefault, 'custom' => $styleCustom];
 
             $default = ($styleDefault == 1) ? 'true' : 'false';
             $custom = ($styleCustom == 1) ? 'true' : 'false';
@@ -4811,7 +4811,7 @@ class CreateDocx
                 case 'table':
                     $wordMLChunk = str_replace('CODEX', "addTable(array(array('Title A','Title B','Title C'),array('First row A','First row B','First row C'),array('Second row A','Second row B','Second row C')), array('tableStyle'=> '$styleId'), 'columnWidths' => array(1800, 1800, 1800))", $wordMLChunk);
                     $this->_wordDocumentC .= $wordMLChunk;
-                    $params = array('tableStyle' => $styleId, 'columnWidths' => array(1800, 1800, 1800));
+                    $params = ['tableStyle' => $styleId, 'columnWidths' => [1800, 1800, 1800]];
                     $this->addTable($myTable, $params);
                     if ($count % 2 == 0) {
                         $this->_wordDocumentC .= '<w:p><w:r><w:br w:type="page"/></w:r></w:p>';
@@ -4824,7 +4824,7 @@ class CreateDocx
                     $myPCode = "addText('This is some sample paragraph test', array('pStyle' => '" . $styleId . "'))";
                     $wordMLChunk = str_replace('CODEX', $myPCode, $wordMLChunk);
                     $this->_wordDocumentC .= $wordMLChunk;
-                    $params = array('pStyle' => $styleId);
+                    $params = ['pStyle' => $styleId];
                     $this->addText($myParagraph, $params);
                     if ($count % 2 == 0) {
                         $this->_wordDocumentC .= '<w:p><w:r><w:br w:type="page"/></w:r></w:p>';
@@ -4989,7 +4989,7 @@ class CreateDocx
         if ($this->_background == '') {
             $this->_background = '<w:background w:color="' . $color . '" />';
             // modify the settings.xml file
-            $this->docxSettings(array('displayBackgroundShape' => true));
+            $this->docxSettings(['displayBackgroundShape' => true]);
         } else {
             $this->_background = str_replace('w:color="FFFFFF"', 'w:color="' . $color . '"', $this->_background);
         }
@@ -5092,7 +5092,7 @@ class CreateDocx
     public function setMarkAsFinal()
     {
         $this->_markAsFinal = 1;
-        $this->addProperties(array('contentStatus' => 'Final'));
+        $this->addProperties(['contentStatus' => 'Final']);
         $this->generateOVERRIDE(
                 '/docProps/custom.xml', 'application/vnd.openxmlformats-officedocument.' .
                 'custom-properties+xml'
@@ -5108,7 +5108,7 @@ class CreateDocx
      *  'rtl' (bool)
      * @return void
      */
-    public function setRTL($options = array('bidi' => true, 'rtl' => true))
+    public function setRTL($options = ['bidi' => true, 'rtl' => true])
     {
         if (isset($options['bidi']) && $options['bidi']) {
             self::$bidi = true;
@@ -5116,9 +5116,9 @@ class CreateDocx
         if (isset($options['rtl']) && $options['rtl']) {
             self::$rtl = true;
         }
-        $this->modifyPageLayout('custom', array('bidi' => $options['bidi'], 'rtlGutter' => $options['rtl']));
+        $this->modifyPageLayout('custom', ['bidi' => $options['bidi'], 'rtlGutter' => $options['rtl']]);
         //set footnotes and endnotes separators for bidi and rtl
-        $notesArray = array('footnote' => $this->_wordFootnotesT, 'endnote' => $this->_wordEndnotesT);
+        $notesArray = ['footnote' => $this->_wordFootnotesT, 'endnote' => $this->_wordEndnotesT];
         foreach ($notesArray as $note => $value) {
             $noteXPath = new DOMXPath($value);
             $noteXPath->registerNamespace('w', 'http://schemas.openxmlformats.org/wordprocessingml/2006/main');
@@ -5182,7 +5182,7 @@ class CreateDocx
      * @param string $version 32, 64 or null (default). If null autodetect
      * @return void
      */
-    public function transformDocument($docSource, $docDestination, $tempDir = null, $options = array(), $version = null)
+    public function transformDocument($docSource, $docDestination, $tempDir = null, $options = [], $version = null)
     {
         if (file_exists(dirname(__FILE__) . '/TransformDocAdv.inc')) {
             try {
@@ -5481,7 +5481,7 @@ class CreateDocx
      * @param array of style values
      * keys: styleTbl, styleLst, styleP
      */
-    public function txt2docx($text_filename, $options = array())
+    public function txt2docx($text_filename, $options = [])
     {
         $text = new Text2Docx($text_filename, $options);
         //PhpdocxLogger::logger('Add text from text file.', 'info');
@@ -5631,7 +5631,7 @@ class CreateDocx
      * Values:
      * 'src' (string) path to the RTF file
      */
-    protected function addRTF($options = array())
+    protected function addRTF($options = [])
     {
         $class = get_class($this);
         try {
@@ -5795,7 +5795,7 @@ class CreateDocx
      */
     protected function getSectionNodes($sectionNumbers)
     {
-        $sectNodes = array();
+        $sectNodes = [];
         // get all sectPr sections that may exist
         // within $this->_wordDocumentC
         $this->_tempDocumentDOM = $this->getDOMDocx();
@@ -5805,7 +5805,7 @@ class CreateDocx
         }
         $sectNodes[] = $this->_sectPr->documentElement;
 
-        $finalSectNodes = array();
+        $finalSectNodes = [];
         if (empty($sectionNumbers)) {
             $finalSectNodes = $sectNodes;
         } else {
@@ -5828,10 +5828,10 @@ class CreateDocx
     protected function modifyPageBordersSectionProperty($sectionNode, $options)
     {
         // restart condition available types
-        $display_types = array('allPages', 'firstPage', 'notFirstPage');
-        $offset_types = array('page', 'text');
-        $sides = array('top', 'left', 'bottom', 'right');
-        $type = array('width' => 4, 'color' => '000000', 'style' => 'single', 'space' => 24);
+        $display_types = ['allPages', 'firstPage', 'notFirstPage'];
+        $offset_types = ['page', 'text'];
+        $sides = ['top', 'left', 'bottom', 'right'];
+        $type = ['width' => 4, 'color' => '000000', 'style' => 'single', 'space' => 24];
 
         // set default values
         if (isset($options['zOrder'])) {
@@ -6166,13 +6166,13 @@ class CreateDocx
                 $options['target'] == 'firstFooter' ||
                 $options['target'] == 'evenFooter') {
             foreach ($sFinalDocX[1] as $key => $value) {
-                CreateDocx::$_relsHeaderFooterLink[$options['target']][] = array('rId' => $key, 'url' => $value);
+                CreateDocx::$_relsHeaderFooterLink[$options['target']][] = ['rId' => $key, 'url' => $value];
             }
         } else if ($options['target'] == 'footnote' ||
                 $options['target'] == 'endnote' ||
                 $options['target'] == 'comment') {
             foreach ($sFinalDocX[1] as $key => $value) {
-                CreateDocx::$_relsNotesLink[$options['target']][] = array('rId' => $key, 'url' => $value);
+                CreateDocx::$_relsNotesLink[$options['target']][] = ['rId' => $key, 'url' => $value];
             }
         } else {
             foreach ($sFinalDocX[1] as $key => $value) {
@@ -6199,14 +6199,14 @@ class CreateDocx
                 if (isset($options['downloadImages']) && $options['downloadImages']) {
                     $arrayExtension = explode('.', $value);
                     $extension = strtolower(array_pop($arrayExtension));
-                    $predefinedExtensions = array('gif', 'png', 'jpg', 'jpeg', 'bmp');
+                    $predefinedExtensions = ['gif', 'png', 'jpg', 'jpeg', 'bmp'];
                     if (!in_array($extension, $predefinedExtensions)) {
                         $this->generateDEFAULT($extension, 'image/' . $extension);
                     }
 
-                    createDocx::$_relsHeaderFooterImage[$options['target']][] = array('rId' => $key, 'extension' => $extension);
+                    createDocx::$_relsHeaderFooterImage[$options['target']][] = ['rId' => $key, 'extension' => $extension];
                 } else {
-                    createDocx::$_relsHeaderFooterExternalImage[$options['target']][] = array('rId' => $key, 'url' => $value);
+                    createDocx::$_relsHeaderFooterExternalImage[$options['target']][] = ['rId' => $key, 'url' => $value];
                 }
             }
         } else if ($options['target'] == 'footnote' ||
@@ -6218,14 +6218,14 @@ class CreateDocx
                 if (isset($options['downloadImages']) && $options['downloadImages']) {
                     $arrayExtension = explode('.', $value);
                     $extension = strtolower(array_pop($arrayExtension));
-                    $predefinedExtensions = array('gif', 'png', 'jpg', 'jpeg', 'bmp');
+                    $predefinedExtensions = ['gif', 'png', 'jpg', 'jpeg', 'bmp'];
                     if (!in_array($extension, $predefinedExtensions)) {
                         $this->generateDEFAULT($extension, 'image/' . $extension);
                     }
 
-                    CreateDocx::$_relsNotesImage[$options['target']][] = array('rId' => $key, 'extension' => $extension);
+                    CreateDocx::$_relsNotesImage[$options['target']][] = ['rId' => $key, 'extension' => $extension];
                 } else {
-                    CreateDocx::$_relsNotesExternalImage[$options['target']][] = array('rId' => $key, 'url' => $value);
+                    CreateDocx::$_relsNotesExternalImage[$options['target']][] = ['rId' => $key, 'url' => $value];
                 }
             }
         } else {
@@ -6235,7 +6235,7 @@ class CreateDocx
                 if (isset($options['downloadImages']) && $options['downloadImages']) {
                     $arrayExtension = explode('.', $value);
                     $extension = strtolower(array_pop($arrayExtension));
-                    $predefinedExtensions = array('gif', 'png', 'jpg', 'jpeg', 'bmp');
+                    $predefinedExtensions = ['gif', 'png', 'jpg', 'jpeg', 'bmp'];
                     if (!in_array($extension, $predefinedExtensions)) {
                         $this->generateDEFAULT($extension, 'image/' . $extension);
                     }
@@ -6318,9 +6318,9 @@ class CreateDocx
 
         $nombre = substr($dir, $slash, $punto);
         $extension = substr($dir, $punto + $slash + 1);
-        return array(
+        return [
             'path' => $path, 'nombre' => $nombre, 'extension' => $extension
-        );
+        ];
     }
     
     /**
@@ -6333,7 +6333,7 @@ class CreateDocx
      * @param array $referenceOptions the note reference options
      * @return string
      */
-    private function parseWordMLNote($type, $wordFragment, $markOptions = array(), $referenceOptions = array())
+    private function parseWordMLNote($type, $wordFragment, $markOptions = [], $referenceOptions = [])
     {
         $referenceOptions = self::translateTextOptions2StandardFormat($referenceOptions);
         $referenceOptions = self::setRTLOptions($referenceOptions);
@@ -6536,7 +6536,7 @@ class CreateDocxFromTemplate extends CreateDocx
      *  'preprocessed' (boolean) if true the variables will not be 'repaired'. Default value is false
      * @access public
      */
-    public function __construct($docxTemplatePath, $options = array())
+    public function __construct($docxTemplatePath, $options = [])
     {
         if (empty($docxTemplatePath)) {
             //PhpdocxLogger::logger('The template path can not be empty', 'fatal');
@@ -6638,13 +6638,13 @@ class CreateDocxFromTemplate extends CreateDocx
      */
     public function deleteTemplateBlock($blockName)
     {
-        $aType = array('BLOCK_'/* , 'TAB_' */); //deletables types
+        $aType = ['BLOCK_'/* , 'TAB_' */]; //deletables types
         foreach ($aType as $type) {
             $variableName = $type . $blockName;
             $loadContent = $this->_documentXMLElement . '<w:body>' .
                 $this->_wordDocumentC . '</w:body></w:document>';
             if (!self::$_preprocessed) {
-                $loadContent = $this->repairVariables(array($variableName => ''), $loadContent);
+                $loadContent = $this->repairVariables([$variableName => ''], $loadContent);
             }
             $loadContent = preg_replace('/\\' . self::$_templateSymbol . $type . $blockName . '([|]|\\' . self::$_templateSymbol . ').*?\\' . self::$_templateSymbol . $type . $blockName . '.*?\\' . self::$_templateSymbol . '/', self::$_templateSymbol . $variableName . self::$_templateSymbol, $loadContent);
             //Use XPath to find all paragraphs that include the variable name
@@ -6688,9 +6688,9 @@ class CreateDocxFromTemplate extends CreateDocx
      * variables that start with the given prefixes
      * @return array
      */
-    public function getTemplateVariables($target = 'all', $prefixes = array(), $variables = array())
+    public function getTemplateVariables($target = 'all', $prefixes = [], $variables = [])
     {
-        $targetTypes = array('document', 'header', 'footer', 'footnotes', 'endnotes', 'comments');
+        $targetTypes = ['document', 'header', 'footer', 'footnotes', 'endnotes', 'comments'];
 
         if ($target == 'document') {
             $documentSymbol = explode(self::$_templateSymbol, $this->_wordDocumentC);
@@ -6817,7 +6817,7 @@ class CreateDocxFromTemplate extends CreateDocx
      * If the array is empty the variables will be tried to be extracted automatically.
      * @return array
      */
-    public function processTemplate($variables = array())
+    public function processTemplate($variables = [])
     {
         self::$_preprocessed = true;
         if (is_array($variables) && count($variables) == 0) {
@@ -6890,7 +6890,7 @@ class CreateDocxFromTemplate extends CreateDocx
     {
 
         if ($type == 'inline') {
-            $this->replaceVariableByText(array($variableName => ''), array('target' => $target));
+            $this->replaceVariableByText([$variableName => ''], ['target' => $target]);
         } else {
             if ($target == 'document') {
                 $loadContent = $this->_documentXMLElement . '<w:body>' .
@@ -6958,7 +6958,7 @@ class CreateDocxFromTemplate extends CreateDocx
      * 'parseLineBreaks' (boolean) if true (default is false) parses the line breaks to include them in the Word document
      * @return void
      */
-    public function replaceListVariable($variable, $listValues, $options = array())
+    public function replaceListVariable($variable, $listValues, $options = [])
     {
         if (isset($options['firstMatch'])) {
             $firstMatch = $options['firstMatch'];
@@ -6968,7 +6968,7 @@ class CreateDocxFromTemplate extends CreateDocx
         $loadContent = $this->_documentXMLElement . '<w:body>' .
             $this->_wordDocumentC . '</w:body></w:document>';
         if (!self::$_preprocessed) {
-            $loadContent = $this->repairVariables(array($variable => ''), $loadContent);
+            $loadContent = $this->repairVariables([$variable => ''], $loadContent);
         }
         $dom = simplexml_load_string($loadContent);
         $dom->registerXPathNamespace('w', 'http://schemas.openxmlformats.org/wordprocessingml/2006/main');
@@ -6988,7 +6988,7 @@ class CreateDocxFromTemplate extends CreateDocx
                     $strNode = (string) $sxText;
                     if ($options['parseLineBreaks']) {
                         //parse $val for \n\r, \r\n, \n or \r
-                        $value = str_replace(array('\n\r', '\r\n', '\n', '\r'), '__LINEBREAK__', $value);
+                        $value = str_replace(['\n\r', '\r\n', '\n', '\r'], '__LINEBREAK__', $value);
                     }
                     $strNodeReplaced = str_replace($search, $value, $strNode);
                     $sxText[0] = $strNodeReplaced;
@@ -7018,7 +7018,7 @@ class CreateDocxFromTemplate extends CreateDocx
      * If any of these formatting parameters is not set, the width and/or height of the placeholder image will be preserved
      * @return void
      */
-    public function replacePlaceholderImage($variable, $src, $options = array())
+    public function replacePlaceholderImage($variable, $src, $options = [])
     {
         if (!file_exists($src)) {
             //PhpdocxLogger::logger('The' . $src . ' path seems not to be correct. Unable to obtain image file.', 'fatal');
@@ -7089,7 +7089,7 @@ class CreateDocxFromTemplate extends CreateDocx
      * 'parseLineBreaks' (boolean) if true (default is false) parses the line breaks to include them in the Word document
      * @return void
      */
-    public function replaceTableVariable($vars, $options = array())
+    public function replaceTableVariable($vars, $options = [])
     {
         if (isset($options['firstMatch'])) {
             $firstMatch = $options['firstMatch'];
@@ -7098,7 +7098,7 @@ class CreateDocxFromTemplate extends CreateDocx
         }
         $varKeys = array_keys($vars[0]);
         //We build an array to clean the table variables
-        $toRepair = array();
+        $toRepair = [];
         foreach ($varKeys as $key => $value) {
             $toRepair[$value] = '';
         }
@@ -7109,11 +7109,11 @@ class CreateDocxFromTemplate extends CreateDocx
         }
         $dom = simplexml_load_string($loadContent);
         $dom->registerXPathNamespace('w', 'http://schemas.openxmlformats.org/wordprocessingml/2006/main');
-        $search = array();
+        $search = [];
         for ($j = 0; $j < count($varKeys); $j++) {
             $search[$j] = self::$_templateSymbol . $varKeys[$j] . self::$_templateSymbol;
         }
-        $queryArray = array();
+        $queryArray = [];
         for ($j = 0; $j < count($search); $j++) {
             $queryArray[$j] = '//w:tr[w:tc/w:p/w:r/w:t[text()[contains(., "' . $search[$j] . '")]]]';
         }
@@ -7140,7 +7140,7 @@ class CreateDocxFromTemplate extends CreateDocx
                                 $rowValue[$varKeys[$k]] === "0") {
                                 if ($options['parseLineBreaks']) {
                                     //parse $val for \n\r, \r\n, \n or \r
-                                    $rowValue[$varKeys[$k]] = str_replace(array('\n\r', '\r\n', '\n', '\r'), '__LINEBREAK__', $rowValue[$varKeys[$k]]);
+                                    $rowValue[$varKeys[$k]] = str_replace(['\n\r', '\r\n', '\n', '\r'], '__LINEBREAK__', $rowValue[$varKeys[$k]]);
                                 }
                                 $strNode = str_replace($search[$k], $rowValue[$varKeys[$k]], $strNode);
                             } else {
@@ -7186,7 +7186,7 @@ class CreateDocxFromTemplate extends CreateDocx
      *  WARNING: beware that the docx to insert gets modified so please make a safeguard copy first
      * @return void
      */
-    public function replaceVariableByExternalFile($variables, $options = array())
+    public function replaceVariableByExternalFile($variables, $options = [])
     {
         foreach ($variables as $key => $value) {
             $options['src'] = $value;
@@ -7198,23 +7198,23 @@ class CreateDocxFromTemplate extends CreateDocx
                     }
                     $file = new WordFragment($this);
                     $file->addDOCX($options);
-                    $this->replaceVariableByWordFragment(array($key => $file), $options);
+                    $this->replaceVariableByWordFragment([$key => $file], $options);
                     break;
                 case 'HTML':
                     $options['html'] = file_get_contents($value);
                     $file = new WordFragment($this);
                     $file->addHTML($options);
-                    $this->replaceVariableByWordFragment(array($key => $file), $options);
+                    $this->replaceVariableByWordFragment([$key => $file], $options);
                     break;
                 case 'RTF':
                     $file = new WordFragment($this);
                     $file->addRTF($options);
-                    $this->replaceVariableByWordFragment(array($key => $file), $options);
+                    $this->replaceVariableByWordFragment([$key => $file], $options);
                     break;
                 case 'MHT':
                     $file = new WordFragment($this);
                     $file->addMHT($options);
-                    $this->replaceVariableByWordFragment(array($key => $file), $options);
+                    $this->replaceVariableByWordFragment([$key => $file], $options);
                     break;
                 default:
                     //PhpdocxLogger::logger('Invalid file extension', 'fatal');
@@ -7247,7 +7247,7 @@ class CreateDocxFromTemplate extends CreateDocx
      *
      * @return void
      */
-    public function replaceVariableByHTML($var, $type = 'block', $html = '<html><body></body></html>', $options = array())
+    public function replaceVariableByHTML($var, $type = 'block', $html = '<html><body></body></html>', $options = [])
     {
         if (isset($options['target'])) {
             $target = $options['target'];
@@ -7262,7 +7262,7 @@ class CreateDocxFromTemplate extends CreateDocx
         $options['type'] = $type;
         $htmlFragment = new WordFragment($this, $target);
         $htmlFragment->embedHTML($html, $options);
-        $this->replaceVariableByWordFragment(array($var => $htmlFragment), $options);
+        $this->replaceVariableByWordFragment([$var => $htmlFragment], $options);
     }
 
     /**
@@ -7278,7 +7278,7 @@ class CreateDocxFromTemplate extends CreateDocx
      * 'parseLineBreaks' (boolean) if true (default is false) parses the line breaks to include them in the Word document
      * @return void
      */
-    public function replaceVariableByText($variables, $options = array())
+    public function replaceVariableByText($variables, $options = [])
     {
         if (isset($options['target'])) {
             $target = $options['target'];
@@ -7346,7 +7346,7 @@ class CreateDocxFromTemplate extends CreateDocx
      * 'target': document (default), footnote, endnote or comment. By the time being header, footer,  are not supported
      * @return void
      */
-    public function replaceVariableByWordFragment($variables, $options = array())
+    public function replaceVariableByWordFragment($variables, $options = [])
     {
         if (isset($options['firstMatch'])) {
             $firstMatch = $options['firstMatch'];
@@ -7397,7 +7397,7 @@ class CreateDocxFromTemplate extends CreateDocx
      * 'target': document (default). By the time being header, footer, footnote, endnote, comment are not supported
      * @return void
      */
-    public function replaceVariableByWordML($variables, $options = array('type' => 'block'))
+    public function replaceVariableByWordML($variables, $options = ['type' => 'block'])
     {
         $counter = 0;
         foreach ($variables as $key => $value) {
@@ -7509,13 +7509,13 @@ class CreateDocxFromTemplate extends CreateDocx
         if ($type == 1) {
             $x = substr($data, 0, 4);
             $y = substr($data, 4, 4);
-            return array(hexdec($x), hexdec($y));
+            return [hexdec($x), hexdec($y)];
         } else if ($type == 2) {
             $x = floor(hexdec(substr($data, 0, 4)) / 2.54);
             $y = floor(hexdec(substr($data, 4, 4)) / 2.54);
-            return array($x, $y);
+            return [$x, $y];
         } else {
-            return array(96, 96);
+            return [96, 96];
         }
     }
 
@@ -7540,9 +7540,9 @@ class CreateDocxFromTemplate extends CreateDocx
             fclose($a);
             $x = substr($data, 0, 8);
             $y = substr($data, 8, 8);
-            return array(round(hexdec($x) / $pngScaleFactor), round(hexdec($y) / $pngScaleFactor));
+            return [round(hexdec($x) / $pngScaleFactor), round(hexdec($y) / $pngScaleFactor)];
         } else {
-            return array(96, 96);
+            return [96, 96];
         }
     }
 
@@ -7576,7 +7576,7 @@ class CreateDocxFromTemplate extends CreateDocx
      * @param (string) $rels
      * @return DOMDocument Object
      */
-    private function Image4Image($variable, $src, $options = array(), $loadContent, $rels = 'document')
+    private function Image4Image($variable, $src, $options = [], $loadContent, $rels = 'document')
     {
         if (isset($options['firstMatch'])) {
             $firstMatch = $options['firstMatch'];
@@ -7657,7 +7657,7 @@ class CreateDocxFromTemplate extends CreateDocx
                         $relsCounter++;
                     }
                 } else if ($rels == 'footnote' || $rels == 'endnote' || $rels == 'comment') {
-                    self::$_relsNotesImage[$rels][] = array('rId' => 'rId' . $id, 'name' => $id, 'extension' => $extension);
+                    self::$_relsNotesImage[$rels][] = ['rId' => 'rId' . $id, 'name' => $id, 'extension' => $extension];
                 } else {
                     $relsXML = $this->getFromZip('word/_rels/' . $rels . '.xml.rels');
                     if (empty($relsXML)){
@@ -7714,7 +7714,7 @@ class CreateDocxFromTemplate extends CreateDocx
     private function removeVariableBlock($variableName, $loadContent)
     {
         if (!self::$_preprocessed) {
-            $loadContent = $this->repairVariables(array($variableName => ''), $loadContent);
+            $loadContent = $this->repairVariables([$variableName => ''], $loadContent);
         }
         $domDocument = new DomDocument();
         $domDocument->loadXML($loadContent);
@@ -7833,7 +7833,7 @@ class CreateDocxFromTemplate extends CreateDocx
                 if ($options['parseLineBreaks']) {
                     $domNode = dom_import_simplexml($node);
                     //parse $val for \n\r, \r\n, \n or \r
-                    $val = str_replace(array('\n\r', '\r\n', '\n', '\r'), '<linebreak/>', $val);
+                    $val = str_replace(['\n\r', '\r\n', '\n', '\r'], '<linebreak/>', $val);
                     $strNode = str_replace($search, $val, $strNode);
                     $runs = explode('<linebreak/>', $strNode);
                     $preserveWS = false;
@@ -8017,7 +8017,7 @@ class OOXMLResources
      * @var string
      * @static
      */
-    public static $defaultPHPDOCXStyles = array('Default Paragraph Font PHPDOCX', //This is the default paragraph font style used in multiple places
+    public static $defaultPHPDOCXStyles = ['Default Paragraph Font PHPDOCX', //This is the default paragraph font style used in multiple places
         'List Paragraph PHPDOCX', //This is the style used for the defolt ordered and unorderd lists
         'Title PHPDOCX', //This style is used by the addTitle method
         'Subtitle PHPDOCX', //This style is used by the addTitle method
@@ -8035,7 +8035,7 @@ class OOXMLResources
         'annotation subject PHPDOCX', //styles for comments
         'Comment Subject Char PHPDOCX', //styles for comments
         'Balloon Text PHPDOCX', //styles for comments
-        'Balloon Text Char PHPDOCX'); //styles for comments
+        'Balloon Text Char PHPDOCX']; //styles for comments
     /**
      * @access public
      * @var string
@@ -8664,7 +8664,7 @@ class OOXMLResources
      * @static
      * @var array
      */
-    public static $paragraphProperties = array('w:pStyle',
+    public static $paragraphProperties = ['w:pStyle',
         'w:keepNext',
         'w:keepLines',
         'w:pageBreakBefore',
@@ -8700,7 +8700,7 @@ class OOXMLResources
         'w:rPr',
         'w:sectPr',
         'w:pPrChange'
-    );
+    ];
 
     /**
      *
@@ -8708,7 +8708,7 @@ class OOXMLResources
      * @static
      * @var array
      */
-    public static $runProperties = array('w:rStyle',
+    public static $runProperties = ['w:rStyle',
         'w:rFonts',
         'w:b',
         'w:bCs',
@@ -8747,7 +8747,7 @@ class OOXMLResources
         'w:eastAsianLayout',
         'w:specVanish',
         'w:oMath'
-    );
+    ];
 
     /**
      *
@@ -8755,7 +8755,7 @@ class OOXMLResources
      * @static
      * @var array
      */
-    public static $sectionProperties = array('w:footnotePr',
+    public static $sectionProperties = ['w:footnotePr',
         'w:endnotePr',
         'w:type',
         'w:pgSz',
@@ -8775,7 +8775,7 @@ class OOXMLResources
         'w:docGrid',
         'w:printerSettings',
         'w:sectPrChange'
-    );
+    ];
 
     /**
      *
@@ -8783,7 +8783,7 @@ class OOXMLResources
      * @static
      * @var array
      */
-    public static $settings = array('w:writeProtection',
+    public static $settings = ['w:writeProtection',
         'w:view',
         'w:zoom',
         'w:removePersonalInformation',
@@ -8882,7 +8882,7 @@ class OOXMLResources
         'w:doNotEmbedSmartTags',
         'w:decimalSymbol',
         'w:listSeparator'
-    );
+    ];
 
     /**
      * Class constructor
@@ -8928,7 +8928,7 @@ class OOXMLResources
     public static function integer2RomanNumeral($integer, $uppercase = false)
     {
         $roman = '';
-        $baseTransform = array('m' => 1000,
+        $baseTransform = ['m' => 1000,
             'cm' => 900,
             'd' => 500,
             'cd' => 400,
@@ -8940,7 +8940,7 @@ class OOXMLResources
             'ix' => 9,
             'v' => 5,
             'iv' => 4,
-            'i' => 1);
+            'i' => 1];
         foreach ($baseTransform as $key => $value) {
             $result = floor($integer / $value);
             $roman .= str_repeat($key, $result);
@@ -9012,7 +9012,7 @@ class OOXMLResources
      * @param array $exceptions exceptions to teh overwrite rule
      * @static
      */
-    public static function mergeXMLNodes($firstNode, $secondNode, $XMLSequence, $overwrite = false, $exceptions = array())
+    public static function mergeXMLNodes($firstNode, $secondNode, $XMLSequence, $overwrite = false, $exceptions = [])
     {
         $childs = $secondNode->childNodes;
         foreach ($childs as $child) {
@@ -9149,13 +9149,13 @@ class CreateProperties extends CreateElement
      */
     public function CreateProperties()
     {
-        $generalProperties = array('title', 'subject', 'creator', 'keywords', 'description', 'category', 'contentStatus');
-        $nameSpaces = array('title' => 'dc', 'subject' => 'dc', 'creator' => 'dc', 'keywords' => 'cp', 'description' => 'dc', 'category' => 'cp', 'contentStatus' => 'cp');
-        $nameSpacesURI = array(
+        $generalProperties = ['title', 'subject', 'creator', 'keywords', 'description', 'category', 'contentStatus'];
+        $nameSpaces = ['title' => 'dc', 'subject' => 'dc', 'creator' => 'dc', 'keywords' => 'cp', 'description' => 'dc', 'category' => 'cp', 'contentStatus' => 'cp'];
+        $nameSpacesURI = [
             'dc' => 'http://purl.org/dc/elements/1.1/',
             'cp' => 'http://schemas.openxmlformats.org/package/2006/metadata/core-properties',
             'dcterms' => 'http://purl.org/dc/terms/'
-        );
+        ];
         $args = func_get_args();
 
         //Let us load the contents of the file in a DOMDocument
@@ -9185,7 +9185,7 @@ class CreateProperties extends CreateElement
      */
     public function createPropertiesApp()
     {
-        $appProperties = array('Manager', 'Company');
+        $appProperties = ['Manager', 'Company'];
 
         $args = func_get_args();
 
@@ -9216,7 +9216,7 @@ class CreateProperties extends CreateElement
      */
     public function createPropertiesCustom()
     {
-        $tagName = array('text' => 'lpwstr', 'date' => 'filetime', 'number' => 'r8', 'boolean' => 'bool');
+        $tagName = ['text' => 'lpwstr', 'date' => 'filetime', 'number' => 'r8', 'boolean' => 'bool'];
 
         $args = func_get_args();
         $customDocument = $args[1];
@@ -10228,7 +10228,7 @@ class CreateTables extends CreateElement
      * @var array
      * @static
      */
-    private static $_borders = array('top', 'left', 'bottom', 'right');
+    private static $_borders = ['top', 'left', 'bottom', 'right'];
 
     /**
      * @access private
@@ -10382,7 +10382,7 @@ class CreateTables extends CreateElement
                 }
             } else {
                 foreach ($tableData as $row) {
-                    $rowLength = array();
+                    $rowLength = [];
                     $rowLength[] = count($row);
                 }
                 $numCols = max($rowLength);
@@ -10453,7 +10453,7 @@ class CreateTables extends CreateElement
                     }
                     //we set the drawCellBorders to false
                     $drawCellBorders = false;
-                    $border = array();
+                    $border = [];
 
                     //Run over the general border properties
                     if (isset($cellContent['border'])) {
@@ -10632,7 +10632,7 @@ class CreateTables extends CreateElement
      */
     protected function generateCELLMARGIN($cellMargin)
     {
-        $sides = array('top', 'left', 'bottom', 'right');
+        $sides = ['top', 'left', 'bottom', 'right'];
         $xml = '<w:tcMar>';
         foreach ($cellMargin as $key => $value) {
             if (in_array($key, $sides)) {
@@ -10690,7 +10690,7 @@ class CreateTables extends CreateElement
      */
     protected function generateCELLTEXTDIRECTION($val)
     {
-        $textDirections = array('btLr', 'tbRl', 'lrTb', 'tbRl', 'btLr', 'lrTbV', 'tbRlV', 'tbLrV');
+        $textDirections = ['btLr', 'tbRl', 'lrTb', 'tbRl', 'btLr', 'lrTbV', 'tbRlV', 'tbLrV'];
         if (in_array($val, $textDirections)) {
             $xml = '<' . CreateElement::NAMESPACEWORD .
                 ':textDirection ' . CreateElement::NAMESPACEWORD . ':val="' . $val . '"/>__GENERATETCPR__';
@@ -10706,7 +10706,7 @@ class CreateTables extends CreateElement
      */
     protected function generateCELLVALIGN($val)
     {
-        $valign = array('top', 'center', 'both', 'bottom');
+        $valign = ['top', 'center', 'both', 'bottom'];
         if (in_array($val, $valign)) {
             $xml = '<' . CreateElement::NAMESPACEWORD .
                 ':vAlign ' . CreateElement::NAMESPACEWORD . ':val="' . $val . '"/>__GENERATETCPR__';
@@ -10914,7 +10914,7 @@ class CreateTables extends CreateElement
      */
     protected function generateTBLFLOAT($float)
     {
-        $margin = array();
+        $margin = [];
         foreach (self::$_borders as $value) {
             if (isset($float['textMargin_' . $value])) {
                 $margin[$value] = (int) $float['textMargin_' . $value];
@@ -11010,7 +11010,7 @@ class CreateTables extends CreateElement
         } else {
             $cellMargins = $cellMargin;
         }
-        $sides = array('top', 'left', 'bottom', 'right');
+        $sides = ['top', 'left', 'bottom', 'right'];
         $xml = '<w:tblCellMar>';
         foreach ($cellMargins as $key => $value) {
             if (in_array($key, $sides)) {
@@ -11113,7 +11113,7 @@ class CreateTables extends CreateElement
         //0x0200=Do not apply row banding conditional formatting
         //0x0400=Do not apply column banding conditional formatting
 
-        $mask = array();
+        $mask = [];
         $mask['firstRow'] = 0x0020;
         $mask['lastRow'] = 0x0040;
         $mask['firstCol'] = 0x0080;
@@ -11366,10 +11366,10 @@ class CreateTables extends CreateElement
      */
     private function parseTableData($tableData)
     {
-        $parsedData = array();
-        $colCount = array();
+        $parsedData = [];
+        $colCount = [];
         foreach ($tableData as $rowNumber => $row) {
-            $parsedData[$rowNumber] = array();
+            $parsedData[$rowNumber] = [];
             $colNumber = 0;
             foreach ($row as $col => $cell) {
                 //Check if in the previous row there was a cell with rowspan > 1
@@ -11444,7 +11444,7 @@ class Repair
      * @access private
      * @var array
      */
-    private $_xml = array();
+    private $_xml = [];
 
     /**
      * Construct
@@ -11578,10 +11578,10 @@ class Repair
                 //2. Extract the rows
                 $tableRows = $tblNode->getElementsByTagName('tr');
                 $rowNumber = 0;
-                $grid = array();
+                $grid = [];
                 foreach ($tableRows as $row) {
-                    $grid[$rowNumber] = array();
-                    $weights[$rowNumber] = array();
+                    $grid[$rowNumber] = [];
+                    $weights[$rowNumber] = [];
                     //3. Extract the cells of each row
                     $cellNodes = $row->getElementsByTagName('tc');
                     foreach ($cellNodes as $cellNode) {
@@ -11623,7 +11623,7 @@ class Repair
                     $rowNumber++;
                 }
                 //we have now all the required info to build the gridCol array
-                $gridCol = array();
+                $gridCol = [];
                 $rowPos = 0;
                 foreach ($grid as $row) {
                     $cellPos = 0;
@@ -11928,7 +11928,7 @@ class CreateText extends CreateElement
      * @var array
      * @static
      */
-    private static $_borders = array('top', 'left', 'bottom', 'right');
+    private static $_borders = ['top', 'left', 'bottom', 'right'];
 
     /**
      *
@@ -12024,7 +12024,7 @@ class CreateText extends CreateElement
         }
         //we set the drawPBorders to false
         $drawPBorders = false;
-        $border = array();
+        $border = [];
 
         //Run over the general border properties
         if (isset($args[1]['border'])) {
@@ -12109,7 +12109,7 @@ class CreateText extends CreateElement
             isset($args[1]['hanging']
             )
         ) {
-            $indentation = array();
+            $indentation = [];
             if (isset($args[1]['indent_left'])) {
                 $indentation['left'] = $args[1]['indent_left'];
             }
@@ -12595,7 +12595,7 @@ class CreateText extends CreateElement
      * @access protected
      * @param string $indentation
      */
-    protected function generateINDENT($indentation = array())
+    protected function generateINDENT($indentation = [])
     {
         $xmlInd = '<' . CreateElement::NAMESPACEWORD . ':ind ';
         foreach ($indentation as $key => $value) {
@@ -12924,8 +12924,8 @@ class CreateText extends CreateElement
      */
     protected function generateTABPOSITIONS($tabs)
     {
-        $typesArray = array('clear', 'left', 'center', 'right', 'decimal', 'bar', 'num');
-        $leaderArray = array('none', 'dot', 'hyphen', 'underscore', 'heavy', 'middleDot');
+        $typesArray = ['clear', 'left', 'center', 'right', 'decimal', 'bar', 'num'];
+        $leaderArray = ['none', 'dot', 'hyphen', 'underscore', 'heavy', 'middleDot'];
         $xml = '<w:tabs>';
         foreach ($tabs as $key => $tab) {
             if (isset($tab['type']) && in_array($tab['type'], $typesArray)) {
@@ -13286,25 +13286,25 @@ class HTML2WordML
         self::$zipDocx = $zipDocx;
         self::$openBookmark = 0;
         self::$openBr = 0;
-        self::$openTags = array();
+        self::$openTags = [];
         self::$openPs = false;
         self::$openSelect = false;
-        self::$selectOptions = array();
+        self::$selectOptions = [];
         self::$openTextArea = false;
         self::$textArea = '';
-        self::$tableGrid = array();
+        self::$tableGrid = [];
         self::$openScript = '';
         self::$currentCustomList = NULL;
-        self::$customLists = array();
-        self::$orderedLists = array();
+        self::$customLists = [];
+        self::$orderedLists = [];
         self::$openTable = 0;
         self::$openLinks = false;
         self::$WordML = '';
-        self::$linkTargets = array();
-        self::$linkImages = array();
-        self::$borderRow = array();
-        self::$borders = array('top', 'left', 'bottom', 'right');
-        self::$colors = array(
+        self::$linkTargets = [];
+        self::$linkImages = [];
+        self::$borderRow = [];
+        self::$borders = ['top', 'left', 'bottom', 'right'];
+        self::$colors = [
             'AliceBlue' => 'F0F8FF',
             'AntiqueWhite' => 'FAEBD7',
             'Aqua' => '00FFFF',
@@ -13452,9 +13452,9 @@ class HTML2WordML
             'WhiteSmoke' => 'F5F5F5',
             'Yellow' => 'FFFF00',
             'YellowGreen' => '9ACD32'
-        );
+        ];
 
-        self::$borderStyles = array(
+        self::$borderStyles = [
             'none' => 'nil',
             'dotted' => 'dotted',
             'dashed' => 'dashed',
@@ -13464,8 +13464,8 @@ class HTML2WordML
             'ridge' => 'single', //threeDEmboss: we have overriden this border style that is the one by default in HTML tables
             'inset' => 'inset',
             'outset' => 'outset'
-        );
-        self::$imageBorderStyles = array(
+        ];
+        self::$imageBorderStyles = [
             'none' => 'nil',
             'dotted' => 'dot',
             'dashed' => 'dash',
@@ -13476,21 +13476,21 @@ class HTML2WordML
             'ridge' => 'solid',
             'inset' => 'solid',
             'outset' => 'solid'
-        );
-        self::$imageVertAlignProps = array(
+        ];
+        self::$imageVertAlignProps = [
             'top' => 'top',
             'text-top' => 'top',
             'middle' => 'center'
-        );
+        ];
 
-        self::$text_align = array(
+        self::$text_align = [
             'left' => 'left',
             'center' => 'center',
             'right' => 'right',
             'justify' => 'both'
-        );
+        ];
 
-        self::$text_direction = array(
+        self::$text_direction = [
             'ltr' => 'lrTb', //Left to Right, Top to Bottom
             'rtl' => 'tbRl', //Right to Left, Top to Bottom
             'lrTb' => 'lrTb', //Left to Right, Top to Bottom
@@ -13505,7 +13505,7 @@ class HTML2WordML
             'lrtbv' => 'lrTbV', //Left to Right, Top to Bottom Rotated
             'tbrlv' => 'tbRlV', //Top to Bottom, Right to Left Rotated
             'tblrv' => 'tbLrV', //Top to Bottom, Left to Right Rotated
-        );
+        ];
 
         $this->isFile = false;
         $this->baseURL = '';
@@ -13513,7 +13513,7 @@ class HTML2WordML
         $this->customListStyles = false;
         $this->parseDivs = false;
         $this->parseFloats = false;
-        $this->wordStyles = array();
+        $this->wordStyles = [];
         $this->tableStyle = ''; //FIXME deprecated
         $this->paragraphStyle = ''; //FIXME deprecated
         $this->downloadImages = false;
@@ -13618,7 +13618,7 @@ class HTML2WordML
 
         self::$WordML = $this->repairWordML(self::$WordML);
 
-        return(array(self::$WordML, self::$linkTargets, self::$linkImages, self::$orderedLists, self::$customLists));
+        return([self::$WordML, self::$linkTargets, self::$linkImages, self::$orderedLists, self::$customLists]);
     }
 
     /**
@@ -13656,7 +13656,7 @@ class HTML2WordML
             $bookmarkId = rand(999999, 99999999);
             self::$WordML .= '<w:bookmarkStart w:id="' . $bookmarkId . '" w:name="' . $nodo['attributes']['id'] . '" /><w:bookmarkEnd w:id="' . $bookmarkId . '" />';
         }
-        $properties = isset($nodo['properties']) ? $nodo['properties'] : array();
+        $properties = isset($nodo['properties']) ? $nodo['properties'] : [];
         switch ($nodo['nodeName']) {
             case 'div':
                 if (!$this->parseDivs) {
@@ -13744,7 +13744,7 @@ class HTML2WordML
                         }
                         if (!empty($currentListStyle)) {
                             self::$currentCustomList = rand(9999, 999999999);
-                            self::$customLists[] = array('name' => $currentListStyle . '_' . self::$currentCustomList, 'id' => self::$currentCustomList);
+                            self::$customLists[] = ['name' => $currentListStyle . '_' . self::$currentCustomList, 'id' => self::$currentCustomList];
                         } else {
                             self::$currentCustomList = NULL;
                         }
@@ -13774,7 +13774,7 @@ class HTML2WordML
             case 'table':
                 self::$WordML .= $this->closePreviousTags($depth, $nodo['nodeName']);
                 self::$openTable++;
-                self::$tableGrid[self::$openTable] = array();
+                self::$tableGrid[self::$openTable] = [];
                 if (self::$openPs) {
                     if (self::$openLinks) {
                         self::$WordML .= '</w:hyperlink>';
@@ -13802,7 +13802,7 @@ class HTML2WordML
                 break;
             case 'tr':
                 self::$WordML .= $this->closePreviousTags($depth, $nodo['nodeName']);
-                array_push(self::$tableGrid[self::$openTable], array());
+                array_push(self::$tableGrid[self::$openTable], []);
                 self::$WordML .= '<w:tr>';
                 self::$WordML .= $this->generateTrPr($properties);
                 self::$openTags[$depth] = $nodo['nodeName'];
@@ -13827,13 +13827,13 @@ class HTML2WordML
                 if (!isset($properties['border_bottom_style'])) {
                     $properties['border_bottom_style'] = '';
                 }
-                self::$borderRow = array('top' => array('color' => $properties['border_top_color'],
+                self::$borderRow = ['top' => ['color' => $properties['border_top_color'],
                     'width' => $properties['border_top_width'],
-                    'style' => $properties['border_top_style']),
-                    'bottom' => array('color' => $properties['border_bottom_color'],
+                    'style' => $properties['border_top_style']],
+                    'bottom' => ['color' => $properties['border_bottom_color'],
                         'width' => $properties['border_bottom_width'],
-                        'style' => $properties['border_bottom_style']),
-                );
+                        'style' => $properties['border_bottom_style']],
+                ];
 
                 break;
             case 'th':
@@ -13851,7 +13851,7 @@ class HTML2WordML
                 $rowspan = (int) $nodo['attributes']['rowspan'];
                 self::$WordML .= '<w:tc>';
                 for ($k = 0; $k < $colspan; $k++) {
-                    array_push(self::$tableGrid[self::$openTable][count(self::$tableGrid[self::$openTable]) - 1], array($rowspan, $colspan - $k, $properties));
+                    array_push(self::$tableGrid[self::$openTable][count(self::$tableGrid[self::$openTable]) - 1], [$rowspan, $colspan - $k, $properties]);
                 }
                 self::$WordML .= $this->generateTcPr($properties, $nodo['attributes'], $colspan, $rowspan, $firstRow);
                 self::$openTags[$depth] = $nodo['nodeName'];
@@ -13922,7 +13922,7 @@ class HTML2WordML
                         self::$WordML .= '<w:p>';
                         // if we are creating the paragraph by hand we have to take care of certain styles
                         // that are important to keep like inherited justification
-                        $style = array();
+                        $style = [];
                         if (@$properties['text_align'] != '' || @$properties['text_align'] != 'left') {
                             $style['text_align'] = $properties['text_align'];
                         }
@@ -13967,7 +13967,7 @@ class HTML2WordML
                 $hiddenExtension = '';
                 if (!in_array($extension, $predefinedExtensions)) {
                     $extensionId = exif_imagetype($this->parseURL($nodo['attributes']['src']));
-                    $extensionArray = array();
+                    $extensionArray = [];
                     $extensionArray[1] = 'gif';
                     $extensionArray[2] = 'jpg';
                     $extensionArray[3] = 'png';
@@ -14005,7 +14005,7 @@ class HTML2WordML
                     self::$zipDocx->addFromString('word/media/img' . $imgId . '.' . $extension, $photo);
                 }
                 //Check if the size is defined in the attributes or in the CSS styles
-                $imageSize = array();
+                $imageSize = [];
                 if (isset($nodo['attributes']['width'])) {
                     $imageSize['width'] = $nodo['attributes']['width'];
                 }
@@ -14041,7 +14041,7 @@ class HTML2WordML
                     $imageBorderColor = '';
                 }
                 //We now take care of paddings and margins
-                $distance = array();
+                $distance = [];
                 foreach (self::$borders as $key => $value) {
                     $distance[$value] = $this->imageMargins($properties['margin_' . $value], $properties['padding_' . $value], $properties['font_size']);
                 }
@@ -14100,7 +14100,7 @@ class HTML2WordML
                         self::$WordML .= '<w:p>';
                         // if we are creating the paragraph by hand we have to take care of certain styles
                         // that are important to keep like inherited justification
-                        $style = array();
+                        $style = [];
                         if (@$properties['text_align'] != '' || @$properties['text_align'] != 'left') {
                             $style['text_align'] = $properties['text_align'];
                         }
@@ -14141,7 +14141,7 @@ class HTML2WordML
                         self::$WordML .= '<w:p>';
                         // if we are creating the paragraph by hand we have to take care of certain styles
                         // that are important to keep like inherited justification
-                        $style = array();
+                        $style = [];
                         if (@$properties['text_align'] != '' || @$properties['text_align'] != 'left') {
                             $style['text_align'] = $properties['text_align'];
                         }
@@ -14172,14 +14172,14 @@ class HTML2WordML
             case 'select':
                 self::$WordML .= $this->closePreviousTags($depth, $nodo['nodeName']);
                 self::$openTags[$depth] = $nodo['nodeName'];
-                self::$selectOptions = array();
+                self::$selectOptions = [];
                 if (self::$openPs) {
                     //do not do anything
                 } else {
                     self::$WordML .= '<w:p>';
                     // if we are creating the paragraph by hand we have to take care of certain styles
                     // that are important to keep like inherited justification
-                    $style = array();
+                    $style = [];
                     if (@$properties['text_align'] != '' || @$properties['text_align'] != 'left') {
                         $style['text_align'] = $properties['text_align'];
                     }
@@ -14208,7 +14208,7 @@ class HTML2WordML
                     self::$WordML .= '<w:p>';
                     // if we are creating the paragraph by hand we have to take care of certain styles
                     // that are important to keep like inherited justification
-                    $style = array();
+                    $style = [];
                     if (@$properties['text_align'] != '' || @$properties['text_align'] != 'left') {
                         $style['text_align'] = $properties['text_align'];
                     }
@@ -14498,7 +14498,7 @@ class HTML2WordML
      * @param array $tipo
      * @return string
      */
-    private function listType($tipo = array(1, 2))
+    private function listType($tipo = [1, 2])
     {
         $counter = count(self::$openTags);
         for ($j = $counter; $j >= ($this->_level - 1); $j--) {
@@ -14540,7 +14540,7 @@ class HTML2WordML
      * @param array $level
      * @return string
      */
-    private function generatePPr($properties, $level = '', $attributes = array(), $nodeName = false)
+    private function generatePPr($properties, $level = '', $attributes = [], $nodeName = false)
     {
         $stringPPr = '<w:pPr>';
         $sTempStyle = $this->generateWordStyle($nodeName, $attributes);
@@ -14558,7 +14558,7 @@ class HTML2WordML
             $stringPPr .= '<w:pageBreakBefore w:val="on" />';
         }
         if (isset($properties['float']) && ($properties['float'] == 'left' || $properties['float'] == 'right') && $this->parseFloats) {
-            $distance = array();
+            $distance = [];
             foreach (self::$borders as $key => $value) {
                 $distance[$value] = $this->imageMargins($properties['margin_' . $value], $properties['padding_' . $value], $properties['font_size']);
             }
@@ -14634,7 +14634,7 @@ class HTML2WordML
      * @param array $properties
      * @return string
      */
-    private function generateRPr($properties, $level = '', $attributes = array(), $nodeName = false)
+    private function generateRPr($properties, $level = '', $attributes = [], $nodeName = false)
     {
         $stringRPr = '<w:rPr>';
         $sTempStyle = $this->generateWordStyle($nodeName, $attributes);
@@ -14738,7 +14738,7 @@ class HTML2WordML
             $stringTblPr .= '<w:tblStyle w:val="' . $sTempStyle . '"/>';
         }
         if (isset($properties['float']) && ($properties['float'] == 'left' || $properties['float'] == 'right') && $this->parseFloats) {
-            $distance = array();
+            $distance = [];
             foreach (self::$borders as $key => $value) {
                 $distance[$value] = $this->imageMargins($properties['margin_' . $value], $properties['padding_' . $value], $properties['font_size']);
             }
@@ -14944,7 +14944,7 @@ class HTML2WordML
             if (!empty(self::$currentCustomList)) {
                 $stringListPr .= self::$currentCustomList;
             } else {
-                $stringListPr .= $this->listType(array(CreateDocx::$numUL, CreateDocx::$numOL));
+                $stringListPr .= $this->listType([CreateDocx::$numUL, CreateDocx::$numOL]);
             }
             $stringListPr .= '"/></w:numPr>';
         }
@@ -15019,7 +15019,7 @@ class HTML2WordML
         $sTempStyle = false;
         if (!empty($this->wordStyles)) {
             $attId = empty($attributes['id']) ? '' : $attributes['id'];
-            $attClass = empty($attributes['class']) ? array() : $attributes['class'];
+            $attClass = empty($attributes['class']) ? [] : $attributes['class'];
             $attTag = $tag;
             //First we check if there is a Word Style for the tag
             if (!empty($this->wordStyles['<' . $attTag . '>'])) {
@@ -15050,7 +15050,7 @@ class HTML2WordML
     private function countEmptyColumns($row, $column)
     {
         if (isset(self::$tableGrid[self::$openTable][$row - 1][$column]) && self::$tableGrid[self::$openTable][$row - 1][$column][0] > 1) {
-            $merge = array(self::$tableGrid[self::$openTable][$row - 1][$column][0], self::$tableGrid[self::$openTable][$row - 1][$column][1]);
+            $merge = [self::$tableGrid[self::$openTable][$row - 1][$column][0], self::$tableGrid[self::$openTable][$row - 1][$column][1]];
             if ($merge[0] > 1) {
                 self::$WordML .= '<w:tc><w:tcPr><w:gridSpan  w:val="' . $merge[1] . '" /><w:vMerge w:val="continue" />';
                 //Now we have to take care of inherited tc borders
@@ -15067,7 +15067,7 @@ class HTML2WordML
                     self::$WordML .= '<w:tcBorders>' . $sTemp . '</w:tcBorders>';
                 self::$WordML .= '</w:tcPr><w:p /></w:tc>';
                 for ($k = 0; $k < $merge[1]; $k++) {
-                    array_push(self::$tableGrid[self::$openTable][count(self::$tableGrid[self::$openTable]) - 1], array(self::$tableGrid[self::$openTable][$row - 1][$column][0] - 1, $merge[1] - $k, $properties));
+                    array_push(self::$tableGrid[self::$openTable][count(self::$tableGrid[self::$openTable]) - 1], [self::$tableGrid[self::$openTable][$row - 1][$column][0] - 1, $merge[1] - $k, $properties]);
                 }
             }
             $this->countEmptyColumns($row, $column + $merge[1]);
@@ -15085,7 +15085,7 @@ class HTML2WordML
     private function closeTr($row, $column, $colString = '')
     {
         if (isset(self::$tableGrid[self::$openTable][$row - 1][$column]) && self::$tableGrid[self::$openTable][$row - 1][$column][0] > 1) {
-            $merge = array(self::$tableGrid[self::$openTable][$row - 1][$column][0], self::$tableGrid[self::$openTable][$row - 1][$column][1]);
+            $merge = [self::$tableGrid[self::$openTable][$row - 1][$column][0], self::$tableGrid[self::$openTable][$row - 1][$column][1]];
             if ($merge[0] > 1) {
                 $colString .= '<w:tc><w:tcPr><w:gridSpan  w:val="' . $merge[1] . '" /><w:vMerge w:val="continue" />';
                 //Now we have to take care of inherited tc borders
@@ -15102,7 +15102,7 @@ class HTML2WordML
                     $colString .= '<w:tcBorders>' . $sTemp . '</w:tcBorders>';
                 $colString .= '</w:tcPr><w:p /></w:tc>';
                 for ($k = 0; $k < $merge[1]; $k++) {
-                    array_push(self::$tableGrid[self::$openTable][count(self::$tableGrid[self::$openTable]) - 1], array(self::$tableGrid[self::$openTable][$row - 1][$column][0] - 1, $merge[1] - $k, $properties));
+                    array_push(self::$tableGrid[self::$openTable][count(self::$tableGrid[self::$openTable]) - 1], [self::$tableGrid[self::$openTable][$row - 1][$column][0] - 1, $merge[1] - $k, $properties]);
                 }
             }
 
@@ -15210,7 +15210,7 @@ class HTML2WordML
      */
     private function tcPrSpacing($properties)
     {
-        $top = $left = $bottom = $right = array(0, 'auto');
+        $top = $left = $bottom = $right = [0, 'auto'];
 
         if (!empty($properties['margin_top'])) {
             $top = $this->_wordMLUnits($properties['margin_top'], $properties['font_size']);
@@ -15351,9 +15351,9 @@ class HTML2WordML
     private function wordMLNamedColor($color)
     {
         $color = strtoupper(str_replace('#', '', $color["hex"]));
-        $wordMLColors = array('000000' => 'black', '0000ff' => 'blue', '00ffff' => 'cyan', '00ff00' => 'green', 'ff00ff' => 'magenta', 'ff0000' => 'red',
+        $wordMLColors = ['000000' => 'black', '0000ff' => 'blue', '00ffff' => 'cyan', '00ff00' => 'green', 'ff00ff' => 'magenta', 'ff0000' => 'red',
             'ffff00' => 'yellow', 'ffffff' => 'white', '00008b' => 'darkBlue', '008b8b' => 'darkCyan', '006400' => 'darkGreen', '8b008b' => 'darkMagenta',
-            '8b0000' => 'darkRed', '808000' => 'darkYellow', 'a9a9a9' => 'darkGray', 'd3d3d3' => 'lightGray', '' => 'none');
+            '8b0000' => 'darkRed', '808000' => 'darkYellow', 'a9a9a9' => 'darkGray', 'd3d3d3' => 'lightGray', '' => 'none'];
 
         if (isset($wordMLColors[$color]))
             return($wordMLColors[$color]); //exact color
@@ -15455,7 +15455,7 @@ class HTML2WordML
             $cy = $height * 7200;
         }
 
-        return array($cx, $cy);
+        return [$cx, $cy];
     }
 
     /**
@@ -15514,7 +15514,7 @@ class HTML2WordML
     private function _wordMLUnits($sHtmlUnit, $fontSize = false)
     {
         if (!preg_match('/^(-?\d*\.?\d*)(%|em|pt|px)?$/i', trim($sHtmlUnit), $match))
-            return(array(0, 'dxa'));
+            return([0, 'dxa']);
 
         $match[1] = (strpos($match[1], '.') === 0 ? '0' : '') . $match[1];
         $match[2] = empty($match[2]) ? '' : $match[2];
@@ -15540,7 +15540,7 @@ class HTML2WordML
                 $width = 15 * $match[1];
         }
 
-        return(array($width, $widthType));
+        return([$width, $widthType]);
     }
 
     /**
@@ -15738,8 +15738,8 @@ class CreateListStyle
      */
     public function addListStyle($name, $styleOptions)
     {
-        $defaultBullets = array('', 'o', '', '', 'o', '', '', 'o', '');
-        $defaultFont = array('Symbol', 'Courier New', 'Wingdings', 'Symbol', 'Courier New', 'Wingdings', 'Symbol', 'Courier New', 'Wingdings');
+        $defaultBullets = ['', 'o', '', '', 'o', '', '', 'o', ''];
+        $defaultFont = ['Symbol', 'Courier New', 'Wingdings', 'Symbol', 'Courier New', 'Wingdings', 'Symbol', 'Courier New', 'Wingdings'];
         //Set default
         foreach ($styleOptions as $index => $value) {
             if (empty($value['type'])) {
@@ -16379,7 +16379,7 @@ class CreateImage extends CreateElement
 	private function getDpiJpg($filename)
 	{
 		if ($this->_dpiCustom > 0) {
-			return array($this->_dpiCustom, $this->_dpiCustom);
+			return [$this->_dpiCustom, $this->_dpiCustom];
 		}
 		$a = fopen($filename, 'r');
 		$string = fread($a, 20);
@@ -16389,13 +16389,13 @@ class CreateImage extends CreateElement
 		if ($type == 1) {
 			$x = substr($data, 0, 4);
 			$y = substr($data, 4, 4);
-			return array(hexdec($x), hexdec($y));
+			return [hexdec($x), hexdec($y)];
 		} else if ($type == 2) {
 			$x = floor(hexdec(substr($data, 0, 4)) / 2.54);
 			$y = floor(hexdec(substr($data, 4, 4)) / 2.54);
-			return array($x, $y);
+			return [$x, $y];
 		} else {
-			return array($this->_dpi, $this->_dpi);
+			return [$this->_dpi, $this->_dpi];
 		}
 	}
 
@@ -16409,7 +16409,7 @@ class CreateImage extends CreateElement
 	private function getDpiPng($filename)
 	{
 		if ($this->_dpiCustom > 0) {
-			return array($this->_dpiCustom, $this->_dpiCustom);
+			return [$this->_dpiCustom, $this->_dpiCustom];
 		}
 		$a = fopen($filename, 'r');
 		$string = fread($a, 1000);
@@ -16422,9 +16422,9 @@ class CreateImage extends CreateElement
 			fclose($a);
 			$x = substr($data, 0, 8);
 			$y = substr($data, 8, 8);
-			return array(round(hexdec($x) / CreateImage::PNG_SCALE_FACTOR), round(hexdec($y) / CreateImage::PNG_SCALE_FACTOR));
+			return [round(hexdec($x) / CreateImage::PNG_SCALE_FACTOR), round(hexdec($y) / CreateImage::PNG_SCALE_FACTOR)];
 		} else {
-			return array($this->_dpi, $this->_dpi);
+			return [$this->_dpi, $this->_dpi];
 		}
 	}
 
@@ -16638,7 +16638,7 @@ class CreateLineChart extends CreateGraphic implements InterfaceGraphic
             $this->generateLINECHART();
         }
         $groupBar = 'standard';
-        if (!empty($this->_groupBar) && in_array($this->_groupBar, array('stacked', 'standard', 'percentStacked'))) {
+        if (!empty($this->_groupBar) && in_array($this->_groupBar, ['stacked', 'standard', 'percentStacked'])) {
             $groupBar = $this->_groupBar;
         }
         $this->generateGROUPING($groupBar);
@@ -16860,7 +16860,7 @@ class CreateLineChart extends CreateGraphic implements InterfaceGraphic
 
     public function dataTag()
     {
-        return array('val');
+        return ['val'];
     }
 
     /**
@@ -17814,7 +17814,7 @@ class CreateGraphic extends CreateElement
      */
     public function transposed($matrix)
     {
-        $data = array();
+        $data = [];
         foreach ($matrix as $key => $value) {
             foreach ($value as $key2 => $value2) {
                 $data[$key2][$key] = $value2;
@@ -17831,7 +17831,7 @@ class CreateGraphic extends CreateElement
      */
     public function linear($matrix)
     {
-        $data = array();
+        $data = [];
         foreach ($matrix as $key => $value) {
             foreach ($value as $ind => $val) {
                 $data[] = $val;
@@ -17848,7 +17848,7 @@ class CreateGraphic extends CreateElement
      */
     public function prepareData($data)
     {
-        $newData = array();
+        $newData = [];
         $simple = true;
         if (isset($data['legend'])) {
             unset($data['legend']);
@@ -17867,7 +17867,7 @@ class CreateGraphic extends CreateElement
             }
         }
         if ($simple) {
-            return $this->linear(array($newData));
+            return $this->linear([$newData]);
         } else {
             return $this->linear($this->transposed($newData));
         }
@@ -19664,7 +19664,7 @@ class CreateGraphic extends CreateElement
      */
     protected function generateSCATTERSTYLE($style = 'smoothMarker')
     {
-        $possibleStyles = array('none', 'line', 'lineMarker', 'marker', 'smooth', 'smoothMarker');
+        $possibleStyles = ['none', 'line', 'lineMarker', 'marker', 'smooth', 'smoothMarker'];
         if (!in_array($style, $possibleStyles))
             $style = 'smoothMarker';
         $xml = '<' . CreateGraphic::NAMESPACEWORD .
@@ -19841,7 +19841,7 @@ class CreateGraphic extends CreateElement
      */
     protected function generateMARKER($symbol = 'none', $size = NULL)
     {
-        $symbols = array('circle', 'dash', 'diamond', 'dot', 'none', 'picture', 'plus', 'square', 'star', 'triangle', 'x');
+        $symbols = ['circle', 'dash', 'diamond', 'dot', 'none', 'picture', 'plus', 'square', 'star', 'triangle', 'x'];
         if (!in_array($symbol, $symbols)) {
             $symbol = 'none';
         }
@@ -19947,7 +19947,7 @@ class CreateGraphic extends CreateElement
      */
     protected function generateOFPIETYPE($val = 'pie')
     {
-        if (!in_array($val, array('pie', 'bar'))) {
+        if (!in_array($val, ['pie', 'bar'])) {
             $val = 'pie';
         }
         $this->_xmlChart = str_replace(
@@ -20051,7 +20051,7 @@ class CreateGraphic extends CreateElement
      */
     protected function generateSPLITTYPE($val)
     {
-        if (!in_array($val, array('auto', 'cust', 'percent', 'pos', 'val'))) {
+        if (!in_array($val, ['auto', 'cust', 'percent', 'pos', 'val'])) {
             $xml = '<' . CreateGraphic::NAMESPACEWORD . ':splitType>' .
                 '</' . CreateGraphic::NAMESPACEWORD . ':splitType>' .
                 '__GENERATETYPECHART__';
@@ -20180,9 +20180,9 @@ class CreateGraphic extends CreateElement
     protected function cleanTemplate2()
     {
         $this->_xmlChart = preg_replace(
-            array(
+            [
                 '/__GENERATE[A-B,D-O,Q-R,U-Z][A-Z]+__/',
-                '/__GENERATES[A-D,F-Z][A-Z]+__/', '/__GENERATETX__/'), '', $this->_xmlChart
+                '/__GENERATES[A-D,F-Z][A-Z]+__/', '/__GENERATETX__/'], '', $this->_xmlChart
         );
     }
 
@@ -20206,11 +20206,11 @@ class CreateGraphic extends CreateElement
     protected function cleanTemplate3()
     {
         $this->_xmlChart = preg_replace(
-            array(
+            [
                 '/__GENERATE[A-B,D-O,Q-S,U-Z][A-Z]+__/',
                 '/__GENERATES[A-D,F-Z][A-Z]+__/',
                 '/__GENERATETX__/'
-            ), '', $this->_xmlChart
+            ], '', $this->_xmlChart
         );
     }
 

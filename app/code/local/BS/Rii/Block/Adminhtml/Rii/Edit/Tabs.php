@@ -40,14 +40,14 @@ class BS_Rii_Block_Adminhtml_Rii_Edit_Tabs extends Mage_Adminhtml_Block_Widget_T
     {
         $this->addTab(
             'form_rii',
-            array(
+            [
                 'label'   => Mage::helper('bs_rii')->__('RII Sign-off'),
                 'title'   => Mage::helper('bs_rii')->__('RII Sign-off'),
                 'content' => $this->getLayout()->createBlock(
                     'bs_rii/adminhtml_rii_edit_tab_form'
                 )
                 ->toHtml(),
-            )
+            ]
         );
 
 
@@ -59,29 +59,29 @@ class BS_Rii_Block_Adminhtml_Rii_Edit_Tabs extends Mage_Adminhtml_Block_Widget_T
 
         $this->addTab(
             'ir',
-            array(
+            [
                 'label' => Mage::helper('bs_rii')->__('IR (%s)', $countRelations['ir']),
-                'url' => $this->getUrl('adminhtml/rii_rii/irs', array('_current' => true)),
+                'url' => $this->getUrl('adminhtml/rii_rii/irs', ['_current' => true]),
                 'class' => 'ajax',
-            )
+            ]
         );
 
         $this->addTab(
             'ncr',
-            array(
+            [
                 'label' => Mage::helper('bs_rii')->__('NCR (%s)', $countRelations['ncr']),
-                'url' => $this->getUrl('adminhtml/rii_rii/ncrs', array('_current' => true)),
+                'url' => $this->getUrl('adminhtml/rii_rii/ncrs', ['_current' => true]),
                 'class' => 'ajax',
-            )
+            ]
         );
 
         $this->addTab(
             'qr',
-            array(
+            [
                 'label' => Mage::helper('bs_rii')->__('QR (%s)', $countRelations['qr']),
-                'url' => $this->getUrl('adminhtml/rii_rii/qrs', array('_current' => true)),
+                'url' => $this->getUrl('adminhtml/rii_rii/qrs', ['_current' => true]),
                 'class' => 'ajax',
-            )
+            ]
         );
         
         return parent::_beforeToHtml();

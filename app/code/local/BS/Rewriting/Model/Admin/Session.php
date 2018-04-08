@@ -31,7 +31,7 @@ class BS_Rewriting_Model_Admin_Session extends Mage_Admin_Model_Session {
 				$alternativeUrl = $this->_getRequestUri($request);
 				$redirectUrl = $this->_urlPolicy->getRedirectUrl($user, $request, $alternativeUrl);
 				if ($redirectUrl) {
-					Mage::dispatchEvent('admin_session_user_login_success', array('user' => $user));
+					Mage::dispatchEvent('admin_session_user_login_success', ['user' => $user]);
 					$this->_response->clearHeaders()
 					                ->setRedirect($redirectUrl)
 					                ->sendHeadersAndExit();
@@ -41,7 +41,7 @@ class BS_Rewriting_Model_Admin_Session extends Mage_Admin_Model_Session {
 			}
 		} catch (Mage_Core_Exception $e) {
 			Mage::dispatchEvent('admin_session_user_login_failed',
-				array('user_name' => $username, 'exception' => $e));
+				['user_name' => $username, 'exception' => $e]);
 			if ($request && !$request->getParam('messageSent')) {
 				Mage::getSingleton('adminhtml/session')->addError($e->getMessage());
 				$request->setParam('messageSent', true);

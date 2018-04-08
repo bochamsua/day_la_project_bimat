@@ -70,32 +70,32 @@ class BS_Rewriting_Block_Adminhtml_Permissions_User_Grid extends Mage_Adminhtml_
 
 	protected function _prepareColumns()
 	{
-		$this->addColumn('user_id', array(
+		$this->addColumn('user_id', [
 			'header'    => Mage::helper('adminhtml')->__('ID'),
 			'width'     => 5,
 			'align'     => 'right',
 			'sortable'  => true,
 			'index'     => 'user_id'
-		));
+        ]);
 
-		$this->addColumn('username', array(
+		$this->addColumn('username', [
 			'header'    => Mage::helper('adminhtml')->__('User Name'),
 			'index'     => 'username'
-		));
+        ]);
 
-		$this->addColumn('firstname', array(
+		$this->addColumn('firstname', [
 			'header'    => Mage::helper('adminhtml')->__('First Name'),
 			'index'     => 'firstname'
-		));
+        ]);
 
-		$this->addColumn('lastname', array(
+		$this->addColumn('lastname', [
 			'header'    => Mage::helper('adminhtml')->__('Last Name'),
 			'index'     => 'lastname'
-		));
+        ]);
 
         $this->addColumn(
             'region',
-            array(
+            [
                 'header' => Mage::helper('bs_sur')->__('Region'),
                 'index'  => 'region',
                 'type'  => 'options',
@@ -103,11 +103,11 @@ class BS_Rewriting_Block_Adminhtml_Permissions_User_Grid extends Mage_Adminhtml_
                     Mage::getModel('bs_sur/sur_attribute_source_region')->getAllOptions(false)
                 )
 
-            )
+            ]
         );
         $this->addColumn(
             'section',
-            array(
+            [
                 'header' => Mage::helper('bs_sur')->__('Section'),
                 'index'  => 'section',
                 'type'  => 'options',
@@ -115,51 +115,51 @@ class BS_Rewriting_Block_Adminhtml_Permissions_User_Grid extends Mage_Adminhtml_
                     Mage::getModel('bs_sur/sur_attribute_source_section')->getAllOptions(false)
                 )
 
-            )
+            ]
         );
 
-		$this->addColumn('vaeco_id', array(
+		$this->addColumn('vaeco_id', [
 			'header'    => Mage::helper('adminhtml')->__('VAECO ID'),
 			'index'     => 'vaeco_id'
-		));
+        ]);
 
-		$this->addColumn('crs_no', array(
+		$this->addColumn('crs_no', [
 			'header'    => Mage::helper('adminhtml')->__('CRS No'),
 			'index'     => 'crs_no'
-		));
+        ]);
 
 
-		$this->addColumn('email', array(
+		$this->addColumn('email', [
 			'header'    => Mage::helper('adminhtml')->__('Email'),
 			'width'     => 40,
 			'align'     => 'left',
 			'index'     => 'email'
-		));
+        ]);
 
-		$this->addColumn('is_active', array(
+		$this->addColumn('is_active', [
 			'header'    => Mage::helper('adminhtml')->__('Status'),
 			'index'     => 'is_active',
 			'type'      => 'options',
-			'options'   => array('1' => Mage::helper('adminhtml')->__('Active'), '0' => Mage::helper('adminhtml')->__('Inactive')),
-		));
+			'options'   => ['1' => Mage::helper('adminhtml')->__('Active'), '0' => Mage::helper('adminhtml')->__('Inactive')],
+        ]);
 		$this->addColumn(
 			'action',
-			array(
+			[
 				'header'  =>  Mage::helper('adminhtml')->__('Action'),
 				'width'   => '100',
 				'type'    => 'action',
 				'getter'  => 'getId',
-				'actions' => array(
-					array(
+				'actions' => [
+					[
 						'caption' => Mage::helper('adminhtml')->__('Edit'),
-						'url'     => array('base'=> '*/*/edit'),
+						'url'     => ['base'=> '*/*/edit'],
 						'field'   => 'user_id'
-					)
-				),
+                    ]
+                ],
 				'filter'    => false,
 				'is_system' => true,
 				'sortable'  => false,
-			)
+            ]
 		);
 
 

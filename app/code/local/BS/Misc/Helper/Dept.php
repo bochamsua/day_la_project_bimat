@@ -38,7 +38,7 @@ class BS_Misc_Helper_Dept extends BS_Misc_Helper_Data
 
         $result = $depts->toOptionArray();
         if($withEmpty){
-            array_unshift($result, array('value' => 0, 'label' => 'N/A'));
+            array_unshift($result, ['value' => 0, 'label' => 'N/A']);
         }
 
         return $result;

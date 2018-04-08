@@ -40,14 +40,14 @@ class BS_Acreg_Block_Adminhtml_Acreg_Edit_Tabs extends Mage_Adminhtml_Block_Widg
     {
         $this->addTab(
             'form_acreg',
-            array(
+            [
                 'label'   => Mage::helper('bs_acreg')->__('A/C Reg'),
                 'title'   => Mage::helper('bs_acreg')->__('A/C Reg'),
                 'content' => $this->getLayout()->createBlock(
                     'bs_acreg/adminhtml_acreg_edit_tab_form'
                 )
                 ->toHtml(),
-            )
+            ]
         );
         return parent::_beforeToHtml();
     }

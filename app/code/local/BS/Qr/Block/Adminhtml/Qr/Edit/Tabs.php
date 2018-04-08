@@ -40,24 +40,24 @@ class BS_Qr_Block_Adminhtml_Qr_Edit_Tabs extends Mage_Adminhtml_Block_Widget_Tab
     {
         $this->addTab(
             'form_qr',
-            array(
+            [
                 'label'   => Mage::helper('bs_qr')->__('QR'),
                 'title'   => Mage::helper('bs_qr')->__('QR'),
                 'content' => $this->getLayout()->createBlock(
                     'bs_qr/adminhtml_qr_edit_tab_form'
                 )
                 ->toHtml(),
-            )
+            ]
         );
 
 	    if($this->getQr()->getId()){
-		    $this->addTab('general_info', array(
+		    $this->addTab('general_info', [
 			    'label'     => Mage::helper('bs_qr')->__('Related Info'),
 			    'content' => $this->getLayout()->createBlock(
 				    'bs_qr/adminhtml_qr_edit_tab_info'
 			    )
 			                      ->toHtml()
-		    ));
+            ]);
 	    }
         return parent::_beforeToHtml();
     }

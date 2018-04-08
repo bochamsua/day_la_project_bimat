@@ -24,27 +24,27 @@ class BS_Safety_Model_Adminhtml_Search_Safety extends Varien_Object
      */
     public function load()
     {
-        $arr = array();
+        $arr = [];
         if (!$this->hasStart() || !$this->hasLimit() || !$this->hasQuery()) {
             $this->setResults($arr);
             return $this;
         }
         $collection = Mage::getResourceModel('bs_safety/safety_collection')
-            ->addFieldToFilter('ref_no', array('like' => $this->getQuery().'%'))
+            ->addFieldToFilter('ref_no', ['like' => $this->getQuery().'%'])
             ->setCurPage($this->getStart())
             ->setPageSize($this->getLimit())
             ->load();
         foreach ($collection->getItems() as $safety) {
-            $arr[] = array(
+            $arr[] = [
                 'id'          => 'safety/1/'.$safety->getId(),
                 'type'        => Mage::helper('bs_safety')->__('Safety Data'),
                 'name'        => $safety->getRefNo(),
                 'description' => $safety->getRefNo(),
                 'url' => Mage::helper('adminhtml')->getUrl(
                     '*/safety_safety/edit',
-                    array('id'=>$safety->getId())
+                    ['id'=>$safety->getId()]
                 ),
-            );
+            ];
         }
         $this->setResults($arr);
         return $this;

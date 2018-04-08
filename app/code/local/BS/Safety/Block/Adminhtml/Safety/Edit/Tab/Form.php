@@ -30,7 +30,7 @@ class BS_Safety_Block_Adminhtml_Safety_Edit_Tab_Form extends Mage_Adminhtml_Bloc
         $this->setForm($form);
         $fieldset = $form->addFieldset(
             'safety_form',
-            array('legend' => Mage::helper('bs_safety')->__('Safety Data'))
+            ['legend' => Mage::helper('bs_safety')->__('Safety Data')]
         );
 
         $currentObj = Mage::registry('current_safety');
@@ -39,123 +39,123 @@ class BS_Safety_Block_Adminhtml_Safety_Edit_Tab_Form extends Mage_Adminhtml_Bloc
         $fieldset->addField(
             'safety_type',
             'select',
-            array(
+            [
                 'label' => Mage::helper('bs_safety')->__('Type'),
                 'name'  => 'safety_type',
 
             'values'=> Mage::getModel('bs_safety/safety_attribute_source_safetytype')->getAllOptions(false),
-           )
+            ]
         );
 
         $fieldset->addField(
             'occur_date',
             'date',
-            array(
+            [
                 'label' => Mage::helper('bs_safety')->__('Occurrent Date'),
                 'name'  => 'occur_date',
 
             'image' => $this->getSkinUrl('images/grid-cal.gif'),
             'format'  => Mage::app()->getLocale()->getDateFormat(Mage_Core_Model_Locale::FORMAT_TYPE_SHORT),
-           )
+            ]
         );
 
         $customers = Mage::getResourceModel('bs_acreg/customer_collection');
         $customers = $customers->toOptionArray();
         array_unshift($customers, ['value' => 0, 'label' => 'N/A']);
-        array_unshift($customers, array('value' => 0, 'label' => 'N/A'));
+        array_unshift($customers, ['value' => 0, 'label' => 'N/A']);
         $fieldset->addField(
             'customer',
             'select',
-            array(
+            [
                 'label'     => Mage::helper('bs_ncr')->__('Customer'),
                 'name'      => 'customer',
                 'required'  => false,
                 'values'    => $customers,
-            )
+            ]
         );
 
         $acTypes = Mage::getResourceModel('bs_misc/aircraft_collection');
         $acTypes = $acTypes->toOptionArray();
-        array_unshift($acTypes, array('value' => 0, 'label' => 'N/A'));
+        array_unshift($acTypes, ['value' => 0, 'label' => 'N/A']);
         $fieldset->addField(
             'ac_type',
             'select',
-            array(
+            [
                 'label'     => Mage::helper('bs_ncr')->__('A/C Type'),
                 'name'      => 'ac_type',
                 'required'  => false,
                 'values'    => $acTypes,
-            )
+            ]
         );
 
         $acRegs = Mage::getResourceModel('bs_acreg/acreg_collection');
         $acRegs->setOrder('reg', 'ASC');
         $acRegs = $acRegs->toOptionArray();
-        array_unshift($acRegs, array('value' => 0, 'label' => 'N/A'));
+        array_unshift($acRegs, ['value' => 0, 'label' => 'N/A']);
         $fieldset->addField(
             'ac_reg',
             'select',
-            array(
+            [
                 'label'     => Mage::helper('bs_ncr')->__('A/C Reg'),
                 'name'      => 'ac_reg',
                 'required'  => false,
                 'values'    => $acRegs,
-            )
+            ]
         );
 
         $fieldset->addField(
             'description',
             'textarea',
-            array(
+            [
                 'label' => Mage::helper('bs_safety')->__('Description'),
                 'name'  => 'description',
 
-           )
+            ]
         );
 
 
         $fieldset->addField(
             'remark_text',
             'textarea',
-            array(
+            [
                 'label' => Mage::helper('bs_safety')->__('Remark'),
                 'name'  => 'remark_text',
 
-           )
+            ]
         );
 
         $fieldset->addField(
             'from_text',
             'text',
-            array(
+            [
                 'label' => Mage::helper('bs_safety')->__('From'),
                 'name'  => 'from_text',
 
-            )
+            ]
         );
 
         $depts = Mage::helper('bs_misc/dept')->getDepts(true, false);
         $fieldset->addField(
             'from_dept',
             'select',
-            array(
+            [
                 'label'     => Mage::helper('bs_misc')->__('From Maint. Center'),
                 'name'      => 'from_dept',
                 'required'  => false,
                 'values'    => $depts,
-            )
+            ]
         );
 
 
         $fieldset->addField(
             'to_dept',
             'select',
-            array(
+            [
                 'label'     => Mage::helper('bs_misc')->__('To Maint. Center'),
                 'name'      => 'to_dept',
                 'required'  => false,
                 'values'    => $depts,
-            )
+            ]
         );
 
 
@@ -165,11 +165,11 @@ class BS_Safety_Block_Adminhtml_Safety_Edit_Tab_Form extends Mage_Adminhtml_Bloc
         $fieldset->addField(
             'related_personel',
             'text',
-            array(
+            [
                 'label' => Mage::helper('bs_safety')->__('Related Personel'),
                 'name'  => 'related_personel',
 
-           )
+            ]
         );
 
 
@@ -193,7 +193,7 @@ class BS_Safety_Block_Adminhtml_Safety_Edit_Tab_Form extends Mage_Adminhtml_Bloc
         );*/
         $formValues = Mage::registry('current_safety')->getDefaultValues();
         if (!is_array($formValues)) {
-            $formValues = array();
+            $formValues = [];
         }
         if (Mage::getSingleton('adminhtml/session')->getSafetyData()) {
             $formValues = array_merge($formValues, Mage::getSingleton('adminhtml/session')->getSafetyData());

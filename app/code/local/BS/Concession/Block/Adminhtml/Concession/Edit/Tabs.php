@@ -40,14 +40,14 @@ class BS_Concession_Block_Adminhtml_Concession_Edit_Tabs extends Mage_Adminhtml_
     {
         $this->addTab(
             'form_concession',
-            array(
+            [
                 'label'   => Mage::helper('bs_concession')->__('Concession Data'),
                 'title'   => Mage::helper('bs_concession')->__('Concession Data'),
                 'content' => $this->getLayout()->createBlock(
                     'bs_concession/adminhtml_concession_edit_tab_form'
                 )
                 ->toHtml(),
-            )
+            ]
         );
 
         $id = 0;
@@ -58,29 +58,29 @@ class BS_Concession_Block_Adminhtml_Concession_Edit_Tabs extends Mage_Adminhtml_
 
         $this->addTab(
             'ir',
-            array(
+            [
                 'label' => Mage::helper('bs_concession')->__('IR (%s)', $countRelations['ir']),
-                'url' => $this->getUrl('adminhtml/concession_concession/irs', array('_current' => true)),
+                'url' => $this->getUrl('adminhtml/concession_concession/irs', ['_current' => true]),
                 'class' => 'ajax',
-            )
+            ]
         );
 
         $this->addTab(
             'ncr',
-            array(
+            [
                 'label' => Mage::helper('bs_concession')->__('NCR (%s)', $countRelations['ncr']),
-                'url' => $this->getUrl('adminhtml/concession_concession/ncrs', array('_current' => true)),
+                'url' => $this->getUrl('adminhtml/concession_concession/ncrs', ['_current' => true]),
                 'class' => 'ajax',
-            )
+            ]
         );
 
         $this->addTab(
             'drr',
-            array(
+            [
                 'label' => Mage::helper('bs_concession')->__('DRR (%s)', $countRelations['drr']),
-                'url' => $this->getUrl('adminhtml/concession_concession/drrs', array('_current' => true)),
+                'url' => $this->getUrl('adminhtml/concession_concession/drrs', ['_current' => true]),
                 'class' => 'ajax',
-            )
+            ]
         );
 
         return parent::_beforeToHtml();

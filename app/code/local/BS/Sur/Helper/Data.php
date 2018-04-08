@@ -25,7 +25,7 @@ class BS_Sur_Helper_Data extends Mage_Core_Helper_Abstract
      */
     public function convertOptions($options)
     {
-        $converted = array();
+        $converted = [];
         foreach ($options as $option) {
             if (isset($option['value']) && !is_array($option['value']) &&
                 isset($option['label']) && !is_array($option['label'])) {
@@ -44,11 +44,11 @@ class BS_Sur_Helper_Data extends Mage_Core_Helper_Abstract
         $dateEnd = date('Y-m-d' . ' 23:59:59', $now);
         $formattedDate = date('dmy', $now);*/
         $formattedDate = $fromTo[2];
-        $collection->addFieldToFilter('created_at', array(
+        $collection->addFieldToFilter('created_at', [
             'from' => $fromTo[0],
             'to' => $fromTo[1],
             'date' => true,
-        ));
+        ]);
         $collection->setOrder('entity_id', 'DESC');
 
         $type = Mage::getModel('bs_misc/department')->load($deptId)->getDeptCode();

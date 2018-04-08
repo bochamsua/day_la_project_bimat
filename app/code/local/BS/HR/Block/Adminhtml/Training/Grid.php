@@ -59,19 +59,19 @@ class BS_HR_Block_Adminhtml_Training_Grid extends Mage_Adminhtml_Block_Widget_Gr
     {
         $this->addColumn(
             'entity_id',
-            array(
+            [
                 'header' => Mage::helper('bs_hr')->__('Id'),
                 'index'  => 'entity_id',
                 'type'   => 'number', 'filter' => false
-            )
+            ]
         );
         $this->addColumn(
             'training_desc',
-            array(
+            [
                 'header'    => Mage::helper('bs_hr')->__('Description'),
                 'align'     => 'left',
                 'index'     => 'training_desc',
-            )
+            ]
         );
 
 
@@ -96,120 +96,120 @@ class BS_HR_Block_Adminhtml_Training_Grid extends Mage_Adminhtml_Block_Widget_Gr
         );*/
         $this->addColumn(
             'type_training',
-            array(
+            [
                 'header' => Mage::helper('bs_hr')->__('Completed Type training course for at least 2 months?'),
                 'index'  => 'type_training',
                 'type'    => 'options',
-                    'options'    => array(
+                    'options'    => [
                     '1' => Mage::helper('bs_hr')->__('Yes'),
                     '0' => Mage::helper('bs_hr')->__('No'),
-                )
+                    ]
 
-            )
+            ]
         );
         $this->addColumn(
             'line_six',
-            array(
+            [
                 'header' => Mage::helper('bs_hr')->__('Line maintenance experience for at least 6 months? '),
                 'index'  => 'line_six',
                 'type'    => 'options',
-                    'options'    => array(
+                    'options'    => [
                     '1' => Mage::helper('bs_hr')->__('Yes'),
                     '0' => Mage::helper('bs_hr')->__('No'),
-                )
+                    ]
 
-            )
+            ]
         );
         $this->addColumn(
             'base_six',
-            array(
+            [
                 'header' => Mage::helper('bs_hr')->__('Base maintenance experience for at least 6 months '),
                 'index'  => 'base_six',
                 'type'    => 'options',
-                    'options'    => array(
+                    'options'    => [
                     '1' => Mage::helper('bs_hr')->__('Yes'),
                     '0' => Mage::helper('bs_hr')->__('No'),
-                )
+                    ]
 
-            )
+            ]
         );
         $this->addColumn(
             'crs_a',
-            array(
+            [
                 'header' => Mage::helper('bs_hr')->__('Holding CRS A certificate for at least 14 months?'),
                 'index'  => 'crs_a',
                 'type'    => 'options',
-                    'options'    => array(
+                    'options'    => [
                     '1' => Mage::helper('bs_hr')->__('Yes'),
                     '0' => Mage::helper('bs_hr')->__('No'),
-                )
+                    ]
 
-            )
+            ]
         );
         $this->addColumn(
             'line_twelve',
-            array(
+            [
                 'header' => Mage::helper('bs_hr')->__('Line maintenance experience for at least 12 months?'),
                 'index'  => 'line_twelve',
                 'type'    => 'options',
-                    'options'    => array(
+                    'options'    => [
                     '1' => Mage::helper('bs_hr')->__('Yes'),
                     '0' => Mage::helper('bs_hr')->__('No'),
-                )
+                    ]
 
-            )
+            ]
         );
         $this->addColumn(
             'base_twelve',
-            array(
+            [
                 'header' => Mage::helper('bs_hr')->__('Base maintenance experience for at least 12 months?'),
                 'index'  => 'base_twelve',
                 'type'    => 'options',
-                    'options'    => array(
+                    'options'    => [
                     '1' => Mage::helper('bs_hr')->__('Yes'),
                     '0' => Mage::helper('bs_hr')->__('No'),
-                )
+                    ]
 
-            )
+            ]
         );
         $this->addColumn(
             'crs_b',
-            array(
+            [
                 'header' => Mage::helper('bs_hr')->__('Hoding CRS B certificate for at least 38 months?'),
                 'index'  => 'crs_b',
                 'type'    => 'options',
-                    'options'    => array(
+                    'options'    => [
                     '1' => Mage::helper('bs_hr')->__('Yes'),
                     '0' => Mage::helper('bs_hr')->__('No'),
-                )
+                    ]
 
-            )
+            ]
         );
         $this->addColumn(
             'line_twentyfour',
-            array(
+            [
                 'header' => Mage::helper('bs_hr')->__('Line maintenance experience for at least 24 months?'),
                 'index'  => 'line_twentyfour',
                 'type'    => 'options',
-                    'options'    => array(
+                    'options'    => [
                     '1' => Mage::helper('bs_hr')->__('Yes'),
                     '0' => Mage::helper('bs_hr')->__('No'),
-                )
+                    ]
 
-            )
+            ]
         );
         $this->addColumn(
             'base_twentyfour',
-            array(
+            [
                 'header' => Mage::helper('bs_hr')->__('Base maintenance experience for at least 24 months?'),
                 'index'  => 'base_twentyfour',
                 'type'    => 'options',
-                    'options'    => array(
+                    'options'    => [
                     '1' => Mage::helper('bs_hr')->__('Yes'),
                     '0' => Mage::helper('bs_hr')->__('No'),
-                )
+                    ]
 
-            )
+            ]
         );
 
 
@@ -256,33 +256,33 @@ class BS_HR_Block_Adminhtml_Training_Grid extends Mage_Adminhtml_Block_Widget_Gr
         if($isAllowedDelete){
             $this->getMassactionBlock()->addItem(
                 'delete',
-                array(
+                [
                     'label'=> Mage::helper('bs_hr')->__('Delete'),
                     'url'  => $this->getUrl('*/*/massDelete'),
                     'confirm'  => Mage::helper('bs_hr')->__('Are you sure?')
-                )
+                ]
             );
         }
 
         if($isAllowedEdit){
             $this->getMassactionBlock()->addItem(
                 'status',
-                array(
+                [
                     'label'      => Mage::helper('bs_hr')->__('Change status'),
-                    'url'        => $this->getUrl('*/*/massStatus', array('_current'=>true)),
-                    'additional' => array(
-                        'status' => array(
+                    'url'        => $this->getUrl('*/*/massStatus', ['_current'=>true]),
+                    'additional' => [
+                        'status' => [
                             'name'   => 'status',
                             'type'   => 'select',
                             'class'  => 'required-entry',
                             'label'  => Mage::helper('bs_hr')->__('Status'),
-                            'values' => array(
+                            'values' => [
                                 '1' => Mage::helper('bs_hr')->__('Enabled'),
                                 '0' => Mage::helper('bs_hr')->__('Disabled'),
-                            )
-                        )
-                    )
-                )
+                            ]
+                        ]
+                    ]
+                ]
             );
 
 
@@ -290,183 +290,183 @@ class BS_HR_Block_Adminhtml_Training_Grid extends Mage_Adminhtml_Block_Widget_Gr
 
         $this->getMassactionBlock()->addItem(
             'type_training',
-            array(
+            [
                 'label'      => Mage::helper('bs_hr')->__('Change Completed Type training course for at least 2 months?'),
-                'url'        => $this->getUrl('*/*/massTypeTraining', array('_current'=>true)),
-                'additional' => array(
-                    'flag_type_training' => array(
+                'url'        => $this->getUrl('*/*/massTypeTraining', ['_current'=>true]),
+                'additional' => [
+                    'flag_type_training' => [
                         'name'   => 'flag_type_training',
                         'type'   => 'select',
                         'class'  => 'required-entry',
                         'label'  => Mage::helper('bs_hr')->__('Completed Type training course for at least 2 months?'),
-                        'values' => array(
+                        'values' => [
                                 '1' => Mage::helper('bs_hr')->__('Yes'),
                                 '0' => Mage::helper('bs_hr')->__('No'),
-                            )
+                        ]
 
-                    )
-                )
-            )
+                    ]
+                ]
+            ]
         );
         $this->getMassactionBlock()->addItem(
             'line_six',
-            array(
+            [
                 'label'      => Mage::helper('bs_hr')->__('Change Line maintenance experience for at least 6 months? '),
-                'url'        => $this->getUrl('*/*/massLineSix', array('_current'=>true)),
-                'additional' => array(
-                    'flag_line_six' => array(
+                'url'        => $this->getUrl('*/*/massLineSix', ['_current'=>true]),
+                'additional' => [
+                    'flag_line_six' => [
                         'name'   => 'flag_line_six',
                         'type'   => 'select',
                         'class'  => 'required-entry',
                         'label'  => Mage::helper('bs_hr')->__('Line maintenance experience for at least 6 months? '),
-                        'values' => array(
+                        'values' => [
                                 '1' => Mage::helper('bs_hr')->__('Yes'),
                                 '0' => Mage::helper('bs_hr')->__('No'),
-                            )
+                        ]
 
-                    )
-                )
-            )
+                    ]
+                ]
+            ]
         );
         $this->getMassactionBlock()->addItem(
             'base_six',
-            array(
+            [
                 'label'      => Mage::helper('bs_hr')->__('Change Base maintenance experience for at least 6 months '),
-                'url'        => $this->getUrl('*/*/massBaseSix', array('_current'=>true)),
-                'additional' => array(
-                    'flag_base_six' => array(
+                'url'        => $this->getUrl('*/*/massBaseSix', ['_current'=>true]),
+                'additional' => [
+                    'flag_base_six' => [
                         'name'   => 'flag_base_six',
                         'type'   => 'select',
                         'class'  => 'required-entry',
                         'label'  => Mage::helper('bs_hr')->__('Base maintenance experience for at least 6 months '),
-                        'values' => array(
+                        'values' => [
                                 '1' => Mage::helper('bs_hr')->__('Yes'),
                                 '0' => Mage::helper('bs_hr')->__('No'),
-                            )
+                        ]
 
-                    )
-                )
-            )
+                    ]
+                ]
+            ]
         );
         $this->getMassactionBlock()->addItem(
             'crs_a',
-            array(
+            [
                 'label'      => Mage::helper('bs_hr')->__('Change Holding CRS A certificate for at least 14 months?'),
-                'url'        => $this->getUrl('*/*/massCrsA', array('_current'=>true)),
-                'additional' => array(
-                    'flag_crs_a' => array(
+                'url'        => $this->getUrl('*/*/massCrsA', ['_current'=>true]),
+                'additional' => [
+                    'flag_crs_a' => [
                         'name'   => 'flag_crs_a',
                         'type'   => 'select',
                         'class'  => 'required-entry',
                         'label'  => Mage::helper('bs_hr')->__('Holding CRS A certificate for at least 14 months?'),
-                        'values' => array(
+                        'values' => [
                                 '1' => Mage::helper('bs_hr')->__('Yes'),
                                 '0' => Mage::helper('bs_hr')->__('No'),
-                            )
+                        ]
 
-                    )
-                )
-            )
+                    ]
+                ]
+            ]
         );
         $this->getMassactionBlock()->addItem(
             'line_twelve',
-            array(
+            [
                 'label'      => Mage::helper('bs_hr')->__('Change Line maintenance experience for at least 12 months?'),
-                'url'        => $this->getUrl('*/*/massLineTwelve', array('_current'=>true)),
-                'additional' => array(
-                    'flag_line_twelve' => array(
+                'url'        => $this->getUrl('*/*/massLineTwelve', ['_current'=>true]),
+                'additional' => [
+                    'flag_line_twelve' => [
                         'name'   => 'flag_line_twelve',
                         'type'   => 'select',
                         'class'  => 'required-entry',
                         'label'  => Mage::helper('bs_hr')->__('Line maintenance experience for at least 12 months?'),
-                        'values' => array(
+                        'values' => [
                                 '1' => Mage::helper('bs_hr')->__('Yes'),
                                 '0' => Mage::helper('bs_hr')->__('No'),
-                            )
+                        ]
 
-                    )
-                )
-            )
+                    ]
+                ]
+            ]
         );
         $this->getMassactionBlock()->addItem(
             'base_twelve',
-            array(
+            [
                 'label'      => Mage::helper('bs_hr')->__('Change Base maintenance experience for at least 12 months?'),
-                'url'        => $this->getUrl('*/*/massBaseTwelve', array('_current'=>true)),
-                'additional' => array(
-                    'flag_base_twelve' => array(
+                'url'        => $this->getUrl('*/*/massBaseTwelve', ['_current'=>true]),
+                'additional' => [
+                    'flag_base_twelve' => [
                         'name'   => 'flag_base_twelve',
                         'type'   => 'select',
                         'class'  => 'required-entry',
                         'label'  => Mage::helper('bs_hr')->__('Base maintenance experience for at least 12 months?'),
-                        'values' => array(
+                        'values' => [
                                 '1' => Mage::helper('bs_hr')->__('Yes'),
                                 '0' => Mage::helper('bs_hr')->__('No'),
-                            )
+                        ]
 
-                    )
-                )
-            )
+                    ]
+                ]
+            ]
         );
         $this->getMassactionBlock()->addItem(
             'crs_b',
-            array(
+            [
                 'label'      => Mage::helper('bs_hr')->__('Change Hoding CRS B certificate for at least 38 months?'),
-                'url'        => $this->getUrl('*/*/massCrsB', array('_current'=>true)),
-                'additional' => array(
-                    'flag_crs_b' => array(
+                'url'        => $this->getUrl('*/*/massCrsB', ['_current'=>true]),
+                'additional' => [
+                    'flag_crs_b' => [
                         'name'   => 'flag_crs_b',
                         'type'   => 'select',
                         'class'  => 'required-entry',
                         'label'  => Mage::helper('bs_hr')->__('Hoding CRS B certificate for at least 38 months?'),
-                        'values' => array(
+                        'values' => [
                                 '1' => Mage::helper('bs_hr')->__('Yes'),
                                 '0' => Mage::helper('bs_hr')->__('No'),
-                            )
+                        ]
 
-                    )
-                )
-            )
+                    ]
+                ]
+            ]
         );
         $this->getMassactionBlock()->addItem(
             'line_twentyfour',
-            array(
+            [
                 'label'      => Mage::helper('bs_hr')->__('Change Line maintenance experience for at least 24 months?'),
-                'url'        => $this->getUrl('*/*/massLineTwentyfour', array('_current'=>true)),
-                'additional' => array(
-                    'flag_line_twentyfour' => array(
+                'url'        => $this->getUrl('*/*/massLineTwentyfour', ['_current'=>true]),
+                'additional' => [
+                    'flag_line_twentyfour' => [
                         'name'   => 'flag_line_twentyfour',
                         'type'   => 'select',
                         'class'  => 'required-entry',
                         'label'  => Mage::helper('bs_hr')->__('Line maintenance experience for at least 24 months?'),
-                        'values' => array(
+                        'values' => [
                                 '1' => Mage::helper('bs_hr')->__('Yes'),
                                 '0' => Mage::helper('bs_hr')->__('No'),
-                            )
+                        ]
 
-                    )
-                )
-            )
+                    ]
+                ]
+            ]
         );
         $this->getMassactionBlock()->addItem(
             'base_twentyfour',
-            array(
+            [
                 'label'      => Mage::helper('bs_hr')->__('Change Base maintenance experience for at least 24 months?'),
-                'url'        => $this->getUrl('*/*/massBaseTwentyfour', array('_current'=>true)),
-                'additional' => array(
-                    'flag_base_twentyfour' => array(
+                'url'        => $this->getUrl('*/*/massBaseTwentyfour', ['_current'=>true]),
+                'additional' => [
+                    'flag_base_twentyfour' => [
                         'name'   => 'flag_base_twentyfour',
                         'type'   => 'select',
                         'class'  => 'required-entry',
                         'label'  => Mage::helper('bs_hr')->__('Base maintenance experience for at least 24 months?'),
-                        'values' => array(
+                        'values' => [
                                 '1' => Mage::helper('bs_hr')->__('Yes'),
                                 '0' => Mage::helper('bs_hr')->__('No'),
-                            )
+                        ]
 
-                    )
-                )
-            )
+                    ]
+                ]
+            ]
         );
         }
         return $this;
@@ -482,7 +482,7 @@ class BS_HR_Block_Adminhtml_Training_Grid extends Mage_Adminhtml_Block_Widget_Gr
      */
     public function getRowUrl($row)
     {
-        return $this->getUrl('*/*/edit', array('id' => $row->getId()));
+        return $this->getUrl('*/*/edit', ['id' => $row->getId()]);
     }
 
     /**
@@ -494,7 +494,7 @@ class BS_HR_Block_Adminhtml_Training_Grid extends Mage_Adminhtml_Block_Widget_Gr
      */
     public function getGridUrl()
     {
-        return $this->getUrl('*/*/grid', array('_current'=>true));
+        return $this->getUrl('*/*/grid', ['_current'=>true]);
     }
 
     /**

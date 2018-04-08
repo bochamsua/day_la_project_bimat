@@ -19,10 +19,10 @@ $this->getConnection()
     ->addColumn(
         $this->getTable('bs_cofa/cofa'),
         'region',
-        array(
+        [
             'type' => Varien_Db_Ddl_Table::TYPE_INTEGER,
             'comment'   => 'region'
-        )
+        ]
     )
 ;
 
@@ -30,10 +30,10 @@ $this->getConnection()
     ->addColumn(
         $this->getTable('bs_cofa/cofa'),
         'section',
-        array(
+        [
             'type' => Varien_Db_Ddl_Table::TYPE_INTEGER,
             'comment'   => 'section'
-        )
+        ]
     )
 ;
 
@@ -41,10 +41,10 @@ $this->getConnection()
     ->addColumn(
         $this->getTable('bs_cofa/cofa'),
         'ref_type',
-        array(
+        [
             'type' => Varien_Db_Ddl_Table::TYPE_TEXT,
             'comment'   => 'ref_type'
-        )
+        ]
     )
 ;
 

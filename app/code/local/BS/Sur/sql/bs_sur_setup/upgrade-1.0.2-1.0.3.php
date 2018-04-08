@@ -19,11 +19,11 @@ $this->getConnection()
     ->addColumn(
         $this->getTable('bs_sur/sur'),
         'sur_status',
-        array(
+        [
             'type' => Varien_Db_Ddl_Table::TYPE_SMALLINT,
             'comment'   => 'status',
             'default'   => 0
-        )
+        ]
     )
 ;
 

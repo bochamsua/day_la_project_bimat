@@ -40,14 +40,14 @@ class BS_Misc_Block_Adminhtml_Aircraft_Edit_Tabs extends Mage_Adminhtml_Block_Wi
     {
         $this->addTab(
             'form_aircraft',
-            array(
+            [
                 'label'   => Mage::helper('bs_misc')->__('Aircraft'),
                 'title'   => Mage::helper('bs_misc')->__('Aircraft'),
                 'content' => $this->getLayout()->createBlock(
                     'bs_misc/adminhtml_aircraft_edit_tab_form'
                 )
                 ->toHtml(),
-            )
+            ]
         );
         return parent::_beforeToHtml();
     }

@@ -119,7 +119,7 @@ class BS_Cofa_Adminhtml_Cofa_CofaController extends BS_Sur_Controller_Adminhtml_
     {
         if ($data = $this->getRequest()->getPost('cofa')) {
             try {
-                $data = $this->_filterDates($data, array('report_date' ,'due_date' ,'close_date'));
+                $data = $this->_filterDates($data, ['report_date' ,'due_date' ,'close_date']);
                 $cofa = $this->_initCofa();
 
                 $cofa->addData($data);
@@ -134,7 +134,7 @@ class BS_Cofa_Adminhtml_Cofa_CofaController extends BS_Sur_Controller_Adminhtml_
                 );
                 Mage::getSingleton('adminhtml/session')->setFormData(false);
                 if ($this->getRequest()->getParam('back')) {
-                    $this->_redirect('*/*/edit', array('id' => $cofa->getId()));
+                    $this->_redirect('*/*/edit', ['id' => $cofa->getId()]);
                     return;
                 }
                 $this->_redirect('*/*/');
@@ -142,7 +142,7 @@ class BS_Cofa_Adminhtml_Cofa_CofaController extends BS_Sur_Controller_Adminhtml_
             } catch (Mage_Core_Exception $e) {
                 Mage::getSingleton('adminhtml/session')->addError($e->getMessage());
                 Mage::getSingleton('adminhtml/session')->setCofaData($data);
-                $this->_redirect('*/*/edit', array('id' => $this->getRequest()->getParam('id')));
+                $this->_redirect('*/*/edit', ['id' => $this->getRequest()->getParam('id')]);
                 return;
             } catch (Exception $e) {
                 Mage::logException($e);
@@ -150,7 +150,7 @@ class BS_Cofa_Adminhtml_Cofa_CofaController extends BS_Sur_Controller_Adminhtml_
                     Mage::helper('bs_cofa')->__('There was a problem saving the cofa.')
                 );
                 Mage::getSingleton('adminhtml/session')->setCofaData($data);
-                $this->_redirect('*/*/edit', array('id' => $this->getRequest()->getParam('id')));
+                $this->_redirect('*/*/edit', ['id' => $this->getRequest()->getParam('id')]);
                 return;
             }
         }
@@ -180,12 +180,12 @@ class BS_Cofa_Adminhtml_Cofa_CofaController extends BS_Sur_Controller_Adminhtml_
                 return;
             } catch (Mage_Core_Exception $e) {
                 Mage::getSingleton('adminhtml/session')->addError($e->getMessage());
-                $this->_redirect('*/*/edit', array('id' => $this->getRequest()->getParam('id')));
+                $this->_redirect('*/*/edit', ['id' => $this->getRequest()->getParam('id')]);
             } catch (Exception $e) {
                 Mage::getSingleton('adminhtml/session')->addError(
                     Mage::helper('bs_cofa')->__('There was an error deleting cofa.')
                 );
-                $this->_redirect('*/*/edit', array('id' => $this->getRequest()->getParam('id')));
+                $this->_redirect('*/*/edit', ['id' => $this->getRequest()->getParam('id')]);
                 Mage::logException($e);
                 return;
             }

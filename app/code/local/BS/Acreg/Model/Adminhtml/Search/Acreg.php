@@ -24,27 +24,27 @@ class BS_Acreg_Model_Adminhtml_Search_Acreg extends Varien_Object
      */
     public function load()
     {
-        $arr = array();
+        $arr = [];
         if (!$this->hasStart() || !$this->hasLimit() || !$this->hasQuery()) {
             $this->setResults($arr);
             return $this;
         }
         $collection = Mage::getResourceModel('bs_acreg/acreg_collection')
-            ->addFieldToFilter('reg', array('like' => $this->getQuery().'%'))
+            ->addFieldToFilter('reg', ['like' => $this->getQuery().'%'])
             ->setCurPage($this->getStart())
             ->setPageSize($this->getLimit())
             ->load();
         foreach ($collection->getItems() as $acreg) {
-            $arr[] = array(
+            $arr[] = [
                 'id'          => 'acreg/1/'.$acreg->getId(),
                 'type'        => Mage::helper('bs_acreg')->__('A/C Reg'),
                 'name'        => $acreg->getReg(),
                 'description' => $acreg->getReg(),
                 'url' => Mage::helper('adminhtml')->getUrl(
                     '*/acreg_acreg/edit',
-                    array('id'=>$acreg->getId())
+                    ['id'=>$acreg->getId()]
                 ),
-            );
+            ];
         }
         $this->setResults($arr);
         return $this;

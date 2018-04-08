@@ -14,27 +14,27 @@
  * @author Bui Phong
  */
 $this->startSetup();
-$this->getConnection()->changeColumn($this->getTable('bs_cmr/cmr'), 'qrqn','qr', array(
+$this->getConnection()->changeColumn($this->getTable('bs_cmr/cmr'), 'qrqn','qr', [
     'type'      => Varien_Db_Ddl_Table::TYPE_SMALLINT,
     'comment'   => 'qr'
-));
-$this->getConnection()->changeColumn($this->getTable('bs_cmr/cmr'), 'investigation','ir', array(
+]);
+$this->getConnection()->changeColumn($this->getTable('bs_cmr/cmr'), 'investigation','ir', [
     'type'      => Varien_Db_Ddl_Table::TYPE_SMALLINT,
     'comment'   => 'ir'
-));
+]);
 
-$this->getConnection()->changeColumn($this->getTable('bs_cmr/cmr'), 'car','drr', array(
+$this->getConnection()->changeColumn($this->getTable('bs_cmr/cmr'), 'car','drr', [
     'type'      => Varien_Db_Ddl_Table::TYPE_SMALLINT,
     'comment'   => 'drr'
-));
+]);
 $this->getConnection()
     ->addColumn(
         $this->getTable('bs_cmr/cmr'),
         'region',
-        array(
+        [
             'type' => Varien_Db_Ddl_Table::TYPE_INTEGER,
             'comment'   => 'region'
-        )
+        ]
     )
 ;
 
@@ -42,10 +42,10 @@ $this->getConnection()
     ->addColumn(
         $this->getTable('bs_cmr/cmr'),
         'section',
-        array(
+        [
             'type' => Varien_Db_Ddl_Table::TYPE_INTEGER,
             'comment'   => 'section'
-        )
+        ]
     )
 ;
 
@@ -53,10 +53,10 @@ $this->getConnection()
     ->addColumn(
         $this->getTable('bs_cmr/cmr'),
         'ref_type',
-        array(
+        [
             'type' => Varien_Db_Ddl_Table::TYPE_TEXT,
             'comment'   => 'ref_type'
-        )
+        ]
     )
 ;
 $this->endSetup();

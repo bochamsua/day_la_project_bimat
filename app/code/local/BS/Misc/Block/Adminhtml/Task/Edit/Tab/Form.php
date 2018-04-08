@@ -31,11 +31,11 @@ class BS_Misc_Block_Adminhtml_Task_Edit_Tab_Form extends Mage_Adminhtml_Block_Wi
         $this->setForm($form);
         $fieldset = $form->addFieldset(
             'task_form',
-            array('legend' => Mage::helper('bs_misc')->__('Survey Code'))
+            ['legend' => Mage::helper('bs_misc')->__('Survey Code')]
         );
         $values = Mage::getResourceModel('bs_misc/taskgroup_collection')
             ->toOptionArray();
-        array_unshift($values, array('label' => '', 'value' => ''));
+        array_unshift($values, ['label' => '', 'value' => '']);
 
         $html = '<a href="{#url}" id="task_taskgroup_id_link" target="_blank"></a>';
         $html .= '<script type="text/javascript">
@@ -44,7 +44,7 @@ class BS_Misc_Block_Adminhtml_Task_Edit_Tab_Form extends Mage_Adminhtml_Block_Wi
                     $(\'task_taskgroup_id_link\').hide();
                 } else {
                     $(\'task_taskgroup_id_link\').show();
-                    var url = \''.$this->getUrl('adminhtml/misc_taskgroup/edit', array('id'=>'{#id}', 'clear'=>1)).'\';
+                    var url = \''.$this->getUrl('adminhtml/misc_taskgroup/edit', ['id'=>'{#id}', 'clear'=>1]).'\';
                     var text = \''.Mage::helper('core')->escapeHtml($this->__('View {#name}')).'\';
                     var realUrl = url.replace(\'{#id}\', $(\'task_taskgroup_id\').value);
                     $(\'task_taskgroup_id_link\').href = realUrl;
@@ -58,62 +58,62 @@ class BS_Misc_Block_Adminhtml_Task_Edit_Tab_Form extends Mage_Adminhtml_Block_Wi
         $fieldset->addField(
             'taskgroup_id',
             'select',
-            array(
+            [
                 'label'     => Mage::helper('bs_misc')->__('Survey Group'),
                 'name'      => 'taskgroup_id',
                 'required'  => false,
                 'values'    => $values,
                 'after_element_html' => $html
-            )
+            ]
         );
 
         $fieldset->addField(
             'task_code',
             'text',
-            array(
+            [
                 'label' => Mage::helper('bs_misc')->__('Task Code'),
                 'name'  => 'task_code',
             'required'  => true,
             'class' => 'required-entry',
 
-           )
+            ]
         );
 
 	    $fieldset->addField(
 		    'points',
 		    'text',
-		    array(
+		    [
 			    'label' => Mage::helper('bs_misc')->__('Points'),
 			    'name'  => 'points',
 
 
-		    )
+            ]
 	    );
 
         $fieldset->addField(
             'task_desc',
             'textarea',
-            array(
+            [
                 'label' => Mage::helper('bs_misc')->__('Description'),
                 'name'  => 'task_desc',
                 'config' => $wysiwygConfig,
 
-           )
+            ]
         );
 
         $fieldset->addField(
             'import',
             'textarea',
-            array(
+            [
                 'label' => Mage::helper('bs_misc')->__('OR Import from this'),
                 'name'  => 'import',
 
-            )
+            ]
         );
 
         $formValues = Mage::registry('current_task')->getDefaultValues();
         if (!is_array($formValues)) {
-            $formValues = array();
+            $formValues = [];
         }
         if (Mage::getSingleton('adminhtml/session')->getTaskData()) {
             $formValues = array_merge($formValues, Mage::getSingleton('adminhtml/session')->getTaskData());

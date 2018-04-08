@@ -24,27 +24,27 @@ class BS_Misc_Model_Adminhtml_Search_Task extends Varien_Object
      */
     public function load()
     {
-        $arr = array();
+        $arr = [];
         if (!$this->hasStart() || !$this->hasLimit() || !$this->hasQuery()) {
             $this->setResults($arr);
             return $this;
         }
         $collection = Mage::getResourceModel('bs_misc/task_collection')
-            ->addFieldToFilter('task_code', array('like' => $this->getQuery().'%'))
+            ->addFieldToFilter('task_code', ['like' => $this->getQuery().'%'])
             ->setCurPage($this->getStart())
             ->setPageSize($this->getLimit())
             ->load();
         foreach ($collection->getItems() as $task) {
-            $arr[] = array(
+            $arr[] = [
                 'id'          => 'task/1/'.$task->getId(),
                 'type'        => Mage::helper('bs_misc')->__('Survey Code'),
                 'name'        => $task->getTaskCode(),
                 'description' => $task->getTaskCode(),
                 'url' => Mage::helper('adminhtml')->getUrl(
                     '*/misc_task/edit',
-                    array('id'=>$task->getId())
+                    ['id'=>$task->getId()]
                 ),
-            );
+            ];
         }
         $this->setResults($arr);
         return $this;

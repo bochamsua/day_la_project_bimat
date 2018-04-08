@@ -40,14 +40,14 @@ class BS_Misc_Block_Adminhtml_Taskgroup_Edit_Tabs extends Mage_Adminhtml_Block_W
     {
         $this->addTab(
             'form_taskgroup',
-            array(
+            [
                 'label'   => Mage::helper('bs_misc')->__('Survey Group'),
                 'title'   => Mage::helper('bs_misc')->__('Survey Group'),
                 'content' => $this->getLayout()->createBlock(
                     'bs_misc/adminhtml_taskgroup_edit_tab_form'
                 )
                 ->toHtml(),
-            )
+            ]
         );
         return parent::_beforeToHtml();
     }

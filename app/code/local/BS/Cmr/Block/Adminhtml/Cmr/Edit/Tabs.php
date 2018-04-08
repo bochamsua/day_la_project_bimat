@@ -40,14 +40,14 @@ class BS_Cmr_Block_Adminhtml_Cmr_Edit_Tabs extends Mage_Adminhtml_Block_Widget_T
     {
         $this->addTab(
             'form_cmr',
-            array(
+            [
                 'label'   => Mage::helper('bs_cmr')->__('CMR Data'),
                 'title'   => Mage::helper('bs_cmr')->__('CMR Data'),
                 'content' => $this->getLayout()->createBlock(
                     'bs_cmr/adminhtml_cmr_edit_tab_form'
                 )
                 ->toHtml(),
-            )
+            ]
         );
 
         $id = 0;
@@ -58,29 +58,29 @@ class BS_Cmr_Block_Adminhtml_Cmr_Edit_Tabs extends Mage_Adminhtml_Block_Widget_T
 
         $this->addTab(
             'ir',
-            array(
+            [
                 'label' => Mage::helper('bs_cmr')->__('IR (%s)', $countRelations['ir']),
-                'url' => $this->getUrl('adminhtml/cmr_cmr/irs', array('_current' => true)),
+                'url' => $this->getUrl('adminhtml/cmr_cmr/irs', ['_current' => true]),
                 'class' => 'ajax',
-            )
+            ]
         );
 
         $this->addTab(
             'ncr',
-            array(
+            [
                 'label' => Mage::helper('bs_cmr')->__('NCR (%s)', $countRelations['ncr']),
-                'url' => $this->getUrl('adminhtml/cmr_cmr/ncrs', array('_current' => true)),
+                'url' => $this->getUrl('adminhtml/cmr_cmr/ncrs', ['_current' => true]),
                 'class' => 'ajax',
-            )
+            ]
         );
 
         $this->addTab(
             'drr',
-            array(
+            [
                 'label' => Mage::helper('bs_cmr')->__('DRR (%s)', $countRelations['drr']),
-                'url' => $this->getUrl('adminhtml/cmr_cmr/drrs', array('_current' => true)),
+                'url' => $this->getUrl('adminhtml/cmr_cmr/drrs', ['_current' => true]),
                 'class' => 'ajax',
-            )
+            ]
         );
         
 

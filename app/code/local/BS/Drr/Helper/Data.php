@@ -25,7 +25,7 @@ class BS_Drr_Helper_Data extends Mage_Core_Helper_Abstract
      */
     public function convertOptions($options)
     {
-        $converted = array();
+        $converted = [];
         foreach ($options as $option) {
             if (isset($option['value']) && !is_array($option['value']) &&
                 isset($option['label']) && !is_array($option['label'])) {
@@ -43,7 +43,7 @@ class BS_Drr_Helper_Data extends Mage_Core_Helper_Abstract
 
         $now = Mage::getModel('core/date')->timestamp(time());
         $year = date('Y', $now);
-        $collection->addFieldToFilter('ref_no', array('like' => '%-'.$year.'%'));
+        $collection->addFieldToFilter('ref_no', ['like' => '%-'.$year.'%']);
         $collection->setOrder('entity_id', 'DESC');
 
         $nextRefNo = null;

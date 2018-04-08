@@ -24,27 +24,27 @@ class BS_Drr_Model_Adminhtml_Search_Drr extends Varien_Object
      */
     public function load()
     {
-        $arr = array();
+        $arr = [];
         if (!$this->hasStart() || !$this->hasLimit() || !$this->hasQuery()) {
             $this->setResults($arr);
             return $this;
         }
         $collection = Mage::getResourceModel('bs_drr/drr_collection')
-            ->addFieldToFilter('ref_no', array('like' => $this->getQuery().'%'))
+            ->addFieldToFilter('ref_no', ['like' => $this->getQuery().'%'])
             ->setCurPage($this->getStart())
             ->setPageSize($this->getLimit())
             ->load();
         foreach ($collection->getItems() as $drr) {
-            $arr[] = array(
+            $arr[] = [
                 'id'          => 'drr/1/'.$drr->getId(),
                 'type'        => Mage::helper('bs_drr')->__('Drr'),
                 'name'        => $drr->getRefNo(),
                 'description' => $drr->getRefNo(),
                 'url' => Mage::helper('adminhtml')->getUrl(
                     '*/drr_drr/edit',
-                    array('id'=>$drr->getId())
+                    ['id'=>$drr->getId()]
                 ),
-            );
+            ];
         }
         $this->setResults($arr);
         return $this;

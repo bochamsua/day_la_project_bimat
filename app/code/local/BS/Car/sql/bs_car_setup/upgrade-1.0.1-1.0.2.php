@@ -19,10 +19,10 @@ $this->getConnection()
     ->addColumn(
         $this->getTable('bs_car/car'),
         'car_no',
-        array(
+        [
             'type' => Varien_Db_Ddl_Table::TYPE_TEXT,
             'comment'   => 'car_no'
-        )
+        ]
     )
 ;
 

@@ -26,27 +26,27 @@ class BS_Cofa_Model_Cofa_Attribute_Source_Cofastatus
      */
     public function getAllOptions($withEmpty = true, $defaultValues = false)
     {
-        $options =  array(
-            array(
+        $options =  [
+            [
                 'label' => Mage::helper('bs_cofa')->__('Open'),
                 'value' => 0
-            ),
-            array(
+            ],
+            [
                 'label' => Mage::helper('bs_cofa')->__('Close'),
                 'value' => 1
-            ),
-            array(
+            ],
+            [
                 'label' => Mage::helper('bs_cofa')->__('Overdue'),
                 'value' => 2
-            ),
-	        array(
+            ],
+	        [
 		        'label' => Mage::helper('bs_cofa')->__('Late Close'),
 		        'value' => 3
-	        ),
+            ],
 
-        );
+        ];
         if ($withEmpty) {
-            array_unshift($options, array('label'=>'', 'value'=>''));
+            array_unshift($options, ['label'=>'', 'value'=>'']);
         }
         return $options;
 
@@ -62,7 +62,7 @@ class BS_Cofa_Model_Cofa_Attribute_Source_Cofastatus
      */
     public function getOptionsArray($withEmpty = true)
     {
-        $options = array();
+        $options = [];
         foreach ($this->getAllOptions($withEmpty) as $option) {
             $options[$option['value']] = $option['label'];
         }
@@ -83,7 +83,7 @@ class BS_Cofa_Model_Cofa_Attribute_Source_Cofastatus
         if (!is_array($value)) {
             $value = explode(',', $value);
         }
-        $texts = array();
+        $texts = [];
         foreach ($value as $v) {
             if (isset($options[$v])) {
                 $texts[] = $options[$v];

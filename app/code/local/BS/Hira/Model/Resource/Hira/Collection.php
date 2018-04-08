@@ -15,7 +15,7 @@
  */
 class BS_Hira_Model_Resource_Hira_Collection extends Mage_Core_Model_Resource_Db_Collection_Abstract
 {
-    protected $_joinedFields = array();
+    protected $_joinedFields = [];
 
     /**
      * constructor
@@ -40,7 +40,7 @@ class BS_Hira_Model_Resource_Hira_Collection extends Mage_Core_Model_Resource_Db
      * @return array
      * @author Bui Phong
      */
-    protected function _toOptionArray($valueField='entity_id', $labelField='ref_no', $additional=array())
+    protected function _toOptionArray($valueField='entity_id', $labelField='ref_no', $additional= [])
     {
         return parent::_toOptionArray($valueField, $labelField, $additional);
     }

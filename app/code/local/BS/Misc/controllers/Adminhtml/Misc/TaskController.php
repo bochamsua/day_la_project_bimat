@@ -151,7 +151,7 @@ class BS_Misc_Adminhtml_Misc_TaskController extends BS_Sur_Controller_Adminhtml_
                 );
                 Mage::getSingleton('adminhtml/session')->setFormData(false);
                 if ($this->getRequest()->getParam('back')) {
-                    $this->_redirect('*/*/edit', array('id' => $task->getId()));
+                    $this->_redirect('*/*/edit', ['id' => $task->getId()]);
                     return;
                 }
                 $this->_redirect('*/*/');
@@ -159,7 +159,7 @@ class BS_Misc_Adminhtml_Misc_TaskController extends BS_Sur_Controller_Adminhtml_
             } catch (Mage_Core_Exception $e) {
                 Mage::getSingleton('adminhtml/session')->addError($e->getMessage());
                 Mage::getSingleton('adminhtml/session')->setTaskData($data);
-                $this->_redirect('*/*/edit', array('id' => $this->getRequest()->getParam('id')));
+                $this->_redirect('*/*/edit', ['id' => $this->getRequest()->getParam('id')]);
                 return;
             } catch (Exception $e) {
                 Mage::logException($e);
@@ -167,7 +167,7 @@ class BS_Misc_Adminhtml_Misc_TaskController extends BS_Sur_Controller_Adminhtml_
                     Mage::helper('bs_misc')->__('There was a problem saving the task.')
                 );
                 Mage::getSingleton('adminhtml/session')->setTaskData($data);
-                $this->_redirect('*/*/edit', array('id' => $this->getRequest()->getParam('id')));
+                $this->_redirect('*/*/edit', ['id' => $this->getRequest()->getParam('id')]);
                 return;
             }
         }
@@ -197,12 +197,12 @@ class BS_Misc_Adminhtml_Misc_TaskController extends BS_Sur_Controller_Adminhtml_
                 return;
             } catch (Mage_Core_Exception $e) {
                 Mage::getSingleton('adminhtml/session')->addError($e->getMessage());
-                $this->_redirect('*/*/edit', array('id' => $this->getRequest()->getParam('id')));
+                $this->_redirect('*/*/edit', ['id' => $this->getRequest()->getParam('id')]);
             } catch (Exception $e) {
                 Mage::getSingleton('adminhtml/session')->addError(
                     Mage::helper('bs_misc')->__('There was an error deleting task.')
                 );
-                $this->_redirect('*/*/edit', array('id' => $this->getRequest()->getParam('id')));
+                $this->_redirect('*/*/edit', ['id' => $this->getRequest()->getParam('id')]);
                 Mage::logException($e);
                 return;
             }
@@ -398,7 +398,7 @@ class BS_Misc_Adminhtml_Misc_TaskController extends BS_Sur_Controller_Adminhtml_
     }
 
     public function updateTasksAction(){
-        $result = array();
+        $result = [];
         $deptId = $this->getRequest()->getPost('dept_id');
         $result['task'] = '<option value="" selected="selected">N/A</option>';
         $taskGroupId = 0;
@@ -431,7 +431,7 @@ class BS_Misc_Adminhtml_Misc_TaskController extends BS_Sur_Controller_Adminhtml_
     }
 
     public function updateSubtasksAction(){
-        $result = array();
+        $result = [];
         $taskId = $this->getRequest()->getPost('task_id', false);
         $refType = $this->getRequest()->getPost('ref_type');
         $refId = $this->getRequest()->getPost('ref_id');

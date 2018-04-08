@@ -63,28 +63,28 @@ class BS_Drr_Block_Adminhtml_Drr_Dashboard_Grid extends BS_Rewriting_Block_Admin
     {
         $this->addColumn(
             'ref_no',
-            array(
+            [
                 'header'    => Mage::helper('bs_drr')->__('Reference No'),
                 'align'     => 'left',
                 'index'     => 'ref_no',
-            )
+            ]
         );
 
 
 
         $this->addColumn(
             'report_date',
-            array(
+            [
                 'header' => Mage::helper('bs_drr')->__('Report Date'),
                 'index'  => 'report_date',
                 'type'=> 'date',
 
-            )
+            ]
         );
 
         $this->addColumn(
             'drr_status',
-            array(
+            [
                 'header' => Mage::helper('bs_drr')->__('Status'),
                 'index'  => 'drr_status',
                 'type'  => 'options',
@@ -92,17 +92,17 @@ class BS_Drr_Block_Adminhtml_Drr_Dashboard_Grid extends BS_Rewriting_Block_Admin
                     Mage::getModel('bs_drr/drr_attribute_source_drrstatus')->getAllOptions(false)
                 )
 
-            )
+            ]
         );
 
         $this->addColumn(
             'due_date',
-            array(
+            [
                 'header' => Mage::helper('bs_drr')->__('Due Date'),
                 'index'  => 'due_date',
                 'type'=> 'date',
 
-            )
+            ]
         );
 
 
@@ -116,6 +116,6 @@ class BS_Drr_Block_Adminhtml_Drr_Dashboard_Grid extends BS_Rewriting_Block_Admin
 
     public function getRowUrl($row)
     {
-        return $this->getUrl('*/drr_drr/edit', array('id' => $row->getId()));
+        return $this->getUrl('*/drr_drr/edit', ['id' => $row->getId()]);
     }
 }

@@ -66,11 +66,11 @@ class BS_Qn_Block_Adminhtml_Qn_Grid extends Mage_Adminhtml_Block_Widget_Grid
         );*/
         $this->addColumn(
             'ref_no',
-            array(
+            [
                 'header'    => Mage::helper('bs_qn')->__('Reference No'),
                 'align'     => 'left',
                 'index'     => 'ref_no',
-            )
+            ]
         );
 
         /*$tasks = Mage::getResourceModel('bs_misc/task_collection');
@@ -100,54 +100,54 @@ class BS_Qn_Block_Adminhtml_Qn_Grid extends Mage_Adminhtml_Block_Widget_Grid
         );*/
 
 
-        $ins = Mage::getModel('admin/user')->getCollection()->addFieldToFilter('user_id', array('gt' => 1))->load();
-        $inspectors = array();
+        $ins = Mage::getModel('admin/user')->getCollection()->addFieldToFilter('user_id', ['gt' => 1])->load();
+        $inspectors = [];
         foreach ($ins as $in) {
 	        $inspectors[$in->getUserId()] = strtoupper($in->getUsername());
         }
         $this->addColumn(
             'ins_id',
-            array(
+            [
                 'header'    => Mage::helper('bs_misc')->__('Inspector'),
                 'index'     => 'ins_id',
                 'type'      => 'options',
                 'options'   => $inspectors,
 
-            )
+            ]
         );
 
 	    $depts = Mage::getResourceModel('bs_misc/department_collection');
 	    $depts = $depts->toOptionHash();
 	    $this->addColumn(
 		    'dept_id',
-		    array(
+		    [
 			    'header'    => Mage::helper('bs_misc')->__('Sent To'),
 			    'index'     => 'dept_id',
 			    'type'      => 'options',
 			    'options'   => $depts,
 
-		    )
+            ]
 	    );
 
 	    $this->addColumn(
 		    'dept_id_cc',
-		    array(
+		    [
 			    'header'    => Mage::helper('bs_misc')->__('CC'),
 			    'index'     => 'dept_id_cc',
 			    'type'      => 'options',
 			    'options'   => $depts,
 
-		    )
+            ]
 	    );
 
         $this->addColumn(
             'report_date',
-            array(
+            [
                 'header' => Mage::helper('bs_qn')->__('Report Date'),
                 'index'  => 'report_date',
                 'type'=> 'date',
 
-            )
+            ]
         );
         /*$this->addColumn(
             'ref_doc',
@@ -195,18 +195,18 @@ class BS_Qn_Block_Adminhtml_Qn_Grid extends Mage_Adminhtml_Block_Widget_Grid
 
         $this->addColumn(
             'approval_id',
-            array(
+            [
                 'header' => Mage::helper('bs_qn')->__('Approved By'),
                 'index'  => 'approval_id',
                 'type'=> 'number',
                 'type'      => 'options',
                 'options'   => $inspectors,
 
-            )
+            ]
         );
         $this->addColumn(
             'qn_status',
-            array(
+            [
                 'header' => Mage::helper('bs_qn')->__('Status'),
                 'index'  => 'qn_status',
                 'type'  => 'options',
@@ -214,26 +214,26 @@ class BS_Qn_Block_Adminhtml_Qn_Grid extends Mage_Adminhtml_Block_Widget_Grid
                     Mage::getModel('bs_qn/qn_attribute_source_qnstatus')->getAllOptions(false)
                 )
 
-            )
+            ]
         );
         $this->addColumn(
             'close_date',
-            array(
+            [
                 'header' => Mage::helper('bs_qn')->__('Close Date'),
                 'index'  => 'close_date',
                 'type'=> 'date',
 
-            )
+            ]
         );
 
         $this->addColumn(
             'reject_reason',
-            array(
+            [
                 'header' => Mage::helper('bs_qn')->__('Reject Reason'),
                 'index'  => 'reject_reason',
                 'type'=> 'text',
 
-            )
+            ]
         );
         /*$this->addColumn(
             'taskgroup_id',
@@ -334,10 +334,10 @@ class BS_Qn_Block_Adminhtml_Qn_Grid extends Mage_Adminhtml_Block_Widget_Grid
         $this->setMassactionIdField('entity_id');
         $this->getMassactionBlock()->setFormFieldName('qn');
 
-        $this->getMassactionBlock()->addItem('separator', array(
+        $this->getMassactionBlock()->addItem('separator', [
             'label'=> '---Select---',
             'url'  => ''
-        ));
+        ]);
         return $this;
     }
 
@@ -351,7 +351,7 @@ class BS_Qn_Block_Adminhtml_Qn_Grid extends Mage_Adminhtml_Block_Widget_Grid
      */
     public function getRowUrl($row)
     {
-        return $this->getUrl('*/*/edit', array('id' => $row->getId()));
+        return $this->getUrl('*/*/edit', ['id' => $row->getId()]);
     }
 
     /**
@@ -363,7 +363,7 @@ class BS_Qn_Block_Adminhtml_Qn_Grid extends Mage_Adminhtml_Block_Widget_Grid
      */
     public function getGridUrl()
     {
-        return $this->getUrl('*/*/grid', array('_current'=>true));
+        return $this->getUrl('*/*/grid', ['_current'=>true]);
     }
 
     /**

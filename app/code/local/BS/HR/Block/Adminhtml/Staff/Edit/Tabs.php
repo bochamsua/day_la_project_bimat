@@ -40,14 +40,14 @@ class BS_HR_Block_Adminhtml_Staff_Edit_Tabs extends Mage_Adminhtml_Block_Widget_
     {
         $this->addTab(
             'form_staff',
-            array(
+            [
                 'label'   => Mage::helper('bs_hr')->__('Staff'),
                 'title'   => Mage::helper('bs_hr')->__('Staff'),
                 'content' => $this->getLayout()->createBlock(
                     'bs_hr/adminhtml_staff_edit_tab_form'
                 )
                 ->toHtml(),
-            )
+            ]
         );
         return parent::_beforeToHtml();
     }

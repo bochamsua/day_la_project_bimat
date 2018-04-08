@@ -26,30 +26,30 @@ class BS_Hira_Model_Hira_Attribute_Source_Probabilityafter
      */
     public function getAllOptions($withEmpty = true, $defaultValues = false)
     {
-        $options =  array(
-            array(
+        $options =  [
+            [
                 'label' => Mage::helper('bs_hira')->__('1'),
                 'value' => 1
-            ),
-            array(
+            ],
+            [
                 'label' => Mage::helper('bs_hira')->__('2'),
                 'value' => 2
-            ),
-            array(
+            ],
+            [
                 'label' => Mage::helper('bs_hira')->__('3'),
                 'value' => 3
-            ),
-            array(
+            ],
+            [
                 'label' => Mage::helper('bs_hira')->__('4'),
                 'value' => 4
-            ),
-            array(
+            ],
+            [
                 'label' => Mage::helper('bs_hira')->__('5'),
                 'value' => 5
-            ),
-        );
+            ],
+        ];
         if ($withEmpty) {
-            array_unshift($options, array('label'=>'', 'value'=>''));
+            array_unshift($options, ['label'=>'', 'value'=>'']);
         }
         return $options;
 
@@ -65,7 +65,7 @@ class BS_Hira_Model_Hira_Attribute_Source_Probabilityafter
      */
     public function getOptionsArray($withEmpty = true)
     {
-        $options = array();
+        $options = [];
         foreach ($this->getAllOptions($withEmpty) as $option) {
             $options[$option['value']] = $option['label'];
         }
@@ -86,7 +86,7 @@ class BS_Hira_Model_Hira_Attribute_Source_Probabilityafter
         if (!is_array($value)) {
             $value = explode(',', $value);
         }
-        $texts = array();
+        $texts = [];
         foreach ($value as $v) {
             if (isset($options[$v])) {
                 $texts[] = $options[$v];

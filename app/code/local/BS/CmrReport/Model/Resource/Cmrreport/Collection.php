@@ -15,7 +15,7 @@
  */
 class BS_CmrReport_Model_Resource_Cmrreport_Collection extends Mage_Core_Model_Resource_Db_Collection_Abstract
 {
-    protected $_joinedFields = array();
+    protected $_joinedFields = [];
 
     /**
      * constructor
@@ -40,7 +40,7 @@ class BS_CmrReport_Model_Resource_Cmrreport_Collection extends Mage_Core_Model_R
      * @return array
      * @author Bui Phong
      */
-    protected function _toOptionArray($valueField='entity_id', $labelField='name', $additional=array())
+    protected function _toOptionArray($valueField='entity_id', $labelField='name', $additional= [])
     {
         return parent::_toOptionArray($valueField, $labelField, $additional);
     }

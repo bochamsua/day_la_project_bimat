@@ -115,145 +115,145 @@ class BS_KPIReport_Block_Adminhtml_Kpireport_Grid extends Mage_Adminhtml_Block_W
 	    $depts = $depts->toOptionHash();
 	    $this->addColumn(
 		    'dept_id',
-		    array(
+		    [
 			    'header'    => Mage::helper('bs_kpireport')->__('Maint. Center'),
 			    'index'     => 'dept_id',
 			    'type'      => 'options',
 			    'options'   => $depts,
 
-		    )
+            ]
 	    );
 	    $this->addColumn(
 		    'month',
-		    array(
+		    [
 			    'header'    => Mage::helper('bs_kpireport')->__('Month'),
 			    'index'     => 'month',
 			    'type'      => 'options',
 			    'options'   => Mage::helper('bs_report')->getMonths(),
 
-		    )
+            ]
 	    );
 
 	    $this->addColumn(
 		    'year',
-		    array(
+		    [
 			    'header'    => Mage::helper('bs_kpireport')->__('Year'),
 			    'index'     => 'year',
 			    'type'      => 'options',
 			    'options'   => Mage::helper('bs_report')->getYears(),
 
-		    )
+            ]
 	    );
 
 
 
         $this->addColumn(
             'qsr',
-            array(
+            [
                 'header' => Mage::helper('bs_kpireport')->__('QSR'),
                 'index'  => 'qsr',
                 'type'=> 'text',
 
-            )
+            ]
         );
         $this->addColumn(
             'ncr',
-            array(
+            [
                 'header' => Mage::helper('bs_kpireport')->__('NCR'),
                 'index'  => 'ncr',
                 'type'=> 'text',
 
-            )
+            ]
         );
         $this->addColumn(
             'mncr',
-            array(
+            [
                 'header' => Mage::helper('bs_kpireport')->__('MNCR'),
                 'index'  => 'mncr',
                 'type'=> 'text',
 
-            )
+            ]
         );
         $this->addColumn(
             'mer',
-            array(
+            [
                 'header' => Mage::helper('bs_kpireport')->__('MER'),
                 'index'  => 'mer',
                 'type'=> 'text',
 
-            )
+            ]
         );
         $this->addColumn(
             'ser',
-            array(
+            [
                 'header' => Mage::helper('bs_kpireport')->__('SER'),
                 'index'  => 'ser',
                 'type'=> 'text',
 
-            )
+            ]
         );
         $this->addColumn(
             'rer',
-            array(
+            [
                 'header' => Mage::helper('bs_kpireport')->__('RER'),
                 'index'  => 'rer',
                 'type'=> 'text',
 
-            )
+            ]
         );
         $this->addColumn(
             'camt',
-            array(
+            [
                 'header' => Mage::helper('bs_kpireport')->__('CAMT'),
                 'index'  => 'camt',
                 'type'=> 'text',
 
-            )
+            ]
         );
         $this->addColumn(
             'sdr',
-            array(
+            [
                 'header' => Mage::helper('bs_kpireport')->__('SDR'),
                 'index'  => 'sdr',
                 'type'=> 'text',
 
-            )
+            ]
         );
         $this->addColumn(
             'csr',
-            array(
+            [
                 'header' => Mage::helper('bs_kpireport')->__('CSR'),
                 'index'  => 'csr',
                 'type'=> 'text',
 
-            )
+            ]
         );
         $this->addColumn(
             'cir',
-            array(
+            [
                 'header' => Mage::helper('bs_kpireport')->__('CIR'),
                 'index'  => 'cir',
                 'type'=> 'text',
 
-            )
+            ]
         );
         $this->addColumn(
             'mir',
-            array(
+            [
                 'header' => Mage::helper('bs_kpireport')->__('MIR'),
                 'index'  => 'mir',
                 'type'=> 'text',
 
-            )
+            ]
         );
         $this->addColumn(
             'ppe',
-            array(
+            [
                 'header' => Mage::helper('bs_kpireport')->__('PPE'),
                 'index'  => 'ppe',
                 'type'=> 'text',
 
-            )
+            ]
         );
         /*$this->addColumn(
             'status',
@@ -340,8 +340,8 @@ class BS_KPIReport_Block_Adminhtml_Kpireport_Grid extends Mage_Adminhtml_Block_W
             if(count($requestData)){
 
 
-                $chartData = array(
-                    "chart" => array(
+                $chartData = [
+                    "chart" => [
                         "caption" => "KPI Report",
                         //"subCaption" => $month .'-'.$year,
                         "yAxisName" => "Level",
@@ -364,8 +364,8 @@ class BS_KPIReport_Block_Adminhtml_Kpireport_Grid extends Mage_Adminhtml_Block_W
                         "exportEnabled" => 1,
                         "exportAtClientSide" => 1,
                         "exportFileName" => "QC HAN Efficieny Report"
-                    )
-                );
+                    ]
+                ];
 
 
                 /*$collection = Mage::getModel('bs_report/qchaneff')
@@ -440,11 +440,11 @@ class BS_KPIReport_Block_Adminhtml_Kpireport_Grid extends Mage_Adminhtml_Block_W
         if($isAllowedDelete){
             $this->getMassactionBlock()->addItem(
                 'delete',
-                array(
+                [
                     'label'=> Mage::helper('bs_kpireport')->__('Delete'),
                     'url'  => $this->getUrl('*/*/massDelete'),
                     'confirm'  => Mage::helper('bs_kpireport')->__('Are you sure?')
-                )
+                ]
             );
         }
 
@@ -453,22 +453,22 @@ class BS_KPIReport_Block_Adminhtml_Kpireport_Grid extends Mage_Adminhtml_Block_W
         if($isAllowedEdit){
             $this->getMassactionBlock()->addItem(
                 'status',
-                array(
+                [
                     'label'      => Mage::helper('bs_kpireport')->__('Change status'),
-                    'url'        => $this->getUrl('*/*/massStatus', array('_current'=>true)),
-                    'additional' => array(
-                        'status' => array(
+                    'url'        => $this->getUrl('*/*/massStatus', ['_current'=>true]),
+                    'additional' => [
+                        'status' => [
                             'name'   => 'status',
                             'type'   => 'select',
                             'class'  => 'required-entry',
                             'label'  => Mage::helper('bs_kpireport')->__('Status'),
-                            'values' => array(
+                            'values' => [
                                 '1' => Mage::helper('bs_kpireport')->__('Enabled'),
                                 '0' => Mage::helper('bs_kpireport')->__('Disabled'),
-                            )
-                        )
-                    )
-                )
+                            ]
+                        ]
+                    ]
+                ]
             );
 
 
@@ -500,7 +500,7 @@ class BS_KPIReport_Block_Adminhtml_Kpireport_Grid extends Mage_Adminhtml_Block_W
      */
     public function getGridUrl()
     {
-        return $this->getUrl('*/*/grid', array('_current'=>true));
+        return $this->getUrl('*/*/grid', ['_current'=>true]);
     }
 
     /**

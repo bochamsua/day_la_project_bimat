@@ -25,7 +25,7 @@ class BS_Report_Helper_Data extends Mage_Core_Helper_Abstract
      */
     public function convertOptions($options)
     {
-        $converted = array();
+        $converted = [];
         foreach ($options as $option) {
             if (isset($option['value']) && !is_array($option['value']) &&
                 isset($option['label']) && !is_array($option['label'])) {
@@ -313,7 +313,7 @@ class BS_Report_Helper_Data extends Mage_Core_Helper_Abstract
 	    $d1 = ($irPoints + $ncrPoints + $drrPoints + $qrPoints + $qcWorkPoints)/$workdays;
 	    $d1 = round($d1, 2);
 
-	    return array(
+	    return [
 	    	'ins_id'    => $insId,
 	    	'ir'       => $irPoints,
 		    'ncr'       => $ncrPoints,
@@ -321,7 +321,7 @@ class BS_Report_Helper_Data extends Mage_Core_Helper_Abstract
 		    'qr'        => $qrPoints,
 		    'qcwork'    => $qcWorkPoints,
 		    'd1'        => $d1
-	    );
+        ];
     }
 
 	public function getDaysInMonth($month, $year)
@@ -331,7 +331,7 @@ class BS_Report_Helper_Data extends Mage_Core_Helper_Abstract
 	}
 
 	public function getMonths($toArray = false) {
-		$months = array();
+		$months = [];
 
 		for($i=1; $i <= 12; $i++){
 			$label = $i;
@@ -339,10 +339,10 @@ class BS_Report_Helper_Data extends Mage_Core_Helper_Abstract
 				$label = '0'.$label;
 			}
 			if($toArray){
-				$months[] = array(
+				$months[] = [
 					'label' => $label,
 					'value' => $i
-				);
+                ];
 			}else {
 				$months[$i] = $label;
 			}
@@ -353,13 +353,13 @@ class BS_Report_Helper_Data extends Mage_Core_Helper_Abstract
 	}
 
 	public function getYears($hash = false){
-		$years = array();
+		$years = [];
 		for($i=2016; $i < 2050; $i++){
 			if($hash){
-				$years[] = array(
+				$years[] = [
 					'label' => $i,
 					'value' => $i
-				);
+                ];
 			}else {
 				$years[$i] = $i;
 			}
@@ -448,8 +448,8 @@ class BS_Report_Helper_Data extends Mage_Core_Helper_Abstract
 
 	public function getRoutinePoints($insId, $fromDate, $toDate){
 		$model = Mage::getModel('bs_sur/sur')->getCollection();
-		$model->addFieldToFilter('report_date', array('from' => $fromDate));
-		$model->addFieldToFilter('report_date', array('to' => $toDate));
+		$model->addFieldToFilter('report_date', ['from' => $fromDate]);
+		$model->addFieldToFilter('report_date', ['to' => $toDate]);
 		$model->addFieldToFilter('ins_id', $insId);
 
 		$points = 0;
@@ -467,8 +467,8 @@ class BS_Report_Helper_Data extends Mage_Core_Helper_Abstract
 
 	public function getProductPoints($modelName, $insId, $fromDate, $toDate, $exclude = [], $dateCode = 'report_date', $groupBy = ''){
 		$model = Mage::getModel('bs_'.$modelName.'/'.$modelName)->getCollection();
-		$model->addFieldToFilter($dateCode, array('from' => $fromDate));
-		$model->addFieldToFilter($dateCode, array('to' => $toDate));
+		$model->addFieldToFilter($dateCode, ['from' => $fromDate]);
+		$model->addFieldToFilter($dateCode, ['to' => $toDate]);
 		$model->addFieldToFilter('ins_id', $insId);
 
 		//dont count cmr
@@ -527,8 +527,8 @@ class BS_Report_Helper_Data extends Mage_Core_Helper_Abstract
 
 	public function getOtherPoints($insId, $fromDate, $toDate){
 		$model = Mage::getModel('bs_other/other')->getCollection();
-		$model->addFieldToFilter('report_date', array('from' => $fromDate));
-		$model->addFieldToFilter('report_date', array('to' => $toDate));
+		$model->addFieldToFilter('report_date', ['from' => $fromDate]);
+		$model->addFieldToFilter('report_date', ['to' => $toDate]);
 		$model->addFieldToFilter('ins_id', $insId);
 
 
@@ -547,18 +547,18 @@ class BS_Report_Helper_Data extends Mage_Core_Helper_Abstract
 	}
 
 	public function getLevel($d){
-		$match = array(
-			array(0,1.75,1),
-			array(1.75,2,2),
-			array(2,2.25,3),
-			array(2.25,2.5,4),
-			array(2.5,2.75,5),
-			array(2.75,3,6),
-			array(3,3.5,7),
-			array(3.5,4,8),
-			array(4,4.5,9),
-			array(5,100,10),
-		);
+		$match = [
+			[0,1.75,1],
+			[1.75,2,2],
+			[2,2.25,3],
+			[2.25,2.5,4],
+			[2.5,2.75,5],
+			[2.75,3,6],
+			[3,3.5,7],
+			[3.5,4,8],
+			[4,4.5,9],
+			[5,100,10],
+        ];
 
 		foreach ( $match as $item ) {
 			if($d < $item[1] && $d >= $item[0]){

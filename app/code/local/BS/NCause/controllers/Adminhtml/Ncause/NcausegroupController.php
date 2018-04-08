@@ -131,7 +131,7 @@ class BS_NCause_Adminhtml_Ncause_NcausegroupController extends BS_Sur_Controller
                 );
                 Mage::getSingleton('adminhtml/session')->setFormData(false);
                 if ($this->getRequest()->getParam('back')) {
-                    $this->_redirect('*/*/edit', array('id' => $ncausegroup->getId()));
+                    $this->_redirect('*/*/edit', ['id' => $ncausegroup->getId()]);
                     return;
                 }
                 $this->_redirect('*/*/');
@@ -139,7 +139,7 @@ class BS_NCause_Adminhtml_Ncause_NcausegroupController extends BS_Sur_Controller
             } catch (Mage_Core_Exception $e) {
                 Mage::getSingleton('adminhtml/session')->addError($e->getMessage());
                 Mage::getSingleton('adminhtml/session')->setNcausegroupData($data);
-                $this->_redirect('*/*/edit', array('id' => $this->getRequest()->getParam('id')));
+                $this->_redirect('*/*/edit', ['id' => $this->getRequest()->getParam('id')]);
                 return;
             } catch (Exception $e) {
                 Mage::logException($e);
@@ -147,7 +147,7 @@ class BS_NCause_Adminhtml_Ncause_NcausegroupController extends BS_Sur_Controller
                     Mage::helper('bs_ncause')->__('There was a problem saving the cause group.')
                 );
                 Mage::getSingleton('adminhtml/session')->setNcausegroupData($data);
-                $this->_redirect('*/*/edit', array('id' => $this->getRequest()->getParam('id')));
+                $this->_redirect('*/*/edit', ['id' => $this->getRequest()->getParam('id')]);
                 return;
             }
         }
@@ -177,12 +177,12 @@ class BS_NCause_Adminhtml_Ncause_NcausegroupController extends BS_Sur_Controller
                 return;
             } catch (Mage_Core_Exception $e) {
                 Mage::getSingleton('adminhtml/session')->addError($e->getMessage());
-                $this->_redirect('*/*/edit', array('id' => $this->getRequest()->getParam('id')));
+                $this->_redirect('*/*/edit', ['id' => $this->getRequest()->getParam('id')]);
             } catch (Exception $e) {
                 Mage::getSingleton('adminhtml/session')->addError(
                     Mage::helper('bs_ncause')->__('There was an error deleting cause group.')
                 );
-                $this->_redirect('*/*/edit', array('id' => $this->getRequest()->getParam('id')));
+                $this->_redirect('*/*/edit', ['id' => $this->getRequest()->getParam('id')]);
                 Mage::logException($e);
                 return;
             }
@@ -312,7 +312,7 @@ class BS_NCause_Adminhtml_Ncause_NcausegroupController extends BS_Sur_Controller
 
 
 	public function updateCausesAction(){
-		$result = array();
+		$result = [];
 		$groupId = $this->getRequest()->getPost('group_id');
 		$result['causes'] = '<option value="">There is no subtask found</option>';
 		if($groupId){

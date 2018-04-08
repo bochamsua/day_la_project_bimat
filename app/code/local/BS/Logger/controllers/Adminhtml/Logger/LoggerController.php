@@ -131,7 +131,7 @@ class BS_Logger_Adminhtml_Logger_LoggerController extends BS_Sur_Controller_Admi
                 );
                 Mage::getSingleton('adminhtml/session')->setFormData(false);
                 if ($this->getRequest()->getParam('back')) {
-                    $this->_redirect('*/*/edit', array('id' => $logger->getId()));
+                    $this->_redirect('*/*/edit', ['id' => $logger->getId()]);
                     return;
                 }
                 $this->_redirect('*/*/');
@@ -139,7 +139,7 @@ class BS_Logger_Adminhtml_Logger_LoggerController extends BS_Sur_Controller_Admi
             } catch (Mage_Core_Exception $e) {
                 Mage::getSingleton('adminhtml/session')->addError($e->getMessage());
                 Mage::getSingleton('adminhtml/session')->setLoggerData($data);
-                $this->_redirect('*/*/edit', array('id' => $this->getRequest()->getParam('id')));
+                $this->_redirect('*/*/edit', ['id' => $this->getRequest()->getParam('id')]);
                 return;
             } catch (Exception $e) {
                 Mage::logException($e);
@@ -147,7 +147,7 @@ class BS_Logger_Adminhtml_Logger_LoggerController extends BS_Sur_Controller_Admi
                     Mage::helper('bs_logger')->__('There was a problem saving the logger.')
                 );
                 Mage::getSingleton('adminhtml/session')->setLoggerData($data);
-                $this->_redirect('*/*/edit', array('id' => $this->getRequest()->getParam('id')));
+                $this->_redirect('*/*/edit', ['id' => $this->getRequest()->getParam('id')]);
                 return;
             }
         }
@@ -177,12 +177,12 @@ class BS_Logger_Adminhtml_Logger_LoggerController extends BS_Sur_Controller_Admi
                 return;
             } catch (Mage_Core_Exception $e) {
                 Mage::getSingleton('adminhtml/session')->addError($e->getMessage());
-                $this->_redirect('*/*/edit', array('id' => $this->getRequest()->getParam('id')));
+                $this->_redirect('*/*/edit', ['id' => $this->getRequest()->getParam('id')]);
             } catch (Exception $e) {
                 Mage::getSingleton('adminhtml/session')->addError(
                     Mage::helper('bs_logger')->__('There was an error deleting logger.')
                 );
-                $this->_redirect('*/*/edit', array('id' => $this->getRequest()->getParam('id')));
+                $this->_redirect('*/*/edit', ['id' => $this->getRequest()->getParam('id')]);
                 Mage::logException($e);
                 return;
             }

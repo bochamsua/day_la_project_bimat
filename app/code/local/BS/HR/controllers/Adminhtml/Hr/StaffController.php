@@ -131,7 +131,7 @@ class BS_HR_Adminhtml_Hr_StaffController extends BS_Sur_Controller_Adminhtml_Sur
                 );
                 Mage::getSingleton('adminhtml/session')->setFormData(false);
                 if ($this->getRequest()->getParam('back')) {
-                    $this->_redirect('*/*/edit', array('id' => $staff->getId()));
+                    $this->_redirect('*/*/edit', ['id' => $staff->getId()]);
                     return;
                 }
                 $this->_redirect('*/*/');
@@ -139,7 +139,7 @@ class BS_HR_Adminhtml_Hr_StaffController extends BS_Sur_Controller_Adminhtml_Sur
             } catch (Mage_Core_Exception $e) {
                 Mage::getSingleton('adminhtml/session')->addError($e->getMessage());
                 Mage::getSingleton('adminhtml/session')->setStaffData($data);
-                $this->_redirect('*/*/edit', array('id' => $this->getRequest()->getParam('id')));
+                $this->_redirect('*/*/edit', ['id' => $this->getRequest()->getParam('id')]);
                 return;
             } catch (Exception $e) {
                 Mage::logException($e);
@@ -147,7 +147,7 @@ class BS_HR_Adminhtml_Hr_StaffController extends BS_Sur_Controller_Adminhtml_Sur
                     Mage::helper('bs_hr')->__('There was a problem saving the staff.')
                 );
                 Mage::getSingleton('adminhtml/session')->setStaffData($data);
-                $this->_redirect('*/*/edit', array('id' => $this->getRequest()->getParam('id')));
+                $this->_redirect('*/*/edit', ['id' => $this->getRequest()->getParam('id')]);
                 return;
             }
         }
@@ -177,12 +177,12 @@ class BS_HR_Adminhtml_Hr_StaffController extends BS_Sur_Controller_Adminhtml_Sur
                 return;
             } catch (Mage_Core_Exception $e) {
                 Mage::getSingleton('adminhtml/session')->addError($e->getMessage());
-                $this->_redirect('*/*/edit', array('id' => $this->getRequest()->getParam('id')));
+                $this->_redirect('*/*/edit', ['id' => $this->getRequest()->getParam('id')]);
             } catch (Exception $e) {
                 Mage::getSingleton('adminhtml/session')->addError(
                     Mage::helper('bs_hr')->__('There was an error deleting staff.')
                 );
-                $this->_redirect('*/*/edit', array('id' => $this->getRequest()->getParam('id')));
+                $this->_redirect('*/*/edit', ['id' => $this->getRequest()->getParam('id')]);
                 Mage::logException($e);
                 return;
             }

@@ -43,14 +43,14 @@ class BS_Sur_Block_Adminhtml_Sur_Edit_Tabs extends Mage_Adminhtml_Block_Widget_T
 
         $this->addTab(
             'form_sur',
-            array(
+            [
                 'label' => Mage::helper('bs_sur')->__('Surveillance'),
                 'title' => Mage::helper('bs_sur')->__('Surveillance'),
                 'content' => $this->getLayout()->createBlock(
                     'bs_sur/adminhtml_sur_edit_tab_form'
                 )
                     ->toHtml(),
-            )
+            ]
         );
 
         $id = 0;
@@ -61,55 +61,55 @@ class BS_Sur_Block_Adminhtml_Sur_Edit_Tabs extends Mage_Adminhtml_Block_Widget_T
 
         $this->addTab(
             'ir',
-            array(
+            [
                 'label' => Mage::helper('bs_sur')->__('IR (%s)', $countRelations['ir']),
-                'url' => $this->getUrl('adminhtml/sur_sur/irs', array('_current' => true)),
+                'url' => $this->getUrl('adminhtml/sur_sur/irs', ['_current' => true]),
                 'class' => 'ajax',
-            )
+            ]
         );
 
         $this->addTab(
             'ncr',
-            array(
+            [
                 'label' => Mage::helper('bs_sur')->__('NCR (%s)', $countRelations['ncr']),
-                'url' => $this->getUrl('adminhtml/sur_sur/ncrs', array('_current' => true)),
+                'url' => $this->getUrl('adminhtml/sur_sur/ncrs', ['_current' => true]),
                 'class' => 'ajax',
-            )
+            ]
         );
 
         $this->addTab(
             'drr',
-            array(
+            [
                 'label' => Mage::helper('bs_sur')->__('DRR (%s)', $countRelations['drr']),
-                'url' => $this->getUrl('adminhtml/sur_sur/drrs', array('_current' => true)),
+                'url' => $this->getUrl('adminhtml/sur_sur/drrs', ['_current' => true]),
                 'class' => 'ajax',
-            )
+            ]
         );
 
         $this->addTab(
             'qr',
-            array(
+            [
                 'label' => Mage::helper('bs_sur')->__('QR (%s)', $countRelations['qr']),
-                'url' => $this->getUrl('adminhtml/sur_sur/qrs', array('_current' => true)),
+                'url' => $this->getUrl('adminhtml/sur_sur/qrs', ['_current' => true]),
                 'class' => 'ajax',
-            )
+            ]
         );
         $this->addTab(
             'qn',
-            array(
+            [
                 'label' => Mage::helper('bs_sur')->__('QN (%s)', $countRelations['qn']),
-                'url' => $this->getUrl('adminhtml/sur_sur/qns', array('_current' => true)),
+                'url' => $this->getUrl('adminhtml/sur_sur/qns', ['_current' => true]),
                 'class' => 'ajax',
-            )
+            ]
         );
 
         $this->addTab(
             'car',
-            array(
+            [
                 'label' => Mage::helper('bs_sur')->__('CAR (%s)', $countRelations['car']),
-                'url' => $this->getUrl('adminhtml/sur_sur/cars', array('_current' => true)),
+                'url' => $this->getUrl('adminhtml/sur_sur/cars', ['_current' => true]),
                 'class' => 'ajax',
-            )
+            ]
         );
         /*if ($this->getSur()->getIr()) {
 

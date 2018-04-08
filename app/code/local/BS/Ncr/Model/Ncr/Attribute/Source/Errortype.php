@@ -26,23 +26,23 @@ class BS_Ncr_Model_Ncr_Attribute_Source_Errortype
      */
     public function getAllOptions($withEmpty = true, $defaultValues = false)
     {
-        $options =  array(
-	        array(
+        $options =  [
+	        [
 		        'label' => Mage::helper('bs_ncr')->__('None'),
 		        'value' => 0
-	        ),
-            array(
+            ],
+            [
                 'label' => Mage::helper('bs_ncr')->__('Human'),
                 'value' => 1
-            ),
-            array(
+            ],
+            [
                 'label' => Mage::helper('bs_ncr')->__('System'),
                 'value' => 2
-            ),
+            ],
 
-        );
+        ];
         if ($withEmpty) {
-            array_unshift($options, array('label'=>'', 'value'=>''));
+            array_unshift($options, ['label'=>'', 'value'=>'']);
         }
         return $options;
 
@@ -58,7 +58,7 @@ class BS_Ncr_Model_Ncr_Attribute_Source_Errortype
      */
     public function getOptionsArray($withEmpty = true)
     {
-        $options = array();
+        $options = [];
         foreach ($this->getAllOptions($withEmpty) as $option) {
             $options[$option['value']] = $option['label'];
         }
@@ -79,7 +79,7 @@ class BS_Ncr_Model_Ncr_Attribute_Source_Errortype
         if (!is_array($value)) {
             $value = explode(',', $value);
         }
-        $texts = array();
+        $texts = [];
         foreach ($value as $v) {
             if (isset($options[$v])) {
                 $texts[] = $options[$v];

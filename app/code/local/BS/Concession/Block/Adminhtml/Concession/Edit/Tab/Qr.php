@@ -18,10 +18,10 @@ class BS_Concession_Block_Adminhtml_Concession_Edit_Tab_Qr extends Mage_Adminhtm
     protected function _prepareLayout(){
         $this->setChild('add_qr_button',
             $this->getLayout()->createBlock('adminhtml/widget_button')
-                ->setData(array(
+                ->setData([
                     'label'     => Mage::helper('adminhtml')->__('New QR'),
-                    'onclick'   => 'window.open(\''.$this->getUrl('*/qr_qr/new', array('_current'=>false, 'taskgroup_id'=>11, 'type'=>'co','task_id'=>0, 'ref_id'=>$this->getConcession()->getId(),'popup'=>true)).'\',\'\',\'width=1000,height=700,resizable=1,scrollbars=1\')'
-                ))
+                    'onclick'   => 'window.open(\''.$this->getUrl('*/qr_qr/new', ['_current'=>false, 'taskgroup_id'=>11, 'type'=>'co','task_id'=>0, 'ref_id'=>$this->getConcession()->getId(),'popup'=>true]).'\',\'\',\'width=1000,height=700,resizable=1,scrollbars=1\')'
+                ])
         );
 
 
@@ -79,26 +79,26 @@ class BS_Concession_Block_Adminhtml_Concession_Edit_Tab_Qr extends Mage_Adminhtm
         );*/
         $this->addColumn(
             'ref_no',
-            array(
+            [
                 'header'    => Mage::helper('bs_qr')->__('Reference No'),
                 'align'     => 'left',
                 'index'     => 'ref_no',
-            )
+            ]
         );
 
 
         $this->addColumn(
             'report_date',
-            array(
+            [
                 'header' => Mage::helper('bs_qr')->__('Report Date'),
                 'index'  => 'report_date',
                 'type'=> 'date',
 
-            )
+            ]
         );
 	    $this->addColumn(
 		    'qr_status',
-		    array(
+		    [
 			    'header' => Mage::helper('bs_qr')->__('Status'),
 			    'index'  => 'qr_status',
 			    'type'  => 'options',
@@ -106,7 +106,7 @@ class BS_Concession_Block_Adminhtml_Concession_Edit_Tab_Qr extends Mage_Adminhtm
 				    Mage::getModel('bs_qr/qr_attribute_source_qrstatus')->getAllOptions(false)
 			    )
 
-		    )
+            ]
 	    );
         $this->setFilterVisibility(false);
         $this->setPagerVisibility(false);
@@ -138,7 +138,7 @@ class BS_Concession_Block_Adminhtml_Concession_Edit_Tab_Qr extends Mage_Adminhtm
      */
     public function getRowUrl($row)
     {
-        return $this->getUrl('*/qr_qr/edit', array('id' => $row->getId()));
+        return $this->getUrl('*/qr_qr/edit', ['id' => $row->getId()]);
     }
 
     /**
@@ -150,7 +150,7 @@ class BS_Concession_Block_Adminhtml_Concession_Edit_Tab_Qr extends Mage_Adminhtm
      */
     public function getGridUrl()
     {
-        return $this->getUrl('*/*/qrsGrid', array('_current'=>true));
+        return $this->getUrl('*/*/qrsGrid', ['_current'=>true]);
     }
 
 	public function getConcession()

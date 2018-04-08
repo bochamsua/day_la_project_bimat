@@ -30,11 +30,11 @@ class BS_HR_Block_Adminhtml_Staff_Edit_Tab_Form extends Mage_Adminhtml_Block_Wid
         $this->setForm($form);
         $fieldset = $form->addFieldset(
             'staff_form',
-            array('legend' => Mage::helper('bs_hr')->__('Staff'))
+            ['legend' => Mage::helper('bs_hr')->__('Staff')]
         );
 
-	    $ins = Mage::getModel('admin/user')->getCollection()->addFieldToFilter('user_id', array('gt' => 1))->load();
-	    $inspectors = array();
+	    $ins = Mage::getModel('admin/user')->getCollection()->addFieldToFilter('user_id', ['gt' => 1])->load();
+	    $inspectors = [];
 	    foreach ($ins as $in) {
 		    $inspectors[$in->getUserId()] = $in->getFirstname().' '.$in->getLastname();
 	    }
@@ -42,34 +42,34 @@ class BS_HR_Block_Adminhtml_Staff_Edit_Tab_Form extends Mage_Adminhtml_Block_Wid
         $fieldset->addField(
             'user_id',
             'select',
-            array(
+            [
                 'label' => Mage::helper('bs_hr')->__('Admin User'),
                 'name'  => 'user_id',
 	            'values'    => $inspectors
 
-           )
+            ]
         );
 
         $fieldset->addField(
             'room',
             'select',
-            array(
+            [
                 'label' => Mage::helper('bs_hr')->__('Room'),
                 'name'  => 'room',
 
             'values'=> Mage::getModel('bs_hr/staff_attribute_source_room')->getAllOptions(true),
-           )
+            ]
         );
 
         $fieldset->addField(
             'region',
             'select',
-            array(
+            [
                 'label' => Mage::helper('bs_hr')->__('Region'),
                 'name'  => 'region',
 
             'values'=> Mage::getModel('bs_hr/staff_attribute_source_region')->getAllOptions(true),
-           )
+            ]
         );
         /*$fieldset->addField(
             'status',
@@ -91,7 +91,7 @@ class BS_HR_Block_Adminhtml_Staff_Edit_Tab_Form extends Mage_Adminhtml_Block_Wid
         );*/
         $formValues = Mage::registry('current_staff')->getDefaultValues();
         if (!is_array($formValues)) {
-            $formValues = array();
+            $formValues = [];
         }
         if (Mage::getSingleton('adminhtml/session')->getStaffData()) {
             $formValues = array_merge($formValues, Mage::getSingleton('adminhtml/session')->getStaffData());

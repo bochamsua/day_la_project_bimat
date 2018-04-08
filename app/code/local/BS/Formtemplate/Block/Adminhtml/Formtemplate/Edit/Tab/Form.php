@@ -31,7 +31,7 @@ class BS_Formtemplate_Block_Adminhtml_Formtemplate_Edit_Tab_Form extends Mage_Ad
         $this->setForm($form);
         $fieldset = $form->addFieldset(
             'formtemplate_form',
-            array('legend' => Mage::helper('bs_formtemplate')->__('Form Template'))
+            ['legend' => Mage::helper('bs_formtemplate')->__('Form Template')]
         );
         $fieldset->addType(
             'file',
@@ -41,87 +41,87 @@ class BS_Formtemplate_Block_Adminhtml_Formtemplate_Edit_Tab_Form extends Mage_Ad
         $fieldset->addField(
             'template_name',
             'text',
-            array(
+            [
                 'label' => Mage::helper('bs_formtemplate')->__('Name'),
                 'name'  => 'template_name',
 
-           )
+            ]
         );
 
         $fieldset->addField(
             'template_code',
             'text',
-            array(
+            [
                 'label' => Mage::helper('bs_formtemplate')->__('Code'),
                 'name'  => 'template_code',
 
-           )
+            ]
         );
 
         $fieldset->addField(
             'template_file',
             'file',
-            array(
+            [
                 'label' => Mage::helper('bs_formtemplate')->__('File'),
                 'name'  => 'template_file',
                 'note'  => Mage::helper('bs_misc')->__('Maximum file size allowed is 10MB'),
 
-           )
+            ]
         );
 
         $fieldset->addField(
             'template_date',
             'date',
-            array(
+            [
                 'label' => Mage::helper('bs_formtemplate')->__('Approved Date'),
                 'name'  => 'template_date',
 
             'image' => $this->getSkinUrl('images/grid-cal.gif'),
             'format'  => Mage::app()->getLocale()->getDateFormat(Mage_Core_Model_Locale::FORMAT_TYPE_SHORT),
-           )
+            ]
         );
 
         $fieldset->addField(
             'template_revision',
             'select',
-            array(
+            [
                 'label' => Mage::helper('bs_formtemplate')->__('Revision'),
                 'name'  => 'template_revision',
 
             'values'=> Mage::getModel('bs_formtemplate/formtemplate_attribute_source_templaterevision')->getAllOptions(true),
-           )
+            ]
         );
 
         $fieldset->addField(
             'template_note',
             'text',
-            array(
+            [
                 'label' => Mage::helper('bs_formtemplate')->__('Note'),
                 'name'  => 'template_note',
 
-           )
+            ]
         );
         $fieldset->addField(
             'status',
             'select',
-            array(
+            [
                 'label'  => Mage::helper('bs_formtemplate')->__('Status'),
                 'name'   => 'status',
-                'values' => array(
-                    array(
+                'values' => [
+                    [
                         'value' => 1,
                         'label' => Mage::helper('bs_formtemplate')->__('Enabled'),
-                    ),
-                    array(
+                    ],
+                    [
                         'value' => 0,
                         'label' => Mage::helper('bs_formtemplate')->__('Disabled'),
-                    ),
-                ),
-            )
+                    ],
+                ],
+            ]
         );
         $formValues = Mage::registry('current_formtemplate')->getDefaultValues();
         if (!is_array($formValues)) {
-            $formValues = array();
+            $formValues = [];
         }
         if (Mage::getSingleton('adminhtml/session')->getFormtemplateData()) {
             $formValues = array_merge($formValues, Mage::getSingleton('adminhtml/session')->getFormtemplateData());

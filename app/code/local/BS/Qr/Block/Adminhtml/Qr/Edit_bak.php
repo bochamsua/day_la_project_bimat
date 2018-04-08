@@ -50,21 +50,21 @@ class BS_Qr_Block_Adminhtml_Qr_Edit extends Mage_Adminhtml_Block_Widget_Form_Con
 
 		    $this->_addButton(
 			    '2059',
-			    array(
+			    [
 				    'label'   => Mage::helper('bs_qr')->__('Print'),
-				    'onclick'   => "setLocation('{$this->getUrl('*/*/generateQr', array('_current'=>true))}')",
+				    'onclick'   => "setLocation('{$this->getUrl('*/*/generateQr', ['_current'=>true])}')",
 				    'class'   => 'reset',
-			    )
+                ]
 		    );
 
 		    if($currentObj->getQrStatus() == 0 && $misc->isOwner($currentObj)){
 			    $this->_addButton(
 				    'submitted',
-				    array(
+				    [
 					    'label'   => Mage::helper('bs_qr')->__('Submit'),
 					    'onclick'   => "submitQr()",
 					    'class'   => 'save submit',
-				    ),1,888
+                    ],1,888
 			    );
 		    }
 
@@ -72,20 +72,20 @@ class BS_Qr_Block_Adminhtml_Qr_Edit extends Mage_Adminhtml_Block_Widget_Form_Con
 
 			    $this->_addButton(
 				    'reject',
-				    array(
+				    [
 					    'label'   => Mage::helper('bs_qr')->__('Reject'),
 					    'onclick'   => "rejectQr()",
 					    'class'   => 'save',
-				    )
+                    ]
 			    );
 
 			    $this->_addButton(
 				    'accept',
-				    array(
+				    [
 					    'label'   => Mage::helper('bs_qr')->__('Accept'),
 					    'onclick'   => "acceptQr()",
 					    'class'   => 'save',
-				    )
+                    ]
 			    );
 
 
@@ -102,11 +102,11 @@ class BS_Qr_Block_Adminhtml_Qr_Edit extends Mage_Adminhtml_Block_Widget_Form_Con
 			    //if($dueDate >= $currentDate){
 			    $this->_addButton(
 				    'close',
-				    array(
+				    [
 					    'label'   => Mage::helper('adminhtml')->__('Close'),
 					    'onclick'   => "closeQr()",
 					    'class'   => 'save closes',
-				    )
+                    ]
 			    );
 			    //}
 
@@ -133,11 +133,11 @@ class BS_Qr_Block_Adminhtml_Qr_Edit extends Mage_Adminhtml_Block_Widget_Form_Con
 		    //$this->_removeButton('save');
 		    $this->_addButton(
 			    'accept1',
-			    array(
+			    [
 				    'label'   => Mage::helper('bs_qr')->__('Accept'),
 				    'onclick'   => "acceptQr()",
 				    'class'   => 'save',
-			    )
+                ]
 		    );
 
 		    if($currentObj->getQrStatus() == 2){
@@ -161,11 +161,11 @@ class BS_Qr_Block_Adminhtml_Qr_Edit extends Mage_Adminhtml_Block_Widget_Form_Con
 
 			    $this->_addButton(
 				    'submitted_already',
-				    array(
+				    [
 					    'label'   => Mage::helper('bs_qr')->__('QR was submitted. You CANNOT edit.'),
 					    'onclick' => 'history.back()',
 					    'class'   => 'back',
-				    ),
+                    ],
 				    -1
 			    );
 		    }
@@ -181,18 +181,18 @@ class BS_Qr_Block_Adminhtml_Qr_Edit extends Mage_Adminhtml_Block_Widget_Form_Con
             $this->_removeButton('back');
             $this->_addButton(
                 'closewindow',
-                array(
+                [
                     'label'   => Mage::helper('bs_qr')->__('Close'),
                     'onclick' => 'window.close()',
                     'class'   => 'back',
-                ),
+                ],
                 -1
             );
         }
         $this->_formScripts[] = "
 
             function deleteOnly() {
-                deleteConfirm('". Mage::helper('adminhtml')->__('Are you sure you want to do this?')."','".$this->getUrl('*/*/delete', array($this->_objectId => $this->getRequest()->getParam($this->_objectId), 'popup'=>1)) . "');
+                deleteConfirm('". Mage::helper('adminhtml')->__('Are you sure you want to do this?')."','".$this->getUrl('*/*/delete', [$this->_objectId => $this->getRequest()->getParam($this->_objectId), 'popup'=>1]) . "');
             }
             function saveOnly() {
                 editForm.submit($('edit_form').action+'".$add."');
@@ -290,11 +290,11 @@ class BS_Qr_Block_Adminhtml_Qr_Edit extends Mage_Adminhtml_Block_Widget_Form_Con
 
 		    $this->_addButton(
 			    'save1',
-			    array(
+			    [
 				    'label'   => Mage::helper('bs_qr')->__('Save'),
 				    'onclick'   => "saveOnly()",
 				    'class'   => 'save',
-			    )
+                ]
 		    );
 	    }
     }
@@ -330,12 +330,12 @@ class BS_Qr_Block_Adminhtml_Qr_Edit extends Mage_Adminhtml_Block_Widget_Form_Con
     }
     public function getSaveAndContinueUrl()
         {
-            return $this->getUrl('*/*/save', array(
+            return $this->getUrl('*/*/save', [
                 '_current'   => true,
                 'back'       => 'edit',
                 'tab'        => '{{tab_id}}',
                 'active_tab' => null
-            ));
+            ]);
         }
     public function getSelectedTabId()
         {

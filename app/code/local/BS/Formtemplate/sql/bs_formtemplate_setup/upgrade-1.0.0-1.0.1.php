@@ -19,8 +19,8 @@ if ($installer->tableExists($installer->getTable('bs_formtemplate/formtemplate')
     $installer->getConnection()
         ->addIndex(
             $installer->getTable('bs_formtemplate/formtemplate'),
-            $installer->getIdxName('bs_formtemplate/formtemplate', array('template_code'), Varien_Db_Adapter_Interface::INDEX_TYPE_UNIQUE),
-            array('template_code'),
+            $installer->getIdxName('bs_formtemplate/formtemplate', ['template_code'], Varien_Db_Adapter_Interface::INDEX_TYPE_UNIQUE),
+            ['template_code'],
             Varien_Db_Adapter_Interface::INDEX_TYPE_UNIQUE
         );
 }

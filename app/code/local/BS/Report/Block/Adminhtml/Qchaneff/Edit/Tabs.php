@@ -40,14 +40,14 @@ class BS_Report_Block_Adminhtml_Qchaneff_Edit_Tabs extends Mage_Adminhtml_Block_
     {
         $this->addTab(
             'form_qchaneff',
-            array(
+            [
                 'label'   => Mage::helper('bs_report')->__('QC HAN Evaluation'),
                 'title'   => Mage::helper('bs_report')->__('QC HAN Evaluation'),
                 'content' => $this->getLayout()->createBlock(
                     'bs_report/adminhtml_qchaneff_edit_tab_form'
                 )
                 ->toHtml(),
-            )
+            ]
         );
         return parent::_beforeToHtml();
     }

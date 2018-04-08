@@ -30,7 +30,7 @@ class BS_Hira_Block_Adminhtml_Hira_Edit_Tab_Form extends Mage_Adminhtml_Block_Wi
         $this->setForm($form);
         $fieldset = $form->addFieldset(
             'hira_form',
-            array('legend' => Mage::helper('bs_hira')->__('HIRA'))
+            ['legend' => Mage::helper('bs_hira')->__('HIRA')]
         );
 
         $fieldset->addType(
@@ -49,12 +49,12 @@ class BS_Hira_Block_Adminhtml_Hira_Edit_Tab_Form extends Mage_Adminhtml_Block_Wi
         $fieldset->addField(
             'generic_hazzard',
             'textarea',
-            array(
+            [
                 'label' => Mage::helper('bs_hira')->__('Generic Hazzard'),
                 'name'  => 'generic_hazzard',
                 'disabled'  => $disabled
 
-           )
+            ]
         );
 
 
@@ -73,33 +73,33 @@ class BS_Hira_Block_Adminhtml_Hira_Edit_Tab_Form extends Mage_Adminhtml_Block_Wi
         $fieldset->addField(
             'hira_source',
             'file',
-            array(
+            [
                 'label' => Mage::helper('bs_hira')->__('Source'),
                 'name'  => 'hira_source',
 
-            )
+            ]
         );
 
         $fieldset->addField(
             'specify_component',
             'textarea',
-            array(
+            [
                 'label' => Mage::helper('bs_hira')->__('Specify component of hazzard'),
                 'name'  => 'specify_component',
                 'disabled'  => $disabled
 
-           )
+            ]
         );
 
         $fieldset->addField(
             'associated_risk',
             'textarea',
-            array(
+            [
                 'label' => Mage::helper('bs_hira')->__('Associated risk of hazzard'),
                 'name'  => 'associated_risk',
                 'disabled'  => $disabled
 
-           )
+            ]
         );
 
         /*$fieldset->addField(
@@ -116,78 +116,78 @@ class BS_Hira_Block_Adminhtml_Hira_Edit_Tab_Form extends Mage_Adminhtml_Block_Wi
         $fieldset->addField(
             'probability',
             'select',
-            array(
+            [
                 'label' => Mage::helper('bs_hira')->__('Probability of occurrent'),
                 'name'  => 'probability',
                 'disabled'  => $disabled,
 
                 'values'=> Mage::getModel('bs_hira/hira_attribute_source_probability')->getAllOptions(true),
-           )
+            ]
         );
 
         $fieldset->addField(
             'severity',
             'select',
-            array(
+            [
                 'label' => Mage::helper('bs_hira')->__('Severity of occurrent'),
                 'name'  => 'severity',
 
                 'values'=> Mage::getModel('bs_hira/hira_attribute_source_severity')->getAllOptions(true),
                 'disabled'  => $disabled
-           )
+            ]
         );
 
         if(in_array($currentObj->getHiraStatus(), [1,2])){
             $fieldset->addField(
                 'mitigation',
                 'textarea',
-                array(
+                [
                     'label' => Mage::helper('bs_hira')->__('Mitigation'),
                     'name'  => 'mitigation',
 
-                )
+                ]
             );
 
             $fieldset->addField(
                 'hira_code',
                 'textarea',
-                array(
+                [
                     'label' => Mage::helper('bs_hira')->__('HIRA Code'),
                     'name'  => 'hira_code',
 
-                )
+                ]
             );
 
             $fieldset->addField(
                 'probability_after',
                 'select',
-                array(
+                [
                     'label' => Mage::helper('bs_hira')->__('Probability after mitigation'),
                     'name'  => 'probability_after',
 
                     'values'=> Mage::getModel('bs_hira/hira_attribute_source_probabilityafter')->getAllOptions(true),
-                )
+                ]
             );
 
             $fieldset->addField(
                 'severity_after',
                 'select',
-                array(
+                [
                     'label' => Mage::helper('bs_hira')->__('Severity after mitigation'),
                     'name'  => 'severity_after',
 
                     'values'=> Mage::getModel('bs_hira/hira_attribute_source_severityafter')->getAllOptions(true),
-                )
+                ]
             );
 
             $fieldset->addField(
                 'follow_up',
                 'textarea',
-                array(
+                [
                     'label' => Mage::helper('bs_hira')->__('Follow up'),
                     'name'  => 'follow_up',
 
-                )
+                ]
             );
         }
 
@@ -346,7 +346,7 @@ class BS_Hira_Block_Adminhtml_Hira_Edit_Tab_Form extends Mage_Adminhtml_Block_Wi
         );*/
         $formValues = Mage::registry('current_hira')->getDefaultValues();
         if (!is_array($formValues)) {
-            $formValues = array();
+            $formValues = [];
         }
         if (Mage::getSingleton('adminhtml/session')->getHiraData()) {
             $formValues = array_merge($formValues, Mage::getSingleton('adminhtml/session')->getHiraData());

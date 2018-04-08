@@ -31,7 +31,7 @@ class BS_Other_Block_Adminhtml_Other_Edit_Tab_Form extends Mage_Adminhtml_Block_
         $this->setForm($form);
         $fieldset = $form->addFieldset(
             'other_form',
-            array('legend' => Mage::helper('bs_other')->__('Other Work'))
+            ['legend' => Mage::helper('bs_other')->__('Other Work')]
         );
 
         /*$fieldset->addField(
@@ -45,102 +45,102 @@ class BS_Other_Block_Adminhtml_Other_Edit_Tab_Form extends Mage_Adminhtml_Block_
         );*/
 
 	    $tasks = Mage::getResourceModel('bs_misc/task_collection');
-	    $tasks->addFieldToFilter('taskgroup_id', array(
-		    'in' => array(4,5,10)
-	    ));
+	    $tasks->addFieldToFilter('taskgroup_id', [
+		    'in' => [4,5,10]
+        ]);
 	    $tasks = $tasks->toOptionArray();
 
 
 	    $fieldset->addField(
 		    'task_id',
 		    'select',
-		    array(
+		    [
 			    'label' => Mage::helper('bs_other')->__('Survey Code'),
 			    'name'  => 'task_id',
 			    'values'=> $tasks,
-		    )
+            ]
 	    );
 
         $fieldset->addField(
             'report_date',
             'date',
-            array(
+            [
                 'label' => Mage::helper('bs_other')->__('Date of Repot'),
                 'name'  => 'report_date',
 
             'image' => $this->getSkinUrl('images/grid-cal.gif'),
             'format'  => Mage::app()->getLocale()->getDateFormat(Mage_Core_Model_Locale::FORMAT_TYPE_SHORT),
-           )
+            ]
         );
 
         $fieldset->addField(
             'description',
             'textarea',
-            array(
+            [
                 'label' => Mage::helper('bs_other')->__('Description'),
                 'name'  => 'description',
                 'config' => $wysiwygConfig,
 
-           )
+            ]
         );
 
 	    $customers = Mage::getResourceModel('bs_acreg/customer_collection');
 	    $customers = $customers->toOptionArray();
 		array_unshift($customers, ['value' => 0, 'label' => 'N/A']);
-	    array_unshift($customers, array('value' => 0, 'label' => 'N/A'));
+	    array_unshift($customers, ['value' => 0, 'label' => 'N/A']);
 	    $fieldset->addField(
 		    'customer',
 		    'select',
-		    array(
+		    [
 			    'label'     => Mage::helper('bs_ncr')->__('Customer'),
 			    'name'      => 'customer',
 			    'required'  => false,
 			    'values'    => $customers,
-		    )
+            ]
 	    );
 
 	    $acTypes = Mage::getResourceModel('bs_misc/aircraft_collection');
 	    $acTypes = $acTypes->toOptionArray();
-	    array_unshift($acTypes, array('value' => 0, 'label' => 'N/A'));
+	    array_unshift($acTypes, ['value' => 0, 'label' => 'N/A']);
 	    $fieldset->addField(
 		    'ac_type',
 		    'select',
-		    array(
+		    [
 			    'label'     => Mage::helper('bs_ncr')->__('A/C Type'),
 			    'name'      => 'ac_type',
 			    'required'  => false,
 			    'values'    => $acTypes,
-		    )
+            ]
 	    );
 
 	    $acRegs = Mage::getResourceModel('bs_acreg/acreg_collection');
         $acRegs->setOrder('reg', 'ASC');
 	    $acRegs = $acRegs->toOptionArray();
-	    array_unshift($acRegs, array('value' => 0, 'label' => 'N/A'));
+	    array_unshift($acRegs, ['value' => 0, 'label' => 'N/A']);
 	    $fieldset->addField(
 		    'ac_reg',
 		    'select',
-		    array(
+		    [
 			    'label'     => Mage::helper('bs_ncr')->__('A/C Reg'),
 			    'name'      => 'ac_reg',
 			    'required'  => false,
 			    'values'    => $acRegs,
-		    )
+            ]
 	    );
 
 	    $locs = Mage::getResourceModel('bs_misc/location_collection');
 	    $locs = $locs->toOptionArray();
 		array_unshift($locs, ['value' => 0, 'label' => 'N/A']);
-	    array_unshift($locs, array('value' => 0, 'label' => 'N/A'));
+	    array_unshift($locs, ['value' => 0, 'label' => 'N/A']);
 	    $fieldset->addField(
 		    'loc_id',
 		    'select',
-		    array(
+		    [
 			    'label'     => Mage::helper('bs_misc')->__('Location'),
 			    'name'      => 'loc_id',
 			    'required'  => false,
 			    'values'    => $locs,
-		    )
+            ]
 	    );
         /*$fieldset->addField(
             'status',
@@ -162,7 +162,7 @@ class BS_Other_Block_Adminhtml_Other_Edit_Tab_Form extends Mage_Adminhtml_Block_
         );*/
         $formValues = Mage::registry('current_other')->getDefaultValues();
         if (!is_array($formValues)) {
-            $formValues = array();
+            $formValues = [];
         }
         if (Mage::getSingleton('adminhtml/session')->getOtherData()) {
             $formValues = array_merge($formValues, Mage::getSingleton('adminhtml/session')->getOtherData());

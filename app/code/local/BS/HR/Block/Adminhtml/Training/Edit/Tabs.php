@@ -40,14 +40,14 @@ class BS_HR_Block_Adminhtml_Training_Edit_Tabs extends Mage_Adminhtml_Block_Widg
     {
         $this->addTab(
             'form_training',
-            array(
+            [
                 'label'   => Mage::helper('bs_hr')->__('Training'),
                 'title'   => Mage::helper('bs_hr')->__('Training'),
                 'content' => $this->getLayout()->createBlock(
                     'bs_hr/adminhtml_training_edit_tab_form'
                 )
                 ->toHtml(),
-            )
+            ]
         );
         return parent::_beforeToHtml();
     }

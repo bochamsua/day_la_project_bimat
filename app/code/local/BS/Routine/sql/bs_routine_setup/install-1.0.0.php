@@ -20,39 +20,39 @@ $table = $this->getConnection()
         'entity_id',
         Varien_Db_Ddl_Table::TYPE_INTEGER,
         null,
-        array(
+        [
             'identity'  => true,
             'nullable'  => false,
             'primary'   => true,
-        ),
+        ],
         'Routine Report ID'
     )
     ->addColumn(
         'name',
         Varien_Db_Ddl_Table::TYPE_TEXT, 255,
-        array(
+        [
             'nullable'  => false,
-        ),
+        ],
         'Name'
     )
     ->addColumn(
         'status',
         Varien_Db_Ddl_Table::TYPE_SMALLINT, null,
-        array(),
+        [],
         'Enabled'
     )
     ->addColumn(
         'updated_at',
         Varien_Db_Ddl_Table::TYPE_TIMESTAMP,
         null,
-        array(),
+        [],
         'Routine Report Modification Time'
     )
     ->addColumn(
         'created_at',
         Varien_Db_Ddl_Table::TYPE_TIMESTAMP,
         null,
-        array(),
+        [],
         'Routine Report Creation Time'
     ) 
     ->setComment('Routine Report Table');

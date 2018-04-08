@@ -26,35 +26,35 @@ class BS_Qr_Model_Qr_Attribute_Source_Qrstatus
      */
     public function getAllOptions($withEmpty = true, $defaultValues = false)
     {
-        $options =  array(
-            array(
+        $options =  [
+            [
                 'label' => Mage::helper('bs_qr')->__('Draft'),
                 'value' => 0
-            ),
-            array(
+            ],
+            [
                 'label' => Mage::helper('bs_qr')->__('Processing'),
                 'value' => 1
-            ),
-            array(
+            ],
+            [
                 'label' => Mage::helper('bs_qr')->__('Published'),
                 'value' => 2
-            ),
-            array(
+            ],
+            [
                 'label' => Mage::helper('bs_qr')->__('Closed'),
                 'value' => 3
-            ),
-	        array(
+            ],
+	        [
 		        'label' => Mage::helper('bs_qr')->__('Overdued'),
 		        'value' => 4
-	        ),
-	        array(
+            ],
+	        [
 		        'label' => Mage::helper('bs_qr')->__('Late Closed'),
 		        'value' => 5
-	        ),
+            ],
 
-        );
+        ];
         if ($withEmpty) {
-            array_unshift($options, array('label'=>'', 'value'=>''));
+            array_unshift($options, ['label'=>'', 'value'=>'']);
         }
         return $options;
 
@@ -70,7 +70,7 @@ class BS_Qr_Model_Qr_Attribute_Source_Qrstatus
      */
     public function getOptionsArray($withEmpty = true)
     {
-        $options = array();
+        $options = [];
         foreach ($this->getAllOptions($withEmpty) as $option) {
             $options[$option['value']] = $option['label'];
         }
@@ -91,7 +91,7 @@ class BS_Qr_Model_Qr_Attribute_Source_Qrstatus
         if (!is_array($value)) {
             $value = explode(',', $value);
         }
-        $texts = array();
+        $texts = [];
         foreach ($value as $v) {
             if (isset($options[$v])) {
                 $texts[] = $options[$v];

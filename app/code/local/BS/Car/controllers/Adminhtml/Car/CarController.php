@@ -119,7 +119,7 @@ class BS_Car_Adminhtml_Car_CarController extends BS_Sur_Controller_Adminhtml_Sur
     {
         if ($data = $this->getRequest()->getPost('car')) {
             try {
-                $data = $this->_filterDates($data, array('report_date' ,'due_date' ,'close_date'));
+                $data = $this->_filterDates($data, ['report_date' ,'due_date' ,'close_date']);
                 $car = $this->_initCar();
 
                 $car->addData($data);
@@ -146,7 +146,7 @@ class BS_Car_Adminhtml_Car_CarController extends BS_Sur_Controller_Adminhtml_Sur
                     Mage::helper('bs_car')->__('Car was successfully saved. %s', $add)
                 );
                 Mage::getSingleton('adminhtml/session')->setFormData(false);
-	            $this->_redirect('*/*/edit', array('id' => $car->getId()));
+	            $this->_redirect('*/*/edit', ['id' => $car->getId()]);
 	            return;
             } catch (Mage_Core_Exception $e) {
                 if (isset($data['car_source']['value'])) {
@@ -157,7 +157,7 @@ class BS_Car_Adminhtml_Car_CarController extends BS_Sur_Controller_Adminhtml_Sur
                 }
                 Mage::getSingleton('adminhtml/session')->addError($e->getMessage());
                 Mage::getSingleton('adminhtml/session')->setCarData($data);
-                $this->_redirect('*/*/edit', array('id' => $this->getRequest()->getParam('id')));
+                $this->_redirect('*/*/edit', ['id' => $this->getRequest()->getParam('id')]);
                 return;
             } catch (Exception $e) {
                 Mage::logException($e);
@@ -171,7 +171,7 @@ class BS_Car_Adminhtml_Car_CarController extends BS_Sur_Controller_Adminhtml_Sur
                     Mage::helper('bs_car')->__('There was a problem saving the car.')
                 );
                 Mage::getSingleton('adminhtml/session')->setCarData($data);
-                $this->_redirect('*/*/edit', array('id' => $this->getRequest()->getParam('id')));
+                $this->_redirect('*/*/edit', ['id' => $this->getRequest()->getParam('id')]);
                 return;
             }
         }
@@ -201,12 +201,12 @@ class BS_Car_Adminhtml_Car_CarController extends BS_Sur_Controller_Adminhtml_Sur
                 return;
             } catch (Mage_Core_Exception $e) {
                 Mage::getSingleton('adminhtml/session')->addError($e->getMessage());
-                $this->_redirect('*/*/edit', array('id' => $this->getRequest()->getParam('id')));
+                $this->_redirect('*/*/edit', ['id' => $this->getRequest()->getParam('id')]);
             } catch (Exception $e) {
                 Mage::getSingleton('adminhtml/session')->addError(
                     Mage::helper('bs_car')->__('There was an error deleting car.')
                 );
-                $this->_redirect('*/*/edit', array('id' => $this->getRequest()->getParam('id')));
+                $this->_redirect('*/*/edit', ['id' => $this->getRequest()->getParam('id')]);
                 Mage::logException($e);
                 return;
             }
@@ -493,10 +493,10 @@ class BS_Car_Adminhtml_Car_CarController extends BS_Sur_Controller_Adminhtml_Sur
         }
         $this->_redirect(
             '*/car_car/edit',
-            array(
+            [
                 'id' => $this->getRequest()->getParam('id'),
                 '_current' => true
-            )
+            ]
         );
 
     }
@@ -531,7 +531,7 @@ class BS_Car_Adminhtml_Car_CarController extends BS_Sur_Controller_Adminhtml_Sur
 
         $subjectOther = '';
         $subject = $obj->getSubject();
-        $checkbox = array();
+        $checkbox = [];
         if($subject == 1){
             $checkbox['maint_error'] = 1;
         }

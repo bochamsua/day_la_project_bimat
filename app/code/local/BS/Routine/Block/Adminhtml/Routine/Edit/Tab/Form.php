@@ -30,19 +30,19 @@ class BS_Routine_Block_Adminhtml_Routine_Edit_Tab_Form extends Mage_Adminhtml_Bl
         $this->setForm($form);
         $fieldset = $form->addFieldset(
             'routine_form',
-            array('legend' => Mage::helper('bs_routine')->__('Routine Report'))
+            ['legend' => Mage::helper('bs_routine')->__('Routine Report')]
         );
 
         $fieldset->addField(
             'name',
             'text',
-            array(
+            [
                 'label' => Mage::helper('bs_routine')->__('Name'),
                 'name'  => 'name',
             'required'  => true,
             'class' => 'required-entry',
 
-           )
+            ]
         );
         /*$fieldset->addField(
             'status',
@@ -64,7 +64,7 @@ class BS_Routine_Block_Adminhtml_Routine_Edit_Tab_Form extends Mage_Adminhtml_Bl
         );*/
         $formValues = Mage::registry('current_routine')->getDefaultValues();
         if (!is_array($formValues)) {
-            $formValues = array();
+            $formValues = [];
         }
         if (Mage::getSingleton('adminhtml/session')->getRoutineData()) {
             $formValues = array_merge($formValues, Mage::getSingleton('adminhtml/session')->getRoutineData());

@@ -88,7 +88,7 @@ class BS_Ncr_Model_Ncr extends Mage_Core_Model_Abstract
      */
     public function getDefaultValues()
     {
-        $values = array();
+        $values = [];
         $values['status'] = 1;
         return $values;
     }

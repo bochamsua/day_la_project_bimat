@@ -127,7 +127,7 @@ class StyleParsersheet {
    * (Previous version $ACCEPTED_MEDIA_TYPES = $ACCEPTED_GENERIC_MEDIA_TYPES + $ACCEPTED_DEFAULT_MEDIA_TYPE)
    */
   static $ACCEPTED_DEFAULT_MEDIA_TYPE = "print";
-  static $ACCEPTED_GENERIC_MEDIA_TYPES = array("all", "static", "visual", "bitmap", "paged", "parserhtml");
+  static $ACCEPTED_GENERIC_MEDIA_TYPES = ["all", "static", "visual", "bitmap", "paged", "parserhtml"];
 
   /**
    * The class constructor.
@@ -136,8 +136,8 @@ class StyleParsersheet {
    * the current script.
    */
   function __construct() {
-    $this->_styles = array();
-    $this->_loaded_files = array();
+    $this->_styles = [];
+    $this->_loaded_files = [];
     list($this->_protocol, $this->_base_host, $this->_base_path) = explode_url_parser($_SERVER["SCRIPT_FILENAME"]);
     $this->_page_style = null;
   }
@@ -297,7 +297,7 @@ class StyleParsersheet {
     //this can lead to a too small specificity
     //see _css_selector_to_xpath
 
-    if ( !in_array($selector[0], array(" ", ">", ".", "#", "+", ":", "[")) ) {
+    if ( !in_array($selector[0], [" ", ">", ".", "#", "+", ":", "["]) ) {
     	$d++;
     }
 
@@ -321,12 +321,12 @@ class StyleParsersheet {
     $query = "//";
 
     // Will contain :before and :after if they must be created
-    $pseudo_elements = array();
+    $pseudo_elements = [];
 
     // Parse the selector
     //$s = preg_split("/([ :>.#+])/", $selector, -1, PREG_SPLIT_DELIM_CAPTURE);
 
-    $delimiters = array(" ", ">", ".", "#", "+", ":", "[");
+    $delimiters = [" ", ">", ".", "#", "+", ":", "["];
 
     // Add an implicit * at the beginning of the selector
     // if it begins with an attribute selector
@@ -476,7 +476,7 @@ class StyleParsersheet {
 
       case "[":
         // Attribute selectors.  All with an attribute matching the following token(s)
-        $attr_delimiters = array("=", "]", "~", "|", "$", "^", "*");
+        $attr_delimiters = ["=", "]", "~", "|", "$", "^", "*"];
         $tok_len = mb_strlen($tok);
         $j = 0;
 
@@ -601,7 +601,7 @@ class StyleParsersheet {
     if ( mb_strlen($query) > 2 )
       $query = rtrim($query, "/");
 
-    return array("query" => $query, "pseudo_elements" => $pseudo_elements);
+    return ["query" => $query, "pseudo_elements" => $pseudo_elements];
   }
 
   /**
@@ -627,7 +627,7 @@ class StyleParsersheet {
 
     // FIXME: this is not particularly robust...
 
-    $styles = array();
+    $styles = [];
     $xp = new DOMXPath($tree->get_dom());
 
     // Add generated content
@@ -771,11 +771,11 @@ class StyleParsersheet {
     $str = trim($str);
 
     // Destroy comments and remove HTML comments
-    $css = preg_replace(array(
+    $css = preg_replace([
       "'/\*.*?\*/'si",
       "/^<!--/",
       "/-->$/"
-    ), "", $str);
+    ], "", $str);
 
     // FIXME: handle '{' within strings, e.g. [attr="string {}"]
 
@@ -982,13 +982,13 @@ class StyleParsersheet {
 
     preg_match_all("/(url|local)\s*\([\"\']?([^\"\'\)]+)[\"\']?\)\s*(format\s*\([\"\']?([^\"\'\)]+)[\"\']?\))?/i", $descriptors->src, $src);
 
-    $sources = array();
+    $sources = [];
     foreach($src[0] as $i => $value) {
-      $sources[] = array(
+      $sources[] = [
         "local"  => strtolower($src[1][$i]) === "local",
         "uri"    => $src[2][$i],
         "format" => $src[4][$i],
-      );
+      ];
     }
 
     //@todo download font file, ttf2afm, etc
@@ -1080,8 +1080,8 @@ class StyleParsersheet {
     // Pre-process: collapse all whitespace and strip whitespace around '>',
     // '.', ':', '+', '#'
 
-    $patterns = array("/[\\s\n]+/", "/\\s+([>.:+#])\\s+/");
-    $replacements = array(" ", "\\1");
+    $patterns = ["/[\\s\n]+/", "/\\s+([>.:+#])\\s+/"];
+    $replacements = [" ", "\\1"];
     $str = preg_replace($patterns, $replacements, $str);
 
     $sections = explode("}", $str);

@@ -24,27 +24,27 @@ class BS_Formtemplate_Model_Adminhtml_Search_Formtemplate extends Varien_Object
      */
     public function load()
     {
-        $arr = array();
+        $arr = [];
         if (!$this->hasStart() || !$this->hasLimit() || !$this->hasQuery()) {
             $this->setResults($arr);
             return $this;
         }
         $collection = Mage::getResourceModel('bs_formtemplate/formtemplate_collection')
-            ->addFieldToFilter('template_name', array('like' => $this->getQuery().'%'))
+            ->addFieldToFilter('template_name', ['like' => $this->getQuery().'%'])
             ->setCurPage($this->getStart())
             ->setPageSize($this->getLimit())
             ->load();
         foreach ($collection->getItems() as $formtemplate) {
-            $arr[] = array(
+            $arr[] = [
                 'id'          => 'formtemplate/1/'.$formtemplate->getId(),
                 'type'        => Mage::helper('bs_formtemplate')->__('Form Template'),
                 'name'        => $formtemplate->getTemplateName(),
                 'description' => $formtemplate->getTemplateName(),
                 'url' => Mage::helper('adminhtml')->getUrl(
                     '*/formtemplate_formtemplate/edit',
-                    array('id'=>$formtemplate->getId())
+                    ['id'=>$formtemplate->getId()]
                 ),
-            );
+            ];
         }
         $this->setResults($arr);
         return $this;

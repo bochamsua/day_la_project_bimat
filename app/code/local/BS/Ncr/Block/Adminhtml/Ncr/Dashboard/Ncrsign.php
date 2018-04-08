@@ -47,13 +47,13 @@ class BS_Ncr_Block_Adminhtml_Ncr_Dashboard_Ncrsign extends BS_Rewriting_Block_Ad
 
         $collection = Mage::getModel('bs_ncr/ncr')
             ->getCollection()
-            ->addFieldToFilter('ncr_status', array('eq'=>1))
+            ->addFieldToFilter('ncr_status', ['eq'=>1])
             ->addFieldToFilter('region', $currentUser[2])
             ->addFieldToFilter('section', $currentUser[3])
-            ->addFieldToFilter('accept', array(
-                array('eq' => 0),
-                array('null' => true),
-            ))
+            ->addFieldToFilter('accept', [
+                ['eq' => 0],
+                ['null' => true],
+            ])
             ->setOrder('ref_no', 'DESC')
 
         ;
@@ -68,26 +68,26 @@ class BS_Ncr_Block_Adminhtml_Ncr_Dashboard_Ncrsign extends BS_Rewriting_Block_Ad
     {
         $this->addColumn(
             'ref_no',
-            array(
+            [
                 'header'    => Mage::helper('bs_ncr')->__('Reference No'),
                 'align'     => 'left',
                 'index'     => 'ref_no',
-            )
+            ]
         );
 
         $this->addColumn(
             'report_date',
-            array(
+            [
                 'header' => Mage::helper('bs_ncr')->__('Report Date'),
                 'index'  => 'report_date',
                 'type'=> 'date',
 
-            )
+            ]
         );
 
         $this->addColumn(
             'ncr_status',
-            array(
+            [
                 'header' => Mage::helper('bs_ncr')->__('Status'),
                 'index'  => 'ncr_status',
                 'type'  => 'options',
@@ -95,17 +95,17 @@ class BS_Ncr_Block_Adminhtml_Ncr_Dashboard_Ncrsign extends BS_Rewriting_Block_Ad
                     Mage::getModel('bs_ncr/ncr_attribute_source_ncrstatus')->getAllOptions(false)
                 )
 
-            )
+            ]
         );
 
         $this->addColumn(
             'due_date',
-            array(
+            [
                 'header' => Mage::helper('bs_ncr')->__('Due Date'),
                 'index'  => 'due_date',
                 'type'=> 'date',
 
-            )
+            ]
         );
 
 
@@ -119,6 +119,6 @@ class BS_Ncr_Block_Adminhtml_Ncr_Dashboard_Ncrsign extends BS_Rewriting_Block_Ad
 
     public function getRowUrl($row)
     {
-        return $this->getUrl('*/ncr_ncr/edit', array('id' => $row->getId()));
+        return $this->getUrl('*/ncr_ncr/edit', ['id' => $row->getId()]);
     }
 }

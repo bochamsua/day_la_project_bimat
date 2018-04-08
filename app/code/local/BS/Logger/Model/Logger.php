@@ -49,7 +49,7 @@ class BS_Logger_Model_Logger extends Mage_Core_Model_Abstract
         $this->_init('bs_logger/logger');
     }
 
-    public function saveLog($message, array $content = array())
+    public function saveLog($message, array $content = [])
     {
         try {
             $db =   Mage::getModel('bs_logger/logger');
@@ -107,7 +107,7 @@ class BS_Logger_Model_Logger extends Mage_Core_Model_Abstract
      */
     public function getDefaultValues()
     {
-        $values = array();
+        $values = [];
         $values['status'] = 1;
         return $values;
     }

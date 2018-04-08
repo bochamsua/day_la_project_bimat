@@ -24,27 +24,27 @@ class BS_Concession_Model_Adminhtml_Search_Concession extends Varien_Object
      */
     public function load()
     {
-        $arr = array();
+        $arr = [];
         if (!$this->hasStart() || !$this->hasLimit() || !$this->hasQuery()) {
             $this->setResults($arr);
             return $this;
         }
         $collection = Mage::getResourceModel('bs_concession/concession_collection')
-            ->addFieldToFilter('name', array('like' => $this->getQuery().'%'))
+            ->addFieldToFilter('name', ['like' => $this->getQuery().'%'])
             ->setCurPage($this->getStart())
             ->setPageSize($this->getLimit())
             ->load();
         foreach ($collection->getItems() as $concession) {
-            $arr[] = array(
+            $arr[] = [
                 'id'          => 'concession/1/'.$concession->getId(),
                 'type'        => Mage::helper('bs_concession')->__('Concession Data'),
                 'name'        => $concession->getName(),
                 'description' => $concession->getName(),
                 'url' => Mage::helper('adminhtml')->getUrl(
                     '*/concession_concession/edit',
-                    array('id'=>$concession->getId())
+                    ['id'=>$concession->getId()]
                 ),
-            );
+            ];
         }
         $this->setResults($arr);
         return $this;

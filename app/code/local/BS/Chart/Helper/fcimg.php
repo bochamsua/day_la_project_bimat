@@ -29,7 +29,7 @@ class FCImageException extends Exception
  * @throws FCImageException
  * @return bool True if success, false if failure. TODO: Log stderr so users can properly submit bug reports.
  */
-function fusioncharts_to_image($outputFilePath, $swfName, $inputString, $height, $width, $options = array())
+function fusioncharts_to_image($outputFilePath, $swfName, $inputString, $height, $width, $options = [])
 {
 
     $jsonFlag = false;
@@ -67,7 +67,7 @@ function fusioncharts_to_image($outputFilePath, $swfName, $inputString, $height,
     $imageFileName = sys_get_temp_dir().$separator."FCImage".rand(0, 1000).'.'.$fileType;
 
     $cwd = __DIR__; // change working directory to the current script's directory
-    $env = array(); // set any environment variables here
+    $env = []; // set any environment variables here
 
     // configure the arguments
     $args = "--format $fileType";

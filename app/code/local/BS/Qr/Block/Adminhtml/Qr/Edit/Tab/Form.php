@@ -31,7 +31,7 @@ class BS_Qr_Block_Adminhtml_Qr_Edit_Tab_Form extends Mage_Adminhtml_Block_Widget
         $this->setForm($form);
         $fieldset = $form->addFieldset(
             'qr_form',
-            array('legend' => Mage::helper('bs_qr')->__('QR'))
+            ['legend' => Mage::helper('bs_qr')->__('QR')]
         );
 
         $fieldset->addType(
@@ -65,23 +65,23 @@ class BS_Qr_Block_Adminhtml_Qr_Edit_Tab_Form extends Mage_Adminhtml_Block_Widget
         $fieldset->addField(
             'ref_id',
             'hidden',
-            array(
+            [
                 'label' => Mage::helper('bs_qn')->__('ref_id'),
                 'name'  => 'ref_id',
 
 
-            )
+            ]
         );
 
         $fieldset->addField(
             'ref_type',
             'hidden',
-            array(
+            [
                 'label' => Mage::helper('bs_qn')->__('ref_type'),
                 'name'  => 'ref_type',
 
 
-            )
+            ]
         );
 
         if($taskId){
@@ -91,12 +91,12 @@ class BS_Qr_Block_Adminhtml_Qr_Edit_Tab_Form extends Mage_Adminhtml_Block_Widget
             $fieldset->addField(
                 'task_id',
                 'select',
-                array(
+                [
                     'label' => Mage::helper('bs_qn')->__('Survey Code'),
                     'name'  => 'task_id',
                     'values'=> $tasks,
                     'disabled'  => $disable
-                )
+                ]
             );
 
             /*$subtasks = Mage::getResourceModel('bs_misc/subtask_collection');
@@ -122,22 +122,22 @@ class BS_Qr_Block_Adminhtml_Qr_Edit_Tab_Form extends Mage_Adminhtml_Block_Widget
             $fieldset->addField(
                 'task_id',
                 'select',
-                array(
+                [
                     'label' => Mage::helper('bs_qn')->__('Source'),
                     'name'  => 'task_id',
                     'values'=> [['value'=>'0', 'label'=>$label]],
                     'disabled'  => $disable
-                )
+                ]
             );
 
             $fieldset->addField(
                 'source_other',
                 'text',
-                array(
+                [
                     'label' => Mage::helper('bs_qr')->__('Source Other'),
                     'name'  => 'source_other',
                     'disabled'  => $disable
-                )
+                ]
             );
         }
 
@@ -161,39 +161,39 @@ class BS_Qr_Block_Adminhtml_Qr_Edit_Tab_Form extends Mage_Adminhtml_Block_Widget
 	    $fieldset->addField(
 		    'report_date',
 		    'date',
-		    array(
+		    [
 			    'label' => Mage::helper('bs_qr')->__('Report Date'),
 			    'name'  => 'report_date',
 
 			    'image' => $this->getSkinUrl('images/grid-cal.gif'),
 			    'format'  => Mage::app()->getLocale()->getDateFormat(Mage_Core_Model_Locale::FORMAT_TYPE_SHORT),
 			    'disabled'  => $disable
-		    )
+            ]
 	    );
 
 	    $fieldset->addField(
 		    'due_date',
 		    'date',
-		    array(
+		    [
 			    'label' => Mage::helper('bs_qr')->__('Due Date'),
 			    'name'  => 'due_date',
 
 			    'image' => $this->getSkinUrl('images/grid-cal.gif'),
 			    'format'  => Mage::app()->getLocale()->getDateFormat(Mage_Core_Model_Locale::FORMAT_TYPE_SHORT),
 			    'disabled'  => $disable
-		    )
+            ]
 	    );
 
         $fieldset->addField(
             'qr_source',
             'file',
-            array(
+            [
                 'label' => Mage::helper('bs_qr')->__('Source'),
                 'name'  => 'qr_source',
                 'note'  => Mage::helper('bs_misc')->__('Maximum file size allowed is 10MB'),
                 'disabled'  => $disable
 
-           )
+            ]
         );
 
 	    $depts = Mage::getResourceModel('bs_misc/department_collection');
@@ -201,57 +201,57 @@ class BS_Qr_Block_Adminhtml_Qr_Edit_Tab_Form extends Mage_Adminhtml_Block_Widget
 	    $fieldset->addField(
 		    'dept_id',
 		    'select',
-		    array(
+		    [
 			    'label'     => Mage::helper('bs_ncr')->__('Sent To'),
 			    'name'      => 'dept_id',
 			    'required'  => false,
 			    'values'    => $depts,
-		    )
+            ]
 	    );
 
 
 	    $fieldset->addField(
 		    'dept_id_cc',
 		    'select',
-		    array(
+		    [
 			    'label'     => Mage::helper('bs_ncr')->__('CC'),
 			    'name'      => 'dept_id_cc',
 			    'required'  => false,
 			    'values'    => $depts,
-		    )
+            ]
 	    );
 
 	    $fieldset->addField(
 		    'subject',
 		    'textarea',
-		    array(
+		    [
 			    'label' => Mage::helper('bs_qr')->__('Subject'),
 			    'name'  => 'subject',
 			    'disabled'  => $disable,
 			    'config' => $wysiwygConfig,
-		    )
+            ]
 	    );
 
 	    $fieldset->addField(
 		    'content',
 		    'textarea',
-		    array(
+		    [
 			    'label' => Mage::helper('bs_qr')->__('Content'),
 			    'name'  => 'content',
 			    'disabled'  => $disable,
 			    'config' => $wysiwygConfig,
-		    )
+            ]
 	    );
 
 	    $fieldset->addField(
 		    'remark_text',
 		    'textarea',
-		    array(
+		    [
 			    'label' => Mage::helper('bs_qr')->__('Remark'),
 			    'name'  => 'remark_text',
 			    'disabled'  => $disable,
 			    'config' => $wysiwygConfig,
-		    )
+            ]
 	    );
 
 
@@ -259,12 +259,12 @@ class BS_Qr_Block_Adminhtml_Qr_Edit_Tab_Form extends Mage_Adminhtml_Block_Widget
 		    $fieldset->addField(
 			    'qr_status',
 			    'select',
-			    array(
+			    [
 				    'label' => Mage::helper('bs_qr')->__('Status'),
 				    'name'  => 'qr_status',
 
 				    'values'=> Mage::getModel('bs_qr/qr_attribute_source_qrstatus')->getAllOptions(false),
-			    )
+                ]
 		    );
 
 		    /*$fieldset->addField(
@@ -281,7 +281,7 @@ class BS_Qr_Block_Adminhtml_Qr_Edit_Tab_Form extends Mage_Adminhtml_Block_Widget
 		    );*/
 	    }
 
-	    if(in_array($currentObj->getQrStatus(), array(2,3,4,5))){// && $currentObj->getAccept() == 1
+	    if(in_array($currentObj->getQrStatus(), [2,3,4,5])){// && $currentObj->getAccept() == 1
 		    $disableProof = false;
 		    if($currentObj->getQrStatus() == 3 && !$misc->isAdmin($currentObj)){//closed, disable but still allow admin edit
 			    $disableProof = true;
@@ -289,25 +289,25 @@ class BS_Qr_Block_Adminhtml_Qr_Edit_Tab_Form extends Mage_Adminhtml_Block_Widget
 		    $fieldset->addField(
 			    'remark',
 			    'file',
-			    array(
+			    [
 				    'label' => Mage::helper('adminhtml')->__('Proof of Close'),
 				    'name'  => 'remark',
                     'note'  => Mage::helper('bs_misc')->__('Maximum file size allowed is 10MB'),
 				    'disabled'  => $disableProof
 
-			    )
+                ]
 		    );
 
             $fieldset->addField(
                 'close_date',
                 'date',
-                array(
+                [
                     'label' => Mage::helper('bs_qr')->__('Close Date'),
                     'name'  => 'close_date',
 
                     'image' => $this->getSkinUrl('images/grid-cal.gif'),
                     'format'  => Mage::app()->getLocale()->getDateFormat(Mage_Core_Model_Locale::FORMAT_TYPE_SHORT),
-                )
+                ]
             );
 
 	    }
@@ -415,11 +415,11 @@ class BS_Qr_Block_Adminhtml_Qr_Edit_Tab_Form extends Mage_Adminhtml_Block_Widget
             $fieldset->addField(
                 'reject_reason',
                 'text',
-                array(
+                [
                     'label' => Mage::helper('bs_qr')->__('Reject Reason'),
                     'name'  => 'reject_reason',
 
-                )
+                ]
             );
         }
 
@@ -428,18 +428,18 @@ class BS_Qr_Block_Adminhtml_Qr_Edit_Tab_Form extends Mage_Adminhtml_Block_Widget
         $fieldset->addField(
             'self_remark',
             'textarea',
-            array(
+            [
                 'label' => Mage::helper('bs_qr')->__('Note'),
                 'name'  => 'self_remark'
 
-            )
+            ]
         );
 
 
 
         $formValues = Mage::registry('current_qr')->getDefaultValues();
         if (!is_array($formValues)) {
-            $formValues = array();
+            $formValues = [];
         }
         if (Mage::getSingleton('adminhtml/session')->getQrData()) {
             $formValues = array_merge($formValues, Mage::getSingleton('adminhtml/session')->getQrData());
@@ -448,11 +448,11 @@ class BS_Qr_Block_Adminhtml_Qr_Edit_Tab_Form extends Mage_Adminhtml_Block_Widget
             $formValues = array_merge($formValues, Mage::registry('current_qr')->getData());
         }
 
-        $formValues = array_merge($formValues, array(
+        $formValues = array_merge($formValues, [
             'ref_id'    => $refId,
             'ref_type'  => $refType
 
-        ));
+        ]);
 
         $form->setValues($formValues);
 

@@ -24,27 +24,27 @@ class BS_HR_Model_Adminhtml_Search_Staff extends Varien_Object
      */
     public function load()
     {
-        $arr = array();
+        $arr = [];
         if (!$this->hasStart() || !$this->hasLimit() || !$this->hasQuery()) {
             $this->setResults($arr);
             return $this;
         }
         $collection = Mage::getResourceModel('bs_hr/staff_collection')
-            ->addFieldToFilter('user_id', array('like' => $this->getQuery().'%'))
+            ->addFieldToFilter('user_id', ['like' => $this->getQuery().'%'])
             ->setCurPage($this->getStart())
             ->setPageSize($this->getLimit())
             ->load();
         foreach ($collection->getItems() as $staff) {
-            $arr[] = array(
+            $arr[] = [
                 'id'          => 'staff/1/'.$staff->getId(),
                 'type'        => Mage::helper('bs_hr')->__('Staff'),
                 'name'        => $staff->getUserId(),
                 'description' => $staff->getUserId(),
                 'url' => Mage::helper('adminhtml')->getUrl(
                     '*/hr_staff/edit',
-                    array('id'=>$staff->getId())
+                    ['id'=>$staff->getId()]
                 ),
-            );
+            ];
         }
         $this->setResults($arr);
         return $this;

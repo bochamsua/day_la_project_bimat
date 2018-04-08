@@ -40,24 +40,24 @@ class BS_Ir_Block_Adminhtml_Ir_Edit_Tabs extends Mage_Adminhtml_Block_Widget_Tab
     {
         $this->addTab(
             'form_ir',
-            array(
+            [
                 'label'   => Mage::helper('bs_ir')->__('Ir'),
                 'title'   => Mage::helper('bs_ir')->__('Ir'),
                 'content' => $this->getLayout()->createBlock(
                     'bs_ir/adminhtml_ir_edit_tab_form'
                 )
                 ->toHtml(),
-            )
+            ]
         );
 
 	    if($this->getIr()->getId()){
-		    $this->addTab('general_info', array(
+		    $this->addTab('general_info', [
 			    'label'     => Mage::helper('bs_ncr')->__('Related Info'),
 			    'content' => $this->getLayout()->createBlock(
 				    'bs_ir/adminhtml_ir_edit_tab_info'
 			    )
 			                      ->toHtml()
-		    ));
+            ]);
 	    }
 
 
@@ -70,11 +70,11 @@ class BS_Ir_Block_Adminhtml_Ir_Edit_Tabs extends Mage_Adminhtml_Block_Widget_Tab
 
         $this->addTab(
             'qr',
-            array(
+            [
                 'label' => Mage::helper('bs_ir')->__('QR (%s)', $countRelations['qr']),
-                'url' => $this->getUrl('adminhtml/ir_ir/qrs', array('_current' => true)),
+                'url' => $this->getUrl('adminhtml/ir_ir/qrs', ['_current' => true]),
                 'class' => 'ajax',
-            )
+            ]
         );
         return parent::_beforeToHtml();
     }

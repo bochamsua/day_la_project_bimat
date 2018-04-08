@@ -93,7 +93,7 @@ class PARSERHTML {
      * @static
      * @var array
      */
-  public static $noDiv = array('p', 'li', 'span', 'strong', 'em', 'u', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'caption');
+  public static $noDiv = ['p', 'li', 'span', 'strong', 'em', 'u', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'caption'];
   /**
    * DomDocument representing the HTML document
    *
@@ -230,7 +230,7 @@ class PARSERHTML {
 
     $this->save_locale();
 
-    $this->_messages = array();
+    $this->_messages = [];
     $this->_xml = new DOMDocument();
     $this->_xml->preserveWhiteSpace = true;
     $this->_tree = new FrameParser_Tree($this->_xml);
@@ -241,14 +241,14 @@ class PARSERHTML {
     $this->_base_protocol = "";
     $this->_base_host = "";
     $this->_base_path = "";
-    $this->_callbacks = array();
+    $this->_callbacks = [];
     $this->_cache_id = null;
     $this->parseDivs = false;
-    $this->aDompdfTree = array();
+    $this->aDompdfTree = [];
     $host = isset($_SERVER['HTTP_HOST']) ? $_SERVER['HTTP_HOST'] : '';
     $script = isset($_SERVER['SCRIPT_NAME']) ? $_SERVER['SCRIPT_NAME'] : '';
     $this->htmlFile = 'http://'.$host.dirname($script); //TODO better protocol resolution
-    $this->aDomainsResolved = array();
+    $this->aDomainsResolved = [];
 
     $this->restore_locale();
   }
@@ -314,7 +314,7 @@ class PARSERHTML {
 			$file = $realfile;
 		}
 
-		$context = stream_context_create(array('http'=>array(
+		$context = stream_context_create(['http'=> [
 			'method' => 'GET',
 			'header' => "Cache-Control: no-cache"
 				."Connection: close\r\n"
@@ -322,7 +322,7 @@ class PARSERHTML {
 			,
 			//'user_agent' => 'PHPDocX/2.5 ('.$_SERVER['HTTP_HOST'].'; '.PHP_OS.') HTML2WordML/load_html_file',
 			'timeout' => '10'
-		)));
+        ]]);
 		$contents = @file_get_contents(urldecode($file), false, $context);
 		if($contents === false){/*var_dump($http_response_header);*/throw new Exception('Issue reading: '.$file);}
 		if(strpos($file, 'http') === 0) $this->htmlFile = $file; //saves url for relative url when parsing
@@ -356,10 +356,10 @@ class PARSERHTML {
 		$encoding = mb_detect_encoding($str, mb_list_encodings(), true);
 		//var_dump('ini: '.$encoding);
 		if ($encoding !== 'UTF-8') {
-			$metatags = array(
+			$metatags = [
 			'@<meta\s+http-equiv="Content-Type"\s+content="(?:[\w/]+)(?:;\s*?charset=([^\s"]+))?@i',
 			'@<meta\s+content="(?:[\w/]+)(?:;\s*?charset=([^\s"]+))"?\s+http-equiv="Content-Type"@i',
-			);
+            ];
 			foreach($metatags as $metatag) {
 				if (preg_match($metatag, $str, $matches)) break;
 			}
@@ -416,7 +416,7 @@ class PARSERHTML {
 		if(class_exists('tidy')){
 			try{
 				$tidy = new tidy();
-				$tidy = tidy_parse_string($str, array('output-xhtml' => true, 'markup' => false, 'wrap' => 0, 'wrap-asp' => false, 'wrap-jste' => false, 'wrap-php' => false, 'wrap-sections' => false), 'utf8');
+				$tidy = tidy_parse_string($str, ['output-xhtml' => true, 'markup' => false, 'wrap' => 0, 'wrap-asp' => false, 'wrap-jste' => false, 'wrap-php' => false, 'wrap-sections' => false], 'utf8');
 				//echo $tidy->errorBuffer;
 				//$tidy->cleanRepair();
 				$html = $tidy->html();
@@ -561,7 +561,7 @@ class PARSERHTML {
 	 * @param FrameParser $frame The frame to render
 	 */
 	private function _render(FrameParser $frame, $filter = false){
-		$aDompdfTree = array();
+		$aDompdfTree = [];
 
 		$node = $frame->get_node();
 
@@ -599,10 +599,10 @@ class PARSERHTML {
 					$sTempFilter = ($filter != '*')?'_noPaint':'';
 					$aDompdfTree['nodeName'] .= $sTempFilter;
 
-					$aDompdfTree['children'][] = array('nodeName' => 'tr'.$sTempFilter, 'attributes' => array('border' => 0), 'properties' => array('background_color' => 'transparent'));
-					$aDompdfTree['children'][0]['children'][] = array('nodeName' => 'td'.$sTempFilter, 'nodeValue' => $node->nodeValue, 'attributes' => array('colspan' => '1', 'rowspan' => '1', 'border' => 0), 'properties' => array('background_color' => 'transparent'));
+					$aDompdfTree['children'][] = ['nodeName' => 'tr'.$sTempFilter, 'attributes' => ['border' => 0], 'properties' => ['background_color' => 'transparent']];
+					$aDompdfTree['children'][0]['children'][] = ['nodeName' => 'td'.$sTempFilter, 'nodeValue' => $node->nodeValue, 'attributes' => ['colspan' => '1', 'rowspan' => '1', 'border' => 0], 'properties' => ['background_color' => 'transparent']];
 
-					$aTempTree = array();
+					$aTempTree = [];
 					foreach($frame->get_children() as $child){
 						/*$attributes = $this->getProperties($child->get_style());
 						//TODO extract to parent; make next sibling of this
@@ -615,7 +615,7 @@ class PARSERHTML {
 						$aTemp = $this->_render($child, $filter);
 						if(!empty($aTemp)) $aTempTree[] = $aTemp;
 					}
-					$aDompdfTree['children'][0]['children'][0]['children'] = empty($aTempTree)?array():$aTempTree;
+					$aDompdfTree['children'][0]['children'][0]['children'] = empty($aTempTree)? [] :$aTempTree;
 					return($aDompdfTree);
 					break;
 				}
@@ -667,12 +667,12 @@ class PARSERHTML {
 				$filter = ($filter == '*' || (isset($aDompdfTree['attributes']['class']) && in_array('_phpdocx_filter_paint_', $aDompdfTree['attributes']['class'])))?'*':false;
 				if($filter != '*') $aDompdfTree['nodeName'] .= '_noPaint';
 
-				$aTempTree = array();
+				$aTempTree = [];
 				foreach($frame->get_children() as $child){
 					$aTemp = $this->_render($child, $filter);
 					if(!empty($aTemp)) $aTempTree[] = $aTemp;
 				}
-				$aDompdfTree['children'] = empty($aTempTree)?array():$aTempTree;
+				$aDompdfTree['children'] = empty($aTempTree)? [] :$aTempTree;
 				return($aDompdfTree);
 				break;
 			case 'close':
@@ -681,7 +681,7 @@ class PARSERHTML {
 					$aTemp = $this->_render($child, false);
 					if(!empty($aTemp)) $aTempTree[] = $aTemp;
 				}
-				$aDompdfTree['children'] = empty($aTempTree)?array():$aTempTree;
+				$aDompdfTree['children'] = empty($aTempTree)? [] :$aTempTree;
 				return($aDompdfTree);
 				break;
 			default:
@@ -695,7 +695,7 @@ class PARSERHTML {
 					$aTemp = $this->_render($child, $filter);
 					if(!empty($aTemp)) $aTempTree[] = $aTemp;
 				}
-				$aDompdfTree['children'] = empty($aTempTree)?array():$aTempTree;
+				$aDompdfTree['children'] = empty($aTempTree)? [] :$aTempTree;
 				return($aDompdfTree);
 				break;
 		}
@@ -719,7 +719,7 @@ class PARSERHTML {
 		$sFileExt = substr($href, strrpos($href, '.') + 1);
 		if(empty($sFileExt)/* || empty($aTypes[$sFileExt])*/) return(false); //unknown image type
 
-		if(function_exists('stream_context_set_default')) stream_context_set_default(array('http' => array('method' => 'HEAD', 'max_redirects' => 1, 'ignore_errors' => 1)));
+		if(function_exists('stream_context_set_default')) stream_context_set_default(['http' => ['method' => 'HEAD', 'max_redirects' => 1, 'ignore_errors' => 1]]);
 
 		$url = $base_parsed['scheme'].'://'.$base_parsed['host'].dirname($base_parsed['path']).'/'.$href; //TODO if the server redirect bad request this is not correct
 		$hdrs = @get_headers($url);
@@ -738,7 +738,7 @@ class PARSERHTML {
   		}
   		//returns bad url if not found (ms word can show a placeholder)
 
-  		if(function_exists('stream_context_set_default')) stream_context_set_default(array('http' => array('method' => 'GET', 'max_redirects' => 20, 'ignore_errors' => 0)));
+  		if(function_exists('stream_context_set_default')) stream_context_set_default(['http' => ['method' => 'GET', 'max_redirects' => 20, 'ignore_errors' => 0]]);
   		return($url);
     } else {
       return($href);
@@ -746,7 +746,7 @@ class PARSERHTML {
 	}
 
 	private function getAttributes($node){
-		$aRet = array();
+		$aRet = [];
 		$temp = false;
 
 		switch($node->nodeName){
@@ -833,7 +833,7 @@ class PARSERHTML {
 	}
 
 	private function getProperties($properties){
-		$aRet = array();
+		$aRet = [];
 
 		//valid styles
 		/*$aStyleParsers = array('azimuth', 'background_attachment', 'background_color', 'background_image', 'background_position', 'background_repeat',

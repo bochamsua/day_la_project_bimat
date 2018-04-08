@@ -24,27 +24,27 @@ class BS_Meda_Model_Adminhtml_Search_Meda extends Varien_Object
      */
     public function load()
     {
-        $arr = array();
+        $arr = [];
         if (!$this->hasStart() || !$this->hasLimit() || !$this->hasQuery()) {
             $this->setResults($arr);
             return $this;
         }
         $collection = Mage::getResourceModel('bs_meda/meda_collection')
-            ->addFieldToFilter('ref_no', array('like' => $this->getQuery().'%'))
+            ->addFieldToFilter('ref_no', ['like' => $this->getQuery().'%'])
             ->setCurPage($this->getStart())
             ->setPageSize($this->getLimit())
             ->load();
         foreach ($collection->getItems() as $meda) {
-            $arr[] = array(
+            $arr[] = [
                 'id'          => 'meda/1/'.$meda->getId(),
                 'type'        => Mage::helper('bs_meda')->__('MEDA'),
                 'name'        => $meda->getRefNo(),
                 'description' => $meda->getRefNo(),
                 'url' => Mage::helper('adminhtml')->getUrl(
                     '*/meda_meda/edit',
-                    array('id'=>$meda->getId())
+                    ['id'=>$meda->getId()]
                 ),
-            );
+            ];
         }
         $this->setResults($arr);
         return $this;

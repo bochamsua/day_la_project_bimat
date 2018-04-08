@@ -30,48 +30,48 @@ class BS_Logger_Block_Adminhtml_Logger_Edit_Tab_Form extends Mage_Adminhtml_Bloc
         $this->setForm($form);
         $fieldset = $form->addFieldset(
             'logger_form',
-            array('legend' => Mage::helper('bs_logger')->__('Logger'))
+            ['legend' => Mage::helper('bs_logger')->__('Logger')]
         );
 
         $fieldset->addType('username','BS_Logger_Model_Form_Element_Username');
         $fieldset->addType('serial','BS_Logger_Model_Form_Element_Serial');
 
-        $fieldset->addField('user_id', 'username', array(
+        $fieldset->addField('user_id', 'username', [
             'label'     => Mage::helper('bs_logger')->__('User:'),
             'name'      => 'title',
-        ));
+        ]);
 
         $fieldset->addField(
             'ip',
             'label',
-            array(
+            [
                 'label' => Mage::helper('bs_logger')->__('IP Address'),
                 'name'  => 'ip',
 
-           )
+            ]
         );
 
-       $fieldset->addField('created_at', 'label', array(
+       $fieldset->addField('created_at', 'label', [
             'label'     => Mage::helper('bs_logger')->__('Date:'),
             'name'      => 'title',
-        ));
+       ]);
 
 
 
         $fieldset->addField(
             'message',
             'label',
-            array(
+            [
                 'label' => Mage::helper('bs_logger')->__('Message'),
                 'name'  => 'title',
 
-           )
+            ]
         );
 
-        $fieldset->addField('content', 'serial', array(
+        $fieldset->addField('content', 'serial', [
             'label'     => Mage::helper('bs_logger')->__('Data:'),
             'name'      => 'title',
-        ));
+        ]);
         /*$fieldset->addField(
             'status',
             'select',
@@ -92,7 +92,7 @@ class BS_Logger_Block_Adminhtml_Logger_Edit_Tab_Form extends Mage_Adminhtml_Bloc
         );*/
         $formValues = Mage::registry('current_logger')->getDefaultValues();
         if (!is_array($formValues)) {
-            $formValues = array();
+            $formValues = [];
         }
         if (Mage::getSingleton('adminhtml/session')->getLoggerData()) {
             $formValues = array_merge($formValues, Mage::getSingleton('adminhtml/session')->getLoggerData());

@@ -31,51 +31,51 @@ class BS_Misc_Block_Adminhtml_Location_Edit_Tab_Form extends Mage_Adminhtml_Bloc
         $this->setForm($form);
         $fieldset = $form->addFieldset(
             'location_form',
-            array('legend' => Mage::helper('bs_misc')->__('Location'))
+            ['legend' => Mage::helper('bs_misc')->__('Location')]
         );
 
         $fieldset->addField(
             'loc_name',
             'text',
-            array(
+            [
                 'label' => Mage::helper('bs_misc')->__('Name'),
                 'name'  => 'loc_name',
             'required'  => true,
             'class' => 'required-entry',
 
-           )
+            ]
         );
 
         $fieldset->addField(
             'loc_code',
             'text',
-            array(
+            [
                 'label' => Mage::helper('bs_misc')->__('Code'),
                 'name'  => 'loc_code',
 
-           )
+            ]
         );
         $fieldset->addField(
             'status',
             'select',
-            array(
+            [
                 'label'  => Mage::helper('bs_misc')->__('Status'),
                 'name'   => 'status',
-                'values' => array(
-                    array(
+                'values' => [
+                    [
                         'value' => 1,
                         'label' => Mage::helper('bs_misc')->__('Enabled'),
-                    ),
-                    array(
+                    ],
+                    [
                         'value' => 0,
                         'label' => Mage::helper('bs_misc')->__('Disabled'),
-                    ),
-                ),
-            )
+                    ],
+                ],
+            ]
         );
         $formValues = Mage::registry('current_location')->getDefaultValues();
         if (!is_array($formValues)) {
-            $formValues = array();
+            $formValues = [];
         }
         if (Mage::getSingleton('adminhtml/session')->getLocationData()) {
             $formValues = array_merge($formValues, Mage::getSingleton('adminhtml/session')->getLocationData());

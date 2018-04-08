@@ -24,27 +24,27 @@ class BS_Qr_Model_Adminhtml_Search_Qr extends Varien_Object
      */
     public function load()
     {
-        $arr = array();
+        $arr = [];
         if (!$this->hasStart() || !$this->hasLimit() || !$this->hasQuery()) {
             $this->setResults($arr);
             return $this;
         }
         $collection = Mage::getResourceModel('bs_qr/qr_collection')
-            ->addFieldToFilter('ref_no', array('like' => $this->getQuery().'%'))
+            ->addFieldToFilter('ref_no', ['like' => $this->getQuery().'%'])
             ->setCurPage($this->getStart())
             ->setPageSize($this->getLimit())
             ->load();
         foreach ($collection->getItems() as $qr) {
-            $arr[] = array(
+            $arr[] = [
                 'id'          => 'qr/1/'.$qr->getId(),
                 'type'        => Mage::helper('bs_qr')->__('QR'),
                 'name'        => $qr->getRefNo(),
                 'description' => $qr->getRefNo(),
                 'url' => Mage::helper('adminhtml')->getUrl(
                     '*/qr_qr/edit',
-                    array('id'=>$qr->getId())
+                    ['id'=>$qr->getId()]
                 ),
-            );
+            ];
         }
         $this->setResults($arr);
         return $this;

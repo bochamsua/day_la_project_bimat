@@ -30,7 +30,7 @@ class BS_Cmr_Block_Adminhtml_Cmr_Edit_Tab_Form extends Mage_Adminhtml_Block_Widg
         $this->setForm($form);
         $fieldset = $form->addFieldset(
             'cmr_form',
-            array('legend' => Mage::helper('bs_cmr')->__('CMR Data'))
+            ['legend' => Mage::helper('bs_cmr')->__('CMR Data')]
         );
 
 
@@ -41,24 +41,24 @@ class BS_Cmr_Block_Adminhtml_Cmr_Edit_Tab_Form extends Mage_Adminhtml_Block_Widg
         $fieldset->addField(
             'report_date',
             'date',
-            array(
+            [
                 'label' => Mage::helper('bs_cmr')->__('Date of Inspection'),
                 'name'  => 'report_date',
 
                 'image' => $this->getSkinUrl('images/grid-cal.gif'),
                 'format'  => Mage::app()->getLocale()->getDateFormat(Mage_Core_Model_Locale::FORMAT_TYPE_SHORT),
-            )
+            ]
         );
 
 
         $fieldset->addField(
             'code_sqs',
             'text',
-            array(
+            [
                 'label' => Mage::helper('bs_cmr')->__('Code SQS'),
                 'name'  => 'code_sqs',
 
-           )
+            ]
         );
 
         $depts = Mage::getResourceModel('bs_misc/department_collection');
@@ -66,12 +66,12 @@ class BS_Cmr_Block_Adminhtml_Cmr_Edit_Tab_Form extends Mage_Adminhtml_Block_Widg
         $fieldset->addField(
             'dept_id',
             'select',
-            array(
+            [
                 'label'     => Mage::helper('bs_cmr')->__('Maint. Center'),
                 'name'      => 'dept_id',
                 'required'  => false,
                 'values'    => $depts,
-            )
+            ]
         );
 
 
@@ -81,12 +81,12 @@ class BS_Cmr_Block_Adminhtml_Cmr_Edit_Tab_Form extends Mage_Adminhtml_Block_Widg
         $fieldset->addField(
             'customer',
             'select',
-            array(
+            [
                 'label'     => Mage::helper('bs_cmr')->__('Customer'),
                 'name'      => 'customer',
                 'required'  => false,
                 'values'    => $customers,
-            )
+            ]
         );
 
         $acTypes = Mage::getResourceModel('bs_misc/aircraft_collection');
@@ -95,12 +95,12 @@ class BS_Cmr_Block_Adminhtml_Cmr_Edit_Tab_Form extends Mage_Adminhtml_Block_Widg
         $fieldset->addField(
             'ac_type',
             'select',
-            array(
+            [
                 'label'     => Mage::helper('bs_cmr')->__('A/C Type'),
                 'name'      => 'ac_type',
                 'required'  => false,
                 'values'    => $acTypes,
-            )
+            ]
         );
 
         $acRegs = Mage::getResourceModel('bs_acreg/acreg_collection');
@@ -110,12 +110,12 @@ class BS_Cmr_Block_Adminhtml_Cmr_Edit_Tab_Form extends Mage_Adminhtml_Block_Widg
         $fieldset->addField(
             'ac_reg',
             'select',
-            array(
+            [
                 'label'     => Mage::helper('bs_cmr')->__('A/C Reg'),
                 'name'      => 'ac_reg',
                 'required'  => false,
                 'values'    => $acRegs,
-            )
+            ]
         );
 
 
@@ -134,156 +134,156 @@ class BS_Cmr_Block_Adminhtml_Cmr_Edit_Tab_Form extends Mage_Adminhtml_Block_Widg
         $fieldset->addField(
             'description',
             'textarea',
-            array(
+            [
                 'label' => Mage::helper('bs_cmr')->__('Description'),
                 'name'  => 'description',
 
-            )
+            ]
         );
 
         $fieldset->addField(
             'corrective',
             'textarea',
-            array(
+            [
                 'label' => Mage::helper('bs_cmr')->__('Corrective'),
                 'name'  => 'corrective',
 
-            )
+            ]
         );
 
         $fieldset->addField(
             'preventive',
             'textarea',
-            array(
+            [
                 'label' => Mage::helper('bs_cmr')->__('Preventive'),
                 'name'  => 'preventive',
 
-            )
+            ]
         );
 
         $causeGroups = Mage::getResourceModel('bs_ncause/ncausegroup_collection');
         $causeGroups = $causeGroups->toOptionArray();
-        array_unshift($causeGroups, array('value' => 0, 'label' => 'N/A'));
+        array_unshift($causeGroups, ['value' => 0, 'label' => 'N/A']);
         $fieldset->addField(
             'ncausegroup_id',
             'select',
-            array(
+            [
                 'label'     => Mage::helper('bs_cmr')->__('Cause Group'),
                 'name'      => 'ncausegroup_id',
                 'required'  => true,
                 'values'    => $causeGroups,
-            )
+            ]
         );
 
         $causes = Mage::getResourceModel('bs_ncause/ncause_collection');
         $causes = $causes->toOptionArray();
-        array_unshift($causes, array('value' => 0, 'label' => 'N/A'));
+        array_unshift($causes, ['value' => 0, 'label' => 'N/A']);
         $fieldset->addField(
             'ncause_id',
             'select',
-            array(
+            [
                 'label'     => Mage::helper('bs_cmr')->__('Cause'),
                 'name'      => 'ncause_id',
                 'required'  => true,
                 'values'    => $causes,
-            )
+            ]
         );
 
 
         $fieldset->addField(
             'root_cause',
             'textarea',
-            array(
+            [
                 'label' => Mage::helper('bs_cmr')->__('Root Cause'),
                 'name'  => 'root_cause',
 
-            )
+            ]
         );
         $fieldset->addField(
             'cmr_type',
             'select',
-            array(
+            [
                 'label' => Mage::helper('bs_cmr')->__('Type'),
                 'name'  => 'cmr_type',
 
-                'values'=> array(
-                    array(
+                'values'=> [
+                    [
                         'value' => 1,
                         'label' => Mage::helper('bs_cmr')->__('1'),
-                    ),
-                    array(
+                    ],
+                    [
                         'value' => 2,
                         'label' => Mage::helper('bs_cmr')->__('2'),
-                    ),
-                    array(
+                    ],
+                    [
                         'value' => 3,
                         'label' => Mage::helper('bs_cmr')->__('3'),
-                    ),
-                    array(
+                    ],
+                    [
                         'value' => 4,
                         'label' => Mage::helper('bs_cmr')->__('4'),
-                    ),
-                    array(
+                    ],
+                    [
                         'value' => 5,
                         'label' => Mage::helper('bs_cmr')->__('5'),
-                    ),
-                ),
-            )
+                    ],
+                ],
+            ]
         );
 
         $fieldset->addField(
             'repetitive',
             'select',
-            array(
+            [
                 'label' => Mage::helper('bs_cmr')->__('Repetitive'),
                 'name'  => 'repetitive',
 
-                'values'=> array(
-                    array(
+                'values'=> [
+                    [
                         'value' => 1,
                         'label' => Mage::helper('bs_cmr')->__('Yes'),
-                    ),
-                    array(
+                    ],
+                    [
                         'value' => 0,
                         'label' => Mage::helper('bs_cmr')->__('No'),
-                    ),
-                ),
-            )
+                    ],
+                ],
+            ]
         );
 
         $fieldset->addField(
             'remark_text',
             'textarea',
-            array(
+            [
                 'label' => Mage::helper('bs_cmr')->__('Remark'),
                 'name'  => 'remark_text',
 
-            )
+            ]
         );
 
         if($misc->isAdmin($currentObj)){
             $fieldset->addField(
                 'cmr_status',
                 'select',
-                array(
+                [
                     'label' => Mage::helper('bs_cmr')->__('Status'),
                     'name'  => 'cmr_status',
 
                     'values'=> Mage::getModel('bs_cmr/cmr_attribute_source_cmrstatus')->getAllOptions(false),
-                )
+                ]
             );
 
             $fieldset->addField(
                 'close_date',
                 'date',
-                array(
+                [
                     'label' => Mage::helper('bs_cmr')->__('Close Date'),
                     'name'  => 'close_date',
                     'readonly'  => true,
                     'image' => $this->getSkinUrl('images/grid-cal.gif'),
                     'format'  => Mage::app()->getLocale()->getDateFormat(Mage_Core_Model_Locale::FORMAT_TYPE_SHORT),
 
-                )
+                ]
             );
         }
 
@@ -307,7 +307,7 @@ class BS_Cmr_Block_Adminhtml_Cmr_Edit_Tab_Form extends Mage_Adminhtml_Block_Widg
         );*/
         $formValues = Mage::registry('current_cmr')->getDefaultValues();
         if (!is_array($formValues)) {
-            $formValues = array();
+            $formValues = [];
         }
         if (Mage::getSingleton('adminhtml/session')->getCmrData()) {
             $formValues = array_merge($formValues, Mage::getSingleton('adminhtml/session')->getCmrData());

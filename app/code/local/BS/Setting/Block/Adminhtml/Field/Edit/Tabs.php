@@ -40,14 +40,14 @@ class BS_Setting_Block_Adminhtml_Field_Edit_Tabs extends Mage_Adminhtml_Block_Wi
     {
         $this->addTab(
             'form_field',
-            array(
+            [
                 'label'   => Mage::helper('bs_setting')->__('Field Dependance'),
                 'title'   => Mage::helper('bs_setting')->__('Field Dependance'),
                 'content' => $this->getLayout()->createBlock(
                     'bs_setting/adminhtml_field_edit_tab_form'
                 )
                 ->toHtml(),
-            )
+            ]
         );
         return parent::_beforeToHtml();
     }

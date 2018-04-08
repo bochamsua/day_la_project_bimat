@@ -119,7 +119,7 @@ class BS_Safety_Adminhtml_Safety_SafetyController extends BS_Safety_Controller_A
     {
         if ($data = $this->getRequest()->getPost('safety')) {
             try {
-                $data = $this->_filterDates($data, array('occur_date' ,'report_date' ,'due_date' ,'close_date'));
+                $data = $this->_filterDates($data, ['occur_date' ,'report_date' ,'due_date' ,'close_date']);
                 $safety = $this->_initSafety();
                 $safety->addData($data);
                 $safety->save();
@@ -132,7 +132,7 @@ class BS_Safety_Adminhtml_Safety_SafetyController extends BS_Safety_Controller_A
                 );
                 Mage::getSingleton('adminhtml/session')->setFormData(false);
                 if ($this->getRequest()->getParam('back')) {
-                    $this->_redirect('*/*/edit', array('id' => $safety->getId()));
+                    $this->_redirect('*/*/edit', ['id' => $safety->getId()]);
                     return;
                 }
                 $this->_redirect('*/*/');
@@ -140,7 +140,7 @@ class BS_Safety_Adminhtml_Safety_SafetyController extends BS_Safety_Controller_A
             } catch (Mage_Core_Exception $e) {
                 Mage::getSingleton('adminhtml/session')->addError($e->getMessage());
                 Mage::getSingleton('adminhtml/session')->setSafetyData($data);
-                $this->_redirect('*/*/edit', array('id' => $this->getRequest()->getParam('id')));
+                $this->_redirect('*/*/edit', ['id' => $this->getRequest()->getParam('id')]);
                 return;
             } catch (Exception $e) {
                 Mage::logException($e);
@@ -148,7 +148,7 @@ class BS_Safety_Adminhtml_Safety_SafetyController extends BS_Safety_Controller_A
                     Mage::helper('bs_safety')->__('There was a problem saving the safety data.')
                 );
                 Mage::getSingleton('adminhtml/session')->setSafetyData($data);
-                $this->_redirect('*/*/edit', array('id' => $this->getRequest()->getParam('id')));
+                $this->_redirect('*/*/edit', ['id' => $this->getRequest()->getParam('id')]);
                 return;
             }
         }
@@ -178,12 +178,12 @@ class BS_Safety_Adminhtml_Safety_SafetyController extends BS_Safety_Controller_A
                 return;
             } catch (Mage_Core_Exception $e) {
                 Mage::getSingleton('adminhtml/session')->addError($e->getMessage());
-                $this->_redirect('*/*/edit', array('id' => $this->getRequest()->getParam('id')));
+                $this->_redirect('*/*/edit', ['id' => $this->getRequest()->getParam('id')]);
             } catch (Exception $e) {
                 Mage::getSingleton('adminhtml/session')->addError(
                     Mage::helper('bs_safety')->__('There was an error deleting safety data.')
                 );
-                $this->_redirect('*/*/edit', array('id' => $this->getRequest()->getParam('id')));
+                $this->_redirect('*/*/edit', ['id' => $this->getRequest()->getParam('id')]);
                 Mage::logException($e);
                 return;
             }

@@ -58,49 +58,49 @@ class BS_Acreg_Block_Adminhtml_Acreg_Grid extends Mage_Adminhtml_Block_Widget_Gr
     {
         $this->addColumn(
             'entity_id',
-            array(
+            [
                 'header' => Mage::helper('bs_acreg')->__('Id'),
                 'index'  => 'entity_id',
                 'type'   => 'number', 'filter' => false,
-            )
+            ]
         );
         $this->addColumn(
             'customer_id',
-            array(
+            [
                 'header'    => Mage::helper('bs_acreg')->__('Customer'),
                 'index'     => 'customer_id',
                 'type'      => 'options',
                 'options'   => Mage::getResourceModel('bs_acreg/customer_collection')
                     ->toOptionHash(),
                 'renderer'  => 'bs_acreg/adminhtml_helper_column_renderer_parent',
-                'params'    => array(
+                'params'    => [
                     'id'    => 'getCustomerId'
-                ),
+                ],
                 'base_link' => 'adminhtml/acreg_customer/edit'
-            )
+            ]
         );
 
 
 
 	    $this->addColumn(
 		    'ac_type',
-		    array(
+		    [
 			    'header'    => Mage::helper('bs_acreg')->__('A/C Type'),
 			    'index'     => 'ac_type',
 			    'type'      => 'options',
 			    'options'   => Mage::getResourceModel('bs_misc/aircraft_collection')
 			                       ->toOptionHash(),
 
-		    )
+            ]
 	    );
 
 	    $this->addColumn(
 		    'reg',
-		    array(
+		    [
 			    'header'    => Mage::helper('bs_acreg')->__('Number'),
 			    'align'     => 'left',
 			    'index'     => 'reg',
-		    )
+            ]
 	    );
 
 
@@ -147,11 +147,11 @@ class BS_Acreg_Block_Adminhtml_Acreg_Grid extends Mage_Adminhtml_Block_Widget_Gr
 
         $this->getMassactionBlock()->addItem(
             'do-nothing',
-            array(
+            [
                 'label'=> Mage::helper('adminhtml')->__('---Select--'),
                 'url'  => '',
 
-            )
+            ]
         );
 
 
@@ -168,7 +168,7 @@ class BS_Acreg_Block_Adminhtml_Acreg_Grid extends Mage_Adminhtml_Block_Widget_Gr
      */
     public function getRowUrl($row)
     {
-        return $this->getUrl('*/*/edit', array('id' => $row->getId()));
+        return $this->getUrl('*/*/edit', ['id' => $row->getId()]);
     }
 
     /**
@@ -180,7 +180,7 @@ class BS_Acreg_Block_Adminhtml_Acreg_Grid extends Mage_Adminhtml_Block_Widget_Gr
      */
     public function getGridUrl()
     {
-        return $this->getUrl('*/*/grid', array('_current'=>true));
+        return $this->getUrl('*/*/grid', ['_current'=>true]);
     }
 
     /**

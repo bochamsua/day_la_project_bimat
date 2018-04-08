@@ -37,10 +37,10 @@ class BS_Report_Block_Adminhtml_Qchaneff_Grid extends Mage_Adminhtml_Block_Widge
 	protected function _prepareLayout(){
 		$this->setChild('update_button',
 			$this->getLayout()->createBlock('adminhtml/widget_button')
-			     ->setData(array(
+			     ->setData([
 				     'label'     => Mage::helper('adminhtml')->__('Update'),
 				     'onclick'   => 'updateButtonSubmit()'
-			     ))
+                 ])
 		);
 
 		parent::_prepareLayout();
@@ -140,77 +140,77 @@ class BS_Report_Block_Adminhtml_Qchaneff_Grid extends Mage_Adminhtml_Block_Widge
             )
         );*/
 
-	    $ins = Mage::getModel('admin/user')->getCollection()->addFieldToFilter('user_id', array('gt' => 1))->load();
-	    $inspectors = array();
+	    $ins = Mage::getModel('admin/user')->getCollection()->addFieldToFilter('user_id', ['gt' => 1])->load();
+	    $inspectors = [];
 	    foreach ($ins as $in) {
 		    $inspectors[$in->getUserId()] = $in->getFirstname().' '.$in->getLastname();
 	    }
 	    $this->addColumn(
 		    'ins_id',
-		    array(
+		    [
 			    'header'    => Mage::helper('bs_report')->__('Inspector'),
 			    'index'     => 'ins_id',
 			    'type'      => 'options',
 			    'options'   => $inspectors,
 
-		    )
+            ]
 	    );
 
 
         $this->addColumn(
             'ir',
-            array(
+            [
                 'header' => Mage::helper('bs_report')->__('IR'),
                 'index'  => 'ir',
                 'type'=> 'text',
 
-            )
+            ]
         );
         $this->addColumn(
             'ncr',
-            array(
+            [
                 'header' => Mage::helper('bs_report')->__('NCR'),
                 'index'  => 'ncr',
                 'type'=> 'text',
 
-            )
+            ]
         );
         $this->addColumn(
             'drr',
-            array(
+            [
                 'header' => Mage::helper('bs_report')->__('DRR'),
                 'index'  => 'drr',
                 'type'=> 'text',
 
-            )
+            ]
         );
 
 	    $this->addColumn(
 		    'qr',
-		    array(
+		    [
 			    'header' => Mage::helper('bs_report')->__('QR'),
 			    'index'  => 'qr',
 			    'type'=> 'text',
 
-		    )
+            ]
 	    );
         $this->addColumn(
             'qcwork',
-            array(
+            [
                 'header' => Mage::helper('bs_report')->__('QC Work'),
                 'index'  => 'qcwork',
                 'type'=> 'text',
 
-            )
+            ]
         );
         $this->addColumn(
             'd1',
-            array(
+            [
                 'header' => Mage::helper('bs_report')->__('D1'),
                 'index'  => 'd1',
                 'type'=> 'text',
 
-            )
+            ]
         );
 
         $editable = false;
@@ -221,47 +221,47 @@ class BS_Report_Block_Adminhtml_Qchaneff_Grid extends Mage_Adminhtml_Block_Widge
 	    if($editable){
 		    $this->addColumn(
 			    'd2',
-			    array(
+			    [
 				    'header' => Mage::helper('bs_report')->__('D2'),
 				    'index'  => 'd2',
 				    'editable'       => true,
 				    'type'=> 'input',
 				    'renderer'      => 'bs_report/adminhtml_helper_column_renderer_input',
 
-			    )
+                ]
 		    );
 
 		    $this->addColumn(
 			    'd3',
-			    array(
+			    [
 				    'header' => Mage::helper('bs_report')->__('D3'),
 				    'index'  => 'd3',
 				    'editable'       => true,
 				    'type'=> 'input',
 				    'renderer'      => 'bs_report/adminhtml_helper_column_renderer_input',
 
-			    )
+                ]
 		    );
 
 	    }else {
 		    $this->addColumn(
 			    'd2',
-			    array(
+			    [
 				    'header' => Mage::helper('bs_report')->__('D2'),
 				    'index'  => 'd2',
 				    'type'=> 'text',
 
-			    )
+                ]
 		    );
 
 		    $this->addColumn(
 			    'd3',
-			    array(
+			    [
 				    'header' => Mage::helper('bs_report')->__('D3'),
 				    'index'  => 'd3',
 				    'type'=> 'text',
 
-			    )
+                ]
 		    );
 
 	    }
@@ -269,27 +269,27 @@ class BS_Report_Block_Adminhtml_Qchaneff_Grid extends Mage_Adminhtml_Block_Widge
 
         $this->addColumn(
             'dall',
-            array(
+            [
                 'header' => Mage::helper('bs_report')->__('D'),
                 'index'  => 'dall',
                 'type'=> 'text',
 
-            )
+            ]
         );
         $this->addColumn(
             'level',
-            array(
+            [
                 'header' => Mage::helper('bs_report')->__('Level'),
                 'index'  => 'level',
                 'type'=> 'text',
 
-            )
+            ]
         );
 
         if($editable){
 	        $this->addColumn(
 		        'remark',
-		        array(
+		        [
 			        'header' => Mage::helper('bs_report')->__('Remark'),
 			        'index'  => 'remark',
 			        'editable'       => true,
@@ -297,17 +297,17 @@ class BS_Report_Block_Adminhtml_Qchaneff_Grid extends Mage_Adminhtml_Block_Widge
 			        'renderer'      => 'bs_report/adminhtml_helper_column_renderer_input',
 			        'inline_css'    => ' input-text-full'
 
-		        )
+                ]
 	        );
         }else {
 	        $this->addColumn(
 		        'remark',
-		        array(
+		        [
 			        'header' => Mage::helper('bs_report')->__('Remark'),
 			        'index'  => 'remark',
 			        'type'=> 'text',
 
-		        )
+                ]
 	        );
         }
 
@@ -364,10 +364,10 @@ class BS_Report_Block_Adminhtml_Qchaneff_Grid extends Mage_Adminhtml_Block_Widge
 
 	    $this->getMassactionBlock()->addItem(
 		    'donothing',
-		    array(
+		    [
 			    'label'=> Mage::helper('bs_report')->__('Do nothing'),
 			    'url'  => $this->getUrl('*/*/'),
-		    )
+            ]
 	    );
 
 
@@ -378,33 +378,33 @@ class BS_Report_Block_Adminhtml_Qchaneff_Grid extends Mage_Adminhtml_Block_Widge
         if($isAllowedDelete){
             $this->getMassactionBlock()->addItem(
                 'delete',
-                array(
+                [
                     'label'=> Mage::helper('bs_report')->__('Delete'),
                     'url'  => $this->getUrl('*/*/massDelete'),
                     'confirm'  => Mage::helper('bs_report')->__('Are you sure?')
-                )
+                ]
             );
         }
 
         if($isAllowedEdit){
             $this->getMassactionBlock()->addItem(
                 'status',
-                array(
+                [
                     'label'      => Mage::helper('bs_report')->__('Change status'),
-                    'url'        => $this->getUrl('*/*/massStatus', array('_current'=>true)),
-                    'additional' => array(
-                        'status' => array(
+                    'url'        => $this->getUrl('*/*/massStatus', ['_current'=>true]),
+                    'additional' => [
+                        'status' => [
                             'name'   => 'status',
                             'type'   => 'select',
                             'class'  => 'required-entry',
                             'label'  => Mage::helper('bs_report')->__('Status'),
-                            'values' => array(
+                            'values' => [
                                 '1' => Mage::helper('bs_report')->__('Enabled'),
                                 '0' => Mage::helper('bs_report')->__('Disabled'),
-                            )
-                        )
-                    )
-                )
+                            ]
+                        ]
+                    ]
+                ]
             );
 
 
@@ -436,7 +436,7 @@ class BS_Report_Block_Adminhtml_Qchaneff_Grid extends Mage_Adminhtml_Block_Widge
      */
     public function getGridUrl()
     {
-        return $this->getUrl('*/*/grid', array('_current'=>true));
+        return $this->getUrl('*/*/grid', ['_current'=>true]);
     }
 
     /**

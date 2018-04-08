@@ -119,7 +119,7 @@ class BS_Mor_Adminhtml_Mor_MorController extends BS_Mor_Controller_Adminhtml_Mor
     {
         if ($data = $this->getRequest()->getPost('mor')) {
             try {
-                $data = $this->_filterDates($data, array('report_date' ,'occur_date' ,'due_date' ,'close_date'));
+                $data = $this->_filterDates($data, ['report_date' ,'occur_date' ,'due_date' ,'close_date']);
                 $mor = $this->_initMor();
                 $mor->addData($data);
                 $morSourceName = $this->_uploadAndGetName(
@@ -138,7 +138,7 @@ class BS_Mor_Adminhtml_Mor_MorController extends BS_Mor_Controller_Adminhtml_Mor
                 );
                 Mage::getSingleton('adminhtml/session')->setFormData(false);
                 if ($this->getRequest()->getParam('back')) {
-                    $this->_redirect('*/*/edit', array('id' => $mor->getId()));
+                    $this->_redirect('*/*/edit', ['id' => $mor->getId()]);
                     return;
                 }
                 $this->_redirect('*/*/');
@@ -149,7 +149,7 @@ class BS_Mor_Adminhtml_Mor_MorController extends BS_Mor_Controller_Adminhtml_Mor
                 }
                 Mage::getSingleton('adminhtml/session')->addError($e->getMessage());
                 Mage::getSingleton('adminhtml/session')->setMorData($data);
-                $this->_redirect('*/*/edit', array('id' => $this->getRequest()->getParam('id')));
+                $this->_redirect('*/*/edit', ['id' => $this->getRequest()->getParam('id')]);
                 return;
             } catch (Exception $e) {
                 Mage::logException($e);
@@ -160,7 +160,7 @@ class BS_Mor_Adminhtml_Mor_MorController extends BS_Mor_Controller_Adminhtml_Mor
                     Mage::helper('bs_mor')->__('There was a problem saving the mor.')
                 );
                 Mage::getSingleton('adminhtml/session')->setMorData($data);
-                $this->_redirect('*/*/edit', array('id' => $this->getRequest()->getParam('id')));
+                $this->_redirect('*/*/edit', ['id' => $this->getRequest()->getParam('id')]);
                 return;
             }
         }
@@ -191,12 +191,12 @@ class BS_Mor_Adminhtml_Mor_MorController extends BS_Mor_Controller_Adminhtml_Mor
                 return;
             } catch (Mage_Core_Exception $e) {
                 Mage::getSingleton('adminhtml/session')->addError($e->getMessage());
-                $this->_redirect('*/*/edit', array('id' => $this->getRequest()->getParam('id')));
+                $this->_redirect('*/*/edit', ['id' => $this->getRequest()->getParam('id')]);
             } catch (Exception $e) {
                 Mage::getSingleton('adminhtml/session')->addError(
                     Mage::helper('bs_mor')->__('There was an error deleting mor.')
                 );
-                $this->_redirect('*/*/edit', array('id' => $this->getRequest()->getParam('id')));
+                $this->_redirect('*/*/edit', ['id' => $this->getRequest()->getParam('id')]);
                 Mage::logException($e);
                 return;
             }

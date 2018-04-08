@@ -40,14 +40,14 @@ class BS_Misc_Block_Adminhtml_Location_Edit_Tabs extends Mage_Adminhtml_Block_Wi
     {
         $this->addTab(
             'form_location',
-            array(
+            [
                 'label'   => Mage::helper('bs_misc')->__('Location'),
                 'title'   => Mage::helper('bs_misc')->__('Location'),
                 'content' => $this->getLayout()->createBlock(
                     'bs_misc/adminhtml_location_edit_tab_form'
                 )
                 ->toHtml(),
-            )
+            ]
         );
         return parent::_beforeToHtml();
     }

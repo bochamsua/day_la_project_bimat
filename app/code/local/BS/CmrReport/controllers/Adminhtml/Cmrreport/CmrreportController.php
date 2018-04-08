@@ -41,7 +41,7 @@ class BS_CmrReport_Adminhtml_Cmrreport_CmrreportController extends BS_Sur_Contro
         //$requestData = $this->_filterDates($requestData, array('from', 'to'));
 
 
-        $redirect = array('filter' => $filter);
+        $redirect = ['filter' => $filter];
         if($additional){
             $redirect['chart'] = '1';
         }
@@ -210,7 +210,7 @@ class BS_CmrReport_Adminhtml_Cmrreport_CmrreportController extends BS_Sur_Contro
         }
 
 
-        $this->_redirect('*/*/', array('filter' => $this->getRequest()->getParam('filter')));
+        $this->_redirect('*/*/', ['filter' => $this->getRequest()->getParam('filter')]);
     }
 
     /**
@@ -312,7 +312,7 @@ class BS_CmrReport_Adminhtml_Cmrreport_CmrreportController extends BS_Sur_Contro
                 );
                 Mage::getSingleton('adminhtml/session')->setFormData(false);
                 if ($this->getRequest()->getParam('back')) {
-                    $this->_redirect('*/*/edit', array('id' => $cmrreport->getId()));
+                    $this->_redirect('*/*/edit', ['id' => $cmrreport->getId()]);
                     return;
                 }
                 $this->_redirect('*/*/');
@@ -320,7 +320,7 @@ class BS_CmrReport_Adminhtml_Cmrreport_CmrreportController extends BS_Sur_Contro
             } catch (Mage_Core_Exception $e) {
                 Mage::getSingleton('adminhtml/session')->addError($e->getMessage());
                 Mage::getSingleton('adminhtml/session')->setCmrreportData($data);
-                $this->_redirect('*/*/edit', array('id' => $this->getRequest()->getParam('id')));
+                $this->_redirect('*/*/edit', ['id' => $this->getRequest()->getParam('id')]);
                 return;
             } catch (Exception $e) {
                 Mage::logException($e);
@@ -328,7 +328,7 @@ class BS_CmrReport_Adminhtml_Cmrreport_CmrreportController extends BS_Sur_Contro
                     Mage::helper('bs_cmrreport')->__('There was a problem saving the cmr report.')
                 );
                 Mage::getSingleton('adminhtml/session')->setCmrreportData($data);
-                $this->_redirect('*/*/edit', array('id' => $this->getRequest()->getParam('id')));
+                $this->_redirect('*/*/edit', ['id' => $this->getRequest()->getParam('id')]);
                 return;
             }
         }
@@ -358,12 +358,12 @@ class BS_CmrReport_Adminhtml_Cmrreport_CmrreportController extends BS_Sur_Contro
                 return;
             } catch (Mage_Core_Exception $e) {
                 Mage::getSingleton('adminhtml/session')->addError($e->getMessage());
-                $this->_redirect('*/*/edit', array('id' => $this->getRequest()->getParam('id')));
+                $this->_redirect('*/*/edit', ['id' => $this->getRequest()->getParam('id')]);
             } catch (Exception $e) {
                 Mage::getSingleton('adminhtml/session')->addError(
                     Mage::helper('bs_cmrreport')->__('There was an error deleting cmr report.')
                 );
-                $this->_redirect('*/*/edit', array('id' => $this->getRequest()->getParam('id')));
+                $this->_redirect('*/*/edit', ['id' => $this->getRequest()->getParam('id')]);
                 Mage::logException($e);
                 return;
             }

@@ -47,11 +47,11 @@ class BS_Qn_Block_Adminhtml_Qn_Dashboard_Grid extends BS_Rewriting_Block_Adminht
         $collection = Mage::getModel('bs_qn/qn')
             ->getCollection()
             ->addFieldToFilter('ins_id', Mage::getSingleton('admin/session')->getUser()->getUserId())
-            ->addFieldToFilter('accept', array(
-                array('eq' => 0),
-                array('null' => true),
-            ))
-	        ->addFieldToFilter('qn_status', array('nin' => array(3,5)))
+            ->addFieldToFilter('accept', [
+                ['eq' => 0],
+                ['null' => true],
+            ])
+	        ->addFieldToFilter('qn_status', ['nin' => [3,5]])
             ->setOrder('ref_no', 'DESC')
 
         ;
@@ -67,28 +67,28 @@ class BS_Qn_Block_Adminhtml_Qn_Dashboard_Grid extends BS_Rewriting_Block_Adminht
     {
         $this->addColumn(
             'ref_no',
-            array(
+            [
                 'header'    => Mage::helper('bs_qn')->__('Reference No'),
                 'align'     => 'left',
                 'index'     => 'ref_no',
-            )
+            ]
         );
 
 
 
         $this->addColumn(
             'report_date',
-            array(
+            [
                 'header' => Mage::helper('bs_qn')->__('Report Date'),
                 'index'  => 'report_date',
                 'type'=> 'date',
 
-            )
+            ]
         );
 
         $this->addColumn(
             'qn_status',
-            array(
+            [
                 'header' => Mage::helper('bs_qn')->__('Status'),
                 'index'  => 'qn_status',
                 'type'  => 'options',
@@ -96,17 +96,17 @@ class BS_Qn_Block_Adminhtml_Qn_Dashboard_Grid extends BS_Rewriting_Block_Adminht
                     Mage::getModel('bs_qn/qn_attribute_source_qnstatus')->getAllOptions(false)
                 )
 
-            )
+            ]
         );
 
         $this->addColumn(
             'due_date',
-            array(
+            [
                 'header' => Mage::helper('bs_qn')->__('Due Date'),
                 'index'  => 'due_date',
                 'type'=> 'date',
 
-            )
+            ]
         );
 
         $this->setFilterVisibility(false);
@@ -117,6 +117,6 @@ class BS_Qn_Block_Adminhtml_Qn_Dashboard_Grid extends BS_Rewriting_Block_Adminht
 
     public function getRowUrl($row)
     {
-        return $this->getUrl('*/qn_qn/edit', array('id' => $row->getId()));
+        return $this->getUrl('*/qn_qn/edit', ['id' => $row->getId()]);
     }
 }

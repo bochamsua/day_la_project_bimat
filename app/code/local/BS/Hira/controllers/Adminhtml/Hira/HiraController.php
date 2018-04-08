@@ -119,7 +119,7 @@ class BS_Hira_Adminhtml_Hira_HiraController extends BS_Hira_Controller_Adminhtml
     {
         if ($data = $this->getRequest()->getPost('hira')) {
             try {
-                $data = $this->_filterDates($data, array('report_date' ,'due_date' ,'close_date'));
+                $data = $this->_filterDates($data, ['report_date' ,'due_date' ,'close_date']);
                 $hira = $this->_initHira();
                 $hira->addData($data);
                 $hiraSourceName = $this->_uploadAndGetName(
@@ -138,7 +138,7 @@ class BS_Hira_Adminhtml_Hira_HiraController extends BS_Hira_Controller_Adminhtml
                 );
                 Mage::getSingleton('adminhtml/session')->setFormData(false);
                 if ($this->getRequest()->getParam('back')) {
-                    $this->_redirect('*/*/edit', array('id' => $hira->getId()));
+                    $this->_redirect('*/*/edit', ['id' => $hira->getId()]);
                     return;
                 }
                 $this->_redirect('*/*/');
@@ -149,7 +149,7 @@ class BS_Hira_Adminhtml_Hira_HiraController extends BS_Hira_Controller_Adminhtml
                 }
                 Mage::getSingleton('adminhtml/session')->addError($e->getMessage());
                 Mage::getSingleton('adminhtml/session')->setHiraData($data);
-                $this->_redirect('*/*/edit', array('id' => $this->getRequest()->getParam('id')));
+                $this->_redirect('*/*/edit', ['id' => $this->getRequest()->getParam('id')]);
                 return;
             } catch (Exception $e) {
                 Mage::logException($e);
@@ -160,7 +160,7 @@ class BS_Hira_Adminhtml_Hira_HiraController extends BS_Hira_Controller_Adminhtml
                     Mage::helper('bs_hira')->__('There was a problem saving the hira.')
                 );
                 Mage::getSingleton('adminhtml/session')->setHiraData($data);
-                $this->_redirect('*/*/edit', array('id' => $this->getRequest()->getParam('id')));
+                $this->_redirect('*/*/edit', ['id' => $this->getRequest()->getParam('id')]);
                 return;
             }
         }
@@ -191,12 +191,12 @@ class BS_Hira_Adminhtml_Hira_HiraController extends BS_Hira_Controller_Adminhtml
                 return;
             } catch (Mage_Core_Exception $e) {
                 Mage::getSingleton('adminhtml/session')->addError($e->getMessage());
-                $this->_redirect('*/*/edit', array('id' => $this->getRequest()->getParam('id')));
+                $this->_redirect('*/*/edit', ['id' => $this->getRequest()->getParam('id')]);
             } catch (Exception $e) {
                 Mage::getSingleton('adminhtml/session')->addError(
                     Mage::helper('bs_hira')->__('There was an error deleting hira.')
                 );
-                $this->_redirect('*/*/edit', array('id' => $this->getRequest()->getParam('id')));
+                $this->_redirect('*/*/edit', ['id' => $this->getRequest()->getParam('id')]);
                 Mage::logException($e);
                 return;
             }

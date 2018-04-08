@@ -119,7 +119,7 @@ class BS_HR_Adminhtml_Hr_CertificateController extends BS_Sur_Controller_Adminht
     {
         if ($data = $this->getRequest()->getPost('certificate')) {
             try {
-                $data = $this->_filterDates($data, array('crs_approved' ,'crs_expire' ,'caav_approved' ,'caav_expire'));
+                $data = $this->_filterDates($data, ['crs_approved' ,'crs_expire' ,'caav_approved' ,'caav_expire']);
                 $certificate = $this->_initCertificate();
 
                 $currentUserId = Mage::getSingleton('admin/session')->getUser()->getId();
@@ -135,7 +135,7 @@ class BS_HR_Adminhtml_Hr_CertificateController extends BS_Sur_Controller_Adminht
                 );
                 Mage::getSingleton('adminhtml/session')->setFormData(false);
                 if ($this->getRequest()->getParam('back')) {
-                    $this->_redirect('*/*/edit', array('id' => $certificate->getId()));
+                    $this->_redirect('*/*/edit', ['id' => $certificate->getId()]);
                     return;
                 }
                 $this->_redirect('*/*/');
@@ -143,7 +143,7 @@ class BS_HR_Adminhtml_Hr_CertificateController extends BS_Sur_Controller_Adminht
             } catch (Mage_Core_Exception $e) {
                 Mage::getSingleton('adminhtml/session')->addError($e->getMessage());
                 Mage::getSingleton('adminhtml/session')->setCertificateData($data);
-                $this->_redirect('*/*/edit', array('id' => $this->getRequest()->getParam('id')));
+                $this->_redirect('*/*/edit', ['id' => $this->getRequest()->getParam('id')]);
                 return;
             } catch (Exception $e) {
                 Mage::logException($e);
@@ -151,7 +151,7 @@ class BS_HR_Adminhtml_Hr_CertificateController extends BS_Sur_Controller_Adminht
                     Mage::helper('bs_hr')->__('There was a problem saving the certificate.')
                 );
                 Mage::getSingleton('adminhtml/session')->setCertificateData($data);
-                $this->_redirect('*/*/edit', array('id' => $this->getRequest()->getParam('id')));
+                $this->_redirect('*/*/edit', ['id' => $this->getRequest()->getParam('id')]);
                 return;
             }
         }
@@ -181,12 +181,12 @@ class BS_HR_Adminhtml_Hr_CertificateController extends BS_Sur_Controller_Adminht
                 return;
             } catch (Mage_Core_Exception $e) {
                 Mage::getSingleton('adminhtml/session')->addError($e->getMessage());
-                $this->_redirect('*/*/edit', array('id' => $this->getRequest()->getParam('id')));
+                $this->_redirect('*/*/edit', ['id' => $this->getRequest()->getParam('id')]);
             } catch (Exception $e) {
                 Mage::getSingleton('adminhtml/session')->addError(
                     Mage::helper('bs_hr')->__('There was an error deleting certificate.')
                 );
-                $this->_redirect('*/*/edit', array('id' => $this->getRequest()->getParam('id')));
+                $this->_redirect('*/*/edit', ['id' => $this->getRequest()->getParam('id')]);
                 Mage::logException($e);
                 return;
             }

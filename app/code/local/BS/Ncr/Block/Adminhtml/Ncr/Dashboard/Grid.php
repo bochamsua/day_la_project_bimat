@@ -47,12 +47,12 @@ class BS_Ncr_Block_Adminhtml_Ncr_Dashboard_Grid extends BS_Rewriting_Block_Admin
         $collection = Mage::getModel('bs_ncr/ncr')
             ->getCollection()
             ->addFieldToFilter('ins_id', Mage::getSingleton('admin/session')->getUser()->getUserId())
-            ->addFieldToFilter('accept', array(
-                array('eq' => 0),
-                array('null' => true),
-            ))
+            ->addFieldToFilter('accept', [
+                ['eq' => 0],
+                ['null' => true],
+            ])
 
-	        ->addFieldToFilter('ncr_status', array('nin' => array(3,5,6)))
+	        ->addFieldToFilter('ncr_status', ['nin' => [3,5,6]])
 
             ->setOrder('ref_no', 'DESC')
 
@@ -69,28 +69,28 @@ class BS_Ncr_Block_Adminhtml_Ncr_Dashboard_Grid extends BS_Rewriting_Block_Admin
     {
         $this->addColumn(
             'ref_no',
-            array(
+            [
                 'header'    => Mage::helper('bs_ncr')->__('Reference No'),
                 'align'     => 'left',
                 'index'     => 'ref_no',
-            )
+            ]
         );
 
 
 
         $this->addColumn(
             'report_date',
-            array(
+            [
                 'header' => Mage::helper('bs_ncr')->__('Report Date'),
                 'index'  => 'report_date',
                 'type'=> 'date',
 
-            )
+            ]
         );
 
         $this->addColumn(
             'ncr_status',
-            array(
+            [
                 'header' => Mage::helper('bs_ncr')->__('Status'),
                 'index'  => 'ncr_status',
                 'type'  => 'options',
@@ -98,17 +98,17 @@ class BS_Ncr_Block_Adminhtml_Ncr_Dashboard_Grid extends BS_Rewriting_Block_Admin
                     Mage::getModel('bs_ncr/ncr_attribute_source_ncrstatus')->getAllOptions(false)
                 )
 
-            )
+            ]
         );
 
         $this->addColumn(
             'due_date',
-            array(
+            [
                 'header' => Mage::helper('bs_ncr')->__('Due Date'),
                 'index'  => 'due_date',
                 'type'=> 'date',
 
-            )
+            ]
         );
 
 
@@ -120,6 +120,6 @@ class BS_Ncr_Block_Adminhtml_Ncr_Dashboard_Grid extends BS_Rewriting_Block_Admin
 
     public function getRowUrl($row)
     {
-        return $this->getUrl('*/ncr_ncr/edit', array('id' => $row->getId()));
+        return $this->getUrl('*/ncr_ncr/edit', ['id' => $row->getId()]);
     }
 }

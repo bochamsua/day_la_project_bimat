@@ -40,24 +40,24 @@ class BS_Qn_Block_Adminhtml_Qn_Edit_Tabs extends Mage_Adminhtml_Block_Widget_Tab
     {
         $this->addTab(
             'form_qn',
-            array(
+            [
                 'label'   => Mage::helper('bs_qn')->__('QN'),
                 'title'   => Mage::helper('bs_qn')->__('QN'),
                 'content' => $this->getLayout()->createBlock(
                     'bs_qn/adminhtml_qn_edit_tab_form'
                 )
                 ->toHtml(),
-            )
+            ]
         );
 
 	    if($this->getQn()->getId()){
-		    $this->addTab('general_info', array(
+		    $this->addTab('general_info', [
 			    'label'     => Mage::helper('bs_qn')->__('Related Info'),
 			    'content' => $this->getLayout()->createBlock(
 				    'bs_qn/adminhtml_qn_edit_tab_info'
 			    )
 			                      ->toHtml()
-		    ));
+            ]);
 	    }
         return parent::_beforeToHtml();
     }

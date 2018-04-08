@@ -41,21 +41,21 @@ class BS_Ncr_Block_Adminhtml_Ncr_Edit extends Mage_Adminhtml_Block_Widget_Form_C
 	    if($currentObj->getId()){
 		    $this->_addButton(
 			    '2029',
-			    array(
+			    [
 				    'label'   => Mage::helper('bs_ncr')->__('Print'),
-				    'onclick'   => "setLocation('{$this->getUrl('*/*/generateNcr', array('_current'=>true))}')",
+				    'onclick'   => "setLocation('{$this->getUrl('*/*/generateNcr', ['_current'=>true])}')",
 				    'class'   => 'reset',
-			    )
+                ]
 		    );
 
 		    if($currentObj->getNcrStatus() == 0 && $misc->isOwner($currentObj)){
 			    $this->_addButton(
 				    'submitted',
-				    array(
+				    [
 					    'label'   => Mage::helper('bs_ncr')->__('Submit'),
 					    'onclick'   => "submitNcr()",
 					    'class'   => 'save submit',
-				    ),1,888
+                    ],1,888
 			    );
 		    }
 
@@ -63,20 +63,20 @@ class BS_Ncr_Block_Adminhtml_Ncr_Edit extends Mage_Adminhtml_Block_Widget_Form_C
 
 			    $this->_addButton(
 				    'reject',
-				    array(
+				    [
 					    'label'   => Mage::helper('bs_ncr')->__('Reject'),
 					    'onclick'   => "rejectNcr()",
 					    'class'   => 'save',
-				    )
+                    ]
 			    );
 
 			    $this->_addButton(
 				    'accept',
-				    array(
+				    [
 					    'label'   => Mage::helper('bs_ncr')->__('Accept'),
 					    'onclick'   => "acceptNcr()",
 					    'class'   => 'save',
-				    )
+                    ]
 			    );
 
 
@@ -95,11 +95,11 @@ class BS_Ncr_Block_Adminhtml_Ncr_Edit extends Mage_Adminhtml_Block_Widget_Form_C
 			    //if($dueDate >= $currentDate){
 				    $this->_addButton(
 					    'close',
-					    array(
+					    [
 						    'label'   => Mage::helper('bs_ncr')->__('Close'),
 						    'onclick'   => "closeNcr()",
 						    'class'   => 'save closes',
-					    )
+                        ]
 				    );
 			    //}
 
@@ -121,11 +121,11 @@ class BS_Ncr_Block_Adminhtml_Ncr_Edit extends Mage_Adminhtml_Block_Widget_Form_C
 
 		    $this->_addButton(
 			    'accept1',
-			    array(
+			    [
 				    'label'   => Mage::helper('bs_ncr')->__('Accept'),
 				    'onclick'   => "acceptNcr()",
 				    'class'   => 'save',
-			    )
+                ]
 		    );
 		    if($currentObj->getNcrStatus() == 2){
 			    $this->_removeButton('accept1');
@@ -147,11 +147,11 @@ class BS_Ncr_Block_Adminhtml_Ncr_Edit extends Mage_Adminhtml_Block_Widget_Form_C
 
                 $this->_addButton(
                     'submitted',
-                    array(
+                    [
                         'label'   => Mage::helper('bs_ncr')->__('Ncr was submitted. You CANNOT edit.'),
                         'onclick' => 'history.back()',
                         'class'   => 'back',
-                    ),
+                    ],
                     -1
                 );
             }
@@ -168,18 +168,18 @@ class BS_Ncr_Block_Adminhtml_Ncr_Edit extends Mage_Adminhtml_Block_Widget_Form_C
             $this->_removeButton('back');
             $this->_addButton(
                 'closewindow',
-                array(
+                [
                     'label'   => Mage::helper('bs_ncr')->__('Close'),
                     'onclick' => 'window.close()',
                     'class'   => 'back',
-                ),
+                ],
                 -1
             );
         }
         $this->_formScripts[] = "
 
             function deleteOnly() {
-                deleteConfirm('". Mage::helper('adminhtml')->__('Are you sure you want to do this?')."','".$this->getUrl('*/*/delete', array($this->_objectId => $this->getRequest()->getParam($this->_objectId), 'popup'=>1)) . "');
+                deleteConfirm('". Mage::helper('adminhtml')->__('Are you sure you want to do this?')."','".$this->getUrl('*/*/delete', [$this->_objectId => $this->getRequest()->getParam($this->_objectId), 'popup'=>1]) . "');
             }
             function saveOnly() {
                 
@@ -266,19 +266,19 @@ class BS_Ncr_Block_Adminhtml_Ncr_Edit extends Mage_Adminhtml_Block_Widget_Form_C
 
 		    $this->_addButton(
 			    'save1',
-			    array(
+			    [
 				    'label'   => Mage::helper('bs_ncr')->__('Save'),
 				    'onclick'   => "saveAndContinueEdit()",
 				    'class'   => 'save',
-			    )
+                ]
 		    );
 		    $this->_addButton(
 			    'rintp',
-			    array(
+			    [
 				    'label'   => Mage::helper('bs_ncr')->__('Print'),
-				    'onclick'   => "setLocation('{$this->getUrl('*/*/generateNcr', array('_current'=>true))}')",
+				    'onclick'   => "setLocation('{$this->getUrl('*/*/generateNcr', ['_current'=>true])}')",
 				    'class'   => 'print',
-			    )
+                ]
 		    );
 	    }
     }
@@ -313,12 +313,12 @@ class BS_Ncr_Block_Adminhtml_Ncr_Edit extends Mage_Adminhtml_Block_Widget_Form_C
     }
     public function getSaveAndContinueUrl()
         {
-            return $this->getUrl('*/*/save', array(
+            return $this->getUrl('*/*/save', [
                 '_current'   => true,
                 'back'       => 'edit',
                 'tab'        => '{{tab_id}}',
                 'active_tab' => null
-            ));
+            ]);
         }
     public function getSelectedTabId()
         {

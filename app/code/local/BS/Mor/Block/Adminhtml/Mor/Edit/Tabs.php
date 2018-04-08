@@ -40,14 +40,14 @@ class BS_Mor_Block_Adminhtml_Mor_Edit_Tabs extends Mage_Adminhtml_Block_Widget_T
     {
         $this->addTab(
             'form_mor',
-            array(
+            [
                 'label'   => Mage::helper('bs_mor')->__('MOR'),
                 'title'   => Mage::helper('bs_mor')->__('MOR'),
                 'content' => $this->getLayout()->createBlock(
                     'bs_mor/adminhtml_mor_edit_tab_form'
                 )
                 ->toHtml(),
-            )
+            ]
         );
         return parent::_beforeToHtml();
     }

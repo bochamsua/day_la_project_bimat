@@ -5,7 +5,7 @@ class BS_Theming_Model_Adminhtml_Observer
     {
         $theme = 's2ltheme';
         Mage::getDesign()->setTheme($theme);
-        foreach (array('layout', 'template', 'skin', 'locale') as $type) {
+        foreach (['layout', 'template', 'skin', 'locale'] as $type) {
             Mage::getDesign()->setTheme($type, $theme);
         }
     }

@@ -40,14 +40,14 @@ class BS_Acreg_Block_Adminhtml_Customer_Edit_Tabs extends Mage_Adminhtml_Block_W
     {
         $this->addTab(
             'form_customer',
-            array(
+            [
                 'label'   => Mage::helper('bs_acreg')->__('Customer'),
                 'title'   => Mage::helper('bs_acreg')->__('Customer'),
                 'content' => $this->getLayout()->createBlock(
                     'bs_acreg/adminhtml_customer_edit_tab_form'
                 )
                 ->toHtml(),
-            )
+            ]
         );
         return parent::_beforeToHtml();
     }

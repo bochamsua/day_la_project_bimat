@@ -58,43 +58,43 @@ class BS_Formtemplate_Block_Adminhtml_Formtemplate_Grid extends Mage_Adminhtml_B
     {
         $this->addColumn(
             'entity_id',
-            array(
+            [
                 'header' => Mage::helper('bs_formtemplate')->__('Id'),
                 'index'  => 'entity_id',
                 'type'   => 'number', 'filter' => false
-            )
+            ]
         );
         $this->addColumn(
             'template_name',
-            array(
+            [
                 'header'    => Mage::helper('bs_formtemplate')->__('Name'),
                 'align'     => 'left',
                 'index'     => 'template_name',
-            )
+            ]
         );
         
 
         $this->addColumn(
             'template_code',
-            array(
+            [
                 'header' => Mage::helper('bs_formtemplate')->__('Code'),
                 'index'  => 'template_code',
                 'type'=> 'text',
 
-            )
+            ]
         );
         $this->addColumn(
             'template_date',
-            array(
+            [
                 'header' => Mage::helper('bs_formtemplate')->__('Approved Date'),
                 'index'  => 'template_date',
                 'type'=> 'date',
 
-            )
+            ]
         );
         $this->addColumn(
             'template_revision',
-            array(
+            [
                 'header' => Mage::helper('bs_formtemplate')->__('Revision'),
                 'index'  => 'template_revision',
                 'type'  => 'options',
@@ -102,26 +102,26 @@ class BS_Formtemplate_Block_Adminhtml_Formtemplate_Grid extends Mage_Adminhtml_B
                     Mage::getModel('bs_formtemplate/formtemplate_attribute_source_templaterevision')->getAllOptions(false)
                 )
 
-            )
+            ]
         );
         $this->addColumn(
             'template_file',
-            array(
+            [
                 'header' => Mage::helper('bs_formtemplate')->__('File'),
                 'type'=> 'text',
                 'renderer'  => 'bs_formtemplate/adminhtml_helper_column_renderer_file'
 
-            )
+            ]
         );
 
         $this->addColumn(
             'template_note',
-            array(
+            [
                 'header' => Mage::helper('bs_formtemplate')->__('Note'),
                 'index'  => 'template_note',
                 'type'=> 'text',
 
-            )
+            ]
         );
 
 
@@ -140,22 +140,22 @@ class BS_Formtemplate_Block_Adminhtml_Formtemplate_Grid extends Mage_Adminhtml_B
 
         $this->addColumn(
             'action',
-            array(
+            [
                 'header'  =>  Mage::helper('bs_formtemplate')->__('Action'),
                 'width'   => '100',
                 'type'    => 'action',
                 'getter'  => 'getId',
-                'actions' => array(
-                    array(
+                'actions' => [
+                    [
                         'caption' => Mage::helper('bs_formtemplate')->__('Edit'),
-                        'url'     => array('base'=> '*/*/edit'),
+                        'url'     => ['base'=> '*/*/edit'],
                         'field'   => 'id'
-                    )
-                ),
+                    ]
+                ],
                 'filter'    => false,
                 'is_system' => true,
                 'sortable'  => false,
-            )
+            ]
         );
         //$this->addExportType('*/*/exportCsv', Mage::helper('bs_formtemplate')->__('CSV'));
         $this->addExportType('*/*/exportExcel', Mage::helper('bs_formtemplate')->__('Excel'));
@@ -181,33 +181,33 @@ class BS_Formtemplate_Block_Adminhtml_Formtemplate_Grid extends Mage_Adminhtml_B
         if($isAllowedDelete){
             $this->getMassactionBlock()->addItem(
                 'delete',
-                array(
+                [
                     'label'=> Mage::helper('bs_formtemplate')->__('Delete'),
                     'url'  => $this->getUrl('*/*/massDelete'),
                     'confirm'  => Mage::helper('bs_formtemplate')->__('Are you sure?')
-                )
+                ]
             );
         }
 
         if($isAllowedEdit){
             $this->getMassactionBlock()->addItem(
                 'status',
-                array(
+                [
                     'label'      => Mage::helper('bs_formtemplate')->__('Change status'),
-                    'url'        => $this->getUrl('*/*/massStatus', array('_current'=>true)),
-                    'additional' => array(
-                        'status' => array(
+                    'url'        => $this->getUrl('*/*/massStatus', ['_current'=>true]),
+                    'additional' => [
+                        'status' => [
                             'name'   => 'status',
                             'type'   => 'select',
                             'class'  => 'required-entry',
                             'label'  => Mage::helper('bs_formtemplate')->__('Status'),
-                            'values' => array(
+                            'values' => [
                                 '1' => Mage::helper('bs_formtemplate')->__('Enabled'),
                                 '0' => Mage::helper('bs_formtemplate')->__('Disabled'),
-                            )
-                        )
-                    )
-                )
+                            ]
+                        ]
+                    ]
+                ]
             );
 
 
@@ -215,11 +215,11 @@ class BS_Formtemplate_Block_Adminhtml_Formtemplate_Grid extends Mage_Adminhtml_B
 
         $this->getMassactionBlock()->addItem(
             'template_revision',
-            array(
+            [
                 'label'      => Mage::helper('bs_formtemplate')->__('Change Revision'),
-                'url'        => $this->getUrl('*/*/massTemplateRevision', array('_current'=>true)),
-                'additional' => array(
-                    'flag_template_revision' => array(
+                'url'        => $this->getUrl('*/*/massTemplateRevision', ['_current'=>true]),
+                'additional' => [
+                    'flag_template_revision' => [
                         'name'   => 'flag_template_revision',
                         'type'   => 'select',
                         'class'  => 'required-entry',
@@ -227,9 +227,9 @@ class BS_Formtemplate_Block_Adminhtml_Formtemplate_Grid extends Mage_Adminhtml_B
                         'values' => Mage::getModel('bs_formtemplate/formtemplate_attribute_source_templaterevision')
                             ->getAllOptions(true),
 
-                    )
-                )
-            )
+                    ]
+                ]
+            ]
         );
         }
         return $this;
@@ -245,7 +245,7 @@ class BS_Formtemplate_Block_Adminhtml_Formtemplate_Grid extends Mage_Adminhtml_B
      */
     public function getRowUrl($row)
     {
-        return $this->getUrl('*/*/edit', array('id' => $row->getId()));
+        return $this->getUrl('*/*/edit', ['id' => $row->getId()]);
     }
 
     /**
@@ -257,7 +257,7 @@ class BS_Formtemplate_Block_Adminhtml_Formtemplate_Grid extends Mage_Adminhtml_B
      */
     public function getGridUrl()
     {
-        return $this->getUrl('*/*/grid', array('_current'=>true));
+        return $this->getUrl('*/*/grid', ['_current'=>true]);
     }
 
     /**

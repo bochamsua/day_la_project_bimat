@@ -42,23 +42,23 @@ class BS_Ncr_Block_Adminhtml_Ncr_Edit_Tabs extends Mage_Adminhtml_Block_Widget_T
 
         $this->addTab(
             'form_ncr',
-            array(
+            [
                 'label'   => Mage::helper('bs_ncr')->__('NCR'),
                 'title'   => Mage::helper('bs_ncr')->__('NCR'),
                 'content' => $this->getLayout()->createBlock(
                     'bs_ncr/adminhtml_ncr_edit_tab_form'
                 )
                 ->toHtml(),
-            )
+            ]
         );
 	    if($this->getNcr()->getId()){
-		    $this->addTab('general_info', array(
+		    $this->addTab('general_info', [
 			    'label'     => Mage::helper('bs_ncr')->__('Related Info'),
 			    'content' => $this->getLayout()->createBlock(
 				    'bs_ncr/adminhtml_ncr_edit_tab_info'
 			    )
 			                      ->toHtml()
-		    ));
+            ]);
 	    }
 
         $id = 0;
@@ -69,21 +69,21 @@ class BS_Ncr_Block_Adminhtml_Ncr_Edit_Tabs extends Mage_Adminhtml_Block_Widget_T
 
         $this->addTab(
             'ir',
-            array(
+            [
                 'label' => Mage::helper('bs_ncr')->__('IR (%s)', $countRelations['ir']),
-                'url' => $this->getUrl('adminhtml/ncr_ncr/irs', array('_current' => true)),
+                'url' => $this->getUrl('adminhtml/ncr_ncr/irs', ['_current' => true]),
                 'class' => 'ajax',
-            )
+            ]
         );
         
 
         $this->addTab(
             'qr',
-            array(
+            [
                 'label' => Mage::helper('bs_ncr')->__('QR (%s)', $countRelations['qr']),
-                'url' => $this->getUrl('adminhtml/ncr_ncr/qrs', array('_current' => true)),
+                'url' => $this->getUrl('adminhtml/ncr_ncr/qrs', ['_current' => true]),
                 'class' => 'ajax',
-            )
+            ]
         );
 	    
         return parent::_beforeToHtml();

@@ -50,8 +50,8 @@ class BS_Report_Block_Adminhtml_Qchaneff extends Mage_Adminhtml_Block_Widget_Gri
 		    }
 
 
-		    $chartData = array(
-			    "chart" => array(
+		    $chartData = [
+			    "chart" => [
 				    "caption" => "QC HAN Evaluation Report",
                     "subCaption" => $month .'-'.$year,
 				    "yAxisName" => "Level",
@@ -74,8 +74,8 @@ class BS_Report_Block_Adminhtml_Qchaneff extends Mage_Adminhtml_Block_Widget_Gri
 				    "exportEnabled" => 1,
 				    "exportAtClientSide" => 1,
 				    "exportFileName" => "QC HAN Efficieny Report"
-			    )
-		    );
+                ]
+            ];
 
 
 		    $collection = Mage::getModel('bs_report/qchaneff')
@@ -84,34 +84,34 @@ class BS_Report_Block_Adminhtml_Qchaneff extends Mage_Adminhtml_Block_Widget_Gri
 		    $collection->addFieldToFilter('month', $month);
 		    $collection->addFieldToFilter('year', $year);
 
-		    $result = array();
+		    $result = [];
 		    foreach ( $collection as $item ) {
 			    $user = Mage::getModel('admin/user')->load($item->getInsId());
-			    $result[] = array(
+			    $result[] = [
 				    'label' => Mage::helper('bs_misc')->getShortName($user->getFirstname().' '.$user->getLastname()),
 				    'value' => $item->getLevel()
-			    );
+                ];
 		    }
 
 
 		    $chartData["data"] = $result;
-		    $chartData["trendlines"] = array(
-		    	array(
-		    		'line' => array(
-				        array(
+		    $chartData["trendlines"] = [
+		    	[
+		    		'line' => [
+				        [
 					        "startvalue" => "7",
 					        "color" => "#1aaf5d",
 					        "valueOnRight" => "1",
 					        "displayvalue" => "Level - 7"
-				        ),
+                        ],
 					   /* array(
 						    "startvalue" => "2",
 						    "color" => "#1aaf5d",
 						    "valueOnRight" => "1",
 						    "displayvalue" => "Level - 7"
 					    )*/
-			    ))
-		    );
+                    ]]
+            ];
 
 
 		    //now export chart

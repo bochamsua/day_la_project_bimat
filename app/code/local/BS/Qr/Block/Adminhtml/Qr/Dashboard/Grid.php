@@ -47,11 +47,11 @@ class BS_Qr_Block_Adminhtml_Qr_Dashboard_Grid extends BS_Rewriting_Block_Adminht
         $collection = Mage::getModel('bs_qr/qr')
             ->getCollection()
             ->addFieldToFilter('ins_id', Mage::getSingleton('admin/session')->getUser()->getUserId())
-            ->addFieldToFilter('accept', array(
-                array('eq' => 0),
-                array('null' => true),
-            ))
-	        ->addFieldToFilter('qr_status', array('nin' => array(3,5)))
+            ->addFieldToFilter('accept', [
+                ['eq' => 0],
+                ['null' => true],
+            ])
+	        ->addFieldToFilter('qr_status', ['nin' => [3,5]])
             ->setOrder('ref_no', 'DESC')
 
         ;
@@ -67,28 +67,28 @@ class BS_Qr_Block_Adminhtml_Qr_Dashboard_Grid extends BS_Rewriting_Block_Adminht
     {
         $this->addColumn(
             'ref_no',
-            array(
+            [
                 'header'    => Mage::helper('bs_qr')->__('Reference No'),
                 'align'     => 'left',
                 'index'     => 'ref_no',
-            )
+            ]
         );
 
 
 
         $this->addColumn(
             'report_date',
-            array(
+            [
                 'header' => Mage::helper('bs_qr')->__('Report Date'),
                 'index'  => 'report_date',
                 'type'=> 'date',
 
-            )
+            ]
         );
 
         $this->addColumn(
             'qr_status',
-            array(
+            [
                 'header' => Mage::helper('bs_qr')->__('Status'),
                 'index'  => 'qr_status',
                 'type'  => 'options',
@@ -96,17 +96,17 @@ class BS_Qr_Block_Adminhtml_Qr_Dashboard_Grid extends BS_Rewriting_Block_Adminht
                     Mage::getModel('bs_qr/qr_attribute_source_qrstatus')->getAllOptions(false)
                 )
 
-            )
+            ]
         );
 
         $this->addColumn(
             'due_date',
-            array(
+            [
                 'header' => Mage::helper('bs_qr')->__('Due Date'),
                 'index'  => 'due_date',
                 'type'=> 'date',
 
-            )
+            ]
         );
 
 
@@ -119,6 +119,6 @@ class BS_Qr_Block_Adminhtml_Qr_Dashboard_Grid extends BS_Rewriting_Block_Adminht
 
     public function getRowUrl($row)
     {
-        return $this->getUrl('*/qr_qr/edit', array('id' => $row->getId()));
+        return $this->getUrl('*/qr_qr/edit', ['id' => $row->getId()]);
     }
 }

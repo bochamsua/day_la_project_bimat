@@ -58,30 +58,30 @@ class BS_Misc_Block_Adminhtml_Location_Grid extends Mage_Adminhtml_Block_Widget_
     {
         $this->addColumn(
             'entity_id',
-            array(
+            [
                 'header' => Mage::helper('bs_misc')->__('Id'),
                 'index'  => 'entity_id',
                 'type'   => 'number', 'filter' => false
-            )
+            ]
         );
         $this->addColumn(
             'loc_name',
-            array(
+            [
                 'header'    => Mage::helper('bs_misc')->__('Name'),
                 'align'     => 'left',
                 'index'     => 'loc_name',
-            )
+            ]
         );
         
 
         $this->addColumn(
             'loc_code',
-            array(
+            [
                 'header' => Mage::helper('bs_misc')->__('Code'),
                 'index'  => 'loc_code',
                 'type'=> 'text',
 
-            )
+            ]
         );
 
 
@@ -128,33 +128,33 @@ class BS_Misc_Block_Adminhtml_Location_Grid extends Mage_Adminhtml_Block_Widget_
         if($isAllowedDelete){
             $this->getMassactionBlock()->addItem(
                 'delete',
-                array(
+                [
                     'label'=> Mage::helper('bs_misc')->__('Delete'),
                     'url'  => $this->getUrl('*/*/massDelete'),
                     'confirm'  => Mage::helper('bs_misc')->__('Are you sure?')
-                )
+                ]
             );
         }
 
         if($isAllowedEdit){
             $this->getMassactionBlock()->addItem(
                 'status',
-                array(
+                [
                     'label'      => Mage::helper('bs_misc')->__('Change status'),
-                    'url'        => $this->getUrl('*/*/massStatus', array('_current'=>true)),
-                    'additional' => array(
-                        'status' => array(
+                    'url'        => $this->getUrl('*/*/massStatus', ['_current'=>true]),
+                    'additional' => [
+                        'status' => [
                             'name'   => 'status',
                             'type'   => 'select',
                             'class'  => 'required-entry',
                             'label'  => Mage::helper('bs_misc')->__('Status'),
-                            'values' => array(
+                            'values' => [
                                 '1' => Mage::helper('bs_misc')->__('Enabled'),
                                 '0' => Mage::helper('bs_misc')->__('Disabled'),
-                            )
-                        )
-                    )
-                )
+                            ]
+                        ]
+                    ]
+                ]
             );
 
 
@@ -174,7 +174,7 @@ class BS_Misc_Block_Adminhtml_Location_Grid extends Mage_Adminhtml_Block_Widget_
      */
     public function getRowUrl($row)
     {
-        return $this->getUrl('*/*/edit', array('id' => $row->getId()));
+        return $this->getUrl('*/*/edit', ['id' => $row->getId()]);
     }
 
     /**
@@ -186,7 +186,7 @@ class BS_Misc_Block_Adminhtml_Location_Grid extends Mage_Adminhtml_Block_Widget_
      */
     public function getGridUrl()
     {
-        return $this->getUrl('*/*/grid', array('_current'=>true));
+        return $this->getUrl('*/*/grid', ['_current'=>true]);
     }
 
     /**

@@ -24,27 +24,27 @@ class BS_Car_Model_Adminhtml_Search_Car extends Varien_Object
      */
     public function load()
     {
-        $arr = array();
+        $arr = [];
         if (!$this->hasStart() || !$this->hasLimit() || !$this->hasQuery()) {
             $this->setResults($arr);
             return $this;
         }
         $collection = Mage::getResourceModel('bs_car/car_collection')
-            ->addFieldToFilter('ref_no', array('like' => $this->getQuery().'%'))
+            ->addFieldToFilter('ref_no', ['like' => $this->getQuery().'%'])
             ->setCurPage($this->getStart())
             ->setPageSize($this->getLimit())
             ->load();
         foreach ($collection->getItems() as $car) {
-            $arr[] = array(
+            $arr[] = [
                 'id'          => 'car/1/'.$car->getId(),
                 'type'        => Mage::helper('bs_car')->__('Car'),
                 'name'        => $car->getRefNo(),
                 'description' => $car->getRefNo(),
                 'url' => Mage::helper('adminhtml')->getUrl(
                     '*/car_car/edit',
-                    array('id'=>$car->getId())
+                    ['id'=>$car->getId()]
                 ),
-            );
+            ];
         }
         $this->setResults($arr);
         return $this;

@@ -46,13 +46,13 @@ class BS_Qr_Block_Adminhtml_Qr_Dashboard_Qrsign extends BS_Rewriting_Block_Admin
         $currentUser = $this->helper('bs_misc')->getCurrentUserInfo();
         $collection = Mage::getModel('bs_qr/qr')
             ->getCollection()
-	        ->addFieldToFilter('qr_status', array('eq'=>1))
+	        ->addFieldToFilter('qr_status', ['eq'=>1])
             ->addFieldToFilter('region', $currentUser[2])
             ->addFieldToFilter('section', $currentUser[3])
-            ->addFieldToFilter('accept', array(
-                array('eq' => 0),
-                array('null' => true),
-            ))
+            ->addFieldToFilter('accept', [
+                ['eq' => 0],
+                ['null' => true],
+            ])
             ->setOrder('ref_no', 'DESC')
 
         ;
@@ -67,26 +67,26 @@ class BS_Qr_Block_Adminhtml_Qr_Dashboard_Qrsign extends BS_Rewriting_Block_Admin
     {
         $this->addColumn(
             'ref_no',
-            array(
+            [
                 'header'    => Mage::helper('bs_qr')->__('Reference No'),
                 'align'     => 'left',
                 'index'     => 'ref_no',
-            )
+            ]
         );
 
         $this->addColumn(
             'report_date',
-            array(
+            [
                 'header' => Mage::helper('bs_qr')->__('Report Date'),
                 'index'  => 'report_date',
                 'type'=> 'date',
 
-            )
+            ]
         );
 
         $this->addColumn(
             'qr_status',
-            array(
+            [
                 'header' => Mage::helper('bs_qr')->__('Status'),
                 'index'  => 'qr_status',
                 'type'  => 'options',
@@ -94,17 +94,17 @@ class BS_Qr_Block_Adminhtml_Qr_Dashboard_Qrsign extends BS_Rewriting_Block_Admin
                     Mage::getModel('bs_qr/qr_attribute_source_qrstatus')->getAllOptions(false)
                 )
 
-            )
+            ]
         );
 
         $this->addColumn(
             'due_date',
-            array(
+            [
                 'header' => Mage::helper('bs_qr')->__('Due Date'),
                 'index'  => 'due_date',
                 'type'=> 'date',
 
-            )
+            ]
         );
 
 
@@ -118,6 +118,6 @@ class BS_Qr_Block_Adminhtml_Qr_Dashboard_Qrsign extends BS_Rewriting_Block_Admin
 
     public function getRowUrl($row)
     {
-        return $this->getUrl('*/qr_qr/edit', array('id' => $row->getId()));
+        return $this->getUrl('*/qr_qr/edit', ['id' => $row->getId()]);
     }
 }

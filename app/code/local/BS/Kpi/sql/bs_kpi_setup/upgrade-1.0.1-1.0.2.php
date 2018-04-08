@@ -15,10 +15,10 @@
  */
 $this->startSetup();
 $table = $this->getTable('bs_kpi/kpi');
-$this->getConnection()->changeColumn($table, 'customer_complaitn','customer_complaint', array(
+$this->getConnection()->changeColumn($table, 'customer_complaitn','customer_complaint', [
 	'type'      => Varien_Db_Ddl_Table::TYPE_TEXT,
 	'comment'   => 'Customer Complaint'
-));
+]);
 
 
 $this->endSetup();

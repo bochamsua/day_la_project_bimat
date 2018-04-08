@@ -31,7 +31,7 @@ class BS_Rii_Block_Adminhtml_Rii_Edit_Tab_Form extends Mage_Adminhtml_Block_Widg
         $this->setForm($form);
         $fieldset = $form->addFieldset(
             'rii_form',
-            array('legend' => Mage::helper('bs_rii')->__('RII Sign-off'))
+            ['legend' => Mage::helper('bs_rii')->__('RII Sign-off')]
         );
 
         $tasks = Mage::getResourceModel('bs_misc/task_collection')->addFieldToFilter('taskgroup_id', 6);
@@ -39,13 +39,13 @@ class BS_Rii_Block_Adminhtml_Rii_Edit_Tab_Form extends Mage_Adminhtml_Block_Widg
         $taskcode = $fieldset->addField(
             'task_id',
             'select',
-            array(
+            [
                 'label'     => Mage::helper('bs_misc')->__('Task Code'),
                 'name'      => 'task_id',
                 'required'  => false,
                 'values'    => $tasks,
                 //'after_element_html' => $html
-            )
+            ]
         );
 
 
@@ -55,12 +55,12 @@ class BS_Rii_Block_Adminhtml_Rii_Edit_Tab_Form extends Mage_Adminhtml_Block_Widg
         $fieldset->addField(
             'dept_id',
             'select',
-            array(
+            [
                 'label'     => Mage::helper('bs_misc')->__('Maint. Center'),
                 'name'      => 'dept_id',
                 'required'  => false,
                 'values'    => $depts,
-            )
+            ]
         );
 
         $locs = Mage::getResourceModel('bs_misc/location_collection');
@@ -69,12 +69,12 @@ class BS_Rii_Block_Adminhtml_Rii_Edit_Tab_Form extends Mage_Adminhtml_Block_Widg
         $fieldset->addField(
             'loc_id',
             'select',
-            array(
+            [
                 'label'     => Mage::helper('bs_misc')->__('Location'),
                 'name'      => 'loc_id',
                 'required'  => false,
                 'values'    => $locs,
-            )
+            ]
         );
 
 	    $customers = Mage::getResourceModel('bs_acreg/customer_collection');
@@ -83,12 +83,12 @@ class BS_Rii_Block_Adminhtml_Rii_Edit_Tab_Form extends Mage_Adminhtml_Block_Widg
 	    $fieldset->addField(
 		    'customer',
 		    'select',
-		    array(
+		    [
 			    'label'     => Mage::helper('bs_rii')->__('Customer'),
 			    'name'      => 'customer',
 			    'required'  => false,
 			    'values'    => $customers,
-		    )
+            ]
 	    );
 
 	    $acTypes = Mage::getResourceModel('bs_misc/aircraft_collection');
@@ -97,12 +97,12 @@ class BS_Rii_Block_Adminhtml_Rii_Edit_Tab_Form extends Mage_Adminhtml_Block_Widg
 	    $fieldset->addField(
 		    'ac_type',
 		    'select',
-		    array(
+		    [
 			    'label'     => Mage::helper('bs_rii')->__('A/C Type'),
 			    'name'      => 'ac_type',
 			    'required'  => false,
 			    'values'    => $acTypes,
-		    )
+            ]
 	    );
 
 	    $acRegs = Mage::getResourceModel('bs_acreg/acreg_collection');
@@ -112,12 +112,12 @@ class BS_Rii_Block_Adminhtml_Rii_Edit_Tab_Form extends Mage_Adminhtml_Block_Widg
 	    $fieldset->addField(
 		    'ac_reg',
 		    'select',
-		    array(
+		    [
 			    'label'     => Mage::helper('bs_rii')->__('A/C Reg'),
 			    'name'      => 'ac_reg',
 			    'required'  => false,
 			    'values'    => $acRegs,
-		    )
+            ]
 	    );
 
 
@@ -125,34 +125,34 @@ class BS_Rii_Block_Adminhtml_Rii_Edit_Tab_Form extends Mage_Adminhtml_Block_Widg
         $fieldset->addField(
             'report_date',
             'date',
-            array(
+            [
                 'label' => Mage::helper('bs_rii')->__('Date of Inspection'),
                 'name'  => 'report_date',
 
             'image' => $this->getSkinUrl('images/grid-cal.gif'),
             'format'  => Mage::app()->getLocale()->getDateFormat(Mage_Core_Model_Locale::FORMAT_TYPE_SHORT),
-           )
+            ]
         );
 
         $fieldset->addField(
             'wp',
             'text',
-            array(
+            [
                 'label' => Mage::helper('bs_rii')->__('Workpack'),
                 'name'  => 'wp',
 
-           )
+            ]
         );
 
         $fieldset->addField(
             'description',
             'textarea',
-            array(
+            [
                 'label' => Mage::helper('bs_rii')->__('Description'),
                 'name'  => 'description',
                 'config' => $wysiwygConfig,
 
-           )
+            ]
         );
 
 
@@ -160,7 +160,7 @@ class BS_Rii_Block_Adminhtml_Rii_Edit_Tab_Form extends Mage_Adminhtml_Block_Widg
 
         $formValues = Mage::registry('current_rii')->getDefaultValues();
         if (!is_array($formValues)) {
-            $formValues = array();
+            $formValues = [];
         }
         if (Mage::getSingleton('adminhtml/session')->getRiiData()) {
             $formValues = array_merge($formValues, Mage::getSingleton('adminhtml/session')->getRiiData());

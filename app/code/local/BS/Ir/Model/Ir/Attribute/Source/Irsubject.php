@@ -13,27 +13,27 @@ class BS_Ir_Model_Ir_Attribute_Source_Irsubject
      */
     public function getAllOptions($withEmpty = true, $defaultValues = false)
     {
-        $options =  array(
-            array(
+        $options =  [
+            [
                 'label' => Mage::helper('bs_ir')->__('Maint. Error'),
                 'value' => 1
-            ),
-            array(
+            ],
+            [
                 'label' => Mage::helper('bs_ir')->__('Safety event'),
                 'value' => 2
-            ),
-	        array(
+            ],
+	        [
 		        'label' => Mage::helper('bs_ir')->__('Labour Accident/ Incident'),
 		        'value' => 3
-	        ),
-	        array(
+            ],
+	        [
 		        'label' => Mage::helper('bs_ir')->__('Other'),
 		        'value' => 4
-	        ),
+            ],
 
-        );
+        ];
         if ($withEmpty) {
-            array_unshift($options, array('label'=>'', 'value'=>''));
+            array_unshift($options, ['label'=>'', 'value'=>'']);
         }
         return $options;
 
@@ -49,7 +49,7 @@ class BS_Ir_Model_Ir_Attribute_Source_Irsubject
      */
     public function getOptionsArray($withEmpty = true)
     {
-        $options = array();
+        $options = [];
         foreach ($this->getAllOptions($withEmpty) as $option) {
             $options[$option['value']] = $option['label'];
         }
@@ -70,7 +70,7 @@ class BS_Ir_Model_Ir_Attribute_Source_Irsubject
         if (!is_array($value)) {
             $value = explode(',', $value);
         }
-        $texts = array();
+        $texts = [];
         foreach ($value as $v) {
             if (isset($options[$v])) {
                 $texts[] = $options[$v];

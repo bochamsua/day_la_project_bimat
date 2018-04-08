@@ -11,7 +11,7 @@ class BS_Rewriting_Block_Adminhtml_Permissions_Grid_Role extends Mage_Adminhtml_
 	protected function _prepareCollection()
 	{
 		$collection =  Mage::getModel("admin/roles")->getCollection();
-		$collection->addFieldToFilter('role_id', array('gt'=>1));
+		$collection->addFieldToFilter('role_id', ['gt'=>1]);
 		$this->setCollection($collection);
 
 		if ($this->getCollection()) {
@@ -55,35 +55,35 @@ class BS_Rewriting_Block_Adminhtml_Permissions_Grid_Role extends Mage_Adminhtml_
 	protected function _prepareColumns()
 	{
 
-		$this->addColumn('role_id', array(
+		$this->addColumn('role_id', [
 			'header'    =>Mage::helper('adminhtml')->__('ID'),
 			'index'     =>'role_id',
 			'align'     => 'right',
 			'width'    => '50px'
-		));
+        ]);
 
-		$this->addColumn('role_name', array(
+		$this->addColumn('role_name', [
 			'header'    =>Mage::helper('adminhtml')->__('Role Name'),
 			'index'     =>'role_name'
-		));
+        ]);
 		$this->addColumn(
 			'action',
-			array(
+			[
 				'header'  =>  Mage::helper('adminhtml')->__('Action'),
 				'width'   => '100',
 				'type'    => 'action',
 				'getter'  => 'getId',
-				'actions' => array(
-					array(
+				'actions' => [
+					[
 						'caption' => Mage::helper('adminhtml')->__('Edit'),
-						'url'     => array('base'=> '*/*/editrole'),
+						'url'     => ['base'=> '*/*/editrole'],
 						'field'   => 'rid'
-					)
-				),
+                    ]
+                ],
 				'filter'    => false,
 				'is_system' => true,
 				'sortable'  => false,
-			)
+            ]
 		);
 
 

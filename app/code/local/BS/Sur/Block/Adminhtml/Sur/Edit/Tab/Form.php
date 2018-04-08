@@ -30,7 +30,7 @@ class BS_Sur_Block_Adminhtml_Sur_Edit_Tab_Form extends Mage_Adminhtml_Block_Widg
         $this->setForm($form);
         $fieldset = $form->addFieldset(
             'sur_form',
-            array('legend' => Mage::helper('bs_sur')->__('Surveillance'))
+            ['legend' => Mage::helper('bs_sur')->__('Surveillance')]
         );
 
         $currentSur = Mage::registry('current_sur');
@@ -70,42 +70,42 @@ class BS_Sur_Block_Adminhtml_Sur_Edit_Tab_Form extends Mage_Adminhtml_Block_Widg
         $fieldset->addField(
             'dept_id',
             'select',
-            array(
+            [
                 'label'     => Mage::helper('bs_sur')->__('Maint. Center'),
                 'name'      => 'dept_id',
                 'required'  => false,
                 'values'    => Mage::helper('bs_misc/dept')->getDepts(false, false, false),
-            )
+            ]
         );
 
         $locs = Mage::getResourceModel('bs_misc/location_collection');
         $locs = $locs->toOptionArray();
 		array_unshift($locs, ['value' => 0, 'label' => 'N/A']);
-        array_unshift($locs, array('value' => 0, 'label' => 'N/A'));
+        array_unshift($locs, ['value' => 0, 'label' => 'N/A']);
         $fieldset->addField(
             'loc_id',
             'select',
-            array(
+            [
                 'label'     => Mage::helper('bs_sur')->__('Location'),
                 'name'      => 'loc_id',
                 'required'  => false,
                 'values'    => $locs,
-            )
+            ]
         );
 
         $customers = Mage::getResourceModel('bs_acreg/customer_collection');
         $customers = $customers->toOptionArray();
 		array_unshift($customers, ['value' => 0, 'label' => 'N/A']);
-        array_unshift($customers, array('value' => 0, 'label' => 'N/A'));
+        array_unshift($customers, ['value' => 0, 'label' => 'N/A']);
         $fieldset->addField(
             'customer',
             'select',
-            array(
+            [
                 'label'     => Mage::helper('bs_sur')->__('Customer'),
                 'name'      => 'customer',
                 'required'  => false,
                 'values'    => $customers,
-            )
+            ]
         );
 
         $acTypes = Mage::getResourceModel('bs_misc/aircraft_collection');
@@ -114,27 +114,27 @@ class BS_Sur_Block_Adminhtml_Sur_Edit_Tab_Form extends Mage_Adminhtml_Block_Widg
         $fieldset->addField(
             'ac_type',
             'select',
-            array(
+            [
                 'label'     => Mage::helper('bs_sur')->__('A/C Type'),
                 'name'      => 'ac_type',
                 'required'  => false,
                 'values'    => $acTypes,
-            )
+            ]
         );
 
         $acRegs = Mage::getResourceModel('bs_acreg/acreg_collection');
         $acRegs->setOrder('reg', 'ASC');
         $acRegs = $acRegs->toOptionArray();
-        array_unshift($acRegs, array('value' => 0, 'label' => 'N/A'));
+        array_unshift($acRegs, ['value' => 0, 'label' => 'N/A']);
         $fieldset->addField(
             'ac_reg',
             'select',
-            array(
+            [
                 'label'     => Mage::helper('bs_sur')->__('A/C Reg'),
                 'name'      => 'ac_reg',
                 'required'  => false,
                 'values'    => $acRegs,
-            )
+            ]
         );
 
 
@@ -142,45 +142,45 @@ class BS_Sur_Block_Adminhtml_Sur_Edit_Tab_Form extends Mage_Adminhtml_Block_Widg
         $fieldset->addField(
             'report_date',
             'date',
-            array(
+            [
                 'label' => Mage::helper('bs_sur')->__('Date of Inspection'),
                 'name'  => 'report_date',
 
             'image' => $this->getSkinUrl('images/grid-cal.gif'),
             'format'  => Mage::app()->getLocale()->getDateFormat(Mage_Core_Model_Locale::FORMAT_TYPE_SHORT),
-           )
+            ]
         );
 
 
         $fieldset->addField(
             'sur_source',
             'file',
-            array(
+            [
                 'label' => Mage::helper('bs_sur')->__('Source'),
                 'name'  => 'sur_source',
                 'note'  => Mage::helper('bs_sur')->__('Maximum file size allowed is 10MB'),
 
-            )
+            ]
         );
 
         $fieldset->addField(
             'mandatory_items',
             'text',
-            array(
+            [
                 'label' => Mage::helper('bs_sur')->__('Mandatory Items'),
                 'name'  => 'mandatory_items',
 
-            )
+            ]
         );
 
         $fieldset->addField(
             'description',
             'textarea',
-            array(
+            [
                 'label' => Mage::helper('bs_sur')->__('Description'),
                 'name'  => 'description',
 
-           )
+            ]
         );
 
         $tasks = Mage::getResourceModel('bs_misc/task_collection');
@@ -195,12 +195,12 @@ class BS_Sur_Block_Adminhtml_Sur_Edit_Tab_Form extends Mage_Adminhtml_Block_Widg
         $fieldset->addField(
             'task_id',
             'select',
-            array(
+            [
                 'label' => Mage::helper('bs_sur')->__('Survey Code'),
                 'name'  => 'task_id',
                 'values'=> $tasks,
                 //'disabled'  => $disable
-            )
+            ]
         );
 
 
@@ -209,18 +209,18 @@ class BS_Sur_Block_Adminhtml_Sur_Edit_Tab_Form extends Mage_Adminhtml_Block_Widg
             $subtasks->addFieldToFilter('task_id', $taskId);
         }
         $subtasks = $subtasks->toOptionArrayFull();
-        array_unshift($subtasks, array('value'=>'0', 'label'=>'N/A'));
+        array_unshift($subtasks, ['value'=>'0', 'label'=>'N/A']);
 
 
         $fieldset->addField(
             'subtask_id',
             'multiselect',
-            array(
+            [
                 'label' => Mage::helper('bs_sur')->__('Survey Sub Code'),
                 'name'  => 'subtask_id',
                 'values'=> $subtasks,
                 //'disabled'  => $disable
-            )
+            ]
         );
 
         /*$fieldset->addField(
@@ -236,27 +236,27 @@ class BS_Sur_Block_Adminhtml_Sur_Edit_Tab_Form extends Mage_Adminhtml_Block_Widg
         $fieldset->addField(
             'region',
             'hidden',
-            array(
+            [
                 'label' => Mage::helper('bs_sur')->__('Region'),
                 'name'  => 'region',
                 //'values'=> Mage::getModel('bs_sur/sur_attribute_source_region')->getAllOptions(false),
-           )
+            ]
         );
 
         $fieldset->addField(
             'section',
             'hidden',
-            array(
+            [
                 'label' => Mage::helper('bs_sur')->__('Section'),
                 'name'  => 'section',
 
             //'values'=> Mage::getModel('bs_sur/sur_attribute_source_section')->getAllOptions(false),
-           )
+            ]
         );
 
         $formValues = Mage::registry('current_sur')->getDefaultValues();
         if (!is_array($formValues)) {
-            $formValues = array();
+            $formValues = [];
         }
 
         if($from = $this->getRequest()->getParam('from')){

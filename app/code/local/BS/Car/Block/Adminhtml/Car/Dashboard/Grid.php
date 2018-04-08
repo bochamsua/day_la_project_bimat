@@ -63,29 +63,29 @@ class BS_Car_Block_Adminhtml_Car_Dashboard_Grid extends BS_Rewriting_Block_Admin
     {
         $this->addColumn(
             'ref_no',
-            array(
+            [
                 'header'    => Mage::helper('bs_car')->__('Reference No'),
                 'align'     => 'left',
                 'index'     => 'ref_no',
-            )
+            ]
         );
 
 
 
         $this->addColumn(
             'report_date',
-            array(
+            [
                 'header' => Mage::helper('bs_car')->__('Report Date'),
                 'index'  => 'report_date',
                 'type'=> 'date',
 
-            )
+            ]
         );
 
 
         $this->addColumn(
             'car_status',
-            array(
+            [
                 'header' => Mage::helper('bs_car')->__('Status'),
                 'index'  => 'car_status',
                 'type'  => 'options',
@@ -93,17 +93,17 @@ class BS_Car_Block_Adminhtml_Car_Dashboard_Grid extends BS_Rewriting_Block_Admin
                     Mage::getModel('bs_car/car_attribute_source_carstatus')->getAllOptions(false)
                 )
 
-            )
+            ]
         );
 
         $this->addColumn(
             'due_date',
-            array(
+            [
                 'header' => Mage::helper('bs_car')->__('Due Date'),
                 'index'  => 'due_date',
                 'type'=> 'date',
 
-            )
+            ]
         );
 
 
@@ -115,6 +115,6 @@ class BS_Car_Block_Adminhtml_Car_Dashboard_Grid extends BS_Rewriting_Block_Admin
 
     public function getRowUrl($row)
     {
-        return $this->getUrl('*/car_car/edit', array('id' => $row->getId()));
+        return $this->getUrl('*/car_car/edit', ['id' => $row->getId()]);
     }
 }

@@ -18,10 +18,10 @@ class BS_Signoff_Block_Adminhtml_Signoff_Edit_Tab_Drr extends Mage_Adminhtml_Blo
     protected function _prepareLayout(){
         $this->setChild('add_drr_button',
             $this->getLayout()->createBlock('adminhtml/widget_button')
-                ->setData(array(
+                ->setData([
                     'label'     => Mage::helper('adminhtml')->__('New DRR'),
-                    'onclick'   => 'window.open(\''.$this->getUrl('*/drr_drr/new', array('_current'=>false, 'ref_type'=>'signoff', 'task_id'=>$this->getSignoff()->getTaskId(), 'ref_id'=>$this->getSignoff()->getId(),'popup'=>true)).'\',\'\',\'width=1000,height=700,resizable=1,scrollbars=1\')'
-                ))
+                    'onclick'   => 'window.open(\''.$this->getUrl('*/drr_drr/new', ['_current'=>false, 'ref_type'=>'signoff', 'task_id'=>$this->getSignoff()->getTaskId(), 'ref_id'=>$this->getSignoff()->getId(),'popup'=>true]).'\',\'\',\'width=1000,height=700,resizable=1,scrollbars=1\')'
+                ])
         );
 
 
@@ -76,53 +76,53 @@ class BS_Signoff_Block_Adminhtml_Signoff_Edit_Tab_Drr extends Mage_Adminhtml_Blo
     {
         $this->addColumn(
             'ref_no',
-            array(
+            [
                 'header'    => Mage::helper('bs_drr')->__('Reference No'),
                 'align'     => 'left',
                 'index'     => 'ref_no',
-            )
+            ]
         );
 
 
         $this->addColumn(
             'ins_id',
-            array(
+            [
                 'header' => Mage::helper('bs_drr')->__('Inspector'),
                 'index'  => 'ins_id',
                 'type'=> 'number',
 
-            )
+            ]
         );
         $this->addColumn(
             'report_date',
-            array(
+            [
                 'header' => Mage::helper('bs_drr')->__('Report Date'),
                 'index'  => 'report_date',
                 'type'=> 'date',
 
-            )
+            ]
         );
         $this->addColumn(
             'ref_doc',
-            array(
+            [
                 'header' => Mage::helper('bs_drr')->__('Ref Doc'),
                 'index'  => 'ref_doc',
                 'type'=> 'text',
 
-            )
+            ]
         );
         $this->addColumn(
             'ac',
-            array(
+            [
                 'header' => Mage::helper('bs_drr')->__('A/C'),
                 'index'  => 'ac',
                 'type'=> 'text',
 
-            )
+            ]
         );
         $this->addColumn(
             'qr_type',
-            array(
+            [
                 'header' => Mage::helper('bs_drr')->__('Type'),
                 'index'  => 'qr_type',
                 'type'  => 'options',
@@ -130,16 +130,16 @@ class BS_Signoff_Block_Adminhtml_Signoff_Edit_Tab_Drr extends Mage_Adminhtml_Blo
                     Mage::getModel('bs_drr/drr_attribute_source_qrtype')->getAllOptions(false)
                 )
 
-            )
+            ]
         );
         $this->addColumn(
             'due_date',
-            array(
+            [
                 'header' => Mage::helper('bs_drr')->__('Due Date'),
                 'index'  => 'due_date',
                 'type'=> 'date',
 
-            )
+            ]
         );
 
         $this->setFilterVisibility(false);
@@ -172,7 +172,7 @@ class BS_Signoff_Block_Adminhtml_Signoff_Edit_Tab_Drr extends Mage_Adminhtml_Blo
      */
     public function getRowUrl($row)
     {
-        return $this->getUrl('*/drr_drr/edit', array('id' => $row->getId()));
+        return $this->getUrl('*/drr_drr/edit', ['id' => $row->getId()]);
     }
 
     /**
@@ -184,7 +184,7 @@ class BS_Signoff_Block_Adminhtml_Signoff_Edit_Tab_Drr extends Mage_Adminhtml_Blo
      */
     public function getGridUrl()
     {
-        return $this->getUrl('*/*/drrsGrid', array('_current'=>true));
+        return $this->getUrl('*/*/drrsGrid', ['_current'=>true]);
     }
 
     public function getSignoff()

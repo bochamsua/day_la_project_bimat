@@ -30,7 +30,7 @@ class BS_Signature_Block_Adminhtml_Signature_Edit_Tab_Form extends Mage_Adminhtm
         $this->setForm($form);
         $fieldset = $form->addFieldset(
             'signature_form',
-            array('legend' => Mage::helper('bs_signature')->__('Signature'))
+            ['legend' => Mage::helper('bs_signature')->__('Signature')]
         );
         $fieldset->addType(
             'file',
@@ -43,44 +43,44 @@ class BS_Signature_Block_Adminhtml_Signature_Edit_Tab_Form extends Mage_Adminhtm
         $fieldset->addField(
             'name',
             'hidden',
-            array(
+            [
                 'label' => Mage::helper('bs_signature')->__('Name'),
                 'name'  => 'name',
 
-           )
+            ]
         );
 
         $fieldset->addField(
             'signature',
             'file',
-            array(
+            [
                 'label' => Mage::helper('bs_signature')->__('Signature'),
                 'name'  => 'signature',
                 'note'	=> $this->__('JPG,PNG,GIF extensions. Maximum file size allowed is 10MB'),
 	            'required'  => true
 
-           )
+            ]
         );
 
         if($misc->isAdmin($currentObj)){//admin and super admin
-	        $ins = Mage::getResourceModel('admin/user_collection')->addFieldToFilter('user_id', array('gt' => 1));
-	        $insArray = array();
+	        $ins = Mage::getResourceModel('admin/user_collection')->addFieldToFilter('user_id', ['gt' => 1]);
+	        $insArray = [];
 	        foreach ($ins as $in) {
-		        $insArray[] = array(
+		        $insArray[] = [
 			        'value' => $in->getId(),
 			        'label' => $in->getFirstname().' '. $in->getLastname()
-		        );
+                ];
 	        }
 	        $fieldset->addField(
 		        'user_id',
 		        'select',
-		        array(
+		        [
 			        'label'     => Mage::helper('bs_signature')->__('User'),
 			        'name'      => 'user_id',
 			        'required'  => false,
 			        'values'    => $insArray,
 			        //'after_element_html' => $html
-		        )
+                ]
 	        );
         }
         /*$fieldset->addField(
@@ -114,7 +114,7 @@ class BS_Signature_Block_Adminhtml_Signature_Edit_Tab_Form extends Mage_Adminhtm
         );*/
         $formValues = Mage::registry('current_signature')->getDefaultValues();
         if (!is_array($formValues)) {
-            $formValues = array();
+            $formValues = [];
         }
         if (Mage::getSingleton('adminhtml/session')->getSignatureData()) {
             $formValues = array_merge($formValues, Mage::getSingleton('adminhtml/session')->getSignatureData());

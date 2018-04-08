@@ -15,7 +15,7 @@
  */
 class BS_Misc_Model_Resource_Subtask_Collection extends Mage_Core_Model_Resource_Db_Collection_Abstract
 {
-    protected $_joinedFields = array();
+    protected $_joinedFields = [];
 
     /**
      * constructor
@@ -40,7 +40,7 @@ class BS_Misc_Model_Resource_Subtask_Collection extends Mage_Core_Model_Resource
      * @return array
      * @author Bui Phong
      */
-    protected function _toOptionArray($valueField='entity_id', $labelField='sub_code', $additional=array())
+    protected function _toOptionArray($valueField='entity_id', $labelField='sub_code', $additional= [])
     {
         return parent::_toOptionArray($valueField, $labelField, $additional);
     }
@@ -50,9 +50,9 @@ class BS_Misc_Model_Resource_Subtask_Collection extends Mage_Core_Model_Resource
         return $this->_toOptionArrayFull();
     }
 
-    protected function _toOptionArrayFull($valueField='entity_id', $labelField='sub_code', $additional=array())
+    protected function _toOptionArrayFull($valueField='entity_id', $labelField='sub_code', $additional= [])
     {
-        $res = array();
+        $res = [];
         $additional['value'] = $valueField;
         $additional['label'] = $labelField;
 

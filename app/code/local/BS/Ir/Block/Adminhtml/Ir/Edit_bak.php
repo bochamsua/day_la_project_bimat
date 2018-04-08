@@ -50,21 +50,21 @@ class BS_Ir_Block_Adminhtml_Ir_Edit extends Mage_Adminhtml_Block_Widget_Form_Con
 	    if($currentObj->getId()){
 		    $this->_addButton(
 			    '2055',
-			    array(
+			    [
 				    'label'   => Mage::helper('bs_ir')->__('Print'),
-				    'onclick'   => "setLocation('{$this->getUrl('*/*/generateIr', array('_current'=>true))}')",
+				    'onclick'   => "setLocation('{$this->getUrl('*/*/generateIr', ['_current'=>true])}')",
 				    'class'   => 'reset',
-			    )
+                ]
 		    );
 
 		    if($currentObj->getIrStatus() == 0 && $misc->isOwner($currentObj)){
 			    $this->_addButton(
 				    'submitted',
-				    array(
+				    [
 					    'label'   => Mage::helper('bs_ir')->__('Submit'),
 					    'onclick'   => "submitIr()",
 					    'class'   => 'save  submit',
-				    ),1,888
+                    ],1,888
 			    );
 		    }
 
@@ -72,20 +72,20 @@ class BS_Ir_Block_Adminhtml_Ir_Edit extends Mage_Adminhtml_Block_Widget_Form_Con
 
 			    $this->_addButton(
 				    'reject',
-				    array(
+				    [
 					    'label'   => Mage::helper('bs_ir')->__('Reject'),
 					    'onclick'   => "rejectIr()",
 					    'class'   => 'save',
-				    )
+                    ]
 			    );
 
 			    $this->_addButton(
 				    'accept',
-				    array(
+				    [
 					    'label'   => Mage::helper('bs_ir')->__('Accept'),
 					    'onclick'   => "acceptIr()",
 					    'class'   => 'save',
-				    )
+                    ]
 			    );
 
 
@@ -112,11 +112,11 @@ class BS_Ir_Block_Adminhtml_Ir_Edit extends Mage_Adminhtml_Block_Widget_Form_Con
 			    $this->_removeButton('save');
 			    $this->_addButton(
 				    'accept1',
-				    array(
+				    [
 					    'label'   => Mage::helper('bs_ir')->__('Accept'),
 					    'onclick'   => "acceptIr()",
 					    'class'   => 'save',
-				    )
+                    ]
 			    );
 		    }
 
@@ -137,11 +137,11 @@ class BS_Ir_Block_Adminhtml_Ir_Edit extends Mage_Adminhtml_Block_Widget_Form_Con
 
 			    $this->_addButton(
 				    'submitted_already',
-				    array(
+				    [
 					    'label'   => Mage::helper('bs_ir')->__('Ir was submitted. You CANNOT edit.'),
 					    'onclick' => 'history.back()',
 					    'class'   => 'back',
-				    ),
+                    ],
 				    -1
 			    );
 		    }
@@ -157,18 +157,18 @@ class BS_Ir_Block_Adminhtml_Ir_Edit extends Mage_Adminhtml_Block_Widget_Form_Con
             $this->_removeButton('back');
             $this->_addButton(
                 'closewindow',
-                array(
+                [
                     'label'   => Mage::helper('bs_ir')->__('Close'),
                     'onclick' => 'window.close()',
                     'class'   => 'back',
-                ),
+                ],
                 -1
             );
         }
         $this->_formScripts[] = "
 
             function deleteOnly() {
-                deleteConfirm('". Mage::helper('adminhtml')->__('Are you sure you want to do this?')."','".$this->getUrl('*/*/delete', array($this->_objectId => $this->getRequest()->getParam($this->_objectId), 'popup'=>1)) . "');
+                deleteConfirm('". Mage::helper('adminhtml')->__('Are you sure you want to do this?')."','".$this->getUrl('*/*/delete', [$this->_objectId => $this->getRequest()->getParam($this->_objectId), 'popup'=>1]) . "');
             }
             function saveOnly() {
                 editForm.submit($('edit_form').action+'".$add."');
@@ -268,11 +268,11 @@ class BS_Ir_Block_Adminhtml_Ir_Edit extends Mage_Adminhtml_Block_Widget_Form_Con
 
 		    $this->_addButton(
 			    'save1',
-			    array(
+			    [
 				    'label'   => Mage::helper('bs_ir')->__('Save'),
 				    'onclick'   => "saveOnly()",
 				    'class'   => 'save',
-			    )
+                ]
 		    );
 	    }
     }
@@ -302,12 +302,12 @@ class BS_Ir_Block_Adminhtml_Ir_Edit extends Mage_Adminhtml_Block_Widget_Form_Con
     }
     public function getSaveAndContinueUrl()
         {
-            return $this->getUrl('*/*/save', array(
+            return $this->getUrl('*/*/save', [
                 '_current'   => true,
                 'back'       => 'edit',
                 'tab'        => '{{tab_id}}',
                 'active_tab' => null
-            ));
+            ]);
         }
     public function getSelectedTabId()
         {

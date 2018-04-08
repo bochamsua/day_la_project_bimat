@@ -85,7 +85,7 @@ class BS_Misc_Helper_Data extends Mage_Core_Helper_Abstract
      */
     public function convertOptions($options)
     {
-        $converted = array();
+        $converted = [];
         foreach ($options as $option) {
             if (isset($option['value']) && !is_array($option['value']) &&
                 isset($option['label']) && !is_array($option['label'])) {
@@ -97,7 +97,7 @@ class BS_Misc_Helper_Data extends Mage_Core_Helper_Abstract
     
     public function getShortName($name){
     	$arr = explode(" ", $name);
-    	$result = array();
+    	$result = [];
 	    for ($i=0; $i < count($arr)-1; $i++) {
 		    $result[] = $this->substr($arr[$i],0,1);
     	}
@@ -219,13 +219,13 @@ class BS_Misc_Helper_Data extends Mage_Core_Helper_Abstract
     }
 
     public function getRelatedItem($refType, $refId){
-        $result = array();
+        $result = [];
         $model = 'bs_'.$refType.'/'.$refType;
         $path = $refType.'_'.$refType;
 
         if(isset($refType) && $refType){
             $result['name'] = Mage::getModel($model)->load($refId)->getRefNo();
-            $result['link'] = Mage::helper('adminhtml')->getUrl('*/'.$path.'/edit', array('id' => $refId));
+            $result['link'] = Mage::helper('adminhtml')->getUrl('*/'.$path.'/edit', ['id' => $refId]);
 
             return $result;
         }
@@ -257,11 +257,11 @@ class BS_Misc_Helper_Data extends Mage_Core_Helper_Abstract
         $fromTo = Mage::helper('bs_report')->getFromTo(null, null, true);
 
         $formattedDate = $fromTo[2];
-        $collection->addFieldToFilter('created_at', array(
+        $collection->addFieldToFilter('created_at', [
             'from' => $fromTo[0],
             'to' => $fromTo[1],
             'date' => true,
-        ));
+        ]);
         $collection->setOrder('entity_id', 'DESC');
 
         $dept = Mage::getModel('bs_misc/department')->load($deptId)->getDeptCode();
@@ -304,7 +304,7 @@ class BS_Misc_Helper_Data extends Mage_Core_Helper_Abstract
         $now = Mage::getModel('core/date')->timestamp(time());
         $year = date('Y', $now);
 
-        $collection->addFieldToFilter('ref_no', array('like' => '%-'.$year.'%-'.$suffix));
+        $collection->addFieldToFilter('ref_no', ['like' => '%-'.$year.'%-'.$suffix]);
         $collection->setOrder('entity_id', 'DESC');
 
         $nextRefNo = null;
@@ -345,7 +345,7 @@ class BS_Misc_Helper_Data extends Mage_Core_Helper_Abstract
             'to' => $dateEnd,
             'date' => true,
         ));*/
-        $collection->addFieldToFilter('ref_no', array('like' => '%'.$shorterType.$year));
+        $collection->addFieldToFilter('ref_no', ['like' => '%'.$shorterType.$year]);
         $collection->setOrder('entity_id', 'DESC');
 
         $nextRefNo = null;

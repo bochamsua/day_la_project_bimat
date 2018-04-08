@@ -23,10 +23,10 @@ $this->getConnection()
     ->addColumn(
         $this->getTable('bs_rii/rii'),
         'ac_type',
-        array(
+        [
             'type' => Varien_Db_Ddl_Table::TYPE_INTEGER,
             'comment'   => 'AC Type'
-        )
+        ]
     )
 ;
 

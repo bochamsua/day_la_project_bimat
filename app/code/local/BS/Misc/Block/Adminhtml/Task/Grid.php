@@ -58,43 +58,43 @@ class BS_Misc_Block_Adminhtml_Task_Grid extends Mage_Adminhtml_Block_Widget_Grid
     {
         $this->addColumn(
             'entity_id',
-            array(
+            [
                 'header' => Mage::helper('bs_misc')->__('Id'),
                 'index'  => 'entity_id',
                 'type'   => 'number', 'filter' => false
-            )
+            ]
         );
         $this->addColumn(
             'taskgroup_id',
-            array(
+            [
                 'header'    => Mage::helper('bs_misc')->__('Survey Group'),
                 'index'     => 'taskgroup_id',
                 'type'      => 'options',
                 'options'   => Mage::getResourceModel('bs_misc/taskgroup_collection')
                     ->toOptionHash(),
                 'renderer'  => 'bs_misc/adminhtml_helper_column_renderer_parent',
-                'params'    => array(
+                'params'    => [
                     'id'    => 'getTaskgroupId'
-                ),
+                ],
                 'base_link' => 'adminhtml/misc_taskgroup/edit'
-            )
+            ]
         );
         $this->addColumn(
             'task_code',
-            array(
+            [
                 'header'    => Mage::helper('bs_misc')->__('Task Code'),
                 'align'     => 'left',
                 'index'     => 'task_code',
-            )
+            ]
         );
 
 	    $this->addColumn(
 		    'points',
-		    array(
+		    [
 			    'header'    => Mage::helper('bs_misc')->__('Points'),
 			    'align'     => 'left',
 			    'index'     => 'points',
-		    )
+            ]
 	    );
 
 
@@ -137,10 +137,10 @@ class BS_Misc_Block_Adminhtml_Task_Grid extends Mage_Adminhtml_Block_Widget_Grid
         $this->setMassactionIdField('entity_id');
         $this->getMassactionBlock()->setFormFieldName('task');
 
-        $this->getMassactionBlock()->addItem('separator', array(
+        $this->getMassactionBlock()->addItem('separator', [
             'label'=> '---Select---',
             'url'  => ''
-        ));
+        ]);
 
         return $this;
     }
@@ -155,7 +155,7 @@ class BS_Misc_Block_Adminhtml_Task_Grid extends Mage_Adminhtml_Block_Widget_Grid
      */
     public function getRowUrl($row)
     {
-        return $this->getUrl('*/*/edit', array('id' => $row->getId()));
+        return $this->getUrl('*/*/edit', ['id' => $row->getId()]);
     }
 
     /**
@@ -167,7 +167,7 @@ class BS_Misc_Block_Adminhtml_Task_Grid extends Mage_Adminhtml_Block_Widget_Grid
      */
     public function getGridUrl()
     {
-        return $this->getUrl('*/*/grid', array('_current'=>true));
+        return $this->getUrl('*/*/grid', ['_current'=>true]);
     }
 
     /**

@@ -26,24 +26,24 @@ class BS_HR_Model_Staff_Attribute_Source_Region
      */
     public function getAllOptions($withEmpty = true, $defaultValues = false)
     {
-        $options =  array(
-            array(
+        $options =  [
+            [
                 'label' => Mage::helper('bs_hr')->__('Hanoi'),
                 'value' => 1
-            ),
-            array(
+            ],
+            [
                 'label' => Mage::helper('bs_hr')->__('Ho Chi Minh'),
                 'value' => 2
-            ),
-            array(
+            ],
+            [
                 'label' => Mage::helper('bs_hr')->__('Da Nang'),
                 'value' => 3
-            ),
-            array(
+            ],
+            [
                 'label' => Mage::helper('bs_hr')->__('N/A'),
                 'value' => 4
-            ),
-        );
+            ],
+        ];
         if ($withEmpty) {
             //array_unshift($options, array('label'=>'', 'value'=>''));
         }
@@ -61,7 +61,7 @@ class BS_HR_Model_Staff_Attribute_Source_Region
      */
     public function getOptionsArray($withEmpty = true)
     {
-        $options = array();
+        $options = [];
         foreach ($this->getAllOptions($withEmpty) as $option) {
             $options[$option['value']] = $option['label'];
         }
@@ -82,7 +82,7 @@ class BS_HR_Model_Staff_Attribute_Source_Region
         if (!is_array($value)) {
             $value = explode(',', $value);
         }
-        $texts = array();
+        $texts = [];
         foreach ($value as $v) {
             if (isset($options[$v])) {
                 $texts[] = $options[$v];

@@ -30,37 +30,37 @@ class BS_Report_Block_Adminhtml_Setting_Edit_Tab_Form extends Mage_Adminhtml_Blo
         $this->setForm($form);
         $fieldset = $form->addFieldset(
             'setting_form',
-            array('legend' => Mage::helper('bs_report')->__('Setting'))
+            ['legend' => Mage::helper('bs_report')->__('Setting')]
         );
 
         $fieldset->addField(
             'code',
             'text',
-            array(
+            [
                 'label' => Mage::helper('bs_report')->__('Code'),
                 'name'  => 'code',
 
-           )
+            ]
         );
 
         $fieldset->addField(
             'value',
             'text',
-            array(
+            [
                 'label' => Mage::helper('bs_report')->__('Value'),
                 'name'  => 'value',
 
-           )
+            ]
         );
 
         $fieldset->addField(
             'note',
             'textarea',
-            array(
+            [
                 'label' => Mage::helper('bs_report')->__('Note'),
                 'name'  => 'note',
 
-           )
+            ]
         );
         /*$fieldset->addField(
             'status',
@@ -82,7 +82,7 @@ class BS_Report_Block_Adminhtml_Setting_Edit_Tab_Form extends Mage_Adminhtml_Blo
         );*/
         $formValues = Mage::registry('current_setting')->getDefaultValues();
         if (!is_array($formValues)) {
-            $formValues = array();
+            $formValues = [];
         }
         if (Mage::getSingleton('adminhtml/session')->getSettingData()) {
             $formValues = array_merge($formValues, Mage::getSingleton('adminhtml/session')->getSettingData());

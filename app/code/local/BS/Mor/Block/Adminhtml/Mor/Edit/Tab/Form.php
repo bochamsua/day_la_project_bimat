@@ -30,7 +30,7 @@ class BS_Mor_Block_Adminhtml_Mor_Edit_Tab_Form extends Mage_Adminhtml_Block_Widg
         $this->setForm($form);
         $fieldset = $form->addFieldset(
             'mor_form',
-            array('legend' => Mage::helper('bs_mor')->__('MOR'))
+            ['legend' => Mage::helper('bs_mor')->__('MOR')]
         );
 
         $fieldset->addType(
@@ -43,45 +43,45 @@ class BS_Mor_Block_Adminhtml_Mor_Edit_Tab_Form extends Mage_Adminhtml_Block_Widg
         $customers = Mage::getResourceModel('bs_acreg/customer_collection');
         $customers = $customers->toOptionArray();
         array_unshift($customers, ['value' => 0, 'label' => 'N/A']);
-        array_unshift($customers, array('value' => 0, 'label' => 'N/A'));
+        array_unshift($customers, ['value' => 0, 'label' => 'N/A']);
         $fieldset->addField(
             'customer',
             'select',
-            array(
+            [
                 'label'     => Mage::helper('bs_ncr')->__('Customer'),
                 'name'      => 'customer',
                 'required'  => false,
                 'values'    => $customers,
-            )
+            ]
         );
 
         $acTypes = Mage::getResourceModel('bs_misc/aircraft_collection');
         $acTypes = $acTypes->toOptionArray();
-        array_unshift($acTypes, array('value' => 0, 'label' => 'N/A'));
+        array_unshift($acTypes, ['value' => 0, 'label' => 'N/A']);
         $fieldset->addField(
             'ac_type',
             'select',
-            array(
+            [
                 'label'     => Mage::helper('bs_ncr')->__('A/C Type'),
                 'name'      => 'ac_type',
                 'required'  => false,
                 'values'    => $acTypes,
-            )
+            ]
         );
 
         $acRegs = Mage::getResourceModel('bs_acreg/acreg_collection');
         $acRegs->setOrder('reg', 'ASC');
         $acRegs = $acRegs->toOptionArray();
-        array_unshift($acRegs, array('value' => 0, 'label' => 'N/A'));
+        array_unshift($acRegs, ['value' => 0, 'label' => 'N/A']);
         $fieldset->addField(
             'ac_reg',
             'select',
-            array(
+            [
                 'label'     => Mage::helper('bs_ncr')->__('A/C Reg'),
                 'name'      => 'ac_reg',
                 'required'  => false,
                 'values'    => $acRegs,
-            )
+            ]
         );
 
 
@@ -101,136 +101,136 @@ class BS_Mor_Block_Adminhtml_Mor_Edit_Tab_Form extends Mage_Adminhtml_Block_Widg
         $fieldset->addField(
             'mor_source',
             'file',
-            array(
+            [
                 'label' => Mage::helper('bs_mor')->__('Source'),
                 'name'  => 'mor_source',
 
-            )
+            ]
         );
 
 
         $fieldset->addField(
             'mor_no',
             'text',
-            array(
+            [
                 'label' => Mage::helper('bs_mor')->__('MOR No'),
                 'name'  => 'mor_no',
 
-           )
+            ]
         );
 
         $fieldset->addField(
             'ata',
             'text',
-            array(
+            [
                 'label' => Mage::helper('bs_mor')->__('ATA'),
                 'name'  => 'ata',
 
-           )
+            ]
         );
 
         $fieldset->addField(
             'occur_date',
             'date',
-            array(
+            [
                 'label' => Mage::helper('bs_mor')->__('Occur Date'),
                 'name'  => 'occur_date',
 
             'image' => $this->getSkinUrl('images/grid-cal.gif'),
             'format'  => Mage::app()->getLocale()->getDateFormat(Mage_Core_Model_Locale::FORMAT_TYPE_SHORT),
-           )
+            ]
         );
 
         $fieldset->addField(
             'flight_no',
             'text',
-            array(
+            [
                 'label' => Mage::helper('bs_mor')->__('Flight No'),
                 'name'  => 'flight_no',
 
-           )
+            ]
         );
 
         $fieldset->addField(
             'place',
             'text',
-            array(
+            [
                 'label' => Mage::helper('bs_mor')->__('Place'),
                 'name'  => 'place',
 
-           )
+            ]
         );
 
         $fieldset->addField(
             'description',
             'textarea',
-            array(
+            [
                 'label' => Mage::helper('bs_mor')->__('Description'),
                 'name'  => 'description',
 
-           )
+            ]
         );
 
         $fieldset->addField(
             'cause',
             'textarea',
-            array(
+            [
                 'label' => Mage::helper('bs_mor')->__('Cause of event'),
                 'name'  => 'cause',
 
-           )
+            ]
         );
 
         $fieldset->addField(
             'action_take',
             'textarea',
-            array(
+            [
                 'label' => Mage::helper('bs_mor')->__('Action Take'),
                 'name'  => 'action_take',
 
-           )
+            ]
         );
 
         $fieldset->addField(
             'mor_type',
             'select',
-            array(
+            [
                 'label' => Mage::helper('bs_mor')->__('Type'),
                 'name'  => 'mor_type',
 
             'values'=> Mage::getModel('bs_mor/mor_attribute_source_mortype')->getAllOptions(true),
-           )
+            ]
         );
 
         $fieldset->addField(
             'mor_filter',
             'select',
-            array(
+            [
                 'label' => Mage::helper('bs_mor')->__('Filter'),
                 'name'  => 'mor_filter',
 
             'values'=> Mage::getModel('bs_mor/mor_attribute_source_morfilter')->getAllOptions(true),
-           )
+            ]
         );
 
         $fieldset->addField(
             'report',
             'select',
-            array(
+            [
                 'label' => Mage::helper('bs_mor')->__('Report to Manufacturer'),
                 'name'  => 'report',
 
-            'values'=> array(
-                array(
+            'values'=> [
+                [
                     'value' => 1,
                     'label' => Mage::helper('bs_mor')->__('Yes'),
-                ),
-                array(
+                ],
+                [
                     'value' => 0,
                     'label' => Mage::helper('bs_mor')->__('No'),
-                ),
-            ),
-           )
+                ],
+            ],
+            ]
         );
 
 
@@ -391,7 +391,7 @@ class BS_Mor_Block_Adminhtml_Mor_Edit_Tab_Form extends Mage_Adminhtml_Block_Widg
         );*/
         $formValues = Mage::registry('current_mor')->getDefaultValues();
         if (!is_array($formValues)) {
-            $formValues = array();
+            $formValues = [];
         }
         if (Mage::getSingleton('adminhtml/session')->getMorData()) {
             $formValues = array_merge($formValues, Mage::getSingleton('adminhtml/session')->getMorData());

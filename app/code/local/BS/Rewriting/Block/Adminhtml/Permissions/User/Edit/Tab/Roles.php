@@ -12,7 +12,7 @@ class BS_Rewriting_Block_Adminhtml_Permissions_User_Edit_Tab_Roles extends Mage_
 	{
 
 		$collection = Mage::getResourceModel('admin/role_collection');
-		$collection->addFieldToFilter('role_id', array('gt'=>1));
+		$collection->addFieldToFilter('role_id', ['gt'=>1]);
 
         $misc = $this->helper('bs_misc');
 		if($misc->isQAAdmin()){

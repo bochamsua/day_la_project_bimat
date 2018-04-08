@@ -30,7 +30,7 @@ class BS_Meda_Block_Adminhtml_Meda_Edit_Tab_Form extends Mage_Adminhtml_Block_Wi
         $this->setForm($form);
         $fieldset = $form->addFieldset(
             'meda_form',
-            array('legend' => Mage::helper('bs_meda')->__('MEDA'))
+            ['legend' => Mage::helper('bs_meda')->__('MEDA')]
         );
 
         $fieldset->addType(
@@ -44,45 +44,45 @@ class BS_Meda_Block_Adminhtml_Meda_Edit_Tab_Form extends Mage_Adminhtml_Block_Wi
         $customers = Mage::getResourceModel('bs_acreg/customer_collection');
         $customers = $customers->toOptionArray();
         array_unshift($customers, ['value' => 0, 'label' => 'N/A']);
-        array_unshift($customers, array('value' => 0, 'label' => 'N/A'));
+        array_unshift($customers, ['value' => 0, 'label' => 'N/A']);
         $fieldset->addField(
             'customer',
             'select',
-            array(
+            [
                 'label'     => Mage::helper('bs_ncr')->__('Customer'),
                 'name'      => 'customer',
                 'required'  => false,
                 'values'    => $customers,
-            )
+            ]
         );
 
         $acTypes = Mage::getResourceModel('bs_misc/aircraft_collection');
         $acTypes = $acTypes->toOptionArray();
-        array_unshift($acTypes, array('value' => 0, 'label' => 'N/A'));
+        array_unshift($acTypes, ['value' => 0, 'label' => 'N/A']);
         $fieldset->addField(
             'ac_type',
             'select',
-            array(
+            [
                 'label'     => Mage::helper('bs_ncr')->__('A/C Type'),
                 'name'      => 'ac_type',
                 'required'  => false,
                 'values'    => $acTypes,
-            )
+            ]
         );
 
         $acRegs = Mage::getResourceModel('bs_acreg/acreg_collection');
         $acRegs->setOrder('reg', 'ASC');
         $acRegs = $acRegs->toOptionArray();
-        array_unshift($acRegs, array('value' => 0, 'label' => 'N/A'));
+        array_unshift($acRegs, ['value' => 0, 'label' => 'N/A']);
         $fieldset->addField(
             'ac_reg',
             'select',
-            array(
+            [
                 'label'     => Mage::helper('bs_ncr')->__('A/C Reg'),
                 'name'      => 'ac_reg',
                 'required'  => false,
                 'values'    => $acRegs,
-            )
+            ]
         );
 
 
@@ -102,106 +102,106 @@ class BS_Meda_Block_Adminhtml_Meda_Edit_Tab_Form extends Mage_Adminhtml_Block_Wi
         $fieldset->addField(
             'meda_source',
             'file',
-            array(
+            [
                 'label' => Mage::helper('bs_meda')->__('Source'),
                 'name'  => 'meda_source',
 
-            )
+            ]
         );
 
 
         $fieldset->addField(
             'meda_no',
             'text',
-            array(
+            [
                 'label' => Mage::helper('bs_meda')->__('Report No'),
                 'name'  => 'meda_no',
 
-           )
+            ]
         );
 
 
         $fieldset->addField(
             'event_date',
             'date',
-            array(
+            [
                 'label' => Mage::helper('bs_mor')->__('Event Date'),
                 'name'  => 'event_date',
 
                 'image' => $this->getSkinUrl('images/grid-cal.gif'),
                 'format'  => Mage::app()->getLocale()->getDateFormat(Mage_Core_Model_Locale::FORMAT_TYPE_SHORT),
-            )
+            ]
         );
 
         $fieldset->addField(
             'consequence',
             'textarea',
-            array(
+            [
                 'label' => Mage::helper('bs_meda')->__('Consequence'),
                 'name'  => 'consequence',
 
-           )
+            ]
         );
 
         $fieldset->addField(
             'description',
             'textarea',
-            array(
+            [
                 'label' => Mage::helper('bs_meda')->__('Error Description'),
                 'name'  => 'description',
 
-           )
+            ]
         );
 
 
         $fieldset->addField(
             'root_cause',
             'textarea',
-            array(
+            [
                 'label' => Mage::helper('bs_meda')->__('Root Cause'),
                 'name'  => 'root_cause',
 
-           )
+            ]
         );
 
         $fieldset->addField(
             'corrective',
             'textarea',
-            array(
+            [
                 'label' => Mage::helper('bs_meda')->__('Corrective/Preventive action'),
                 'name'  => 'corrective',
 
-           )
+            ]
         );
 
         $fieldset->addField(
             'remark_text',
             'textarea',
-            array(
+            [
                 'label' => Mage::helper('bs_meda')->__('Remark Text'),
                 'name'  => 'remark_text',
 
-           )
+            ]
         );
 
         $fieldset->addField(
             'revoke',
             'textarea',
-            array(
+            [
                 'label' => Mage::helper('bs_meda')->__('Revoke/ Suspence Office letter'),
                 'name'  => 'revoke',
 
-           )
+            ]
         );
 
         $fieldset->addField(
             'feedback',
             'textarea',
-            array(
+            [
                 'label' => Mage::helper('bs_meda')->__('Feedback to reporter'),
                 'name'  => 'feedback',
 
-           )
+            ]
         );
 
 
@@ -225,7 +225,7 @@ class BS_Meda_Block_Adminhtml_Meda_Edit_Tab_Form extends Mage_Adminhtml_Block_Wi
         );*/
         $formValues = Mage::registry('current_meda')->getDefaultValues();
         if (!is_array($formValues)) {
-            $formValues = array();
+            $formValues = [];
         }
         if (Mage::getSingleton('adminhtml/session')->getMedaData()) {
             $formValues = array_merge($formValues, Mage::getSingleton('adminhtml/session')->getMedaData());
