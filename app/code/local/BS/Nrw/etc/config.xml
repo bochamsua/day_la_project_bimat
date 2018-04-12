@@ -1,0 +1,86 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * BS_Nrw extension
+ * 
+ * @category       BS
+ * @package        BS_Nrw
+ * @copyright      Copyright (c) 2018
+ */
+-->
+<config>
+    <modules>
+        <BS_Nrw>
+            <version>1.0.0</version>
+        </BS_Nrw>
+    </modules>
+    <global>
+        <resources>
+            <bs_nrw_setup>
+                <setup>
+                    <module>BS_Nrw</module>
+                    <class>BS_Nrw_Model_Resource_Setup</class>
+                </setup>
+            </bs_nrw_setup>
+        </resources>
+        <blocks>
+            <bs_nrw>
+                <class>BS_Nrw_Block</class>
+            </bs_nrw>
+        </blocks>
+        <helpers>
+            <bs_nrw>
+                <class>BS_Nrw_Helper</class>
+            </bs_nrw>
+        </helpers>
+        <models>
+            <bs_nrw>
+                <class>BS_Nrw_Model</class>
+                <resourceModel>bs_nrw_resource</resourceModel>
+            </bs_nrw>
+            <bs_nrw_resource>
+                <class>BS_Nrw_Model_Resource</class>
+                <entities>
+                    <nrw>
+                        <table>bs_nrw_nrw</table>
+                    </nrw>
+                </entities>
+            </bs_nrw_resource>
+        </models>
+    </global>
+    <adminhtml>
+        <layout>
+            <updates>
+                <bs_nrw>
+                    <file>bs_nrw.xml</file>
+                </bs_nrw>
+            </updates>
+        </layout>
+        <translate>
+            <modules>
+                <BS_Nrw>
+                    <files>
+                        <default>BS_Nrw.csv</default>
+                    </files>
+                </BS_Nrw>
+            </modules>
+        </translate>
+        <global_search>
+            <nrw>
+                <class>bs_nrw/adminhtml_search_nrw</class>
+                <acl>bs_nrw</acl>
+            </nrw>
+        </global_search>
+    </adminhtml>
+    <admin>
+        <routers>
+            <adminhtml>
+                <args>
+                    <modules>
+                        <BS_Nrw before="Mage_Adminhtml">BS_Nrw_Adminhtml</BS_Nrw>
+                    </modules>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin>
+</config>

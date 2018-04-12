@@ -136,12 +136,7 @@
                     <module>BS_CmrReport</module>
                     <class>BS_CmrReport_Model_Resource_Setup</class>
                 </setup>
-            </bs_cmrreport_setup><bs_nonroutine_setup>
-                <setup>
-                    <module>BS_Nonroutine</module>
-                    <class>BS_Nonroutine_Model_Resource_Setup</class>
-                </setup>
-            </bs_nonroutine_setup><bs_rewriting_setup>
+            </bs_cmrreport_setup><bs_rewriting_setup>
                 <setup>
                     <module>BS_Rewriting</module>
                 </setup>
@@ -210,7 +205,12 @@
                     <module>BS_Rii</module>
                     <class>BS_Rii_Model_Resource_Setup</class>
                 </setup>
-            </bs_rii_setup><backupguardplatinum_setup>
+            </bs_rii_setup><bs_nrw_setup>
+                <setup>
+                    <module>BS_Nrw</module>
+                    <class>BS_Nrw_Model_Resource_Setup</class>
+                </setup>
+            </bs_nrw_setup><backupguardplatinum_setup>
                 <setup>
                     <module>BackupGuard_BackupGuardPlatinum</module>
                     <class>BackupGuard_BackupGuardPlatinum_Model_Resource_Mysql4_Setup</class>
@@ -593,17 +593,7 @@
                         <table>bs_cmrreport_cmrreport</table>
                     </cmrreport>
                 </entities>
-            </bs_cmrreport_resource><bs_nonroutine>
-                <class>BS_Nonroutine_Model</class>
-                <resourceModel>bs_nonroutine_resource</resourceModel>
-            </bs_nonroutine><bs_nonroutine_resource>
-                <class>BS_Nonroutine_Model_Resource</class>
-                <entities>
-                    <nonroutine>
-                        <table>bs_nonroutine_nonroutine</table>
-                    </nonroutine>
-                </entities>
-            </bs_nonroutine_resource><bs_rewriting>
+            </bs_cmrreport_resource><bs_rewriting>
                 <class>BS_Rewriting_Model</class>
                 <resourceModel>bs_rewriting_resource</resourceModel>
             </bs_rewriting><bs_rewriting_resource>
@@ -774,7 +764,17 @@
                 </entities>
             </bs_rii_resource><bs_wysiwyg>
                 <class>BS_Wysiwyg_Model</class>
-            </bs_wysiwyg><backupguardplatinum>
+            </bs_wysiwyg><bs_nrw>
+                <class>BS_Nrw_Model</class>
+                <resourceModel>bs_nrw_resource</resourceModel>
+            </bs_nrw><bs_nrw_resource>
+                <class>BS_Nrw_Model_Resource</class>
+                <entities>
+                    <nrw>
+                        <table>bs_nrw_nrw</table>
+                    </nrw>
+                </entities>
+            </bs_nrw_resource><backupguardplatinum>
                 <class>BackupGuard_BackupGuardPlatinum_Model</class>
             </backupguardplatinum><bs_observation>
                 <class>BS_Observation_Model</class>
@@ -874,9 +874,7 @@
                 <class>BS_Qr_Block</class>
             </bs_qr><bs_cmrreport>
                 <class>BS_CmrReport_Block</class>
-            </bs_cmrreport><bs_nonroutine>
-                <class>BS_Nonroutine_Block</class>
-            </bs_nonroutine><bs_rewriting>
+            </bs_cmrreport><bs_rewriting>
                 <class>BS_Rewriting_Block</class>
             </bs_rewriting><bs_other>
                 <class>BS_Other_Block</class>
@@ -910,7 +908,9 @@
                 <class>BS_Rii_Block</class>
             </bs_rii><bs_wysiwyg>
                 <class>BS_Wysiwyg_Block</class>
-            </bs_wysiwyg><aoe_scheduler>
+            </bs_wysiwyg><bs_nrw>
+                <class>BS_Nrw_Block</class>
+            </bs_nrw><aoe_scheduler>
                 <class>Aoe_Scheduler_Block</class>
             </aoe_scheduler><bs_logger>
                 <class>BS_Logger_Block</class>
@@ -960,9 +960,7 @@
                 <class>BS_Qr_Helper</class>
             </bs_qr><bs_cmrreport>
                 <class>BS_CmrReport_Helper</class>
-            </bs_cmrreport><bs_nonroutine>
-                <class>BS_Nonroutine_Helper</class>
-            </bs_nonroutine><bs_rewriting>
+            </bs_cmrreport><bs_rewriting>
                 <class>BS_Rewriting_Helper</class>
             </bs_rewriting><bs_other>
                 <class>BS_Other_Helper</class>
@@ -1000,7 +998,9 @@
                 <class>BS_Sched_Helper</class>
             </bs_sched><bs_wysiwyg>
                 <class>BS_Wysiwyg_Helper</class>
-            </bs_wysiwyg><backupguardplatinum>
+            </bs_wysiwyg><bs_nrw>
+                <class>BS_Nrw_Helper</class>
+            </bs_nrw><backupguardplatinum>
                 <class>BackupGuard_BackupGuardPlatinum_Helper</class>
             </backupguardplatinum><bs_observation>
                 <class>BS_Observation_Helper</class>
@@ -1605,9 +1605,7 @@
             <version>1.0.2</version>
         </BS_Qr><BS_CmrReport>
             <version>1.0.0</version>
-        </BS_CmrReport><BS_Nonroutine>
-            <version>1.0.0</version>
-        </BS_Nonroutine><BS_Rewriting>
+        </BS_CmrReport><BS_Rewriting>
             <version>1.0.1</version>
         </BS_Rewriting><BS_Other>
             <version>1.0.3</version>
@@ -1645,7 +1643,9 @@
             <version>1.0.0</version>
         </BS_Sched><BS_Wysiwyg>
             <version>1.0.0</version>
-        </BS_Wysiwyg><BackupGuard_BackupGuardPlatinum>
+        </BS_Wysiwyg><BS_Nrw>
+            <version>1.0.0</version>
+        </BS_Nrw><BackupGuard_BackupGuardPlatinum>
             <version>1.0.4</version>
         </BackupGuard_BackupGuardPlatinum><BS_Observation>
             <version>1.0.0</version>
@@ -1830,11 +1830,7 @@
                     <files>
                         <default>BS_CmrReport.csv</default>
                     </files>
-                </BS_CmrReport><BS_Nonroutine>
-                    <files>
-                        <default>BS_Nonroutine.csv</default>
-                    </files>
-                </BS_Nonroutine><BS_Other>
+                </BS_CmrReport><BS_Other>
                     <files>
                         <default>BS_Other.csv</default>
                     </files>
@@ -1886,7 +1882,11 @@
                     <files>
                         <default>BS_Rii.csv</default>
                     </files>
-                </BS_Rii><aoe_scheduler>
+                </BS_Rii><BS_Nrw>
+                    <files>
+                        <default>BS_Nrw.csv</default>
+                    </files>
+                </BS_Nrw><aoe_scheduler>
                     <files>
                         <default>Aoe_Scheduler.csv</default>
                     </files>
@@ -2023,9 +2023,7 @@
                     <file>bs_qr.xml</file>
                 </bs_qr><bs_cmrreport>
                     <file>bs_cmrreport.xml</file>
-                </bs_cmrreport><bs_nonroutine>
-                    <file>bs_nonroutine.xml</file>
-                </bs_nonroutine><bs_other>
+                </bs_cmrreport><bs_other>
                     <file>bs_other.xml</file>
                 </bs_other><bs_ncr>
                     <file>bs_ncr.xml</file>
@@ -2055,7 +2053,9 @@
                     <file>bs_rii.xml</file>
                 </bs_rii><bs_wysiwyg>
                     <file>bs_wysiwyg.xml</file>
-                </bs_wysiwyg><backupguardplatinum>
+                </bs_wysiwyg><bs_nrw>
+                    <file>bs_nrw.xml</file>
+                </bs_nrw><backupguardplatinum>
                     <file>backupguardplatinum.xml</file>
                 </backupguardplatinum><aoe_scheduler>
                     <file>aoe_scheduler/aoe_scheduler.xml</file>
@@ -2220,7 +2220,10 @@
             </hira><rii>
                 <class>bs_rii/adminhtml_search_rii</class>
                 <acl>bs_rii</acl>
-            </rii><signature>
+            </rii><nrw>
+                <class>bs_nrw/adminhtml_search_nrw</class>
+                <acl>bs_nrw</acl>
+            </nrw><signature>
                 <class>bs_signature/adminhtml_search_signature</class>
                 <acl>bs_signature</acl>
             </signature></global_search></adminhtml><install>
@@ -2270,7 +2273,7 @@
                     
                 <modules>
                         <BS_Cmr before="Mage_Adminhtml">BS_Cmr_Adminhtml</BS_Cmr>
-                    <BS_Acreg before="Mage_Adminhtml">BS_Acreg_Adminhtml</BS_Acreg><BS_Car before="Mage_Adminhtml">BS_Car_Adminhtml</BS_Car><BS_Report before="Mage_Adminhtml">BS_Report_Adminhtml</BS_Report><BS_Formtemplate before="Mage_Adminhtml">BS_Formtemplate_Adminhtml</BS_Formtemplate><BS_Evaluation before="Mage_Adminhtml">BS_Evaluation_Adminhtml</BS_Evaluation><BS_Mor before="Mage_Adminhtml">BS_Mor_Adminhtml</BS_Mor><BS_Concession before="Mage_Adminhtml">BS_Concession_Adminhtml</BS_Concession><BS_Setting before="Mage_Adminhtml">BS_Setting_Adminhtml</BS_Setting><BS_Schedule before="Mage_Adminhtml">BS_Schedule_Adminhtml</BS_Schedule><BS_Drr before="Mage_Adminhtml">BS_Drr_Adminhtml</BS_Drr><bs_data before="Mage_Adminhtml">BS_Data_Adminhtml</bs_data><BS_HR before="Mage_Adminhtml">BS_HR_Adminhtml</BS_HR><BS_Routine before="Mage_Adminhtml">BS_Routine_Adminhtml</BS_Routine><BS_Meda before="Mage_Adminhtml">BS_Meda_Adminhtml</BS_Meda><BS_Qr before="Mage_Adminhtml">BS_Qr_Adminhtml</BS_Qr><BS_CmrReport before="Mage_Adminhtml">BS_CmrReport_Adminhtml</BS_CmrReport><BS_Nonroutine before="Mage_Adminhtml">BS_Nonroutine_Adminhtml</BS_Nonroutine><BS_Rewriting before="Mage_Adminhtml">BS_Rewriting_Adminhtml</BS_Rewriting><BS_Other before="Mage_Adminhtml">BS_Other_Adminhtml</BS_Other><BS_Ncr before="Mage_Adminhtml">BS_Ncr_Adminhtml</BS_Ncr><BS_Signoff before="Mage_Adminhtml">BS_Signoff_Adminhtml</BS_Signoff><BS_Misc before="Mage_Adminhtml">BS_Misc_Adminhtml</BS_Misc><BS_Ir before="Mage_Adminhtml">BS_Ir_Adminhtml</BS_Ir><BS_Cofa before="Mage_Adminhtml">BS_Cofa_Adminhtml</BS_Cofa><BS_Qn before="Mage_Adminhtml">BS_Qn_Adminhtml</BS_Qn><BS_NCause before="Mage_Adminhtml">BS_NCause_Adminhtml</BS_NCause><BS_Chart before="Mage_Adminhtml">BS_Chart_Adminhtml</BS_Chart><BS_Safety before="Mage_Adminhtml">BS_Safety_Adminhtml</BS_Safety><BS_Work before="Mage_Adminhtml">BS_Work_Adminhtml</BS_Work><BS_Sur before="Mage_Adminhtml">BS_Sur_Adminhtml</BS_Sur><BS_Hira before="Mage_Adminhtml">BS_Hira_Adminhtml</BS_Hira><BS_Kpi before="Mage_Adminhtml">BS_Kpi_Adminhtml</BS_Kpi><BS_Rii before="Mage_Adminhtml">BS_Rii_Adminhtml</BS_Rii><BS_Sched before="Mage_Adminhtml">BS_Sched_Adminhtml</BS_Sched><BS_Wysiwyg before="Mage_Adminhtml">BS_Wysiwyg_Adminhtml</BS_Wysiwyg><BackupGuard_BackupGuardPlatinum after="Mage_Adminhtml">BackupGuard_BackupGuardPlatinum_Adminhtml</BackupGuard_BackupGuardPlatinum><BS_Observation before="Mage_Adminhtml">BS_Observation_Adminhtml</BS_Observation><Aoe_Scheduler before="Mage_Adminhtml">Aoe_Scheduler_Adminhtml</Aoe_Scheduler><BS_Logger before="Mage_Adminhtml">BS_Logger_Adminhtml</BS_Logger><BS_Docx before="Mage_Adminhtml">BS_Docx_Adminhtml</BS_Docx><BS_Signature before="Mage_Adminhtml">BS_Signature_Adminhtml</BS_Signature><BS_KPIReport before="Mage_Adminhtml">BS_KPIReport_Adminhtml</BS_KPIReport></modules><frontName><![CDATA[admin]]></frontName></args>
+                    <BS_Acreg before="Mage_Adminhtml">BS_Acreg_Adminhtml</BS_Acreg><BS_Car before="Mage_Adminhtml">BS_Car_Adminhtml</BS_Car><BS_Report before="Mage_Adminhtml">BS_Report_Adminhtml</BS_Report><BS_Formtemplate before="Mage_Adminhtml">BS_Formtemplate_Adminhtml</BS_Formtemplate><BS_Evaluation before="Mage_Adminhtml">BS_Evaluation_Adminhtml</BS_Evaluation><BS_Mor before="Mage_Adminhtml">BS_Mor_Adminhtml</BS_Mor><BS_Concession before="Mage_Adminhtml">BS_Concession_Adminhtml</BS_Concession><BS_Setting before="Mage_Adminhtml">BS_Setting_Adminhtml</BS_Setting><BS_Schedule before="Mage_Adminhtml">BS_Schedule_Adminhtml</BS_Schedule><BS_Drr before="Mage_Adminhtml">BS_Drr_Adminhtml</BS_Drr><bs_data before="Mage_Adminhtml">BS_Data_Adminhtml</bs_data><BS_HR before="Mage_Adminhtml">BS_HR_Adminhtml</BS_HR><BS_Routine before="Mage_Adminhtml">BS_Routine_Adminhtml</BS_Routine><BS_Meda before="Mage_Adminhtml">BS_Meda_Adminhtml</BS_Meda><BS_Qr before="Mage_Adminhtml">BS_Qr_Adminhtml</BS_Qr><BS_CmrReport before="Mage_Adminhtml">BS_CmrReport_Adminhtml</BS_CmrReport><BS_Rewriting before="Mage_Adminhtml">BS_Rewriting_Adminhtml</BS_Rewriting><BS_Other before="Mage_Adminhtml">BS_Other_Adminhtml</BS_Other><BS_Ncr before="Mage_Adminhtml">BS_Ncr_Adminhtml</BS_Ncr><BS_Signoff before="Mage_Adminhtml">BS_Signoff_Adminhtml</BS_Signoff><BS_Misc before="Mage_Adminhtml">BS_Misc_Adminhtml</BS_Misc><BS_Ir before="Mage_Adminhtml">BS_Ir_Adminhtml</BS_Ir><BS_Cofa before="Mage_Adminhtml">BS_Cofa_Adminhtml</BS_Cofa><BS_Qn before="Mage_Adminhtml">BS_Qn_Adminhtml</BS_Qn><BS_NCause before="Mage_Adminhtml">BS_NCause_Adminhtml</BS_NCause><BS_Chart before="Mage_Adminhtml">BS_Chart_Adminhtml</BS_Chart><BS_Safety before="Mage_Adminhtml">BS_Safety_Adminhtml</BS_Safety><BS_Work before="Mage_Adminhtml">BS_Work_Adminhtml</BS_Work><BS_Sur before="Mage_Adminhtml">BS_Sur_Adminhtml</BS_Sur><BS_Hira before="Mage_Adminhtml">BS_Hira_Adminhtml</BS_Hira><BS_Kpi before="Mage_Adminhtml">BS_Kpi_Adminhtml</BS_Kpi><BS_Rii before="Mage_Adminhtml">BS_Rii_Adminhtml</BS_Rii><BS_Sched before="Mage_Adminhtml">BS_Sched_Adminhtml</BS_Sched><BS_Wysiwyg before="Mage_Adminhtml">BS_Wysiwyg_Adminhtml</BS_Wysiwyg><BS_Nrw before="Mage_Adminhtml">BS_Nrw_Adminhtml</BS_Nrw><BackupGuard_BackupGuardPlatinum after="Mage_Adminhtml">BackupGuard_BackupGuardPlatinum_Adminhtml</BackupGuard_BackupGuardPlatinum><BS_Observation before="Mage_Adminhtml">BS_Observation_Adminhtml</BS_Observation><Aoe_Scheduler before="Mage_Adminhtml">Aoe_Scheduler_Adminhtml</Aoe_Scheduler><BS_Logger before="Mage_Adminhtml">BS_Logger_Adminhtml</BS_Logger><BS_Docx before="Mage_Adminhtml">BS_Docx_Adminhtml</BS_Docx><BS_Signature before="Mage_Adminhtml">BS_Signature_Adminhtml</BS_Signature><BS_KPIReport before="Mage_Adminhtml">BS_KPIReport_Adminhtml</BS_KPIReport></modules><frontName><![CDATA[admin]]></frontName></args>
             </adminhtml>
         </routers>
     </admin><websites>

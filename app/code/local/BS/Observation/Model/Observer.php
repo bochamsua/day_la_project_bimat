@@ -49,6 +49,18 @@ class BS_Observation_Model_Observer
                 //values will be taken from POST object
             ],
         ],
+        'nrw'    => [
+            'status' => [1],
+            'close'    => [
+                'status' => 3,//new status of close action
+                'fields' => 'close_date'
+                //values will be taken from POST object
+            ],
+            'remove' => [//buttons to be removed when object is in closed status
+                'save',
+                'delete'
+            ]
+        ],
         /*'mor'    => [
             'status' => [0],//status of object that Close button will be avaible
             'close'    => [
@@ -201,6 +213,27 @@ class BS_Observation_Model_Observer
                 'save',
                 'delete'
             ],
+        ],
+        'nrw'    => [
+            'status'    => [0],//status that buttons are available
+            'accept' => [
+                'status' => 1,//new status of accept action
+                'fields' => ''
+            ],
+            'reject'    => [
+                'status' => 2,//new status of reject action
+                'fields' => 'reject_reason',
+                //values will be taken from POST object
+            ],
+            'remove' => [//buttons to be removed when object is in accepted status
+                'save',
+                'delete'
+            ],
+            //if this existed, we need to compare the field data with current user id, normally ins_id, but in some cases, it would be staff_id
+            //this is used only in work assignments?
+            'check' => 'staff_id'
+
+
         ]
 
     ];
@@ -224,6 +257,7 @@ class BS_Observation_Model_Observer
     {
         $helper = Mage::helper('bs_observation');
         $misc = Mage::helper('bs_misc');
+        $currentUser = $misc->getCurrentUserInfo();
 
         $relations = $misc->getRelations();
 
@@ -235,7 +269,6 @@ class BS_Observation_Model_Observer
 
         //Mass Actions hook
         if ($massactionClass == get_class($block)) {
-            $currentUser = $misc->getCurrentUserInfo();
             $name = $block->getFormFieldName();
 
             //Inspectors
@@ -384,7 +417,7 @@ class BS_Observation_Model_Observer
         //Add Region/Section columns then set them as default filters
         if(substr($blockType, -4) ==  "grid"){
             $allTypes = $misc->getAllTypes();
-            $currentUser = $misc->getCurrentUserInfo();
+
             foreach ($allTypes as $type) {
                 if(strpos($blockType, "{$type}_grid")){
 
@@ -564,6 +597,11 @@ class BS_Observation_Model_Observer
 
                         }
 
+                        if(isset($this->_hasAcceptRejectButtons[$currentType]['check']) && $this->_hasAcceptRejectButtons[$currentType]['check'] != ''){
+                            $acceptRejectConds[$this->_hasAcceptRejectButtons[$currentType]['check']] = $currentUser[0];
+                            $bypass = true;
+                        }
+
                         if($misc->canAcceptReject($currentObj, null, $acceptRejectConds, $bypass)){
                             $acceptUrl = $block->getUrl('*/misc_misc/doSpecial',
                                 [
@@ -642,7 +680,7 @@ class BS_Observation_Model_Observer
                                 );
                             }
 
-                        }/*else if($this->_hasCloseButton[$currentType]['close']['status'] == $currentStatus) {//if object is in closed status, we need to disable some buttons
+                        }else if($this->_hasCloseButton[$currentType]['close']['status'] == $currentStatus) {//if object is in closed status, we need to disable some buttons
                             if(isset($this->_hasCloseButton[$currentType]['remove']) && count($this->_hasCloseButton[$currentType]['remove'])){
                                 foreach ($this->_hasCloseButton[$currentType]['remove'] as $item) {
                                     $block->removeButton($item.'_button');
@@ -650,7 +688,7 @@ class BS_Observation_Model_Observer
 
                             }
 
-                        }*/
+                        }
                     }
 
 

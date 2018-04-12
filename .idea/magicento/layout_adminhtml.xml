@@ -1026,6 +1026,38 @@ Empty hanle for ajax response etc.
         </reference>
     </adminhtml_formtemplate_formtemplate_edit>
 
+<adminhtml_mor_mor_index>
+        <reference name="menu">
+            <action method="setActive">
+                <menupath>bs_work/mor</menupath>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="bs_mor/adminhtml_mor" name="mor" />
+
+        </reference>
+    </adminhtml_mor_mor_index>
+    <adminhtml_mor_mor_grid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_mor/adminhtml_mor_grid" name="mor_grid"/>
+        </block>
+    </adminhtml_mor_mor_grid>
+    <!-- Mor add/edit action -->
+    <adminhtml_mor_mor_edit>
+        <update handle="editor"/>
+        <reference name="menu">
+            <action method="setActive">
+                <menupath>bs_work/mor</menupath>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="bs_mor/adminhtml_mor_edit" name="mor_edit"></block>
+        </reference>
+        <reference name="left">
+            <block type="bs_mor/adminhtml_mor_edit_tabs" name="mor_tabs"></block>
+        </reference>
+    </adminhtml_mor_mor_edit>
+
 <adminhtml_concession_concession_index>
         <reference name="menu">
             <action method="setActive">
@@ -1466,6 +1498,38 @@ Empty hanle for ajax response etc.
         </reference>
     </adminhtml_routine_routine_edit>
 
+<adminhtml_meda_meda_index>
+        <reference name="menu">
+            <action method="setActive">
+                <menupath>bs_work/meda</menupath>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="bs_meda/adminhtml_meda" name="meda" />
+
+        </reference>
+    </adminhtml_meda_meda_index>
+    <adminhtml_meda_meda_grid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_meda/adminhtml_meda_grid" name="meda_grid"/>
+        </block>
+    </adminhtml_meda_meda_grid>
+    <!-- Meda add/edit action -->
+    <adminhtml_meda_meda_edit>
+        <update handle="editor"/>
+        <reference name="menu">
+            <action method="setActive">
+                <menupath>bs_work/meda</menupath>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="bs_meda/adminhtml_meda_edit" name="meda_edit"></block>
+        </reference>
+        <reference name="left">
+            <block type="bs_meda/adminhtml_meda_edit_tabs" name="meda_tabs"></block>
+        </reference>
+    </adminhtml_meda_meda_edit>
+
 <adminhtml_qr_qr_index>
         <reference name="menu">
             <action method="setActive">
@@ -1531,38 +1595,6 @@ Empty hanle for ajax response etc.
             <block type="bs_cmrreport/adminhtml_cmrreport_edit_tabs" name="cmrreport_tabs"></block>
         </reference>
     </adminhtml_cmrreport_cmrreport_edit>
-
-<adminhtml_nonroutine_nonroutine_index>
-        <reference name="menu">
-            <action method="setActive">
-                <menupath>bs_sched/nonroutine</menupath>
-            </action>
-        </reference>
-        <reference name="content">
-            <block type="bs_nonroutine/adminhtml_nonroutine" name="nonroutine" />
-
-        </reference>
-    </adminhtml_nonroutine_nonroutine_index>
-    <adminhtml_nonroutine_nonroutine_grid>
-        <block type="core/text_list" name="root" output="toHtml">
-            <block type="bs_nonroutine/adminhtml_nonroutine_grid" name="nonroutine_grid"/>
-        </block>
-    </adminhtml_nonroutine_nonroutine_grid>
-    <!-- Nonroutine add/edit action -->
-    <adminhtml_nonroutine_nonroutine_edit>
-        <update handle="editor"/>
-        <reference name="menu">
-            <action method="setActive">
-                <menupath>bs_sched/nonroutine</menupath>
-            </action>
-        </reference>
-        <reference name="content">
-            <block type="bs_nonroutine/adminhtml_nonroutine_edit" name="nonroutine_edit"></block>
-        </reference>
-        <reference name="left">
-            <block type="bs_nonroutine/adminhtml_nonroutine_edit_tabs" name="nonroutine_tabs"></block>
-        </reference>
-    </adminhtml_nonroutine_nonroutine_edit>
 
 <adminhtml_other_other_index>
         <reference name="menu">
@@ -2357,6 +2389,38 @@ Empty hanle for ajax response etc.
         <action method="addItem"><type>skin_js</type><name>bs_chart/js/themes/fusioncharts.theme.ocean.js</name><params/></action>
     </reference>
   </default>
+<adminhtml_safety_safety_index>
+        <reference name="menu">
+            <action method="setActive">
+                <menupath>bs_work/safety</menupath>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="bs_safety/adminhtml_safety" name="safety" />
+
+        </reference>
+    </adminhtml_safety_safety_index>
+    <adminhtml_safety_safety_grid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_safety/adminhtml_safety_grid" name="safety_grid"/>
+        </block>
+    </adminhtml_safety_safety_grid>
+    <!-- Safety add/edit action -->
+    <adminhtml_safety_safety_edit>
+        <update handle="editor"/>
+        <reference name="menu">
+            <action method="setActive">
+                <menupath>bs_work/safety</menupath>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="bs_safety/adminhtml_safety_edit" name="safety_edit"></block>
+        </reference>
+        <reference name="left">
+            <block type="bs_safety/adminhtml_safety_edit_tabs" name="safety_tabs"></block>
+        </reference>
+    </adminhtml_safety_safety_edit>
+
 <adminhtml_sur_sur_index>
         <reference name="menu">
             <action method="setActive">
@@ -2455,6 +2519,38 @@ Empty hanle for ajax response etc.
             <block type="bs_sur/adminhtml_sur_edit_tab_drr" name="sur.edit.tab.drr"/>
         </block>
     </adminhtml_sur_sur_drrsgrid>
+
+<adminhtml_hira_hira_index>
+        <reference name="menu">
+            <action method="setActive">
+                <menupath>bs_work/hira</menupath>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="bs_hira/adminhtml_hira" name="hira" />
+
+        </reference>
+    </adminhtml_hira_hira_index>
+    <adminhtml_hira_hira_grid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_hira/adminhtml_hira_grid" name="hira_grid"/>
+        </block>
+    </adminhtml_hira_hira_grid>
+    <!-- Hira add/edit action -->
+    <adminhtml_hira_hira_edit>
+        <update handle="editor"/>
+        <reference name="menu">
+            <action method="setActive">
+                <menupath>bs_work/hira</menupath>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="bs_hira/adminhtml_hira_edit" name="hira_edit"></block>
+        </reference>
+        <reference name="left">
+            <block type="bs_hira/adminhtml_hira_edit_tabs" name="hira_tabs"></block>
+        </reference>
+    </adminhtml_hira_hira_edit>
 
 <adminhtml_kpi_kpi_index>
         <reference name="menu">
@@ -2602,6 +2698,38 @@ Empty hanle for ajax response etc.
         <action method="addItem"><type>skin_js</type><name>bs_wysiwyg/js/plugins/fullscreen.js</name><params/></action>
     </reference>
   </default>
+
+<adminhtml_nrw_nrw_index>
+        <reference name="menu">
+            <action method="setActive">
+                <menupath>bs_sched/nrw</menupath>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="bs_nrw/adminhtml_nrw" name="nrw" />
+
+        </reference>
+    </adminhtml_nrw_nrw_index>
+    <adminhtml_nrw_nrw_grid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_nrw/adminhtml_nrw_grid" name="nrw_grid"/>
+        </block>
+    </adminhtml_nrw_nrw_grid>
+    <!-- Nrw add/edit action -->
+    <adminhtml_nrw_nrw_edit>
+        <update handle="editor"/>
+        <reference name="menu">
+            <action method="setActive">
+                <menupath>bs_sched/nrw</menupath>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="bs_nrw/adminhtml_nrw_edit" name="nrw_edit"></block>
+        </reference>
+        <reference name="left">
+            <block type="bs_nrw/adminhtml_nrw_edit_tabs" name="nrw_tabs"></block>
+        </reference>
+    </adminhtml_nrw_nrw_edit>
 
 <default>
 	</default>

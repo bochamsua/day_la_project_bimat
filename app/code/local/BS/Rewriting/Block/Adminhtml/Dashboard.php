@@ -75,6 +75,15 @@ class BS_Rewriting_Block_Adminhtml_Dashboard extends Mage_Adminhtml_Block_Dashbo
 			$this->getLayout()->createBlock('bs_ir/adminhtml_ir_dashboard_irsign')
 		);
 
+
+        $this->setChild('nrw',
+            $this->getLayout()->createBlock('bs_nrw/adminhtml_nrw_dashboard_grid')
+        );
+
+        $this->setChild('nrwSign',
+            $this->getLayout()->createBlock('bs_nrw/adminhtml_nrw_dashboard_nrwsign')
+        );
+
 	}
 
 }

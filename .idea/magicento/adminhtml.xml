@@ -4,7 +4,18 @@
             <title>Dashboard</title>
             <sort_order>10</sort_order>
             <action>adminhtml/dashboard</action>
-        </dashboard>
+        <children>
+                <bs_nrw translate="title" module="bs_nrw">
+                    <title>Non-routine Work</title>
+                    <sort_order>10</sort_order>
+                    <children>
+                        <nrw translate="title" module="bs_nrw">
+                            <title>Non-routine Work</title>
+                            <action>adminhtml/nrw_nrw</action>
+                            <sort_order>0</sort_order>
+                        </nrw>
+                    </children>
+                </bs_nrw>            </children></dashboard>
         <system translate="title" module="adminhtml">
             <title>System</title>
             <sort_order>90</sort_order>
@@ -229,18 +240,26 @@
                     <title>CAR</title>
                     <action>adminhtml/car_car</action>
                     <sort_order>70</sort_order>
-                </car>         <drr translate="title" module="bs_drr">
+                </car>         <mor translate="title" module="bs_mor">
+                    <title>MOR</title>
+                    <action>adminhtml/mor_mor</action>
+                    <sort_order>90</sort_order>
+                </mor><drr translate="title" module="bs_drr">
                     <title>DRR</title>
                     <action>adminhtml/drr_drr</action>
                     <sort_order>70</sort_order>
-                </drr><qr translate="title" module="bs_qr">
+                </drr><meda translate="title" module="bs_meda">
+                    <title>MEDA</title>
+                    <action>adminhtml/meda_meda</action>
+                    <sort_order>100</sort_order>
+                </meda><qr translate="title" module="bs_qr">
                     <title>QR</title>
                     <action>adminhtml/qr_qr</action>
                     <sort_order>60</sort_order>
                 </qr><other translate="title" module="bs_other">
                     <title>Other Work</title>
                     <action>adminhtml/other_other</action>
-                    <sort_order>90</sort_order>
+                    <sort_order>900</sort_order>
                 </other><ncr translate="title" module="bs_ncr">
                     <title>NCR</title>
                     <action>adminhtml/ncr_ncr</action>
@@ -257,11 +276,19 @@
                     <title>QN</title>
                     <action>adminhtml/qn_qn</action>
                     <sort_order>61</sort_order>
-                </qn><sur translate="title" module="bs_sur">
+                </qn><safety translate="title" module="bs_safety">
+                    <title>Safety Data</title>
+                    <action>adminhtml/safety_safety</action>
+                    <sort_order>110</sort_order>
+                </safety><sur translate="title" module="bs_sur">
                     <title>Surveillance</title>
                     <action>adminhtml/sur_sur</action>
                     <sort_order>1</sort_order>
-                </sur><rii translate="title" module="bs_rii">
+                </sur><hira translate="title" module="bs_hira">
+                    <title>HIRA</title>
+                    <action>adminhtml/hira_hira</action>
+                    <sort_order>80</sort_order>
+                </hira><rii translate="title" module="bs_rii">
                     <title>RII Sign-off</title>
                     <action>adminhtml/rii_rii</action>
                     <sort_order>20</sort_order>
@@ -308,11 +335,7 @@
                     <action>adminhtml/schedule_schedule</action>
                     <sort_order>10</sort_order>
                 </schedule>
-            <nonroutine translate="title" module="bs_nonroutine">
-                    <title>QC HAN Work Non-Routine</title>
-                    <action>adminhtml/nonroutine_nonroutine</action>
-                    <sort_order>20</sort_order>
-                </nonroutine></children>
+            </children>
         <title>Schedule</title><sort_order>50</sort_order></bs_sched><bs_hr translate="title" module="bs_hr">
             <title>HR</title>
             <sort_order>75</sort_order>
@@ -376,7 +399,21 @@
                     <dashboard translate="title">
                         <title>Dashboard</title>
                         <sort_order>0</sort_order>
-                    </dashboard>
+                    <children>
+                            <bs_nrw translate="title" module="bs_nrw">
+                                <title>Non-routine Work</title>
+                                <children>
+                                    <nrw translate="title" module="bs_nrw">
+                                        <title>Non-routine Work</title>
+                                        <sort_order>0</sort_order>
+                                        <children>
+                                            <new translate="title"><title>New</title></new>
+                                            <edit translate="title"><title>Edit</title></edit>
+                                            <delete translate="title"><title>Delete</title></delete>
+                                        </children>
+                                    </nrw>
+                                </children>
+                            </bs_nrw>                        </children></dashboard>
                     <system translate="title">
                         <title>System</title>
                         <sort_order>90</sort_order>
@@ -466,7 +503,9 @@
                                         <title>Formtemplate</title>
                                     </bs_formtemplate><bs_evaluation translate="title" module="bs_evaluation">
                                         <title>Evaluation</title>
-                                    </bs_evaluation><bs_concession translate="title" module="bs_concession">
+                                    </bs_evaluation><bs_mor translate="title" module="bs_mor">
+                                        <title>Mor</title>
+                                    </bs_mor><bs_concession translate="title" module="bs_concession">
                                         <title>Concession</title>
                                     </bs_concession><bs_setting translate="title" module="bs_setting">
                                         <title>Setting</title>
@@ -480,13 +519,13 @@
                                         <title>HR</title>
                                     </bs_hr><bs_routine translate="title" module="bs_routine">
                                         <title>Routine</title>
-                                    </bs_routine><bs_qr translate="title" module="bs_qr">
+                                    </bs_routine><bs_meda translate="title" module="bs_meda">
+                                        <title>Meda</title>
+                                    </bs_meda><bs_qr translate="title" module="bs_qr">
                                         <title>Qr</title>
                                     </bs_qr><bs_cmrreport translate="title" module="bs_cmrreport">
                                         <title>CmrReport</title>
-                                    </bs_cmrreport><bs_nonroutine translate="title" module="bs_nonroutine">
-                                        <title>QC HAN Work Non-Routine</title>
-                                    </bs_nonroutine><bs_rewriting translate="title" module="bs_rewriting">
+                                    </bs_cmrreport><bs_rewriting translate="title" module="bs_rewriting">
                                         <title>Rewriting</title>
                                     </bs_rewriting><bs_other translate="title" module="bs_other">
                                         <title>Other Work</title>
@@ -506,11 +545,15 @@
                                         <title>NCause</title>
                                     </bs_ncause><bs_chart translate="title" module="bs_chart">
                                         <title>Chart</title>
-                                    </bs_chart><bs_work translate="title" module="bs_work">
+                                    </bs_chart><bs_safety translate="title" module="bs_safety">
+                                        <title>Safety</title>
+                                    </bs_safety><bs_work translate="title" module="bs_work">
                                         <title>WORK</title>
                                     </bs_work><bs_sur translate="title" module="bs_sur">
                                         <title>Sur</title>
-                                    </bs_sur><bs_kpi translate="title" module="bs_kpi">
+                                    </bs_sur><bs_hira translate="title" module="bs_hira">
+                                        <title>Hira</title>
+                                    </bs_hira><bs_kpi translate="title" module="bs_kpi">
                                         <title>Kpi</title>
                                     </bs_kpi><bs_rii translate="title" module="bs_rii">
                                         <title>Rii</title>
@@ -518,7 +561,9 @@
                                         <title>Schedule</title>
                                     </bs_sched><bs_wysiwyg translate="title" module="bs_wysiwyg">
                                         <title>Wysiwyg</title>
-                                    </bs_wysiwyg><bs_logger translate="title" module="bs_logger">
+                                    </bs_wysiwyg><bs_nrw translate="title" module="bs_nrw">
+                                        <title>Nrw</title>
+                                    </bs_nrw><bs_logger translate="title" module="bs_logger">
                                         <title>Logger</title>
                                     </bs_logger><bs_signature translate="title" module="bs_signature">
                                         <title>Signature</title>
@@ -780,7 +825,15 @@
                                     <edit translate="title"><title>Edit</title></edit>
                                     <delete translate="title"><title>Delete</title></delete>
                                 </children>
-                            </car>                       <drr translate="title" module="bs_drr">
+                            </car>                       <mor translate="title" module="bs_mor">
+                                <title>MOR</title>
+                                <sort_order>90</sort_order>
+                                <children>
+                                    <new translate="title"><title>New</title></new>
+                                    <edit translate="title"><title>Edit</title></edit>
+                                    <delete translate="title"><title>Delete</title></delete>
+                                </children>
+                            </mor><drr translate="title" module="bs_drr">
                                 <title>DRR</title>
                                 <sort_order>70</sort_order>
                                 <children>
@@ -788,7 +841,15 @@
                                     <edit translate="title"><title>Edit</title></edit>
                                     <delete translate="title"><title>Delete</title></delete>
                                 </children>
-                            </drr><qr translate="title" module="bs_qr">
+                            </drr><meda translate="title" module="bs_meda">
+                                <title>MEDA</title>
+                                <sort_order>100</sort_order>
+                                <children>
+                                    <new translate="title"><title>New</title></new>
+                                    <edit translate="title"><title>Edit</title></edit>
+                                    <delete translate="title"><title>Delete</title></delete>
+                                </children>
+                            </meda><qr translate="title" module="bs_qr">
                                 <title>QR</title>
                                 <sort_order>60</sort_order>
                                 <children>
@@ -799,7 +860,7 @@
                                 </children>
                             </qr><other translate="title" module="bs_other">
                                 <title>Other Work</title>
-                                <sort_order>90</sort_order>
+                                <sort_order>900</sort_order>
                                 <children>
                                     <new translate="title"><title>New</title></new>
                                     <edit translate="title"><title>Edit</title></edit>
@@ -839,7 +900,15 @@
                                     <edit translate="title"><title>Edit</title></edit>
                                     <delete translate="title"><title>Delete</title></delete>
                                 </children>
-                            </qn><sur translate="title" module="bs_sur">
+                            </qn><safety translate="title" module="bs_safety">
+                                <title>Safety Data</title>
+                                <sort_order>110</sort_order>
+                                <children>
+                                    <new translate="title"><title>New</title></new>
+                                    <edit translate="title"><title>Edit</title></edit>
+                                    <delete translate="title"><title>Delete</title></delete>
+                                </children>
+                            </safety><sur translate="title" module="bs_sur">
                                 <title>Surveillance</title>
                                 <sort_order>1</sort_order>
                                 <children>
@@ -847,7 +916,15 @@
                                     <edit translate="title"><title>Edit</title></edit>
                                     <delete translate="title"><title>Delete</title></delete>
                                 </children>
-                            </sur><rii translate="title" module="bs_rii">
+                            </sur><hira translate="title" module="bs_hira">
+                                <title>HIRA</title>
+                                <sort_order>80</sort_order>
+                                <children>
+                                    <new translate="title"><title>New</title></new>
+                                    <edit translate="title"><title>Edit</title></edit>
+                                    <delete translate="title"><title>Delete</title></delete>
+                                </children>
+                            </hira><rii translate="title" module="bs_rii">
                                 <title>RII Sign-off</title>
                                 <sort_order>20</sort_order>
                                 <children>
@@ -922,15 +999,7 @@
                                     <delete translate="title"><title>Delete</title></delete>
                                 </children>
                             </schedule>
-                        <nonroutine translate="title" module="bs_nonroutine">
-                                <title>QC HAN Work Non-Routine</title>
-                                <sort_order>20</sort_order>
-                                <children>
-                                    <new translate="title"><title>New</title></new>
-                                    <edit translate="title"><title>Edit</title></edit>
-                                    <delete translate="title"><title>Delete</title></delete>
-                                </children>
-                            </nonroutine></children>
+                        </children>
                     <title>Schedule</title></bs_sched><bs_hr translate="title" module="bs_hr">
                         <title>HR</title>
                         <children>

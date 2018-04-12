@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * BS_Nrw extension
+ * 
+ * @category       BS
+ * @package        BS_Nrw
+ * @copyright      Copyright (c) 2018
+ */
+--> 
+<layout>
+    <adminhtml_nrw_nrw_index>
+        <reference name="menu">
+            <action method="setActive">
+                <menupath>bs_sched/nrw</menupath>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="bs_nrw/adminhtml_nrw" name="nrw" />
+
+        </reference>
+    </adminhtml_nrw_nrw_index>
+    <adminhtml_nrw_nrw_grid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_nrw/adminhtml_nrw_grid" name="nrw_grid"/>
+        </block>
+    </adminhtml_nrw_nrw_grid>
+    <!-- Nrw add/edit action -->
+    <adminhtml_nrw_nrw_edit>
+        <update handle="editor"/>
+        <reference name="menu">
+            <action method="setActive">
+                <menupath>bs_sched/nrw</menupath>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="bs_nrw/adminhtml_nrw_edit" name="nrw_edit"></block>
+        </reference>
+        <reference name="left">
+            <block type="bs_nrw/adminhtml_nrw_edit_tabs" name="nrw_tabs"></block>
+        </reference>
+    </adminhtml_nrw_nrw_edit>
+
+</layout>

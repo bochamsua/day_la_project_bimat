@@ -27,6 +27,7 @@
 <?php
     $misc = Mage::helper('bs_misc');
     $isManager = $misc->isManager();
+    $isDeputyManager = $misc->isDeputyManager();
     $isQc = $misc->isQC();
     $isQcManager = $misc->isQCManager();
 
@@ -122,6 +123,32 @@
                     <?php } else { ?>
 
                     <?php } ?>
+
+
+                    <div class="dashboard-header">
+                        <span class="db-header-icon ti-calendar"></span>
+                        <span class="db-header-title"><?php echo $this->__('Non-routine work assigned');?></span>
+
+                    </div>
+                    <div class="dashboard-content">
+                        <?php echo $this->getChildHtml('nrw'); ?>
+                    </div>
+
+                    <?php if($isManager || $isDeputyManager){ ?>
+                        <div class="dashboard-header">
+                            <span class="db-header-icon ti-alert"></span>
+                            <span class="db-header-title"><?php echo $this->__('Non-routine work assignment');?></span>
+
+                            <div class="buttons">
+                                <button type="button" class="scalable add" onclick="setLocation('<?php echo $this->getUrl('*/nrw_nrw/new')?>')" style=""><span><span><span>New Assignment</span></span></span></button>
+                            </div>
+                        </div>
+                        <div class="dashboard-content">
+                            <?php echo $this->getChildHtml('nrwSign'); ?>
+                        </div>
+
+                    <?php } ?>
+
 
 
                 </div>
