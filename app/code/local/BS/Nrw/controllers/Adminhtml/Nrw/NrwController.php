@@ -121,6 +121,16 @@ class BS_Nrw_Adminhtml_Nrw_NrwController extends BS_Nrw_Controller_Adminhtml_Nrw
             try {
                 $data = $this->_filterDates($data, array('report_date' ,'due_date' ,'close_date'));
                 $nrw = $this->_initNrw();
+
+
+                //check if work assign to different user
+                $resetRejectReason = false;
+                if($nrw->getStaffId() && $nrw->getStaffId() != 0){
+                    if($data['staff_id'] != $nrw->getStaffId()){
+                        $resetRejectReason = true;
+                    }
+                }
+
                 $nrw->addData($data);
                 $nrwSourceName = $this->_uploadAndGetName(
                     'nrw_source',
@@ -128,7 +138,13 @@ class BS_Nrw_Adminhtml_Nrw_NrwController extends BS_Nrw_Controller_Adminhtml_Nrw
                     $data
                 );
                 $nrw->setData('nrw_source', $nrwSourceName);
+
+                if($resetRejectReason){
+                    $nrw->setData('reject_reason', '');
+                }
+
                 $nrw->save();
+
                 $add = '';
                 if($this->getRequest()->getParam('popup')){
                     $add = '<script>window.opener.'.$this->getJsObjectName().'.reload(); window.close()</script>';

@@ -53,7 +53,7 @@ class BS_Observation_Model_Observer
             'status' => [1],
             'close'    => [
                 'status' => 3,//new status of close action
-                'fields' => 'close_date'
+                'fields' => 'close_date,remark_text'
                 //values will be taken from POST object
             ],
             'remove' => [//buttons to be removed when object is in closed status
@@ -623,12 +623,22 @@ class BS_Observation_Model_Observer
                                 ]
                             );
 
+                            //need to check required fields
+                            //from reject fields
+
+                            $requiredFields = explode(",", $this->_hasAcceptRejectButtons[$currentType]['reject']['fields']);
+                            $additionalCheck = "";
+                            if($requiredFields && count($requiredFields)){
+                                foreach ($requiredFields as $requiredField) {
+                                    $additionalCheck .= "$('".$currentType."_".$requiredField."').addClassName('required-entry'); ";
+                                }
+                            }
 
                             $block->addButton(
                                 'reject',
                                 [
                                     'label'   => Mage::helper('bs_misc')->__('Reject'),
-                                    'onclick'   => "editForm.submit('{$rejectUrl}');",
+                                    'onclick'   => $additionalCheck."editForm.submit('{$rejectUrl}');",
                                     'class'   => 'save',
                                 ]
                             );
@@ -863,6 +873,7 @@ class BS_Observation_Model_Observer
             //'ir' => [3,6],
             'qn' => [2,4],
             'qr' => [2,4],
+            'nrw' => [1,4],
 
 
         ];
@@ -894,6 +905,7 @@ class BS_Observation_Model_Observer
             'ncr' => [3,6],
             //'ir' => [3,6],
             'qr' => [3,5],
+
 
 
         ];

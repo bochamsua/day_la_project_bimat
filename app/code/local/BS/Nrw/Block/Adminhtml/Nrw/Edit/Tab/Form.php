@@ -142,22 +142,25 @@ class BS_Nrw_Block_Adminhtml_Nrw_Edit_Tab_Form extends Mage_Adminhtml_Block_Widg
 
 
 
-        if($misc->canAcceptReject($currentObj, $currentUser, ['staff_id' => $currentUser[0]], true) || $currentObj->getNrwStatus() == 2){//manager
+        if($misc->canAcceptReject($currentObj, $currentUser, ['staff_id' => $currentUser[0]], true)){//manager
 
-            $fieldset->addField(
-                'reject_reason',
-                'text',
-                [
-                    'label' => Mage::helper('bs_nrw')->__('Reject Reason'),
-                    'name'  => 'reject_reason',
+            if($currentObj->getNrwStatus() != 1){
+                $fieldset->addField(
+                    'reject_reason',
+                    'text',
+                    [
+                        'label' => Mage::helper('bs_nrw')->__('Reject Reason'),
+                        'name'  => 'reject_reason',
 
-                ]
-            );
+                    ]
+                );
+            }
+
         }
 
 
         //if Rejected, manager should be able to update status
-        if($currentObj->getNrwStatus() == 2){//rejected
+        /*if($currentObj->getNrwStatus() == 2){//rejected
             $fieldset->addField(
                 'nrw_status',
                 'select',
@@ -167,10 +170,10 @@ class BS_Nrw_Block_Adminhtml_Nrw_Edit_Tab_Form extends Mage_Adminhtml_Block_Widg
                     'values'=> Mage::getModel('bs_nrw/nrw_attribute_source_nrwstatus')->getOptionsArray(),
                 ]
             );
-        }
+        }*/
 
 
-        if($currentObj->getNrwStatus() == 1){//ongoing, manager can close
+        if($currentObj->getNrwStatus() == 1 && $misc->isOwner($currentObj, $currentUser)){//ongoing, manager can close
             $fieldset->addField(
                 'close_date',
                 'date',
@@ -180,6 +183,16 @@ class BS_Nrw_Block_Adminhtml_Nrw_Edit_Tab_Form extends Mage_Adminhtml_Block_Widg
 
                     'image' => $this->getSkinUrl('images/grid-cal.gif'),
                     'format'  => Mage::app()->getLocale()->getDateFormat(Mage_Core_Model_Locale::FORMAT_TYPE_SHORT),
+                ]
+            );
+
+            $fieldset->addField(
+                'remark_text',
+                'text',
+                [
+                    'label' => Mage::helper('bs_ncr')->__('Remark'),
+                    'name'  => 'remark_text',
+
                 ]
             );
         }
