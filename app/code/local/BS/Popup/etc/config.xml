@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * BS_QC extension
+ * 
+ * @category       BS
+ * @package        BS_QC
+ * @copyright      Copyright (c) 2016
+ */
+-->
+<config>
+    <modules>
+        <BS_Popup>
+            <version>1.0.0</version>
+        </BS_Popup>
+    </modules>
+    <global>
+        <helpers>
+            <bs_popup>
+                <class>BS_Popup_Helper</class>
+            </bs_popup>
+        </helpers>
+        <models>
+            <bs_popup>
+                <class>BS_Popup_Model</class>
+            </bs_popup>
+        </models>
+    </global>
+    <adminhtml>
+        <events>
+            <core_block_abstract_to_html_after>
+                <observers>
+                    <bs_popup_to_html_after>
+                        <class>BS_Popup_Model_Observer</class>
+                        <method>loadPopup</method>
+                    </bs_popup_to_html_after>
+                </observers>
+            </core_block_abstract_to_html_after>
+
+        </events>
+    </adminhtml>
+    <admin>
+        <routers>
+            <adminhtml>
+                <args>
+                    <modules>
+                        <BS_Popup before="Mage_Adminhtml">BS_Popup_Adminhtml</BS_Popup>
+                    </modules>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin>
+</config>

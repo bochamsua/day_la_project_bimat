@@ -420,26 +420,7 @@ class BS_Nrw_Adminhtml_Nrw_NrwController extends BS_Nrw_Controller_Adminhtml_Nrw
         $result['works'] = '';
         if($staffId){
 
-            $collection = Mage::getModel('bs_nrw/nrw')
-                ->getCollection()
-                ->addFieldToFilter('staff_id', $staffId)
-                ->addFieldToFilter('nrw_status', [
-                    ['in' => [1]],
-                    //['null' => true],
-                ])
-                ->setOrder('ref_no', 'DESC')
-
-            ;
-
-            if($collection->count()){
-                $works = [];
-                foreach ($collection as $item) {
-
-                    $url = $this->getUrl("*/nrw_nrw/edit", ['id' =>$item->getId()]);
-                    $works[] = $this->__('<a href="%s" target="_blank">%s</a>', $url, $item->getRefNo());
-                }
-                $result['works'] = 'Ongoing works ('.$collection->count().'): '.implode(", ", $works);
-            }
+            $result['works'] = Mage::helper('bs_nrw')->getOngoingWorks($staffId);
         }
 
         $this->getResponse()->setBody(Mage::helper('core')->jsonEncode($result));

@@ -4,18 +4,7 @@
             <title>Dashboard</title>
             <sort_order>10</sort_order>
             <action>adminhtml/dashboard</action>
-        <children>
-                <bs_nrw translate="title" module="bs_nrw">
-                    <title>Non-routine Work</title>
-                    <sort_order>10</sort_order>
-                    <children>
-                        <nrw translate="title" module="bs_nrw">
-                            <title>Non-routine Work</title>
-                            <action>adminhtml/nrw_nrw</action>
-                            <sort_order>0</sort_order>
-                        </nrw>
-                    </children>
-                </bs_nrw>            </children></dashboard>
+        </dashboard>
         <system translate="title" module="adminhtml">
             <title>System</title>
             <sort_order>90</sort_order>
@@ -335,7 +324,11 @@
                     <action>adminhtml/schedule_schedule</action>
                     <sort_order>10</sort_order>
                 </schedule>
-            </children>
+            <nrw translate="title" module="bs_nrw">
+                    <title>Non-routine Work</title>
+                    <action>adminhtml/nrw_nrw</action>
+                    <sort_order>10</sort_order>
+                </nrw></children>
         <title>Schedule</title><sort_order>50</sort_order></bs_sched><bs_hr translate="title" module="bs_hr">
             <title>HR</title>
             <sort_order>75</sort_order>
@@ -399,21 +392,7 @@
                     <dashboard translate="title">
                         <title>Dashboard</title>
                         <sort_order>0</sort_order>
-                    <children>
-                            <bs_nrw translate="title" module="bs_nrw">
-                                <title>Non-routine Work</title>
-                                <children>
-                                    <nrw translate="title" module="bs_nrw">
-                                        <title>Non-routine Work</title>
-                                        <sort_order>0</sort_order>
-                                        <children>
-                                            <new translate="title"><title>New</title></new>
-                                            <edit translate="title"><title>Edit</title></edit>
-                                            <delete translate="title"><title>Delete</title></delete>
-                                        </children>
-                                    </nrw>
-                                </children>
-                            </bs_nrw>                        </children></dashboard>
+                    </dashboard>
                     <system translate="title">
                         <title>System</title>
                         <sort_order>90</sort_order>
@@ -999,7 +978,15 @@
                                     <delete translate="title"><title>Delete</title></delete>
                                 </children>
                             </schedule>
-                        </children>
+                        <nrw translate="title" module="bs_nrw">
+                                <title>Non-routine Work</title>
+                                <sort_order>10</sort_order>
+                                <children>
+                                    <new translate="title"><title>New</title></new>
+                                    <edit translate="title"><title>Edit</title></edit>
+                                    <delete translate="title"><title>Delete</title></delete>
+                                </children>
+                            </nrw></children>
                     <title>Schedule</title></bs_sched><bs_hr translate="title" module="bs_hr">
                         <title>HR</title>
                         <children>

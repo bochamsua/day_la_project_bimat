@@ -758,9 +758,6 @@ class BS_Observation_Model_Observer
 
     }
 
-
-
-
     public function adminUserSaveBefore($observer)
     {
 
@@ -924,7 +921,6 @@ class BS_Observation_Model_Observer
 
     }
 
-
     public function alterScriptAfterToHtml($block, $type){//like updateAcreg, task, subtask, etc
         $id = $block->getForm()->getHtmlIdPrefix();
         $html = "<script>";
@@ -1027,7 +1023,6 @@ class BS_Observation_Model_Observer
 
         return $html;
     }
-
 
     public function buildHideCloseButtonJs($id){
 
