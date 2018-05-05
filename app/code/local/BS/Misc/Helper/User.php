@@ -23,7 +23,7 @@ class BS_Misc_Helper_User extends BS_Misc_Helper_Data
     /**
      * @param $only - Only maintenance center
      */
-    public function getUsers($onlyManager = true, $includeDeputy = true, $grid = false, $userName = true, $withEmpty = false){
+    public function getUsers($onlyManager = true, $includeDeputy = true, $grid = false, $userName = true, $withEmpty = false, $excludeAdmin = true, $excludeManager = false){
 
         $currentUser = $this->getCurrentUserInfo();
 
@@ -42,9 +42,19 @@ class BS_Misc_Helper_User extends BS_Misc_Helper_Data
         if($onlyManager){
             $users->getSelect()->where("user_id IN (SELECT user_id FROM admin_role WHERE parent_id IN(".implode(",", $managers)."))");
             //$users->addFieldToFilter('user_id', ['in' => $managers]);
-        }else {
-            //need to exclude admins too
-            $exclude = array_merge($managers, $this->_admin);
+        }
+
+        $exclude = [];
+
+        if($excludeAdmin){
+            $exclude = array_merge($exclude, $this->_admin);
+        }
+
+        if($excludeManager){
+            $exclude = array_merge($exclude, $managers);
+        }
+
+        if(count($exclude)){
             $users->getSelect()->where("user_id NOT IN (SELECT user_id FROM admin_role WHERE parent_id IN(".implode(",", $exclude)."))");
         }
 
