@@ -173,6 +173,27 @@ class BS_Safety_Block_Adminhtml_Safety_Edit_Tab_Form extends Mage_Adminhtml_Bloc
         );
 
 
+        $fieldset->addField(
+            'event_type',
+            'select',
+            [
+                'label' => Mage::helper('bs_safety')->__('Event Type'),
+                'name'  => 'event_type',
+
+                'values'=> Mage::getModel('bs_safety/safety_attribute_source_eventtype')->getAllOptions(false),
+            ]
+        );
+
+        $fieldset->addField(
+            'event_no',
+            'text',
+            [
+                'label' => Mage::helper('bs_safety')->__('Event No'),
+                'name'  => 'event_no',
+
+            ]
+        );
+
         /*$fieldset->addField(
             'status',
             'select',
@@ -210,10 +231,14 @@ class BS_Safety_Block_Adminhtml_Safety_Edit_Tab_Form extends Mage_Adminhtml_Bloc
             ->addFieldMap("{$htmlIdPrefix}to_dept", 'to_dept')
             ->addFieldMap("{$htmlIdPrefix}from_text", 'from_text')
             ->addFieldMap("{$htmlIdPrefix}related_personel", 'related_personel')
-            ->addFieldDependence('from_dept', 'safety_type', ['1','3','4'])
+            ->addFieldMap("{$htmlIdPrefix}event_type", 'event_type')
+            ->addFieldMap("{$htmlIdPrefix}event_no", 'event_no')
+            ->addFieldDependence('from_dept', 'safety_type', ['1','3','4','5'])
             ->addFieldDependence('to_dept', 'safety_type', ['1','2'])
             ->addFieldDependence('from_text', 'safety_type', ['2'])
-            ->addFieldDependence('related_personel', 'safety_type', ['3','4'])
+            ->addFieldDependence('related_personel', 'safety_type', ['3','5'])
+            ->addFieldDependence('event_type', 'safety_type', ['4'])
+            ->addFieldDependence('event_no', 'safety_type', ['4'])
         );
 
 

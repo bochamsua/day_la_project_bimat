@@ -1618,7 +1618,7 @@
         </BS_Other><BS_Ncr>
             <version>1.0.2</version>
         </BS_Ncr><BS_Signoff>
-            <version>1.0.2</version>
+            <version>1.0.3</version>
         </BS_Signoff><BS_Theming>
             <version>0.1.0</version>
         </BS_Theming><BS_Misc>
@@ -1634,17 +1634,17 @@
         </BS_NCause><BS_Chart>
             <version>0.1.0</version>
         </BS_Chart><BS_Safety>
-            <version>1.0.0</version>
+            <version>1.0.1</version>
         </BS_Safety><BS_Work>
             <version>1.0.0</version>
         </BS_Work><BS_Sur>
-            <version>1.0.4</version>
+            <version>1.0.5</version>
         </BS_Sur><BS_Hira>
             <version>1.0.1</version>
         </BS_Hira><BS_Kpi>
             <version>1.0.2</version>
         </BS_Kpi><BS_Rii>
-            <version>1.0.2</version>
+            <version>1.0.3</version>
         </BS_Rii><BS_Sched>
             <version>1.0.0</version>
         </BS_Sched><BS_Wysiwyg>

@@ -13,7 +13,7 @@
  * @package     BS_Safety
  * @author Bui Phong
  */
-class BS_Safety_Model_Safety_Attribute_Source_Safetytype
+class BS_Safety_Model_Safety_Attribute_Source_Eventtype
 {
     /**
      * get possible values
@@ -23,28 +23,29 @@ class BS_Safety_Model_Safety_Attribute_Source_Safetytype
      * @param bool $defaultValues
      * @return array
      * @author Bui Phong
+     * delay/aog with report/aog without report/check/ check extend
      */
     public function getAllOptions($withEmpty = true, $defaultValues = false)
     {
         $options =  [
             [
-                'label' => Mage::helper('bs_safety')->__('Internal Complaint'),
+                'label' => Mage::helper('bs_safety')->__('Delay'),
                 'value' => 1
             ],
             [
-                'label' => Mage::helper('bs_safety')->__('External Complaint'),
+                'label' => Mage::helper('bs_safety')->__('AOG with report'),
                 'value' => 2
             ],
             [
-                'label' => Mage::helper('bs_safety')->__('Self Report'),
+                'label' => Mage::helper('bs_safety')->__('AOG without report'),
                 'value' => 3
             ],
             [
-                'label' => Mage::helper('bs_safety')->__('Aircraft Event'),
+                'label' => Mage::helper('bs_safety')->__('Check'),
                 'value' => 4
             ],
             [
-                'label' => Mage::helper('bs_safety')->__('Others'),
+                'label' => Mage::helper('bs_safety')->__('Check extend'),
                 'value' => 5
             ],
         ];

@@ -234,6 +234,16 @@ class BS_Sur_Block_Adminhtml_Sur_Edit_Tab_Form extends Mage_Adminhtml_Block_Widg
         );*/
 
         $fieldset->addField(
+            'remark_text',
+            'text',
+            [
+                'label' => Mage::helper('bs_sur')->__('Remark'),
+                'name'  => 'remark_text',
+
+            ]
+        );
+
+        $fieldset->addField(
             'region',
             'hidden',
             [

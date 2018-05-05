@@ -410,6 +410,10 @@ class BS_Misc_Adminhtml_Misc_TaskController extends BS_Sur_Controller_Adminhtml_
             $taskGroupId = 3;
         }elseif(in_array($deptId, ['6'])){
             $taskGroupId = 9;
+        }elseif(in_array($deptId, ['9'])){
+            $taskGroupId = 12;
+        }elseif(in_array($deptId, ['18'])){
+            $taskGroupId = 14;
         }
 
         if($deptId){

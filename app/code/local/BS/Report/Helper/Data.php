@@ -298,7 +298,7 @@ class BS_Report_Helper_Data extends Mage_Core_Helper_Abstract
 
 	    //rii point
 	    $riiPoints = $this->getProductPoints('rii', $insId, $fromDate, $toDate, null, 'report_date', 'report_date');
-	    $signoffPoints = $this->getProductPoints('signoff', $insId, $fromDate, $toDate, null);
+	    $signoffPoints = $this->getProductPoints('signoff', $insId, $fromDate, $toDate, null, 'close_date');
 
 	    //Mage::log('ins: '.$insId.', rii: '.$riiPoints.', signoff: '.$signoffPoints);
 

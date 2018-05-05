@@ -107,4 +107,15 @@
         </block>
     </adminhtml_signoff_signoff_drrsgrid>
 
+    <adminhtml_signoff_signoff_surs>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_signoff/adminhtml_signoff_edit_tab_sur" name="signoff.edit.tab.sur"/>
+        </block>
+    </adminhtml_signoff_signoff_surs>
+    <adminhtml_signoff_signoff_sursgrid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_signoff/adminhtml_signoff_edit_tab_sur" name="signoff.edit.tab.sur"/>
+        </block>
+    </adminhtml_signoff_signoff_sursgrid>
+
 </layout>

@@ -519,6 +519,22 @@ class BS_Signoff_Adminhtml_Signoff_SignoffController extends BS_Sur_Controller_A
         $this->getLayout()->getBlock('signoff.edit.tab.drr');
         $this->renderLayout();
     }
+
+    public function sursAction()
+    {
+        $this->_initSignoff();
+        $this->loadLayout();
+        $this->getLayout()->getBlock('signoff.edit.tab.sur');
+        $this->renderLayout();
+    }
+
+    public function sursGridAction()
+    {
+        $this->_initSignoff();
+        $this->loadLayout();
+        $this->getLayout()->getBlock('signoff.edit.tab.sur');
+        $this->renderLayout();
+    }
     
     /**
      * Check if admin has permissions to visit related pages

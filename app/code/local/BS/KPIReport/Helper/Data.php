@@ -384,6 +384,7 @@ class BS_KPIReport_Helper_Data extends Mage_Core_Helper_Abstract
             $ncr->addFieldToFilter('report_date', ['from' => $period[0]]);
             $ncr->addFieldToFilter('report_date', ['to' => $period[1]]);
             $ncr->addFieldToFilter('dept_id', $deptId);
+            $ncr->addFieldToFilter('ncr_status', ['nin' => [0,5]]);//draft, cancel
 
             if($exclude){
                 $ncr->addFieldToFilter('ref_type', ['nin' => ['cmr','cofa']]);
@@ -410,6 +411,7 @@ class BS_KPIReport_Helper_Data extends Mage_Core_Helper_Abstract
             $car->addFieldToFilter('report_date', ['from' => $period[0]]);
             $car->addFieldToFilter('report_date', ['to' => $period[1]]);
             $car->addFieldToFilter('dept_id', $deptId);
+            $ncr->addFieldToFilter('car_status', ['nin' => [0]]);//draft
 
             if($exclude){
                 $car->addFieldToFilter('ref_type', ['nin' => ['cmr','cofa']]);
@@ -435,6 +437,7 @@ class BS_KPIReport_Helper_Data extends Mage_Core_Helper_Abstract
             $ir->addFieldToFilter('report_date', ['from' => $period[0]]);
             $ir->addFieldToFilter('report_date', ['to' => $period[1]]);
             $ir->addFieldToFilter('dept_id', $deptId);
+            $ir->addFieldToFilter('ir_status', ['nin' => [0,5]]);//draft, cancel
 
             if($exclude){
                 $ir->addFieldToFilter('ref_type', ['nin' => ['cmr','cofa']]);

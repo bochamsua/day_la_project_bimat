@@ -123,11 +123,22 @@ class BS_Signoff_Block_Adminhtml_Signoff_Edit_Tab_Form extends Mage_Adminhtml_Bl
             'report_date',
             'date',
             [
-                'label' => Mage::helper('bs_signoff')->__('Date of Inspection'),
+                'label' => Mage::helper('bs_signoff')->__('Start Date'),
                 'name'  => 'report_date',
 
             'image' => $this->getSkinUrl('images/grid-cal.gif'),
             'format'  => Mage::app()->getLocale()->getDateFormat(Mage_Core_Model_Locale::FORMAT_TYPE_SHORT),
+            ]
+        );
+        $fieldset->addField(
+            'close_date',
+            'date',
+            [
+                'label' => Mage::helper('bs_signoff')->__('Close Date'),
+                'name'  => 'close_date',
+
+                'image' => $this->getSkinUrl('images/grid-cal.gif'),
+                'format'  => Mage::app()->getLocale()->getDateFormat(Mage_Core_Model_Locale::FORMAT_TYPE_SHORT),
             ]
         );
 

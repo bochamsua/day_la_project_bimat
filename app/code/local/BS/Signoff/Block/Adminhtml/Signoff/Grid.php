@@ -123,7 +123,7 @@ class BS_Signoff_Block_Adminhtml_Signoff_Grid extends Mage_Adminhtml_Block_Widge
 	    $this->addColumn(
             'report_date',
             [
-                'header' => Mage::helper('bs_signoff')->__('Date of Inspection'),
+                'header' => Mage::helper('bs_signoff')->__('Start Date'),
                 'index'  => 'report_date',
                 'type'=> 'date',
 

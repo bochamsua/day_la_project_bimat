@@ -337,6 +337,17 @@ class BS_Sur_Block_Adminhtml_Sur_Grid extends Mage_Adminhtml_Block_Widget_Grid
 
             ]
         );
+
+        $this->addColumn(
+            'remark_text',
+            [
+                'header' => Mage::helper('bs_ncr')->__('Remark'),
+                'index'  => 'remark_text',
+                'type'  => 'text',
+
+            ]
+        );
+
         /*$this->addColumn(
             'status',
             array(

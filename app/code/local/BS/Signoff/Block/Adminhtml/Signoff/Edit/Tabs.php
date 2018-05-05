@@ -56,32 +56,53 @@ class BS_Signoff_Block_Adminhtml_Signoff_Edit_Tabs extends Mage_Adminhtml_Block_
         }
         $countRelations = $this->helper('bs_misc/relation')->countRelation($id, 'signoff');
 
-        $this->addTab(
-            'ir',
-            [
-                'label' => Mage::helper('bs_signoff')->__('IR (%s)', $countRelations['ir']),
-                'url' => $this->getUrl('adminhtml/signoff_signoff/irs', ['_current' => true]),
-                'class' => 'ajax',
-            ]
-        );
+        if($id){
+            if($countRelations['ir'] > 0){
+                $this->addTab(
+                    'ir',
+                    [
+                        'label' => Mage::helper('bs_signoff')->__('IR (%s)', $countRelations['ir']),
+                        'url' => $this->getUrl('adminhtml/signoff_signoff/irs', ['_current' => true]),
+                        'class' => 'ajax',
+                    ]
+                );
+            }
 
-        $this->addTab(
-            'ncr',
-            [
-                'label' => Mage::helper('bs_signoff')->__('NCR (%s)', $countRelations['ncr']),
-                'url' => $this->getUrl('adminhtml/signoff_signoff/ncrs', ['_current' => true]),
-                'class' => 'ajax',
-            ]
-        );
+            if($countRelations['ncr'] > 0){
+                $this->addTab(
+                    'ncr',
+                    [
+                        'label' => Mage::helper('bs_signoff')->__('NCR (%s)', $countRelations['ncr']),
+                        'url' => $this->getUrl('adminhtml/signoff_signoff/ncrs', ['_current' => true]),
+                        'class' => 'ajax',
+                    ]
+                );
+            }
 
-        $this->addTab(
-            'qr',
-            [
-                'label' => Mage::helper('bs_signoff')->__('QR (%s)', $countRelations['qr']),
-                'url' => $this->getUrl('adminhtml/signoff_signoff/qrs', ['_current' => true]),
-                'class' => 'ajax',
-            ]
-        );
+            if($countRelations['qr'] > 0){
+                $this->addTab(
+                    'qr',
+                    [
+                        'label' => Mage::helper('bs_signoff')->__('QR (%s)', $countRelations['qr']),
+                        'url' => $this->getUrl('adminhtml/signoff_signoff/qrs', ['_current' => true]),
+                        'class' => 'ajax',
+                    ]
+                );
+            }
+
+
+
+            $this->addTab(
+                'sur',
+                [
+                    'label' => Mage::helper('bs_signoff')->__('SUR'),
+                    'url' => $this->getUrl('adminhtml/signoff_signoff/surs', ['_current' => true]),
+                    'class' => 'ajax',
+                ]
+            );
+        }
+
+
         
         return parent::_beforeToHtml();
     }
