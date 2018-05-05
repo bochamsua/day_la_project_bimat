@@ -24,10 +24,30 @@ class BS_Popup_Model_Observer
 
     public function alterScriptAfterToHtml(){
 
+        $content = '';
+
+        //expired works
         $works = Mage::helper('bs_nrw')->getExpireWorks();
+        $content .= $works;
+
+        //expired suppliers
+        $suppliers = Mage::helper('bs_sup')->getExpireSups();
+        $content .= $suppliers;
+
+        //expired tool suppliers
+        $tosuppliers = Mage::helper('bs_tosup')->getExpireTosups();
+        $content .= $tosuppliers;
+
+        //expired client
+        $clients = Mage::helper('bs_client')->getExpireClients();
+        $content .= $clients;
+
+        //expired authority
+        $auts = Mage::helper('bs_aut')->getExpireAuts();
+        $content .= $auts;
 
         $html = '';
-        if($works != ''){
+        if($content != ''){
             $html = '<script type="text/javascript">
                     //<![CDATA[
                     var messagePopupClosed = false;
@@ -89,7 +109,7 @@ class BS_Popup_Model_Observer
                     </div>
                     <div class="message-popup-content">
                         <div class="message">
-                          '.$works.'
+                          '.$content.'
                         </div>
                         
                     </div>

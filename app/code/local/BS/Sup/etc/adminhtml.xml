@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * BS_Sup extension
+ * 
+ * @category       BS
+ * @package        BS_Sup
+ * @copyright      Copyright (c) 2018
+ */
+-->
+<config>
+    <acl>
+        <resources>
+            <admin>
+                <children>
+                    <system>
+                        <children>
+                            <config>
+                                <children>
+                                    <bs_sup translate="title" module="bs_sup">
+                                        <title>Sup</title>
+                                    </bs_sup>
+                                </children>
+                            </config>
+                        </children>
+                    </system>
+                    <bs_data>
+                        <children>
+                            <sup translate="title" module="bs_sup">
+                                <title>Supplier</title>
+                                <sort_order>80</sort_order>
+                                <children>
+                                    <new translate="title"><title>New</title></new>
+                                    <edit translate="title"><title>Edit</title></edit>
+                                    <delete translate="title"><title>Delete</title></delete>
+                                </children>
+                            </sup>
+                        </children>
+                    </bs_data>
+
+                </children>
+            </admin>
+        </resources>
+    </acl>
+    <menu>
+        <bs_data>
+            <children>
+                <sup translate="title" module="bs_sup">
+                    <title>Supplier</title>
+                    <action>adminhtml/sup_sup</action>
+                    <sort_order>80</sort_order>
+                </sup>
+            </children>
+        </bs_data>
+
+    </menu>
+</config>

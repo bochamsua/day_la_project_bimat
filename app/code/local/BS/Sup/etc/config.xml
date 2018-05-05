@@ -1,0 +1,86 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * BS_Sup extension
+ * 
+ * @category       BS
+ * @package        BS_Sup
+ * @copyright      Copyright (c) 2018
+ */
+-->
+<config>
+    <modules>
+        <BS_Sup>
+            <version>1.0.0</version>
+        </BS_Sup>
+    </modules>
+    <global>
+        <resources>
+            <bs_sup_setup>
+                <setup>
+                    <module>BS_Sup</module>
+                    <class>BS_Sup_Model_Resource_Setup</class>
+                </setup>
+            </bs_sup_setup>
+        </resources>
+        <blocks>
+            <bs_sup>
+                <class>BS_Sup_Block</class>
+            </bs_sup>
+        </blocks>
+        <helpers>
+            <bs_sup>
+                <class>BS_Sup_Helper</class>
+            </bs_sup>
+        </helpers>
+        <models>
+            <bs_sup>
+                <class>BS_Sup_Model</class>
+                <resourceModel>bs_sup_resource</resourceModel>
+            </bs_sup>
+            <bs_sup_resource>
+                <class>BS_Sup_Model_Resource</class>
+                <entities>
+                    <sup>
+                        <table>bs_sup_sup</table>
+                    </sup>
+                </entities>
+            </bs_sup_resource>
+        </models>
+    </global>
+    <adminhtml>
+        <layout>
+            <updates>
+                <bs_sup>
+                    <file>bs_sup.xml</file>
+                </bs_sup>
+            </updates>
+        </layout>
+        <translate>
+            <modules>
+                <BS_Sup>
+                    <files>
+                        <default>BS_Sup.csv</default>
+                    </files>
+                </BS_Sup>
+            </modules>
+        </translate>
+        <global_search>
+            <sup>
+                <class>bs_sup/adminhtml_search_sup</class>
+                <acl>bs_sup</acl>
+            </sup>
+        </global_search>
+    </adminhtml>
+    <admin>
+        <routers>
+            <adminhtml>
+                <args>
+                    <modules>
+                        <BS_Sup before="Mage_Adminhtml">BS_Sup_Adminhtml</BS_Sup>
+                    </modules>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin>
+</config>

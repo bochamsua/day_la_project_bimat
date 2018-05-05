@@ -1,0 +1,86 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * BS_Client extension
+ * 
+ * @category       BS
+ * @package        BS_Client
+ * @copyright      Copyright (c) 2018
+ */
+-->
+<config>
+    <modules>
+        <BS_Client>
+            <version>1.0.0</version>
+        </BS_Client>
+    </modules>
+    <global>
+        <resources>
+            <bs_client_setup>
+                <setup>
+                    <module>BS_Client</module>
+                    <class>BS_Client_Model_Resource_Setup</class>
+                </setup>
+            </bs_client_setup>
+        </resources>
+        <blocks>
+            <bs_client>
+                <class>BS_Client_Block</class>
+            </bs_client>
+        </blocks>
+        <helpers>
+            <bs_client>
+                <class>BS_Client_Helper</class>
+            </bs_client>
+        </helpers>
+        <models>
+            <bs_client>
+                <class>BS_Client_Model</class>
+                <resourceModel>bs_client_resource</resourceModel>
+            </bs_client>
+            <bs_client_resource>
+                <class>BS_Client_Model_Resource</class>
+                <entities>
+                    <client>
+                        <table>bs_client_client</table>
+                    </client>
+                </entities>
+            </bs_client_resource>
+        </models>
+    </global>
+    <adminhtml>
+        <layout>
+            <updates>
+                <bs_client>
+                    <file>bs_client.xml</file>
+                </bs_client>
+            </updates>
+        </layout>
+        <translate>
+            <modules>
+                <BS_Client>
+                    <files>
+                        <default>BS_Client.csv</default>
+                    </files>
+                </BS_Client>
+            </modules>
+        </translate>
+        <global_search>
+            <client>
+                <class>bs_client/adminhtml_search_client</class>
+                <acl>bs_client</acl>
+            </client>
+        </global_search>
+    </adminhtml>
+    <admin>
+        <routers>
+            <adminhtml>
+                <args>
+                    <modules>
+                        <BS_Client before="Mage_Adminhtml">BS_Client_Adminhtml</BS_Client>
+                    </modules>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin>
+</config>

@@ -93,21 +93,16 @@ class BS_Other_Block_Adminhtml_Other_Grid extends Mage_Adminhtml_Block_Widget_Gr
             ]
 	    );
 
-	    $ins = Mage::getModel('admin/user')->getCollection()->addFieldToFilter('user_id', ['gt' => 1])->load();
-	    $inspectors = [];
-	    foreach ($ins as $in) {
-		    $inspectors[$in->getUserId()] = strtoupper($in->getUsername());
-	    }
-	    $this->addColumn(
-		    'ins_id',
-		    [
-			    'header'    => Mage::helper('bs_other')->__('Inspector'),
-			    'index'     => 'ins_id',
-			    'type'      => 'options',
-			    'options'   => $inspectors,
+        $this->addColumn(
+            'ins_id',
+            [
+                'header' => Mage::helper('bs_misc')->__('Inspector'),
+                'index'  => 'ins_id',
+                'type'=> 'options',
+                'options'   => Mage::helper('bs_misc/user')->getUsers(false, true, true, true, true, false),
 
             ]
-	    );
+        );
 
         $this->addColumn(
             'report_date',

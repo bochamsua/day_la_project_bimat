@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * BS_Tosup extension
+ * 
+ * @category       BS
+ * @package        BS_Tosup
+ * @copyright      Copyright (c) 2018
+ */
+-->
+<config>
+    <acl>
+        <resources>
+            <admin>
+                <children>
+                    <system>
+                        <children>
+                            <config>
+                                <children>
+                                    <bs_tosup translate="title" module="bs_tosup">
+                                        <title>Tosup</title>
+                                    </bs_tosup>
+                                </children>
+                            </config>
+                        </children>
+                    </system>
+                    <bs_data>
+                        <children>
+                            <tosup translate="title" module="bs_tosup">
+                                <title>Tool Supplier</title>
+                                <sort_order>90</sort_order>
+                                <children>
+                                    <new translate="title"><title>New</title></new>
+                                    <edit translate="title"><title>Edit</title></edit>
+                                    <delete translate="title"><title>Delete</title></delete>
+                                </children>
+                            </tosup>
+                        </children>
+                    </bs_data>
+
+                </children>
+            </admin>
+        </resources>
+    </acl>
+    <menu>
+        <bs_data>
+            <children>
+                <tosup translate="title" module="bs_tosup">
+                    <title>Tool Supplier</title>
+                    <action>adminhtml/tosup_tosup</action>
+                    <sort_order>90</sort_order>
+                </tosup>
+            </children>
+        </bs_data>
+
+    </menu>
+</config>

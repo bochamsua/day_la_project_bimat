@@ -1,0 +1,86 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * BS_Aut extension
+ * 
+ * @category       BS
+ * @package        BS_Aut
+ * @copyright      Copyright (c) 2018
+ */
+-->
+<config>
+    <modules>
+        <BS_Aut>
+            <version>1.0.0</version>
+        </BS_Aut>
+    </modules>
+    <global>
+        <resources>
+            <bs_aut_setup>
+                <setup>
+                    <module>BS_Aut</module>
+                    <class>BS_Aut_Model_Resource_Setup</class>
+                </setup>
+            </bs_aut_setup>
+        </resources>
+        <blocks>
+            <bs_aut>
+                <class>BS_Aut_Block</class>
+            </bs_aut>
+        </blocks>
+        <helpers>
+            <bs_aut>
+                <class>BS_Aut_Helper</class>
+            </bs_aut>
+        </helpers>
+        <models>
+            <bs_aut>
+                <class>BS_Aut_Model</class>
+                <resourceModel>bs_aut_resource</resourceModel>
+            </bs_aut>
+            <bs_aut_resource>
+                <class>BS_Aut_Model_Resource</class>
+                <entities>
+                    <aut>
+                        <table>bs_aut_aut</table>
+                    </aut>
+                </entities>
+            </bs_aut_resource>
+        </models>
+    </global>
+    <adminhtml>
+        <layout>
+            <updates>
+                <bs_aut>
+                    <file>bs_aut.xml</file>
+                </bs_aut>
+            </updates>
+        </layout>
+        <translate>
+            <modules>
+                <BS_Aut>
+                    <files>
+                        <default>BS_Aut.csv</default>
+                    </files>
+                </BS_Aut>
+            </modules>
+        </translate>
+        <global_search>
+            <aut>
+                <class>bs_aut/adminhtml_search_aut</class>
+                <acl>bs_aut</acl>
+            </aut>
+        </global_search>
+    </adminhtml>
+    <admin>
+        <routers>
+            <adminhtml>
+                <args>
+                    <modules>
+                        <BS_Aut before="Mage_Adminhtml">BS_Aut_Adminhtml</BS_Aut>
+                    </modules>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin>
+</config>

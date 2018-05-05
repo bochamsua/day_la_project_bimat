@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * BS_Sup extension
+ * 
+ * @category       BS
+ * @package        BS_Sup
+ * @copyright      Copyright (c) 2018
+ */
+-->
+<config>
+    <modules>
+        <BS_Sup>
+            <active>true</active>
+            <codePool>local</codePool>
+            <depends>
+                <Mage_Core />
+             </depends>
+        </BS_Sup>
+    </modules>
+</config>

@@ -100,18 +100,13 @@ class BS_Qr_Block_Adminhtml_Qr_Grid extends Mage_Adminhtml_Block_Widget_Grid
         );*/
 
 
-        $ins = Mage::getModel('admin/user')->getCollection()->addFieldToFilter('user_id', ['gt' => 1])->load();
-        $inspectors = [];
-        foreach ($ins as $in) {
-	        $inspectors[$in->getUserId()] = strtoupper($in->getUsername());
-        }
         $this->addColumn(
             'ins_id',
             [
-                'header'    => Mage::helper('bs_misc')->__('Inspector'),
-                'index'     => 'ins_id',
-                'type'      => 'options',
-                'options'   => $inspectors,
+                'header' => Mage::helper('bs_misc')->__('Inspector'),
+                'index'  => 'ins_id',
+                'type'=> 'options',
+                'options'   => Mage::helper('bs_misc/user')->getUsers(false, true, true, true, true, false),
 
             ]
         );

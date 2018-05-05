@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * BS_Aut extension
+ * 
+ * @category       BS
+ * @package        BS_Aut
+ * @copyright      Copyright (c) 2018
+ */
+--> 
+<layout>
+    <adminhtml_aut_aut_index>
+        <reference name="menu">
+            <action method="setActive">
+                <menupath>bs_data/aut</menupath>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="bs_aut/adminhtml_aut" name="aut" />
+
+        </reference>
+    </adminhtml_aut_aut_index>
+    <adminhtml_aut_aut_grid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_aut/adminhtml_aut_grid" name="aut_grid"/>
+        </block>
+    </adminhtml_aut_aut_grid>
+    <!-- Aut add/edit action -->
+    <adminhtml_aut_aut_edit>
+        <update handle="editor"/>
+        <reference name="menu">
+            <action method="setActive">
+                <menupath>bs_data/aut</menupath>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="bs_aut/adminhtml_aut_edit" name="aut_edit"></block>
+        </reference>
+        <reference name="left">
+            <block type="bs_aut/adminhtml_aut_edit_tabs" name="aut_tabs"></block>
+        </reference>
+    </adminhtml_aut_aut_edit>
+
+</layout>

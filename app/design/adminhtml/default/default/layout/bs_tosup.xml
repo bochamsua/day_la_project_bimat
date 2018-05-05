@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * BS_Tosup extension
+ * 
+ * @category       BS
+ * @package        BS_Tosup
+ * @copyright      Copyright (c) 2018
+ */
+--> 
+<layout>
+    <adminhtml_tosup_tosup_index>
+        <reference name="menu">
+            <action method="setActive">
+                <menupath>bs_data/tosup</menupath>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="bs_tosup/adminhtml_tosup" name="tosup" />
+
+        </reference>
+    </adminhtml_tosup_tosup_index>
+    <adminhtml_tosup_tosup_grid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_tosup/adminhtml_tosup_grid" name="tosup_grid"/>
+        </block>
+    </adminhtml_tosup_tosup_grid>
+    <!-- Tosup add/edit action -->
+    <adminhtml_tosup_tosup_edit>
+        <update handle="editor"/>
+        <reference name="menu">
+            <action method="setActive">
+                <menupath>bs_data/tosup</menupath>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="bs_tosup/adminhtml_tosup_edit" name="tosup_edit"></block>
+        </reference>
+        <reference name="left">
+            <block type="bs_tosup/adminhtml_tosup_edit_tabs" name="tosup_tabs"></block>
+        </reference>
+    </adminhtml_tosup_tosup_edit>
+
+</layout>

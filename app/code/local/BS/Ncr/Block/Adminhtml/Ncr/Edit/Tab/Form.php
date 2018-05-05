@@ -219,7 +219,6 @@ class BS_Ncr_Block_Adminhtml_Ncr_Edit_Tab_Form extends Mage_Adminhtml_Block_Widg
 
 	    $customers = Mage::getResourceModel('bs_acreg/customer_collection');
 	    $customers = $customers->toOptionArray();
-		array_unshift($customers, ['value' => 0, 'label' => 'N/A']);
 	    array_unshift($customers, ['value' => 0, 'label' => 'N/A']);
 	    $fieldset->addField(
 		    'customer',

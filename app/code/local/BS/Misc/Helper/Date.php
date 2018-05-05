@@ -315,4 +315,13 @@ class BS_Misc_Helper_Date extends Mage_Core_Helper_Abstract
         }
     }
 
+
+    public function getDays($fromDate, $toDate, $differenceFormat = '%a'){
+        $datetime1 = date_create($fromDate);
+        $datetime2 = date_create($toDate);
+
+        $interval = date_diff($datetime1, $datetime2);
+
+        return $interval->format($differenceFormat);
+    }
 }

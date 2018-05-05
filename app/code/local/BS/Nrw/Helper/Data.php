@@ -96,7 +96,11 @@ class BS_Nrw_Helper_Data extends Mage_Core_Helper_Abstract
                 $url = Mage::getUrl("*/nrw_nrw/edit", ['id' =>$item->getId()]);
                 $works[] = $this->__('<a href="%s" target="_blank">%s</a>', $url, $item->getRefNo());
             }
-            $result = 'These works are (going to) expired: '.implode(", ", $works);
+
+            if(count($works)){
+                $result = 'These works are (going to) expired: '.implode(", ", $works).'<br>';
+            }
+
         }
 
         return $result;

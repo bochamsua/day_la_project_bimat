@@ -89,6 +89,60 @@ class BS_Misc_Helper_User extends BS_Misc_Helper_Data
 
     }
 
+    public function getUsersByManager($userName = true, $grid = false, $withEmpty = false){
+        $ins = Mage::getModel('admin/user')->getCollection()->addFieldToFilter('user_id', ['gt' => 1]);
+        $misc = Mage::helper('bs_misc');
+        $currentUser = $misc->getCurrentUserInfo();
+
+        if(!$misc->isSuperAdmin() && !$misc->isAdmin()){
+            $ins->addFieldToFilter('region', $currentUser[2]);
+            $ins->addFieldToFilter('section', $currentUser[3]);
+
+            if($misc->isQAAdmin(null, $currentUser)){
+                $ins->getSelect()->where("user_id IN (SELECT user_id FROM admin_role WHERE parent_id IN(9,10,11))");
+            }elseif($misc->isQCAdmin(null, $currentUser)){
+                $ins->getSelect()->where("user_id IN (SELECT user_id FROM admin_role WHERE parent_id IN(5,6,7))");
+            }elseif($misc->isQCManager(null, $currentUser)){
+                $ins->getSelect()->where("user_id IN (SELECT user_id FROM admin_role WHERE parent_id IN(6,7))");
+            }elseif($misc->isQAManager(null, $currentUser)){
+                $ins->getSelect()->where("user_id IN (SELECT user_id FROM admin_role WHERE parent_id IN(10,11))");
+            }
+        }
+
+
+
+
+
+        $ins->load();
+
+        $userArray = [];
+        $userArrayGrid = [];
+
+        $ins->load();
+
+        foreach ($ins as $in) {
+            if($userName){
+                $name = strtoupper($in->getUsername());
+            }else {
+                $name = $in->getName();
+            }
+            $userArrayGrid[$in->getUserId()] = $name;
+            $userArray[] = ['value' => $in->getUserId(), 'label' => $name];
+        }
+
+
+
+        if($grid){
+            return $userArrayGrid;
+        }
+
+        if($withEmpty){
+            array_unshift($userArray, ['value' => 0, 'label' => 'N/A']);
+        }
+
+        return $userArray;
+    }
+
 
 
 }

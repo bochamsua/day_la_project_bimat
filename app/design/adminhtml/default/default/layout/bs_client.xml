@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * BS_Client extension
+ * 
+ * @category       BS
+ * @package        BS_Client
+ * @copyright      Copyright (c) 2018
+ */
+--> 
+<layout>
+    <adminhtml_client_client_index>
+        <reference name="menu">
+            <action method="setActive">
+                <menupath>bs_data/client</menupath>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="bs_client/adminhtml_client" name="client" />
+
+        </reference>
+    </adminhtml_client_client_index>
+    <adminhtml_client_client_grid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_client/adminhtml_client_grid" name="client_grid"/>
+        </block>
+    </adminhtml_client_client_grid>
+    <!-- Client add/edit action -->
+    <adminhtml_client_client_edit>
+        <update handle="editor"/>
+        <reference name="menu">
+            <action method="setActive">
+                <menupath>bs_data/client</menupath>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="bs_client/adminhtml_client_edit" name="client_edit"></block>
+        </reference>
+        <reference name="left">
+            <block type="bs_client/adminhtml_client_edit_tabs" name="client_tabs"></block>
+        </reference>
+    </adminhtml_client_client_edit>
+
+</layout>
