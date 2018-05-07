@@ -119,7 +119,7 @@ class BS_Signoff_Adminhtml_Signoff_SignoffController extends BS_Sur_Controller_A
     {
         if ($data = $this->getRequest()->getPost('signoff')) {
             try {
-                $data = $this->_filterDates($data, ['report_date']);
+                $data = $this->_filterDates($data, ['report_date','close_date']);
                 $signoff = $this->_initSignoff();
 
                 $signoff->addData($data);
