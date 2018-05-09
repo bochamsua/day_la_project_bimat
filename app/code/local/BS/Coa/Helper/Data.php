@@ -143,12 +143,15 @@ class BS_Coa_Helper_Data extends Mage_Core_Helper_Abstract
             }else {
                 $status = 1;
             }
+
+            $finalStatus = $this->getParentStatusFromChildStatus($refType, $status);
+
+            return $finalStatus;
         }
 
 
-        $finalStatus = $this->getParentStatusFromChildStatus($refType, $status);
+        return null;
 
-        return $finalStatus;
 
     }
 
