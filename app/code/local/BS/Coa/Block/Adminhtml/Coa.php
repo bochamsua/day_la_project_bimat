@@ -31,6 +31,8 @@ class BS_Coa_Block_Adminhtml_Coa extends Mage_Adminhtml_Block_Widget_Grid_Contai
         $this->_updateButton('add', 'label', Mage::helper('bs_coa')->__('Add Corrective Action'));
 
 
+        $this->_removeButton('add');
+
         $isAllowed = Mage::getSingleton('admin/session')->isAllowed("bs_work/coa/new");
         if(!$isAllowed){
                 $this->_removeButton('add');
