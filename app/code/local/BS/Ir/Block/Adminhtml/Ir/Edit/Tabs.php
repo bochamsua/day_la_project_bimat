@@ -76,6 +76,19 @@ class BS_Ir_Block_Adminhtml_Ir_Edit_Tabs extends Mage_Adminhtml_Block_Widget_Tab
                 'class' => 'ajax',
             ]
         );
+
+        if($this->getIr()->getIsCoa()){
+            $this->addTab(
+                'coa',
+                [
+                    'label' => Mage::helper('bs_ir')->__('COA (%s)', $countRelations['coa']),
+                    'url' => $this->getUrl('adminhtml/ir_ir/coas', ['_current' => true]),
+                    'class' => 'ajax',
+                ]
+            );
+        }
+
+
         return parent::_beforeToHtml();
     }
 

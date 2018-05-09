@@ -431,6 +431,25 @@ class BS_Ir_Block_Adminhtml_Ir_Edit_Tab_Form extends Mage_Adminhtml_Block_Widget
         );
 
         $fieldset->addField(
+            'is_coa',
+            'select',
+            array(
+                'label'  => Mage::helper('bs_coa')->__('Issue Corrective Action?'),
+                'name'   => 'is_coa',
+                'values' => array(
+                    array(
+                        'value' => 1,
+                        'label' => Mage::helper('bs_coa')->__('Yes'),
+                    ),
+                    array(
+                        'value' => 0,
+                        'label' => Mage::helper('bs_coa')->__('No'),
+                    ),
+                ),
+            )
+        );
+
+        $fieldset->addField(
             'self_remark',
             'textarea',
             [

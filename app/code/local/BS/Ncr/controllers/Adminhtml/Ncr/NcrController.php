@@ -783,6 +783,21 @@ class BS_Ncr_Adminhtml_Ncr_NcrController extends BS_Sur_Controller_Adminhtml_Sur
         $this->getLayout()->getBlock('ncr.edit.tab.drr');
         $this->renderLayout();
     }
+    public function coasAction()
+    {
+        $this->_initNcr();
+        $this->loadLayout();
+        $this->getLayout()->getBlock('ncr.edit.tab.coa');
+        $this->renderLayout();
+    }
+
+    public function coasGridAction()
+    {
+        $this->_initNcr();
+        $this->loadLayout();
+        $this->getLayout()->getBlock('ncr.edit.tab.coa');
+        $this->renderLayout();
+    }
 
 	/**
      * Check if admin has permissions to visit related pages

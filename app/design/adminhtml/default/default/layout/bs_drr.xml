@@ -107,4 +107,15 @@
         </block>
     </adminhtml_drr_drr_drrsgrid>
 
+    <adminhtml_drr_drr_coas>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_drr/adminhtml_drr_edit_tab_coa" name="drr.edit.tab.coa"/>
+        </block>
+    </adminhtml_drr_drr_coas>
+    <adminhtml_drr_drr_coasgrid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_drr/adminhtml_drr_edit_tab_coa" name="drr.edit.tab.coa"/>
+        </block>
+    </adminhtml_drr_drr_coasgrid>
+
 </layout>

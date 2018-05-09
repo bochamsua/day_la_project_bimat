@@ -893,6 +893,18 @@ Empty hanle for ajax response etc.
         </reference>
     </adminhtml_car_car_edit>
 
+
+    <adminhtml_car_car_coas>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_car/adminhtml_car_edit_tab_coa" name="car.edit.tab.coa"/>
+        </block>
+    </adminhtml_car_car_coas>
+    <adminhtml_car_car_coasgrid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_car/adminhtml_car_edit_tab_coa" name="car.edit.tab.coa"/>
+        </block>
+    </adminhtml_car_car_coasgrid>
+
 <adminhtml_report_qchaneff_index>
         <reference name="menu">
             <action method="setActive">
@@ -1317,6 +1329,17 @@ Empty hanle for ajax response etc.
         </block>
     </adminhtml_drr_drr_drrsgrid>
 
+    <adminhtml_drr_drr_coas>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_drr/adminhtml_drr_edit_tab_coa" name="drr.edit.tab.coa"/>
+        </block>
+    </adminhtml_drr_drr_coas>
+    <adminhtml_drr_drr_coasgrid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_drr/adminhtml_drr_edit_tab_coa" name="drr.edit.tab.coa"/>
+        </block>
+    </adminhtml_drr_drr_coasgrid>
+
 <adminhtml_hr_inspector_index>
         <reference name="menu">
             <action method="setActive">
@@ -1562,6 +1585,18 @@ Empty hanle for ajax response etc.
         </reference>
     </adminhtml_qr_qr_edit>
 
+
+    <adminhtml_qr_qr_coas>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_qr/adminhtml_qr_edit_tab_coa" name="qr.edit.tab.coa"/>
+        </block>
+    </adminhtml_qr_qr_coas>
+    <adminhtml_qr_qr_coasgrid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_qr/adminhtml_qr_edit_tab_coa" name="qr.edit.tab.coa"/>
+        </block>
+    </adminhtml_qr_qr_coasgrid>
+
 <adminhtml_cmrreport_cmrreport_index>
         <reference name="menu">
             <action method="setActive">
@@ -1792,6 +1827,17 @@ Empty hanle for ajax response etc.
         </block>
     </adminhtml_ncr_ncr_drrsgrid>
 
+    <adminhtml_ncr_ncr_coas>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_ncr/adminhtml_ncr_edit_tab_coa" name="ncr.edit.tab.coa"/>
+        </block>
+    </adminhtml_ncr_ncr_coas>
+    <adminhtml_ncr_ncr_coasgrid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_ncr/adminhtml_ncr_edit_tab_coa" name="ncr.edit.tab.coa"/>
+        </block>
+    </adminhtml_ncr_ncr_coasgrid>
+
 <adminhtml_signoff_signoff_index>
         <reference name="menu">
             <action method="setActive">
@@ -1889,6 +1935,17 @@ Empty hanle for ajax response etc.
             <block type="bs_signoff/adminhtml_signoff_edit_tab_drr" name="signoff.edit.tab.drr"/>
         </block>
     </adminhtml_signoff_signoff_drrsgrid>
+
+    <adminhtml_signoff_signoff_surs>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_signoff/adminhtml_signoff_edit_tab_sur" name="signoff.edit.tab.sur"/>
+        </block>
+    </adminhtml_signoff_signoff_surs>
+    <adminhtml_signoff_signoff_sursgrid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_signoff/adminhtml_signoff_edit_tab_sur" name="signoff.edit.tab.sur"/>
+        </block>
+    </adminhtml_signoff_signoff_sursgrid>
 
 <adminhtml_misc_department_index>
         <reference name="menu">
@@ -2180,36 +2237,48 @@ Empty hanle for ajax response etc.
 
     <adminhtml_ir_ir_ncrs>
         <block type="core/text_list" name="root" output="toHtml">
-            <block type="bs_ir/adminhtml_ir_edit_tab_ncr" name="cofa.edit.tab.ncr"/>
+            <block type="bs_ir/adminhtml_ir_edit_tab_ncr" name="ir.edit.tab.ncr"/>
         </block>
     </adminhtml_ir_ir_ncrs>
     <adminhtml_ir_ir_ncrsgrid>
         <block type="core/text_list" name="root" output="toHtml">
-            <block type="bs_ir/adminhtml_ir_edit_tab_ncr" name="cofa.edit.tab.ncr"/>
+            <block type="bs_ir/adminhtml_ir_edit_tab_ncr" name="ir.edit.tab.ncr"/>
         </block>
     </adminhtml_ir_ir_ncrsgrid>
 
     <adminhtml_ir_ir_qrs>
         <block type="core/text_list" name="root" output="toHtml">
-            <block type="bs_ir/adminhtml_ir_edit_tab_qr" name="cofa.edit.tab.qr"/>
+            <block type="bs_ir/adminhtml_ir_edit_tab_qr" name="ir.edit.tab.qr"/>
         </block>
     </adminhtml_ir_ir_qrs>
     <adminhtml_ir_ir_qrsgrid>
         <block type="core/text_list" name="root" output="toHtml">
-            <block type="bs_ir/adminhtml_ir_edit_tab_qr" name="cofa.edit.tab.qr"/>
+            <block type="bs_ir/adminhtml_ir_edit_tab_qr" name="ir.edit.tab.qr"/>
         </block>
     </adminhtml_ir_ir_qrsgrid>
 
     <adminhtml_ir_ir_drrs>
         <block type="core/text_list" name="root" output="toHtml">
-            <block type="bs_ir/adminhtml_ir_edit_tab_drr" name="cofa.edit.tab.drr"/>
+            <block type="bs_ir/adminhtml_ir_edit_tab_drr" name="ir.edit.tab.drr"/>
         </block>
     </adminhtml_ir_ir_drrs>
     <adminhtml_ir_ir_drrsgrid>
         <block type="core/text_list" name="root" output="toHtml">
-            <block type="bs_ir/adminhtml_ir_edit_tab_drr" name="cofa.edit.tab.drr"/>
+            <block type="bs_ir/adminhtml_ir_edit_tab_drr" name="ir.edit.tab.drr"/>
         </block>
     </adminhtml_ir_ir_drrsgrid>
+
+
+    <adminhtml_ir_ir_coas>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_ir/adminhtml_ir_edit_tab_coa" name="ir.edit.tab.coa"/>
+        </block>
+    </adminhtml_ir_ir_coas>
+    <adminhtml_ir_ir_coasgrid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_ir/adminhtml_ir_edit_tab_coa" name="ir.edit.tab.coa"/>
+        </block>
+    </adminhtml_ir_ir_coasgrid>
 
 <adminhtml_cofa_cofa_index>
         <reference name="menu">

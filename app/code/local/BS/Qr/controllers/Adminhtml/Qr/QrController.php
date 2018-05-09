@@ -668,6 +668,22 @@ class BS_Qr_Adminhtml_Qr_QrController extends BS_Sur_Controller_Adminhtml_Sur
 		$this->_redirect('*/*/');
 	}
 
+    public function coasAction()
+    {
+        $this->_initQr();
+        $this->loadLayout();
+        $this->getLayout()->getBlock('qr.edit.tab.coa');
+        $this->renderLayout();
+    }
+
+    public function coasGridAction()
+    {
+        $this->_initQr();
+        $this->loadLayout();
+        $this->getLayout()->getBlock('qr.edit.tab.coa');
+        $this->renderLayout();
+    }
+
     /**
      * Check if admin has permissions to visit related pages
      *

@@ -31,7 +31,7 @@ class BS_Ir_Model_Ir_Attribute_Source_Irstatus
                 'value' => 3
             ],
             [
-                'label' => Mage::helper('bs_ir')->__('Overdued'),
+                'label' => Mage::helper('bs_ir')->__('Overdue'),
                 'value' => 4
             ],
             [
@@ -41,6 +41,18 @@ class BS_Ir_Model_Ir_Attribute_Source_Irstatus
             [
                 'label' => Mage::helper('bs_ir')->__('Late Closed'),
                 'value' => 6
+            ],
+            [
+                'label' => Mage::helper('bs_ir')->__('Responded'),
+                'value' => 7
+            ],
+            [
+                'label' => Mage::helper('bs_ir')->__('Res. Overdue'),
+                'value' => 8
+            ],
+            [
+                'label' => Mage::helper('bs_ir')->__('Res. Late'),
+                'value' => 8
             ],
         ];
         if ($withEmpty) {

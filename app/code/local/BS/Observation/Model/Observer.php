@@ -61,6 +61,18 @@ class BS_Observation_Model_Observer
                 'delete'
             ]
         ],
+        'coa'    => [
+            'status' => [0,2],
+            'close'    => [
+                'status' => 1,//new status of close action
+                'fields' => 'close_date,coa_source'
+                //values will be taken from POST object
+            ],
+            'remove' => [//buttons to be removed when object is in closed status
+                'save',
+                'delete'
+            ]
+        ],
         /*'mor'    => [
             'status' => [0],//status of object that Close button will be avaible
             'close'    => [
@@ -835,9 +847,24 @@ class BS_Observation_Model_Observer
         $refType = $obj->getRefType();
         $refId = $obj->getRefId();
 
+
+
         $data['count'] = Mage::helper('bs_misc/relation')->countRelation($refId, $refType, $type);
         //update count
         $obj->addData($data);
+
+        //Now handle COA related statues
+        $relation = Mage::helper('bs_misc')->getRelations();
+        if(in_array($type, $relation)){
+            $messages = Mage::helper('bs_coa')->updateStatus($id, $type);
+            if(count($messages)){
+                foreach ($messages as $message) {
+                    Mage::getSingleton('adminhtml/session')->addSuccess($message);
+                }
+            }
+        }
+
+
 
     }
 
@@ -850,7 +877,13 @@ class BS_Observation_Model_Observer
 
         Mage::helper('bs_misc/relation')->doBeforeDeleteChildren($id, $type);
 
-        Mage::helper('bs_misc/relation')->deleteRelation($id, $type);
+        $messages = Mage::helper('bs_misc/relation')->deleteRelation($id, $type);
+
+        if(count($messages)){
+            foreach ($messages as $message) {
+                Mage::getSingleton('adminhtml/session')->addWarning($message);
+            }
+        }
 
 
     }
@@ -871,6 +904,7 @@ class BS_Observation_Model_Observer
             'qn' => [2,4],
             'qr' => [2,4],
             'nrw' => [1,4],
+            'coa' => [0,2],
 
 
         ];
@@ -902,6 +936,7 @@ class BS_Observation_Model_Observer
             'ncr' => [3,6],
             //'ir' => [3,6],
             'qr' => [3,5],
+            'coa' => [1,3],
 
 
 

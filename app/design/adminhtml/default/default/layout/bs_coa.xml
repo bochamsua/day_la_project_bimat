@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * BS_Coa extension
+ * 
+ * @category       BS
+ * @package        BS_Coa
+ * @copyright      Copyright (c) 2018
+ */
+--> 
+<layout>
+    <adminhtml_coa_coa_index>
+        <reference name="menu">
+            <action method="setActive">
+                <menupath>bs_work/coa</menupath>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="bs_coa/adminhtml_coa" name="coa" />
+
+        </reference>
+    </adminhtml_coa_coa_index>
+    <adminhtml_coa_coa_grid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_coa/adminhtml_coa_grid" name="coa_grid"/>
+        </block>
+    </adminhtml_coa_coa_grid>
+    <!-- Coa add/edit action -->
+    <adminhtml_coa_coa_edit>
+        <update handle="editor"/>
+        <reference name="menu">
+            <action method="setActive">
+                <menupath>bs_work/coa</menupath>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="bs_coa/adminhtml_coa_edit" name="coa_edit"></block>
+        </reference>
+        <reference name="left">
+            <block type="bs_coa/adminhtml_coa_edit_tabs" name="coa_tabs"></block>
+        </reference>
+    </adminhtml_coa_coa_edit>
+
+</layout>

@@ -21,7 +21,8 @@ class BS_Misc_Helper_Data extends Mage_Core_Helper_Abstract
         'qr',
         'qn',
         'car',
-        'drr'
+        'drr',
+        'coa'
     ];
 
     protected $_surTypes = [

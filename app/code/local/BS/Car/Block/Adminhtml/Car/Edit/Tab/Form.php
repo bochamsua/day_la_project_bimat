@@ -312,17 +312,24 @@ class BS_Car_Block_Adminhtml_Car_Edit_Tab_Form extends Mage_Adminhtml_Block_Widg
         );
 
 
-        /*$fieldset->addField(
-            'car_status',
+        $fieldset->addField(
+            'is_coa',
             'select',
             array(
-                'label' => Mage::helper('bs_car')->__('Status'),
-                'name'  => 'car_status',
-
-            'values'=> Mage::getModel('bs_car/car_attribute_source_carstatus')->getAllOptions(true),
-                'disabled'  => $disable
-           )
-        );*/
+                'label'  => Mage::helper('bs_coa')->__('Issue Corrective Action?'),
+                'name'   => 'is_coa',
+                'values' => array(
+                    array(
+                        'value' => 1,
+                        'label' => Mage::helper('bs_coa')->__('Yes'),
+                    ),
+                    array(
+                        'value' => 0,
+                        'label' => Mage::helper('bs_coa')->__('No'),
+                    ),
+                ),
+            )
+        );
 
 
         $disableProof = false;

@@ -1,0 +1,86 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * BS_Coa extension
+ * 
+ * @category       BS
+ * @package        BS_Coa
+ * @copyright      Copyright (c) 2018
+ */
+-->
+<config>
+    <modules>
+        <BS_Coa>
+            <version>1.0.0</version>
+        </BS_Coa>
+    </modules>
+    <global>
+        <resources>
+            <bs_coa_setup>
+                <setup>
+                    <module>BS_Coa</module>
+                    <class>BS_Coa_Model_Resource_Setup</class>
+                </setup>
+            </bs_coa_setup>
+        </resources>
+        <blocks>
+            <bs_coa>
+                <class>BS_Coa_Block</class>
+            </bs_coa>
+        </blocks>
+        <helpers>
+            <bs_coa>
+                <class>BS_Coa_Helper</class>
+            </bs_coa>
+        </helpers>
+        <models>
+            <bs_coa>
+                <class>BS_Coa_Model</class>
+                <resourceModel>bs_coa_resource</resourceModel>
+            </bs_coa>
+            <bs_coa_resource>
+                <class>BS_Coa_Model_Resource</class>
+                <entities>
+                    <coa>
+                        <table>bs_coa_coa</table>
+                    </coa>
+                </entities>
+            </bs_coa_resource>
+        </models>
+    </global>
+    <adminhtml>
+        <layout>
+            <updates>
+                <bs_coa>
+                    <file>bs_coa.xml</file>
+                </bs_coa>
+            </updates>
+        </layout>
+        <translate>
+            <modules>
+                <BS_Coa>
+                    <files>
+                        <default>BS_Coa.csv</default>
+                    </files>
+                </BS_Coa>
+            </modules>
+        </translate>
+        <global_search>
+            <coa>
+                <class>bs_coa/adminhtml_search_coa</class>
+                <acl>bs_coa</acl>
+            </coa>
+        </global_search>
+    </adminhtml>
+    <admin>
+        <routers>
+            <adminhtml>
+                <args>
+                    <modules>
+                        <BS_Coa before="Mage_Adminhtml">BS_Coa_Adminhtml</BS_Coa>
+                    </modules>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin>
+</config>

@@ -63,6 +63,10 @@ class BS_Ncr_Model_Ncr_Attribute_Source_Ncrstatus
                 'label' => Mage::helper('bs_ncr')->__('Overdue'),
                 'value' => 8
             ],
+            [
+                'label' => Mage::helper('bs_ncr')->__('Responded'),
+                'value' => 9
+            ],
         ];
         if ($withEmpty) {
             array_unshift($options, ['label'=>'', 'value'=>'']);

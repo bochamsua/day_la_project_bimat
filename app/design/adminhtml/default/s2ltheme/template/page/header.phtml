@@ -219,7 +219,8 @@
     }
 
     function reloadGridData(ref_child) {
-        switch (ref_child){
+        window.opener.window[ref_child+'GridJsObject'].reload();
+        /*switch (ref_child){
             case 'car':
                 window.opener.carGridJsObject.reload();
                 break;
@@ -241,9 +242,12 @@
             case 'ap':
                 window.opener.apGridJsObject.reload();
                 break;
+            case 'coa':
+                window.opener.coaGridJsObject.reload();
+                break;
 
             default:
             //do nothing
-        }
+        }*/
     }
 </script>

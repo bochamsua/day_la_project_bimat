@@ -85,6 +85,19 @@ class BS_Ncr_Block_Adminhtml_Ncr_Edit_Tabs extends Mage_Adminhtml_Block_Widget_T
                 'class' => 'ajax',
             ]
         );
+
+        if($this->getNcr()->getIsCoa()){
+            $this->addTab(
+                'coa',
+                [
+                    'label' => Mage::helper('bs_ncr')->__('COA (%s)', $countRelations['coa']),
+                    'url' => $this->getUrl('adminhtml/ncr_ncr/coas', ['_current' => true]),
+                    'class' => 'ajax',
+                ]
+            );
+        }
+
+
 	    
         return parent::_beforeToHtml();
     }

@@ -43,35 +43,47 @@
 
     <adminhtml_ir_ir_ncrs>
         <block type="core/text_list" name="root" output="toHtml">
-            <block type="bs_ir/adminhtml_ir_edit_tab_ncr" name="cofa.edit.tab.ncr"/>
+            <block type="bs_ir/adminhtml_ir_edit_tab_ncr" name="ir.edit.tab.ncr"/>
         </block>
     </adminhtml_ir_ir_ncrs>
     <adminhtml_ir_ir_ncrsgrid>
         <block type="core/text_list" name="root" output="toHtml">
-            <block type="bs_ir/adminhtml_ir_edit_tab_ncr" name="cofa.edit.tab.ncr"/>
+            <block type="bs_ir/adminhtml_ir_edit_tab_ncr" name="ir.edit.tab.ncr"/>
         </block>
     </adminhtml_ir_ir_ncrsgrid>
 
     <adminhtml_ir_ir_qrs>
         <block type="core/text_list" name="root" output="toHtml">
-            <block type="bs_ir/adminhtml_ir_edit_tab_qr" name="cofa.edit.tab.qr"/>
+            <block type="bs_ir/adminhtml_ir_edit_tab_qr" name="ir.edit.tab.qr"/>
         </block>
     </adminhtml_ir_ir_qrs>
     <adminhtml_ir_ir_qrsgrid>
         <block type="core/text_list" name="root" output="toHtml">
-            <block type="bs_ir/adminhtml_ir_edit_tab_qr" name="cofa.edit.tab.qr"/>
+            <block type="bs_ir/adminhtml_ir_edit_tab_qr" name="ir.edit.tab.qr"/>
         </block>
     </adminhtml_ir_ir_qrsgrid>
 
     <adminhtml_ir_ir_drrs>
         <block type="core/text_list" name="root" output="toHtml">
-            <block type="bs_ir/adminhtml_ir_edit_tab_drr" name="cofa.edit.tab.drr"/>
+            <block type="bs_ir/adminhtml_ir_edit_tab_drr" name="ir.edit.tab.drr"/>
         </block>
     </adminhtml_ir_ir_drrs>
     <adminhtml_ir_ir_drrsgrid>
         <block type="core/text_list" name="root" output="toHtml">
-            <block type="bs_ir/adminhtml_ir_edit_tab_drr" name="cofa.edit.tab.drr"/>
+            <block type="bs_ir/adminhtml_ir_edit_tab_drr" name="ir.edit.tab.drr"/>
         </block>
     </adminhtml_ir_ir_drrsgrid>
+
+
+    <adminhtml_ir_ir_coas>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_ir/adminhtml_ir_edit_tab_coa" name="ir.edit.tab.coa"/>
+        </block>
+    </adminhtml_ir_ir_coas>
+    <adminhtml_ir_ir_coasgrid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_ir/adminhtml_ir_edit_tab_coa" name="ir.edit.tab.coa"/>
+        </block>
+    </adminhtml_ir_ir_coasgrid>
 
 </layout>

@@ -41,4 +41,16 @@
         </reference>
     </adminhtml_car_car_edit>
 
+
+    <adminhtml_car_car_coas>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_car/adminhtml_car_edit_tab_coa" name="car.edit.tab.coa"/>
+        </block>
+    </adminhtml_car_car_coas>
+    <adminhtml_car_car_coasgrid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_car/adminhtml_car_edit_tab_coa" name="car.edit.tab.coa"/>
+        </block>
+    </adminhtml_car_car_coasgrid>
+
 </layout>

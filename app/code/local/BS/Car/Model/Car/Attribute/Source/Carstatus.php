@@ -44,8 +44,20 @@ class BS_Car_Model_Car_Attribute_Source_Carstatus
 		        'value' => 3
             ],
             [
-                'label' => Mage::helper('bs_car')->__('Overdued'),
+                'label' => Mage::helper('bs_car')->__('Overdue'),
                 'value' => 4
+            ],
+            [
+                'label' => Mage::helper('bs_car')->__('Responded'),
+                'value' => 5
+            ],
+            [
+                'label' => Mage::helper('bs_car')->__('Res. Overdue'),
+                'value' => 6
+            ],
+            [
+                'label' => Mage::helper('bs_car')->__('Res. Late'),
+                'value' => 7
             ],
 
         ];

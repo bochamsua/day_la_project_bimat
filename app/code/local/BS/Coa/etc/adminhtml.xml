@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * BS_Coa extension
+ * 
+ * @category       BS
+ * @package        BS_Coa
+ * @copyright      Copyright (c) 2018
+ */
+-->
+<config>
+    <acl>
+        <resources>
+            <admin>
+                <children>
+                    <system>
+                        <children>
+                            <config>
+                                <children>
+                                    <bs_coa translate="title" module="bs_coa">
+                                        <title>Coa</title>
+                                    </bs_coa>
+                                </children>
+                            </config>
+                        </children>
+                    </system>
+                    <bs_work>
+                        <children>
+                            <coa translate="title" module="bs_coa">
+                                <title>Corrective Action</title>
+                                <sort_order>75</sort_order>
+                                <children>
+                                    <new translate="title"><title>New</title></new>
+                                    <edit translate="title"><title>Edit</title></edit>
+                                    <delete translate="title"><title>Delete</title></delete>
+                                </children>
+                            </coa>
+                        </children>
+                    </bs_work>
+
+                </children>
+            </admin>
+        </resources>
+    </acl>
+    <menu>
+        <bs_work>
+            <children>
+                <coa translate="title" module="bs_coa">
+                    <title>Corrective Action</title>
+                    <action>adminhtml/coa_coa</action>
+                    <sort_order>75</sort_order>
+                </coa>
+            </children>
+        </bs_work>
+
+    </menu>
+</config>

@@ -107,4 +107,15 @@
         </block>
     </adminhtml_ncr_ncr_drrsgrid>
 
+    <adminhtml_ncr_ncr_coas>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_ncr/adminhtml_ncr_edit_tab_coa" name="ncr.edit.tab.coa"/>
+        </block>
+    </adminhtml_ncr_ncr_coas>
+    <adminhtml_ncr_ncr_coasgrid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_ncr/adminhtml_ncr_edit_tab_coa" name="ncr.edit.tab.coa"/>
+        </block>
+    </adminhtml_ncr_ncr_coasgrid>
+
 </layout>

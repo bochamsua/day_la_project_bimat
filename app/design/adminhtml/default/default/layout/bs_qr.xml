@@ -41,4 +41,16 @@
         </reference>
     </adminhtml_qr_qr_edit>
 
+
+    <adminhtml_qr_qr_coas>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_qr/adminhtml_qr_edit_tab_coa" name="qr.edit.tab.coa"/>
+        </block>
+    </adminhtml_qr_qr_coas>
+    <adminhtml_qr_qr_coasgrid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_qr/adminhtml_qr_edit_tab_coa" name="qr.edit.tab.coa"/>
+        </block>
+    </adminhtml_qr_qr_coasgrid>
+
 </layout>

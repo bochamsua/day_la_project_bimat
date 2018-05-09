@@ -104,7 +104,7 @@ class BS_Misc_Helper_Relation extends BS_Misc_Helper_Data
     public function deleteRelation($refId, $refType){
 
 
-        $message = [];
+        $messages = [];
 
         foreach ($this->_relations as $relation) {
 
@@ -120,7 +120,7 @@ class BS_Misc_Helper_Relation extends BS_Misc_Helper_Data
             }
         }
 
-        return $message;
+        return $messages;
 
     }
 

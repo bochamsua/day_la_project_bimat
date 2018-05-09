@@ -581,6 +581,22 @@ class BS_Drr_Adminhtml_Drr_DrrController extends BS_Sur_Controller_Adminhtml_Sur
         $this->renderLayout();
     }
 
+    public function coasAction()
+    {
+        $this->_initDrr();
+        $this->loadLayout();
+        $this->getLayout()->getBlock('drr.edit.tab.coa');
+        $this->renderLayout();
+    }
+
+    public function coasGridAction()
+    {
+        $this->_initDrr();
+        $this->loadLayout();
+        $this->getLayout()->getBlock('drr.edit.tab.coa');
+        $this->renderLayout();
+    }
+
 
     public function generateDrrAction()
     {

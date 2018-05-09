@@ -50,7 +50,9 @@ class BS_Car_Block_Adminhtml_Car_Edit_Tabs extends Mage_Adminhtml_Block_Widget_T
             ]
         );
 
-        if($this->getCar()->getId()){
+        if($id = $this->getCar()->getId()){
+            $countRelations = $this->helper('bs_misc/relation')->countRelation($id, 'car');
+
             $this->addTab('general_info', [
                 'label'     => Mage::helper('bs_car')->__('Related Info'),
                 'content' => $this->getLayout()->createBlock(
@@ -58,6 +60,18 @@ class BS_Car_Block_Adminhtml_Car_Edit_Tabs extends Mage_Adminhtml_Block_Widget_T
                 )
                     ->toHtml()
             ]);
+
+            if($this->getCar()->getIsCoa()){
+                $this->addTab(
+                    'coa',
+                    [
+                        'label' => Mage::helper('bs_car')->__('COA (%s)', $countRelations['coa']),
+                        'url' => $this->getUrl('adminhtml/car_car/coas', ['_current' => true]),
+                        'class' => 'ajax',
+                    ]
+                );
+            }
+
         }
 
         return parent::_beforeToHtml();

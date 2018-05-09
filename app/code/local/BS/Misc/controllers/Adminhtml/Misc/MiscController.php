@@ -215,14 +215,14 @@ class BS_Misc_Adminhtml_Misc_MiscController extends BS_Sur_Controller_Adminhtml_
         }
 
         $data = $this->getRequest()->getPost($type);
-        $data = $this->_filterDates($data, ['report_date' ,'due_date' ,'close_date', 'event_date']);
+        $data = $this->_filterDates($data, ['report_date' ,'due_date' ,'close_date', 'event_date', 'issue_date', 'expire_date']);
 
         $fields = $this->getRequest()->getParam('f');//fields require to save when do action, default all
         if($fields == 'all'){//submit
 
             $obj->addData($data);
             foreach ($data as $key => $value) {
-                if(is_array($data[$key])){
+                if(is_array($data[$key]) || isset($_FILES[$key])){
                     $fileName = $this->_uploadAndGetName(
                         $key,
                         Mage::helper("bs_{$type}/{$type}")->getFileBaseDir(),
@@ -237,11 +237,12 @@ class BS_Misc_Adminhtml_Misc_MiscController extends BS_Sur_Controller_Adminhtml_
             $clear = $this->getRequest()->getParam('c');//clear when reject
             $clear = explode(",", $clear);
 
-
-
             if(count($fields)){
                 foreach ($fields as $field) {
-                    if(isset($data[$field]) && is_array($data[$field])){
+                    if(
+                        (isset($data[$field]) && is_array($data[$field]))  //file exists 
+                        || isset($_FILES[$field])      //new file
+                    ){     //in case
                         $fileName = $this->_uploadAndGetName(
                             $field,
                             Mage::helper("bs_{$type}/{$type}")->getFileBaseDir(),

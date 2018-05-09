@@ -44,8 +44,20 @@ class BS_Drr_Model_Drr_Attribute_Source_Drrstatus
 		        'value' => 3
             ],
             [
-                'label' => Mage::helper('bs_drr')->__('Overdued'),
+                'label' => Mage::helper('bs_drr')->__('Overdue'),
                 'value' => 4
+            ],
+            [
+                'label' => Mage::helper('bs_drr')->__('Responded'),
+                'value' => 5
+            ],
+            [
+                'label' => Mage::helper('bs_drr')->__('Res. Overdue'),
+                'value' => 6
+            ],
+            [
+                'label' => Mage::helper('bs_drr')->__('Res. Late'),
+                'value' => 7
             ],
 
         ];

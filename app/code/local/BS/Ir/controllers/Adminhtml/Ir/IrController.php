@@ -728,6 +728,23 @@ class BS_Ir_Adminhtml_Ir_IrController extends BS_Sur_Controller_Adminhtml_Sur
 		$this->renderLayout();
 	}
 
+
+    public function coasAction()
+    {
+        $this->_initIr();
+        $this->loadLayout();
+        $this->getLayout()->getBlock('ir.edit.tab.coa');
+        $this->renderLayout();
+    }
+
+    public function coasGridAction()
+    {
+        $this->_initIr();
+        $this->loadLayout();
+        $this->getLayout()->getBlock('ir.edit.tab.coa');
+        $this->renderLayout();
+    }
+
     /**
      * Check if admin has permissions to visit related pages
      *

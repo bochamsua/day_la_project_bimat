@@ -50,7 +50,9 @@ class BS_Qr_Block_Adminhtml_Qr_Edit_Tabs extends Mage_Adminhtml_Block_Widget_Tab
             ]
         );
 
-	    if($this->getQr()->getId()){
+	    if($id = $this->getQr()->getId()){
+            $countRelations = $this->helper('bs_misc/relation')->countRelation($id, 'car');
+
 		    $this->addTab('general_info', [
 			    'label'     => Mage::helper('bs_qr')->__('Related Info'),
 			    'content' => $this->getLayout()->createBlock(
@@ -58,6 +60,19 @@ class BS_Qr_Block_Adminhtml_Qr_Edit_Tabs extends Mage_Adminhtml_Block_Widget_Tab
 			    )
 			                      ->toHtml()
             ]);
+
+            if($this->getQr()->getIsCoa()){
+                $this->addTab(
+                    'coa',
+                    [
+                        'label' => Mage::helper('bs_qr')->__('COA (%s)', $countRelations['coa']),
+                        'url' => $this->getUrl('adminhtml/qr_qr/coas', ['_current' => true]),
+                        'class' => 'ajax',
+                    ]
+                );
+            }
+
+
 	    }
         return parent::_beforeToHtml();
     }

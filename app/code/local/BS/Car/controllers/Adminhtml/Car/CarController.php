@@ -729,6 +729,23 @@ class BS_Car_Adminhtml_Car_CarController extends BS_Sur_Controller_Adminhtml_Sur
         $this->_redirect('*/*/');
     }
 
+
+    public function coasAction()
+    {
+        $this->_initCar();
+        $this->loadLayout();
+        $this->getLayout()->getBlock('car.edit.tab.coa');
+        $this->renderLayout();
+    }
+
+    public function coasGridAction()
+    {
+        $this->_initCar();
+        $this->loadLayout();
+        $this->getLayout()->getBlock('car.edit.tab.coa');
+        $this->renderLayout();
+    }
+
     /**
      * Check if admin has permissions to visit related pages
      *

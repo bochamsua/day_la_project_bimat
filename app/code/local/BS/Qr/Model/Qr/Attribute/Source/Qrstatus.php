@@ -44,12 +44,28 @@ class BS_Qr_Model_Qr_Attribute_Source_Qrstatus
                 'value' => 3
             ],
 	        [
-		        'label' => Mage::helper('bs_qr')->__('Overdued'),
+		        'label' => Mage::helper('bs_qr')->__('Overdue'),
 		        'value' => 4
             ],
 	        [
-		        'label' => Mage::helper('bs_qr')->__('Late Closed'),
-		        'value' => 5
+                'label' => Mage::helper('bs_qr')->__('Late Closed'),
+                'value' => 5
+            ],
+            [
+                'label' => Mage::helper('bs_qr')->__('Responded'),
+                'value' => 6
+            ],
+            [
+                'label' => Mage::helper('bs_qr')->__('Res. Overdue'),
+                'value' => 7
+            ],
+            [
+                'label' => Mage::helper('bs_qr')->__('Res. Late'),
+                'value' => 8
+            ],
+            [
+                'label' => Mage::helper('bs_qr')->__('Late Closed'),
+                'value' => 9
             ],
 
         ];
