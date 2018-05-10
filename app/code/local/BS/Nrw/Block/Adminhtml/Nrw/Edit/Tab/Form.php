@@ -173,7 +173,7 @@ class BS_Nrw_Block_Adminhtml_Nrw_Edit_Tab_Form extends Mage_Adminhtml_Block_Widg
         }*/
 
 
-        if($currentObj->getNrwStatus() == 1 && $misc->isOwner($currentObj, $currentUser)){//ongoing, manager can close
+        if(in_array($currentObj->getNrwStatus(), [1,4]) && $misc->isOwner($currentObj, $currentUser)){//ongoing, manager can close
             $fieldset->addField(
                 'close_date',
                 'date',
