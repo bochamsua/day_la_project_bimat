@@ -150,6 +150,7 @@ class BS_Observation_Model_Observer
             'accept' => [//fields will be saved when accept
                 'status' => 2,
                 'fields' => '',
+                'date'   => 'report_date',//which date fields will be automatically updated
             ],//new status of accept action
             'reject'    => [
                 'status' => 0,//new status of reject action
@@ -162,7 +163,8 @@ class BS_Observation_Model_Observer
             'status'    => [1],//status that buttons are available
             'accept' => [
                 'status' => 2,
-                'fields' => ''
+                'fields' => '',
+                'date'   => 'report_date',//which date fields will be automatically updated
             ],//new status of accept action
             'reject'    => [
                 'status' => 0,//new status of reject action
@@ -174,7 +176,8 @@ class BS_Observation_Model_Observer
             'status'    => [1],//status that buttons are available
             'accept' => [
                 'status' => 2,
-                'fields' => ''
+                'fields' => '',
+                'date'   => 'report_date',//which date fields will be automatically updated
             ],//new status of accept action
             'reject'    => [
                 'status' => 0,//new status of reject action
@@ -623,6 +626,7 @@ class BS_Observation_Model_Observer
                                     's' => $this->_hasAcceptRejectButtons[$currentType]['accept']['status'],//status
                                     'f' => $this->_hasAcceptRejectButtons[$currentType]['accept']['fields'],
                                     'c' => $this->_hasAcceptRejectButtons[$currentType]['reject']['fields'],
+                                    'd' => $this->_hasAcceptRejectButtons[$currentType]['accept']['date'],//date fields
                                 ]
                             );
                             $rejectUrl = $block->getUrl('*/misc_misc/doSpecial',
@@ -632,6 +636,7 @@ class BS_Observation_Model_Observer
                                     'a' => 'rejected',
                                     's' => $this->_hasAcceptRejectButtons[$currentType]['reject']['status'],//status
                                     'f' => $this->_hasAcceptRejectButtons[$currentType]['reject']['fields'],
+                                    'd' => $this->_hasAcceptRejectButtons[$currentType]['reject']['date'],//date fields
                                 ]
                             );
 

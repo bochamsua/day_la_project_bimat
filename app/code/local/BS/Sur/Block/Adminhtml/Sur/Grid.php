@@ -336,8 +336,18 @@ class BS_Sur_Block_Adminhtml_Sur_Grid extends Mage_Adminhtml_Block_Widget_Grid
         $this->addColumn(
             'remark_text',
             [
-                'header' => Mage::helper('bs_ncr')->__('Remark'),
+                'header' => Mage::helper('bs_ncr')->__('Remark (Outstanding Note)'),
                 'index'  => 'remark_text',
+                'type'  => 'text',
+
+            ]
+        );
+
+        $this->addColumn(
+            'remind_text',
+            [
+                'header' => Mage::helper('bs_ncr')->__('Remind (Fault not record into report)'),
+                'index'  => 'remind_text',
                 'type'  => 'text',
 
             ]

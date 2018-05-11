@@ -80,11 +80,22 @@ class BS_Signoff_Block_Adminhtml_Signoff_Edit_Tab_Sur extends Mage_Adminhtml_Blo
         );
 
         $this->addColumn(
-            'remark_text',
+            'ins_id',
             [
-                'header'    => Mage::helper('bs_ncr')->__('Remark'),
+                'header' => Mage::helper('bs_misc')->__('Inspector'),
+                'index'  => 'ins_id',
+                'type'=> 'options',
+                'options'   => Mage::helper('bs_misc/user')->getUsers(false, true, true, true, true, false),
+
+            ]
+        );
+
+        $this->addColumn(
+            'description',
+            [
+                'header'    => Mage::helper('bs_ncr')->__('Remark (Outstanding Note)'),
                 'align'     => 'left',
-                'index'     => 'remark_text',
+                'index'     => 'description',
             ]
         );
 

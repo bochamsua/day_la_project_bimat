@@ -223,7 +223,7 @@ class BS_Ir_Block_Adminhtml_Ir_Edit_Tab_Form extends Mage_Adminhtml_Block_Widget
             ]
 	    );
 
-        $fieldset->addField(
+        /*$fieldset->addField(
             'report_date',
             'date',
             [
@@ -233,7 +233,7 @@ class BS_Ir_Block_Adminhtml_Ir_Edit_Tab_Form extends Mage_Adminhtml_Block_Widget
             'image' => $this->getSkinUrl('images/grid-cal.gif'),
             'format'  => Mage::app()->getLocale()->getDateFormat(Mage_Core_Model_Locale::FORMAT_TYPE_SHORT),
             ]
-        );
+        );*/
 
 	    $fieldset->addField(
 		    'event_date',

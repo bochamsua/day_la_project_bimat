@@ -158,7 +158,7 @@ class BS_Qr_Block_Adminhtml_Qr_Edit_Tab_Form extends Mage_Adminhtml_Block_Widget
             )
         );*/
 
-	    $fieldset->addField(
+	    /*$fieldset->addField(
 		    'report_date',
 		    'date',
 		    [
@@ -169,7 +169,7 @@ class BS_Qr_Block_Adminhtml_Qr_Edit_Tab_Form extends Mage_Adminhtml_Block_Widget
 			    'format'  => Mage::app()->getLocale()->getDateFormat(Mage_Core_Model_Locale::FORMAT_TYPE_SHORT),
 			    'disabled'  => $disable
             ]
-	    );
+	    );*/
 
 	    $fieldset->addField(
 		    'due_date',

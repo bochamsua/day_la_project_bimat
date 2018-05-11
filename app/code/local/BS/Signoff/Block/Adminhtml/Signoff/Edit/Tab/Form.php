@@ -156,7 +156,7 @@ class BS_Signoff_Block_Adminhtml_Signoff_Edit_Tab_Form extends Mage_Adminhtml_Bl
             'description',
             'textarea',
             [
-                'label' => Mage::helper('bs_signoff')->__('Description'),
+                'label' => Mage::helper('bs_signoff')->__('Remark (Outstanding Note)'),
                 'name'  => 'description',
                 'config' => $wysiwygConfig,
 

@@ -191,7 +191,7 @@ class BS_Ncr_Block_Adminhtml_Ncr_Edit_Tab_Form extends Mage_Adminhtml_Block_Widg
         );
 
 
-	    $fieldset->addField(
+	    /*$fieldset->addField(
 		    'report_date',
 		    'date',
 		    [
@@ -202,7 +202,7 @@ class BS_Ncr_Block_Adminhtml_Ncr_Edit_Tab_Form extends Mage_Adminhtml_Block_Widg
 
 
             ]
-	    );
+	    );*/
 
 
         $fieldset->addField(

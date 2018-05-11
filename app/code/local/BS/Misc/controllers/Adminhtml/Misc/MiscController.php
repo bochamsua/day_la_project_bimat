@@ -202,6 +202,7 @@ class BS_Misc_Adminhtml_Misc_MiscController extends BS_Sur_Controller_Adminhtml_
         $type   = $this->getRequest()->getParam('t');//ncr,ir,qr...
         $id   = $this->getRequest()->getParam('id');
         $status   = $this->getRequest()->getParam('s');//status of action
+        $date   = $this->getRequest()->getParam('d', false);//date fields will be automatically updated
 
         $currentUser = Mage::helper('bs_misc')->getCurrentUserInfo();
         $approvalId = $currentUser[0];
@@ -216,6 +217,15 @@ class BS_Misc_Adminhtml_Misc_MiscController extends BS_Sur_Controller_Adminhtml_
 
         $data = $this->getRequest()->getPost($type);
         $data = $this->_filterDates($data, ['report_date' ,'due_date' ,'close_date', 'event_date', 'issue_date', 'expire_date']);
+
+
+        if($date){//we update the date fields automatically
+            $dates = explode(",", $date);
+            foreach ($dates as $d) {
+                $obj->setData($d, Mage::getSingleton('core/date')->gmtDate());
+            }
+        }
+
 
         $fields = $this->getRequest()->getParam('f');//fields require to save when do action, default all
         if($fields == 'all'){//submit
