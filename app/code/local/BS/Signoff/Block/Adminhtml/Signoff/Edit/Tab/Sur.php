@@ -91,11 +91,11 @@ class BS_Signoff_Block_Adminhtml_Signoff_Edit_Tab_Sur extends Mage_Adminhtml_Blo
         );
 
         $this->addColumn(
-            'description',
+            'remark_text',
             [
                 'header'    => Mage::helper('bs_ncr')->__('Remark (Outstanding Note)'),
                 'align'     => 'left',
-                'index'     => 'description',
+                'index'     => 'remark_text',
             ]
         );
 

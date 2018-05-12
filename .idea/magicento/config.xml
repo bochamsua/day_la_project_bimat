@@ -66,7 +66,12 @@
                     <module>BS_Cmr</module>
                     <class>BS_Cmr_Model_Resource_Setup</class>
                 </setup>
-            </bs_cmr_setup><bs_acreg_setup>
+            </bs_cmr_setup><bs_client_setup>
+                <setup>
+                    <module>BS_Client</module>
+                    <class>BS_Client_Model_Resource_Setup</class>
+                </setup>
+            </bs_client_setup><bs_acreg_setup>
                 <setup>
                     <module>BS_Acreg</module>
                     <class>BS_Acreg_Model_Resource_Setup</class>
@@ -81,7 +86,12 @@
                     <module>BS_Report</module>
                     <class>BS_Report_Model_Resource_Setup</class>
                 </setup>
-            </bs_report_setup><bs_formtemplate_setup>
+            </bs_report_setup><bs_aut_setup>
+                <setup>
+                    <module>BS_Aut</module>
+                    <class>BS_Aut_Model_Resource_Setup</class>
+                </setup>
+            </bs_aut_setup><bs_formtemplate_setup>
                 <setup>
                     <module>BS_Formtemplate</module>
                     <class>BS_Formtemplate_Model_Resource_Setup</class>
@@ -195,7 +205,12 @@
                     <module>BS_Hira</module>
                     <class>BS_Hira_Model_Resource_Setup</class>
                 </setup>
-            </bs_hira_setup><bs_kpi_setup>
+            </bs_hira_setup><bs_sup_setup>
+                <setup>
+                    <module>BS_Sup</module>
+                    <class>BS_Sup_Model_Resource_Setup</class>
+                </setup>
+            </bs_sup_setup><bs_kpi_setup>
                 <setup>
                     <module>BS_Kpi</module>
                     <class>BS_Kpi_Model_Resource_Setup</class>
@@ -233,7 +248,12 @@
                 <connection>
                     <use>core_setup</use>
                 </connection>
-            </aoescheduler_setup><bs_logger_setup>
+            </aoescheduler_setup><bs_tosup_setup>
+                <setup>
+                    <module>BS_Tosup</module>
+                    <class>BS_Tosup_Model_Resource_Setup</class>
+                </setup>
+            </bs_tosup_setup><bs_logger_setup>
                 <setup>
                     <module>BS_Logger</module>
                     <class>BS_Logger_Model_Resource_Setup</class>
@@ -243,7 +263,12 @@
                     <module>BS_Signature</module>
                     <class>BS_Signature_Model_Resource_Setup</class>
                 </setup>
-            </bs_signature_setup><bs_kpireport_setup>
+            </bs_signature_setup><bs_coa_setup>
+                <setup>
+                    <module>BS_Coa</module>
+                    <class>BS_Coa_Model_Resource_Setup</class>
+                </setup>
+            </bs_coa_setup><bs_kpireport_setup>
                 <setup>
                     <module>BS_KPIReport</module>
                     <class>BS_KPIReport_Model_Resource_Setup</class>
@@ -438,7 +463,17 @@
                         <table>bs_cmr_cmr</table>
                     </cmr>
                 </entities>
-            </bs_cmr_resource><bs_acreg>
+            </bs_cmr_resource><bs_client>
+                <class>BS_Client_Model</class>
+                <resourceModel>bs_client_resource</resourceModel>
+            </bs_client><bs_client_resource>
+                <class>BS_Client_Model_Resource</class>
+                <entities>
+                    <client>
+                        <table>bs_client_client</table>
+                    </client>
+                </entities>
+            </bs_client_resource><bs_acreg>
                 <class>BS_Acreg_Model</class>
                 <resourceModel>bs_acreg_resource</resourceModel>
             </bs_acreg><bs_acreg_resource>
@@ -477,7 +512,17 @@
                         <table>bs_report_workday</table>
                     </workday>
                 </entities>
-            </bs_report_resource><bs_formtemplate>
+            </bs_report_resource><bs_aut>
+                <class>BS_Aut_Model</class>
+                <resourceModel>bs_aut_resource</resourceModel>
+            </bs_aut><bs_aut_resource>
+                <class>BS_Aut_Model_Resource</class>
+                <entities>
+                    <aut>
+                        <table>bs_aut_aut</table>
+                    </aut>
+                </entities>
+            </bs_aut_resource><bs_formtemplate>
                 <class>BS_Formtemplate_Model</class>
                 <resourceModel>bs_formtemplate_resource</resourceModel>
             </bs_formtemplate><bs_formtemplate_resource>
@@ -744,7 +789,17 @@
                         <table>bs_hira_hira</table>
                     </hira>
                 </entities>
-            </bs_hira_resource><bs_kpi>
+            </bs_hira_resource><bs_sup>
+                <class>BS_Sup_Model</class>
+                <resourceModel>bs_sup_resource</resourceModel>
+            </bs_sup><bs_sup_resource>
+                <class>BS_Sup_Model_Resource</class>
+                <entities>
+                    <sup>
+                        <table>bs_sup_sup</table>
+                    </sup>
+                </entities>
+            </bs_sup_resource><bs_kpi>
                 <class>BS_Kpi_Model</class>
                 <resourceModel>bs_kpi_resource</resourceModel>
             </bs_kpi><bs_kpi_resource>
@@ -785,7 +840,17 @@
                 <resourceModel>aoe_scheduler_resource</resourceModel>
             </aoe_scheduler><aoe_scheduler_resource>
                 <class>Aoe_Scheduler_Model_Resource</class>
-            </aoe_scheduler_resource><bs_logger>
+            </aoe_scheduler_resource><bs_tosup>
+                <class>BS_Tosup_Model</class>
+                <resourceModel>bs_tosup_resource</resourceModel>
+            </bs_tosup><bs_tosup_resource>
+                <class>BS_Tosup_Model_Resource</class>
+                <entities>
+                    <tosup>
+                        <table>bs_tosup_tosup</table>
+                    </tosup>
+                </entities>
+            </bs_tosup_resource><bs_logger>
                 <class>BS_Logger_Model</class>
                 <resourceModel>bs_logger_resource</resourceModel>
             </bs_logger><bs_logger_resource>
@@ -807,7 +872,17 @@
                         <table>bs_signature_signature</table>
                     </signature>
                 </entities>
-            </bs_signature_resource><hidefrontend>
+            </bs_signature_resource><bs_coa>
+                <class>BS_Coa_Model</class>
+                <resourceModel>bs_coa_resource</resourceModel>
+            </bs_coa><bs_coa_resource>
+                <class>BS_Coa_Model_Resource</class>
+                <entities>
+                    <coa>
+                        <table>bs_coa_coa</table>
+                    </coa>
+                </entities>
+            </bs_coa_resource><hidefrontend>
                 <class>BS_Hidefrontend_Model</class>
             </hidefrontend><bs_kpireport>
                 <class>BS_KPIReport_Model</class>
@@ -848,13 +923,17 @@
                 <class>Mage_Directory_Block</class>
             </directory><bs_cmr>
                 <class>BS_Cmr_Block</class>
-            </bs_cmr><bs_acreg>
+            </bs_cmr><bs_client>
+                <class>BS_Client_Block</class>
+            </bs_client><bs_acreg>
                 <class>BS_Acreg_Block</class>
             </bs_acreg><bs_car>
                 <class>BS_Car_Block</class>
             </bs_car><bs_report>
                 <class>BS_Report_Block</class>
-            </bs_report><bs_formtemplate>
+            </bs_report><bs_aut>
+                <class>BS_Aut_Block</class>
+            </bs_aut><bs_formtemplate>
                 <class>BS_Formtemplate_Block</class>
             </bs_formtemplate><bs_mor>
                 <class>BS_Mor_Block</class>
@@ -904,7 +983,9 @@
                 <class>BS_Sur_Block</class>
             </bs_sur><bs_hira>
                 <class>BS_Hira_Block</class>
-            </bs_hira><bs_kpi>
+            </bs_hira><bs_sup>
+                <class>BS_Sup_Block</class>
+            </bs_sup><bs_kpi>
                 <class>BS_Kpi_Block</class>
             </bs_kpi><bs_rii>
                 <class>BS_Rii_Block</class>
@@ -914,11 +995,15 @@
                 <class>BS_Nrw_Block</class>
             </bs_nrw><aoe_scheduler>
                 <class>Aoe_Scheduler_Block</class>
-            </aoe_scheduler><bs_logger>
+            </aoe_scheduler><bs_tosup>
+                <class>BS_Tosup_Block</class>
+            </bs_tosup><bs_logger>
                 <class>BS_Logger_Block</class>
             </bs_logger><bs_signature>
                 <class>BS_Signature_Block</class>
-            </bs_signature><bs_kpireport>
+            </bs_signature><bs_coa>
+                <class>BS_Coa_Block</class>
+            </bs_coa><bs_kpireport>
                 <class>BS_KPIReport_Block</class>
             </bs_kpireport></blocks><helpers>
             <core>
@@ -930,13 +1015,17 @@
                 <class>Mage_Admin_Helper</class>
             </admin><bs_cmr>
                 <class>BS_Cmr_Helper</class>
-            </bs_cmr><bs_acreg>
+            </bs_cmr><bs_client>
+                <class>BS_Client_Helper</class>
+            </bs_client><bs_acreg>
                 <class>BS_Acreg_Helper</class>
             </bs_acreg><bs_car>
                 <class>BS_Car_Helper</class>
             </bs_car><bs_report>
                 <class>BS_Report_Helper</class>
-            </bs_report><bs_formtemplate>
+            </bs_report><bs_aut>
+                <class>BS_Aut_Helper</class>
+            </bs_aut><bs_formtemplate>
                 <class>BS_Formtemplate_Helper</class>
             </bs_formtemplate><bs_evaluation>
                 <class>BS_Evaluation_Helper</class>
@@ -994,7 +1083,9 @@
                 <class>BS_Sur_Helper</class>
             </bs_sur><bs_hira>
                 <class>BS_Hira_Helper</class>
-            </bs_hira><bs_kpi>
+            </bs_hira><bs_sup>
+                <class>BS_Sup_Helper</class>
+            </bs_sup><bs_kpi>
                 <class>BS_Kpi_Helper</class>
             </bs_kpi><bs_rii>
                 <class>BS_Rii_Helper</class>
@@ -1010,13 +1101,17 @@
                 <class>BS_Observation_Helper</class>
             </bs_observation><aoe_scheduler>
                 <class>Aoe_Scheduler_Helper</class>
-            </aoe_scheduler><bs_logger>
+            </aoe_scheduler><bs_tosup>
+                <class>BS_Tosup_Helper</class>
+            </bs_tosup><bs_logger>
                 <class>BS_Logger_Helper</class>
             </bs_logger><bs_docx>
                 <class>BS_Docx_Helper</class>
             </bs_docx><bs_signature>
                 <class>BS_Signature_Helper</class>
-            </bs_signature><bs_hidefrontend>
+            </bs_signature><bs_coa>
+                <class>BS_Coa_Helper</class>
+            </bs_coa><bs_hidefrontend>
                 <class>BS_Hidefrontend_Helper</class>
             </bs_hidefrontend><bs_kpireport>
                 <class>BS_KPIReport_Helper</class>
@@ -1577,13 +1672,17 @@
             <version>1.6.0.0</version>
         </Mage_Cron><BS_Cmr>
             <version>1.0.1</version>
-        </BS_Cmr><BS_Acreg>
+        </BS_Cmr><BS_Client>
+            <version>1.0.0</version>
+        </BS_Client><BS_Acreg>
             <version>1.0.0</version>
         </BS_Acreg><BS_Car>
             <version>1.0.3</version>
         </BS_Car><BS_Report>
             <version>1.0.6</version>
-        </BS_Report><BS_Formtemplate>
+        </BS_Report><BS_Aut>
+            <version>1.0.0</version>
+        </BS_Aut><BS_Formtemplate>
             <version>1.0.1</version>
         </BS_Formtemplate><BS_Evaluation>
             <version>1.0.0</version>
@@ -1641,7 +1740,9 @@
             <version>1.0.6</version>
         </BS_Sur><BS_Hira>
             <version>1.0.1</version>
-        </BS_Hira><BS_Kpi>
+        </BS_Hira><BS_Sup>
+            <version>1.0.0</version>
+        </BS_Sup><BS_Kpi>
             <version>1.0.2</version>
         </BS_Kpi><BS_Rii>
             <version>1.0.3</version>
@@ -1657,13 +1758,17 @@
             <version>1.0.0</version>
         </BS_Observation><Aoe_Scheduler>
             <version>1.5.1</version>
-        </Aoe_Scheduler><BS_Logger>
+        </Aoe_Scheduler><BS_Tosup>
+            <version>1.0.0</version>
+        </BS_Tosup><BS_Logger>
             <version>1.0.0</version>
         </BS_Logger><BS_Docx>
             <version>1.0.0</version>
         </BS_Docx><BS_Signature>
             <version>1.0.1</version>
-        </BS_Signature><BS_Hidefrontend>
+        </BS_Signature><BS_Coa>
+            <version>1.0.0</version>
+        </BS_Coa><BS_Hidefrontend>
             <version>1.0.0</version>
         </BS_Hidefrontend><BS_KPIReport>
             <version>1.0.0</version>
@@ -1780,7 +1885,11 @@
                     <files>
                         <default>BS_Cmr.csv</default>
                     </files>
-                </BS_Cmr><BS_Acreg>
+                </BS_Cmr><BS_Client>
+                    <files>
+                        <default>BS_Client.csv</default>
+                    </files>
+                </BS_Client><BS_Acreg>
                     <files>
                         <default>BS_Acreg.csv</default>
                     </files>
@@ -1792,7 +1901,11 @@
                     <files>
                         <default>BS_Report.csv</default>
                     </files>
-                </BS_Report><BS_Formtemplate>
+                </BS_Report><BS_Aut>
+                    <files>
+                        <default>BS_Aut.csv</default>
+                    </files>
+                </BS_Aut><BS_Formtemplate>
                     <files>
                         <default>BS_Formtemplate.csv</default>
                     </files>
@@ -1880,7 +1993,11 @@
                     <files>
                         <default>BS_Hira.csv</default>
                     </files>
-                </BS_Hira><BS_Kpi>
+                </BS_Hira><BS_Sup>
+                    <files>
+                        <default>BS_Sup.csv</default>
+                    </files>
+                </BS_Sup><BS_Kpi>
                     <files>
                         <default>BS_Kpi.csv</default>
                     </files>
@@ -1896,7 +2013,11 @@
                     <files>
                         <default>Aoe_Scheduler.csv</default>
                     </files>
-                </aoe_scheduler><BS_Logger>
+                </aoe_scheduler><BS_Tosup>
+                    <files>
+                        <default>BS_Tosup.csv</default>
+                    </files>
+                </BS_Tosup><BS_Logger>
                     <files>
                         <default>BS_Logger.csv</default>
                     </files>
@@ -1904,7 +2025,11 @@
                     <files>
                         <default>BS_Signature.csv</default>
                     </files>
-                </BS_Signature><BS_KPIReport>
+                </BS_Signature><BS_Coa>
+                    <files>
+                        <default>BS_Coa.csv</default>
+                    </files>
+                </BS_Coa><BS_KPIReport>
                     <files>
                         <default>BS_KPIReport.csv</default>
                     </files>
@@ -2004,13 +2129,17 @@
                     <file>cms.xml</file>
                 </cms><bs_cmr>
                     <file>bs_cmr.xml</file>
-                </bs_cmr><bs_acreg>
+                </bs_cmr><bs_client>
+                    <file>bs_client.xml</file>
+                </bs_client><bs_acreg>
                     <file>bs_acreg.xml</file>
                 </bs_acreg><bs_car>
                     <file>bs_car.xml</file>
                 </bs_car><bs_report>
                     <file>bs_report.xml</file>
-                </bs_report><bs_formtemplate>
+                </bs_report><bs_aut>
+                    <file>bs_aut.xml</file>
+                </bs_aut><bs_formtemplate>
                     <file>bs_formtemplate.xml</file>
                 </bs_formtemplate><bs_mor>
                     <file>bs_mor.xml</file>
@@ -2056,7 +2185,9 @@
                     <file>bs_sur.xml</file>
                 </bs_sur><bs_hira>
                     <file>bs_hira.xml</file>
-                </bs_hira><bs_kpi>
+                </bs_hira><bs_sup>
+                    <file>bs_sup.xml</file>
+                </bs_sup><bs_kpi>
                     <file>bs_kpi.xml</file>
                 </bs_kpi><bs_rii>
                     <file>bs_rii.xml</file>
@@ -2068,11 +2199,15 @@
                     <file>backupguardplatinum.xml</file>
                 </backupguardplatinum><aoe_scheduler>
                     <file>aoe_scheduler/aoe_scheduler.xml</file>
-                </aoe_scheduler><bs_logger>
+                </aoe_scheduler><bs_tosup>
+                    <file>bs_tosup.xml</file>
+                </bs_tosup><bs_logger>
                     <file>bs_logger.xml</file>
                 </bs_logger><bs_signature>
                     <file>bs_signature.xml</file>
-                </bs_signature><bs_kpireport>
+                </bs_signature><bs_coa>
+                    <file>bs_coa.xml</file>
+                </bs_coa><bs_kpireport>
                     <file>bs_kpireport.xml</file>
                 </bs_kpireport></updates>
         </layout><sales>
@@ -2136,7 +2271,10 @@
                 <class>bs_cmr/adminhtml_search_cmr</class>
                 <acl>bs_cmr</acl>
             </cmr>
-        <customer>
+        <client>
+                <class>bs_client/adminhtml_search_client</class>
+                <acl>bs_client</acl>
+            </client><customer>
                 <class>bs_acreg/adminhtml_search_customer</class>
                 <acl>bs_acreg</acl>
             </customer><acreg>
@@ -2145,7 +2283,10 @@
             </acreg><car>
                 <class>bs_car/adminhtml_search_car</class>
                 <acl>bs_car</acl>
-            </car><mor>
+            </car><aut>
+                <class>bs_aut/adminhtml_search_aut</class>
+                <acl>bs_aut</acl>
+            </aut><mor>
                 <class>bs_mor/adminhtml_search_mor</class>
                 <acl>bs_mor</acl>
             </mor><concession>
@@ -2226,16 +2367,25 @@
             </sur><hira>
                 <class>bs_hira/adminhtml_search_hira</class>
                 <acl>bs_hira</acl>
-            </hira><rii>
+            </hira><sup>
+                <class>bs_sup/adminhtml_search_sup</class>
+                <acl>bs_sup</acl>
+            </sup><rii>
                 <class>bs_rii/adminhtml_search_rii</class>
                 <acl>bs_rii</acl>
             </rii><nrw>
                 <class>bs_nrw/adminhtml_search_nrw</class>
                 <acl>bs_nrw</acl>
-            </nrw><signature>
+            </nrw><tosup>
+                <class>bs_tosup/adminhtml_search_tosup</class>
+                <acl>bs_tosup</acl>
+            </tosup><signature>
                 <class>bs_signature/adminhtml_search_signature</class>
                 <acl>bs_signature</acl>
-            </signature></global_search></adminhtml><install>
+            </signature><coa>
+                <class>bs_coa/adminhtml_search_coa</class>
+                <acl>bs_coa</acl>
+            </coa></global_search></adminhtml><install>
         <translate>
             <modules>
                 <Mage_Core>
@@ -2282,7 +2432,7 @@
                     
                 <modules>
                         <BS_Cmr before="Mage_Adminhtml">BS_Cmr_Adminhtml</BS_Cmr>
-                    <BS_Acreg before="Mage_Adminhtml">BS_Acreg_Adminhtml</BS_Acreg><BS_Car before="Mage_Adminhtml">BS_Car_Adminhtml</BS_Car><BS_Report before="Mage_Adminhtml">BS_Report_Adminhtml</BS_Report><BS_Formtemplate before="Mage_Adminhtml">BS_Formtemplate_Adminhtml</BS_Formtemplate><BS_Evaluation before="Mage_Adminhtml">BS_Evaluation_Adminhtml</BS_Evaluation><BS_Mor before="Mage_Adminhtml">BS_Mor_Adminhtml</BS_Mor><BS_Concession before="Mage_Adminhtml">BS_Concession_Adminhtml</BS_Concession><BS_Setting before="Mage_Adminhtml">BS_Setting_Adminhtml</BS_Setting><BS_Schedule before="Mage_Adminhtml">BS_Schedule_Adminhtml</BS_Schedule><BS_Drr before="Mage_Adminhtml">BS_Drr_Adminhtml</BS_Drr><bs_data before="Mage_Adminhtml">BS_Data_Adminhtml</bs_data><BS_HR before="Mage_Adminhtml">BS_HR_Adminhtml</BS_HR><BS_Routine before="Mage_Adminhtml">BS_Routine_Adminhtml</BS_Routine><BS_Meda before="Mage_Adminhtml">BS_Meda_Adminhtml</BS_Meda><BS_Qr before="Mage_Adminhtml">BS_Qr_Adminhtml</BS_Qr><BS_CmrReport before="Mage_Adminhtml">BS_CmrReport_Adminhtml</BS_CmrReport><BS_Popup before="Mage_Adminhtml">BS_Popup_Adminhtml</BS_Popup><BS_Rewriting before="Mage_Adminhtml">BS_Rewriting_Adminhtml</BS_Rewriting><BS_Other before="Mage_Adminhtml">BS_Other_Adminhtml</BS_Other><BS_Ncr before="Mage_Adminhtml">BS_Ncr_Adminhtml</BS_Ncr><BS_Signoff before="Mage_Adminhtml">BS_Signoff_Adminhtml</BS_Signoff><BS_Misc before="Mage_Adminhtml">BS_Misc_Adminhtml</BS_Misc><BS_Ir before="Mage_Adminhtml">BS_Ir_Adminhtml</BS_Ir><BS_Cofa before="Mage_Adminhtml">BS_Cofa_Adminhtml</BS_Cofa><BS_Qn before="Mage_Adminhtml">BS_Qn_Adminhtml</BS_Qn><BS_NCause before="Mage_Adminhtml">BS_NCause_Adminhtml</BS_NCause><BS_Chart before="Mage_Adminhtml">BS_Chart_Adminhtml</BS_Chart><BS_Safety before="Mage_Adminhtml">BS_Safety_Adminhtml</BS_Safety><BS_Work before="Mage_Adminhtml">BS_Work_Adminhtml</BS_Work><BS_Sur before="Mage_Adminhtml">BS_Sur_Adminhtml</BS_Sur><BS_Hira before="Mage_Adminhtml">BS_Hira_Adminhtml</BS_Hira><BS_Kpi before="Mage_Adminhtml">BS_Kpi_Adminhtml</BS_Kpi><BS_Rii before="Mage_Adminhtml">BS_Rii_Adminhtml</BS_Rii><BS_Sched before="Mage_Adminhtml">BS_Sched_Adminhtml</BS_Sched><BS_Wysiwyg before="Mage_Adminhtml">BS_Wysiwyg_Adminhtml</BS_Wysiwyg><BS_Nrw before="Mage_Adminhtml">BS_Nrw_Adminhtml</BS_Nrw><BackupGuard_BackupGuardPlatinum after="Mage_Adminhtml">BackupGuard_BackupGuardPlatinum_Adminhtml</BackupGuard_BackupGuardPlatinum><BS_Observation before="Mage_Adminhtml">BS_Observation_Adminhtml</BS_Observation><Aoe_Scheduler before="Mage_Adminhtml">Aoe_Scheduler_Adminhtml</Aoe_Scheduler><BS_Logger before="Mage_Adminhtml">BS_Logger_Adminhtml</BS_Logger><BS_Docx before="Mage_Adminhtml">BS_Docx_Adminhtml</BS_Docx><BS_Signature before="Mage_Adminhtml">BS_Signature_Adminhtml</BS_Signature><BS_KPIReport before="Mage_Adminhtml">BS_KPIReport_Adminhtml</BS_KPIReport></modules><frontName><![CDATA[admin]]></frontName></args>
+                    <BS_Client before="Mage_Adminhtml">BS_Client_Adminhtml</BS_Client><BS_Acreg before="Mage_Adminhtml">BS_Acreg_Adminhtml</BS_Acreg><BS_Car before="Mage_Adminhtml">BS_Car_Adminhtml</BS_Car><BS_Report before="Mage_Adminhtml">BS_Report_Adminhtml</BS_Report><BS_Aut before="Mage_Adminhtml">BS_Aut_Adminhtml</BS_Aut><BS_Formtemplate before="Mage_Adminhtml">BS_Formtemplate_Adminhtml</BS_Formtemplate><BS_Evaluation before="Mage_Adminhtml">BS_Evaluation_Adminhtml</BS_Evaluation><BS_Mor before="Mage_Adminhtml">BS_Mor_Adminhtml</BS_Mor><BS_Concession before="Mage_Adminhtml">BS_Concession_Adminhtml</BS_Concession><BS_Setting before="Mage_Adminhtml">BS_Setting_Adminhtml</BS_Setting><BS_Schedule before="Mage_Adminhtml">BS_Schedule_Adminhtml</BS_Schedule><BS_Drr before="Mage_Adminhtml">BS_Drr_Adminhtml</BS_Drr><bs_data before="Mage_Adminhtml">BS_Data_Adminhtml</bs_data><BS_HR before="Mage_Adminhtml">BS_HR_Adminhtml</BS_HR><BS_Routine before="Mage_Adminhtml">BS_Routine_Adminhtml</BS_Routine><BS_Meda before="Mage_Adminhtml">BS_Meda_Adminhtml</BS_Meda><BS_Qr before="Mage_Adminhtml">BS_Qr_Adminhtml</BS_Qr><BS_CmrReport before="Mage_Adminhtml">BS_CmrReport_Adminhtml</BS_CmrReport><BS_Popup before="Mage_Adminhtml">BS_Popup_Adminhtml</BS_Popup><BS_Rewriting before="Mage_Adminhtml">BS_Rewriting_Adminhtml</BS_Rewriting><BS_Other before="Mage_Adminhtml">BS_Other_Adminhtml</BS_Other><BS_Ncr before="Mage_Adminhtml">BS_Ncr_Adminhtml</BS_Ncr><BS_Signoff before="Mage_Adminhtml">BS_Signoff_Adminhtml</BS_Signoff><BS_Misc before="Mage_Adminhtml">BS_Misc_Adminhtml</BS_Misc><BS_Ir before="Mage_Adminhtml">BS_Ir_Adminhtml</BS_Ir><BS_Cofa before="Mage_Adminhtml">BS_Cofa_Adminhtml</BS_Cofa><BS_Qn before="Mage_Adminhtml">BS_Qn_Adminhtml</BS_Qn><BS_NCause before="Mage_Adminhtml">BS_NCause_Adminhtml</BS_NCause><BS_Chart before="Mage_Adminhtml">BS_Chart_Adminhtml</BS_Chart><BS_Safety before="Mage_Adminhtml">BS_Safety_Adminhtml</BS_Safety><BS_Work before="Mage_Adminhtml">BS_Work_Adminhtml</BS_Work><BS_Sur before="Mage_Adminhtml">BS_Sur_Adminhtml</BS_Sur><BS_Hira before="Mage_Adminhtml">BS_Hira_Adminhtml</BS_Hira><BS_Sup before="Mage_Adminhtml">BS_Sup_Adminhtml</BS_Sup><BS_Kpi before="Mage_Adminhtml">BS_Kpi_Adminhtml</BS_Kpi><BS_Rii before="Mage_Adminhtml">BS_Rii_Adminhtml</BS_Rii><BS_Sched before="Mage_Adminhtml">BS_Sched_Adminhtml</BS_Sched><BS_Wysiwyg before="Mage_Adminhtml">BS_Wysiwyg_Adminhtml</BS_Wysiwyg><BS_Nrw before="Mage_Adminhtml">BS_Nrw_Adminhtml</BS_Nrw><BackupGuard_BackupGuardPlatinum after="Mage_Adminhtml">BackupGuard_BackupGuardPlatinum_Adminhtml</BackupGuard_BackupGuardPlatinum><BS_Observation before="Mage_Adminhtml">BS_Observation_Adminhtml</BS_Observation><Aoe_Scheduler before="Mage_Adminhtml">Aoe_Scheduler_Adminhtml</Aoe_Scheduler><BS_Tosup before="Mage_Adminhtml">BS_Tosup_Adminhtml</BS_Tosup><BS_Logger before="Mage_Adminhtml">BS_Logger_Adminhtml</BS_Logger><BS_Docx before="Mage_Adminhtml">BS_Docx_Adminhtml</BS_Docx><BS_Signature before="Mage_Adminhtml">BS_Signature_Adminhtml</BS_Signature><BS_Coa before="Mage_Adminhtml">BS_Coa_Adminhtml</BS_Coa><BS_KPIReport before="Mage_Adminhtml">BS_KPIReport_Adminhtml</BS_KPIReport></modules><frontName><![CDATA[admin]]></frontName></args>
             </adminhtml>
         </routers>
     </admin><websites>
