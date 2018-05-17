@@ -52,7 +52,7 @@ class BS_Ncr_Model_Ncr_Attribute_Source_Ncrstatus
                 'value' => 5
             ],
 	        [
-		        'label' => Mage::helper('bs_ncr')->__('Late Close'),
+		        'label' => Mage::helper('bs_ncr')->__('Close Late'),
 		        'value' => 6
             ],
             [
@@ -64,7 +64,7 @@ class BS_Ncr_Model_Ncr_Attribute_Source_Ncrstatus
                 'value' => 8
             ],
             [
-                'label' => Mage::helper('bs_ncr')->__('Responded'),
+                'label' => Mage::helper('bs_ncr')->__('Ongoing'),
                 'value' => 9
             ],
         ];

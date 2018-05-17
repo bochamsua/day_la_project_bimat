@@ -208,7 +208,7 @@ class BS_Misc_Adminhtml_Misc_MiscController extends BS_Sur_Controller_Adminhtml_
         $approvalId = $currentUser[0];
         //load object
         $obj = Mage::getModel("bs_{$type}/{$type}")->load($id);
-        $obj->setData("{$type}_status", $status);
+        //$obj->setData("{$type}_status", $status);
 
         if($message == 'accepted'){//submit, we need to set Approval Id
             $obj->setData('approval_id', $approvalId);
@@ -216,7 +216,7 @@ class BS_Misc_Adminhtml_Misc_MiscController extends BS_Sur_Controller_Adminhtml_
         }
 
         $data = $this->getRequest()->getPost($type);
-        $data = $this->_filterDates($data, ['report_date' ,'due_date' ,'close_date', 'event_date', 'issue_date', 'expire_date']);
+        $data = $this->_filterDates($data, ['report_date' ,'due_date' ,'close_date', 'event_date', 'issue_date', 'expire_date', 'res_date']);
 
 
         if($date){//we update the date fields automatically
@@ -272,6 +272,105 @@ class BS_Misc_Adminhtml_Misc_MiscController extends BS_Sur_Controller_Adminhtml_
             }
 
         }
+
+        if($message == 'closed' && $type != 'coa'){//when we close NCR/DRR/CAR
+
+            $match = [
+                'ncr' => [
+                    '1' => '3',
+                    '2' => '6'
+                ],//res status => close status
+                'drr' => [
+                    '1' => '2',
+                    '2' => '3'
+                ],//res status => close status
+                'car' => [
+                    '1' => '2',
+                    '2' => '3'
+                ],//res status => close status
+                'qr' => [
+                    '1' => '3',
+                    '2' => '5'
+                ],//res status => close status
+            ];
+
+
+            //we check if the object has COA or not
+            $coa = Mage::getModel('bs_coa/coa')->getCollection();
+            $coa->addFieldToFilter('ref_id', ['eq' => $obj->getId()]);
+            $coa->addFieldToFilter('ref_type', ['eq' => $type]);
+
+            //$closeInfo = Mage::getModel('bs_observation/observer')->getCloseInfo();
+
+            if($coa->count()){
+                $canClose = true;
+                $lateClose = false;
+                $closeDates = [];
+                foreach ($coa as $item) {
+                    if(!in_array($item->getCoaStatus(), [1,3])){//if not closed or close late
+                        $canClose = false;
+                    }else {
+                        if($item->getCoaStatus() == 3){//late close
+                            $lateClose = true;
+                        }
+                    }
+                    $closeDates[] = new DateTime($item->getCloseDate());
+                }
+
+                if($canClose){
+
+                    arsort($closeDates);
+                    $cDate = $closeDates[0]->format('Y-m-d');
+
+                    if($lateClose){
+                        $resStatus = 2;//overdue
+                    }else {
+                        $resStatus = 1;//on time
+                    }
+
+
+                    $objStatus = $match[$type][$resStatus];
+
+                    $obj->setData("{$type}_status", $objStatus);
+                    $obj->setData("res_status", $resStatus);
+                    $obj->setData("close_date", $cDate);
+
+
+                }else {
+                    Mage::getSingleton('adminhtml/session')->addError(
+                        Mage::helper('bs_misc')->__('Please close all related Corrective Actions first!')
+                    );
+                }
+
+            }else {
+                if(isset($match[$type])){
+                    //res date
+                    $resDate = $obj->getResDate();
+                    $dueDate = $obj->getDueDate();
+                    $closeDate = $resDate;
+
+
+                    $compare = Mage::helper('bs_misc/date')->compareDate(['date' => $resDate], ['date' => $dueDate], '>');
+                    if($compare){
+                        $resStatus = 2;//overdue
+                    }else {
+                        $resStatus = 1;//on time
+                    }
+
+                    $objStatus = $match[$type][$resStatus];
+
+                    $obj->setData("{$type}_status", $objStatus);
+                    $obj->setData("res_status", $resStatus);
+                    $obj->setData("close_date", $closeDate);
+                }
+
+
+            }
+
+        }else {
+            $obj->setData("{$type}_status", $status);
+        }
+
 
         $obj->save();
 

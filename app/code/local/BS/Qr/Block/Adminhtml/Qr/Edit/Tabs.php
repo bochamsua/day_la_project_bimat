@@ -61,7 +61,7 @@ class BS_Qr_Block_Adminhtml_Qr_Edit_Tabs extends Mage_Adminhtml_Block_Widget_Tab
 			                      ->toHtml()
             ]);
 
-            if($this->getQr()->getIsCoa()){
+            if($this->getQr()->getQrStatus() >= 2){
                 $this->addTab(
                     'coa',
                     [

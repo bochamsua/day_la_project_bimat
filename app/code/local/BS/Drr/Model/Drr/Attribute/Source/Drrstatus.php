@@ -40,7 +40,7 @@ class BS_Drr_Model_Drr_Attribute_Source_Drrstatus
                 'value' => 2
             ],
 	        [
-		        'label' => Mage::helper('bs_drr')->__('Late Closed'),
+		        'label' => Mage::helper('bs_drr')->__('Close Late'),
 		        'value' => 3
             ],
             [
@@ -48,17 +48,14 @@ class BS_Drr_Model_Drr_Attribute_Source_Drrstatus
                 'value' => 4
             ],
             [
-                'label' => Mage::helper('bs_drr')->__('Responded'),
+                'label' => Mage::helper('bs_drr')->__('Ongoing'),
                 'value' => 5
             ],
             [
                 'label' => Mage::helper('bs_drr')->__('Res. Overdue'),
                 'value' => 6
             ],
-            [
-                'label' => Mage::helper('bs_drr')->__('Res. Late'),
-                'value' => 7
-            ],
+
 
         ];
         if ($withEmpty) {

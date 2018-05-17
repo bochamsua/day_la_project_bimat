@@ -29,15 +29,15 @@ class BS_Observation_Model_Observer
             'status' => [1,4],
             'close'    => [
                 'status' => 2,//new status of close action
-                'fields' => 'remark,close_date'
+                'fields' => 'remark,res_date'
                 //values will be taken from POST object
             ],
         ],
         'ncr'   => [
-            'status' => [2,4],
+            'status' => [2,4,7,8,9],
             'close'    => [
                 'status' => 3,//new status of close action
-                'fields' => 'remark,ncausegroup_id,ncause_id,close_date,remark_text'
+                'fields' => 'remark,ncausegroup_id,ncause_id,res_date,remark_text'
                 //values will be taken from POST object
             ],
         ],
@@ -45,7 +45,7 @@ class BS_Observation_Model_Observer
             'status' => [2,4],
             'close'    => [
                 'status' => 3,//new status of close action
-                'fields' => 'remark,close_date'
+                'fields' => 'remark,res_date'
                 //values will be taken from POST object
             ],
         ],
@@ -267,6 +267,10 @@ class BS_Observation_Model_Observer
         //some entities dont have ref_no field so we need to exclude
         'concession',
     ];
+
+    public function getCloseInfo(){
+        return $this->_hasCloseButton;
+    }
 
     public function doBeforeBlockToHtml($observer)
     {
@@ -835,6 +839,25 @@ class BS_Observation_Model_Observer
                 }
 
                 $obj->addData($data);
+
+
+                if($type == 'coa'){//we need to update parent status to Ongoing
+
+                    $refType = $obj->getRefType();
+                    $refId = $obj->getRefId();
+
+                    $messages = Mage::helper('bs_coa')->updateStatus($refId, $refType);
+                    if(is_array($messages)){
+                        foreach ($messages as $message) {
+                            Mage::getSingleton('adminhtml/session')->addSuccess($message);
+                        }
+                    }
+
+
+
+
+
+                }
                 //$data['ref_no'] = Mage::helper('bs_ncr')->getNextRefNo();
                 //$data['ncr_status'] = 0;
             }
@@ -859,19 +882,21 @@ class BS_Observation_Model_Observer
         $obj->addData($data);
 
         //Now handle COA related statues
-        $relation = Mage::helper('bs_misc')->getRelations();
+        /*$relation = Mage::helper('bs_misc')->getRelations();
         if(in_array($type, $relation)){
             $messages = Mage::helper('bs_coa')->updateStatus($id, $type);
-            if(count($messages)){
+            if(is_array($messages)){
                 foreach ($messages as $message) {
                     Mage::getSingleton('adminhtml/session')->addSuccess($message);
                 }
             }
-        }
+        }*/
 
 
 
     }
+
+
 
     public function modelDeleteBefore($observer){
         $obj = $observer->getObject();
@@ -913,6 +938,20 @@ class BS_Observation_Model_Observer
 
 
         ];
+
+        $resStatues = [
+            'car' => [1,4],//from first status -> second status
+            'drr' => [1,4],
+            'cmr' => [0,2],
+            'cofa' => [0,2],
+            'ncr' => [2,4],
+            //'ir' => [3,6],
+            'qn' => [2,4],
+            'qr' => [2,4],
+            'nrw' => [1,4],
+            'coa' => [0,2],
+        ];
+
 
 
         try {
@@ -1104,6 +1143,23 @@ class BS_Observation_Model_Observer
               
             }
             
+            if($('".$id."res_date') != undefined){ 
+              $('".$id."res_date').observe('change', function(){
+                $$('.closes').each(function (el){
+                    $(el).hide();
+                  });
+              
+                if(checkCloseCondition()){
+                    $$('.closes').each(function (el){
+                        $(el).show();
+                      });
+              
+                }
+              });
+              
+              
+            }
+            
             if($('".$id."remark') != undefined){
                   $('".$id."remark').observe('change', function(){
                       $$('.closes').each(function (el){
@@ -1164,6 +1220,11 @@ class BS_Observation_Model_Observer
                     }
                 }
                 
+                if($('".$id."res_date') != undefined){
+                    if($('".$id."res_date').value == ''){
+                        check = 0 ;
+                    }
+                }
                 if($('".$id."close_date') != undefined){
                     if($('".$id."close_date').value == ''){
                         check = 0 ;

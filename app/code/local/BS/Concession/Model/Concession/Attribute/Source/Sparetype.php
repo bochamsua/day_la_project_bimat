@@ -28,7 +28,7 @@ class BS_Concession_Model_Concession_Attribute_Source_Sparetype
     {
         $options =  [
             [
-                'label' => Mage::helper('bs_concession')->__('Late of spare'),
+                'label' => Mage::helper('bs_concession')->__('Lack of spares'),
                 'value' => 1
             ],
             [

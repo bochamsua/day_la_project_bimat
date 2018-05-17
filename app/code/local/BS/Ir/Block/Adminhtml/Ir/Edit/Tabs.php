@@ -77,7 +77,7 @@ class BS_Ir_Block_Adminhtml_Ir_Edit_Tabs extends Mage_Adminhtml_Block_Widget_Tab
             ]
         );
 
-        if($this->getIr()->getIsCoa()){
+        if($this->getIr()->getIrStatus() >= 2){
             $this->addTab(
                 'coa',
                 [

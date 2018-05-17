@@ -283,7 +283,7 @@ class BS_Drr_Block_Adminhtml_Drr_Edit_Tab_Form extends Mage_Adminhtml_Block_Widg
             ]
         );
 
-        $fieldset->addField(
+        /*$fieldset->addField(
             'is_coa',
             'select',
             array(
@@ -300,7 +300,7 @@ class BS_Drr_Block_Adminhtml_Drr_Edit_Tab_Form extends Mage_Adminhtml_Block_Widg
                     ),
                 ),
             )
-        );
+        );*/
 
 
         /*$fieldset->addField(
@@ -324,7 +324,7 @@ class BS_Drr_Block_Adminhtml_Drr_Edit_Tab_Form extends Mage_Adminhtml_Block_Widg
             }
 	    }
 
-        if(in_array($currentObj->getDrrStatus(), [1,2,3,4])) {//hide in draft status - 0
+        if($currentObj->getDrrStatus() > 0) {//hide in draft status - 0
             $fieldset->addField(
                 'remark',
                 'file',
@@ -369,11 +369,11 @@ class BS_Drr_Block_Adminhtml_Drr_Edit_Tab_Form extends Mage_Adminhtml_Block_Widg
 
 
             $fieldset->addField(
-                'close_date',
+                'res_date',
                 'date',
                 [
-                    'label' => Mage::helper('bs_drr')->__('Close Date'),
-                    'name'  => 'close_date',
+                    'label' => Mage::helper('bs_drr')->__('Res. Date'),
+                    'name'  => 'res_date',
 
                     'image' => $this->getSkinUrl('images/grid-cal.gif'),
                     'format'  => Mage::app()->getLocale()->getDateFormat(Mage_Core_Model_Locale::FORMAT_TYPE_SHORT),

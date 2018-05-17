@@ -48,11 +48,11 @@ class BS_Qr_Model_Qr_Attribute_Source_Qrstatus
 		        'value' => 4
             ],
 	        [
-                'label' => Mage::helper('bs_qr')->__('Late Closed'),
+                'label' => Mage::helper('bs_qr')->__('Close Late'),
                 'value' => 5
             ],
             [
-                'label' => Mage::helper('bs_qr')->__('Responded'),
+                'label' => Mage::helper('bs_qr')->__('Ongoing'),
                 'value' => 6
             ],
             [

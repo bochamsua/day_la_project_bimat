@@ -312,7 +312,7 @@ class BS_Car_Block_Adminhtml_Car_Edit_Tab_Form extends Mage_Adminhtml_Block_Widg
         );
 
 
-        $fieldset->addField(
+        /*$fieldset->addField(
             'is_coa',
             'select',
             array(
@@ -329,7 +329,7 @@ class BS_Car_Block_Adminhtml_Car_Edit_Tab_Form extends Mage_Adminhtml_Block_Widg
                     ),
                 ),
             )
-        );
+        );*/
 
 
         $disableProof = false;
@@ -340,7 +340,7 @@ class BS_Car_Block_Adminhtml_Car_Edit_Tab_Form extends Mage_Adminhtml_Block_Widg
             }
         }
 
-        if(in_array($currentObj->getCarStatus(), [1,2,3,4])){//hide in draft status - 0
+        if($currentObj->getCarStatus() > 0){//hide in draft status - 0
             $fieldset->addField(
                 'remark',
                 'file',
@@ -385,11 +385,11 @@ class BS_Car_Block_Adminhtml_Car_Edit_Tab_Form extends Mage_Adminhtml_Block_Widg
 
 
             $fieldset->addField(
-                'close_date',
+                'res_date',
                 'date',
                 [
-                    'label' => Mage::helper('bs_car')->__('Close Date'),
-                    'name'  => 'close_date',
+                    'label' => Mage::helper('bs_car')->__('Res. Date'),
+                    'name'  => 'res_date',
 
                     'image' => $this->getSkinUrl('images/grid-cal.gif'),
                     'format'  => Mage::app()->getLocale()->getDateFormat(Mage_Core_Model_Locale::FORMAT_TYPE_SHORT),
@@ -401,6 +401,19 @@ class BS_Car_Block_Adminhtml_Car_Edit_Tab_Form extends Mage_Adminhtml_Block_Widg
 
 
 
+
+        $this->addColumn(
+            'res_status',
+            [
+                'header' => Mage::helper('bs_coa')->__('Res. Status'),
+                'index'  => 'res_status',
+                'type'  => 'options',
+                'options' => Mage::helper('bs_coa')->convertOptions(
+                    Mage::getModel('bs_coa/coa_attribute_source_resstatus')->getAllOptions(false)
+                )
+
+            ]
+        );
 
 
 	    if($misc->isAdmin($currentObj)){

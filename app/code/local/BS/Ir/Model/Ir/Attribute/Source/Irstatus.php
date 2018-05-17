@@ -43,7 +43,7 @@ class BS_Ir_Model_Ir_Attribute_Source_Irstatus
                 'value' => 6
             ],
             [
-                'label' => Mage::helper('bs_ir')->__('Responded'),
+                'label' => Mage::helper('bs_ir')->__('Ongoing'),
                 'value' => 7
             ],
             [

@@ -83,7 +83,7 @@ class BS_Drr_Block_Adminhtml_Drr_Edit_Tabs extends Mage_Adminhtml_Block_Widget_T
                 'class' => 'ajax',
             ]
         );
-        if($this->getDrr()->getIsCoa()){
+        if($this->getDrr()->getDrrStatus() >= 1){//published
             $this->addTab(
                 'coa',
                 [

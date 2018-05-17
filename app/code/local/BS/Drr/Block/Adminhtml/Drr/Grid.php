@@ -262,6 +262,19 @@ class BS_Drr_Block_Adminhtml_Drr_Grid extends Mage_Adminhtml_Block_Widget_Grid
         );
 
         $this->addColumn(
+            'res_status',
+            [
+                'header' => Mage::helper('bs_coa')->__('Res. Status'),
+                'index'  => 'res_status',
+                'type'  => 'options',
+                'options' => Mage::helper('bs_coa')->convertOptions(
+                    Mage::getModel('bs_coa/coa_attribute_source_resstatus')->getAllOptions(false)
+                )
+
+            ]
+        );
+
+        $this->addColumn(
             'drr_status',
             [
                 'header' => Mage::helper('bs_drr')->__('Status'),
@@ -273,6 +286,17 @@ class BS_Drr_Block_Adminhtml_Drr_Grid extends Mage_Adminhtml_Block_Widget_Grid
 
             ]
         );
+
+        $this->addColumn(
+            'res_date',
+            [
+                'header' => Mage::helper('bs_drr')->__('Res. Date'),
+                'index'  => 'res_date',
+                'type'=> 'date',
+
+            ]
+        );
+
         $this->addColumn(
             'close_date',
             [

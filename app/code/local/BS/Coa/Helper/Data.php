@@ -79,36 +79,45 @@ class BS_Coa_Helper_Data extends Mage_Core_Helper_Abstract
         if($refId){
             $messages = [];
 
-            $obj = Mage::getModel("bs_{$refType}/{$refType}");
-            $obj->load($refId);
+            $ongoing = [
+                'ncr' => 9,
+                'drr'   => 5,
+                'car'   => 5,
+                'qr'    => 6
+            ];
 
-            $refNo = $obj->getRefNo();
+            if(isset($ongoing[$refType])){
+                $obj = Mage::getModel("bs_{$refType}/{$refType}");
+                $obj->load($refId);
 
-            $currentStatus = $obj->getData("{$refType}_status");
-            $text1 = Mage::getModel("bs_{$refType}/{$refType}_attribute_source_{$refType}status")->getOptionText($currentStatus);
+                $refNo = $obj->getRefNo();
+
+                $currentStatus = $obj->getData("{$refType}_status");
+                $text1 = Mage::getModel("bs_{$refType}/{$refType}_attribute_source_{$refType}status")->getOptionText($currentStatus);
 
 
 
-            $newStatus = $this->getFinalStatus($refId, $refType);
+                //$newStatus = $this->getFinalStatus($refId, $refType);
 
-            //update parent status
-            //$obj->setData("{$refType}_status", $newStatus);
-            //$obj->save();
+                //update parent status
+                //$obj->setData("{$refType}_status", $newStatus);
+                //$obj->save();
 
-            $resource = Mage::getSingleton('core/resource');
-            $writeConnection = $resource->getConnection('core_write');
-            $readConnection = $resource->getConnection('core_read');
+                $resource = Mage::getSingleton('core/resource');
+                $writeConnection = $resource->getConnection('core_write');
+                $readConnection = $resource->getConnection('core_read');
 
-            if(!is_null($newStatus)){
-                $writeConnection->update($resource->getTableName("bs_{$refType}/{$refType}"), ["{$refType}_status" => $newStatus], "entity_id = {$refId}");
+                $writeConnection->update($resource->getTableName("bs_{$refType}/{$refType}"), ["{$refType}_status" => $ongoing[$refType]], "entity_id = {$refId}");
 
                 $url = Mage::helper('adminhtml')->getUrl("*/{$refType}_{$refType}/edit", ['id' => $refId]);
-                $text2 = Mage::getModel("bs_{$refType}/{$refType}_attribute_source_{$refType}status")->getOptionText($newStatus);
+                $text2 = Mage::getModel("bs_{$refType}/{$refType}_attribute_source_{$refType}status")->getOptionText($ongoing[$refType]);
 
                 $messages[] = sprintf("Status of %s: <a href='%s' target='_blank'> <strong>%s</strong></a> has been changed from <strong>%s</strong> to <strong>%s</strong>",  strtoupper($refType), $url, $refNo, $text1, $text2);
 
                 return $messages;
             }
+
+
 
 
 

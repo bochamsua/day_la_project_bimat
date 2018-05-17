@@ -281,7 +281,7 @@ class BS_Qr_Block_Adminhtml_Qr_Edit_Tab_Form extends Mage_Adminhtml_Block_Widget
 		    );*/
 	    }
 
-	    if(in_array($currentObj->getQrStatus(), [2,3,4,5])){// && $currentObj->getAccept() == 1
+	    if($currentObj->getQrStatus() > 1){// && $currentObj->getAccept() == 1
 		    $disableProof = false;
 		    if($currentObj->getQrStatus() == 3 && !$misc->isAdmin($currentObj)){//closed, disable but still allow admin edit
 			    $disableProof = true;
@@ -314,7 +314,7 @@ class BS_Qr_Block_Adminhtml_Qr_Edit_Tab_Form extends Mage_Adminhtml_Block_Widget
 
 
 
-        $fieldset->addField(
+        /*$fieldset->addField(
             'is_coa',
             'select',
             array(
@@ -331,7 +331,7 @@ class BS_Qr_Block_Adminhtml_Qr_Edit_Tab_Form extends Mage_Adminhtml_Block_Widget
                     ),
                 ),
             )
-        );
+        );*/
 
 
 

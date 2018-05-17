@@ -1677,7 +1677,7 @@
         </BS_Client><BS_Acreg>
             <version>1.0.0</version>
         </BS_Acreg><BS_Car>
-            <version>1.0.3</version>
+            <version>1.0.4</version>
         </BS_Car><BS_Report>
             <version>1.0.6</version>
         </BS_Report><BS_Aut>
@@ -1695,7 +1695,7 @@
         </BS_Setting><BS_Schedule>
             <version>1.0.0</version>
         </BS_Schedule><BS_Drr>
-            <version>1.0.4</version>
+            <version>1.0.5</version>
         </BS_Drr><bs_data>
             <version>1.0.0</version>
         </bs_data><BS_HR>
@@ -1705,7 +1705,7 @@
         </BS_Routine><BS_Meda>
             <version>1.0.1</version>
         </BS_Meda><BS_Qr>
-            <version>1.0.3</version>
+            <version>1.0.4</version>
         </BS_Qr><BS_CmrReport>
             <version>1.0.0</version>
         </BS_CmrReport><BS_Popup>
@@ -1715,7 +1715,7 @@
         </BS_Rewriting><BS_Other>
             <version>1.0.3</version>
         </BS_Other><BS_Ncr>
-            <version>1.0.3</version>
+            <version>1.0.4</version>
         </BS_Ncr><BS_Signoff>
             <version>1.0.3</version>
         </BS_Signoff><BS_Theming>

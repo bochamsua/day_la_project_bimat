@@ -410,7 +410,7 @@ class BS_Ir_Block_Adminhtml_Ir_Edit_Tab_Form extends Mage_Adminhtml_Block_Widget
 	    }
 
 
-        $fieldset->addField(
+        /*$fieldset->addField(
             'repetitive',
             'select',
             [
@@ -428,9 +428,9 @@ class BS_Ir_Block_Adminhtml_Ir_Edit_Tab_Form extends Mage_Adminhtml_Block_Widget
                 ],
 
             ]
-        );
+        );*/
 
-        $fieldset->addField(
+        /*$fieldset->addField(
             'is_coa',
             'select',
             array(
@@ -447,7 +447,7 @@ class BS_Ir_Block_Adminhtml_Ir_Edit_Tab_Form extends Mage_Adminhtml_Block_Widget
                     ),
                 ),
             )
-        );
+        );*/
 
         $fieldset->addField(
             'self_remark',

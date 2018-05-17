@@ -309,10 +309,24 @@ class BS_Ncr_Block_Adminhtml_Ncr_Grid extends Mage_Adminhtml_Block_Widget_Grid
                 'header'    => Mage::helper('bs_misc')->__('Approved By'),
                 'index'     => 'approval_id',
                 'type'      => 'options',
-                'options'   => $inspectors,
+                'options'   => Mage::helper('bs_misc/user')->getUsers(true, true, true, true, true, false),
 
             ]
         );
+
+        $this->addColumn(
+            'res_status',
+            [
+                'header' => Mage::helper('bs_coa')->__('Res. Status'),
+                'index'  => 'res_status',
+                'type'  => 'options',
+                'options' => Mage::helper('bs_coa')->convertOptions(
+                    Mage::getModel('bs_coa/coa_attribute_source_resstatus')->getAllOptions(false)
+                )
+
+            ]
+        );
+
 
         $this->addColumn(
             'ncr_status',
@@ -326,6 +340,16 @@ class BS_Ncr_Block_Adminhtml_Ncr_Grid extends Mage_Adminhtml_Block_Widget_Grid
 
             ]
         );
+        $this->addColumn(
+            'res_date',
+            [
+                'header' => Mage::helper('bs_ncr')->__('Res. Date'),
+                'index'  => 'res_date',
+                'type'=> 'date',
+
+            ]
+        );
+
         $this->addColumn(
             'close_date',
             [

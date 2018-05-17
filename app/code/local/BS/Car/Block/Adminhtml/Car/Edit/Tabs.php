@@ -61,7 +61,7 @@ class BS_Car_Block_Adminhtml_Car_Edit_Tabs extends Mage_Adminhtml_Block_Widget_T
                     ->toHtml()
             ]);
 
-            if($this->getCar()->getIsCoa()){
+            if($this->getCar()->getCarStatus() >= 1){
                 $this->addTab(
                     'coa',
                     [

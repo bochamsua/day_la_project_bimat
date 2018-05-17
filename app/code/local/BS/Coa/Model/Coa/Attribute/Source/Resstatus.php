@@ -1,19 +1,19 @@
 <?php
 /**
- * BS_Car extension
+ * BS_Coa extension
  * 
  * @category       BS
- * @package        BS_Car
- * @copyright      Copyright (c) 2016
+ * @package        BS_Coa
+ * @copyright      Copyright (c) 2018
  */
 /**
  * Admin source model for Status
  *
  * @category    BS
- * @package     BS_Car
+ * @package     BS_Coa
  * @author Bui Phong
  */
-class BS_Car_Model_Car_Attribute_Source_Carstatus
+class BS_Coa_Model_Coa_Attribute_Source_Resstatus
 {
     /**
      * get possible values
@@ -26,43 +26,26 @@ class BS_Car_Model_Car_Attribute_Source_Carstatus
      */
     public function getAllOptions($withEmpty = true, $defaultValues = false)
     {
-        $options =  [
-            [
-                'label' => Mage::helper('bs_car')->__('Draft'),
+        $options =  array(
+            array(
+                'label' => Mage::helper('bs_coa')->__('N/A'),
                 'value' => 0
-            ],
-            [
-                'label' => Mage::helper('bs_car')->__('Published'),
+            ),
+            array(
+                'label' => Mage::helper('bs_coa')->__('Res. Ontime'),
                 'value' => 1
-            ],
-            [
-                'label' => Mage::helper('bs_car')->__('Closed'),
+            ),
+            array(
+                'label' => Mage::helper('bs_coa')->__('Res. Late'),
                 'value' => 2
-            ],
-	        [
-		        'label' => Mage::helper('bs_car')->__('Close Late'),
-		        'value' => 3
-            ],
-            [
-                'label' => Mage::helper('bs_car')->__('Overdue'),
-                'value' => 4
-            ],
-            [
-                'label' => Mage::helper('bs_car')->__('Ongoing'),
-                'value' => 5
-            ],
-            [
-                'label' => Mage::helper('bs_car')->__('Res. Overdue'),
-                'value' => 6
-            ],
-            [
-                'label' => Mage::helper('bs_car')->__('Res. Late'),
-                'value' => 7
-            ],
-
-        ];
+            ),
+            array(
+                'label' => Mage::helper('bs_coa')->__('Res. Overdue'),
+                'value' => 3
+            ),
+        );
         if ($withEmpty) {
-            array_unshift($options, ['label'=>'', 'value'=>'']);
+            array_unshift($options, array('label'=>'', 'value'=>''));
         }
         return $options;
 
