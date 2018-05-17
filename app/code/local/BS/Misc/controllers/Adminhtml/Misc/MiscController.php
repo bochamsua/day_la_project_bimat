@@ -294,7 +294,28 @@ class BS_Misc_Adminhtml_Misc_MiscController extends BS_Sur_Controller_Adminhtml_
                 ],//res status => close status
             ];
 
+            if(isset($match[$type])){
+                //res date
+                $resDate = $obj->getResDate();
+                $dueDate = $obj->getDueDate();
+                $closeDate = $resDate;
 
+
+                $compare = Mage::helper('bs_misc/date')->compareDate(['date' => $resDate], ['date' => $dueDate], '>');
+                if($compare){
+                    $resStatus = 2;//overdue
+                }else {
+                    $resStatus = 1;//on time
+                }
+
+                $objStatus = $match[$type][$resStatus];
+
+                $obj->setData("{$type}_status", $objStatus);
+                $obj->setData("res_status", $resStatus);
+                $obj->setData("close_date", $closeDate);
+            }
+
+/*
             //we check if the object has COA or not
             $coa = Mage::getModel('bs_coa/coa')->getCollection();
             $coa->addFieldToFilter('ref_id', ['eq' => $obj->getId()]);
@@ -343,33 +364,16 @@ class BS_Misc_Adminhtml_Misc_MiscController extends BS_Sur_Controller_Adminhtml_
                 }
 
             }else {
-                if(isset($match[$type])){
-                    //res date
-                    $resDate = $obj->getResDate();
-                    $dueDate = $obj->getDueDate();
-                    $closeDate = $resDate;
 
 
-                    $compare = Mage::helper('bs_misc/date')->compareDate(['date' => $resDate], ['date' => $dueDate], '>');
-                    if($compare){
-                        $resStatus = 2;//overdue
-                    }else {
-                        $resStatus = 1;//on time
-                    }
 
-                    $objStatus = $match[$type][$resStatus];
-
-                    $obj->setData("{$type}_status", $objStatus);
-                    $obj->setData("res_status", $resStatus);
-                    $obj->setData("close_date", $closeDate);
-                }
-
-
-            }
+            }*/
 
         }else {
             $obj->setData("{$type}_status", $status);
         }
+
+
 
 
         $obj->save();

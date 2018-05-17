@@ -86,7 +86,7 @@ class BS_Ncr_Block_Adminhtml_Ncr_Edit_Tabs extends Mage_Adminhtml_Block_Widget_T
             ]
         );
 
-        if($this->getNcr()->getNcrStatus() >= 2){//only visible after published
+        if($this->getNcr()->getNcrStatus() >= 3){//only visible after closed
             $this->addTab(
                 'coa',
                 [

@@ -881,6 +881,20 @@ class BS_Observation_Model_Observer
         //update count
         $obj->addData($data);
 
+
+        if($type == 'coa'){//we need to update parent status and date
+            $mes = Mage::helper('bs_coa')->updateParentStatus($obj->getRefId(), $obj->getRefType());
+
+            if($mes){
+                Mage::getSingleton('adminhtml/session')->addSuccess(
+                    Mage::helper('bs_misc')->__($mes)
+                );
+            }
+
+
+        }
+
+
         //Now handle COA related statues
         /*$relation = Mage::helper('bs_misc')->getRelations();
         if(in_array($type, $relation)){

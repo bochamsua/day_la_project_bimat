@@ -128,17 +128,67 @@ class BS_Coa_Helper_Data extends Mage_Core_Helper_Abstract
 
     }
 
+
+    public function updateParentStatus($refId, $refType){
+
+
+        $status = $this->getFinalStatus($refId, $refType);
+
+        if(!is_null($status)){
+            $resource = Mage::getSingleton('core/resource');
+            $writeConnection = $resource->getConnection('core_write');
+            $readConnection = $resource->getConnection('core_read');
+
+            $writeConnection->update($resource->getTableName("bs_{$refType}/{$refType}"), ["{$refType}_status" => $status['status']], "entity_id = {$refId}");
+
+            if(in_array($status['status'], [1,3])){//if close status then we will update parent close date
+                $writeConnection->update($resource->getTableName("bs_{$refType}/{$refType}"), ["close_date" => $status['date']], "entity_id = {$refId}");
+            }
+
+            return sprintf("The status of %s: %s has been changed!", $refType, $refId);
+
+
+        }
+
+
+        return null;
+
+
+    }
+
+
     public function getFinalStatus($refId, $refType){
 
         $coa = Mage::getModel('bs_coa/coa')->getCollection();
         $coa->addFieldToFilter('ref_id', ['eq' => $refId]);
         $coa->addFieldToFilter('ref_type', ['eq' => $refType]);
+        $coa->setOrder('coa_status', 'DESC');
 
         $status = null;
         $statuses = [];
+        $date = null;
         if($coa->count()){
+            $i = 1;
             foreach ($coa as $item) {
-                $statuses[] = $item->getCoaStatus();
+
+                //we compare close date and due date
+                if($item->getCloseDate()){
+                    $compare = Mage::helper('bs_misc/date')->compareDate(['date' => $item->getCloseDate()], ['date' => $item->getDueDate()], '>');
+
+                    if($compare){
+                        $statuses[] = 3;//Close Late
+                    }else {
+                        $statuses[] = 1;//Close Ontime
+                    }
+                }else {
+                    $statuses[] = $item->getCoaStatus();
+                }
+
+
+                if($i == 1){
+                    $date = $item->getCloseDate();
+                }
+                $i++;
             }
         }
 
@@ -155,7 +205,7 @@ class BS_Coa_Helper_Data extends Mage_Core_Helper_Abstract
 
             $finalStatus = $this->getParentStatusFromChildStatus($refType, $status);
 
-            return $finalStatus;
+            return ['status' => $finalStatus, 'date' => $date];
         }
 
 
