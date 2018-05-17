@@ -97,7 +97,8 @@ class BS_Ncr_Block_Adminhtml_Ncr_Edit_Tab_Qr extends Mage_Adminhtml_Block_Widget
             [
                 'header' => Mage::helper('bs_qr')->__('Inspector'),
                 'index'  => 'ins_id',
-                'type'=> 'number',
+                'type'=> 'options',
+                'options'   => Mage::helper('bs_misc/user')->getUsers(false, true, true, true, true, false,false, false),
 
             ]
         );

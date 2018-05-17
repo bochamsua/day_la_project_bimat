@@ -85,7 +85,7 @@ class BS_Client_Block_Adminhtml_Client_Grid extends Mage_Adminhtml_Block_Widget_
                 'header' => Mage::helper('bs_misc')->__('Inspector'),
                 'index'  => 'ins_id',
                 'type'=> 'options',
-                'options'   => Mage::helper('bs_misc/user')->getUsers(false, true, true, true, true, false),
+                'options'   => Mage::helper('bs_misc/user')->getUsers(false, true, true, true, true, false,false, false),
 
             ]
         );

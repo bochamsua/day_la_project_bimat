@@ -97,7 +97,8 @@ class BS_Ir_Block_Adminhtml_Ir_Edit_Tab_Qr extends Mage_Adminhtml_Block_Widget_G
             [
                 'header' => Mage::helper('bs_qr')->__('Inspector'),
                 'index'  => 'ins_id',
-                'type'=> 'number',
+                'type'=> 'options',
+                'options'   => Mage::helper('bs_misc/user')->getUsers(false, true, true, true, true, false,false, false),
 
             ]
         );

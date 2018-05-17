@@ -89,7 +89,8 @@ class BS_Signoff_Block_Adminhtml_Signoff_Edit_Tab_Drr extends Mage_Adminhtml_Blo
             [
                 'header' => Mage::helper('bs_drr')->__('Inspector'),
                 'index'  => 'ins_id',
-                'type'=> 'number',
+                'type'=> 'options',
+                'options'   => Mage::helper('bs_misc/user')->getUsers(false, true, true, true, true, false,false, false),
 
             ]
         );

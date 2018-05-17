@@ -23,15 +23,19 @@ class BS_Misc_Helper_User extends BS_Misc_Helper_Data
     /**
      * @param $only - Only maintenance center
      */
-    public function getUsers($onlyManager = true, $includeDeputy = true, $grid = false, $userName = true, $withEmpty = false, $excludeAdmin = true, $excludeManager = false){
+    public function getUsers($onlyManager = true, $includeDeputy = true, $grid = false, $userName = true, $withEmpty = false, $excludeAdmin = true, $excludeManager = false, $correctRegionSection = true){
 
         $currentUser = $this->getCurrentUserInfo();
 
         $users = Mage::getModel('admin/user')->getCollection()->addFieldToFilter('user_id', ['gt' => 1]);
 
         $users->addFieldToFilter('is_active', 1);
-        $users->addFieldToFilter('region', ['eq' => $currentUser[2]]);
-        $users->addFieldToFilter('section', ['eq' => $currentUser[3]]);
+
+        if($correctRegionSection){
+            $users->addFieldToFilter('region', ['eq' => $currentUser[2]]);
+            $users->addFieldToFilter('section', ['eq' => $currentUser[3]]);
+        }
+
 
         $managers = $this->_manager;
 

@@ -92,7 +92,8 @@ class BS_Cofa_Block_Adminhtml_Cofa_Edit_Tab_Qr extends Mage_Adminhtml_Block_Widg
             [
                 'header' => Mage::helper('bs_qr')->__('Inspector'),
                 'index'  => 'ins_id',
-                'type'=> 'number',
+                'type'=> 'options',
+                'options'   => Mage::helper('bs_misc/user')->getUsers(false, true, true, true, true, false,false, false),
 
             ]
         );

@@ -97,8 +97,8 @@ class BS_Sur_Block_Adminhtml_Sur_Edit_Tab_Qn extends Mage_Adminhtml_Block_Widget
             [
                 'header' => Mage::helper('bs_qn')->__('Inspector'),
                 'index'  => 'ins_id',
-                'type'=> 'number',
-
+                'type'=> 'options',
+                'options'   => Mage::helper('bs_misc/user')->getUsers(false, true, true, true, true, false,false, false),
             ]
         );
         $this->addColumn(
