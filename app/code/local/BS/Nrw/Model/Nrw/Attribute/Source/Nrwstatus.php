@@ -47,6 +47,10 @@ class BS_Nrw_Model_Nrw_Attribute_Source_Nrwstatus
                 'label' => Mage::helper('bs_nrw')->__('Late'),
                 'value' => 4
             ),
+            array(
+                'label' => Mage::helper('bs_nrw')->__('Overdue'),
+                'value' => 5
+            ),
 
         );
         if ($withEmpty) {

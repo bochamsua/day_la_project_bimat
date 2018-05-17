@@ -933,7 +933,7 @@ class BS_Observation_Model_Observer
             //'ir' => [3,6],
             'qn' => [2,4],
             'qr' => [2,4],
-            'nrw' => [1,4],
+            'nrw' => [1,5],
             'coa' => [0,2],
 
 
@@ -980,7 +980,7 @@ class BS_Observation_Model_Observer
             'ncr' => [3,6],
             //'ir' => [3,6],
             'qr' => [3,5],
-            'coa' => [1,3],
+            'coa' => [1,4],
 
 
 
