@@ -57,7 +57,7 @@ class BS_Signoff_Block_Adminhtml_Signoff_Edit_Tabs extends Mage_Adminhtml_Block_
         $countRelations = $this->helper('bs_misc/relation')->countRelation($id, 'signoff');
 
         if($id){
-            if($countRelations['ir'] > 0){
+            /*if($countRelations['ir'] > 0){
                 $this->addTab(
                     'ir',
                     [
@@ -88,7 +88,7 @@ class BS_Signoff_Block_Adminhtml_Signoff_Edit_Tabs extends Mage_Adminhtml_Block_
                         'class' => 'ajax',
                     ]
                 );
-            }
+            }*/
 
 
 
@@ -97,6 +97,24 @@ class BS_Signoff_Block_Adminhtml_Signoff_Edit_Tabs extends Mage_Adminhtml_Block_
                 [
                     'label' => Mage::helper('bs_signoff')->__('SUR'),
                     'url' => $this->getUrl('adminhtml/signoff_signoff/surs', ['_current' => true]),
+                    'class' => 'ajax',
+                ]
+            );
+
+            $this->addTab(
+                'ncr',
+                [
+                    'label' => Mage::helper('bs_signoff')->__('NCR (%s)', $countRelations['ncr']),
+                    'url' => $this->getUrl('adminhtml/signoff_signoff/ncrs', ['_current' => true]),
+                    'class' => 'ajax',
+                ]
+            );
+
+            $this->addTab(
+                'drr',
+                [
+                    'label' => Mage::helper('bs_signoff')->__('DRR (%s)', $countRelations['drr']),
+                    'url' => $this->getUrl('adminhtml/signoff_signoff/drrs', ['_current' => true]),
                     'class' => 'ajax',
                 ]
             );
