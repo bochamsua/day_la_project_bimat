@@ -1,10 +1,10 @@
 <?php
 define('SG_BACKUP_GUARD_VERSION', '1.0.1');
 
-define('SG_FEATURE_DOWNLOAD_FROM_CLOUD', 1);
+define('SG_FEATURE_DOWNLOAD_FROM_CLOUD', 0);
 define('SG_FEATURE_STORAGE', 1);
 define('SG_FEATURE_FTP', 1);
-define('SG_FEATURE_AMAZON', 1);
+define('SG_FEATURE_AMAZON', 0);
 define('SG_FEATURE_DROPBOX', 0);
 define('SG_FEATURE_GOOGLE_DRIVE', 1);
 define('SG_FEATURE_SCHEDULE', 1);
