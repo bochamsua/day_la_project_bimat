@@ -235,7 +235,7 @@ class BS_Sur_Block_Adminhtml_Sur_Edit_Tab_Form extends Mage_Adminhtml_Block_Widg
 
         $fieldset->addField(
             'remark_text',
-            'text',
+            'textarea',
             [
                 'label' => Mage::helper('bs_sur')->__('Remark (Outstanding Note)'),
                 'name'  => 'remark_text',
@@ -245,7 +245,7 @@ class BS_Sur_Block_Adminhtml_Sur_Edit_Tab_Form extends Mage_Adminhtml_Block_Widg
 
         $fieldset->addField(
             'remind_text',
-            'text',
+            'textarea',
             [
                 'label' => Mage::helper('bs_sur')->__('Remind (Fault not record into report)'),
                 'name'  => 'remind_text',
