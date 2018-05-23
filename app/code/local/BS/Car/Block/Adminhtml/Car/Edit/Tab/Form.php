@@ -402,19 +402,6 @@ class BS_Car_Block_Adminhtml_Car_Edit_Tab_Form extends Mage_Adminhtml_Block_Widg
 
 
 
-        $this->addColumn(
-            'res_status',
-            [
-                'header' => Mage::helper('bs_coa')->__('Res. Status'),
-                'index'  => 'res_status',
-                'type'  => 'options',
-                'options' => Mage::helper('bs_coa')->convertOptions(
-                    Mage::getModel('bs_coa/coa_attribute_source_resstatus')->getAllOptions(false)
-                )
-
-            ]
-        );
-
 
 	    if($misc->isAdmin($currentObj)){
 		    $fieldset->addField(
