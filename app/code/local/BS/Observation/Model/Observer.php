@@ -50,7 +50,7 @@ class BS_Observation_Model_Observer
             ],
         ],
         'nrw'    => [
-            'status' => [1,4],
+            'status' => [1,5],
             'close'    => [
                 'status' => 3,//new status of close action
                 'fields' => 'close_date,remark_text'
