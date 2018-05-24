@@ -62,6 +62,16 @@ class BS_Sup_Block_Adminhtml_Sup_Edit_Tab_Form extends Mage_Adminhtml_Block_Widg
         );
 
         $fieldset->addField(
+            'sup_address',
+            'text',
+            [
+                'label' => Mage::helper('bs_sup')->__('Supplier Address'),
+                'name'  => 'sup_address',
+
+            ]
+        );
+
+        $fieldset->addField(
             'cert_no',
             'text',
             [

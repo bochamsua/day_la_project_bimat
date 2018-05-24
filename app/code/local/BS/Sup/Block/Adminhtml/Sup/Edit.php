@@ -40,6 +40,27 @@ class BS_Sup_Block_Adminhtml_Sup_Edit extends Mage_Adminhtml_Block_Widget_Form_C
 
         $this->_updateButton('save','onclick','saveOnly()');
         $this->_updateButton('delete','onclick','deleteOnly()');
+
+
+        if (Mage::registry('current_sup') && Mage::registry('current_sup')->getId()) {
+            $this->_addButton(
+                '2005',
+                [
+                    'label'   => Mage::helper('bs_qn')->__('2005'),
+                    'onclick'   => "setLocation('{$this->getUrl('*/*/generateFive', ['_current'=>true])}')",
+                    'class'   => 'reset',
+                ]
+            );
+
+            $this->_addButton(
+                '2007',
+                [
+                    'label'   => Mage::helper('bs_qn')->__('2007'),
+                    'onclick'   => "setLocation('{$this->getUrl('*/*/generateSeven', ['_current'=>true])}')",
+                    'class'   => 'reset',
+                ]
+            );
+        }
         $add = '';
         $popup = $this->getRequest()->getParam('popup');
         if($popup){

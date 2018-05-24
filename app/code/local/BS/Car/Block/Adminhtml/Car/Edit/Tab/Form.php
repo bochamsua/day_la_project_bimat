@@ -279,6 +279,39 @@ class BS_Car_Block_Adminhtml_Car_Edit_Tab_Form extends Mage_Adminhtml_Block_Widg
             ]
         );
 
+
+        $fieldset->addField(
+            'root_cause',
+            'textarea',
+            [
+                'label' => Mage::helper('bs_car')->__('Root Cause'),
+                'name'  => 'root_cause',
+
+            ]
+        );
+
+        $fieldset->addField(
+            'preventive_action',
+            'textarea',
+            [
+                'label' => Mage::helper('bs_car')->__('Preventive Action'),
+                'name'  => 'preventive_action',
+
+            ]
+        );
+
+        $fieldset->addField(
+            'follow_up',
+            'textarea',
+            [
+                'label' => Mage::helper('bs_car')->__('Follow Up and Closure'),
+                'name'  => 'follow_up',
+
+            ]
+        );
+
+
+
         $fieldset->addField(
             'due_date',
             'date',
@@ -394,6 +427,16 @@ class BS_Car_Block_Adminhtml_Car_Edit_Tab_Form extends Mage_Adminhtml_Block_Widg
                     'image' => $this->getSkinUrl('images/grid-cal.gif'),
                     'format'  => Mage::app()->getLocale()->getDateFormat(Mage_Core_Model_Locale::FORMAT_TYPE_SHORT),
                     'disabled'  => $disable
+                ]
+            );
+
+            $fieldset->addField(
+                'error_type',
+                'select',
+                [
+                    'label' => Mage::helper('bs_car')->__('Error Type'),
+                    'name'  => 'error_type',
+                    'values'=> Mage::getModel('bs_ncr/ncr_attribute_source_errortype')->getAllOptions(false),
                 ]
             );
         }

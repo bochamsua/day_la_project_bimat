@@ -29,7 +29,7 @@ class BS_Signoff_Block_Adminhtml_Signoff_Edit_Tab_Sur extends Mage_Adminhtml_Blo
     {
         $currentSignOff = $this->getSignoff();
         $acReg = $currentSignOff->getAcReg();
-        $fromDate = $currentSignOff->getStartDate();
+        $fromDate = $currentSignOff->getReportDate();
         $toDate = $currentSignOff->getCloseDate();
 
         if(is_null($fromDate)){

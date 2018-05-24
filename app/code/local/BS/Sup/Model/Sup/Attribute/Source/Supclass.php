@@ -26,20 +26,33 @@ class BS_Sup_Model_Sup_Attribute_Source_Supclass
      */
     public function getAllOptions($withEmpty = true, $defaultValues = false)
     {
-        $options =  array(
-            array(
+        $options =  [
+            [
                 'label' => Mage::helper('bs_sup')->__('Tool Subcontractor'),
                 'value' => 1
-            ),
-            array(
+            ],
+            [
                 'label' => Mage::helper('bs_sup')->__('Provider CAT 2'),
                 'value' => 2
-            ),
-            array(
-                'label' => Mage::helper('bs_sup')->__('Class 2'),
+            ],
+            [
+                'label' => Mage::helper('bs_sup')->__('Contractor'),
                 'value' => 3
-            ),
-        );
+            ],
+            [
+                'label' => Mage::helper('bs_sup')->__('Sub contractor'),
+                'value' => 4
+            ],
+            [
+                'label' => Mage::helper('bs_sup')->__('Provider CAT 2 and Tool Supplier'),
+                'value' => 5
+            ],
+            [
+                'label' => Mage::helper('bs_sup')->__('Tool Supplier'),
+                'value' => 6
+            ],
+        ];
+
         if ($withEmpty) {
             array_unshift($options, array('label'=>'', 'value'=>''));
         }

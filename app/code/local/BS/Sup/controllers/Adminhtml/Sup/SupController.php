@@ -408,4 +408,120 @@ class BS_Sup_Adminhtml_Sup_SupController extends BS_Sup_Controller_Adminhtml_Sup
     {
         return Mage::getSingleton('admin/session')->isAllowed('bs_data/sup');
     }
+
+    public function generateFiveAction()
+    {
+
+        if ($id = $this->getRequest()->getParam('id')) {
+            $obj = Mage::getSingleton('bs_sup/sup')->load($id);
+
+            $this->generateFive($obj);
+
+        }
+        $this->_redirect(
+            '*/sup_sup/edit',
+            [
+                'id' => $this->getRequest()->getParam('id'),
+                '_current' => true
+            ]
+        );
+
+    }
+
+    public function generateFive($obj)
+    {
+        $template = Mage::helper('bs_formtemplate')->getFormtemplate('2005');
+
+        $fileName = $obj->getCertNo() . '_2005 Supplier Approval Certificate '.microtime();
+
+
+        $issueDate = Mage::getModel('core/date')->date("d/m/Y", $obj->getIssueDate());
+        $expireDate = Mage::getModel('core/date')->date("d/m/Y", $obj->getExpireDate());
+
+        $data = [
+            'cert_no' => $obj->getCertNo(),
+
+            'name' => $obj->getSupName(),
+            'address' => $obj->getSupAddress(),
+            'class' => Mage::getModel('bs_sup/sup_attribute_source_supclass')->getOptionText($obj->getSupClass()),
+            'rating' => $obj->getRating(),
+            'issue_date' => $issueDate,
+            'expire_date' => $expireDate,
+
+
+        ];
+
+
+
+
+
+        try {
+            $res = Mage::helper('bs_docx')->generateDocx($fileName, $template, $data);
+            $this->_getSession()->addSuccess(
+                Mage::helper('bs_ncr')->__('Click <a href="%s">%s</a>. to open', $res['url'], $res['name'])
+            );
+
+
+        } catch (Exception $e) {
+            $this->_getSession()->addError($e->getMessage());
+        }
+    }
+
+
+    public function generateSevenAction()
+    {
+
+        if ($id = $this->getRequest()->getParam('id')) {
+            $obj = Mage::getSingleton('bs_sup/sup')->load($id);
+
+            $this->generateSeven($obj);
+
+        }
+        $this->_redirect(
+            '*/sup_sup/edit',
+            [
+                'id' => $this->getRequest()->getParam('id'),
+                '_current' => true
+            ]
+        );
+
+    }
+
+    public function generateSeven($obj)
+    {
+        $template = Mage::helper('bs_formtemplate')->getFormtemplate('2007');
+
+        $fileName = $obj->getCertNo() . '_2007 SUBCONTRACTOR_APPROVAL_CERTIFICATE '.microtime();
+
+
+        $issueDate = Mage::getModel('core/date')->date("d/m/Y", $obj->getIssueDate());
+        $expireDate = Mage::getModel('core/date')->date("d/m/Y", $obj->getExpireDate());
+
+        $data = [
+            'cert_no' => $obj->getCertNo(),
+            'name' => $obj->getSupName(),
+            'address' => $obj->getSupAddress(),
+            'class' => Mage::getModel('bs_sup/sup_attribute_source_supclass')->getOptionText($obj->getSupClass()),
+            'rating' => $obj->getRating(),
+            'issue_date' => $issueDate,
+            'expire_date' => $expireDate,
+
+
+        ];
+
+
+
+
+
+        try {
+            $res = Mage::helper('bs_docx')->generateDocx($fileName, $template, $data);
+            $this->_getSession()->addSuccess(
+                Mage::helper('bs_ncr')->__('Click <a href="%s">%s</a>. to open', $res['url'], $res['name'])
+            );
+
+
+        } catch (Exception $e) {
+            $this->_getSession()->addError($e->getMessage());
+        }
+    }
 }

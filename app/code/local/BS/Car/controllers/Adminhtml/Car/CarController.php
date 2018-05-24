@@ -119,7 +119,7 @@ class BS_Car_Adminhtml_Car_CarController extends BS_Sur_Controller_Adminhtml_Sur
     {
         if ($data = $this->getRequest()->getPost('car')) {
             try {
-                $data = $this->_filterDates($data, ['report_date' ,'due_date' ,'close_date']);
+                $data = $this->_filterDates($data, ['report_date' ,'due_date' ,'close_date', 'res_date']);
                 $car = $this->_initCar();
 
                 $car->addData($data);
@@ -627,17 +627,17 @@ class BS_Car_Adminhtml_Car_CarController extends BS_Sur_Controller_Adminhtml_Sur
             ],
             [
                 'code' => 'root',
-                'content' => ''
+                'content' => $obj->getRootCause()
             ],
 
             [
                 'code' => 'corrective',
-                'content' => $obj->getCorrective()
+                'content' => $obj->getCorrectiveAction()
             ],
             [
-                'code' => 'preventive',
+                'code' => 'follow_up',
                 //'type'  => 'inline',
-                'content' => ''
+                'content' => $obj->getFollowUp()
             ],
         ];
 

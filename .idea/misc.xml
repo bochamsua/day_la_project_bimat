@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<project version="4">
-  <component name="ProjectPlainTextFileTypeManager">
-    <file url="file://$PROJECT_DIR$/app/code/local/BS/Signoff/sql/bs_signoff_setup/upgrade-1.0.2-1.0.3.php" />
-    <file url="file://$PROJECT_DIR$/app/code/local/BS/Signoff/sql/bs_signoff_setup/upgrade-1.0.3-1.0.4.php" />
-    <file url="file://$PROJECT_DIR$/app/code/local/BS/Signoff/sql/bs_signoff_setup/upgrade-1.0.4-1.0.5.php" />
-  </component>
-</project>

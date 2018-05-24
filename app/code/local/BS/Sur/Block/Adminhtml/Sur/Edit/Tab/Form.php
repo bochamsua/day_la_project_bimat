@@ -317,9 +317,9 @@ class BS_Sur_Block_Adminhtml_Sur_Edit_Tab_Form extends Mage_Adminhtml_Block_Widg
 
         if(!Mage::registry('current_sur')->getId()){
             $html .= "Event.observe(document, \"dom:loaded\", function(e) {
-                           updateTasks($('".$id."dept_id').value);
+                           //updateTasks($('".$id."dept_id').value);
                            
-                           updateAcreg($('".$id."customer').value, $('".$id."ac_type').value);
+                           //updateAcreg($('".$id."customer').value, $('".$id."ac_type').value);
                           
                     });
                     

@@ -1677,7 +1677,7 @@
         </BS_Client><BS_Acreg>
             <version>1.0.0</version>
         </BS_Acreg><BS_Car>
-            <version>1.0.4</version>
+            <version>1.0.5</version>
         </BS_Car><BS_Report>
             <version>1.0.6</version>
         </BS_Report><BS_Aut>
@@ -1741,7 +1741,7 @@
         </BS_Sur><BS_Hira>
             <version>1.0.1</version>
         </BS_Hira><BS_Sup>
-            <version>1.0.0</version>
+            <version>1.0.1</version>
         </BS_Sup><BS_Kpi>
             <version>1.0.2</version>
         </BS_Kpi><BS_Rii>
