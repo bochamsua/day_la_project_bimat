@@ -201,63 +201,10 @@ class BS_Coa_Block_Adminhtml_Coa_Grid extends Mage_Adminhtml_Block_Widget_Grid
         $this->setMassactionIdField('entity_id');
         $this->getMassactionBlock()->setFormFieldName('coa');
 
-        $isAllowedEdit = Mage::getSingleton('admin/session')->isAllowed("bs_work/coa/edit");
-        $isAllowedDelete = Mage::getSingleton('admin/session')->isAllowed("bs_work/coa/delete");
-
-        if($isAllowedDelete){
-            $this->getMassactionBlock()->addItem(
-                'delete',
-                [
-                    'label'=> Mage::helper('bs_coa')->__('Delete'),
-                    'url'  => $this->getUrl('*/*/massDelete'),
-                    'confirm'  => Mage::helper('bs_coa')->__('Are you sure?')
-                ]
-            );
-        }
-
-        if($isAllowedEdit){
-            $this->getMassactionBlock()->addItem(
-                'status',
-                [
-                    'label'      => Mage::helper('bs_coa')->__('Change status'),
-                    'url'        => $this->getUrl('*/*/massStatus', ['_current'=>true]),
-                    'additional' => [
-                        'status' => [
-                            'name'   => 'status',
-                            'type'   => 'select',
-                            'class'  => 'required-entry',
-                            'label'  => Mage::helper('bs_coa')->__('Status'),
-                            'values' => [
-                                '1' => Mage::helper('bs_coa')->__('Enabled'),
-                                '0' => Mage::helper('bs_coa')->__('Disabled'),
-                            ]
-                        ]
-                    ]
-                ]
-            );
-
-
-
-
-        $this->getMassactionBlock()->addItem(
-            'coa_status',
-            [
-                'label'      => Mage::helper('bs_coa')->__('Change Status'),
-                'url'        => $this->getUrl('*/*/massCoaStatus', ['_current'=>true]),
-                'additional' => [
-                    'flag_coa_status' => [
-                        'name'   => 'flag_coa_status',
-                        'type'   => 'select',
-                        'class'  => 'required-entry',
-                        'label'  => Mage::helper('bs_coa')->__('Status'),
-                        'values' => Mage::getModel('bs_coa/coa_attribute_source_coastatus')
-                            ->getAllOptions(true),
-
-                    ]
-                ]
-            ]
-        );
-        }
+        $this->getMassactionBlock()->addItem('separator', [
+            'label'=> '---Select---',
+            'url'  => ''
+        ]);
         return $this;
     }
 

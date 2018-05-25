@@ -129,23 +129,73 @@ class BS_Coa_Helper_Data extends Mage_Core_Helper_Abstract
     }
 
 
-    public function updateParentStatus($refId, $refType){
-
+    public function updateParentStatus($refId, $refType, $action = null){
+        $resource = Mage::getSingleton('core/resource');
+        $writeConnection = $resource->getConnection('core_write');
+        $readConnection = $resource->getConnection('core_read');
 
         $status = $this->getFinalStatus($refId, $refType);
 
-        if(!is_null($status)){
-            $resource = Mage::getSingleton('core/resource');
-            $writeConnection = $resource->getConnection('core_write');
-            $readConnection = $resource->getConnection('core_read');
+        $table = $resource->getTableName("bs_{$refType}/{$refType}");
+        $refModel = Mage::getModel("bs_{$refType}/{$refType}")->load($refId);
+        $refNo = $refModel->getRefNo();
 
-            $writeConnection->update($resource->getTableName("bs_{$refType}/{$refType}"), ["{$refType}_status" => $status['status']], "entity_id = {$refId}");
+        $optionModel = Mage::getModel("bs_{$refType}/{$refType}_attribute_source_{$refType}status");
+
+        $oldStatus = $readConnection->fetchOne("SELECT {$refType}_status FROM {$table} WHERE entity_id = {$refId}");
+
+        $oldStatusText = $optionModel->getOptionText($oldStatus);
+
+        if(!is_null($status)){
+
+            $writeConnection->update($table, ["{$refType}_status" => $status['status']], "entity_id = {$refId}");
 
             if(in_array($status['status'], [1,3])){//if close status then we will update parent close date
-                $writeConnection->update($resource->getTableName("bs_{$refType}/{$refType}"), ["close_date" => $status['date']], "entity_id = {$refId}");
+                $writeConnection->update($table, ["close_date" => $status['date']], "entity_id = {$refId}");
             }
 
-            return sprintf("The status of %s: %s has been changed!", $refType, $refId);
+            $newStatusText = $optionModel->getOptionText($status['status']);
+
+
+            return sprintf("The status of %s: %s has been changed from <strong>%s</strong> to <strong>%s</strong>!", strtoupper($refType), $refNo, $oldStatusText, $newStatusText);
+
+
+        }
+
+        if($action == 'delete'){//this is used when deleting COA, we need to update parent status too
+
+            //Follow the Res status
+            $match = [
+                'ncr' => [
+                    '1' => '3',
+                    '2' => '6'
+                ],//res status => close status
+                'drr' => [
+                    '1' => '2',
+                    '2' => '3'
+                ],//res status => close status
+                'car' => [
+                    '1' => '2',
+                    '2' => '3'
+                ],//res status => close status
+                'qr' => [
+                    '1' => '3',
+                    '2' => '5'
+                ],//res status => close status
+            ];
+
+
+            $resStatus = $readConnection->fetchOne("SELECT res_status FROM {$table} WHERE entity_id = {$refId}");
+
+            if($resStatus){
+                $objStatus = $match[$refType][$resStatus];
+
+                $writeConnection->update($table, ["{$refType}_status" => $objStatus], "entity_id = {$refId}");
+
+                $newStatusText = $optionModel->getOptionText($objStatus);
+
+                return sprintf("The status of %s: %s has been changed from <strong>%s</strong> to <strong>%s</strong>!", strtoupper($refType), $refNo, $oldStatusText, $newStatusText);
+            }
 
 
         }

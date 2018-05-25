@@ -62,6 +62,15 @@
                     </bs_observation_delete_before>
                 </observers>
             </model_delete_before>
+
+            <!--<model_delete_after>
+                <observers>
+                    <bs_observation_delete_after>
+                        <class>BS_Observation_Model_Observer</class>
+                        <method>modelDeleteAfter</method>
+                    </bs_observation_delete_after>
+                </observers>
+            </model_delete_after>-->
         </events>
     </global>
     <adminhtml>

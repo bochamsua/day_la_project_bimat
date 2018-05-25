@@ -280,35 +280,7 @@ class BS_Car_Block_Adminhtml_Car_Edit_Tab_Form extends Mage_Adminhtml_Block_Widg
         );
 
 
-        $fieldset->addField(
-            'root_cause',
-            'textarea',
-            [
-                'label' => Mage::helper('bs_car')->__('Root Cause'),
-                'name'  => 'root_cause',
 
-            ]
-        );
-
-        $fieldset->addField(
-            'preventive_action',
-            'textarea',
-            [
-                'label' => Mage::helper('bs_car')->__('Preventive Action'),
-                'name'  => 'preventive_action',
-
-            ]
-        );
-
-        $fieldset->addField(
-            'follow_up',
-            'textarea',
-            [
-                'label' => Mage::helper('bs_car')->__('Follow Up and Closure'),
-                'name'  => 'follow_up',
-
-            ]
-        );
 
 
 
@@ -437,6 +409,36 @@ class BS_Car_Block_Adminhtml_Car_Edit_Tab_Form extends Mage_Adminhtml_Block_Widg
                     'label' => Mage::helper('bs_car')->__('Error Type'),
                     'name'  => 'error_type',
                     'values'=> Mage::getModel('bs_ncr/ncr_attribute_source_errortype')->getAllOptions(false),
+                ]
+            );
+
+            $fieldset->addField(
+                'root_cause',
+                'textarea',
+                [
+                    'label' => Mage::helper('bs_car')->__('Root Cause'),
+                    'name'  => 'root_cause',
+
+                ]
+            );
+
+            $fieldset->addField(
+                'preventive_action',
+                'textarea',
+                [
+                    'label' => Mage::helper('bs_car')->__('Preventive Action'),
+                    'name'  => 'preventive_action',
+
+                ]
+            );
+
+            $fieldset->addField(
+                'follow_up',
+                'textarea',
+                [
+                    'label' => Mage::helper('bs_car')->__('Follow Up and Closure'),
+                    'name'  => 'follow_up',
+
                 ]
             );
         }

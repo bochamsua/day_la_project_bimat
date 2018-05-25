@@ -35,7 +35,7 @@ class BS_CmrReport_Helper_Data extends Mage_Core_Helper_Abstract
         return $converted;
     }
 
-    public function getCmrData($month, $year, $type = null){
+    public function getCmrData($month, $year, $type = null, $customer = null){
         if(!$month){
             $month = Mage::getModel('core/date')->date('m', now());
         }
@@ -56,6 +56,10 @@ class BS_CmrReport_Helper_Data extends Mage_Core_Helper_Abstract
         $cmr->addFieldToFilter('report_date', ['from' => $fromTo[0]]);
         $cmr->addFieldToFilter('report_date', ['to' => $fromTo[1]]);
 
+        if($customer){
+            $cmr->addFieldToFilter('customer', ['eq' => $customer]);
+        }
+
         if($type){
             $cmr->addFieldToFilter('cmr_type', $type);
         }
@@ -69,8 +73,8 @@ class BS_CmrReport_Helper_Data extends Mage_Core_Helper_Abstract
 
 
 
-    public function getGroupData($month, $year, $type, $total){
-        $group = $this->getCmrData($month, $year, $type);
+    public function getGroupData($month, $year, $type, $total, $customer = null){
+        $group = $this->getCmrData($month, $year, $type, $customer);
         if($group){
             $count = $group->count();
             $percent = round($count * 100/$total);
@@ -83,7 +87,7 @@ class BS_CmrReport_Helper_Data extends Mage_Core_Helper_Abstract
         return [$group, $count, $percent];
     }
 
-    public function getPreviousCmrData($month, $year, $p,  $type = 1){
+    public function getPreviousCmrData($month, $year, $p,  $type = 1, $customer = null){
 
         $periods = Mage::helper('bs_report')->getPreviousMonthYear($month, $year, $p);
         if(!count($periods)){
@@ -98,6 +102,10 @@ class BS_CmrReport_Helper_Data extends Mage_Core_Helper_Abstract
             $cmr->addFieldToFilter('report_date', ['to' => $fromTo[1]]);
             $cmr->addFieldToFilter('cmr_type', $type);
 
+            if($customer){
+                $cmr->addFieldToFilter('customer', $customer);
+            }
+
             $result['T'.$period[0].'/'.$period[1]] = ($cmr->count())?$cmr->count():0;
 
         }
@@ -106,9 +114,9 @@ class BS_CmrReport_Helper_Data extends Mage_Core_Helper_Abstract
 
     }
 
-    public function getChartData($month, $year, $p,  $type){
+    public function getChartData($month, $year, $p,  $type, $customer){
         $result = [];
-        $cmr = $this->getPreviousCmrData($month, $year, $p, $type);
+        $cmr = $this->getPreviousCmrData($month, $year, $p, $type, $customer);
         if(count($cmr)){
             $i=0;
             $first = '';
@@ -184,8 +192,8 @@ class BS_CmrReport_Helper_Data extends Mage_Core_Helper_Abstract
         return false;
     }
 
-    public function getChart($month, $year, $p,  $type, $renderAt){
-        $chartData = $this->getChartData($month, $year, $p,  $type);
+    public function getChart($month, $year, $p,  $type, $renderAt, $customer){
+        $chartData = $this->getChartData($month, $year, $p,  $type, $customer);
         if($chartData){
             $chart = Mage::helper('bs_chart')->buildChart("line", "100%", 400, $chartData, $renderAt );
             return $chart;
@@ -195,8 +203,8 @@ class BS_CmrReport_Helper_Data extends Mage_Core_Helper_Abstract
 
     }
 
-    public function exportChart($month, $year, $p,  $type){
-        $chartData = $this->getChartData($month, $year, $p,  $type);
+    public function exportChart($month, $year, $p,  $type, $customer){
+        $chartData = $this->getChartData($month, $year, $p,  $type, $customer);
         if($chartData){
             $chartData['chart']['exportEnabled'] = 0;
 

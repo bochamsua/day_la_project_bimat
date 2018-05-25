@@ -911,7 +911,6 @@ class BS_Observation_Model_Observer
     }
 
 
-
     public function modelDeleteBefore($observer){
         $obj = $observer->getObject();
 
@@ -923,11 +922,29 @@ class BS_Observation_Model_Observer
 
         $messages = Mage::helper('bs_misc/relation')->deleteRelation($id, $type);
 
+
         if(count($messages)){
             foreach ($messages as $message) {
                 Mage::getSingleton('adminhtml/session')->addWarning($message);
             }
         }
+
+
+    }
+
+
+    public function modelDeleteAfter($observer){
+        $obj = $observer->getObject();
+
+        $resourceName = $obj->getResourceName();
+        $id = $obj->getId();
+        $type = end(explode("/", $resourceName));
+
+
+        //we need to update parent status if we delete Corrective Action
+
+
+
 
 
     }

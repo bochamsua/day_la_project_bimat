@@ -182,11 +182,25 @@ class BS_Coa_Adminhtml_Coa_CoaController extends BS_Coa_Controller_Adminhtml_Coa
     {
         if ( $this->getRequest()->getParam('id') > 0) {
             try {
-                $coa = Mage::getModel('bs_coa/coa');
-                $coa->setId($this->getRequest()->getParam('id'))->delete();
+                $coa = Mage::getModel('bs_coa/coa')->load($this->getRequest()->getParam('id'));
+
+                $refId = $coa->getRefId();
+                $refType = $coa->getRefType();
+
+                $coa->delete();
+
                 Mage::getSingleton('adminhtml/session')->addSuccess(
                     Mage::helper('bs_coa')->__('Corrective Action was successfully deleted.')
                 );
+
+                $mes = Mage::helper('bs_coa')->updateParentStatus($refId, $refType, 'delete');
+
+                if($mes){
+                    Mage::getSingleton('adminhtml/session')->addWarning(
+                        Mage::helper('bs_coa')->__($mes)
+                    );
+                }
+
                 $this->_redirect('*/*/');
                 return;
             } catch (Mage_Core_Exception $e) {

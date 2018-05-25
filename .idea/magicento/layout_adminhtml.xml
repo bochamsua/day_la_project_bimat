@@ -797,6 +797,38 @@ Empty hanle for ajax response etc.
         </block>
     </adminhtml_cmr_cmr_drrsgrid>
 
+<adminhtml_client_client_index>
+        <reference name="menu">
+            <action method="setActive">
+                <menupath>bs_data/client</menupath>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="bs_client/adminhtml_client" name="client" />
+
+        </reference>
+    </adminhtml_client_client_index>
+    <adminhtml_client_client_grid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_client/adminhtml_client_grid" name="client_grid"/>
+        </block>
+    </adminhtml_client_client_grid>
+    <!-- Client add/edit action -->
+    <adminhtml_client_client_edit>
+        <update handle="editor"/>
+        <reference name="menu">
+            <action method="setActive">
+                <menupath>bs_data/client</menupath>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="bs_client/adminhtml_client_edit" name="client_edit"></block>
+        </reference>
+        <reference name="left">
+            <block type="bs_client/adminhtml_client_edit_tabs" name="client_tabs"></block>
+        </reference>
+    </adminhtml_client_client_edit>
+
 <adminhtml_acreg_customer_index>
         <reference name="menu">
             <action method="setActive">
@@ -1005,6 +1037,38 @@ Empty hanle for ajax response etc.
             <block type="bs_report/adminhtml_workday_edit_tabs" name="workday_tabs"></block>
         </reference>
     </adminhtml_report_workday_edit>
+
+<adminhtml_aut_aut_index>
+        <reference name="menu">
+            <action method="setActive">
+                <menupath>bs_data/aut</menupath>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="bs_aut/adminhtml_aut" name="aut" />
+
+        </reference>
+    </adminhtml_aut_aut_index>
+    <adminhtml_aut_aut_grid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_aut/adminhtml_aut_grid" name="aut_grid"/>
+        </block>
+    </adminhtml_aut_aut_grid>
+    <!-- Aut add/edit action -->
+    <adminhtml_aut_aut_edit>
+        <update handle="editor"/>
+        <reference name="menu">
+            <action method="setActive">
+                <menupath>bs_data/aut</menupath>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="bs_aut/adminhtml_aut_edit" name="aut_edit"></block>
+        </reference>
+        <reference name="left">
+            <block type="bs_aut/adminhtml_aut_edit_tabs" name="aut_tabs"></block>
+        </reference>
+    </adminhtml_aut_aut_edit>
 
 <adminhtml_formtemplate_formtemplate_index>
         <reference name="menu">
@@ -2621,6 +2685,38 @@ Empty hanle for ajax response etc.
         </reference>
     </adminhtml_hira_hira_edit>
 
+<adminhtml_sup_sup_index>
+        <reference name="menu">
+            <action method="setActive">
+                <menupath>bs_data/sup</menupath>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="bs_sup/adminhtml_sup" name="sup" />
+
+        </reference>
+    </adminhtml_sup_sup_index>
+    <adminhtml_sup_sup_grid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_sup/adminhtml_sup_grid" name="sup_grid"/>
+        </block>
+    </adminhtml_sup_sup_grid>
+    <!-- Sup add/edit action -->
+    <adminhtml_sup_sup_edit>
+        <update handle="editor"/>
+        <reference name="menu">
+            <action method="setActive">
+                <menupath>bs_data/sup</menupath>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="bs_sup/adminhtml_sup_edit" name="sup_edit"></block>
+        </reference>
+        <reference name="left">
+            <block type="bs_sup/adminhtml_sup_edit_tabs" name="sup_tabs"></block>
+        </reference>
+    </adminhtml_sup_sup_edit>
+
 <adminhtml_kpi_kpi_index>
         <reference name="menu">
             <action method="setActive">
@@ -2976,6 +3072,38 @@ Empty hanle for ajax response etc.
         </reference>
     </adminhtml_instructions_index>
 
+<adminhtml_tosup_tosup_index>
+        <reference name="menu">
+            <action method="setActive">
+                <menupath>bs_data/tosup</menupath>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="bs_tosup/adminhtml_tosup" name="tosup" />
+
+        </reference>
+    </adminhtml_tosup_tosup_index>
+    <adminhtml_tosup_tosup_grid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_tosup/adminhtml_tosup_grid" name="tosup_grid"/>
+        </block>
+    </adminhtml_tosup_tosup_grid>
+    <!-- Tosup add/edit action -->
+    <adminhtml_tosup_tosup_edit>
+        <update handle="editor"/>
+        <reference name="menu">
+            <action method="setActive">
+                <menupath>bs_data/tosup</menupath>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="bs_tosup/adminhtml_tosup_edit" name="tosup_edit"></block>
+        </reference>
+        <reference name="left">
+            <block type="bs_tosup/adminhtml_tosup_edit_tabs" name="tosup_tabs"></block>
+        </reference>
+    </adminhtml_tosup_tosup_edit>
+
 <adminhtml_logger_logger_index>
         <reference name="menu">
             <action method="setActive">
@@ -3039,6 +3167,38 @@ Empty hanle for ajax response etc.
             <block type="bs_signature/adminhtml_signature_edit_tabs" name="signature_tabs"></block>
         </reference>
     </adminhtml_signature_signature_edit>
+
+<adminhtml_coa_coa_index>
+        <reference name="menu">
+            <action method="setActive">
+                <menupath>bs_work/coa</menupath>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="bs_coa/adminhtml_coa" name="coa" />
+
+        </reference>
+    </adminhtml_coa_coa_index>
+    <adminhtml_coa_coa_grid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_coa/adminhtml_coa_grid" name="coa_grid"/>
+        </block>
+    </adminhtml_coa_coa_grid>
+    <!-- Coa add/edit action -->
+    <adminhtml_coa_coa_edit>
+        <update handle="editor"/>
+        <reference name="menu">
+            <action method="setActive">
+                <menupath>bs_work/coa</menupath>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="bs_coa/adminhtml_coa_edit" name="coa_edit"></block>
+        </reference>
+        <reference name="left">
+            <block type="bs_coa/adminhtml_coa_edit_tabs" name="coa_tabs"></block>
+        </reference>
+    </adminhtml_coa_coa_edit>
 
 <adminhtml_kpireport_kpireport_index>
         <reference name="menu">

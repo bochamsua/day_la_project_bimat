@@ -50,27 +50,28 @@ class BS_CmrReport_Block_Adminhtml_Cmrreport_Grid extends Mage_Adminhtml_Block_W
         if(count($requestData)){
             $month = $requestData['month'];
             $year = $requestData['year'];
+            $customer = $requestData['customer'];
         }
 
 
 
         $helper = $this->helper('bs_cmrreport');
 
-        $collection = $helper->getCmrData($month, $year);
+        $collection = $helper->getCmrData($month, $year, null, $customer);
 
 
         if($collection){
             $count = count($collection);
 
             for ($i = 1; $i <= 5; $i++){
-                $this->{'setGroup'.$i}($helper->getGroupData($month, $year, $i, $count));
+                $this->{'setGroup'.$i}($helper->getGroupData($month, $year, $i, $count, $customer));
             }
 
         }
 
         //chart
         for($k=1; $k <= 4; $k++){
-            $this->{'setChart'.$k}($helper->getChart($month, $year, 5, $k, "chart".$k));
+            $this->{'setChart'.$k}($helper->getChart($month, $year, 5, $k, "chart".$k, $customer));
         }
 
 

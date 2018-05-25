@@ -49,6 +49,16 @@ class BS_Coa_Block_Adminhtml_Coa_Edit_Tabs extends Mage_Adminhtml_Block_Widget_T
                 ->toHtml(),
             ]
         );
+
+        if($this->getCoa()->getId()){
+            $this->addTab('general_info', [
+                'label'     => Mage::helper('bs_coa')->__('Related Info'),
+                'content' => $this->getLayout()->createBlock(
+                    'bs_coa/adminhtml_coa_edit_tab_info'
+                )
+                    ->toHtml()
+            ]);
+        }
         return parent::_beforeToHtml();
     }
 

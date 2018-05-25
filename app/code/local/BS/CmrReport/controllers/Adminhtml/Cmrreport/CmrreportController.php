@@ -55,10 +55,18 @@ class BS_CmrReport_Adminhtml_Cmrreport_CmrreportController extends BS_Sur_Contro
 
         $month = $requestData['month'];
         $year = $requestData['year'];
+        $customer = $requestData['customer'];
+
+        if($customer > 0){
+            $customerModel = Mage::getSingleton('bs_acreg/customer')->load($customer);
+            $customer = $customerModel->getName();
+        }else {
+            $customer = 'All';
+        }
 
         $template = Mage::helper('bs_formtemplate')->getFormtemplate('cmr-report');
 
-        $period = $month.'-'.$year;
+        $period = "{$month}- {$year} ({$customer})";
 
         $fileName = 'CMR Report '.$period.microtime();
 
@@ -73,7 +81,7 @@ class BS_CmrReport_Adminhtml_Cmrreport_CmrreportController extends BS_Sur_Contro
 
         $images = [];
         for($k=1; $k <= 4; $k++){
-            ${'chart'.$k} = $helper->exportChart($month, $year, 6, $k);
+            ${'chart'.$k} = $helper->exportChart($month, $year, 6, $k, $customer);
             $images['chart'.$k] = ['image' => ${'chart'.$k}['file'],
                 'options' => [
                     'float' => 'left',
@@ -93,14 +101,14 @@ class BS_CmrReport_Adminhtml_Cmrreport_CmrreportController extends BS_Sur_Contro
 
 
 
-        $collection = $helper->getCmrData($month, $year);
+        $collection = $helper->getCmrData($month, $year, null, $customer);
 
 
         if($collection){
             $count = count($collection);
 
             for ($i = 1; $i <= 5; $i++){
-                ${'group'.$i} = $helper->getGroupData($month, $year, $i, $count);
+                ${'group'.$i} = $helper->getGroupData($month, $year, $i, $count, $customer);
             }
         }
 

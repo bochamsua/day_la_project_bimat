@@ -30,16 +30,26 @@ class BS_CmrReport_Block_Adminhtml_Filter_Form extends Mage_Adminhtml_Block_Widg
 	    if(count($requestData)){
 		    $formValues = [
 			    'month' => $requestData['month'],
-			    'year'  => $requestData['year']
+			    'year'  => $requestData['year'],
+                'customer'  => $requestData['customer']
             ];
 	    }else { //current time
 		    $formValues = [
 			    'month' => Mage::getModel('core/date')->date('m', now()),
-			    'year'  => Mage::getModel('core/date')->date('Y', now())
+			    'year'  => Mage::getModel('core/date')->date('Y', now()),
+                'customer'  => 0
             ];
 	    }
 
-        $fieldset = $form->addFieldset('base_fieldset', ['legend'=>Mage::helper('bs_report')->__('CMR Report for %s-%s', $formValues['month'], $formValues['year'])]);
+	    $customer = $formValues['customer'];
+	    if($customer > 0){
+	        $customerModel = Mage::getSingleton('bs_acreg/customer')->load($customer);
+	        $customer = $customerModel->getName();
+        }else {
+	        $customer = 'All';
+        }
+
+        $fieldset = $form->addFieldset('base_fieldset', ['legend'=>Mage::helper('bs_report')->__('CMR Report for %s-%s (%s)', $formValues['month'], $formValues['year'], $customer)]);
 
         //$dateFormatIso = Mage::app()->getLocale()->getDateFormat(Mage_Core_Model_Locale::FORMAT_TYPE_SHORT);
 
@@ -58,6 +68,19 @@ class BS_CmrReport_Block_Adminhtml_Filter_Form extends Mage_Adminhtml_Block_Widg
 		    'title' => Mage::helper('reports')->__('Year')
         ]);
 
+        $customers = Mage::getResourceModel('bs_acreg/customer_collection');
+        $customers = $customers->toOptionArray();
+        array_unshift($customers, ['value' => 0, 'label' => 'N/A']);
+        $fieldset->addField(
+            'customer',
+            'select',
+            [
+                'label'     => Mage::helper('bs_cmr')->__('Customer'),
+                'name'      => 'customer',
+                'required'  => false,
+                'values'    => $customers,
+            ]
+        );
 
 
 
