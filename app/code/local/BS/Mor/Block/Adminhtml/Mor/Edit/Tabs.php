@@ -49,6 +49,16 @@ class BS_Mor_Block_Adminhtml_Mor_Edit_Tabs extends Mage_Adminhtml_Block_Widget_T
                 ->toHtml(),
             ]
         );
+
+        if($this->getMor()->getId()){
+            $this->addTab('general_info', [
+                'label'     => Mage::helper('bs_mor')->__('Related Info'),
+                'content' => $this->getLayout()->createBlock(
+                    'bs_mor/adminhtml_mor_edit_tab_info'
+                )
+                    ->toHtml()
+            ]);
+        }
         return parent::_beforeToHtml();
     }
 

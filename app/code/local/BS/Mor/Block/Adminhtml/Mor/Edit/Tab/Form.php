@@ -39,6 +39,36 @@ class BS_Mor_Block_Adminhtml_Mor_Edit_Tab_Form extends Mage_Adminhtml_Block_Widg
         );
 
         $currentObj = Mage::registry('current_mor');
+        $refId = $this->getRequest()->getParam('ref_id');
+        $refType = $this->getRequest()->getParam('ref_type');
+
+        if($currentObj && $currentObj->getId()){
+            $refId = $currentObj->getRefId();
+            $refType = $currentObj->getRefType();
+        }
+
+        $fieldset->addField(
+            'ref_id',
+            'hidden',
+            [
+                'label' => Mage::helper('bs_misc')->__('ref_id'),
+                'name'  => 'ref_id',
+
+
+            ]
+        );
+
+        $fieldset->addField(
+            'ref_type',
+            'hidden',
+            [
+                'label' => Mage::helper('bs_misc')->__('ref_type'),
+                'name'  => 'ref_type',
+
+
+            ]
+        );
+
 
         $customers = Mage::getResourceModel('bs_acreg/customer_collection');
         $customers = $customers->toOptionArray();
@@ -399,6 +429,12 @@ class BS_Mor_Block_Adminhtml_Mor_Edit_Tab_Form extends Mage_Adminhtml_Block_Widg
         } elseif (Mage::registry('current_mor')) {
             $formValues = array_merge($formValues, Mage::registry('current_mor')->getData());
         }
+
+        $formValues = array_merge($formValues, [
+            'ref_id'    => $refId,
+            'ref_type'  => $refType
+
+        ]);
         $form->setValues($formValues);
         return parent::_prepareForm();
     }

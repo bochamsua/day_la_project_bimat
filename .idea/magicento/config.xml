@@ -1687,7 +1687,7 @@
         </BS_Formtemplate><BS_Evaluation>
             <version>1.0.0</version>
         </BS_Evaluation><BS_Mor>
-            <version>1.0.1</version>
+            <version>1.0.2</version>
         </BS_Mor><BS_Concession>
             <version>1.0.2</version>
         </BS_Concession><BS_Setting>
@@ -1703,7 +1703,7 @@
         </BS_HR><BS_Routine>
             <version>1.0.0</version>
         </BS_Routine><BS_Meda>
-            <version>1.0.1</version>
+            <version>1.0.2</version>
         </BS_Meda><BS_Qr>
             <version>1.0.4</version>
         </BS_Qr><BS_CmrReport>
@@ -1733,7 +1733,7 @@
         </BS_NCause><BS_Chart>
             <version>0.1.0</version>
         </BS_Chart><BS_Safety>
-            <version>1.0.1</version>
+            <version>1.0.2</version>
         </BS_Safety><BS_Work>
             <version>1.0.0</version>
         </BS_Work><BS_Sur>

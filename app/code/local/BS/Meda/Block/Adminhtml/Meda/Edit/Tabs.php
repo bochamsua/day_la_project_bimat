@@ -49,6 +49,27 @@ class BS_Meda_Block_Adminhtml_Meda_Edit_Tabs extends Mage_Adminhtml_Block_Widget
                 ->toHtml(),
             ]
         );
+
+        if($id = $this->getMeda()->getId()){
+            $this->addTab('general_info', [
+                'label'     => Mage::helper('bs_meda')->__('Related Info'),
+                'content' => $this->getLayout()->createBlock(
+                    'bs_meda/adminhtml_meda_edit_tab_info'
+                )
+                    ->toHtml()
+            ]);
+
+            $countRelations = $this->helper('bs_misc/relation')->countRelation($id, 'meda');
+
+            $this->addTab(
+                'ir',
+                [
+                    'label' => Mage::helper('bs_meda')->__('IR (%s)', $countRelations['ir']),
+                    'url' => $this->getUrl('adminhtml/meda_meda/irs', ['_current' => true]),
+                    'class' => 'ajax',
+                ]
+            );
+        }
         return parent::_beforeToHtml();
     }
 

@@ -41,4 +41,27 @@
         </reference>
     </adminhtml_safety_safety_edit>
 
+
+    <adminhtml_safety_safety_mors>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_safety/adminhtml_safety_edit_tab_mor" name="safety.edit.tab.mor"/>
+        </block>
+    </adminhtml_safety_safety_mors>
+    <adminhtml_safety_safety_morsgrid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_safety/adminhtml_safety_edit_tab_mor" name="safety.edit.tab.mor"/>
+        </block>
+    </adminhtml_safety_safety_morsgrid>
+
+    <adminhtml_safety_safety_medas>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_safety/adminhtml_safety_edit_tab_meda" name="safety.edit.tab.meda"/>
+        </block>
+    </adminhtml_safety_safety_medas>
+    <adminhtml_safety_safety_medasgrid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_safety/adminhtml_safety_edit_tab_meda" name="safety.edit.tab.meda"/>
+        </block>
+    </adminhtml_safety_safety_medasgrid>
+
 </layout>

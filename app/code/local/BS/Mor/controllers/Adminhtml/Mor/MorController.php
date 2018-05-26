@@ -131,7 +131,8 @@ class BS_Mor_Adminhtml_Mor_MorController extends BS_Mor_Controller_Adminhtml_Mor
                 $mor->save();
                 $add = '';
                 if($this->getRequest()->getParam('popup')){
-                    $add = '<script>window.opener.'.$this->getJsObjectName().'.reload(); window.close()</script>';
+                    //$add = '<script>window.opener.'.$this->getJsObjectName().'.reload(); window.close()</script>';
+                    $add = "<script>doPopup('".$mor->getRefType()."','mor',".$mor->getCount().")</script>";
                 }
                 Mage::getSingleton('adminhtml/session')->addSuccess(
                     Mage::helper('bs_mor')->__('MOR was successfully saved. %s', $add)

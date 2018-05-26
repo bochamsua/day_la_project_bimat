@@ -49,6 +49,29 @@ class BS_Safety_Block_Adminhtml_Safety_Edit_Tabs extends Mage_Adminhtml_Block_Wi
                 ->toHtml(),
             ]
         );
+
+        if($id = $this->getSafety()->getId()){
+            $countRelations = $this->helper('bs_misc/relation')->countRelation($id, 'safety');
+
+
+            $this->addTab(
+                'mor',
+                [
+                    'label' => Mage::helper('bs_safety')->__('MOR (%s)', $countRelations['mor']),
+                    'url' => $this->getUrl('adminhtml/safety_safety/mors', ['_current' => true]),
+                    'class' => 'ajax',
+                ]
+            );
+            $this->addTab(
+                'meda',
+                [
+                    'label' => Mage::helper('bs_safety')->__('MEDA (%s)', $countRelations['meda']),
+                    'url' => $this->getUrl('adminhtml/safety_safety/medas', ['_current' => true]),
+                    'class' => 'ajax',
+                ]
+            );
+
+        }
         return parent::_beforeToHtml();
     }
 

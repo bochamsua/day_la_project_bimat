@@ -396,4 +396,37 @@ class BS_Safety_Adminhtml_Safety_SafetyController extends BS_Safety_Controller_A
     {
         return Mage::getSingleton('admin/session')->isAllowed('bs_work/safety');
     }
+
+
+    public function morsAction()
+    {
+        $this->_initSafety();
+        $this->loadLayout();
+        $this->getLayout()->getBlock('safety.edit.tab.mor');
+        $this->renderLayout();
+    }
+
+    public function morsGridAction()
+    {
+        $this->_initSafety();
+        $this->loadLayout();
+        $this->getLayout()->getBlock('safety.edit.tab.mor');
+        $this->renderLayout();
+    }
+
+    public function medasAction()
+    {
+        $this->_initSafety();
+        $this->loadLayout();
+        $this->getLayout()->getBlock('safety.edit.tab.meda');
+        $this->renderLayout();
+    }
+
+    public function medasGridAction()
+    {
+        $this->_initSafety();
+        $this->loadLayout();
+        $this->getLayout()->getBlock('safety.edit.tab.meda');
+        $this->renderLayout();
+    }
 }

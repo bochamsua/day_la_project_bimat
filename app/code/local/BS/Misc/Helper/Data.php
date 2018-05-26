@@ -22,7 +22,10 @@ class BS_Misc_Helper_Data extends Mage_Core_Helper_Abstract
         'qn',
         'car',
         'drr',
-        'coa'
+        'coa',
+        'mor',
+        'meda',
+
     ];
 
     protected $_surTypes = [
@@ -39,8 +42,8 @@ class BS_Misc_Helper_Data extends Mage_Core_Helper_Abstract
     protected $_otherTypes = [
         'other' => 'o',
         'hira'  => 'h',
-        'mor'   => 'm',
-        'meda'   => 'md',
+        //'mor'   => 'm',
+        //'meda'   => 'md',
         'safety'   => 'sd',
         'nrw'   => 'nw'
 

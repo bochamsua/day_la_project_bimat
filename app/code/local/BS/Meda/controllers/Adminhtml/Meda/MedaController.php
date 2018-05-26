@@ -131,7 +131,8 @@ class BS_Meda_Adminhtml_Meda_MedaController extends BS_Meda_Controller_Adminhtml
                 $meda->save();
                 $add = '';
                 if($this->getRequest()->getParam('popup')){
-                    $add = '<script>window.opener.'.$this->getJsObjectName().'.reload(); window.close()</script>';
+                    //$add = '<script>window.opener.'.$this->getJsObjectName().'.reload(); window.close()</script>';
+                    $add = "<script>doPopup('".$meda->getRefType()."','meda',".$meda->getCount().")</script>";
                 }
                 Mage::getSingleton('adminhtml/session')->addSuccess(
                     Mage::helper('bs_meda')->__('MEDA was successfully saved. %s', $add)
@@ -371,5 +372,22 @@ class BS_Meda_Adminhtml_Meda_MedaController extends BS_Meda_Controller_Adminhtml
     protected function _isAllowed()
     {
         return Mage::getSingleton('admin/session')->isAllowed('bs_work/meda');
+    }
+
+
+    public function irsAction()
+    {
+        $this->_initMeda();
+        $this->loadLayout();
+        $this->getLayout()->getBlock('meda.edit.tab.ir');
+        $this->renderLayout();
+    }
+
+    public function irsGridAction()
+    {
+        $this->_initMeda();
+        $this->loadLayout();
+        $this->getLayout()->getBlock('meda.edit.tab.ir');
+        $this->renderLayout();
     }
 }

@@ -194,6 +194,62 @@ class BS_Safety_Block_Adminhtml_Safety_Edit_Tab_Form extends Mage_Adminhtml_Bloc
             ]
         );
 
+        $fieldset->addField(
+            'mor',
+            'select',
+            array(
+                'label'  => Mage::helper('bs_safety')->__('MOR/HF'),
+                'name'   => 'mor',
+                'values' => array(
+                    array(
+                        'value' => 1,
+                        'label' => Mage::helper('bs_safety')->__('Yes'),
+                    ),
+                    array(
+                        'value' => 0,
+                        'label' => Mage::helper('bs_safety')->__('No'),
+                    ),
+                ),
+            )
+        );
+
+        $fieldset->addField(
+            'abrupt',
+            'text',
+            [
+                'label' => Mage::helper('bs_safety')->__('Abrupt'),
+                'name'  => 'abrupt',
+
+            ]
+        );
+        $fieldset->addField(
+            'evaluation',
+            'text',
+            [
+                'label' => Mage::helper('bs_safety')->__('Evaluation'),
+                'name'  => 'evaluation',
+
+            ]
+        );
+        $fieldset->addField(
+            'place',
+            'text',
+            [
+                'label' => Mage::helper('bs_safety')->__('Place'),
+                'name'  => 'place',
+
+            ]
+        );
+        $fieldset->addField(
+            'final_action',
+            'text',
+            [
+                'label' => Mage::helper('bs_safety')->__('Final Action'),
+                'name'  => 'final_action',
+
+            ]
+        );
+
         /*$fieldset->addField(
             'status',
             'select',
@@ -233,12 +289,25 @@ class BS_Safety_Block_Adminhtml_Safety_Edit_Tab_Form extends Mage_Adminhtml_Bloc
             ->addFieldMap("{$htmlIdPrefix}related_personel", 'related_personel')
             ->addFieldMap("{$htmlIdPrefix}event_type", 'event_type')
             ->addFieldMap("{$htmlIdPrefix}event_no", 'event_no')
+
+            ->addFieldMap("{$htmlIdPrefix}mor", 'mor')
+            ->addFieldMap("{$htmlIdPrefix}abrupt", 'abrupt')
+            ->addFieldMap("{$htmlIdPrefix}evaluation", 'evaluation')
+            ->addFieldMap("{$htmlIdPrefix}place", 'place')
+            ->addFieldMap("{$htmlIdPrefix}final_action", 'final_action')
+
             ->addFieldDependence('from_dept', 'safety_type', ['1','3','4','5'])
             ->addFieldDependence('to_dept', 'safety_type', ['1','2'])
             ->addFieldDependence('from_text', 'safety_type', ['2'])
             ->addFieldDependence('related_personel', 'safety_type', ['3','5'])
             ->addFieldDependence('event_type', 'safety_type', ['4'])
             ->addFieldDependence('event_no', 'safety_type', ['4'])
+
+            ->addFieldDependence('mor', 'safety_type', ['4'])
+            ->addFieldDependence('abrupt', 'safety_type', ['4'])
+            ->addFieldDependence('evaluation', 'safety_type', ['4'])
+            ->addFieldDependence('place', 'safety_type', ['4'])
+            ->addFieldDependence('final_action', 'safety_type', ['4'])
         );
 
 
