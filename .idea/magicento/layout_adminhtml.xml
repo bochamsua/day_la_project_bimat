@@ -1617,6 +1617,17 @@ Empty hanle for ajax response etc.
         </reference>
     </adminhtml_meda_meda_edit>
 
+    <adminhtml_meda_meda_irs>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_meda/adminhtml_meda_edit_tab_ir" name="meda.edit.tab.ir"/>
+        </block>
+    </adminhtml_meda_meda_irs>
+    <adminhtml_meda_meda_irsgrid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="bs_meda/adminhtml_meda_edit_tab_ir" name="meda.edit.tab.ir"/>
+        </block>
+    </adminhtml_meda_meda_irsgrid>
+
 <adminhtml_qr_qr_index>
         <reference name="menu">
             <action method="setActive">

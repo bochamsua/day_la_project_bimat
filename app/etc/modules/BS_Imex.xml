@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * BS_Imex extension
+ * 
+ * @category       BS
+ * @package        BS_Imex
+ * @copyright      Copyright (c) 2018
+ */
+-->
+<config>
+    <modules>
+        <BS_Imex>
+            <active>true</active>
+            <codePool>local</codePool>
+            <depends>
+                <Mage_Core />
+             </depends>
+        </BS_Imex>
+    </modules>
+</config>

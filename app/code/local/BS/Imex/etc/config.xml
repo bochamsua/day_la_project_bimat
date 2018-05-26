@@ -1,0 +1,83 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * BS_Imex extension
+ * 
+ * @category       BS
+ * @package        BS_Imex
+ * @copyright      Copyright (c) 2018
+ */
+-->
+<config>
+    <modules>
+        <BS_Imex>
+            <version>1.0.0</version>
+        </BS_Imex>
+    </modules>
+    <global>
+        <resources>
+            <bs_imex_setup>
+                <setup>
+                    <module>BS_Imex</module>
+                    <class>BS_Imex_Model_Resource_Setup</class>
+                </setup>
+            </bs_imex_setup>
+        </resources>
+        <blocks>
+            <bs_imex>
+                <class>BS_Imex_Block</class>
+            </bs_imex>
+        </blocks>
+        <helpers>
+            <bs_imex>
+                <class>BS_Imex_Helper</class>
+            </bs_imex>
+        </helpers>
+        <models>
+            <bs_imex>
+                <class>BS_Imex_Model</class>
+                <resourceModel>bs_imex_resource</resourceModel>
+            </bs_imex>
+            <bs_imex_resource>
+                <class>BS_Imex_Model_Resource</class>
+                <entities>
+                    <im>
+                        <table>bs_imex_im</table>
+                    </im>
+                    <ex>
+                        <table>bs_imex_ex</table>
+                    </ex>
+                </entities>
+            </bs_imex_resource>
+        </models>
+    </global>
+    <adminhtml>
+        <layout>
+            <updates>
+                <bs_imex>
+                    <file>bs_imex.xml</file>
+                </bs_imex>
+            </updates>
+        </layout>
+        <translate>
+            <modules>
+                <BS_Imex>
+                    <files>
+                        <default>BS_Imex.csv</default>
+                    </files>
+                </BS_Imex>
+            </modules>
+        </translate>
+    </adminhtml>
+    <admin>
+        <routers>
+            <adminhtml>
+                <args>
+                    <modules>
+                        <BS_Imex before="Mage_Adminhtml">BS_Imex_Adminhtml</BS_Imex>
+                    </modules>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin>
+</config>

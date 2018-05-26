@@ -1,0 +1,80 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * BS_Imex extension
+ * 
+ * @category       BS
+ * @package        BS_Imex
+ * @copyright      Copyright (c) 2018
+ */
+-->
+<config>
+    <acl>
+        <resources>
+            <admin>
+                <children>
+                    <system>
+                        <children>
+                            <config>
+                                <children>
+                                    <bs_imex translate="title" module="bs_imex">
+                                        <title>Imex</title>
+                                    </bs_imex>
+                                </children>
+                            </config>
+                        </children>
+                    </system>
+                    <system>
+                        <children>
+                            <bs_imex translate="title" module="bs_imex">
+                                <title>Import Export</title>
+                                <children>
+                                    <im translate="title" module="bs_imex">
+                                        <title>Import</title>
+                                        <sort_order>0</sort_order>
+                                        <children>
+                                            <new translate="title"><title>New</title></new>
+                                            <edit translate="title"><title>Edit</title></edit>
+                                            <delete translate="title"><title>Delete</title></delete>
+                                        </children>
+                                    </im>
+                                    <!--<ex translate="title" module="bs_imex">
+                                        <title>Export</title>
+                                        <sort_order>10</sort_order>
+                                        <children>
+                                            <new translate="title"><title>New</title></new>
+                                            <edit translate="title"><title>Edit</title></edit>
+                                            <delete translate="title"><title>Delete</title></delete>
+                                        </children>
+                                    </ex>-->
+                                </children>
+                            </bs_imex>                        </children>
+                    </system>
+
+                </children>
+            </admin>
+        </resources>
+    </acl>
+    <menu>
+        <system>
+            <children>
+                <bs_imex translate="title" module="bs_imex">
+                    <title>Import Export</title>
+                    <sort_order>10</sort_order>
+                    <children>
+                        <im translate="title" module="bs_imex">
+                            <title>Import</title>
+                            <action>adminhtml/imex_im</action>
+                            <sort_order>0</sort_order>
+                        </im>
+                        <!--<ex translate="title" module="bs_imex">
+                            <title>Export</title>
+                            <action>adminhtml/imex_ex</action>
+                            <sort_order>10</sort_order>
+                        </ex>-->
+                    </children>
+                </bs_imex>            </children>
+        </system>
+
+    </menu>
+</config>

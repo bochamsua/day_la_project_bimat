@@ -153,7 +153,15 @@
                     <action>adminhtml/cmr_cmr</action>
                     <sort_order>0</sort_order>
                 </cmr>
-            <concession translate="title" module="bs_concession">
+            <client translate="title" module="bs_client">
+                    <title>Client</title>
+                    <action>adminhtml/client_client</action>
+                    <sort_order>100</sort_order>
+                </client><aut translate="title" module="bs_aut">
+                    <title>Authority</title>
+                    <action>adminhtml/aut_aut</action>
+                    <sort_order>110</sort_order>
+                </aut><concession translate="title" module="bs_concession">
                     <title>Concession Data</title>
                     <action>adminhtml/concession_concession</action>
                     <sort_order>75</sort_order>
@@ -161,11 +169,19 @@
                     <title>CoA Data</title>
                     <action>adminhtml/cofa_cofa</action>
                     <sort_order>0</sort_order>
-                </cofa><kpi translate="title" module="bs_kpi">
+                </cofa><sup translate="title" module="bs_sup">
+                    <title>Supplier</title>
+                    <action>adminhtml/sup_sup</action>
+                    <sort_order>80</sort_order>
+                </sup><kpi translate="title" module="bs_kpi">
                     <title>KPI Data</title>
                     <action>adminhtml/kpi_kpi</action>
                     <sort_order>75</sort_order>
-                </kpi></children>
+                </kpi><tosup translate="title" module="bs_tosup">
+                    <title>Tool Supplier</title>
+                    <action>adminhtml/tosup_tosup</action>
+                    <sort_order>90</sort_order>
+                </tosup></children>
         <title>Data</title><sort_order>30</sort_order></bs_data><bs_misc>
             <children>
                 <customer translate="title" module="bs_acreg">
@@ -281,7 +297,11 @@
                     <title>RII Sign-off</title>
                     <action>adminhtml/rii_rii</action>
                     <sort_order>20</sort_order>
-                </rii></children>
+                </rii><coa translate="title" module="bs_coa">
+                    <title>Corrective Action</title>
+                    <action>adminhtml/coa_coa</action>
+                    <sort_order>75</sort_order>
+                </coa></children>
         <title>WORK</title><sort_order>20</sort_order></bs_work><bs_report translate="title" module="bs_report">
             <title>Report</title>
             <sort_order>40</sort_order>
@@ -472,13 +492,17 @@
                                         <title>Content Management</title>
                                     </cms><bs_cmr translate="title" module="bs_cmr">
                                         <title>Cmr</title>
-                                    </bs_cmr><bs_acreg translate="title" module="bs_acreg">
+                                    </bs_cmr><bs_client translate="title" module="bs_client">
+                                        <title>Client</title>
+                                    </bs_client><bs_acreg translate="title" module="bs_acreg">
                                         <title>Acreg</title>
                                     </bs_acreg><bs_car translate="title" module="bs_car">
                                         <title>CAR</title>
                                     </bs_car><bs_report translate="title" module="bs_report">
                                         <title>Report</title>
-                                    </bs_report><bs_formtemplate translate="title" module="bs_formtemplate">
+                                    </bs_report><bs_aut translate="title" module="bs_aut">
+                                        <title>Aut</title>
+                                    </bs_aut><bs_formtemplate translate="title" module="bs_formtemplate">
                                         <title>Formtemplate</title>
                                     </bs_formtemplate><bs_evaluation translate="title" module="bs_evaluation">
                                         <title>Evaluation</title>
@@ -532,7 +556,9 @@
                                         <title>Sur</title>
                                     </bs_sur><bs_hira translate="title" module="bs_hira">
                                         <title>Hira</title>
-                                    </bs_hira><bs_kpi translate="title" module="bs_kpi">
+                                    </bs_hira><bs_sup translate="title" module="bs_sup">
+                                        <title>Sup</title>
+                                    </bs_sup><bs_kpi translate="title" module="bs_kpi">
                                         <title>Kpi</title>
                                     </bs_kpi><bs_rii translate="title" module="bs_rii">
                                         <title>Rii</title>
@@ -542,11 +568,15 @@
                                         <title>Wysiwyg</title>
                                     </bs_wysiwyg><bs_nrw translate="title" module="bs_nrw">
                                         <title>Nrw</title>
-                                    </bs_nrw><bs_logger translate="title" module="bs_logger">
+                                    </bs_nrw><bs_tosup translate="title" module="bs_tosup">
+                                        <title>Tosup</title>
+                                    </bs_tosup><bs_logger translate="title" module="bs_logger">
                                         <title>Logger</title>
                                     </bs_logger><bs_signature translate="title" module="bs_signature">
                                         <title>Signature</title>
-                                    </bs_signature><bs_kpireport translate="title" module="bs_kpireport">
+                                    </bs_signature><bs_coa translate="title" module="bs_coa">
+                                        <title>Coa</title>
+                                    </bs_coa><bs_kpireport translate="title" module="bs_kpireport">
                                         <title>KPIReport</title>
                                     </bs_kpireport></children>
                             <disabled>1</disabled></config>
@@ -660,7 +690,23 @@
                                     <delete translate="title"><title>Delete</title></delete>
                                 </children>
                             </cmr>
-                        <concession translate="title" module="bs_concession">
+                        <client translate="title" module="bs_client">
+                                <title>Client</title>
+                                <sort_order>100</sort_order>
+                                <children>
+                                    <new translate="title"><title>New</title></new>
+                                    <edit translate="title"><title>Edit</title></edit>
+                                    <delete translate="title"><title>Delete</title></delete>
+                                </children>
+                            </client><aut translate="title" module="bs_aut">
+                                <title>Authority</title>
+                                <sort_order>110</sort_order>
+                                <children>
+                                    <new translate="title"><title>New</title></new>
+                                    <edit translate="title"><title>Edit</title></edit>
+                                    <delete translate="title"><title>Delete</title></delete>
+                                </children>
+                            </aut><concession translate="title" module="bs_concession">
                                 <title>Concession Data</title>
                                 <sort_order>75</sort_order>
                                 <children>
@@ -676,7 +722,15 @@
                                     <edit translate="title"><title>Edit</title></edit>
                                     <delete translate="title"><title>Delete</title></delete>
                                 </children>
-                            </cofa><kpi translate="title" module="bs_kpi">
+                            </cofa><sup translate="title" module="bs_sup">
+                                <title>Supplier</title>
+                                <sort_order>80</sort_order>
+                                <children>
+                                    <new translate="title"><title>New</title></new>
+                                    <edit translate="title"><title>Edit</title></edit>
+                                    <delete translate="title"><title>Delete</title></delete>
+                                </children>
+                            </sup><kpi translate="title" module="bs_kpi">
                                 <title>KPI Data</title>
                                 <sort_order>75</sort_order>
                                 <children>
@@ -684,7 +738,15 @@
                                     <edit translate="title"><title>Edit</title></edit>
                                     <delete translate="title"><title>Delete</title></delete>
                                 </children>
-                            </kpi></children>
+                            </kpi><tosup translate="title" module="bs_tosup">
+                                <title>Tool Supplier</title>
+                                <sort_order>90</sort_order>
+                                <children>
+                                    <new translate="title"><title>New</title></new>
+                                    <edit translate="title"><title>Edit</title></edit>
+                                    <delete translate="title"><title>Delete</title></delete>
+                                </children>
+                            </tosup></children>
                     <title>Data</title></bs_data><bs_misc>
                         <children>
                             <customer translate="title" module="bs_acreg">
@@ -911,7 +973,15 @@
                                     <edit translate="title"><title>Edit</title></edit>
                                     <delete translate="title"><title>Delete</title></delete>
                                 </children>
-                            </rii></children>
+                            </rii><coa translate="title" module="bs_coa">
+                                <title>Corrective Action</title>
+                                <sort_order>75</sort_order>
+                                <children>
+                                    <new translate="title"><title>New</title></new>
+                                    <edit translate="title"><title>Edit</title></edit>
+                                    <delete translate="title"><title>Delete</title></delete>
+                                </children>
+                            </coa></children>
                     <title>WORK</title></bs_work><bs_report translate="title" module="bs_report">
                         <title>Report</title>
 
