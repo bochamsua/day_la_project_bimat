@@ -109,6 +109,9 @@ class BS_Imex_Model_Im extends Mage_Core_Model_Abstract
 
     public function doImport()
     {
+        $entity = $this->getEntity();
+        $behavior = $this->getBehavior();
+
         $uploader  = Mage::getModel('core/file_uploader', 'im_source');
         $uploader->skipDbProcessing(true);
         $result    = $uploader->save(self::getWorkingDir());
@@ -119,7 +122,7 @@ class BS_Imex_Model_Im extends Mage_Core_Model_Abstract
             unlink($uploadedFile);
             Mage::throwException(Mage::helper('bs_imex')->__('Uploaded file has no extension'));
         }
-        $sourceFile = self::getWorkingDir().'im-data';
+        $sourceFile = self::getWorkingDir().$entity;
 
         $sourceFile .= '.' . $extension;
 
@@ -134,8 +137,7 @@ class BS_Imex_Model_Im extends Mage_Core_Model_Abstract
         }
         // trying to create source adapter for file and catch possible exception to be convinced in its adequacy
         try {
-            $entity = $this->getEntity();
-            $behavior = $this->getBehavior();
+
 
             if($behavior == 'replace'){
                 $collection = Mage::getModel("bs_{$entity}/{$entity}")->getCollection();
@@ -143,92 +145,104 @@ class BS_Imex_Model_Im extends Mage_Core_Model_Abstract
             }
 
             $data = Mage::helper('bs_imex')->readExcelFile($sourceFile);
-            $i = 0;
-            foreach ( $data as $row) {
 
-                $safetyData = [];
-
-                $acType = $row['AC Type'];
-                if($acType == 'A320' || $acType == 'A321'){
-                    $acType = 1;
-                }else {
-                    $acTypeModel = Mage::getModel('bs_misc/aircraft')->getCollection()->addFieldToFilter('ac_code', $acType);
-                    if($id = $acTypeModel->getFirstItem()->getId()){
-                        $acType = $id;
-                    }
-
-                }
-                $safetyData['ac_type'] = $acType;
-                $acReg = $row['Ac Reg'];
-                $acRegModel = Mage::getModel('bs_acreg/acreg')->getCollection()->addFieldToFilter('reg', $acReg);
-                if($acregId = $acRegModel->getFirstItem()->getId()){
-                    $acReg = $acregId;
-                    $safetyData['ac_reg'] = $acReg;
-                }
-
-                $occurDate = $row['Occur Date'];
-                if($occurDate != ''){
-                    $date = DateTime::createFromFormat('j-M-y', $occurDate);
-                    $occurDate =  $date->format('Y-m-d');
-                    $safetyData['occur_date'] = $occurDate;
-                }
-                $place = $row['Place'];
-                $safetyData['place'] = $place;
-
-                $description = $row['Defect'];
-                $safetyData['description'] = $description;
-
-                $finalAction = $row['Final Action'];
-                $safetyData['final_action'] = $finalAction;
-
-                $eventType = null;
-                $mor = 0;
-                $safetyType = 5;
-                if($row['Delay'] != ''){
-                    $eventType = 1;
-                    $safetyType = 4;
-                }
-                if($row['AOG with Report'] != ''){
-                    $eventType = 2;
-                    $safetyType = 4;
-                }
-                if($row['AOG without Report'] != ''){
-                    $eventType = 3;
-                    $safetyType = 4;
-                }
-                if($row['Check'] != ''){
-                    $eventType = 4;
-                    $safetyType = 4;
-                }
-                if($row['Check Extended'] != ''){
-                    $eventType = 5;
-                    $safetyType = 4;
-                }
-
-                if($row['MOR'] != ''){
-                    $mor = 1;
-                }
-                $safetyData['mor'] = $mor;
-                $safetyData['safety_type'] = $safetyType;
-                $safetyData['event_type'] = $eventType;
+            return $this->{'import'.ucfirst($entity)}($data);
 
 
-                $safety = Mage::getModel('bs_safety/safety');
-                $safety->addData($safetyData);
-                $safety->save();
-
-
-
-                $i++;
-            }
-
-            return $i;
 
         } catch (Exception $e) {
             unlink($sourceFile);
             Mage::throwException($e->getMessage());
         }
         return $sourceFile;
+    }
+
+
+    /*
+     * function import[entity]
+     * for example: importSafety, importCar, importNrc, etc.
+     */
+    public function importSafety($data){
+        $i = 0;
+        foreach ( $data as $row) {
+
+            $safetyData = [];
+
+            $acType = $row['AC Type'];
+            if($acType == 'A320' || $acType == 'A321'){
+                $acType = 1;
+            }else {
+                $acTypeModel = Mage::getModel('bs_misc/aircraft')->getCollection()->addFieldToFilter('ac_code', $acType);
+                if($id = $acTypeModel->getFirstItem()->getId()){
+                    $acType = $id;
+                }
+
+            }
+            $safetyData['ac_type'] = $acType;
+            $acReg = $row['Ac Reg'];
+            $acRegModel = Mage::getModel('bs_acreg/acreg')->getCollection()->addFieldToFilter('reg', $acReg);
+            if($acregId = $acRegModel->getFirstItem()->getId()){
+                $acReg = $acregId;
+                $safetyData['ac_reg'] = $acReg;
+            }
+
+            $occurDate = $row['Occur Date'];
+            if($occurDate != ''){
+                $date = DateTime::createFromFormat('j-M-y', $occurDate);
+                $occurDate =  $date->format('Y-m-d');
+                $safetyData['occur_date'] = $occurDate;
+            }
+            $place = $row['Place'];
+            $safetyData['place'] = $place;
+
+            $description = $row['Defect'];
+            $safetyData['description'] = $description;
+
+            $finalAction = $row['Final Action'];
+            $safetyData['final_action'] = $finalAction;
+
+            $eventType = null;
+            $mor = 0;
+            $safetyType = 5;
+            if($row['Delay'] != ''){
+                $eventType = 1;
+                $safetyType = 4;
+            }
+            if($row['AOG with Report'] != ''){
+                $eventType = 2;
+                $safetyType = 4;
+            }
+            if($row['AOG without Report'] != ''){
+                $eventType = 3;
+                $safetyType = 4;
+            }
+            if($row['Check'] != ''){
+                $eventType = 4;
+                $safetyType = 4;
+            }
+            if($row['Check Extended'] != ''){
+                $eventType = 5;
+                $safetyType = 4;
+            }
+
+            if($row['MOR'] != ''){
+                $mor = 1;
+            }
+            $safetyData['mor'] = $mor;
+            $safetyData['safety_type'] = $safetyType;
+            $safetyData['event_type'] = $eventType;
+
+
+            $safety = Mage::getModel('bs_safety/safety');
+            $safety->addData($safetyData);
+            $safety->save();
+
+
+
+            $i++;
+        }
+
+        return $i;
     }
 
 
