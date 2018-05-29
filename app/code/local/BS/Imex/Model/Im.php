@@ -227,6 +227,7 @@ class BS_Imex_Model_Im extends Mage_Core_Model_Abstract
 
             if($row['MOR'] != ''){
                 $mor = 1;
+                $safetyType = 4;
             }
             $safetyData['mor'] = $mor;
             $safetyData['safety_type'] = $safetyType;

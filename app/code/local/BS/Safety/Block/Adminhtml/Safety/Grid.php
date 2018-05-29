@@ -203,7 +203,7 @@ class BS_Safety_Block_Adminhtml_Safety_Grid extends Mage_Adminhtml_Block_Widget_
         //    )
         //);
         //$this->addExportType('*/*/exportCsv', Mage::helper('bs_safety')->__('CSV'));
-        //$this->addExportType('*/*/exportExcel', Mage::helper('bs_safety')->__('Excel'));
+        $this->addExportType('*/*/exportExcel', Mage::helper('bs_safety')->__('Excel'));
         //$this->addExportType('*/*/exportXml', Mage::helper('bs_safety')->__('XML'));
         return parent::_prepareColumns();
     }
