@@ -125,6 +125,16 @@ class BS_Safety_Block_Adminhtml_Safety_Grid extends Mage_Adminhtml_Block_Widget_
         );
 
         $this->addColumn(
+            'description',
+            [
+                'header'    => Mage::helper('bs_safety')->__('Description'),
+                'align'     => 'left',
+                'index'     => 'description',
+            ]
+        );
+
+
+        $this->addColumn(
             'ins_id',
             [
                 'header' => Mage::helper('bs_misc')->__('Inspector'),
@@ -168,6 +178,8 @@ class BS_Safety_Block_Adminhtml_Safety_Grid extends Mage_Adminhtml_Block_Widget_
                 'index'     => 'related_personel',
             ]
         );
+
+
 
 
         /*$this->addColumn(
