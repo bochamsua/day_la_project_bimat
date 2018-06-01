@@ -204,21 +204,21 @@ class BS_Sur_Block_Adminhtml_Sur_Edit_Tab_Form extends Mage_Adminhtml_Block_Widg
         );
 
 
-        $subtasks = Mage::getResourceModel('bs_misc/subtask_collection');
+       /* $subtasks = Mage::getResourceModel('bs_misc/subtask_collection');
         if($taskId){
             $subtasks->addFieldToFilter('task_id', $taskId);
         }
         $subtasks = $subtasks->toOptionArrayFull();
-        array_unshift($subtasks, ['value'=>'0', 'label'=>'N/A']);
+        array_unshift($subtasks, ['value'=>'0', 'label'=>'N/A']);*/
 
 
         $fieldset->addField(
             'subtask_id',
-            'multiselect',
+            'hidden',
             [
                 'label' => Mage::helper('bs_sur')->__('Survey Sub Code'),
                 'name'  => 'subtask_id',
-                'values'=> $subtasks,
+                //'values'=> $subtasks,
                 //'disabled'  => $disable
             ]
         );

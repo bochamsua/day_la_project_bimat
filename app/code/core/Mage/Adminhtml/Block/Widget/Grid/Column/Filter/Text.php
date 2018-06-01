@@ -38,4 +38,25 @@ class Mage_Adminhtml_Block_Widget_Grid_Column_Filter_Text extends Mage_Adminhtml
         $html = '<div class="field-100"><input type="text" name="'.$this->_getHtmlName().'" id="'.$this->_getHtmlId().'" value="'.$this->getEscapedValue().'" class="input-text no-changes"/></div>';
         return $html;
     }
+
+    public function getCondition()
+    {
+        $helper = Mage::getResourceHelper('core');
+        $value = $this->getValue();
+        $values = explode(";", $value);
+
+        $result = [];
+        if(count($values)){
+            foreach ($values as $value) {
+                $likeExpression = $helper->addLikeEscape($value, array('position' => 'any'));
+                $result[] = ['like' => $likeExpression];
+            }
+        }else {
+            $likeExpression = $helper->addLikeEscape($value, array('position' => 'any'));
+            $result[] = ['like' => $likeExpression];
+        }
+
+
+        return $result;
+    }
 }

@@ -475,8 +475,8 @@ class BS_KPIReport_Helper_Data extends Mage_Core_Helper_Abstract
 
         if($collection->count()){
             foreach ($collection as $item) {
-                if($taskId = $item->getTaskId()){
-                    $points = $this->getPointFromTaskId($taskId);
+                if($subtaskId = $item->getSubtaskId()){
+                    $points = $this->getPointFromSubtaskId($subtaskId);
                     $result += $points;
                 }
 
@@ -492,8 +492,8 @@ class BS_KPIReport_Helper_Data extends Mage_Core_Helper_Abstract
 
         if($collection->count()){
             foreach ($collection as $item) {
-                if($taskId = $item->getTaskId()){
-                    $points = $this->getPointFromTaskId($taskId);
+                if($subtaskId = $item->getSubtaskId()){
+                    $points = $this->getPointFromSubtaskId($subtaskId);
                     $result += $points;
                 }
             }
@@ -509,8 +509,8 @@ class BS_KPIReport_Helper_Data extends Mage_Core_Helper_Abstract
 
         if($collection->count()){
             foreach ($collection as $item) {
-                if($taskId = $item->getTaskId()){
-                    $points = $this->getPointFromTaskId($taskId);
+                if($subtaskId = $item->getSubtaskId()){
+                    $points = $this->getPointFromSubtaskId($subtaskId);
                     $result += $points;
                 }
             }
@@ -533,8 +533,8 @@ class BS_KPIReport_Helper_Data extends Mage_Core_Helper_Abstract
         $result = 0;
         foreach ($collection as $item) {
             if($taskId = $item->getTaskId()){
-                $mandatory = Mage::helper('bs_misc/task')->getMandatorySubtaskFromTaskId($taskId, $item->getSection());
-                //$mandatory = $item->getMandatoryItems();
+                //$mandatory = Mage::helper('bs_misc/task')->getMandatorySubtaskFromTaskId($taskId, $item->getSection());
+                $mandatory = $item->getMandatoryItems();
                 $result += $mandatory;
             }
 
@@ -650,6 +650,15 @@ class BS_KPIReport_Helper_Data extends Mage_Core_Helper_Abstract
         $task = Mage::getModel('bs_misc/task')->load($taskId);
         if($task->getId()){
             return floatval($task->getPoints());
+        }
+
+        return 0;
+    }
+
+    public function getPointFromSubtaskId($subtaskId){
+        $subtask = Mage::getModel('bs_misc/subtask')->load($subtaskId);
+        if($subtask->getId()){
+            return floatval($subtask->getPoints());
         }
 
         return 0;
