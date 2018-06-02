@@ -70,6 +70,7 @@ class BS_Misc_Block_Adminhtml_Aircraft_Grid extends Mage_Adminhtml_Block_Widget_
                 'header'    => Mage::helper('bs_misc')->__('Name'),
                 'align'     => 'left',
                 'index'     => 'ac_name',
+                'filter_condition_callback' => [$this, '_searchMultipleWords'],
             ]
         );
         

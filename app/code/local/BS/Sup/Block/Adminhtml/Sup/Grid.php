@@ -89,7 +89,7 @@ class BS_Sup_Block_Adminhtml_Sup_Grid extends Mage_Adminhtml_Block_Widget_Grid
                 'header' => Mage::helper('bs_sup')->__('Cert No'),
                 'index'  => 'cert_no',
                 'type'=> 'text',
-
+                'filter_condition_callback' => [$this, '_searchMultipleWords'],
             ]
         );
         $this->addColumn(
@@ -110,7 +110,7 @@ class BS_Sup_Block_Adminhtml_Sup_Grid extends Mage_Adminhtml_Block_Widget_Grid
                 'header' => Mage::helper('bs_sup')->__('Rating'),
                 'index'  => 'rating',
                 'type'=> 'text',
-
+                'filter_condition_callback' => [$this, '_searchMultipleWords'],
             ]
         );
         $this->addColumn(

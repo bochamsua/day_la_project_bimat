@@ -70,6 +70,7 @@ class BS_Schedule_Block_Adminhtml_Schedule_Grid extends Mage_Adminhtml_Block_Wid
                 'header'    => Mage::helper('bs_schedule')->__('Name'),
                 'align'     => 'left',
                 'index'     => 'name',
+                'filter_condition_callback' => [$this, '_searchMultipleWords'],
             ]
         );
         

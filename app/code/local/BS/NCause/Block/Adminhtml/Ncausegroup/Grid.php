@@ -80,7 +80,7 @@ class BS_NCause_Block_Adminhtml_Ncausegroup_Grid extends Mage_Adminhtml_Block_Wi
                 'header' => Mage::helper('bs_ncause')->__('Name'),
                 'index'  => 'group_name',
                 'type'=> 'text',
-
+                'filter_condition_callback' => [$this, '_searchMultipleWords'],
             ]
         );
         /*$this->addColumn(

@@ -95,7 +95,7 @@ class BS_Client_Block_Adminhtml_Client_Grid extends Mage_Adminhtml_Block_Widget_
                 'header' => Mage::helper('bs_client')->__('Approved Scope'),
                 'index'  => 'approved_scope',
                 'type'=> 'text',
-
+                'filter_condition_callback' => [$this, '_searchMultipleWords'],
             ]
         );
         $this->addColumn(
@@ -104,7 +104,7 @@ class BS_Client_Block_Adminhtml_Client_Grid extends Mage_Adminhtml_Block_Widget_
                 'header' => Mage::helper('bs_client')->__('Station'),
                 'index'  => 'station',
                 'type'=> 'text',
-
+                'filter_condition_callback' => [$this, '_searchMultipleWords'],
             ]
         );
         $this->addColumn(
@@ -113,7 +113,7 @@ class BS_Client_Block_Adminhtml_Client_Grid extends Mage_Adminhtml_Block_Widget_
                 'header' => Mage::helper('bs_client')->__('Authority'),
                 'index'  => 'authority',
                 'type'=> 'text',
-
+                'filter_condition_callback' => [$this, '_searchMultipleWords'],
             ]
         );
         $this->addColumn(
@@ -122,7 +122,7 @@ class BS_Client_Block_Adminhtml_Client_Grid extends Mage_Adminhtml_Block_Widget_
                 'header' => Mage::helper('bs_client')->__('Approval Number'),
                 'index'  => 'approval_no',
                 'type'=> 'text',
-
+                'filter_condition_callback' => [$this, '_searchMultipleWords'],
             ]
         );
         $this->addColumn(

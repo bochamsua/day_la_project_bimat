@@ -130,6 +130,7 @@ class BS_Safety_Block_Adminhtml_Safety_Grid extends Mage_Adminhtml_Block_Widget_
                 'header'    => Mage::helper('bs_safety')->__('Description'),
                 'align'     => 'left',
                 'index'     => 'description',
+                'filter_condition_callback' => [$this, '_searchMultipleWords'],
             ]
         );
 
@@ -176,6 +177,7 @@ class BS_Safety_Block_Adminhtml_Safety_Grid extends Mage_Adminhtml_Block_Widget_
                 'header'    => Mage::helper('bs_safety')->__('Related Personel'),
                 'align'     => 'left',
                 'index'     => 'related_personel',
+                'filter_condition_callback' => [$this, '_searchMultipleWords'],
             ]
         );
 

@@ -83,7 +83,7 @@ class BS_Tosup_Block_Adminhtml_Tosup_Grid extends Mage_Adminhtml_Block_Widget_Gr
                 'header' => Mage::helper('bs_tosup')->__('Organization'),
                 'index'  => 'organization',
                 'type'=> 'text',
-
+                'filter_condition_callback' => [$this, '_searchMultipleWords'],
             ]
         );
         $this->addColumn(
@@ -92,7 +92,7 @@ class BS_Tosup_Block_Adminhtml_Tosup_Grid extends Mage_Adminhtml_Block_Widget_Gr
                 'header' => Mage::helper('bs_tosup')->__('Address'),
                 'index'  => 'address',
                 'type'=> 'text',
-
+                'filter_condition_callback' => [$this, '_searchMultipleWords'],
             ]
         );
         $this->addColumn(
@@ -101,7 +101,7 @@ class BS_Tosup_Block_Adminhtml_Tosup_Grid extends Mage_Adminhtml_Block_Widget_Gr
                 'header' => Mage::helper('bs_tosup')->__('Amasis Code Class'),
                 'index'  => 'amasis_class',
                 'type'=> 'text',
-
+                'filter_condition_callback' => [$this, '_searchMultipleWords'],
             ]
         );
         $this->addColumn(
@@ -128,7 +128,7 @@ class BS_Tosup_Block_Adminhtml_Tosup_Grid extends Mage_Adminhtml_Block_Widget_Gr
                 'header' => Mage::helper('bs_tosup')->__('Approved Scope'),
                 'index'  => 'approved_scope',
                 'type'=> 'text',
-
+                'filter_condition_callback' => [$this, '_searchMultipleWords'],
             ]
         );
         $this->addColumn(

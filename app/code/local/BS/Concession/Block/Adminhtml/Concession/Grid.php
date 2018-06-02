@@ -72,6 +72,7 @@ class BS_Concession_Block_Adminhtml_Concession_Grid extends Mage_Adminhtml_Block
                 'header'    => Mage::helper('bs_concession')->__('Conc Numb'),
                 'align'     => 'left',
                 'index'     => 'name',
+                'filter_condition_callback' => [$this, '_searchMultipleWords'],
             ]
         );
 

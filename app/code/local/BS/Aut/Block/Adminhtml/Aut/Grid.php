@@ -63,6 +63,7 @@ class BS_Aut_Block_Adminhtml_Aut_Grid extends Mage_Adminhtml_Block_Widget_Grid
                 'header'    => Mage::helper('bs_aut')->__('Authority'),
                 'align'     => 'left',
                 'index'     => 'name',
+                'filter_condition_callback' => [$this, '_searchMultipleWords'],
             ]
         );
         
@@ -93,7 +94,7 @@ class BS_Aut_Block_Adminhtml_Aut_Grid extends Mage_Adminhtml_Block_Widget_Grid
                 'header' => Mage::helper('bs_aut')->__('Approved Scope'),
                 'index'  => 'approved_scope',
                 'type'=> 'text',
-
+                'filter_condition_callback' => [$this, '_searchMultipleWords'],
             ]
         );
         $this->addColumn(
@@ -102,7 +103,7 @@ class BS_Aut_Block_Adminhtml_Aut_Grid extends Mage_Adminhtml_Block_Widget_Grid
                 'header' => Mage::helper('bs_aut')->__('Station'),
                 'index'  => 'station',
                 'type'=> 'text',
-
+                'filter_condition_callback' => [$this, '_searchMultipleWords'],
             ]
         );
         $this->addColumn(
@@ -111,7 +112,7 @@ class BS_Aut_Block_Adminhtml_Aut_Grid extends Mage_Adminhtml_Block_Widget_Grid
                 'header' => Mage::helper('bs_aut')->__('Approval Number'),
                 'index'  => 'approval_no',
                 'type'=> 'text',
-
+                'filter_condition_callback' => [$this, '_searchMultipleWords'],
             ]
         );
         $this->addColumn(

@@ -338,6 +338,7 @@ class BS_Sur_Block_Adminhtml_Sur_Grid extends Mage_Adminhtml_Block_Widget_Grid
                 'header' => Mage::helper('bs_ncr')->__('Remark (Outstanding Note)'),
                 'index'  => 'remark_text',
                 'type'  => 'text',
+                'filter_condition_callback' => [$this, '_searchMultipleWords'],
 
             ]
         );
@@ -348,7 +349,7 @@ class BS_Sur_Block_Adminhtml_Sur_Grid extends Mage_Adminhtml_Block_Widget_Grid
                 'header' => Mage::helper('bs_ncr')->__('Remind (Fault not record into report)'),
                 'index'  => 'remind_text',
                 'type'  => 'text',
-
+                'filter_condition_callback' => [$this, '_searchMultipleWords'],
             ]
         );
 

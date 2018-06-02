@@ -129,7 +129,7 @@ class BS_Signoff_Block_Adminhtml_Signoff_Grid extends Mage_Adminhtml_Block_Widge
                 'header' => Mage::helper('bs_signoff')->__('Workpack'),
                 'index'  => 'wp',
                 'type'=> 'text',
-
+                'filter_condition_callback' => [$this, '_searchMultipleWords'],
             ]
         );
         $this->addColumn(

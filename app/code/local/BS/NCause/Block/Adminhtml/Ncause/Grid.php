@@ -95,7 +95,7 @@ class BS_NCause_Block_Adminhtml_Ncause_Grid extends Mage_Adminhtml_Block_Widget_
                 'header' => Mage::helper('bs_ncause')->__('Cause Name'),
                 'index'  => 'cause_name',
                 'type'=> 'text',
-
+                'filter_condition_callback' => [$this, '_searchMultipleWords'],
             ]
         );
 

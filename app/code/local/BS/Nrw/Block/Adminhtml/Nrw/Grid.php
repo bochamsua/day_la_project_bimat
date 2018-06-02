@@ -147,7 +147,7 @@ class BS_Nrw_Block_Adminhtml_Nrw_Grid extends Mage_Adminhtml_Block_Widget_Grid
                 'header' => Mage::helper('bs_nrw')->__('Reject Reason'),
                 'index'  => 'reject_reason',
                 'type'=> 'text',
-
+                'filter_condition_callback' => [$this, '_searchMultipleWords'],
             ]
         );
 

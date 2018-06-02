@@ -102,6 +102,7 @@ class BS_Cofa_Block_Adminhtml_Cofa_Grid extends Mage_Adminhtml_Block_Widget_Grid
                 'align'     => 'left',
                 'index'     => 'description',
                 'renderer'  => 'bs_misc/adminhtml_helper_column_renderer_shorter',
+                'filter_condition_callback' => [$this, '_searchMultipleWords'],
             ]
         );
 
@@ -112,6 +113,7 @@ class BS_Cofa_Block_Adminhtml_Cofa_Grid extends Mage_Adminhtml_Block_Widget_Grid
                 'align'     => 'left',
                 'index'     => 'corrective',
                 'renderer'  => 'bs_misc/adminhtml_helper_column_renderer_shorter',
+                'filter_condition_callback' => [$this, '_searchMultipleWords'],
             ]
         );
 
@@ -122,6 +124,7 @@ class BS_Cofa_Block_Adminhtml_Cofa_Grid extends Mage_Adminhtml_Block_Widget_Grid
                 'align'     => 'left',
                 'index'     => 'preventive',
                 'renderer'  => 'bs_misc/adminhtml_helper_column_renderer_shorter',
+                'filter_condition_callback' => [$this, '_searchMultipleWords'],
             ]
         );
 
@@ -133,6 +136,7 @@ class BS_Cofa_Block_Adminhtml_Cofa_Grid extends Mage_Adminhtml_Block_Widget_Grid
                 'align'     => 'left',
                 'index'     => 'root_cause',
                 'renderer'  => 'bs_misc/adminhtml_helper_column_renderer_shorter',
+                'filter_condition_callback' => [$this, '_searchMultipleWords'],
             ]
         );
 

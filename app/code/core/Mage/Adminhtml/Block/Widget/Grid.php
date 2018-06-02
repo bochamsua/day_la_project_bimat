@@ -1786,4 +1786,28 @@ class Mage_Adminhtml_Block_Widget_Grid extends Mage_Adminhtml_Block_Widget
         return $xl_data;
     }
 
+    protected function _searchMultipleWords($collection, $column){
+        $value = $column->getFilter()->getValue();
+        if (!$value) {
+            return $this;
+        }
+
+        $index = $column->getIndex();
+
+        $queries = [];
+        $values = explode(";", $value);
+        foreach ($values as $word) {
+            $word = trim($word);
+            $queries[] = $index." LIKE '%".$word."%'";
+        }
+
+        $sql = implode(" AND ", $queries);
+
+        $this->getCollection()->getSelect()->where($sql);
+
+
+
+        return $this;
+    }
+
 }

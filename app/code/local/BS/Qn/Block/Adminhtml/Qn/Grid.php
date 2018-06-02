@@ -195,7 +195,7 @@ class BS_Qn_Block_Adminhtml_Qn_Grid extends Mage_Adminhtml_Block_Widget_Grid
                 'index'  => 'approval_id',
                 'type'=> 'number',
                 'type'      => 'options',
-                'options'   => $inspectors,
+                //'options'   => $inspectors,
 
             ]
         );
@@ -227,7 +227,7 @@ class BS_Qn_Block_Adminhtml_Qn_Grid extends Mage_Adminhtml_Block_Widget_Grid
                 'header' => Mage::helper('bs_qn')->__('Reject Reason'),
                 'index'  => 'reject_reason',
                 'type'=> 'text',
-
+                'filter_condition_callback' => [$this, '_searchMultipleWords'],
             ]
         );
         /*$this->addColumn(

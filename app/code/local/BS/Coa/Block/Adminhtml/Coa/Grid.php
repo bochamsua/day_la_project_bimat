@@ -72,6 +72,7 @@ class BS_Coa_Block_Adminhtml_Coa_Grid extends Mage_Adminhtml_Block_Widget_Grid
                 'header'    => Mage::helper('bs_coa')->__('Source'),
                 'align'     => 'left',
                 'index'     => 'ref_type',
+                'filter_condition_callback' => [$this, '_searchMultipleWords'],
             ]
         );
 
@@ -106,7 +107,7 @@ class BS_Coa_Block_Adminhtml_Coa_Grid extends Mage_Adminhtml_Block_Widget_Grid
                 'header' => Mage::helper('bs_coa')->__('Description'),
                 'index'  => 'description',
                 'type'=> 'text',
-
+                'filter_condition_callback' => [$this, '_searchMultipleWords'],
             ]
         );
 

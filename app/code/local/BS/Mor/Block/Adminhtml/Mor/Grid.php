@@ -143,7 +143,7 @@ class BS_Mor_Block_Adminhtml_Mor_Grid extends Mage_Adminhtml_Block_Widget_Grid
                 'header' => Mage::helper('bs_mor')->__('Place'),
                 'index'  => 'place',
                 'type'=> 'text',
-
+                'filter_condition_callback' => [$this, '_searchMultipleWords'],
             ]
         );
         $this->addColumn(

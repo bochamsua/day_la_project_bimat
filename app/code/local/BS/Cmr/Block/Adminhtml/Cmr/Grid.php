@@ -79,6 +79,7 @@ class BS_Cmr_Block_Adminhtml_Cmr_Grid extends Mage_Adminhtml_Block_Widget_Grid
                 'header'    => Mage::helper('bs_cmr')->__('Code SQS'),
                 'align'     => 'left',
                 'index'     => 'code_sqs',
+                'filter_condition_callback' => [$this, '_searchMultipleWords'],
             ]
         );
 
@@ -117,6 +118,7 @@ class BS_Cmr_Block_Adminhtml_Cmr_Grid extends Mage_Adminhtml_Block_Widget_Grid
                 'align'     => 'left',
                 'index'     => 'description',
                 'renderer'  => 'bs_misc/adminhtml_helper_column_renderer_shorter',
+                'filter_condition_callback' => [$this, '_searchMultipleWords'],
             ]
         );
 
@@ -127,6 +129,7 @@ class BS_Cmr_Block_Adminhtml_Cmr_Grid extends Mage_Adminhtml_Block_Widget_Grid
                 'align'     => 'left',
                 'index'     => 'corrective',
                 'renderer'  => 'bs_misc/adminhtml_helper_column_renderer_shorter',
+                'filter_condition_callback' => [$this, '_searchMultipleWords'],
             ]
         );
 
@@ -137,6 +140,7 @@ class BS_Cmr_Block_Adminhtml_Cmr_Grid extends Mage_Adminhtml_Block_Widget_Grid
                 'align'     => 'left',
                 'index'     => 'preventive',
                 'renderer'  => 'bs_misc/adminhtml_helper_column_renderer_shorter',
+                'filter_condition_callback' => [$this, '_searchMultipleWords'],
             ]
         );
 
@@ -148,6 +152,7 @@ class BS_Cmr_Block_Adminhtml_Cmr_Grid extends Mage_Adminhtml_Block_Widget_Grid
                 'align'     => 'left',
                 'index'     => 'root_cause',
                 'renderer'  => 'bs_misc/adminhtml_helper_column_renderer_shorter',
+                'filter_condition_callback' => [$this, '_searchMultipleWords'],
             ]
         );
 

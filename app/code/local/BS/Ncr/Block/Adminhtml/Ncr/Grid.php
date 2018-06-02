@@ -101,7 +101,7 @@ class BS_Ncr_Block_Adminhtml_Ncr_Grid extends Mage_Adminhtml_Block_Widget_Grid
 			    'header' => Mage::helper('bs_ncr')->__('Short Desc'),
 			    'index'  => 'short_desc',
 			    'type'=> 'text',
-
+                'filter_condition_callback' => [$this, '_searchMultipleWords'],
             ]
 	    );
 
@@ -224,7 +224,7 @@ class BS_Ncr_Block_Adminhtml_Ncr_Grid extends Mage_Adminhtml_Block_Widget_Grid
                 'header' => Mage::helper('bs_ncr')->__('REF Doc'),
                 'index'  => 'ref_doc',
                 'type'=> 'text',
-
+                'filter_condition_callback' => [$this, '_searchMultipleWords'],
             ]
         );
 
@@ -393,7 +393,7 @@ class BS_Ncr_Block_Adminhtml_Ncr_Grid extends Mage_Adminhtml_Block_Widget_Grid
                 'header' => Mage::helper('bs_ncr')->__('Reject Reason'),
                 'index'  => 'reject_reason',
                 'type'=> 'text',
-
+                'filter_condition_callback' => [$this, '_searchMultipleWords'],
             ]
         );
 

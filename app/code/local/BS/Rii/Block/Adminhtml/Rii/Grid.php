@@ -145,7 +145,7 @@ class BS_Rii_Block_Adminhtml_Rii_Grid extends Mage_Adminhtml_Block_Widget_Grid
                 'header' => Mage::helper('bs_rii')->__('Workpack'),
                 'index'  => 'wp',
                 'type'=> 'text',
-
+                'filter_condition_callback' => [$this, '_searchMultipleWords'],
             ]
         );
         $this->addColumn(
