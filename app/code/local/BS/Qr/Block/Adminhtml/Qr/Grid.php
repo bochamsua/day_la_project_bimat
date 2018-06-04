@@ -193,9 +193,8 @@ class BS_Qr_Block_Adminhtml_Qr_Grid extends Mage_Adminhtml_Block_Widget_Grid
             [
                 'header' => Mage::helper('bs_qr')->__('Approved By'),
                 'index'  => 'approval_id',
-                'type'=> 'number',
                 'type'      => 'options',
-                //'options'   => $inspectors,
+                'options'   => Mage::helper('bs_misc/user')->getUsers(true, true, true, true, true, false, false, false),
 
             ]
         );

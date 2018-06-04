@@ -309,7 +309,7 @@ class BS_Ncr_Block_Adminhtml_Ncr_Grid extends Mage_Adminhtml_Block_Widget_Grid
                 'header'    => Mage::helper('bs_misc')->__('Approved By'),
                 'index'     => 'approval_id',
                 'type'      => 'options',
-                'options'   => Mage::helper('bs_misc/user')->getUsers(true, true, true, true, true, false),
+                'options'   => Mage::helper('bs_misc/user')->getUsers(true, true, true, true, true, false, false, false),
 
             ]
         );

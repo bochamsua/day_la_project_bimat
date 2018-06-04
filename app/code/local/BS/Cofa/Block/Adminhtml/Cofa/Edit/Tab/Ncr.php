@@ -171,8 +171,8 @@ class BS_Cofa_Block_Adminhtml_Cofa_Edit_Tab_Ncr extends Mage_Adminhtml_Block_Wid
             [
                 'header' => Mage::helper('bs_ncr')->__('Approved By'),
                 'index'  => 'approval_id',
-                'type'=> 'number',
-
+                'type'=> 'options',
+                'options'   => Mage::helper('bs_misc/user')->getUsers(true, true, true, true, true, false, false, false),
             ]
         );
         $this->addColumn(

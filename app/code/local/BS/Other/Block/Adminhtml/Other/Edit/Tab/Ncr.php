@@ -171,8 +171,8 @@ class BS_Other_Block_Adminhtml_Other_Edit_Tab_Ncr extends Mage_Adminhtml_Block_W
             [
                 'header' => Mage::helper('bs_ncr')->__('Approved By'),
                 'index'  => 'approval_id',
-                'type'=> 'number',
-
+                'type'=> 'options',
+                'options'   => Mage::helper('bs_misc/user')->getUsers(true, true, true, true, true, false, false, false),
             ]
         );
         $this->addColumn(
