@@ -91,7 +91,12 @@
                     <module>BS_Aut</module>
                     <class>BS_Aut_Model_Resource_Setup</class>
                 </setup>
-            </bs_aut_setup><bs_formtemplate_setup>
+            </bs_aut_setup><bs_imex_setup>
+                <setup>
+                    <module>BS_Imex</module>
+                    <class>BS_Imex_Model_Resource_Setup</class>
+                </setup>
+            </bs_imex_setup><bs_formtemplate_setup>
                 <setup>
                     <module>BS_Formtemplate</module>
                     <class>BS_Formtemplate_Model_Resource_Setup</class>
@@ -522,7 +527,20 @@
                         <table>bs_aut_aut</table>
                     </aut>
                 </entities>
-            </bs_aut_resource><bs_formtemplate>
+            </bs_aut_resource><bs_imex>
+                <class>BS_Imex_Model</class>
+                <resourceModel>bs_imex_resource</resourceModel>
+            </bs_imex><bs_imex_resource>
+                <class>BS_Imex_Model_Resource</class>
+                <entities>
+                    <im>
+                        <table>bs_imex_im</table>
+                    </im>
+                    <ex>
+                        <table>bs_imex_ex</table>
+                    </ex>
+                </entities>
+            </bs_imex_resource><bs_formtemplate>
                 <class>BS_Formtemplate_Model</class>
                 <resourceModel>bs_formtemplate_resource</resourceModel>
             </bs_formtemplate><bs_formtemplate_resource>
@@ -933,7 +951,9 @@
                 <class>BS_Report_Block</class>
             </bs_report><bs_aut>
                 <class>BS_Aut_Block</class>
-            </bs_aut><bs_formtemplate>
+            </bs_aut><bs_imex>
+                <class>BS_Imex_Block</class>
+            </bs_imex><bs_formtemplate>
                 <class>BS_Formtemplate_Block</class>
             </bs_formtemplate><bs_mor>
                 <class>BS_Mor_Block</class>
@@ -1025,7 +1045,9 @@
                 <class>BS_Report_Helper</class>
             </bs_report><bs_aut>
                 <class>BS_Aut_Helper</class>
-            </bs_aut><bs_formtemplate>
+            </bs_aut><bs_imex>
+                <class>BS_Imex_Helper</class>
+            </bs_imex><bs_formtemplate>
                 <class>BS_Formtemplate_Helper</class>
             </bs_formtemplate><bs_evaluation>
                 <class>BS_Evaluation_Helper</class>
@@ -1682,7 +1704,9 @@
             <version>1.0.6</version>
         </BS_Report><BS_Aut>
             <version>1.0.0</version>
-        </BS_Aut><BS_Formtemplate>
+        </BS_Aut><BS_Imex>
+            <version>1.0.0</version>
+        </BS_Imex><BS_Formtemplate>
             <version>1.0.1</version>
         </BS_Formtemplate><BS_Evaluation>
             <version>1.0.0</version>
@@ -1905,7 +1929,11 @@
                     <files>
                         <default>BS_Aut.csv</default>
                     </files>
-                </BS_Aut><BS_Formtemplate>
+                </BS_Aut><BS_Imex>
+                    <files>
+                        <default>BS_Imex.csv</default>
+                    </files>
+                </BS_Imex><BS_Formtemplate>
                     <files>
                         <default>BS_Formtemplate.csv</default>
                     </files>
@@ -2139,7 +2167,9 @@
                     <file>bs_report.xml</file>
                 </bs_report><bs_aut>
                     <file>bs_aut.xml</file>
-                </bs_aut><bs_formtemplate>
+                </bs_aut><bs_imex>
+                    <file>bs_imex.xml</file>
+                </bs_imex><bs_formtemplate>
                     <file>bs_formtemplate.xml</file>
                 </bs_formtemplate><bs_mor>
                     <file>bs_mor.xml</file>
@@ -2432,7 +2462,7 @@
                     
                 <modules>
                         <BS_Cmr before="Mage_Adminhtml">BS_Cmr_Adminhtml</BS_Cmr>
-                    <BS_Client before="Mage_Adminhtml">BS_Client_Adminhtml</BS_Client><BS_Acreg before="Mage_Adminhtml">BS_Acreg_Adminhtml</BS_Acreg><BS_Car before="Mage_Adminhtml">BS_Car_Adminhtml</BS_Car><BS_Report before="Mage_Adminhtml">BS_Report_Adminhtml</BS_Report><BS_Aut before="Mage_Adminhtml">BS_Aut_Adminhtml</BS_Aut><BS_Formtemplate before="Mage_Adminhtml">BS_Formtemplate_Adminhtml</BS_Formtemplate><BS_Evaluation before="Mage_Adminhtml">BS_Evaluation_Adminhtml</BS_Evaluation><BS_Mor before="Mage_Adminhtml">BS_Mor_Adminhtml</BS_Mor><BS_Concession before="Mage_Adminhtml">BS_Concession_Adminhtml</BS_Concession><BS_Setting before="Mage_Adminhtml">BS_Setting_Adminhtml</BS_Setting><BS_Schedule before="Mage_Adminhtml">BS_Schedule_Adminhtml</BS_Schedule><BS_Drr before="Mage_Adminhtml">BS_Drr_Adminhtml</BS_Drr><bs_data before="Mage_Adminhtml">BS_Data_Adminhtml</bs_data><BS_HR before="Mage_Adminhtml">BS_HR_Adminhtml</BS_HR><BS_Routine before="Mage_Adminhtml">BS_Routine_Adminhtml</BS_Routine><BS_Meda before="Mage_Adminhtml">BS_Meda_Adminhtml</BS_Meda><BS_Qr before="Mage_Adminhtml">BS_Qr_Adminhtml</BS_Qr><BS_CmrReport before="Mage_Adminhtml">BS_CmrReport_Adminhtml</BS_CmrReport><BS_Popup before="Mage_Adminhtml">BS_Popup_Adminhtml</BS_Popup><BS_Rewriting before="Mage_Adminhtml">BS_Rewriting_Adminhtml</BS_Rewriting><BS_Other before="Mage_Adminhtml">BS_Other_Adminhtml</BS_Other><BS_Ncr before="Mage_Adminhtml">BS_Ncr_Adminhtml</BS_Ncr><BS_Signoff before="Mage_Adminhtml">BS_Signoff_Adminhtml</BS_Signoff><BS_Misc before="Mage_Adminhtml">BS_Misc_Adminhtml</BS_Misc><BS_Ir before="Mage_Adminhtml">BS_Ir_Adminhtml</BS_Ir><BS_Cofa before="Mage_Adminhtml">BS_Cofa_Adminhtml</BS_Cofa><BS_Qn before="Mage_Adminhtml">BS_Qn_Adminhtml</BS_Qn><BS_NCause before="Mage_Adminhtml">BS_NCause_Adminhtml</BS_NCause><BS_Chart before="Mage_Adminhtml">BS_Chart_Adminhtml</BS_Chart><BS_Safety before="Mage_Adminhtml">BS_Safety_Adminhtml</BS_Safety><BS_Work before="Mage_Adminhtml">BS_Work_Adminhtml</BS_Work><BS_Sur before="Mage_Adminhtml">BS_Sur_Adminhtml</BS_Sur><BS_Hira before="Mage_Adminhtml">BS_Hira_Adminhtml</BS_Hira><BS_Sup before="Mage_Adminhtml">BS_Sup_Adminhtml</BS_Sup><BS_Kpi before="Mage_Adminhtml">BS_Kpi_Adminhtml</BS_Kpi><BS_Rii before="Mage_Adminhtml">BS_Rii_Adminhtml</BS_Rii><BS_Sched before="Mage_Adminhtml">BS_Sched_Adminhtml</BS_Sched><BS_Wysiwyg before="Mage_Adminhtml">BS_Wysiwyg_Adminhtml</BS_Wysiwyg><BS_Nrw before="Mage_Adminhtml">BS_Nrw_Adminhtml</BS_Nrw><BackupGuard_BackupGuardPlatinum after="Mage_Adminhtml">BackupGuard_BackupGuardPlatinum_Adminhtml</BackupGuard_BackupGuardPlatinum><BS_Observation before="Mage_Adminhtml">BS_Observation_Adminhtml</BS_Observation><Aoe_Scheduler before="Mage_Adminhtml">Aoe_Scheduler_Adminhtml</Aoe_Scheduler><BS_Tosup before="Mage_Adminhtml">BS_Tosup_Adminhtml</BS_Tosup><BS_Logger before="Mage_Adminhtml">BS_Logger_Adminhtml</BS_Logger><BS_Docx before="Mage_Adminhtml">BS_Docx_Adminhtml</BS_Docx><BS_Signature before="Mage_Adminhtml">BS_Signature_Adminhtml</BS_Signature><BS_Coa before="Mage_Adminhtml">BS_Coa_Adminhtml</BS_Coa><BS_KPIReport before="Mage_Adminhtml">BS_KPIReport_Adminhtml</BS_KPIReport></modules><frontName><![CDATA[admin]]></frontName></args>
+                    <BS_Client before="Mage_Adminhtml">BS_Client_Adminhtml</BS_Client><BS_Acreg before="Mage_Adminhtml">BS_Acreg_Adminhtml</BS_Acreg><BS_Car before="Mage_Adminhtml">BS_Car_Adminhtml</BS_Car><BS_Report before="Mage_Adminhtml">BS_Report_Adminhtml</BS_Report><BS_Aut before="Mage_Adminhtml">BS_Aut_Adminhtml</BS_Aut><BS_Imex before="Mage_Adminhtml">BS_Imex_Adminhtml</BS_Imex><BS_Formtemplate before="Mage_Adminhtml">BS_Formtemplate_Adminhtml</BS_Formtemplate><BS_Evaluation before="Mage_Adminhtml">BS_Evaluation_Adminhtml</BS_Evaluation><BS_Mor before="Mage_Adminhtml">BS_Mor_Adminhtml</BS_Mor><BS_Concession before="Mage_Adminhtml">BS_Concession_Adminhtml</BS_Concession><BS_Setting before="Mage_Adminhtml">BS_Setting_Adminhtml</BS_Setting><BS_Schedule before="Mage_Adminhtml">BS_Schedule_Adminhtml</BS_Schedule><BS_Drr before="Mage_Adminhtml">BS_Drr_Adminhtml</BS_Drr><bs_data before="Mage_Adminhtml">BS_Data_Adminhtml</bs_data><BS_HR before="Mage_Adminhtml">BS_HR_Adminhtml</BS_HR><BS_Routine before="Mage_Adminhtml">BS_Routine_Adminhtml</BS_Routine><BS_Meda before="Mage_Adminhtml">BS_Meda_Adminhtml</BS_Meda><BS_Qr before="Mage_Adminhtml">BS_Qr_Adminhtml</BS_Qr><BS_CmrReport before="Mage_Adminhtml">BS_CmrReport_Adminhtml</BS_CmrReport><BS_Popup before="Mage_Adminhtml">BS_Popup_Adminhtml</BS_Popup><BS_Rewriting before="Mage_Adminhtml">BS_Rewriting_Adminhtml</BS_Rewriting><BS_Other before="Mage_Adminhtml">BS_Other_Adminhtml</BS_Other><BS_Ncr before="Mage_Adminhtml">BS_Ncr_Adminhtml</BS_Ncr><BS_Signoff before="Mage_Adminhtml">BS_Signoff_Adminhtml</BS_Signoff><BS_Misc before="Mage_Adminhtml">BS_Misc_Adminhtml</BS_Misc><BS_Ir before="Mage_Adminhtml">BS_Ir_Adminhtml</BS_Ir><BS_Cofa before="Mage_Adminhtml">BS_Cofa_Adminhtml</BS_Cofa><BS_Qn before="Mage_Adminhtml">BS_Qn_Adminhtml</BS_Qn><BS_NCause before="Mage_Adminhtml">BS_NCause_Adminhtml</BS_NCause><BS_Chart before="Mage_Adminhtml">BS_Chart_Adminhtml</BS_Chart><BS_Safety before="Mage_Adminhtml">BS_Safety_Adminhtml</BS_Safety><BS_Work before="Mage_Adminhtml">BS_Work_Adminhtml</BS_Work><BS_Sur before="Mage_Adminhtml">BS_Sur_Adminhtml</BS_Sur><BS_Hira before="Mage_Adminhtml">BS_Hira_Adminhtml</BS_Hira><BS_Sup before="Mage_Adminhtml">BS_Sup_Adminhtml</BS_Sup><BS_Kpi before="Mage_Adminhtml">BS_Kpi_Adminhtml</BS_Kpi><BS_Rii before="Mage_Adminhtml">BS_Rii_Adminhtml</BS_Rii><BS_Sched before="Mage_Adminhtml">BS_Sched_Adminhtml</BS_Sched><BS_Wysiwyg before="Mage_Adminhtml">BS_Wysiwyg_Adminhtml</BS_Wysiwyg><BS_Nrw before="Mage_Adminhtml">BS_Nrw_Adminhtml</BS_Nrw><BackupGuard_BackupGuardPlatinum after="Mage_Adminhtml">BackupGuard_BackupGuardPlatinum_Adminhtml</BackupGuard_BackupGuardPlatinum><BS_Observation before="Mage_Adminhtml">BS_Observation_Adminhtml</BS_Observation><Aoe_Scheduler before="Mage_Adminhtml">Aoe_Scheduler_Adminhtml</Aoe_Scheduler><BS_Tosup before="Mage_Adminhtml">BS_Tosup_Adminhtml</BS_Tosup><BS_Logger before="Mage_Adminhtml">BS_Logger_Adminhtml</BS_Logger><BS_Docx before="Mage_Adminhtml">BS_Docx_Adminhtml</BS_Docx><BS_Signature before="Mage_Adminhtml">BS_Signature_Adminhtml</BS_Signature><BS_Coa before="Mage_Adminhtml">BS_Coa_Adminhtml</BS_Coa><BS_KPIReport before="Mage_Adminhtml">BS_KPIReport_Adminhtml</BS_KPIReport></modules><frontName><![CDATA[admin]]></frontName></args>
             </adminhtml>
         </routers>
     </admin><websites>

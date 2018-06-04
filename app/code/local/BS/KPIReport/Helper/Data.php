@@ -532,11 +532,8 @@ class BS_KPIReport_Helper_Data extends Mage_Core_Helper_Abstract
 
         $result = 0;
         foreach ($collection as $item) {
-            if($taskId = $item->getTaskId()){
-                //$mandatory = Mage::helper('bs_misc/task')->getMandatorySubtaskFromTaskId($taskId, $item->getSection());
-                $mandatory = $item->getMandatoryItems();
-                $result += $mandatory;
-            }
+            $mandatory = $item->getMandatoryItems();
+            $result += $mandatory;
 
         }
 
