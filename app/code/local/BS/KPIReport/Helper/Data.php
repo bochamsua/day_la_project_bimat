@@ -96,7 +96,7 @@ class BS_KPIReport_Helper_Data extends Mage_Core_Helper_Abstract
         $ncrs = $this->getNCRate($deptId, $month, $year);
 
         if($mandatoryItems > 0){
-            return round($ncrs * 10000 / $mandatoryItems, 2);
+            return round($ncrs * 1000 / $mandatoryItems, 2);
         }
 
         return 0;

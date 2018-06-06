@@ -116,21 +116,21 @@ class BS_Report_Helper_Data extends Mage_Core_Helper_Abstract
     public function getFromTo($month = null, $year = null, $full = false){
 
         if(!$month){
-            $month = Mage::helper('bs_misc/date')->getNowUtcDate(null, "MM");
+            $month = Mage::helper('bs_misc/date')->getNowStoreDate(null, "MM");
         }
 
         if(!$year){
-            $year = Mage::helper('bs_misc/date')->getNowUtcDate(null, "y");
+            $year = Mage::helper('bs_misc/date')->getNowStoreDate(null, "y");
         }
 
-        $fullDate = Mage::helper('bs_misc/date')->getNowUtcDate(null, "ddMMy");
+        $fullDate = Mage::helper('bs_misc/date')->getNowStoreDate(null, "ddMMy");
 
         $days = $this->getDaysInMonth($month, $year);
         $from = $year.'-'.$month.'-01';
         $to = $year.'-'.$month.'-'.$days;
 
-        $fromDate = Mage::helper('bs_misc/date')->getUtcDate($from);
-        $toDate = Mage::helper('bs_misc/date')->getUtcDate($to);
+        $fromDate = Mage::helper('bs_misc/date')->getStoreDate($from);
+        $toDate = Mage::helper('bs_misc/date')->getStoreDate($to);
 
         //$fromDate = Mage::getModel('core/date')->date('Y-m-d', $from);
         //$toDate = Mage::getModel('core/date')->date('Y-m-d', $to);
