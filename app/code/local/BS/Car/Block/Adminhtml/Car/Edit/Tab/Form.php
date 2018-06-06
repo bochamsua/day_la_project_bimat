@@ -284,6 +284,9 @@ class BS_Car_Block_Adminhtml_Car_Edit_Tab_Form extends Mage_Adminhtml_Block_Widg
 
 
 
+
+
+
         $fieldset->addField(
             'due_date',
             'date',
@@ -335,6 +338,18 @@ class BS_Car_Block_Adminhtml_Car_Edit_Tab_Form extends Mage_Adminhtml_Block_Widg
                 ),
             )
         );*/
+
+        $fieldset->addField(
+            'corrective_action',
+            'textarea',
+            [
+                'label' => Mage::helper('bs_car')->__('Corrective Action'),
+                'name'  => 'corrective_action',
+                //'disabled'  => $disable,
+                //'config'    => $wysiwygConfig
+
+            ]
+        );
 
 
         $disableProof = false;
