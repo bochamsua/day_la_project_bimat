@@ -387,7 +387,7 @@ class BS_KPIReport_Helper_Data extends Mage_Core_Helper_Abstract
             $ncr->addFieldToFilter('ncr_status', ['nin' => [0,5]]);//draft, cancel
 
             if($exclude){
-                $ncr->addFieldToFilter('ref_type', ['nin' => ['cmr','cofa']]);
+                $ncr->addFieldToFilter('ref_type', [['nin' => ['cmr','cofa']],['null' => true]]);
             }
 
             if($overdue){
@@ -397,6 +397,8 @@ class BS_KPIReport_Helper_Data extends Mage_Core_Helper_Abstract
             if($repetitive){
                 $ncr->addFieldToFilter('repetitive', true);
             }
+
+           // $css = $ncr->getSelect()->__toString();
 
             if($ncr->count()){
                 $result += $ncr->count();
@@ -414,7 +416,7 @@ class BS_KPIReport_Helper_Data extends Mage_Core_Helper_Abstract
             $ncr->addFieldToFilter('car_status', ['nin' => [0]]);//draft
 
             if($exclude){
-                $car->addFieldToFilter('ref_type', ['nin' => ['cmr','cofa']]);
+                $car->addFieldToFilter('ref_type', [['nin' => ['cmr','cofa']],['null' => true]]);
             }
 
             if($overdue){
@@ -440,7 +442,7 @@ class BS_KPIReport_Helper_Data extends Mage_Core_Helper_Abstract
             $ir->addFieldToFilter('ir_status', ['nin' => [0,5]]);//draft, cancel
 
             if($exclude){
-                $ir->addFieldToFilter('ref_type', ['nin' => ['cmr','cofa']]);
+                $ir->addFieldToFilter('ref_type', [['nin' => ['cmr','cofa']],['null' => true]]);
             }
 
             if($overdue){
@@ -522,6 +524,7 @@ class BS_KPIReport_Helper_Data extends Mage_Core_Helper_Abstract
     }
 
     public function getMandatorySurveillances($deptId, $month, $year){
+
 
         $period = Mage::helper('bs_report')->getFromTo($month, $year);
 
