@@ -21,7 +21,7 @@ class BS_Observation_Model_Observer
             'status' => [1,4],
             'close'    => [
                 'status' => 2,//new status of close action
-                'fields' => 'remark,ncausegroup_id,ncause_id,close_date'
+                'fields' => 'remark,ncausegroup_id,ncause_id,close_date,res_date'
                 //values will be taken from POST object
             ],
         ],
@@ -53,7 +53,7 @@ class BS_Observation_Model_Observer
             'status' => [1,5],
             'close'    => [
                 'status' => 3,//new status of close action
-                'fields' => 'close_date,remark_text'
+                'fields' => 'close_date,remark_text,res_date'
                 //values will be taken from POST object
             ],
             'remove' => [//buttons to be removed when object is in closed status
@@ -65,7 +65,7 @@ class BS_Observation_Model_Observer
             'status' => [0,2],
             'close'    => [
                 'status' => 1,//new status of close action
-                'fields' => 'close_date,coa_source'
+                'fields' => 'close_date,coa_source,res_date'
                 //values will be taken from POST object
             ],
             'remove' => [//buttons to be removed when object is in closed status
