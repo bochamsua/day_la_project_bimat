@@ -250,7 +250,7 @@ class BS_Qn_Block_Adminhtml_Qn_Edit_Tab_Form extends Mage_Adminhtml_Block_Widget
                 ]
 		    );
 
-		    /*$fieldset->addField(
+		    $fieldset->addField(
 			    'close_date',
 			    'date',
 			    array(
@@ -261,7 +261,7 @@ class BS_Qn_Block_Adminhtml_Qn_Edit_Tab_Form extends Mage_Adminhtml_Block_Widget
 				    'format'  => Mage::app()->getLocale()->getDateFormat(Mage_Core_Model_Locale::FORMAT_TYPE_SHORT),
 
 			    )
-		    );*/
+		    );
 	    }
 
 	    if(in_array($currentObj->getQnStatus(), [2,3,4,5])){// && $currentObj->getAccept() == 1

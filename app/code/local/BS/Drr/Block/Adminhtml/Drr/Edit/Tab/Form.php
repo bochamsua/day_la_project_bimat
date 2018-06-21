@@ -402,7 +402,7 @@ class BS_Drr_Block_Adminhtml_Drr_Edit_Tab_Form extends Mage_Adminhtml_Block_Widg
                 ]
 		    );
 
-		    /*$fieldset->addField(
+		    $fieldset->addField(
 			    'close_date',
 			    'date',
 			    array(
@@ -413,7 +413,7 @@ class BS_Drr_Block_Adminhtml_Drr_Edit_Tab_Form extends Mage_Adminhtml_Block_Widg
 				    'format'  => Mage::app()->getLocale()->getDateFormat(Mage_Core_Model_Locale::FORMAT_TYPE_SHORT),
 
 			    )
-		    );*/
+		    );
 	    }
 
         $fieldset->addField(

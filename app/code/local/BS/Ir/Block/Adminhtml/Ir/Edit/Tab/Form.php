@@ -397,7 +397,7 @@ class BS_Ir_Block_Adminhtml_Ir_Edit_Tab_Form extends Mage_Adminhtml_Block_Widget
 	    );
 
         $bypass = Mage::getSingleton('admin/session')->isAllowed("bs_work/ir/accept");
-	    if($misc->canAcceptReject($currentObj, null, [], $bypass)){//manager
+	    if($misc->canAcceptReject($currentObj, null, [], $bypass) || $misc->isOwner($currentObj)){//manager
 
 		    $fieldset->addField(
 			    'reject_reason',
@@ -458,6 +458,32 @@ class BS_Ir_Block_Adminhtml_Ir_Edit_Tab_Form extends Mage_Adminhtml_Block_Widget
 
             ]
         );
+
+        if($misc->isAdmin($currentObj)){
+            $fieldset->addField(
+                'ir_status',
+                'select',
+                [
+                    'label' => Mage::helper('bs_ir')->__('Status'),
+                    'name'  => 'ir_status',
+
+                    'values'=> Mage::getModel('bs_ir/ir_attribute_source_irstatus')->getAllOptions(false),
+                ]
+            );
+
+            $fieldset->addField(
+                'close_date',
+                'date',
+                array(
+                    'label' => Mage::helper('bs_ir')->__('Close Date'),
+                    'name'  => 'close_date',
+                    'readonly'  => true,
+                    'image' => $this->getSkinUrl('images/grid-cal.gif'),
+                    'format'  => Mage::app()->getLocale()->getDateFormat(Mage_Core_Model_Locale::FORMAT_TYPE_SHORT),
+
+                )
+            );
+        }
 
 
         $formValues = Mage::registry('current_ir')->getDefaultValues();

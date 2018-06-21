@@ -475,7 +475,7 @@ class BS_Car_Block_Adminhtml_Car_Edit_Tab_Form extends Mage_Adminhtml_Block_Widg
                 ]
 		    );
 
-		    /*$fieldset->addField(
+		    $fieldset->addField(
 			    'close_date',
 			    'date',
 			    array(
@@ -486,7 +486,7 @@ class BS_Car_Block_Adminhtml_Car_Edit_Tab_Form extends Mage_Adminhtml_Block_Widg
 				    'format'  => Mage::app()->getLocale()->getDateFormat(Mage_Core_Model_Locale::FORMAT_TYPE_SHORT),
 
 			    )
-		    );*/
+		    );
 	    }
 
 

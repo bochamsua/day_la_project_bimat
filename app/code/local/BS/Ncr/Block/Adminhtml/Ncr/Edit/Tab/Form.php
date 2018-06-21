@@ -377,7 +377,7 @@ class BS_Ncr_Block_Adminhtml_Ncr_Edit_Tab_Form extends Mage_Adminhtml_Block_Widg
                 ]
 		    );
 
-		    /*$fieldset->addField(
+		    $fieldset->addField(
 			    'close_date',
 			    'date',
 			    array(
@@ -388,7 +388,7 @@ class BS_Ncr_Block_Adminhtml_Ncr_Edit_Tab_Form extends Mage_Adminhtml_Block_Widg
 				    'format'  => Mage::app()->getLocale()->getDateFormat(Mage_Core_Model_Locale::FORMAT_TYPE_SHORT),
 
 			    )
-		    );*/
+		    );
 	    }
 
 
@@ -485,7 +485,7 @@ class BS_Ncr_Block_Adminhtml_Ncr_Edit_Tab_Form extends Mage_Adminhtml_Block_Widg
 
 
         $bypass = Mage::getSingleton('admin/session')->isAllowed("bs_work/ncr/accept");
-        if($misc->canAcceptReject($currentObj, null, [], $bypass)){//manager
+        if($misc->canAcceptReject($currentObj, null, [], $bypass) || $misc->isOwner($currentObj)){//manager
 
             $fieldset->addField(
                 'reject_reason',
