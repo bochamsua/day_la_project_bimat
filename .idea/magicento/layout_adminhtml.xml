@@ -1070,6 +1070,43 @@ Empty hanle for ajax response etc.
         </reference>
     </adminhtml_aut_aut_edit>
 
+<adminhtml_imex_im_index>
+        <reference name="menu">
+            <action method="setActive">
+                <menupath>system/bs_imex/im</menupath>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="adminhtml/template" template="bs_imex/im/form/before.phtml" name="import.form.before" alias="form_before"/>
+            <block type="bs_imex/adminhtml_im_edit" name="import.form.container"/>
+            <block type="adminhtml/template" template="bs_imex/im/form/after.phtml" name="import.form.after" alias="form_after"/>
+        </reference>
+    </adminhtml_imex_im_index>
+    <adminhtml_imex_im_validate>
+        <block type="bs_imex/adminhtml_im_frame_result" template="bs_imex/im/frame/result.phtml" name="import.frame.result" alias="import_frame_result" output="toHtml"/>
+    </adminhtml_imex_im_validate>
+
+    <adminhtml_imex_im_start>
+        <block type="bs_imex/adminhtml_im_frame_result" template="bs_imex/im/frame/result.phtml" name="import.frame.result" alias="import_frame_result" output="toHtml"/>
+    </adminhtml_imex_im_start>
+    <adminhtml_imex_im_busy>
+        <reference name="content">
+            <block type="core/template" template="bs_imex/busy.phtml" name="busy" alias="busy"/>
+        </reference>
+    </adminhtml_imex_im_busy>
+    <adminhtml_imex_ex_index>
+        <reference name="content">
+            <block type="adminhtml/template" template="bs_imex/ex/form/before.phtml" name="export.form.before" alias="form_before"/>
+            <block type="bs_imex/adminhtml_ex_edit" name="export.form.container"/>
+            <block type="adminhtml/template" template="bs_imex/ex/form/after.phtml" name="export.form.after" alias="form_after"/>
+        </reference>
+    </adminhtml_imex_ex_index>
+    <adminhtml_imex_ex_getfilter>
+        <block type="core/text_list" name="root">
+            <block type="bs_imex/adminhtml_ex_filter" name="export.filter"/>
+        </block>
+    </adminhtml_imex_ex_getfilter>
+
 <adminhtml_formtemplate_formtemplate_index>
         <reference name="menu">
             <action method="setActive">
