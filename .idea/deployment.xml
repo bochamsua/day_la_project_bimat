@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="PublishConfigData" serverName="QCVAECO On S2LSolutions" traceLevel="DETAILS" uploadOnCheckin="3121f034-bb9f-49ff-9dfb-a17bc144d5bf">
+  <component name="PublishConfigData" serverName="QCVAECO On S2LSolutions" traceLevel="DETAILS">
     <serverData>
       <paths name="QCVAECO On S2LSolutions">
         <serverdata>
@@ -10,6 +10,5 @@
         </serverdata>
       </paths>
     </serverData>
-    <option name="myUploadOnCheckinName" value="QCVAECO On S2LSolutions" />
   </component>
 </project>
