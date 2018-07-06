@@ -169,6 +169,7 @@ class BS_Sur_Block_Adminhtml_Sur_Edit_Tab_Form extends Mage_Adminhtml_Block_Widg
             [
                 'label' => Mage::helper('bs_sur')->__('Mandatory Items'),
                 'name'  => 'mandatory_items',
+                'readonly' => true
 
             ]
         );
