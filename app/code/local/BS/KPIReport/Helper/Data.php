@@ -506,7 +506,7 @@ class BS_KPIReport_Helper_Data extends Mage_Core_Helper_Abstract
         $collection = Mage::getModel('bs_car/car')->getCollection();
         $collection->addFieldToFilter('report_date', ['from' => $period[0]]);
         $collection->addFieldToFilter('report_date', ['to' => $period[1]]);
-        $collection->addFieldToFilter('car_status', ['nin' => [0]]);
+        $collection->addFieldToFilter('car_status', [['nin' => [0]], ['null' => true]]);
         $collection->addFieldToFilter('dept_id', $deptId);
 
         if($collection->count()){
@@ -601,7 +601,7 @@ class BS_KPIReport_Helper_Data extends Mage_Core_Helper_Abstract
         $collection = Mage::getModel('bs_car/car')->getCollection();
         $collection->addFieldToFilter('report_date', ['from' => $period[0]]);
         $collection->addFieldToFilter('report_date', ['to' => $period[1]]);
-        $collection->addFieldToFilter('car_status', ['nin' => [0]]);
+        $collection->addFieldToFilter('car_status', [['nin' => [0]], ['null' => true]]);//[['eq' => 0], ['null' => true]]
         $collection->addFieldToFilter('dept_id', $deptId);
 
         if(count($errorType)){
