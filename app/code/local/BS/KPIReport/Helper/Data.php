@@ -427,7 +427,7 @@ class BS_KPIReport_Helper_Data extends Mage_Core_Helper_Abstract
                 $car->addFieldToFilter('repetitive', true);
             }
 
-            $css = $car->getSelect()->__toString();
+            //$css = $car->getSelect()->__toString();
 
             if($car->count()){
                 $result += $car->count();
