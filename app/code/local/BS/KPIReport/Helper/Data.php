@@ -413,7 +413,7 @@ class BS_KPIReport_Helper_Data extends Mage_Core_Helper_Abstract
             $car->addFieldToFilter('report_date', ['from' => $period[0]]);
             $car->addFieldToFilter('report_date', ['to' => $period[1]]);
             $car->addFieldToFilter('dept_id', $deptId);
-            $ncr->addFieldToFilter('car_status', [['nin' => [0]], ['null' => true]]);//draft
+            $car->addFieldToFilter('car_status', [['nin' => [0]], ['null' => true]]);//draft
 
             if($exclude){
                 $car->addFieldToFilter('ref_type', [['nin' => ['cmr','cofa']],['null' => true]]);
@@ -426,6 +426,8 @@ class BS_KPIReport_Helper_Data extends Mage_Core_Helper_Abstract
             if($repetitive){
                 $car->addFieldToFilter('repetitive', true);
             }
+
+            $css = $car->getSelect()->__toString();
 
             if($car->count()){
                 $result += $car->count();
