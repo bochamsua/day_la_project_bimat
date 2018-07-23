@@ -341,7 +341,7 @@ class BS_Sur_Block_Adminhtml_Sur_Edit_Tab_Form extends Mage_Adminhtml_Block_Widg
                      });
                      
                       Event.observe('".$id."dept_id', 'change', function(evt){
-                            updateTasks($('".$id."dept_id').value);
+                            //updateTasks($('".$id."dept_id').value);
                      });
                      
                      function updateTasks(dept_id){
