@@ -82,61 +82,7 @@ class BS_Car_Block_Adminhtml_Car_Edit_Tab_Form extends Mage_Adminhtml_Block_Widg
             ]
         );
 
-        /*if($taskId){
-            $tasks = Mage::getResourceModel('bs_misc/task_collection');
-            $tasks->addFieldToFilter('entity_id', $taskId);
-            $tasks = $tasks->toOptionArray();
-            $fieldset->addField(
-                'task_id',
-                'select',
-                array(
-                    'label' => Mage::helper('bs_car')->__('Survey Code'),
-                    'name'  => 'task_id',
-                    'values'=> $tasks,
-                    'disabled'  => $disable
-                )
-            );
 
-            $subtasks = Mage::getResourceModel('bs_misc/subtask_collection');
-            $subtasks->addFieldToFilter('task_id', $taskId);
-            $subtasks = $subtasks->toOptionArray();
-            array_unshift($subtasks, array('value'=>'0', 'label'=>'N/A'));
-
-            $fieldset->addField(
-                'subtask_id',
-                'select',
-                array(
-                    'label' => Mage::helper('bs_car')->__('Source'),
-                    'name'  => 'subtask_id',
-                    'values'=> $subtasks,
-                    'disabled'  => $disable
-                )
-            );
-        }else {
-            $label = 'Other';
-            if($refType){
-                $label = ucfirst($refType);
-            }
-            $fieldset->addField(
-                'task_id',
-                'select',
-                array(
-                    'label' => Mage::helper('bs_car')->__('Source'),
-                    'name'  => 'task_id',
-                    'values'=> [['value'=>'0', 'label'=>$label]],
-                    'disabled'  => $disable
-                )
-            );
-            $fieldset->addField(
-                'source_other',
-                'text',
-                array(
-                    'label' => Mage::helper('bs_car')->__('Source Other'),
-                    'name'  => 'source_other',
-                    'disabled'  => $disable
-                )
-            );
-        }*/
 
         $fieldset->addField(
             'car_no',
@@ -172,6 +118,60 @@ class BS_Car_Block_Adminhtml_Car_Edit_Tab_Form extends Mage_Adminhtml_Block_Widg
 			    'values'    => $depts,
             ]
 	    );
+
+        //if($taskId){
+        $tasks = Mage::getResourceModel('bs_misc/task_collection');
+        //$tasks->addFieldToFilter('entity_id', $taskId);
+        $tasks = $tasks->toOptionArray();
+        $fieldset->addField(
+            'task_id',
+            'select',
+            array(
+                'label' => Mage::helper('bs_car')->__('Survey Code'),
+                'name'  => 'task_id',
+                'values'=> $tasks,
+            )
+        );
+
+        $subtasks = Mage::getResourceModel('bs_misc/subtask_collection');
+        //$subtasks->addFieldToFilter('task_id', $taskId);
+        $subtasks = $subtasks->toOptionArray();
+        array_unshift($subtasks, array('value'=>'0', 'label'=>'N/A'));
+
+        $fieldset->addField(
+            'subtask_id',
+            'select',
+            array(
+                'label' => Mage::helper('bs_car')->__('Source'),
+                'name'  => 'subtask_id',
+                'values'=> $subtasks,
+            )
+        );
+        /*}else {
+            $label = 'Other';
+            if($refType){
+                $label = ucfirst($refType);
+            }
+            $fieldset->addField(
+                'task_id',
+                'select',
+                array(
+                    'label' => Mage::helper('bs_car')->__('Source'),
+                    'name'  => 'task_id',
+                    'values'=> [['value'=>'0', 'label'=>$label]],
+                    'disabled'  => $disable
+                )
+            );
+            $fieldset->addField(
+                'source_other',
+                'text',
+                array(
+                    'label' => Mage::helper('bs_car')->__('Source Other'),
+                    'name'  => 'source_other',
+                    'disabled'  => $disable
+                )
+            );
+        }*/
 
         $fieldset->addField(
             'report_date',
