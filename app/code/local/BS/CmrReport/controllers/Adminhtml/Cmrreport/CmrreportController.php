@@ -59,14 +59,14 @@ class BS_CmrReport_Adminhtml_Cmrreport_CmrreportController extends BS_Sur_Contro
 
         if($customer > 0){
             $customerModel = Mage::getSingleton('bs_acreg/customer')->load($customer);
-            $customer = $customerModel->getName();
+            $customerName = $customerModel->getName();
         }else {
-            $customer = 'All';
+            $customerName = 'All Customers';
         }
 
         $template = Mage::helper('bs_formtemplate')->getFormtemplate('cmr-report');
 
-        $period = "{$month}- {$year} ({$customer})";
+        $period = "{$month}- {$year} ({$customerName})";
 
         $fileName = 'CMR Report '.$period.microtime();
 
