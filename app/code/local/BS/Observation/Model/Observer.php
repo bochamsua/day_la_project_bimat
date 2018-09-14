@@ -1012,6 +1012,7 @@ class BS_Observation_Model_Observer
             //'ir' => [3,6],
             'qr' => [3,5],
             'coa' => [1,4],
+            'nrw' => [3,4],
 
 
 
@@ -1140,6 +1141,13 @@ class BS_Observation_Model_Observer
             $$('.closes').each(function (el){
                 $(el).hide();
             });
+            
+            if(checkCloseCondition()){
+                $$('.closes').each(function (el){
+                    $(el).show();
+                  });
+          
+              }
               
             if($('".$id."ncause_id') != undefined){ 
               $('".$id."ncause_id').observe('change', function(){
@@ -1223,6 +1231,8 @@ class BS_Observation_Model_Observer
                         updateCauses($('".$id."ncausegroup_id').value);
                  });
               }
+              
+              
             
             ";
     }

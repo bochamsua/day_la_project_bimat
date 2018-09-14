@@ -273,7 +273,7 @@ class BS_Misc_Adminhtml_Misc_MiscController extends BS_Sur_Controller_Adminhtml_
 
         }
 
-        if($message == 'closed' && $type != 'coa'){//when we close NCR/DRR/CAR
+        if($message == 'closed' && !in_array($type,['coa', 'nrw'])){//when we close NCR/DRR/CAR
 
             $match = [
                 'ncr' => [
@@ -370,6 +370,11 @@ class BS_Misc_Adminhtml_Misc_MiscController extends BS_Sur_Controller_Adminhtml_
             }*/
 
         }else {
+            //for item doesnt have close date info
+            //nrw, for example
+            if($message == 'closed' && in_array($type, ['nrw'])){
+                $obj->setData("close_date", Mage::helper('bs_misc/date')->getNowStoreDate());
+            }
             $obj->setData("{$type}_status", $status);
         }
 

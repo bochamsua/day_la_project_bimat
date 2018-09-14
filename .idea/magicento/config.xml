@@ -15,7 +15,7 @@
                     
                     
                     <persistent>0</persistent>
-                <host><![CDATA[localhost]]></host><username><![CDATA[root]]></username><password><![CDATA[root]]></password><dbname><![CDATA[qcvaeco]]></dbname><initStatements><![CDATA[SET NAMES utf8]]></initStatements><model><![CDATA[mysql4]]></model><type><![CDATA[pdo_mysql]]></type><pdoType /><active>1</active></connection>
+                <host><![CDATA[localhost]]></host><username><![CDATA[root]]></username><password><![CDATA[root]]></password><dbname><![CDATA[qcvaeco]]></dbname><initStatements><![CDATA[SET NAMES utf8]]></initStatements><model><![CDATA[mysql4]]></model><type><![CDATA[pdo_mysql]]></type><pdoType></pdoType><active>1</active></connection>
             </default_setup>
             <default_write>
                 <connection>
@@ -279,7 +279,7 @@
                     <class>BS_KPIReport_Model_Resource_Setup</class>
                 </setup>
             </bs_kpireport_setup><db>
-                <table_prefix />
+                <table_prefix></table_prefix>
             </db></resources>
         <resource>
             <connection>

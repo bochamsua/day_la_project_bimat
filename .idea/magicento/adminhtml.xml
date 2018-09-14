@@ -92,7 +92,22 @@
                     <action>adminhtml/system_config</action>
                     <sort_order>110</sort_order>
                 </config>
-            <formtemplate translate="title" module="bs_formtemplate">
+            <bs_imex translate="title" module="bs_imex">
+                    <title>Import Export</title>
+                    <sort_order>10</sort_order>
+                    <children>
+                        <im translate="title" module="bs_imex">
+                            <title>Import</title>
+                            <action>adminhtml/imex_im</action>
+                            <sort_order>0</sort_order>
+                        </im>
+                        <!--<ex translate="title" module="bs_imex">
+                            <title>Export</title>
+                            <action>adminhtml/imex_ex</action>
+                            <sort_order>10</sort_order>
+                        </ex>-->
+                    </children>
+                </bs_imex><formtemplate translate="title" module="bs_formtemplate">
                     <title>FORMS Template</title>
                     <action>adminhtml/formtemplate_formtemplate</action>
                     <sort_order>30</sort_order>
@@ -502,7 +517,9 @@
                                         <title>Report</title>
                                     </bs_report><bs_aut translate="title" module="bs_aut">
                                         <title>Aut</title>
-                                    </bs_aut><bs_formtemplate translate="title" module="bs_formtemplate">
+                                    </bs_aut><bs_imex translate="title" module="bs_imex">
+                                        <title>Imex</title>
+                                    </bs_imex><bs_formtemplate translate="title" module="bs_formtemplate">
                                         <title>Formtemplate</title>
                                     </bs_formtemplate><bs_evaluation translate="title" module="bs_evaluation">
                                         <title>Evaluation</title>
@@ -627,7 +644,29 @@
                                     </custom>
                                 </children>
                             <disabled>1</disabled></extensions>
-                        <formtemplate translate="title" module="bs_formtemplate">
+                        <bs_imex translate="title" module="bs_imex">
+                                <title>Import Export</title>
+                                <children>
+                                    <im translate="title" module="bs_imex">
+                                        <title>Import</title>
+                                        <sort_order>0</sort_order>
+                                        <children>
+                                            <new translate="title"><title>New</title></new>
+                                            <edit translate="title"><title>Edit</title></edit>
+                                            <delete translate="title"><title>Delete</title></delete>
+                                        </children>
+                                    </im>
+                                    <!--<ex translate="title" module="bs_imex">
+                                        <title>Export</title>
+                                        <sort_order>10</sort_order>
+                                        <children>
+                                            <new translate="title"><title>New</title></new>
+                                            <edit translate="title"><title>Edit</title></edit>
+                                            <delete translate="title"><title>Delete</title></delete>
+                                        </children>
+                                    </ex>-->
+                                </children>
+                            </bs_imex><formtemplate translate="title" module="bs_formtemplate">
                                 <title>FORMS Template</title>
                                 <sort_order>30</sort_order>
                                 <children>
