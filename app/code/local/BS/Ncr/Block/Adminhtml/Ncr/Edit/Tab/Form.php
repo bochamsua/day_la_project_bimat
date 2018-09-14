@@ -365,7 +365,7 @@ class BS_Ncr_Block_Adminhtml_Ncr_Edit_Tab_Form extends Mage_Adminhtml_Block_Widg
 
 
 
-	    if($misc->isAdmin($currentObj)){
+	    if($misc->isAdmin($currentObj) || $misc->isSuperAdmin($currentObj)){
 		    $fieldset->addField(
 			    'ncr_status',
 			    'select',
@@ -376,6 +376,18 @@ class BS_Ncr_Block_Adminhtml_Ncr_Edit_Tab_Form extends Mage_Adminhtml_Block_Widg
 				    'values'=> Mage::getModel('bs_ncr/ncr_attribute_source_ncrstatus')->getAllOptions(false),
                 ]
 		    );
+
+            $fieldset->addField(
+                'res_status',
+                'select',
+                [
+                    'label' => Mage::helper('bs_ncr')->__('Res. Status'),
+                    'name'  => 'res_status',
+
+                    'values'=> Mage::getModel('bs_coa/coa_attribute_source_resstatus')->getAllOptions(false),
+                ]
+            );
+
 
 		    $fieldset->addField(
 			    'close_date',

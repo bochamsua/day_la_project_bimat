@@ -390,7 +390,7 @@ class BS_Drr_Block_Adminhtml_Drr_Edit_Tab_Form extends Mage_Adminhtml_Block_Widg
 
 
 
-	    if($misc->isAdmin($currentObj)){
+	    if($misc->isAdmin($currentObj) || $misc->isSuperAdmin($currentObj)){
 		    $fieldset->addField(
 			    'drr_status',
 			    'select',

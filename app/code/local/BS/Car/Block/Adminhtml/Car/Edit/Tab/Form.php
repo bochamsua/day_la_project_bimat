@@ -463,7 +463,7 @@ class BS_Car_Block_Adminhtml_Car_Edit_Tab_Form extends Mage_Adminhtml_Block_Widg
 
 
 
-	    if($misc->isAdmin($currentObj)){
+	    if($misc->isAdmin($currentObj) || $misc->isSuperAdmin($currentObj)){
 		    $fieldset->addField(
 			    'car_status',
 			    'select',
