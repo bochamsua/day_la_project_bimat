@@ -365,7 +365,7 @@ class BS_Ncr_Block_Adminhtml_Ncr_Edit_Tab_Form extends Mage_Adminhtml_Block_Widg
 
 
 
-	    if($misc->isAdmin($currentObj) || $misc->isSuperAdmin($currentObj)){
+	    if($misc->isAdmin($currentObj) || $misc->isSuperAdmin()){
 		    $fieldset->addField(
 			    'ncr_status',
 			    'select',

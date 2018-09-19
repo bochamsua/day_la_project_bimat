@@ -449,6 +449,28 @@ class BS_Sur_Block_Adminhtml_Sur_Grid extends Mage_Adminhtml_Block_Widget_Grid
             'label'=> '---Select---',
             'url'  => ''
         ]);
+
+        $misc = $this->helper('bs_misc');
+        if($misc->isAdmin() || $misc->isSuperAdmin()){
+            $this->getMassactionBlock()->addItem(
+                'status',
+                array(
+                    'label'      => Mage::helper('bs_sur')->__('Change status'),
+                    'url'        => $this->getUrl('*/*/massStatus', array('_current'=>true)),
+                    'additional' => array(
+                        'status' => array(
+                            'name'   => 'status',
+                            'type'   => 'select',
+                            'class'  => 'required-entry',
+                            'label'  => Mage::helper('bs_sur')->__('Record Status'),
+                            'values' => Mage::getModel('bs_sur/sur_attribute_source_recordstatus')->getAllOptions(false),
+                        )
+                    )
+                )
+            );
+        }
+
+
         return $this;
     }
 

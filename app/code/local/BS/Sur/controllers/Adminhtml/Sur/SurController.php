@@ -308,7 +308,7 @@ class BS_Sur_Adminhtml_Sur_SurController extends BS_Sur_Controller_Adminhtml_Sur
             try {
                 foreach ($surIds as $surId) {
                 $sur = Mage::getSingleton('bs_sur/sur')->load($surId)
-                            ->setStatus($this->getRequest()->getParam('status'))
+                            ->setRecordStatus($this->getRequest()->getParam('status'))
                             ->setIsMassupdate(true)
                             ->save();
                 }

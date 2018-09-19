@@ -278,7 +278,7 @@ class BS_Sur_Block_Adminhtml_Sur_Edit_Tab_Form extends Mage_Adminhtml_Block_Widg
             ]
         );
 
-        if($misc->isAdmin($currentObj) || $misc->isSuperAdmin($currentObj)){
+        if($misc->isAdmin($currentObj) || $misc->isSuperAdmin()){
             $fieldset->addField(
                 'record_status',
                 'select',
