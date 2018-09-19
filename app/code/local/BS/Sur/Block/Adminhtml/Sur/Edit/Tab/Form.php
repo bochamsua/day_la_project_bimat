@@ -39,6 +39,9 @@ class BS_Sur_Block_Adminhtml_Sur_Edit_Tab_Form extends Mage_Adminhtml_Block_Widg
             $taskId = $currentSur->getTaskId();
         }
 
+        $currentObj = Mage::registry('current_ncr');
+        $misc = $this->helper('bs_misc');
+
         $fieldset->addType(
             'file',
             Mage::getConfig()->getBlockClassName('bs_sur/adminhtml_sur_helper_file')
@@ -274,6 +277,22 @@ class BS_Sur_Block_Adminhtml_Sur_Edit_Tab_Form extends Mage_Adminhtml_Block_Widg
             //'values'=> Mage::getModel('bs_sur/sur_attribute_source_section')->getAllOptions(false),
             ]
         );
+
+        if($misc->isAdmin($currentObj) || $misc->isSuperAdmin($currentObj)){
+            $fieldset->addField(
+                'record_status',
+                'select',
+                [
+                    'label' => Mage::helper('bs_sur')->__('Status'),
+                    'name'  => 'record_status',
+
+                    'values'=> Mage::getModel('bs_sur/sur_attribute_source_recordstatus')->getAllOptions(false),
+                ]
+            );
+
+
+        }
+
 
         $formValues = Mage::registry('current_sur')->getDefaultValues();
         if (!is_array($formValues)) {
